@@ -10,6 +10,10 @@ Welcome to Substra's documentation!
 What is Substra?
 ================
 
+.. toctree::
+   :maxdepth: 1
+
+   src/overview/overview
 Getting started
 ===============
 .. toctree::
