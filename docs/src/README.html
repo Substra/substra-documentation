@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Substra &mdash; Substra 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Usage" href="getting_started/usage/usage.html" />
+    <link rel="prev" title="Welcome to Substra’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Substra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Substra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-substra-platform-locally">Running the Substra platform locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli">CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk">SDK</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compatibility-table">Compatibility table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">Deploy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/usage/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation/local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation/local_install_docker_compose.html">Local install of Substra (macOS &amp; Ubuntu/Debian)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="entry_points/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entry_points/glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">Let’s build &amp; publish the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Substra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Substra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/src/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="substra">
+<h1>Substra<a class="headerlink" href="#substra" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Substra" src="src/./substra-logo.svg" /></p>
+<p>CLI and SDK for interacting with Substra platform.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#install">Install</a></p></li>
+<li><p><a class="reference external" href="#running-the-substra-platform-locally">Running the Substra platform locally</a></p></li>
+<li><p><a class="reference external" href="#usage">Usage</a></p></li>
+<li><p><a class="reference external" href="#documentation">Documentation</a></p></li>
+<li><p><a class="reference external" href="#compatibility-table">Compatibility table</a></p></li>
+<li><p><a class="reference external" href="#contributing">Contributing</a></p></li>
+</ul>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>To install the command line interface and the python sdk, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install substra
+</pre></div>
+</div>
+<p>To enable Bash completion, you need to put into your .bashrc:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nv">_SUBSTRA_COMPLETE</span><span class="o">=</span><span class="nb">source</span> substra<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>For zsh users add this to your .zshrc:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nv">_SUBSTRA_COMPLETE</span><span class="o">=</span>source_zsh substra<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>From this point onwards, substra command line interface will have autocompletion enabled.</p>
+</div>
+<div class="section" id="running-the-substra-platform-locally">
+<h2>Running the Substra platform locally<a class="headerlink" href="#running-the-substra-platform-locally" title="Permalink to this headline">¶</a></h2>
+<p>You can run the Substra platform locally on your machine using one of the two following methods:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./docs/local_install_skaffold">Using kubernetes and skaffold (recommended)</a></p></li>
+<li><p><a class="reference external" href="./docs/local_install_docker_compose">Using docker-compose</a></p></li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Credentials are required for using this tool.</p>
+<div class="section" id="cli">
+<h3>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra --help
+</pre></div>
+</div>
+</div>
+<div class="section" id="sdk">
+<h3>SDK<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">substra</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">substra</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="c1"># enjoy...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Interacting with the Substra platform:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./references/cli">Command line interface</a></p></li>
+<li><p><a class="reference external" href="./references/sdk">SDK</a></p></li>
+</ul>
+<p>Implementing your assets in python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics">Objective base class</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener">Dataset base class</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo">Algo base class</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#compositealgo">Composite algo base class</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#aggregatealgo">Aggregate algo base class</a></p></li>
+</ul>
+<p>Learning about the Substra platform:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./docs/concepts">Concepts</a></p></li>
+<li><p><a class="reference external" href="./docs/ml_tasks">Machine Learning tasks</a></p></li>
+<li><p><a class="reference external" href="./docs/full_pipeline_workflow">Adding a full pipeline</a></p></li>
+<li><p><a class="reference external" href="./docs/add_data_samples">Adding data samples</a></p></li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="./examples/titanic/README">Titanic</a></p></li>
+<li><p><a class="reference external" href="./examples/cross_val/README">Cross-validation</a></p></li>
+<li><p><a class="reference external" href="./examples/compute_plan/README">Compute plan</a></p></li>
+</ul>
+</div>
+<div class="section" id="compatibility-table">
+<h2>Compatibility table<a class="headerlink" href="#compatibility-table" title="Permalink to this headline">¶</a></h2>
+<p>These sets of versions have been tested for compatilibility:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>substra</th>
+<th>substra-chaincode</th>
+<th>substra-backend</th>
+<th>substra-tests</th>
+<th>hlf-k8s</th>
+<th>substra-frontend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/SubstraFoundation/substra/releases/tag/0.4.0-alpha.3"><code>0.4.0-alpha.3</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-chaincode/releases/tag/0.0.8-alpha.6"><code>0.0.8-alpha.6</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-backend/releases/tag/0.0.12-alpha.13"><code>0.0.12-alpha.13</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-tests/releases/tag/0.2.0-alpha.1"><code>0.2.0-alpha.1</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/hlf-k8s/releases/tag/0.0.11-alpha.1"><code>0.0.11-alpha.1</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/SubstraFoundation/substra/releases/tag/0.4.0-alpha.4"><code>0.4.0-alpha.4</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-chaincode/releases/tag/0.0.8-alpha.9"><code>0.0.8-alpha.9</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-backend/releases/tag/0.0.12-alpha.20"><code>0.0.12-alpha.20</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-tests/releases/tag/0.2.0-alpha.2"><code>0.2.0-alpha.2</code></a></td>
+<td><a href="https://github.com/SubstraFoundation/hlf-k8s/releases/tag/0.0.11-alpha.1"><code>0.0.11-alpha.1</code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table><p><strong>Adding entries to the compatibility table</strong></p>
+<ul class="simple">
+<li><p>Please ensure that all the tests from <a class="reference external" href="https://github.com/SubstraFoundation/substra-tests/"><code class="docutils literal notranslate"><span class="pre">substra-tests</span></code></a> pass</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd substra-tests
+$ make test
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To test the front end, please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend/docs/some_checklist_TODO_WRITE_THE_CHECKLIST">front end testing checklist</a></p></li>
+</ul>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>To setup the project in development mode, run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install -e .<span class="o">[</span>test<span class="o">]</span>
+</pre></div>
+</div>
+<p>To run all tests, use the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python setup.py <span class="nb">test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Documentation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To generate the command line interface documentation, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python bin/generate_cli_documentation.py
+</pre></div>
+</div>
+<p>Use the following command to generate the python sdk documentation:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pydocmd simple substra.sdk+ substra.sdk.Client+ &gt; references/sdk.md
+</pre></div>
+</div>
+<p>Documentation will be available in <em>docs/</em> directory.</p>
+</div>
+<div class="section" id="deploy">
+<h3>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+<p>Deployment to pypi.org should be automatic thanks to Travis but if you need to do it manually, here is what you need to do:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -rf dist/*
+python3 setup.py sdist bdist_wheel
+twine upload dist/* --verbose
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started/usage/usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Substra’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Substra Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

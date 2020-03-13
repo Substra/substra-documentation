@@ -5,18 +5,36 @@ Welcome to Substra's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-Overview
-========
+   src/README
 
-Usage
-=====
+What is Substra?
+================
 
-Installation
+Getting started
+===============
+.. toctree::
+   :maxdepth: 1
+
+   src/getting_started/usage/usage
+   src/getting_started/installation/local_install_skaffold
+   src/getting_started/installation/local_install_docker_compose
+
+Entry points
 ============
 
-Specific entry points
-=====================
+.. toctree::
+   :maxdepth: 1
 
+   src/entry_points/faq
+   src/entry_points/glossary
+
+Build the doc
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   src/publish
 
 Indices and tables
 ==================
