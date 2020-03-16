@@ -1,0 +1,9 @@
+# Whoops
+
+## This page does not exist
+
+![Not found](../_static/cat_04.gif)
+
+- Want to go back to the [documentation](https://substrafoundation.github.io/substra-documentation/)?
+- To [Substra Website](https://www.substra.ai/)?
+- Or maybe to the [Github Repository](https://github.com/SubstraFoundation/substra)?
