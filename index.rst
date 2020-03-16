@@ -14,6 +14,7 @@ What is Substra?
    :maxdepth: 1
 
    src/overview/overview
+   
 Getting started
 ===============
 .. toctree::
