@@ -76,3 +76,6 @@ html_css_files = ['custom.css']
 
 # Custom Favicon
 html_favicon = '_static/favicon.ico'
+
+# Code color; See: https://www.florian-diesch.de/doc/sphinx/themes-and-pygments-styles/index.html#
+pygments_style = 'colorful'
