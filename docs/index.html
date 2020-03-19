@@ -82,7 +82,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Content</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/README.html">Substra</a></li>
 </ul>
@@ -167,7 +167,7 @@
   <div class="section" id="welcome-to-substra-s-documentation">
 <h1>Welcome to Substra’s documentation!<a class="headerlink" href="#welcome-to-substra-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Content</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/README.html">Substra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/README.html#table-of-contents">Table of contents</a></li>
@@ -216,6 +216,181 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/publish.html">Let’s build &amp; publish the documentation</a></li>
 </ul>
+</div>
+</div>
+<div class="section" id="examples-of-code-inspection">
+<h1>Examples of code inspection<a class="headerlink" href="#examples-of-code-inspection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="automethod-compute-train">
+<h2>1. Automethod (compute_train)<a class="headerlink" href="#automethod-compute-train" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="substra.runner.compute_train">
+<code class="descclassname">substra.runner.</code><code class="descname">compute_train</code><span class="sig-paren">(</span><em>train_data_path</em>, <em>algo_path</em>, <em>fake_data_samples</em>, <em>outmodel_path</em>, <em>train_pred_path</em>, <em>local_path</em>, <em>train_opener_file</em>, <em>rank</em>, <em>inmodels</em>, <em>outmodel_file</em>, <em>metrics_path</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.runner.compute_train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-substra.sdk.assets">
+<span id="automodule-sdk"></span><h2>2. Automodule (SDK)<a class="headerlink" href="#module-substra.sdk.assets" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-substra.sdk.client"></span><span class="target" id="module-substra.sdk.config"></span><dl class="exception">
+<dt id="substra.sdk.config.ConfigException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.config.</code><code class="descname">ConfigException</code><a class="headerlink" href="#substra.sdk.config.ConfigException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.config.ProfileNotFoundError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.config.</code><code class="descname">ProfileNotFoundError</code><a class="headerlink" href="#substra.sdk.config.ProfileNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="substra.sdk.config.create_profile">
+<code class="descclassname">substra.sdk.config.</code><code class="descname">create_profile</code><span class="sig-paren">(</span><em>url</em>, <em>version</em>, <em>insecure</em>, <em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.config.create_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create profile object.</p>
+</dd></dl>
+
+<span class="target" id="module-substra.sdk.exceptions"></span><dl class="exception">
+<dt id="substra.sdk.exceptions.AlreadyExists">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">AlreadyExists</code><span class="sig-paren">(</span><em>pkhash</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.AlreadyExists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.AuthenticationError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">AuthenticationError</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.AuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.AuthorizationError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">AuthorizationError</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.AuthorizationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.BadConfiguration">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">BadConfiguration</code><a class="headerlink" href="#substra.sdk.exceptions.BadConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bad configuration</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.BadLoginException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">BadLoginException</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.BadLoginException" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server refused to log-in with these credentials</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.ConnectionError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">ConnectionError</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.ConnectionError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.HTTPError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">HTTPError</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.HTTPError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.InternalServerError">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">InternalServerError</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.InternalServerError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.InvalidRequest">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">InvalidRequest</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.InvalidRequest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.InvalidResponse">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">InvalidResponse</code><span class="sig-paren">(</span><em>response</em>, <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.InvalidResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.LoadDataException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">LoadDataException</code><a class="headerlink" href="#substra.sdk.exceptions.LoadDataException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.NotFound">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">NotFound</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.NotFound" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.RequestException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">RequestException</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.RequestException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.RequestTimeout">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">RequestTimeout</code><span class="sig-paren">(</span><em>pkhash</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.RequestTimeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.SDKException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">SDKException</code><a class="headerlink" href="#substra.sdk.exceptions.SDKException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.Timeout">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">Timeout</code><span class="sig-paren">(</span><em>msg</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.exceptions.Timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="substra.sdk.exceptions.UserException">
+<em class="property">exception </em><code class="descclassname">substra.sdk.exceptions.</code><code class="descname">UserException</code><a class="headerlink" href="#substra.sdk.exceptions.UserException" title="Permalink to this definition">¶</a></dt>
+<dd><p>User Exception</p>
+</dd></dl>
+
+<span class="target" id="module-substra.sdk.rest_client"></span><dl class="class">
+<dt id="substra.sdk.rest_client.Client">
+<em class="property">class </em><code class="descclassname">substra.sdk.rest_client.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>REST Client to communicate with Substra server.</p>
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>name</em>, <em>retry_timeout=300</em>, <em>exist_ok=False</em>, <em>**request_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add asset.</p>
+<p>In case of timeout, block till resource is created.</p>
+<p>If <cite>exist_ok</cite> is true, <cite>AlreadyExists</cite> exceptions will be ignored and the
+existing asset will be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>name</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get asset by key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><em>address</em>, <em>**request_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get asset data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>name</em>, <em>filters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List assets by filters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>request_name</em>, <em>asset_name</em>, <em>path=None</em>, <em>json_response=True</em>, <em>**request_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base request.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="substra.sdk.rest_client.Client.set_config">
+<code class="descname">set_config</code><span class="sig-paren">(</span><em>config</em>, <em>profile_name='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.rest_client.Client.set_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset internal attributes from config.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-substra.sdk.user"></span><span class="target" id="module-substra.sdk.utils"></span><dl class="function">
+<dt id="substra.sdk.utils.response_get_destination_filename">
+<code class="descclassname">substra.sdk.utils.</code><code class="descname">response_get_destination_filename</code><span class="sig-paren">(</span><em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.utils.response_get_destination_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get filename from content-disposition header.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="substra.sdk.utils.retry_on_exception">
+<code class="descclassname">substra.sdk.utils.</code><code class="descname">retry_on_exception</code><span class="sig-paren">(</span><em>exceptions</em>, <em>timeout=False</em><span class="sig-paren">)</span><a class="headerlink" href="#substra.sdk.utils.retry_on_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retry function in case of exception(s).</p>
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="indices-and-tables">

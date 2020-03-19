@@ -3,13 +3,13 @@
 ## Commands
 
 ```sh
-make clean && make html && cp -R _build/html/* docs/ && echo "New build moved to docs!"
+make clean && make html && cp -R _build/html/* docs/ && echo "Wouhou! New build moved to docs!"
 git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
 ```
 
-## Tree
+## Source Tree
 
 ```sh
 ├── contribute
