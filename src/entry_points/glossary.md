@@ -85,8 +85,7 @@ ___
 
 - **Policy**: "Policies are expressions composed of properties of digital identities, for example: `Org1.Peer OR Org2.Peer`. They are used to restrict access to resources on a blockchain network. For instance, they dictate who can read from or write to a channel, or who can use a specific chaincode API via an [ACL](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#acl). Policies may be defined in `configtx.yaml` prior to bootstrapping an ordering service or creating a channel, or they can be specified when instantiating chaincode on a channel. A default set of policies ship in the sample `configtx.yaml` which will be appropriate for most networks." [Source](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#policy)
 
-- **Privacy Enhancing Technologies** (PET)
-TODO: Add def & examples
+- **Privacy Enhancing Technologies** (PETs): In a data science context, _PET_ refers to techniques, methods or approaches to augment or _enhance_ the privacy of data. For example: anonymization of data, differential privacy in the learning algorithm, homomorphic encryption applied on data, secure multi-party computation, etc.
 
 - **Privacy-preserving**: Substra Framework is a tool in the quest for ‘privacy-preserving’ ML (with the word ‘privacy’ referring to both the privacy of the dataset for the organisation managing it, or the privacy of personal data for the individuals these data refer to). It enables data analysis and machine learning computations on data without transferring the data to anyone and without giving data scientists read access to these data. It has to be combined with privacy enhancement approaches in ML algorithms (contractual requirements, algorithms audits...) and data pre-processing (differential privacy, anonymization of PII...). src: <https://www.substra.ai/en/faq>
 
