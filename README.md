@@ -1,5 +1,7 @@
 # Let's build & publish the documentation
 
+TODO: Add `clone` substra repo and other relevant src to be able to inspect code
+
 ## Commands
 
 ```sh
