@@ -1,4 +1,4 @@
-[tmp] Welcome to Substra's documentation!
+Welcome to Substra's documentation!
 =========================================
 
 .. toctree::
