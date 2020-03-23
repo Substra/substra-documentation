@@ -23,10 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -224,61 +224,71 @@
   <div class="section" id="local-installation-of-substra-using-kubernetes-and-skaffold">
 <h1>Local installation of Substra using Kubernetes and Skaffold<a class="headerlink" href="#local-installation-of-substra-using-kubernetes-and-skaffold" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div>This is an ongoing document, please feel free to reach us or to raise any issue.</div></blockquote>
+<div><p>This is an ongoing document, please feel free to reach us or to raise any issue.</p>
+</div></blockquote>
 <p>This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.</p>
 <ul class="simple">
-<li><a class="reference external" href="#local-installation-of-substra-using-kubernetes-and-skaffold">Local installation of Substra using Kubernetes and Skaffold</a><ul>
-<li><a class="reference external" href="#substra-setup">Substra Setup</a><ul>
-<li><a class="reference external" href="#general-knowledge">General knowledge</a></li>
-<li><a class="reference external" href="#hardware-requirements">Hardware requirements</a></li>
-<li><a class="reference external" href="#software-requirements">Software requirements</a><ul>
-<li><a class="reference external" href="#kubernetes">Kubernetes</a><ul>
-<li><a class="reference external" href="#running-kubernetes-locally">Running Kubernetes locally</a></li>
-<li><a class="reference external" href="#installing-kubectl">Installing Kubectl</a></li>
+<li><p><a class="reference external" href="#local-installation-of-substra-using-kubernetes-and-skaffold">Local installation of Substra using Kubernetes and Skaffold</a></p>
+<ul>
+<li><p><a class="reference external" href="#substra-setup">Substra Setup</a></p>
+<ul>
+<li><p><a class="reference external" href="#general-knowledge">General knowledge</a></p></li>
+<li><p><a class="reference external" href="#hardware-requirements">Hardware requirements</a></p></li>
+<li><p><a class="reference external" href="#software-requirements">Software requirements</a></p>
+<ul>
+<li><p><a class="reference external" href="#kubernetes">Kubernetes</a></p>
+<ul>
+<li><p><a class="reference external" href="#running-kubernetes-locally">Running Kubernetes locally</a></p></li>
+<li><p><a class="reference external" href="#installing-kubectl">Installing Kubectl</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#helm">Helm</a></li>
-<li><a class="reference external" href="#skaffold">Skaffold</a></li>
+<li><p><a class="reference external" href="#helm">Helm</a></p></li>
+<li><p><a class="reference external" href="#skaffold">Skaffold</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#virtualization">Virtualization</a></li>
-<li><a class="reference external" href="#get-the-source-code-mac--ubuntu">Get the source code (Mac &amp; Ubuntu)</a></li>
-<li><a class="reference external" href="#configuration">Configuration</a><ul>
-<li><a class="reference external" href="#minikube-ubuntu">Minikube (Ubuntu)</a></li>
-<li><a class="reference external" href="#helm-init-mac--ubuntu">Helm init (Mac &amp; Ubuntu)</a></li>
-<li><a class="reference external" href="#network">Network</a></li>
+<li><p><a class="reference external" href="#virtualization">Virtualization</a></p></li>
+<li><p><a class="reference external" href="#get-the-source-code-mac--ubuntu">Get the source code (Mac &amp; Ubuntu)</a></p></li>
+<li><p><a class="reference external" href="#configuration">Configuration</a></p>
+<ul>
+<li><p><a class="reference external" href="#minikube-ubuntu">Minikube (Ubuntu)</a></p></li>
+<li><p><a class="reference external" href="#helm-init-mac--ubuntu">Helm init (Mac &amp; Ubuntu)</a></p></li>
+<li><p><a class="reference external" href="#network">Network</a></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="#running-the-platform">Running the platform</a><ul>
-<li><a class="reference external" href="#start-substra">Start Substra</a><ul>
-<li><a class="reference external" href="#1-hlf-k8s-repository">1. hlf-k8s repository</a></li>
-<li><a class="reference external" href="#2-substra-backend-repository">2. substra-backend repository</a></li>
-<li><a class="reference external" href="#3-substra-frontend-repository">3. substra-frontend repository</a></li>
+<li><p><a class="reference external" href="#running-the-platform">Running the platform</a></p>
+<ul>
+<li><p><a class="reference external" href="#start-substra">Start Substra</a></p>
+<ul>
+<li><p><a class="reference external" href="#1-hlf-k8s-repository">1. hlf-k8s repository</a></p></li>
+<li><p><a class="reference external" href="#2-substra-backend-repository">2. substra-backend repository</a></p></li>
+<li><p><a class="reference external" href="#3-substra-frontend-repository">3. substra-frontend repository</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#stop-substra">Stop Substra</a></li>
-<li><a class="reference external" href="#reset-substra">Reset Substra</a></li>
+<li><p><a class="reference external" href="#stop-substra">Stop Substra</a></p></li>
+<li><p><a class="reference external" href="#reset-substra">Reset Substra</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#login-password-and-urls">Login, password and urls</a><ul>
-<li><a class="reference external" href="#credentials-and-urls">Credentials and urls</a></li>
-<li><a class="reference external" href="#browser-extension">Browser extension</a></li>
-<li><a class="reference external" href="#substra-cli-config--login-mac--ubuntu">Substra CLI config &amp; login (Mac &amp; Ubuntu)</a></li>
+<li><p><a class="reference external" href="#login-password-and-urls">Login, password and urls</a></p>
+<ul>
+<li><p><a class="reference external" href="#credentials-and-urls">Credentials and urls</a></p></li>
+<li><p><a class="reference external" href="#browser-extension">Browser extension</a></p></li>
+<li><p><a class="reference external" href="#substra-cli-config--login-mac--ubuntu">Substra CLI config &amp; login (Mac &amp; Ubuntu)</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#troubleshooting">Troubleshooting</a><ul>
-<li><a class="reference external" href="#virtualization-issues">Virtualization issues</a></li>
-<li><a class="reference external" href="#kubectl-useful-commands">Kubectl useful commands</a></li>
-<li><a class="reference external" href="#minikube-useful-commands">Minikube useful commands</a></li>
-<li><a class="reference external" href="#tiller">Tiller</a></li>
-<li><a class="reference external" href="#wip-ongoing-issues">[WIP] Ongoing issues</a></li>
+<li><p><a class="reference external" href="#troubleshooting">Troubleshooting</a></p>
+<ul>
+<li><p><a class="reference external" href="#virtualization-issues">Virtualization issues</a></p></li>
+<li><p><a class="reference external" href="#kubectl-useful-commands">Kubectl useful commands</a></p></li>
+<li><p><a class="reference external" href="#minikube-useful-commands">Minikube useful commands</a></p></li>
+<li><p><a class="reference external" href="#tiller">Tiller</a></p></li>
+<li><p><a class="reference external" href="#wip-ongoing-issues">[WIP] Ongoing issues</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#need-help">Need help?</a></li>
-<li><a class="reference external" href="#further-resources">Further resources</a></li>
-<li><a class="reference external" href="#acknowledgements">Acknowledgements</a></li>
+<li><p><a class="reference external" href="#need-help">Need help?</a></p></li>
+<li><p><a class="reference external" href="#further-resources">Further resources</a></p></li>
+<li><p><a class="reference external" href="#acknowledgements">Acknowledgements</a></p></li>
 </ul>
 </li>
 </ul>
@@ -307,18 +317,20 @@ skaffold dev
 <div class="section" id="hardware-requirements">
 <h3>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>Please be cautious with the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system!</div></blockquote>
+<div><p>Please be cautious with the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system!</p>
+</div></blockquote>
 <p>If you wish to comfortably run Substra, it is advised to have:</p>
 <ul class="simple">
-<li><strong>50 GB of free space</strong> as several images need to be pulled.</li>
-<li><strong>8 GB of RAM</strong> for Kubernetes.</li>
+<li><p><strong>50 GB of free space</strong> as several images need to be pulled.</p></li>
+<li><p><strong>8 GB of RAM</strong> for Kubernetes.</p></li>
 </ul>
 </div>
 <div class="section" id="software-requirements">
 <h3>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>Note: Please <strong>always</strong> refer to the package provider website before installing any software!
-Note: This setup has been tested on Ubuntu 19.10, 18.04.3 &amp; Linux Mint 19 Cinnamon (4.15.0-45-generic Kernel)</div></blockquote>
+<div><p>Note: Please <strong>always</strong> refer to the package provider website before installing any software!
+Note: This setup has been tested on Ubuntu 19.10, 18.04.3 &amp; Linux Mint 19 Cinnamon (4.15.0-45-generic Kernel)</p>
+</div></blockquote>
 <p>Substra deployment is orchestrated by <code class="docutils literal notranslate"><span class="pre">Kubernetes</span></code> and <code class="docutils literal notranslate"><span class="pre">Minikube</span></code> is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Helm</span></code> is a Kubernetes package manager that helps install and manage Kubernetes applications. <code class="docutils literal notranslate"><span class="pre">Tiller</span></code> runs inside the Kubernetes Cluster and manages releases of your charts. Helm has two parts : helm (client) &amp; tiller (server). Charts are Helm packages that contains a package description (<code class="docutils literal notranslate"><span class="pre">Chart.yaml</span></code>) and one or more templates which contain Kubernetes manifest files. Charts can be stored locally or on a distant repository.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Skaffold</span></code> is a program working on top of the Kubernetes configuration that will operate the deployment for you. It relies on the <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> files that you will find at the root of each repositories.</p>
@@ -327,14 +339,15 @@ Note: This setup has been tested on Ubuntu 19.10, 18.04.3 &amp; Linux Mint 19 Ci
 <div class="section" id="running-kubernetes-locally">
 <h5>Running Kubernetes locally<a class="headerlink" href="#running-kubernetes-locally" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Mac</li>
+<li><p>Mac</p></li>
 </ul>
 <p>First of all, download the <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">desktop</span></code> installer from <a class="reference external" href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a>. You’ll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its “preferences” panel. In the Kubernetes tab, check the <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Kubernetes</span></code> checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.</p>
 <ul class="simple">
-<li>Ubuntu: <a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></li>
+<li><p>Ubuntu: <a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></p></li>
 </ul>
 <blockquote>
-<div>Please use the up-to-date version</div></blockquote>
+<div><p>Please use the up-to-date version</p>
+</div></blockquote>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu only</span>
 <span class="c1"># Get the executable &amp; install it</span>
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_1.7.2-0_amd64.deb <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -345,13 +358,13 @@ sudo dpkg -i minikube_1.7.2-0_amd64.deb
 <div class="section" id="installing-kubectl">
 <h5>Installing <a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl</a><a class="headerlink" href="#installing-kubectl" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Mac</li>
+<li><p>Mac</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install kubectl
 </pre></div>
 </div>
 <ul class="simple">
-<li>Ubuntu</li>
+<li><p>Ubuntu</p></li>
 </ul>
 <p>Please use <strong><a class="reference external" href="https://github.com/kubernetes/kubectl/releases/tag/v0.16.7">Kubectl v1.16.7</a></strong>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y apt-transport-https
@@ -367,13 +380,13 @@ sudo apt-get install -y <span class="nv">kubectl</span><span class="o">=</span><
 <h4><a class="reference external" href="https://helm.sh/">Helm</a><a class="headerlink" href="#helm" title="Permalink to this headline">¶</a></h4>
 <p>V3 is not supported yet, please use <a class="reference external" href="https://github.com/helm/helm/releases/tag/v2.16.1">Helm v2.16.1</a> to get Helm and Tiller. Tiller has been removed from v3.</p>
 <ul class="simple">
-<li>Mac</li>
+<li><p>Mac</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install helm@2
 </pre></div>
 </div>
 <ul class="simple">
-<li>Ubuntu</li>
+<li><p>Ubuntu</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the executable</span>
 curl -LO https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
@@ -388,13 +401,13 @@ sudo mv tiller helm /usr/local/bin/
 <div class="section" id="skaffold">
 <h4><a class="reference external" href="https://skaffold.dev/">Skaffold</a><a class="headerlink" href="#skaffold" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>Mac</li>
+<li><p>Mac</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install skaffold
 </pre></div>
 </div>
 <ul class="simple">
-<li>Ubuntu</li>
+<li><p>Ubuntu</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the executable</span>
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
@@ -409,18 +422,20 @@ sudo mv skaffold /usr/local/bin
 <div class="section" id="virtualization">
 <h3>Virtualization<a class="headerlink" href="#virtualization" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>If you use Mac, this virtualization part is already handled for you.</li>
-<li>If you are in a virtualized environment (<em>within a Virtual Machine</em>), you will have to:<ul>
-<li>install <code class="docutils literal notranslate"><span class="pre">socat</span></code> with the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">socat</span></code></li>
-<li>launch all commands with <code class="docutils literal notranslate"><span class="pre">sudo</span></code></li>
-<li>pass the parameter <code class="docutils literal notranslate"><span class="pre">--vm-driver=none</span></code> when starting Minikube (<code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">start</span> <span class="pre">(...)</span></code>)</li>
+<li><p>If you use Mac, this virtualization part is already handled for you.</p></li>
+<li><p>If you are in a virtualized environment (<em>within a Virtual Machine</em>), you will have to:</p>
+<ul>
+<li><p>install <code class="docutils literal notranslate"><span class="pre">socat</span></code> with the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">socat</span></code></p></li>
+<li><p>launch all commands with <code class="docutils literal notranslate"><span class="pre">sudo</span></code></p></li>
+<li><p>pass the parameter <code class="docutils literal notranslate"><span class="pre">--vm-driver=none</span></code> when starting Minikube (<code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">start</span> <span class="pre">(...)</span></code>)</p></li>
 </ul>
 </li>
-<li>If you use Ubuntu (<em>not in a VM</em>), you will need to:<ul>
-<li>Validate your host virtualization with the command <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code>: <a class="reference external" href="https://linux.die.net/man/1/virt-host-validate">https://linux.die.net/man/1/virt-host-validate</a></li>
-<li><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation">KVM (Kernel Virtual Machine) installation</a></li>
-<li>Required packages: <a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages">Ubuntu help</a></li>
-<li>If you need more information about <a class="reference external" href="https://libvirt.org/drvqemu.html">libvirt &amp; qemu</a></li>
+<li><p>If you use Ubuntu (<em>not in a VM</em>), you will need to:</p>
+<ul>
+<li><p>Validate your host virtualization with the command <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code>: <a class="reference external" href="https://linux.die.net/man/1/virt-host-validate">https://linux.die.net/man/1/virt-host-validate</a></p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation">KVM (Kernel Virtual Machine) installation</a></p></li>
+<li><p>Required packages: <a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages">Ubuntu help</a></p></li>
+<li><p>If you need more information about <a class="reference external" href="https://libvirt.org/drvqemu.html">libvirt &amp; qemu</a></p></li>
 </ul>
 </li>
 </ul>
@@ -449,9 +464,9 @@ https://github.com/SubstraFoundation/substra-backend.git
 <blockquote>
 <div><p>Note: if you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> on your machine, you can also download and unzip in the same folder the code using these links:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s/archive/master.zip">hlf-k8s</a></li>
-<li><a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/archive/master.zip">substra-backend</a></li>
-<li><a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend/archive/master.zip">substra-frontend</a></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s/archive/master.zip">hlf-k8s</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/archive/master.zip">substra-backend</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend/archive/master.zip">substra-frontend</a></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -460,7 +475,8 @@ https://github.com/SubstraFoundation/substra-backend.git
 <div class="section" id="minikube-ubuntu">
 <h4>Minikube (Ubuntu)<a class="headerlink" href="#minikube-ubuntu" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div>Note: If you are using Mac, this part will be handled by Docker Desktop for you; you can directly head to the Helm section. Still, you can use Minikube on Mac and select it in your Docker Desktop application.</div></blockquote>
+<div><p>Note: If you are using Mac, this part will be handled by Docker Desktop for you; you can directly head to the Helm section. Still, you can use Minikube on Mac and select it in your Docker Desktop application.</p>
+</div></blockquote>
 <p>Please enable the ingress minikube module: <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">enable</span> <span class="pre">ingress</span></code>. You might need to edit <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> files and set <code class="docutils literal notranslate"><span class="pre">nginx-ingress.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <p>TODO: check the skaffold yaml edit</p>
 <p>You can now start Minikube with:</p>
@@ -489,7 +505,7 @@ helm init --service-account tiller --upgrade
 <h4>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h4>
 <p>We will now configure your machine so that the urls <code class="docutils literal notranslate"><span class="pre">substra-backend.node-1.com</span></code>, <code class="docutils literal notranslate"><span class="pre">substra-backend.node-2.com</span></code>, <code class="docutils literal notranslate"><span class="pre">substra-frontend.node-1.com</span></code> and <code class="docutils literal notranslate"><span class="pre">substra-frontend.node-2.com</span></code> point to your local instance of the platform.</p>
 <ul class="simple">
-<li>Ubuntu</li>
+<li><p>Ubuntu</p></li>
 </ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Append your Kubernetes cluster ip to your system hosts</span>
 <span class="nb">echo</span> <span class="s2">&quot;</span><span class="k">$(</span>minikube ip<span class="k">)</span><span class="s2"> substra-backend.node-1.com substra-frontend.node-1.com substra-backend.node-2.com substra-frontend.node-2.com&quot;</span> <span class="p">|</span> sudo tee -a /etc/hosts
@@ -513,7 +529,7 @@ you can assign the ingress loadbalancer ip to the corresponding url, for example
 </pre></div>
 </div>
 <ul class="simple">
-<li>Mac</li>
+<li><p>Mac</p></li>
 </ul>
 <p>You’ll first need to get the host IP address from container by running:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker run -it --rm busybox ping host.docker.internal
@@ -569,7 +585,8 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 <div class="section" id="start-substra">
 <h3>Start Substra<a class="headerlink" href="#start-substra" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.</div></blockquote>
+<div><p>Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.</p>
+</div></blockquote>
 <p>On both Mac and Ubuntu, once your Kubernetes cluster is up and running (started via Minikube or Docker) and Tiller initialized, you will need to start Substra with Skaffold.</p>
 <p><strong>In 3 different terminal windows, in this order</strong>:</p>
 <div class="section" id="hlf-k8s-repository">
@@ -644,17 +661,17 @@ minikube delete
 <p>Once the platform is running, you can sign in to the two organizations using the default development credentials:</p>
 <p>org-1:</p>
 <ul class="simple">
-<li>API url: <code class="docutils literal notranslate"><span class="pre">http://substra-backend.node-1.com</span></code></li>
-<li>Frontend url: <code class="docutils literal notranslate"><span class="pre">http://substra-frontend.node-1.com</span></code></li>
-<li>Username: <code class="docutils literal notranslate"><span class="pre">node-1</span></code></li>
-<li>Password: <code class="docutils literal notranslate"><span class="pre">p&#64;$swr0d44</span></code></li>
+<li><p>API url: <code class="docutils literal notranslate"><span class="pre">http://substra-backend.node-1.com</span></code></p></li>
+<li><p>Frontend url: <code class="docutils literal notranslate"><span class="pre">http://substra-frontend.node-1.com</span></code></p></li>
+<li><p>Username: <code class="docutils literal notranslate"><span class="pre">node-1</span></code></p></li>
+<li><p>Password: <code class="docutils literal notranslate"><span class="pre">p&#64;$swr0d44</span></code></p></li>
 </ul>
 <p>org-2:</p>
 <ul class="simple">
-<li>API url: <code class="docutils literal notranslate"><span class="pre">http://substra-backend.node-2.com</span></code></li>
-<li>Frontend url: <code class="docutils literal notranslate"><span class="pre">http://substra-frontend.node-2.com</span></code></li>
-<li>Username: <code class="docutils literal notranslate"><span class="pre">node-2</span></code></li>
-<li>Password: <code class="docutils literal notranslate"><span class="pre">p&#64;$swr0d45</span></code></li>
+<li><p>API url: <code class="docutils literal notranslate"><span class="pre">http://substra-backend.node-2.com</span></code></p></li>
+<li><p>Frontend url: <code class="docutils literal notranslate"><span class="pre">http://substra-frontend.node-2.com</span></code></p></li>
+<li><p>Username: <code class="docutils literal notranslate"><span class="pre">node-2</span></code></p></li>
+<li><p>Password: <code class="docutils literal notranslate"><span class="pre">p&#64;$swr0d45</span></code></p></li>
 </ul>
 <p>You should find the credentials in the charts: <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> files or in the <code class="docutils literal notranslate"><span class="pre">substra-backend/charts/substra-backend/values.yaml</span></code>.</p>
 </div>
@@ -662,8 +679,8 @@ minikube delete
 <h3>Browser extension<a class="headerlink" href="#browser-extension" title="Permalink to this headline">¶</a></h3>
 <p>In order to use the backend webpage on your browser, you will need to install this extension that will send a special header containing a <code class="docutils literal notranslate"><span class="pre">version</span></code>:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/modheader-firefox/">Firefox</a></li>
-<li><a class="reference external" href="https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj">Chrome</a></li>
+<li><p><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/modheader-firefox/">Firefox</a></p></li>
+<li><p><a class="reference external" href="https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj">Chrome</a></p></li>
 </ul>
 <p>You will then need add these three elements:</p>
 <table border="1" class="docutils">
@@ -734,7 +751,8 @@ minikube delete
 </div></blockquote>
 <p>Install the CLI:</p>
 <blockquote>
-<div>Need help to setup a Python Virtual Environment? <a class="reference external" href="#python-virtual-environment">Check this out</a></div></blockquote>
+<div><p>Need help to setup a Python Virtual Environment? <a class="reference external" href="#python-virtual-environment">Check this out</a></p>
+</div></blockquote>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip3 install substra
 </pre></div>
 </div>
@@ -760,15 +778,17 @@ substra get traintuple HASH
 <p><img alt="Victory dance" src="https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif" /></p>
 <p>If you want to go further, please refer to:</p>
 <ul class="simple">
-<li>Documentation:<ul>
-<li><a class="reference external" href="../references/cli">CLI</a></li>
-<li><a class="reference external" href="../references/sdk">SDK</a></li>
+<li><p>Documentation:</p>
+<ul>
+<li><p><a class="reference external" href="../references/cli">CLI</a></p></li>
+<li><p><a class="reference external" href="../references/sdk">SDK</a></p></li>
 </ul>
 </li>
-<li>Examples:<ul>
-<li><a class="reference external" href="../examples/titanic/README">Titanic</a></li>
-<li><a class="reference external" href="../examples/cross_val/README">Cross-validation</a></li>
-<li><a class="reference external" href="../examples/compute_plan/README">Compute plan</a></li>
+<li><p>Examples:</p>
+<ul>
+<li><p><a class="reference external" href="../examples/titanic/README">Titanic</a></p></li>
+<li><p><a class="reference external" href="../examples/cross_val/README">Cross-validation</a></p></li>
+<li><p><a class="reference external" href="../examples/compute_plan/README">Compute plan</a></p></li>
 </ul>
 </li>
 </ul>
@@ -779,29 +799,30 @@ substra get traintuple HASH
 <div class="section" id="virtualization-issues">
 <h3>Virtualization issues<a class="headerlink" href="#virtualization-issues" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>If you are getting this error about libvirt: <code class="docutils literal notranslate"><span class="pre">[KVM_CONNECTION_ERROR]</span> <span class="pre">machine</span> <span class="pre">in</span> <span class="pre">unknown</span> <span class="pre">state:</span> <span class="pre">getting</span> <span class="pre">connection:</span> <span class="pre">getting</span> <span class="pre">domain:</span> <span class="pre">error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">libvirt</span> <span class="pre">socket</span></code>. You probably need to install additional package: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libvirt-daemon-system</span></code></li>
-<li>You might need to change the owner as well: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.kube</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.minikube</span></code>; See <a class="reference external" href="https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c">https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c</a></li>
+<li><p>If you are getting this error about libvirt: <code class="docutils literal notranslate"><span class="pre">[KVM_CONNECTION_ERROR]</span> <span class="pre">machine</span> <span class="pre">in</span> <span class="pre">unknown</span> <span class="pre">state:</span> <span class="pre">getting</span> <span class="pre">connection:</span> <span class="pre">getting</span> <span class="pre">domain:</span> <span class="pre">error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">libvirt</span> <span class="pre">socket</span></code>. You probably need to install additional package: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libvirt-daemon-system</span></code></p></li>
+<li><p>You might need to change the owner as well: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.kube</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.minikube</span></code>; See <a class="reference external" href="https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c">https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c</a></p></li>
 </ul>
 </div>
 <div class="section" id="kubectl-useful-commands">
 <h3>Kubectl useful commands<a class="headerlink" href="#kubectl-useful-commands" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">YOUR_NAMESPACE</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">YOUR_NAMESPACE</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="minikube-useful-commands">
 <h3>Minikube useful commands<a class="headerlink" href="#minikube-useful-commands" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">ip</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">dashboard</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">tunnel</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">config</span> <span class="pre">view</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">list</span></code></li>
-<li>If you are using microk8s:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">microk8s.status</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">microk8s.inspect</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">ip</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">dashboard</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">tunnel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">config</span> <span class="pre">view</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">list</span></code></p></li>
+<li><p>If you are using microk8s:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">microk8s.status</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">microk8s.inspect</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -809,17 +830,17 @@ substra get traintuple HASH
 <div class="section" id="tiller">
 <h3>Tiller<a class="headerlink" href="#tiller" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Tiller might need you to use this command in case of error during init: <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">init</span> <span class="pre">--service-account</span> <span class="pre">tiller</span> <span class="pre">--upgrade</span></code>. You can also try to create a service account with <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">serviceaccount</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span> <span class="pre">tiller</span></code>. Otherwise, please have a look here: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/pull/1">https://github.com/SubstraFoundation/substra-backend/pull/1</a></li>
-<li>tiller issues: <a class="reference external" href="https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259">https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259</a></li>
-<li>After running <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code> in the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repo, in case of error related to the <code class="docutils literal notranslate"><span class="pre">tempchart</span></code> folder, please do <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">tempchart</span></code></li>
+<li><p>Tiller might need you to use this command in case of error during init: <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">init</span> <span class="pre">--service-account</span> <span class="pre">tiller</span> <span class="pre">--upgrade</span></code>. You can also try to create a service account with <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">serviceaccount</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span> <span class="pre">tiller</span></code>. Otherwise, please have a look here: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/pull/1">https://github.com/SubstraFoundation/substra-backend/pull/1</a></p></li>
+<li><p>tiller issues: <a class="reference external" href="https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259">https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259</a></p></li>
+<li><p>After running <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code> in the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repo, in case of error related to the <code class="docutils literal notranslate"><span class="pre">tempchart</span></code> folder, please do <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">tempchart</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="wip-ongoing-issues">
 <h3>[WIP] Ongoing issues<a class="headerlink" href="#wip-ongoing-issues" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>If you are getting a <code class="docutils literal notranslate"><span class="pre">403</span></code> error only on <a class="reference external" href="http://substra-backend.node-1.com/">http://substra-backend.node-1.com/</a> and <a class="reference external" href="http://substra-frontend.node-1.com/">http://substra-frontend.node-1.com/</a> with Firefox, please check if <code class="docutils literal notranslate"><span class="pre">dns</span> <span class="pre">over</span> <span class="pre">https</span></code> (Network options) is activated. If so, please try again desactivating this option, or try with another browser…</li>
-<li>Bad certificate issues: <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span> <span class="pre">--all</span></code>, <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code> &amp; in k9s <code class="docutils literal notranslate"><span class="pre">:jobs</span></code> and delete orgs + orderer &amp; <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">RELEASE_NAME</span></code> (ex. <code class="docutils literal notranslate"><span class="pre">network-org-1-peer-1</span></code>). You can then restart <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>.</li>
-<li>[WIP] <code class="docutils literal notranslate"><span class="pre">Self-signed</span> <span class="pre">certificate</span></code> issues are related to your network provider/admin</li>
+<li><p>If you are getting a <code class="docutils literal notranslate"><span class="pre">403</span></code> error only on <a class="reference external" href="http://substra-backend.node-1.com/">http://substra-backend.node-1.com/</a> and <a class="reference external" href="http://substra-frontend.node-1.com/">http://substra-frontend.node-1.com/</a> with Firefox, please check if <code class="docutils literal notranslate"><span class="pre">dns</span> <span class="pre">over</span> <span class="pre">https</span></code> (Network options) is activated. If so, please try again desactivating this option, or try with another browser…</p></li>
+<li><p>Bad certificate issues: <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span> <span class="pre">--all</span></code>, <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code> &amp; in k9s <code class="docutils literal notranslate"><span class="pre">:jobs</span></code> and delete orgs + orderer &amp; <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">RELEASE_NAME</span></code> (ex. <code class="docutils literal notranslate"><span class="pre">network-org-1-peer-1</span></code>). You can then restart <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>.</p></li>
+<li><p>[WIP] <code class="docutils literal notranslate"><span class="pre">Self-signed</span> <span class="pre">certificate</span></code> issues are related to your network provider/admin</p></li>
 </ul>
 </div>
 </div>
@@ -827,11 +848,11 @@ substra get traintuple HASH
 <h2>Need help?<a class="headerlink" href="#need-help" title="Permalink to this headline">¶</a></h2>
 <p>Let’s talk:</p>
 <ul class="simple">
-<li>[WIP] <a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/new">Create an issue on Github</a></li>
-<li>Come chat with us on <a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">Slack</a> (Once your request is granted, you will be able to join us, especially the <em>#help</em> channel)</li>
-<li>Have a look to the <a class="reference external" href="https://forum.substra.org/">forum</a></li>
-<li>Drop us an <a class="reference external" href="mailto:help&#37;&#52;&#48;substra&#46;org">email</a></li>
-<li>Or come meet us <em>irl</em> in Paris, Nantes or Limoges!</li>
+<li><p>[WIP] <a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/new">Create an issue on Github</a></p></li>
+<li><p>Come chat with us on <a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">Slack</a> (Once your request is granted, you will be able to join us, especially the <em>#help</em> channel)</p></li>
+<li><p>Have a look to the <a class="reference external" href="https://forum.substra.org/">forum</a></p></li>
+<li><p>Drop us an <a class="reference external" href="mailto:help&#37;&#52;&#48;substra&#46;org">email</a></p></li>
+<li><p>Or come meet us <em>irl</em> in Paris, Nantes or Limoges!</p></li>
 </ul>
 </div>
 <div class="section" id="further-resources">
@@ -839,39 +860,39 @@ substra get traintuple HASH
 <div class="section" id="k8s">
 <h3>K8s<a class="headerlink" href="#k8s" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">kubectx</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">kubens</span></code>: <a class="reference external" href="https://github.com/ahmetb/kubectx#installation">https://github.com/ahmetb/kubectx#installation</a></li>
-<li>Local Kubernetes deployment with minikube: <a class="reference external" href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/">https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/</a></li>
-<li><a class="reference external" href="https://github.com/ramitsurana/awesome-kubernetes#starting-point">Awesome Kubernetes list</a></li>
-<li><a class="reference external" href="https://minikube.sigs.k8s.io/">Minikube</a> is recommended on Ubuntu but you can also use <a class="reference external" href="https://microk8s.io/">Microk8s</a>.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectx</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">kubens</span></code>: <a class="reference external" href="https://github.com/ahmetb/kubectx#installation">https://github.com/ahmetb/kubectx#installation</a></p></li>
+<li><p>Local Kubernetes deployment with minikube: <a class="reference external" href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/">https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ramitsurana/awesome-kubernetes#starting-point">Awesome Kubernetes list</a></p></li>
+<li><p><a class="reference external" href="https://minikube.sigs.k8s.io/">Minikube</a> is recommended on Ubuntu but you can also use <a class="reference external" href="https://microk8s.io/">Microk8s</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="k9s">
 <h3>K9s<a class="headerlink" href="#k9s" title="Permalink to this headline">¶</a></h3>
 <p>Here some <a class="reference external" href="https://github.com/derailed/k9s">k9s</a> tips:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">A</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">:xray</span> <span class="pre">deployments</span> <span class="pre">all</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">?</span></code> for help</li>
-<li><code class="docutils literal notranslate"><span class="pre">/server</span></code> then <code class="docutils literal notranslate"><span class="pre">l</span></code> for the logs</li>
-<li><code class="docutils literal notranslate"><span class="pre">:jobs</span></code> might be useful to see what is happening behind the scene</li>
-<li><code class="docutils literal notranslate"><span class="pre">y</span></code> to see the YAML configuration</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">A</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:xray</span> <span class="pre">deployments</span> <span class="pre">all</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> for help</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/server</span></code> then <code class="docutils literal notranslate"><span class="pre">l</span></code> for the logs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:jobs</span></code> might be useful to see what is happening behind the scene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> to see the YAML configuration</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
 <h3>Helm<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Use <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">ls</span></code> to get the list of your helm releases (packages). You can also use commands like <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">NAME_OF_THE_CHART</span></code></li>
-<li><a class="reference external" href="https://www.linux.com/tutorials/helm-kubernetes-package-manager/">https://www.linux.com/tutorials/helm-kubernetes-package-manager/</a></li>
-<li><a class="reference external" href="https://hub.helm.sh/charts/substra/hlf-k8s">Substra Helm charts</a></li>
-<li><a class="reference external" href="https://v2.helm.sh/docs/">Helm 2 documentation</a></li>
-<li><a class="reference external" href="https://v2.helm.sh/docs/developing_charts/#the-chart-file-structure">Helm general file structure</a></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">ls</span></code> to get the list of your helm releases (packages). You can also use commands like <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">NAME_OF_THE_CHART</span></code></p></li>
+<li><p><a class="reference external" href="https://www.linux.com/tutorials/helm-kubernetes-package-manager/">https://www.linux.com/tutorials/helm-kubernetes-package-manager/</a></p></li>
+<li><p><a class="reference external" href="https://hub.helm.sh/charts/substra/hlf-k8s">Substra Helm charts</a></p></li>
+<li><p><a class="reference external" href="https://v2.helm.sh/docs/">Helm 2 documentation</a></p></li>
+<li><p><a class="reference external" href="https://v2.helm.sh/docs/developing_charts/#the-chart-file-structure">Helm general file structure</a></p></li>
 </ul>
 </div>
 <div class="section" id="hyperledger-fabric">
 <h3>Hyperledger Fabric<a class="headerlink" href="#hyperledger-fabric" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Installation: <a class="reference external" href="https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566">https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566</a></li>
-<li>Building your first network: <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html">https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html</a></li>
+<li><p>Installation: <a class="reference external" href="https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566">https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566</a></p></li>
+<li><p>Building your first network: <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html">https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html</a></p></li>
 </ul>
 </div>
 <div class="section" id="python-virtual-environment">
