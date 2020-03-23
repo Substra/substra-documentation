@@ -1,5 +1,5 @@
-Welcome to Substra's documentation!
-===================================
+[tmp] Welcome to Substra's documentation!
+=========================================
 
 .. toctree::
    :maxdepth: 2
