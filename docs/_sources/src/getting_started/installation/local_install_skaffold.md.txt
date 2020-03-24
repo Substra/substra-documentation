@@ -29,16 +29,23 @@ This guide will help you to run the Substra platform on your machine in developm
     - [Reset Substra](#reset-substra)
   - [Login, password and urls](#login-password-and-urls)
     - [Credentials and urls](#credentials-and-urls)
-    - [Browser extension](#browser-extension)
     - [Substra CLI config & login (Mac & Ubuntu)](#substra-cli-config--login-mac--ubuntu)
   - [Troubleshooting](#troubleshooting)
     - [Virtualization issues](#virtualization-issues)
     - [Kubectl useful commands](#kubectl-useful-commands)
     - [Minikube useful commands](#minikube-useful-commands)
     - [Tiller](#tiller)
+    - [Virtualization resources](#virtualization-resources)
+    - [Serve the frontend with Yarn](#serve-the-frontend-with-yarn)
+    - [Backend & Browser extension](#backend--browser-extension)
     - [[WIP] Ongoing issues](#wip-ongoing-issues)
   - [Need help?](#need-help)
   - [Further resources](#further-resources)
+    - [K8s](#k8s)
+    - [K9s](#k9s)
+    - [Helm](#helm-1)
+    - [Hyperledger Fabric](#hyperledger-fabric)
+    - [Python Virtual Environment](#python-virtual-environment)
   - [Acknowledgements](#acknowledgements)
 
 ___
@@ -64,7 +71,7 @@ skaffold dev
 
 ### General knowledge
 
-In order to install Substra, it is *recommended* to be comfortable with your package manager and to have some basic knowledge of Unix (Mac or Ubuntu/Debian) administration and network. It might also be useful to have a good command of Docker containers and Kubernetes orchestration.
+In order to install Substra, it is *recommended* to be comfortable with your package manager and to have some basic knowledge of Unix (Mac or Ubuntu/Debian) administration and network. It might also be useful to have a good knowledge of Docker containers and Kubernetes orchestration.
 
 ### Hardware requirements
 
@@ -174,12 +181,11 @@ sudo mv skaffold /usr/local/bin
   - launch all commands with `sudo`
   - pass the parameter `--vm-driver=none` when starting Minikube (`minikube start (...)`)
 - If you use Ubuntu (*not in a VM*), you will need to:
-  - Validate your host virtualization with the command `virt-host-validate`: <https://linux.die.net/man/1/virt-host-validate>
-  - [KVM (Kernel Virtual Machine) installation](https://help.ubuntu.com/community/KVM/Installation#Installation)
-  - Required packages: [Ubuntu help](https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages)
-  - If you need more information about [libvirt & qemu](https://libvirt.org/drvqemu.html)
+  - Validate your host virtualization with the command `virt-host-validate`, see [this for further resources](https://linux.die.net/man/1/virt-host-validate)
 
 ### Get the source code (Mac & Ubuntu)
+
+> Note: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see [Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html)
 
 You will find the main Substra repository [here](https://github.com/SubstraFoundation/substra), but in order to run the Substra framework, you will need to clone 3 repositories: [hlf-k8s](https://github.com/SubstraFoundation/hlf-k8s) (Hyperledger Fabric), [susbtra-backend](https://github.com/SubstraFoundation/substra-backend) and [substra-frontend](https://github.com/SubstraFoundation/substra-frontend).
 
@@ -220,8 +226,6 @@ done
 
 Please enable the ingress minikube module: `minikube addons enable ingress`. You might need to edit `skaffold.yaml` files and set `nginx-ingress.enabled` to `false`.
 
-TODO: check the skaffold yaml edit
-
 You can now start Minikube with:
 
 ```sh
@@ -241,11 +245,10 @@ The first time you install Substra, you will need to use:
 helm init
 # or
 helm init --upgrade
-# you might need to use
-helm init --service-account tiller --upgrade
-```
 
-TODO: muscler helm troubleshooting section
+# Check if Tiller is correctly running
+kubectl get pods --namespace kube-system
+```
 
 #### Network
 
@@ -391,29 +394,7 @@ In the `susbtra-frontend` repository, please run the command `skaffold dev`. The
 
 ![CACHING Login](/substra/docs/img/start_frontend.png "CACHING Login")
 
-Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install):
-
-Start Redis in one terminal window:
-
-```sh
-redis-cli
-```
-
-Launch Yarn in another terminal window:
-
-```sh
-yarn install
-
-API_URL=http://substra-backend.node-2.com yarn start
-```
-
-You will then have to map the frontend urls to your localhost, like this:
-
-```sh
-127.0.0.1 substra-frontend.node-1.com substra-frontend.node-2.com
-```
-
-You can now head to <http://substra-frontend.node-2.com:3000/> and start to play with Substra!
+Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install). If you want to do see, please refer to [this section](#serve-the-frontend-with-yarn).
 
 ### Stop Substra
 
@@ -456,7 +437,120 @@ org-2:
 
 You should find the credentials in the charts: `skaffold.yaml` files or in the `substra-backend/charts/substra-backend/values.yaml`.
 
-### Browser extension
+### Substra CLI config & login (Mac & Ubuntu)
+
+> Note 1: Substra works on Python 3.6.
+>
+> Note 2: On Ubuntu, if the command `pip3 install substra` fails, you might need to install `keyrings-alt` with `pip3 install keyrings-alt`; you might even have to do `sudo apt-get remove python3-keyrings.alt python-keyrings.alt`.
+>
+> Note 3: If you are working inside a virtualized environment, you probably will have execute to `pip3` commands with `sudo`.
+
+Install the CLI:
+
+> Need help to setup a Python Virtual Environment? [Check this out](#python-virtual-environment)
+
+```sh
+pip3 install substra
+```
+
+Login with the CLI
+
+```sh
+# Configuration
+substra config -u "node-1" -p 'p@$swr0d44' http://substra-backend.node-1.com
+
+# Login
+substra login
+
+# Then you can try
+substra list node
+# or
+substra --help
+# or
+substra list traintuple
+# or
+substra get traintuple HASH
+```
+
+This is it, if you the `substra login` command exited successfully, you're good to go!
+
+Congratulations \o/
+
+![Victory dance](https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif)
+
+If you want to go further, please refer to:
+
+- Documentation:
+  - [CLI](../references/cli.md)
+  - [SDK](../references/sdk.md)
+- Examples:
+  - [Titanic](../examples/titanic/README.md)
+  - [Cross-validation](../examples/cross_val/README.md)
+  - [Compute plan](../examples/compute_plan/README.md)
+
+## Troubleshooting
+
+### Virtualization issues
+
+- If you are getting this error about libvirt: `[KVM_CONNECTION_ERROR] machine in unknown state: getting connection: getting domain: error connecting to libvirt socket`. You probably need to install additional package: `sudo apt-get install libvirt-daemon-system`
+- You might need to change the owner as well: `sudo chown -R $USER:$USER $HOME/.kube` `sudo chown -R $USER:$USER $HOME/.minikube`; See <https://medium.com/@nieldw/running-minikube-with-vm-driver-none-47de91eab84c>
+
+### Kubectl useful commands
+
+- `kubectl cluster-info`
+- `kubectl get all --all-namespaces`
+- `kubectl delete ns YOUR_NAMESPACE`
+
+### Minikube useful commands
+
+- `minikube ip`
+- `minikube dashboard`
+- `minikube tunnel`
+- `minikube config view`
+- `minikube addons list`
+- If you are using microk8s:
+  - `microk8s.status`
+  - `microk8s.inspect`
+
+### Tiller
+
+- Tiller might need you to use this command in case of error during init: `helm init --service-account tiller --upgrade`. You can also try to create a service account with `kubectl create serviceaccount --namespace kube-system tiller`. Otherwise, please have a look here: <https://github.com/SubstraFoundation/substra-backend/pull/1>
+- tiller issues: <https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259>
+- After running `skaffold dev` in the `hlf-k8s` repo, in case of error related to the `tempchart` folder, please do `rm -rf tempchart`
+
+### Virtualization resources
+
+- [KVM (Kernel Virtual Machine) installation](https://help.ubuntu.com/community/KVM/Installation#Installation)
+- Required packages: [Ubuntu help](https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages)
+- If you need more information about [libvirt & qemu](https://libvirt.org/drvqemu.html)
+
+### Serve the frontend with Yarn
+
+Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install):
+
+Start Redis in one terminal window:
+
+```sh
+redis-cli
+```
+
+Launch Yarn in another terminal window:
+
+```sh
+yarn install
+
+API_URL=http://substra-backend.node-2.com yarn start
+```
+
+You will then have to map the frontend urls to your localhost, like this:
+
+```sh
+127.0.0.1 substra-frontend.node-1.com substra-frontend.node-2.com
+```
+
+You can now head to <http://substra-frontend.node-2.com:3000/> and start to play with Substra!
+
+### Backend & Browser extension
 
 In order to use the backend webpage on your browser, you will need to install this extension that will send a special header containing a `version`:
 
@@ -507,92 +601,10 @@ Otherwise, you can try to import the following configuration to the extension (v
 
 See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-browsable-api>
 
-### Substra CLI config & login (Mac & Ubuntu)
-
-> Note 1: Substra works on Python 3.6.
->
-> Note 2: On Ubuntu, if the command `pip3 install substra` fails, you might need to install `keyrings-alt` with `pip3 install keyrings-alt`; you might even have to do `sudo apt-get remove python3-keyrings.alt python-keyrings.alt`.
->
-> Note 3: If you are working inside a virtualized environment, you probably will have execute to `pip3` commands with `sudo`.
-
-Install the CLI:
-
-> Need help to setup a Python Virtual Environment? [Check this out](#python-virtual-environment)
-
-```sh
-pip3 install substra
-```
-
-Login with the CLI
-
-```sh
-# Configuration
-substra config -u "node-1" -p 'p@$swr0d44' http://substra-backend.node-1.com
-
-# Login
-substra login
-
-# Then you can try
-substra list node
-# or
-substra --help
-# or
-substra list traintuple
-# or
-substra get traintuple HASH
-```
-
-This is it, if you the `substra login` command is okay, you're good to go!
-
-Congratulations \o/
-
-![Victory dance](https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif)
-
-If you want to go further, please refer to:
-
-- Documentation:
-  - [CLI](../references/cli.md)
-  - [SDK](../references/sdk.md)
-- Examples:
-  - [Titanic](../examples/titanic/README.md)
-  - [Cross-validation](../examples/cross_val/README.md)
-  - [Compute plan](../examples/compute_plan/README.md)
-
-
-## Troubleshooting
-
-### Virtualization issues
-
-- If you are getting this error about libvirt: `[KVM_CONNECTION_ERROR] machine in unknown state: getting connection: getting domain: error connecting to libvirt socket`. You probably need to install additional package: `sudo apt-get install libvirt-daemon-system`
-- You might need to change the owner as well: `sudo chown -R $USER:$USER $HOME/.kube` `sudo chown -R $USER:$USER $HOME/.minikube`; See <https://medium.com/@nieldw/running-minikube-with-vm-driver-none-47de91eab84c>
-
-### Kubectl useful commands
-
-- `kubectl cluster-info`
-- `kubectl get all --all-namespaces`
-- `kubectl delete ns YOUR_NAMESPACE`
-
-### Minikube useful commands
-
-- `minikube ip`
-- `minikube dashboard`
-- `minikube tunnel`
-- `minikube config view`
-- `minikube addons list`
-- If you are using microk8s:
-  - `microk8s.status`
-  - `microk8s.inspect`
-
-### Tiller
-
-- Tiller might need you to use this command in case of error during init: `helm init --service-account tiller --upgrade`. You can also try to create a service account with `kubectl create serviceaccount --namespace kube-system tiller`. Otherwise, please have a look here: <https://github.com/SubstraFoundation/substra-backend/pull/1>
-- tiller issues: <https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259>
-- After running `skaffold dev` in the `hlf-k8s` repo, in case of error related to the `tempchart` folder, please do `rm -rf tempchart`
-
 ### [WIP] Ongoing issues
 
-- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` (Network options) is activated. If so, please try again desactivating this option, or try with another browser...
-- Bad certificate issues: `helm list` or `helm list --all`, `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete orgs + orderer & `helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`). You can then restart `skaffold dev`.
+- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` is activated (in Firefox Network options). If so, please try again desactivating this option, or try with another browser...
+- If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
 - [WIP] `Self-signed certificate` issues are related to your network provider/admin
 
 ## Need help?
@@ -616,7 +628,8 @@ Let's talk:
 
 ### K9s
 
-Here some [k9s](https://github.com/derailed/k9s) tips:
+Here are some [k9s](https://github.com/derailed/k9s) tips:
+
 - `CTRL + A`
 - `:xray deployments all`
 - `?` for help
@@ -642,23 +655,24 @@ Here some [k9s](https://github.com/derailed/k9s) tips:
 In order to keep your installation of Substra separated from your general Python environement, which is a general Python good practice, it is recommanded to prepare a Python [virtual environment](https://virtualenv.pypa.io/en/latest/). In a new terminal window, please use one of the following method:
 
 ```sh
-# Method 1
+# Method 1: install the virtualenv package
 pip3 install --user virtualenv
 
+# Create a new virtual environment
 virtualenv -p python3 NAME_OF_YOUR_VENV
-# or
+# or even
 virtualenv -p $(which python3) NAME_OF_YOUR_VENV
-# then activate your new virtual env
+
+# Method 2: install the python3-venv package
+sudo apt install python3-venv # (Ubuntu)
+
+# Create a new virtual environment
+python3 -m venv NAME_OF_YOUR_VENV
+
+# Method 1 & 2: activate your new virtual env
 source NAME_OF_YOUR_VENV/bin/activate
-# or source venv/bin/activate.fish if you are an awesome fish shell user :)
-pip3 install substra
 
-# Method 2
-# Ubuntu
-sudo apt install python3-venv
-
-python3 -m venv substra_venv
-source substra_venv/bin/activate # activate.fish
+# Method 1 & 2: install Substra package inside your fresh new virtual environment
 pip3 install substra
 
 # Method 1 & 2: stop your virtual environment
