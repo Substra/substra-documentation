@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Glossary" href="entry_points/glossary.html" /> 
+    <link rel="prev" title="Contributing to Substra" href="contribute/CONTRIBUTING.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,21 +82,26 @@
               
             
             
-              <p class="caption"><span class="caption-text">Content</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">Substra</a></li>
-</ul>
-<ul>
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview/overview.html">Overview</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/usage/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/usage/sdk.html">[tmp] SDK &amp; CLI: Examples of code inspection</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/installation/local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/installation/local_install_docker_compose.html">Local install of Substra (macOS &amp; Ubuntu/Debian)</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="platform_description/platform.html">Platform Description</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="entry_points/faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entry_points/glossary.html">Glossary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute/CONTRIBUTING.html">Contributing to Substra</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Let’s build &amp; publish the documentation</a></li>
@@ -166,7 +171,7 @@
             
   <div class="section" id="let-s-build-publish-the-documentation">
 <h1>Let’s build &amp; publish the documentation<a class="headerlink" href="#let-s-build-publish-the-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;New build moved to docs!&quot;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;Wouhou! New build moved to /docs!&quot;</span>
 git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push
@@ -183,7 +188,7 @@ git push
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="entry_points/glossary.html" class="btn btn-neutral float-left" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="contribute/CONTRIBUTING.html" class="btn btn-neutral float-left" title="Contributing to Substra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
