@@ -61,10 +61,7 @@ If you are interested in understanding how Substra works maybe how to contribute
 If you are interested in Substra and would like to understand how it could be interesting for *your* project, you really should check the following sections:
 
 - [Platform Description](#4-platform-description)
-- contact us
-
-TODO: Elaborate this section
-TODO: Add contact
+- You can reach us [here](../getting_started/installation/local_install_skaffold.md##need-help)
 
 ## Use cases
 
@@ -75,8 +72,6 @@ Substra is efficient on a range of issues like:
 - [Consortium between competitors](https://www.substra.ai/en/consortiums)
 - [Collaborations between data providers and scientists](https://www.substra.ai/en/collaborations-donnees-ds)
 - [Machine Learning on sensitive data](https://www.substra.ai/en/challenges)
-
-TODO: Check prez' & Elaborate (ex. *what is at stake?*)
 
 ## About this *collaborative* documentation
 

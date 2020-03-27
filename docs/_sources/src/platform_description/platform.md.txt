@@ -61,8 +61,6 @@ Smart contracts are a set of data, rules, definitions and processes that will go
 
 Substra backend repository: <https://github.com/SubstraFoundation/substra-backend>
 
-TODO: ADD Workflow *without* secure aggregation!
-
 The backend is developped in Python and uses the [Django Rest Framework](https://www.django-rest-framework.org/). Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the [Python Fabric SDK](https://github.com/hyperledger/fabric-sdk-py).
 
 The backend implements workflows illustrated in the previous figure. Note that these workflows are only an overview, these representations are not perfectly accurate. Please also note that authentication is not represented in these workflows.
@@ -82,8 +80,6 @@ The SDK provides a Python SDK that permits interactions with the Substra backend
 Substra Frontend repository: <https://github.com/SubstraFoundation/substra-frontend>
 
 The Frontend is a neat tool to viszualize and monitor your operations on the platform, your assets and the associated permissions.
-
-TODO: Sections presentation
 
 ## Substra tools
 

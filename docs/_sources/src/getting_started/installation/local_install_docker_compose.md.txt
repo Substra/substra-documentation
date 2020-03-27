@@ -1,6 +1,6 @@
-# Local install of Substra (macOS & Ubuntu/Debian)
+# Local installation of Substra using Docker
 
-- [Local install of Substra (macOS & Ubuntu/Debian)](#local-install-of-substra-macos--ubuntudebian)
+- [Local installation of Substra using Docker](#local-installation-of-substra-using-docker)
   - [Dependencies](#dependencies)
   - [Configuration](#configuration)
     - [Docker](#docker)

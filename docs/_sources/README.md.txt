@@ -1,11 +1,16 @@
 # Let's build & publish the documentation
 
-TODO: Add `clone` substra repo and other relevant src to be able to inspect code
-
 ## Commands
 
 ```sh
-make clean && make html && cp -R _build/html/* docs/ && echo "Wouhou! New build moved to docs!"
+# In the substra-documentation repository:
+make clean && make html && cp -R _build/html/* docs/ && echo "Wouhou! New build moved to /docs"
+git add .
+git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+git push
+
+# In the substrafoundation.github.io repository:
+cp -R docs/* ../SubstraFoundation.github.io/
 git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
@@ -15,6 +20,7 @@ git push
 
 ```sh
 ├── contribute
+│   └── CONTRIBUTING.md
 ├── entry_points
 │   ├── faq.md
 │   └── glossary.md
@@ -25,8 +31,11 @@ git push
 │   └── usage
 │       └── usage.md
 ├── img
+│   ├── architecture_overview.png
+│   └── git_pr_status.png
 ├── overview
 │   └── overview.md
-├── publish.md
-└── README.md
+├── platform_description
+│   └── platform.md
+└── publish.md
 ```

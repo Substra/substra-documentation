@@ -14,13 +14,12 @@ Getting started
 .. toctree::
    :maxdepth: 2
 
-1. Usage
---------
+1. How to use Substra
+---------------------
 .. toctree::
    :maxdepth: 2
 
    src/getting_started/usage/usage
-   src/getting_started/usage/sdk
 
 2. Installation
 ---------------
@@ -34,7 +33,7 @@ Platform Description
 ====================
 
 .. toctree::
-   :maxdepth:2
+   :maxdepth: 2
 
    src/platform_description/platform
 

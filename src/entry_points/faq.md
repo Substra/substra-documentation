@@ -8,13 +8,11 @@ Substra Foundation is managing the open source governance of the project. The pr
 
 ## [feature] How do I suggest an important feature to develop?
 
-You can refer to the contributing section / feature request and open an issue or even open a PR!
+You can refer to the [contributing section](https://substrafoundation.github.io/src/contribute/CONTRIBUTING.html) / feature request and open an issue or even open a PR!
 
 ## [feature] I really need **this** feature, how can we work this out?
 
-OFC! Please refer to feature request section.
-
-TODO: Add contributing relevant section
+Of course! Please refer to the feature request section in the [contributing guide](https://substrafoundation.github.io/src/contribute/CONTRIBUTING.html).
 
 ## [com] Do you guys have crazy stickers?
 
@@ -38,24 +36,12 @@ This has not been tested yet.
 
 ## [setup] I am having trouble dowloading the images, is there something I can do?
 
-Good question, maybe use the direct links from [LINK], but you will need to gather all the sources before behind able to run Substra.
-
-TODO: add links from doc (zip files)
+Good question, you can refer to [this section](../getting_started/installation/local_install_skaffold.md#get-the-source-code-mac--ubuntu), but you will need to gather all the sources before being able to run Substra.
 
 ## [usage] Do you organize trainings?
 
-Sure we do, please have a look here!
-
-TODO: prep training page, material, maybe webinar someday
+Not yet, but we are working on it. In the meantime, you try our [examples](../getting_started/usage/usage#examples).
 
 ## [setup] I need help for the setup and deployment, can you help me?
 
-Please reach us here.
-
-TODO: Define procedure for setup/deploy request
-
-___
-
-TODO: merge with [website FAQ](https://www.substra.ai/en/faq)
-
-TODO: muscler FAQ, cf. <https://www.searchenginejournal.com/best-faq-page-examples/267709/#close>
+Please reach us [here](../getting_started/installation/local_install_skaffold.md##need-help).

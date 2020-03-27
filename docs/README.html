@@ -86,11 +86,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/getting_started/usage/usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="src/getting_started/usage/sdk.html">[tmp] SDK &amp; CLI: Examples of code inspection</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/getting_started/installation/local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
-<li class="toctree-l1"><a class="reference internal" href="src/getting_started/installation/local_install_docker_compose.html">Local install of Substra (macOS &amp; Ubuntu/Debian)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src/getting_started/installation/local_install_docker_compose.html">Local installation of Substra using Docker</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src/platform_description/platform.html">Platform Description</a></li>
@@ -170,10 +169,16 @@
             
   <div class="section" id="let-s-build-publish-the-documentation">
 <h1>Let’s build &amp; publish the documentation<a class="headerlink" href="#let-s-build-publish-the-documentation" title="Permalink to this headline">¶</a></h1>
-<p>TODO: Add <code class="docutils literal notranslate"><span class="pre">clone</span></code> substra repo and other relevant src to be able to inspect code</p>
 <div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;Wouhou! New build moved to docs!&quot;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the substra-documentation repository:</span>
+make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;Wouhou! New build moved to /docs&quot;</span>
+git add .
+git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+git push
+
+<span class="c1"># In the substrafoundation.github.io repository:</span>
+cp -R docs/* ../SubstraFoundation.github.io/
 git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push
@@ -183,6 +188,7 @@ git push
 <div class="section" id="source-tree">
 <h2>Source Tree<a class="headerlink" href="#source-tree" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>├── contribute
+│   └── CONTRIBUTING.md
 ├── entry_points
 │   ├── faq.md
 │   └── glossary.md
@@ -193,10 +199,13 @@ git push
 │   └── usage
 │       └── usage.md
 ├── img
+│   ├── architecture_overview.png
+│   └── git_pr_status.png
 ├── overview
 │   └── overview.md
-├── publish.md
-└── README.md
+├── platform_description
+│   └── platform.md
+└── publish.md
 </pre></div>
 </div>
 </div>
