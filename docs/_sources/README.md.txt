@@ -9,8 +9,9 @@ git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
 
-# In the substrafoundation.github.io repository:
+# Copy the build to the github page:
 cp -R docs/* ../SubstraFoundation.github.io/
+cd ../SubstraFoundation.github.io/
 git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push

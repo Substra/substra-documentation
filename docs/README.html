@@ -177,8 +177,9 @@ git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push
 
-<span class="c1"># In the substrafoundation.github.io repository:</span>
+<span class="c1"># Copy the build to the github page:</span>
 cp -R docs/* ../SubstraFoundation.github.io/
+<span class="nb">cd</span> ../SubstraFoundation.github.io/
 git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push

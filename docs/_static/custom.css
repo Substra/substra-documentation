@@ -5,3 +5,7 @@
 .wy-nav-top {
     background-color: #1dbcc0;
 }
+
+.wy-nav-content {
+    max-width: none;
+}
