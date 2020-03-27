@@ -53,11 +53,11 @@ This project and everyone involved is governed by the Code of Conduct defined [h
 
 ## I don't want to read this whole thing I just have a question!
 
-Please check [our forum](https://forum.substra.org/), [create an issue](https://github.com/SubstraFoundation/substra/issues/new) or drop us an [email](mailto:help@substra.org).
+Please check [our forum](https://forum.substra.org/), [create an issue](https://github.com/SubstraFoundation/substra-documentation/issues/new) or drop us an [email](mailto:help@substra.org).
 
 ## What should I know before I get started?
 
-It might be useful to have a look at the [documentation](https://github.com/SubstraFoundation/substra)!
+It might be useful to have a look at the [documentation](https://substrafoundation.github.io)!
 
 ### The components of Substra
 
@@ -135,7 +135,7 @@ Both issues lists are sorted by total number of comments. While not perfect, the
 
 #### Local development
 
-Substra can be developed locally. For instructions on how to do this, see [this document](https://github.com/SubstraFoundation/substra#running-the-substra-platform-locally) which is part of the Substra Documentation.
+Substra can be developed locally. For instructions on how to do this, see [this page](https://substrafoundation.github.io/src/getting_started/installation/local_install_skaffold.html) which is part of the Substra Documentation.
 
 ### Pull Requests
 
@@ -153,7 +153,7 @@ Please follow these steps to have your contribution considered by the maintainer
 1. Follow the [coding guidelines](#coding-guidelines)
 1. After submitting your pull request, verify that all [status checks](https://help.github.com/articles/about-status-checks/) are passing.
 
-![Pull Requests Status](/.github/assets/git_pr_status.png "Pull Requests Status")
+![Pull Requests Status](../img/git_pr_status.png "Pull Requests Status")
 
 For example, in this caption of the open Pull Requests on the main Substra repository, we can see that:
 
