@@ -16,7 +16,7 @@ script:
   - make html
   - cp -R _build/html/* docs/
   - echo "Done"
-  - git config --global user.email "travis@travis-ci.org"
-  - git add .
-  - git commit -m "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
-  - git push origin master
+    #- git config --global user.email "travis@travis-ci.org"
+    #- git add .
+    #- git commit -m "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+    #- git push origin master
