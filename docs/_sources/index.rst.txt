@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
+    :target: https://travis-ci.org/SubstraFoundation/substra-documentation
+    
 Welcome to Substra's documentation!
 =========================================
 
