@@ -15,7 +15,21 @@ ___
 
 General presentation of *what is the Substra framework*.
 
-Substra is a framework offering secure and trustless traceability for distributed orchestration of machine learning tasks among partners. It aims at being compatible with privacy-enhancing technologies to complement their use to provide efficient and transparent privacy-preserving workflows for data science. Its ambition is to make new scientific and economic data science collaborations possible.
+Substra is a framework offering distributed orchestration of machine learning tasks among partners while guaranteeing secure and trustless traceability of all operations.
+
+Data scientist:
+
+- Use your own ML algorithm with any Python ML framework
+- Ship your algorithm on remote data for training and/or prediction
+- Build advanced Federated Learning strategies for learning accross several remote datasets
+
+Data provider:
+
+- Make your dataset available for training/evaluation for other partners, being sure that it cannot be downloaded
+- Choose fine tuned permissions for your datasets to control its lifecycle
+- Monitor how your data were used
+
+Substra aims at being compatible with privacy-enhancing technologies to complement their use to provide efficient and transparent privacy-preserving workflows for data science. Its ambition is to make new scientific and economic data science collaborations possible.
 
 The sofware is Open Source, published under an Apache-2.0 license and the forge is located on [Substra Foundation's Github repositories](https://github.com/SubstraFoundation).
 
