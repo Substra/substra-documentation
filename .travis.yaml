@@ -1,0 +1,22 @@
+language: python
+
+python:
+  - '3.7'
+
+cache: pip
+
+
+branches:
+  only:
+    - master
+
+script:
+  - pip install -r requirements.txt
+  - make clean
+  - make html
+  - cp -R _build/html/* docs/
+  - echo "Done"
+  - git config --global user.email "travis@travis-ci.org"
+  - git add .
+  - git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+  - git push
