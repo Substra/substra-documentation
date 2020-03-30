@@ -78,7 +78,7 @@ Substra is made of several open source components listed below. When you initial
 
 ### Improving the documentation
 
-The documentation can be found [here](https://github.com/SubstraFoundation/substra).
+The documentation can be found [here](https://substrafoundation.github.io).
 We believe documentation is key to a great project and that it should be as alive as our project, so please, do not hesitate to submit any feedback or PR to improve it!
 
 ### Reporting Bugs
