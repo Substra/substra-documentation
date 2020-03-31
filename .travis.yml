@@ -31,4 +31,4 @@ after_script:
   - git add .
   - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
   # - git push --set-upstream origin master
-  - git push https://${GH_TOKEN}@github.com/SubstraFoundation/substra-documentation.git
+  - git push https://${GH_TOKEN}@github.com/SubstraFoundation/substra-documentation.git HEAD:master
