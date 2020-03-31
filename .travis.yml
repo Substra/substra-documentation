@@ -6,17 +6,9 @@ python:
 cache: pip
 
 
-# branches:
-#   only:
-#     - master
-
-deploy:
-  - provider: pages
-  - skip_cleanup: true
-  - github_token: $GITHUB_TOKEN
-  - keep_history: true
-  on:
-    branch: master
+branches:
+  only:
+    - master
 
 script:
   - pip install -r requirements.txt
@@ -24,5 +16,3 @@ script:
   - make html
   - cp -R _build/html/* docs/
   - echo "Done"
-
-
