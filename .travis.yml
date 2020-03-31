@@ -5,14 +5,6 @@ python:
 
 cache: pip
 
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-#   keep_history: true
-#   on:
-#     branch: master
-
 branches:
   only:
     - master
@@ -22,12 +14,19 @@ script:
   - make clean
   - make html
   - cp -R _build/html/* docs/
-  - echo "Done"
+  - echo "Documentation build and copied to docs/"
 
 after_script:
+  # Push the build to the substra-documentation repository
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
-  - git status
   - git add .
   - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
   - git push https://${GH_TOKEN}@github.com/SubstraFoundation/substra-documentation.git HEAD:master
+  # Push the build to the SubstraFoundation.github.io Github Page
+  - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git
+  - cp -R docs/* SubstraFoundation.github.io/
+  - cd SubstraFoundation.github.io/
+  - git add .
+  - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+  - git push https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git HEAD:master
