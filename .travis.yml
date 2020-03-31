@@ -6,9 +6,9 @@ python:
 cache: pip
 
 
-branches:
-  only:
-    - master
+#branches:
+# only:
+#   - master
 
 script:
   - pip install -r requirements.txt
@@ -17,3 +17,10 @@ script:
   - cp -R _build/html/* docs/
   - echo "Done"
 
+ deploy:
+  - provider: pages
+  - skip_cleanup: true
+  - github_token: $GITHUB_TOKEN
+  - keep_history: true
+  on:
+    branch: master
