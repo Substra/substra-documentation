@@ -97,4 +97,4 @@ ___
 - **Traintuple**: A Traintuple corresponds to the specification of a training task of a classic algorithm on a dataset potentially using input models/model updates. It leads to the creation of a model or model update.
 
 - **Trustless**: Substra Framework is a ‘trustless’ ML orchestration framework. The word ‘trustless’ might be ambiguous in certain circumstances. We believe it should be used as ‘doesn’t require trust a priori between parties’: the code implementation of the software enables parties to collaborate without trusting each other, it technically guarantees that actions and transactions will be performed as defined in the rules agreed upon. What is required is to ‘trust the code’: it might not be straightforward and even require some audit effort, but in many cases it is easier than trusting a number of other independent organisations. src: <https://www.substra.ai/en/faq>
-
+- TEST
