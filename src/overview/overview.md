@@ -20,10 +20,10 @@ Substra is a framework offering distributed orchestration of machine learning ta
 Data scientist:
 
 - Use your own ML algorithm with any Python ML framework
-- Ship your algorithm on remote data for training and/or prediction
+- Ship your algorithm on remote data for training and/or prediction and monitor their performances
 - Build advanced Federated Learning strategies for learning accross several remote datasets
 
-Data provider:
+Data controllers:
 
 - Make your dataset(s) available to other partners for training/evaluation, being sure that it cannot be downloaded
 - Choose fine tuned permissions for your dataset to control its lifecycle
