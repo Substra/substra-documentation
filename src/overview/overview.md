@@ -25,9 +25,10 @@ Data scientist:
 
 Data provider:
 
-- Make your dataset available for training/evaluation for other partners, being sure that it cannot be downloaded
-- Choose fine tuned permissions for your datasets to control its lifecycle
+- Make your dataset(s) available to other partners for training/evaluation, being sure that it cannot be downloaded
+- Choose fine tuned permissions for your dataset to control its lifecycle
 - Monitor how your data were used
+- Engage in advanced multi-partner data science collaborations, even with partners owning competing datasets
 
 Substra aims at being compatible with privacy-enhancing technologies to complement their use to provide efficient and transparent privacy-preserving workflows for data science. Its ambition is to make new scientific and economic data science collaborations possible.
 
