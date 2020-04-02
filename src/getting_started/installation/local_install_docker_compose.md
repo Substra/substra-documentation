@@ -15,7 +15,7 @@
   - [Now, let's play with Substra!](#now-lets-play-with-substra)
   - [Useful aliases](#useful-aliases)
 
-> Please consider using the [Kubernetes & Skaffold](./docs/local_install_skaffold.md) installation which is recommended over this docker-compose method.
+> Please consider using the [Kubernetes & Skaffold](./local_install_skaffold.md) installation which is recommended over this docker-compose method.
 
 This guide will help you to get Substra source code and to start a local instance with two nodes: `owkin` and `chunantes`.
 
