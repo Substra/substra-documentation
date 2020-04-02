@@ -6,12 +6,20 @@ CLI and SDK for interacting with Substra platform.
 
 ## Table of contents
 
-- [Install](#install)
-- [Running the Substra platform locally](#running-the-substra-platform-locally)
 - [Usage](#usage)
-- [Documentation](#documentation)
-- [Compatibility table](#compatibility-table)
-- [Contributing](#contributing)
+  - [Table of contents](#table-of-contents)
+  - [Install](#install)
+  - [Running the Substra platform locally](#running-the-substra-platform-locally)
+  - [Usage](#usage-1)
+    - [CLI](#cli)
+    - [SDK](#sdk)
+  - [Documentation](#documentation)
+  - [Examples](#examples)
+  - [Compatibility table](#compatibility-table)
+  - [Contributing](#contributing)
+    - [Setup](#setup)
+    - [Documentation](#documentation-1)
+    - [Deploy](#deploy)
 
 ## Install
 
@@ -39,8 +47,8 @@ From this point onwards, substra command line interface will have autocompletion
 
 You can run the Substra platform locally on your machine using one of the two following methods:
 
-* [Using kubernetes and skaffold (recommended)](./docs/local_install_skaffold.md)
-* [Using docker-compose](./docs/local_install_docker_compose.md)
+- [Using kubernetes and skaffold (recommended)](../installation/local_install_skaffold.md)
+- [Using docker-compose](../installation/local_install_docker_compose.md)
 
 ## Usage
 
