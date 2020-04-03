@@ -11,6 +11,9 @@ branches:
 
 script:
   - pip install -r requirements.txt
+  # Fetch the last contributing.md document
+  - curl https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md -o src/contribute/CONTRIBUTING.md
+  # Sphinx build
   - make clean
   - make html
   - cp -R _build/html/* docs/
@@ -21,12 +24,12 @@ after_script:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git add .
-  - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+  - git commit --message "[travis documentator] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
   - git push https://${GH_TOKEN}@github.com/SubstraFoundation/substra-documentation.git HEAD:master
   # Push the build to the SubstraFoundation.github.io Github Page
   - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git
   - cp -R docs/* SubstraFoundation.github.io/
   - cd SubstraFoundation.github.io/
   - git add .
-  - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+  - git commit --message "[travis documentator] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
   - git push https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git HEAD:master
