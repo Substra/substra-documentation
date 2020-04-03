@@ -1,6 +1,6 @@
 # Local installation of Substra using Kubernetes and Skaffold
 
-> This is an ongoing document, please feel free to reach us or to raise any issue.
+> This is an ongoing document, please feel free to reach us or to [raise any issue](https://github.com/SubstraFoundation/substra-documentation/issues).
 
 This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.
 
@@ -370,7 +370,7 @@ In the `hlf-k8s` repository, please run the command `skaffold dev` (or `skaffold
 [network-org-2-peer-1-hlf-k8s-channel-join-0-kljgq fabric-tools] 2020-02-10 10:18:02.350 UTC [channelCmd] executeJoin -> INFO 002 Successfully submitted proposal to join channel
 ```
 
-![status:200 payload:"OK"](/substra/docs/img/start_hlf-k8s.png "status:200 payload:'OK'")
+![status:200 payload:"OK"](../../img/start_hlf-k8s.png "status:200 payload:'OK'")
 
 #### 2. substra-backend repository
 
@@ -382,7 +382,7 @@ In the `substra-backend` repository, please run the command `skaffold dev`. The 
 [backend-org-1-substra-backend-server-77cf8cb9fd-cwgs6 substra-backend] INFO - 2020-02-10 10:24:51,393 - django.server - "GET /readiness HTTP/1.1" 200 2
 ```
 
-![django.server readiness](/substra/docs/img/start_backend.png "django.server readiness")
+![django.server readiness](../../img/start_backend.png "django.server readiness")
 
 #### 3. substra-frontend repository
 
@@ -392,7 +392,7 @@ In the `susbtra-frontend` repository, please run the command `skaffold dev`. The
 [frontend-org-2-substra-frontend-787554fc4b-pmh2g substra-frontend] CACHING:  /login
 ```
 
-![CACHING Login](/substra/docs/img/start_frontend.png "CACHING Login")
+![CACHING Login](../../img/start_frontend.png "CACHING Login")
 
 Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install). If you want to do see, please refer to [this section](#serve-the-frontend-with-yarn).
 
