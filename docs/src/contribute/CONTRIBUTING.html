@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; Substra 0.1 documentation</title>
+  <title>Contributing to Substra &mdash; Substra 0.1 documentation</title>
   
 
   
@@ -100,6 +100,63 @@
 <li class="toctree-l1"><a class="reference internal" href="../entry_points/faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../entry_points/glossary.html">Glossary</a></li>
 </ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Substra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table Of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-components-of-substra">The components of Substra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substra-design-decisions">Substra Design Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-contribute">How Can I Contribute?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#improving-the-documentation">Improving the documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reporting-bugs">Reporting Bugs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-submitting-a-bug-report">Before Submitting A Bug Report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-submit-a-good-bug-report">How Do I Submit A (Good) Bug Report?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#suggesting-enhancements">Suggesting Enhancements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-submitting-an-enhancement-suggestion">Before Submitting An Enhancement Suggestion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-submit-a-good-enhancement-suggestion">How Do I Submit A (Good) Enhancement Suggestion?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#your-first-code-contribution">Your First Code Contribution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local-development">Local development</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-review">Code review</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#review-checklist">Review checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#review-best-practices">Review best practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-guidelines">Coding guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-coding-guideline">Python Coding Guideline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go-coding-guidelines">Go Coding Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-library-usage">Third Party Library Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-choose-the-right-library">How to choose the right library ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-check-licence-compatibility">How to check licence compatibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#type-of-issue-and-issue-state">Type of Issue and Issue State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#topic-categories">Topic Categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-request-labels">Pull Request Labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../publish.html">Let’s build &amp; publish the documentation</a></li>
 </ul>
@@ -147,7 +204,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Contributing to Substra</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,648 +223,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <!DOCTYPE html><html lang="en">
-  <head>
-    <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://github.githubassets.com">
-  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
-  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">  <link crossorigin="anonymous" media="all" integrity="sha512-FG+rXqMOivrAjdEQE7tO4BwM1poGmg70hJFTlNSxjX87grtrZ6UnPR8NkzwUHlQEGviu9XuRYeO8zH9YwvZhdg==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-146fab5ea30e8afac08dd11013bb4ee0.css" />
-  <link crossorigin="anonymous" media="all" integrity="sha512-iXrV/b4ypc1nr10b3Giikqff+qAx5osQ0yJRxHRDd8mKFefdMtEZ0Sxs1QysJxuJBayOKThjsuMjynwBJQq0aw==" rel="stylesheet" href="https://github.githubassets.com/assets/site-897ad5fdbe32a5cd67af5d1bdc68a292.css" />
-    <link crossorigin="anonymous" media="all" integrity="sha512-nNiLDLS8nVmj1ksLLiScmstTqNgI+qAak+XQycJTfmcLoaR+QheHB5/eBhvtBV9dK8FmoCHkCJAu5iEC0H4Cgw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-9cd88b0cb4bc9d59a3d64b0b2e249c9a.css" />  <meta name="viewport" content="width=device-width">  <title>.github/CONTRIBUTING.md at master · SubstraFoundation/.github · GitHub</title>
-    <meta name="description" content="For default community health files. Contribute to SubstraFoundation/.github development by creating an account on GitHub.">
-    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
-  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
-  <meta property="fb:app_id" content="1401488693436528"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;twitter:image:src&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;https://avatars3.githubusercontent.com/u/38098422?s=400&amp;amp;v=4&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;twitter:site&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;@github&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;twitter:card&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;twitter:title&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;SubstraFoundation/.github&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;twitter:description&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;For default community health files. Contribute to SubstraFoundation/.github development by creating an account on GitHub.&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:image&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;https://avatars3.githubusercontent.com/u/38098422?s=400&amp;amp;v=4&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:site_name&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;GitHub&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;object&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:title&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;SubstraFoundation/.github&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:url&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;https://github.com/SubstraFoundation/.github&quot;</span> <span class="o">/&gt;&lt;</span><span class="n">meta</span> <span class="nb">property</span><span class="o">=</span><span class="s2">&quot;og:description&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;For default community health files. Contribute to SubstraFoundation/.github development by creating an account on GitHub.&quot;</span> <span class="o">/&gt;</span>
-</pre></div>
-</div>
-  <link rel="assets" href="https://github.githubassets.com/"><p><meta name="request-id" content="C6F4:4334:5FC97A:8A86B2:5E873624" data-pjax-transient="true"/><meta name="html-safe-nonce" content="878240da7f808c9d4b629e108ebc1d6cb01fda8a" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiJDNkY0OjQzMzQ6NUZDOTdBOjhBODZCMjo1RTg3MzYyNCIsInZpc2l0b3JfaWQiOiI1ODIyMjE0NzAxMTkwNjkwMzQwIiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-pjax-transient="true"/><meta name="visitor-hmac" content="0ebe7ce9ff422bbe7c631657dbceb4c622d166f1294532208a74dba824178e9a" data-pjax-transient="true"/></p>
-  <meta name="github-keyboard-shortcuts" content="repository,source-code" data-pjax-transient="true" />  <meta name="selected-link" value="repo_source" data-pjax-transient><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;google-site-verification&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
-  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc"><p><meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-ga_id" content="" class="js-octo-ga-id" />
-<meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;google-analytics&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;UA-3769691-2&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<meta class="js-ga-set" name="dimension1" content="Logged Out"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hostname&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;github.com&quot;</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;user-login&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;expected-hostname&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;github.com&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;enabled-features&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS,RELATED_ISSUES&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <meta http-equiv="x-pjax-version" content="d20ae514dd678682d4173e39e0850a68"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/SubstraFoundation/.github/commits/master.atom&quot;</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;alternate&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Recent Commits to .github:master&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/atom+xml&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <meta name="go-import" content="github.com/SubstraFoundation/.github git https://github.com/SubstraFoundation/.github.git"><p><meta name="octolytics-dimension-user_id" content="38098422" /><meta name="octolytics-dimension-user_login" content="SubstraFoundation" /><meta name="octolytics-dimension-repository_id" content="216817172" /><meta name="octolytics-dimension-repository_nwo" content="SubstraFoundation/.github" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="216817172" /><meta name="octolytics-dimension-repository_network_root_nwo" content="SubstraFoundation/.github" /><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;canonical&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">pjax</span><span class="o">-</span><span class="n">transient</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
-  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
-  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg"><meta name="theme-color" content="#1e2327">  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">  </head>  <body class="logged-out env-production page-responsive page-blob">  <div class="position-relative js-header-wrapper ">
-    <a href="#start-of-content" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
-    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
-      <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
-    </span><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">header</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Header-old header-logged-out js-details-container Details position-relative f4 py-2&quot;</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;banner&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <div class="container-lg d-lg-flex flex-items-center p-responsive">
-    <div class="d-flex flex-justify-between flex-items-center">
-        <a class="mr-4" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
-          <svg height="32" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        </a><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      &lt;div class=&quot;d-lg-none css-truncate css-truncate-target width-fit p-2&quot;&gt;
-        
-          &lt;svg class=&quot;octicon octicon-repo&quot; viewBox=&quot;0 0 12 16&quot; version=&quot;1.1&quot; width=&quot;12&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z&quot;/&gt;&lt;/svg&gt;
-&lt;a class=&quot;Header-link&quot; href=&quot;/SubstraFoundation&quot;&gt;SubstraFoundation&lt;/a&gt;
-/
-&lt;a class=&quot;Header-link&quot; href=&quot;/SubstraFoundation/.github&quot;&gt;.github&lt;/a&gt;
-
-      &lt;/div&gt;
-
-    &lt;div class=&quot;d-flex flex-items-center&quot;&gt;
-        &lt;a href=&quot;/join?source=header-repo&quot;
-          class=&quot;d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5&quot;
-          data-hydro-click=&quot;{&amp;quot;event_type&amp;quot;:&amp;quot;authentication.click&amp;quot;,&amp;quot;payload&amp;quot;:{&amp;quot;location_in_page&amp;quot;:&amp;quot;site header&amp;quot;,&amp;quot;repository_id&amp;quot;:null,&amp;quot;auth_type&amp;quot;:&amp;quot;SIGN_UP&amp;quot;,&amp;quot;originating_url&amp;quot;:&amp;quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&amp;quot;,&amp;quot;user_id&amp;quot;:null}}&quot; data-hydro-click-hmac=&quot;26a358d0429fff3a4f4104e929c3a7d4831604b3b958be1dc66e1b3565e89b6f&quot;
-          data-ga-click=&quot;(Logged out) Header, clicked Sign up, text:sign-up&quot;&gt;
-          Sign&amp;nbsp;up
-        &lt;/a&gt;
-
-      &lt;button class=&quot;btn-link d-lg-none mt-1 js-details-target&quot; type=&quot;button&quot; aria-label=&quot;Toggle navigation&quot; aria-expanded=&quot;false&quot;&gt;
-        &lt;svg height=&quot;24&quot; class=&quot;octicon octicon-three-bars text-white&quot; viewBox=&quot;0 0 12 16&quot; version=&quot;1.1&quot; width=&quot;18&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z&quot;/&gt;&lt;/svg&gt;
-      &lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;HeaderMenu HeaderMenu--logged-out position-fixed top-0 right-0 bottom-0 height-fit position-lg-relative d-lg-flex flex-justify-between flex-items-center flex-auto&quot;&gt;
-  &lt;div class=&quot;d-flex d-lg-none flex-justify-end border-bottom bg-gray-light p-3&quot;&gt;
-    &lt;button class=&quot;btn-link js-details-target&quot; type=&quot;button&quot; aria-label=&quot;Toggle navigation&quot; aria-expanded=&quot;false&quot;&gt;
-      &lt;svg height=&quot;24&quot; class=&quot;octicon octicon-x text-gray&quot; viewBox=&quot;0 0 12 16&quot; version=&quot;1.1&quot; width=&quot;18&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z&quot;/&gt;&lt;/svg&gt;
-    &lt;/button&gt;
-  &lt;/div&gt;
-
-    &lt;nav class=&quot;mt-0 px-3 px-lg-0 mb-5 mb-lg-0&quot; aria-label=&quot;Global&quot;&gt;
-      &lt;ul class=&quot;d-lg-flex list-style-none&quot;&gt;
-          &lt;li class=&quot;d-block d-lg-flex flex-lg-nowrap flex-lg-items-center border-bottom border-lg-bottom-0 mr-0 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center &quot;&gt;
-            &lt;details class=&quot;HeaderMenu-details details-overlay details-reset width-full&quot;&gt;
-              &lt;summary class=&quot;HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap d-block d-lg-inline-block&quot;&gt;
-                Why GitHub?
-                &lt;svg x=&quot;0px&quot; y=&quot;0px&quot; viewBox=&quot;0 0 14 8&quot; xml:space=&quot;preserve&quot; fill=&quot;none&quot; class=&quot;icon-chevon-down-mktg position-absolute position-lg-relative&quot;&gt;
-                  &lt;path d=&quot;M1,1l6.2,6L13,1&quot;&gt;&lt;/path&gt;
-                &lt;/svg&gt;
-              &lt;/summary&gt;
-              &lt;div class=&quot;dropdown-menu flex-auto rounded-1 bg-white px-0 mt-0 pb-4 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4&quot;&gt;
-                &lt;a href=&quot;/features&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Features&quot;&gt;Features &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;
-                &lt;ul class=&quot;list-style-none f5 pb-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/code-review/&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Code review&quot;&gt;Code review&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/project-management/&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Project management&quot;&gt;Project management&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/integrations&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Integrations&quot;&gt;Integrations&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/actions&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Actions&quot;&gt;Actions&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/packages&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to GitHub Packages&quot;&gt;Packages&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features/security&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Security&quot;&gt;Security&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features#team-management&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Team management&quot;&gt;Team management&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/features#hosting&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Code hosting&quot;&gt;Hosting&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-
-                &lt;ul class=&quot;list-style-none mb-0 border-lg-top pt-lg-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/customer-stories&quot; class=&quot;py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Customer stories&quot;&gt;Customer stories &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/security&quot; class=&quot;py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Security&quot;&gt;Security &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/li&gt;
-          &lt;li class=&quot;border-bottom border-lg-bottom-0 mr-0 mr-lg-3&quot;&gt;
-            &lt;a href=&quot;/enterprise&quot; class=&quot;HeaderMenu-link no-underline py-3 d-block d-lg-inline-block&quot; data-ga-click=&quot;(Logged out) Header, go to Enterprise&quot;&gt;Enterprise&lt;/a&gt;
-          &lt;/li&gt;
-
-          &lt;li class=&quot;d-block d-lg-flex flex-lg-nowrap flex-lg-items-center border-bottom border-lg-bottom-0 mr-0 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center &quot;&gt;
-            &lt;details class=&quot;HeaderMenu-details details-overlay details-reset width-full&quot;&gt;
-              &lt;summary class=&quot;HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap d-block d-lg-inline-block&quot;&gt;
-                Explore
-                &lt;svg x=&quot;0px&quot; y=&quot;0px&quot; viewBox=&quot;0 0 14 8&quot; xml:space=&quot;preserve&quot; fill=&quot;none&quot; class=&quot;icon-chevon-down-mktg position-absolute position-lg-relative&quot;&gt;
-                  &lt;path d=&quot;M1,1l6.2,6L13,1&quot;&gt;&lt;/path&gt;
-                &lt;/svg&gt;
-              &lt;/summary&gt;
-
-              &lt;div class=&quot;dropdown-menu flex-auto rounded-1 bg-white px-0 pt-2 pb-0 mt-0 pb-4 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4&quot;&gt;
-                &lt;ul class=&quot;list-style-none mb-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/explore&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Explore&quot;&gt;Explore GitHub &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-
-                &lt;h4 class=&quot;text-gray-light text-normal text-mono f5 mb-2 border-lg-top pt-lg-3&quot;&gt;Learn &amp;amp; contribute&lt;/h4&gt;
-                &lt;ul class=&quot;list-style-none mb-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/topics&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Topics&quot;&gt;Topics&lt;/a&gt;&lt;/li&gt;
-                    &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/collections&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Collections&quot;&gt;Collections&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/trending&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Trending&quot;&gt;Trending&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://lab.github.com/&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Learning lab&quot;&gt;Learning Lab&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://opensource.guide&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Open source guides&quot;&gt;Open source guides&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-
-                &lt;h4 class=&quot;text-gray-light text-normal text-mono f5 mb-2 border-lg-top pt-lg-3&quot;&gt;Connect with others&lt;/h4&gt;
-                &lt;ul class=&quot;list-style-none mb-0&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://github.com/events&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Events&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://github.community&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Community forum&quot;&gt;Community forum&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://education.github.com&quot; class=&quot;py-2 pb-0 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to GitHub Education&quot;&gt;GitHub Education&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/li&gt;
-
-          &lt;li class=&quot;border-bottom border-lg-bottom-0 mr-0 mr-lg-3&quot;&gt;
-            &lt;a href=&quot;/marketplace&quot; class=&quot;HeaderMenu-link no-underline py-3 d-block d-lg-inline-block&quot; data-ga-click=&quot;(Logged out) Header, go to Marketplace&quot;&gt;Marketplace&lt;/a&gt;
-          &lt;/li&gt;
-
-          &lt;li class=&quot;d-block d-lg-flex flex-lg-nowrap flex-lg-items-center border-bottom border-lg-bottom-0 mr-0 mr-lg-3 edge-item-fix position-relative flex-wrap flex-justify-between d-flex flex-items-center &quot;&gt;
-            &lt;details class=&quot;HeaderMenu-details details-overlay details-reset width-full&quot;&gt;
-              &lt;summary class=&quot;HeaderMenu-summary HeaderMenu-link px-0 py-3 border-0 no-wrap d-block d-lg-inline-block&quot;&gt;
-                Pricing
-                &lt;svg x=&quot;0px&quot; y=&quot;0px&quot; viewBox=&quot;0 0 14 8&quot; xml:space=&quot;preserve&quot; fill=&quot;none&quot; class=&quot;icon-chevon-down-mktg position-absolute position-lg-relative&quot;&gt;
-                   &lt;path d=&quot;M1,1l6.2,6L13,1&quot;&gt;&lt;/path&gt;
-                &lt;/svg&gt;
-              &lt;/summary&gt;
-
-              &lt;div class=&quot;dropdown-menu flex-auto rounded-1 bg-white px-0 pt-2 pb-4 mt-0 p-lg-4 position-relative position-lg-absolute left-0 left-lg-n4&quot;&gt;
-                &lt;a href=&quot;/pricing&quot; class=&quot;pb-2 lh-condensed-ultra d-block link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Pricing&quot;&gt;Plans &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;
-
-                &lt;ul class=&quot;list-style-none mb-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/pricing#feature-comparison&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Compare plans&quot;&gt;Compare plans&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://enterprise.github.com/contact&quot; class=&quot;py-2 lh-condensed-ultra d-block link-gray no-underline f5&quot; data-ga-click=&quot;(Logged out) Header, go to Contact Sales&quot;&gt;Contact Sales&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-
-                &lt;ul class=&quot;list-style-none mb-0 border-lg-top pt-lg-3&quot;&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;/nonprofit&quot; class=&quot;py-2 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover&quot; data-ga-click=&quot;(Logged out) Header, go to Nonprofits&quot;&gt;Nonprofit &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                  &lt;li class=&quot;edge-item-fix&quot;&gt;&lt;a href=&quot;https://education.github.com&quot; class=&quot;py-2 pb-0 lh-condensed-ultra d-block no-underline link-gray-dark no-underline h5 Bump-link--hover&quot;  data-ga-click=&quot;(Logged out) Header, go to Education&quot;&gt;Education &lt;span class=&quot;Bump-link-symbol float-right text-normal text-gray-light&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-              &lt;/div&gt;
-            &lt;/details&gt;
-          &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;
-
-  &lt;div class=&quot;d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left&quot;&gt;
-      &lt;div class=&quot;d-lg-flex mb-3 mb-lg-0&quot;&gt;
-        &lt;div class=&quot;header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to&quot;
-</pre></div>
-</div>
-<p>role=”combobox”
-aria-owns=”jump-to-results”
-aria-label=”Search or jump to”
-aria-haspopup=”listbox”
-aria-expanded=”false”</p>
-  <div class="position-relative">
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="216817172" data-scoped-search-url="/SubstraFoundation/.github/search" data-unscoped-search-url="/search" action="/SubstraFoundation/.github/search" accept-charset="UTF-8" method="get">
-      <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
-        <input type="text"
-          class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
-          data-hotkey="s,/"
-          name="q"
-          value=""
-          placeholder="Search"
-          data-unscoped-placeholder="Search GitHub"
-          data-scoped-placeholder="Search"
-          autocapitalize="off"
-          aria-autocomplete="list"
-          aria-controls="jump-to-results"
-          aria-label="Search"
-          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations"
-          spellcheck="false"
-          autocomplete="off"
-          >
-          <input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="y+bKmr7V4iuKqK+KP/sJiHDC0+UHLcuYhsavz7e9H4/So05dOEDQamcAyYQBzUwhwBOlDZ4w5z/4KEBwFBFDOw==" />
-          <input type="hidden" class="js-site-search-type-field" name="type" >
-            <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<ul class="d-none js-jump-to-suggestions-template-container"><li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
-  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
-      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
-    </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;img class=&quot;avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none&quot; alt=&quot;&quot; aria-label=&quot;Team&quot; src=&quot;&quot; width=&quot;28&quot; height=&quot;28&quot;&gt;
-
-&lt;div class=&quot;jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target&quot;&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search&quot;&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-default d-none&quot; aria-label=&quot;in this repository&quot;&gt;
-    In this repository
-  &lt;/span&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-global d-none&quot; aria-label=&quot;in all of GitHub&quot;&gt;
-    All GitHub
-  &lt;/span&gt;
-  &lt;span aria-hidden=&quot;true&quot; class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;div aria-hidden=&quot;true&quot; class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump&quot;&gt;
-  Jump to
-  &lt;span class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-</pre></div>
-</div>
-  </a>
-</li></ul><ul class="d-none js-jump-to-no-results-template-container">
-  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
-    <span class="text-gray">No suggested jump to results</span>
-  </li>
-</ul><ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container"><li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
-  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
-      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
-    </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;img class=&quot;avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none&quot; alt=&quot;&quot; aria-label=&quot;Team&quot; src=&quot;&quot; width=&quot;28&quot; height=&quot;28&quot;&gt;
-
-&lt;div class=&quot;jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target&quot;&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search&quot;&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-default d-none&quot; aria-label=&quot;in this repository&quot;&gt;
-    In this repository
-  &lt;/span&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-global d-none&quot; aria-label=&quot;in all of GitHub&quot;&gt;
-    All GitHub
-  &lt;/span&gt;
-  &lt;span aria-hidden=&quot;true&quot; class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;div aria-hidden=&quot;true&quot; class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump&quot;&gt;
-  Jump to
-  &lt;span class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-</pre></div>
-</div>
-  </a>
-</li><li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
-  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
-      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"/></svg>
-      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
-    </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;img class=&quot;avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none&quot; alt=&quot;&quot; aria-label=&quot;Team&quot; src=&quot;&quot; width=&quot;28&quot; height=&quot;28&quot;&gt;
-
-&lt;div class=&quot;jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target&quot;&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search&quot;&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-default d-none&quot; aria-label=&quot;in this repository&quot;&gt;
-    In this repository
-  &lt;/span&gt;
-  &lt;span class=&quot;js-jump-to-badge-search-text-global d-none&quot; aria-label=&quot;in all of GitHub&quot;&gt;
-    All GitHub
-  &lt;/span&gt;
-  &lt;span aria-hidden=&quot;true&quot; class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;div aria-hidden=&quot;true&quot; class=&quot;border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump&quot;&gt;
-  Jump to
-  &lt;span class=&quot;d-inline-block ml-1 v-align-middle&quot;&gt;↵&lt;/span&gt;
-&lt;/div&gt;
-</pre></div>
-</div>
-  </a>
-</li></ul><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</form>  </div>
-</div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/login?return_to=</span><span class="si">%2F</span><span class="s2">SubstraFoundation</span><span class="si">%2F</span><span class="s2">.github</span><span class="si">%2F</span><span class="s2">blob</span><span class="si">%2F</span><span class="s2">master</span><span class="si">%2F</span><span class="s2">CONTRIBUTING.md&quot;</span>
-      <span class="n">class</span><span class="o">=</span><span class="s2">&quot;HeaderMenu-link no-underline mr-3&quot;</span>
-      <span class="n">data</span><span class="o">-</span><span class="n">hydro</span><span class="o">-</span><span class="n">click</span><span class="o">=</span><span class="s2">&quot;{&amp;quot;event_type&amp;quot;:&amp;quot;authentication.click&amp;quot;,&amp;quot;payload&amp;quot;:{&amp;quot;location_in_page&amp;quot;:&amp;quot;site header menu&amp;quot;,&amp;quot;repository_id&amp;quot;:null,&amp;quot;auth_type&amp;quot;:&amp;quot;SIGN_UP&amp;quot;,&amp;quot;originating_url&amp;quot;:&amp;quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&amp;quot;,&amp;quot;user_id&amp;quot;:null}}&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">hydro</span><span class="o">-</span><span class="n">click</span><span class="o">-</span><span class="n">hmac</span><span class="o">=</span><span class="s2">&quot;b2e32789f26a2927e056133d3e1b116bf9aa4b52109a48a2a9a40e782e95b7a4&quot;</span>
-      <span class="n">data</span><span class="o">-</span><span class="n">ga</span><span class="o">-</span><span class="n">click</span><span class="o">=</span><span class="s2">&quot;(Logged out) Header, clicked Sign in, text:sign-in&quot;</span><span class="o">&gt;</span>
-      <span class="n">Sign</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="ow">in</span>
-    <span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/join?source=header-repo&amp;amp;source_repo=SubstraFoundation</span><span class="si">%2F</span><span class="s2">.github&quot;</span>
-        <span class="n">class</span><span class="o">=</span><span class="s2">&quot;HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1&quot;</span>
-        <span class="n">data</span><span class="o">-</span><span class="n">hydro</span><span class="o">-</span><span class="n">click</span><span class="o">=</span><span class="s2">&quot;{&amp;quot;event_type&amp;quot;:&amp;quot;authentication.click&amp;quot;,&amp;quot;payload&amp;quot;:{&amp;quot;location_in_page&amp;quot;:&amp;quot;site header menu&amp;quot;,&amp;quot;repository_id&amp;quot;:null,&amp;quot;auth_type&amp;quot;:&amp;quot;SIGN_UP&amp;quot;,&amp;quot;originating_url&amp;quot;:&amp;quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&amp;quot;,&amp;quot;user_id&amp;quot;:null}}&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">hydro</span><span class="o">-</span><span class="n">click</span><span class="o">-</span><span class="n">hmac</span><span class="o">=</span><span class="s2">&quot;b2e32789f26a2927e056133d3e1b116bf9aa4b52109a48a2a9a40e782e95b7a4&quot;</span>
-        <span class="n">data</span><span class="o">-</span><span class="n">ga</span><span class="o">-</span><span class="n">click</span><span class="o">=</span><span class="s2">&quot;(Logged out) Header, clicked Sign up, text:sign-up&quot;</span><span class="o">&gt;</span>
-        <span class="n">Sign</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="n">up</span>
-      <span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  </div>
-</header>  </div>  <div id="start-of-content" class="show-on-focus"></div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;js-flash-container&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <template class="js-flash-template">
-    <div class="flash flash-full  js-flash-template-container">
-  <div class="container-lg px-2" >
-    <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
-      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
-    </button><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-flash-template-message&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  </div>
-</div>
-  </template>
-</div><p><include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment></p>
-  <div class="application-main " data-commit-hovercards-enabled>
-        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
-    <main  >  <div class="pagehead repohead hx_repohead readability-menu bg-gray-light pb-0 pt-0 pt-lg-3"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-flex container-lg mb-4 p-responsive d-none d-lg-flex&quot;</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;flex-auto min-width-0 width-fit mr-3&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">h1</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;public  d-flex flex-wrap flex-items-center break-word float-none &quot;</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-repo&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 12 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;12&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <span class="author ml-1 flex-self-stretch" itemprop="author">
-    <a class="url fn" rel="author" data-hovercard-type="organization" data-hovercard-url="/orgs/SubstraFoundation/hovercard" href="/SubstraFoundation">SubstraFoundation</a>
-  </span>
-  <span class="path-divider flex-self-stretch">/</span>
-  <strong itemprop="name" class="mr-2 flex-self-stretch">
-    <a data-pjax="#js-repo-pjax-container" href="/SubstraFoundation/.github">.github</a>
-  </strong></h1><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;pagehead-actions flex-shrink-0 &quot;</span> <span class="o">&gt;</span>
-</pre></div>
-</div>
-  <li>  <a class="tooltipped tooltipped-s btn btn-sm btn-with-count" aria-label="You must be signed in to watch a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="40e06a6f9cd68b2aa95d446e0e78c87ebb8a5e9c322dba91ea1fcb0836bcc361" href="/login?return_to=%2FSubstraFoundation%2F.github">
-    <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
-    Watch
-</a>    <a class="social-count" href="/SubstraFoundation/.github/watchers"
-       aria-label="10 users are watching this repository">
-      10
-    </a>  </li>  <li>
-        <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to star a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:216817172,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="4ac1164aff4e87f2a123526bc67b1d221892cbfaaa16a6b5ea8ed464c628709c" href="/login?return_to=%2FSubstraFoundation%2F.github">
-      <svg height="16" class="octicon octicon-star v-align-text-bottom" vertical_align="text_bottom" viewBox="0 0 14 16" version="1.1" width="14" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Star</span>
-</pre></div>
-</div>
-</a>
-    <a class="social-count js-social-count" href="/SubstraFoundation/.github/stargazers"
-      aria-label="4 users starred this repository">
-      4
-    </a>  </li>  <li>
-      <a class="btn btn-sm btn-with-count tooltipped tooltipped-s" aria-label="You must be signed in to fork a repository" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:216817172,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="01e7553c39d89cf1068e900efb56b480863255a6a2b60d469caf011c62b4199d" href="/login?return_to=%2FSubstraFoundation%2F.github">
-        <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
-        Fork
-</a>
-    <a href="/SubstraFoundation/.github/network/members" class="social-count"
-       aria-label="1 user forked this repository">
-      1
-    </a>
-  </li>
-</ul><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<nav class="hx_reponav reponav js-repo-nav js-sidenav-container-pjax clearfix container-lg p-responsive d-none d-lg-block"
-     itemscope
-     itemtype="http://schema.org/BreadcrumbList"
-    aria-label="Repository"
-     data-pjax="#js-repo-pjax-container">  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-    <a class="js-selected-navigation-item selected reponav-item" itemprop="url" data-hotkey="g c" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /SubstraFoundation/.github" href="/SubstraFoundation/.github">
-      <div class="d-inline"><svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg></div>
-      <span itemprop="name">Code</span>
-      <meta itemprop="position" content="1">
-</a>  </span><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;g i&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_issues repo_labels repo_milestones /SubstraFoundation/.github/issues&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/issues&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-inline&quot;</span><span class="o">&gt;&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-issue-opened&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 14 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;14&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 011.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Issues</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Counter&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>    </span></p>
-  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-    <a data-hotkey="g p" data-skip-pjax="true" itemprop="url" class="js-selected-navigation-item reponav-item" data-selected-links="repo_pulls checks /SubstraFoundation/.github/pulls" href="/SubstraFoundation/.github/pulls">
-      <div class="d-inline"><svg class="octicon octicon-git-pull-request" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0010 15a1.993 1.993 0 001-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 00-1 3.72v6.56A1.993 1.993 0 002 15a1.993 1.993 0 001-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg></div>
-      <span itemprop="name">Pull requests</span>
-      <span class="Counter">1</span>
-      <meta itemprop="position" content="4">
-</a>  </span><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;position-relative float-left&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;g w&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">skip</span><span class="o">-</span><span class="n">pjax</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_actions /SubstraFoundation/.github/actions&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/actions&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-inline&quot;</span><span class="o">&gt;&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-play&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 14 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;14&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M14 8A7 7 0 110 8a7 7 0 0114 0zm-8.223 3.482l4.599-3.066a.5.5 0 000-.832L5.777 4.518A.5.5 0 005 4.934v6.132a.5.5 0 00.777.416z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-    <span class="n">Actions</span>
-</pre></div>
-</div>
-</a>
-    </span><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;g b&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_projects new_repo_project repo_project /SubstraFoundation/.github/projects&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/projects&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-inline&quot;</span><span class="o">&gt;&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-project&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 15 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;15&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-  <span class="n">Projects</span>
-  <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Counter&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</a><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">skip</span><span class="o">-</span><span class="n">pjax</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;security overview alerts policy token_scanning code_scanning /SubstraFoundation/.github/security&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/security&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-inline&quot;</span><span class="o">&gt;&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-shield&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 14 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;14&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M0 2l7-2 7 2v6.02C14 12.69 8.69 16 7 16c-1.69 0-7-3.31-7-7.98V2zm1 .75L7 1l6 1.75v5.268C13 12.104 8.449 15 7 15c-1.449 0-6-2.896-6-6.982V2.75zm1 .75L7 2v12c-1.207 0-5-2.482-5-5.985V3.5z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-  <span class="n">Security</span>
-</pre></div>
-</div>
-</a>
-    <a class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people /SubstraFoundation/.github/pulse" href="/SubstraFoundation/.github/pulse">
-      <div class="d-inline"><svg class="octicon octicon-graph" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg></div>
-      Insights
-</a></nav>  <div class="reponav-wrapper reponav-small d-lg-none">
-  <nav class="reponav js-reponav text-center no-wrap"
-       itemscope
-       itemtype="http://schema.org/BreadcrumbList"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item selected reponav-item&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">current</span><span class="o">=</span><span class="s2">&quot;page&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /SubstraFoundation/.github&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Code</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>    </span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_issues repo_labels repo_milestones /SubstraFoundation/.github/issues&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/issues&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Issues</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Counter&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>      </span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_pulls checks /SubstraFoundation/.github/pulls&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/pulls&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Pull</span> <span class="n">requests</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Counter&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>    </span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_projects new_repo_project repo_project /SubstraFoundation/.github/projects&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/projects&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Projects</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Counter&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>      </span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemscope</span> <span class="n">itemtype</span><span class="o">=</span><span class="s2">&quot;http://schema.org/ListItem&quot;</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;itemListElement&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;repo_actions /SubstraFoundation/.github/actions&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/actions&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Actions</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p></a>      </span></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">&lt;</span><span class="n">a</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-selected-navigation-item reponav-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">links</span><span class="o">=</span><span class="s2">&quot;security overview alerts policy token_scanning code_scanning /SubstraFoundation/.github/security&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/security&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="o">&gt;</span><span class="n">Security</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">itemprop</span><span class="o">=</span><span class="s2">&quot;position&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</a>
-      <a class="js-selected-navigation-item reponav-item" data-selected-links="pulse /SubstraFoundation/.github/pulse" href="/SubstraFoundation/.github/pulse">
-        Pulse
-</a>  </nav>
-</div>  </div><p><include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment></p>
-<div class="container-lg clearfix new-discussion-timeline  p-responsive">
-  <div class="repository-content "><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;d-none js-permalink-shortcut&quot; data-hotkey=&quot;y&quot; href=&quot;/SubstraFoundation/.github/blob/91ba032701dc2a5813e712dac21bafb3a13e6639/CONTRIBUTING.md&quot;&gt;Permalink&lt;/a&gt;
-
-&lt;!-- blob contrib key: blob_contributors:v22:7b23af1c2359dc102ba7f2cd5153b7c7 --&gt;
-  &lt;div class=&quot;signup-prompt-bg rounded-1 js-signup-prompt&quot; data-prompt=&quot;signup&quot; hidden&gt;
-&lt;div class=&quot;signup-prompt p-4 text-center mb-4 rounded-1&quot;&gt;
-  &lt;div class=&quot;position-relative&quot;&gt;
-    &lt;button type=&quot;button&quot; class=&quot;position-absolute top-0 right-0 btn-link link-gray js-signup-prompt-button&quot; data-ga-click=&quot;(Logged out) Sign up prompt, clicked Dismiss, text:dismiss&quot;&gt;
-      Dismiss
-    &lt;/button&gt;
-    &lt;h3 class=&quot;pt-2&quot;&gt;Join GitHub today&lt;/h3&gt;
-    &lt;p class=&quot;col-6 mx-auto&quot;&gt;GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.&lt;/p&gt;
-    &lt;a class=&quot;btn btn-primary&quot; data-ga-click=&quot;(Logged out) Sign up prompt, clicked Sign up, text:sign-up&quot; data-hydro-click=&quot;{&amp;quot;event_type&amp;quot;:&amp;quot;authentication.click&amp;quot;,&amp;quot;payload&amp;quot;:{&amp;quot;location_in_page&amp;quot;:&amp;quot;files signup prompt&amp;quot;,&amp;quot;repository_id&amp;quot;:null,&amp;quot;auth_type&amp;quot;:&amp;quot;SIGN_UP&amp;quot;,&amp;quot;originating_url&amp;quot;:&amp;quot;https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md&amp;quot;,&amp;quot;user_id&amp;quot;:null}}&quot; data-hydro-click-hmac=&quot;d7c1ab01d57d783a248a71e2b1ea87747735e1e899f68b23d5a53c0894146335&quot; href=&quot;/join?source=prompt-blob-show&amp;amp;source_repo=SubstraFoundation%2F.github&quot;&gt;Sign up&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre></div>
-</div>
-  </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-flex flex-items-start flex-shrink-0 flex-column flex-md-row pb-3&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;d-flex flex-justify-between width-full width-md-auto&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<details class="details-reset details-overlay branch-select-menu " id="branch-select-menu">
-  <summary class="btn css-truncate btn-sm"
-           data-hotkey="w"
-           title="Switch branches or tags">
-    <i>Branch:</i>
-    <span class="css-truncate-target" data-menu-button>master</span>
-    <span class="dropdown-caret"></span>
-  </summary>  <details-menu class="SelectMenu SelectMenu--hasFilter" src="/SubstraFoundation/.github/refs/master/CONTRIBUTING.md?source_action=show&amp;source_controller=blob" preload>
-    <div class="SelectMenu-modal">
-      <include-fragment class="SelectMenu-loading" aria-label="Menu is loading">
-        <svg class="octicon octicon-octoface anim-pulse" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M14.7 5.34c.13-.32.55-1.59-.13-3.31 0 0-1.05-.33-3.44 1.3-1-.28-2.07-.32-3.13-.32s-2.13.04-3.13.32c-2.39-1.64-3.44-1.3-3.44-1.3-.68 1.72-.26 2.99-.13 3.31C.49 6.21 0 7.33 0 8.69 0 13.84 3.33 15 7.98 15S16 13.84 16 8.69c0-1.36-.49-2.48-1.3-3.35zM8 14.02c-3.3 0-5.98-.15-5.98-3.35 0-.76.38-1.48 1.02-2.07 1.07-.98 2.9-.46 4.96-.46 2.07 0 3.88-.52 4.96.46.65.59 1.02 1.3 1.02 2.07 0 3.19-2.68 3.35-5.98 3.35zM5.49 9.01c-.66 0-1.2.8-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.54-1.78-1.2-1.78zm5.02 0c-.66 0-1.2.79-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.53-1.78-1.2-1.78z"/></svg>
-      </include-fragment>
-    </div>
-  </details-menu>
-</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;BtnGroup flex-shrink-0 d-md-none&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/find/master&quot;</span>
-            <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-pjax-capture-input btn btn-sm BtnGroup-item&quot;</span>
-            <span class="n">data</span><span class="o">-</span><span class="n">pjax</span>
-            <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="o">&gt;</span>
-        <span class="n">Find</span> <span class="n">file</span>
-      <span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">clipboard</span><span class="o">-</span><span class="n">copy</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;CONTRIBUTING.md&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm BtnGroup-item&quot;</span><span class="o">&gt;</span>
-        <span class="n">Copy</span> <span class="n">path</span>
-      <span class="o">&lt;/</span><span class="n">clipboard</span><span class="o">-</span><span class="n">copy</span><span class="o">&gt;</span>
-    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">h2</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;blob-path&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;breadcrumb flex-auto min-width-0 text-normal flex-md-self-center ml-md-2 mr-md-3 my-2 my-md-0&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-repo-root text-bold&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-path-segment&quot;</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">pjax</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span><span class="o">&gt;.</span><span class="n">github</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;separator&quot;</span><span class="o">&gt;/&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;</span><span class="n">strong</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;final-path&quot;</span><span class="o">&gt;</span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;BtnGroup flex-shrink-0 d-none d-md-inline-block&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/find/master&quot;</span>
-          <span class="n">class</span><span class="o">=</span><span class="s2">&quot;js-pjax-capture-input btn btn-sm BtnGroup-item&quot;</span>
-          <span class="n">data</span><span class="o">-</span><span class="n">pjax</span>
-          <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="o">&gt;</span>
-      <span class="n">Find</span> <span class="n">file</span>
-    <span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">clipboard</span><span class="o">-</span><span class="n">copy</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;CONTRIBUTING.md&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm BtnGroup-item&quot;</span><span class="o">&gt;</span>
-      <span class="n">Copy</span> <span class="n">path</span>
-    <span class="o">&lt;/</span><span class="n">clipboard</span><span class="o">-</span><span class="n">copy</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">include</span><span class="o">-</span><span class="n">fragment</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/contributors/master/CONTRIBUTING.md&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Box Box--condensed commit-loader&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Box-body bg-blue-light f6&quot;</span><span class="o">&gt;</span>
-    <span class="n">Fetching</span> <span class="n">contributors</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span>
-  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Box-body d-flex flex-items-center&quot;</span> <span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;loader-loading mr-2&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/images/spinners/octocat-spinner-32-EAF2F5.gif&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;text-red h6 loader-error&quot;</span><span class="o">&gt;</span><span class="n">Cannot</span> <span class="n">retrieve</span> <span class="n">contributors</span> <span class="n">at</span> <span class="n">this</span> <span class="n">time</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</include-fragment><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;Box mt-3 position-relative</span>
-  <span class="s2">&quot;&gt;</span>
-</pre></div>
-</div>
-<div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
-  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">379</span> <span class="n">lines</span> <span class="p">(</span><span class="mi">271</span> <span class="n">sloc</span><span class="p">)</span>
-  <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;file-info-divider&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-<span class="mf">25.6</span> <span class="n">KB</span>
-</pre></div>
-</div>
-  </div>  <div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;BtnGroup&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;raw-url&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm BtnGroup-item&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/raw/master/CONTRIBUTING.md&quot;</span><span class="o">&gt;</span><span class="n">Raw</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm js-update-url-with-hash BtnGroup-item&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;b&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/blame/master/CONTRIBUTING.md&quot;</span><span class="o">&gt;</span><span class="n">Blame</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;nofollow&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm BtnGroup-item&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/SubstraFoundation/.github/commits/master/CONTRIBUTING.md&quot;</span><span class="o">&gt;</span><span class="n">History</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn-octicon tooltipped tooltipped-nw js-remove-unless-platform&quot;</span>
-         <span class="n">data</span><span class="o">-</span><span class="n">platforms</span><span class="o">=</span><span class="s2">&quot;windows,mac&quot;</span>
-         <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://desktop.github.com&quot;</span>
-         <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Open this file in GitHub Desktop&quot;</span>
-         <span class="n">data</span><span class="o">-</span><span class="n">ga</span><span class="o">-</span><span class="n">click</span><span class="o">=</span><span class="s2">&quot;Repository, open with desktop&quot;</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-device-desktop&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 16 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-
-      <span class="o">&lt;</span><span class="n">button</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn-octicon disabled tooltipped tooltipped-nw&quot;</span>
-        <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;You must be signed in to make or propose changes&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-pencil&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 14 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;14&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 011.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">button</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw&quot;</span>
-        <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;You must be signed in to make or propose changes&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">svg</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-trashcan&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 12 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;12&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;16&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  </div>
-</div>  <div id="readme" class="Box-body readme blob js-code-block-container px-5">
-    <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-contributing-to-substra" class="anchor" aria-hidden="true" href="#contributing-to-substra"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributing to Substra</h1>
-<p><g-emoji class="g-emoji" alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png">👍</g-emoji><g-emoji class="g-emoji" alias="tada" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png">🎉</g-emoji> First off, thanks for taking the time to contribute! <g-emoji class="g-emoji" alias="tada" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png">🎉</g-emoji><g-emoji class="g-emoji" alias="+1" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png">👍</g-emoji></p>
-<p>The following is a set of guidelines for contributing to the framework Substra, which is hosted in the <a href="https://github.com/SubstraFoundation">Substra Foundation Organization</a> on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.</p>
-<h4><a id="user-content-table-of-contents" class="anchor" aria-hidden="true" href="#table-of-contents"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table Of Contents</h4>
-<p><a href="#code-of-conduct">Code of Conduct</a></p>
-<p><a href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
-<ul>
-<li><a href="#components-of-substra">The components of Substra</a></li>
-<li><a href="#substra-design-decisions">Substra Design Decisions</a></li>
+  <div class="section" id="contributing-to-substra">
+<h1>Contributing to Substra<a class="headerlink" href="#contributing-to-substra" title="Permalink to this headline">¶</a></h1>
+<p>:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:</p>
+<p>The following is a set of guidelines for contributing to the framework Substra, which is hosted in the <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation Organization</a> on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.</p>
+<div class="section" id="table-of-contents">
+<h2>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="#code-of-conduct">Code of Conduct</a></p>
+<p><a class="reference external" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#components-of-substra">The components of Substra</a></p></li>
+<li><p><a class="reference external" href="#substra-design-decisions">Substra Design Decisions</a></p></li>
 </ul>
-<p><a href="#how-can-i-contribute">How Can I Contribute?</a></p>
-<ul>
-<li><a href="#improving-documentation">Improving the documentation</a></li>
-<li><a href="#reporting-bugs">Reporting Bugs</a></li>
-<li><a href="#suggesting-enhancements">Suggesting Enhancements</a></li>
-<li><a href="#your-first-code-contribution">Your First Code Contribution</a></li>
-<li><a href="#pull-requests">Pull Requests</a></li>
-<li><a href="#code-reviews">Code Reviews</a></li>
+<p><a class="reference external" href="#how-can-i-contribute">How Can I Contribute?</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#improving-documentation">Improving the documentation</a></p></li>
+<li><p><a class="reference external" href="#reporting-bugs">Reporting Bugs</a></p></li>
+<li><p><a class="reference external" href="#suggesting-enhancements">Suggesting Enhancements</a></p></li>
+<li><p><a class="reference external" href="#your-first-code-contribution">Your First Code Contribution</a></p></li>
+<li><p><a class="reference external" href="#pull-requests">Pull Requests</a></p></li>
+<li><p><a class="reference external" href="#code-reviews">Code Reviews</a></p></li>
 </ul>
-<p><a href="#coding-guidelines">Coding Guidelines</a></p>
-<ul>
-<li><a href="#python-coding-guidelines">Python Coding Guideline</a></li>
-<li><a href="#go-coding-guideguide">Go Coding Guidelines</a></li>
-<li><a href="#third-party-library-usage">Third Party Library Usage</a></li>
+<p><a class="reference external" href="#coding-guidelines">Coding Guidelines</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#python-coding-guidelines">Python Coding Guideline</a></p></li>
+<li><p><a class="reference external" href="#go-coding-guideguide">Go Coding Guidelines</a></p></li>
+<li><p><a class="reference external" href="#third-party-library-usage">Third Party Library Usage</a></p></li>
 </ul>
-<p><a href="#additional-notes">Additional Notes</a></p>
-<ul>
-<li><a href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></li>
+<p><a class="reference external" href="#additional-notes">Additional Notes</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></p></li>
 </ul>
-<h2><a id="user-content-code-of-conduct" class="anchor" aria-hidden="true" href="#code-of-conduct"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code of Conduct</h2>
-<p>This project and everyone participating in it is governed by the Code of Conduct defined <a href="https://github.com/SubstraFoundation/.github/CODE_OF_CONDUCT.md">here</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="mailto:github@substra.org">github@substra.org</a>.</p>
-<h2><a id="user-content-i-dont-want-to-read-this-whole-thing-i-just-have-a-question" class="anchor" aria-hidden="true" href="#i-dont-want-to-read-this-whole-thing-i-just-have-a-question"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I don't want to read this whole thing I just have a question!!!</h2>
-<p>Please check <a href="https://forum.substra.org/" rel="nofollow">our forum</a>.</p>
-<h2><a id="user-content-what-should-i-know-before-i-get-started" class="anchor" aria-hidden="true" href="#what-should-i-know-before-i-get-started"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What should I know before I get started?</h2>
-<p>It might be useful to have a look at the <a href="https://github.com/SubstraFoundation/substra">documentation</a></p>
-<h3><a id="user-content-the-components-of-substra" class="anchor" aria-hidden="true" href="#the-components-of-substra"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The components of Substra</h3>
+</div>
+<div class="section" id="code-of-conduct">
+<h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">¶</a></h2>
+<p>This project and everyone participating in it is governed by the Code of Conduct defined <a class="reference external" href="https://github.com/SubstraFoundation/.github/CODE_OF_CONDUCT">here</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a class="reference external" href="mailto:github&#37;&#52;&#48;substra&#46;org">github<span>&#64;</span>substra<span>&#46;</span>org</a>.</p>
+</div>
+<div class="section" id="i-don-t-want-to-read-this-whole-thing-i-just-have-a-question">
+<h2>I don’t want to read this whole thing I just have a question!!!<a class="headerlink" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question" title="Permalink to this headline">¶</a></h2>
+<p>Please check <a class="reference external" href="https://forum.substra.org/">our forum</a>.</p>
+</div>
+<div class="section" id="what-should-i-know-before-i-get-started">
+<h2>What should I know before I get started?<a class="headerlink" href="#what-should-i-know-before-i-get-started" title="Permalink to this headline">¶</a></h2>
+<p>It might be useful to have a look at the <a class="reference external" href="https://github.com/SubstraFoundation/substra">documentation</a></p>
+<div class="section" id="the-components-of-substra">
+<h3>The components of Substra<a class="headerlink" href="#the-components-of-substra" title="Permalink to this headline">¶</a></h3>
 <p>Substra is made of several open source components listed below. When you initially consider contributing to Subtra, you may be unsure of the component that implements the functionality you want to change or report a bug for. The table below should help you with that.</p>
-<table>
+<table border="1" class="docutils">
 <thead>
 <tr>
 <th>Component</th>
@@ -848,336 +310,313 @@ aria-expanded=”false”</p>
 <td>Tests for the framework Substra.</td>
 </tr>
 </tbody>
-</table>
-<h3><a id="user-content-substra-design-decisions" class="anchor" aria-hidden="true" href="#substra-design-decisions"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substra Design Decisions</h3>
+</table></div>
+<div class="section" id="substra-design-decisions">
+<h3>Substra Design Decisions<a class="headerlink" href="#substra-design-decisions" title="Permalink to this headline">¶</a></h3>
 <p><strong>Currently being defined</strong></p>
-<h2><a id="user-content-how-can-i-contribute" class="anchor" aria-hidden="true" href="#how-can-i-contribute"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How Can I Contribute?</h2>
-<h3><a id="user-content-improving-the-documentation" class="anchor" aria-hidden="true" href="#improving-the-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Improving the documentation</h3>
-<p>The documentation can be found <a href="https://github.com/SubstraFoundation/substra">here</a>.
+</div>
+</div>
+<div class="section" id="how-can-i-contribute">
+<h2>How Can I Contribute?<a class="headerlink" href="#how-can-i-contribute" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="improving-the-documentation">
+<h3>Improving the documentation<a class="headerlink" href="#improving-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>The documentation can be found <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>.
 We believe documentation is key to a project, do not hesitate to submit any feedback or PR to improve it!</p>
-<h3><a id="user-content-reporting-bugs" class="anchor" aria-hidden="true" href="#reporting-bugs"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reporting Bugs</h3>
-<p>This section guides you through submitting a bug report for Substra. Following these guidelines helps maintainers and the community understand your report <g-emoji class="g-emoji" alias="memo" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png">📝</g-emoji>, reproduce the behavior <g-emoji class="g-emoji" alias="computer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png">💻</g-emoji> <g-emoji class="g-emoji" alias="computer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png">💻</g-emoji>, and find related reports <g-emoji class="g-emoji" alias="mag_right" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png">🔎</g-emoji>.</p>
-<p>Before creating bug reports, please check <a href="#before-submitting-a-bug-report">this list</a> as you might find out that you don't need to create one. When you are creating a bug report, please <a href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Fill out <a href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report.md">the required template</a>, the information it asks for helps us resolve issues faster.</p>
+</div>
+<div class="section" id="reporting-bugs">
+<h3>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h3>
+<p>This section guides you through submitting a bug report for Substra. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.</p>
+<p>Before creating bug reports, please check <a class="reference external" href="#before-submitting-a-bug-report">this list</a> as you might find out that you don’t need to create one. When you are creating a bug report, please <a class="reference external" href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Fill out <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the required template</a>, the information it asks for helps us resolve issues faster.</p>
 <blockquote>
-<p><strong>Note:</strong> If you find a <strong>Closed</strong> issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.</p>
-</blockquote>
-<h4><a id="user-content-before-submitting-a-bug-report" class="anchor" aria-hidden="true" href="#before-submitting-a-bug-report"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Before Submitting A Bug Report</h4><ul>
-<li><strong>Determine <a href="#the-components-of-substra">which repository the problem should be reported in</a></strong>.</li>
-<li><strong>Perform a <a href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, add a comment to the existing issue instead of opening a new one.</li>
+<div><p><strong>Note:</strong> If you find a <strong>Closed</strong> issue that seems like it is the same thing that you’re experiencing, open a new issue and include a link to the original issue in the body of your new one.</p>
+</div></blockquote>
+<div class="section" id="before-submitting-a-bug-report">
+<h4>Before Submitting A Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Permalink to this headline">¶</a></h4>
+<!-- * Add debugging section ??--><ul class="simple">
+<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the problem should be reported in</a></strong>.</p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
-<h4><a id="user-content-how-do-i-submit-a-good-bug-report" class="anchor" aria-hidden="true" href="#how-do-i-submit-a-good-bug-report"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How Do I Submit A (Good) Bug Report?</h4>
-<p>Bugs are tracked as <a href="https://guides.github.com/features/issues/">GitHub issues</a>. After you've determined <a href="#the-components-of-substra">which repository</a> your bug is related to, create an issue on that repository and provide relevant information by filling in <a href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report.md">the template</a>.
+</div>
+<div class="section" id="how-do-i-submit-a-good-bug-report">
+<h4>How Do I Submit A (Good) Bug Report?<a class="headerlink" href="#how-do-i-submit-a-good-bug-report" title="Permalink to this headline">¶</a></h4>
+<p>Bugs are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#the-components-of-substra">which repository</a> your bug is related to, create an issue on that repository and provide relevant information by filling in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the template</a>.
 The template should guide you to submit a good bug report.
-If you don't know which repository your bug is related to, submit an issue <a href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
-<h3><a id="user-content-suggesting-enhancements" class="anchor" aria-hidden="true" href="#suggesting-enhancements"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Suggesting Enhancements</h3>
-<p>This section guides you through submitting an enhancement suggestion for Substra, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion <g-emoji class="g-emoji" alias="memo" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png">📝</g-emoji> and find related suggestions <g-emoji class="g-emoji" alias="mag_right" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png">🔎</g-emoji>.</p>
-<p>Before creating enhancement suggestions, please check <a href="#before-submitting-an-enhancement-suggestion">this list</a> as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please <a href="#how-do-i-submit-a-good-enhancement-suggestion">include as many details as possible</a>. Fill in <a href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request.md">the template</a>, including the steps that you imagine you would take if the feature you're requesting existed.</p>
-<h4><a id="user-content-before-submitting-an-enhancement-suggestion" class="anchor" aria-hidden="true" href="#before-submitting-an-enhancement-suggestion"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Before Submitting An Enhancement Suggestion</h4>
-<ul>
-<li><strong>Check if there is a newer version which already provides that enhancement.</strong></li>
-<li><strong>Determine <a href="#the-components-of-substra">which repository the enhancement should be suggested in</a>.</strong></li>
-<li><strong>Perform a <a href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</li>
+If you don’t know which repository your bug is related to, submit an issue <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
+</div>
+</div>
+<div class="section" id="suggesting-enhancements">
+<h3>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Permalink to this headline">¶</a></h3>
+<p>This section guides you through submitting an enhancement suggestion for Substra, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.</p>
+<p>Before creating enhancement suggestions, please check <a class="reference external" href="#before-submitting-an-enhancement-suggestion">this list</a> as you might find out that you don’t need to create one. When you are creating an enhancement suggestion, please <a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">include as many details as possible</a>. Fill in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request">the template</a>, including the steps that you imagine you would take if the feature you’re requesting existed.</p>
+<div class="section" id="before-submitting-an-enhancement-suggestion">
+<h4>Before Submitting An Enhancement Suggestion<a class="headerlink" href="#before-submitting-an-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Check if there is a newer version which already provides that enhancement.</strong></p></li>
+<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the enhancement should be suggested in</a>.</strong></p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
-<h4><a id="user-content-how-do-i-submit-a-good-enhancement-suggestion" class="anchor" aria-hidden="true" href="#how-do-i-submit-a-good-enhancement-suggestion"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How Do I Submit A (Good) Enhancement Suggestion?</h4>
-<p>Enhancement suggestions are tracked as <a href="https://guides.github.com/features/issues/">GitHub issues</a>. After you've determined <a href="#components-of-substra">which repository</a> your enhancement suggestion is related to, create an issue on that repository and provide relevant information by filling in <a href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/enhancement_suggestion.md">the template</a>.
+</div>
+<div class="section" id="how-do-i-submit-a-good-enhancement-suggestion">
+<h4>How Do I Submit A (Good) Enhancement Suggestion?<a class="headerlink" href="#how-do-i-submit-a-good-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
+<p>Enhancement suggestions are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#components-of-substra">which repository</a> your enhancement suggestion is related to, create an issue on that repository and provide relevant information by filling in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/enhancement_suggestion">the template</a>.
 The template should guide you to submit a good enhancement suggestion.
-If you don't know which repository your suggestion is related to, submit an issue to <a href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
-<h3><a id="user-content-your-first-code-contribution" class="anchor" aria-hidden="true" href="#your-first-code-contribution"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Your First Code Contribution</h3>
+If you don’t know which repository your suggestion is related to, submit an issue to <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
+</div>
+</div>
+<div class="section" id="your-first-code-contribution">
+<h3>Your First Code Contribution<a class="headerlink" href="#your-first-code-contribution" title="Permalink to this headline">¶</a></h3>
 <p>Unsure where to begin contributing to the code of Substra?
-You can start by looking through these <code>beginner</code> and <code>help-wanted</code> issues:</p>
-<ul>
-<li><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=is%3Aopen+is%3Aissue+label%3Abeginner+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc">Beginner issues</a> - issues which should only require a few lines of code, and a test or two.</li>
-<li><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc+-label%3Abeginner">Help wanted issues</a> - issues which should be a bit more involved than <code>beginner</code> issues.</li>
+You can start by looking through these <code class="docutils literal notranslate"><span class="pre">beginner</span></code> and <code class="docutils literal notranslate"><span class="pre">help-wanted</span></code> issues:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/search?utf8=%E2%9C%93&amp;q=is%3Aopen+is%3Aissue+label%3Abeginner+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc">Beginner issues</a> - issues which should only require a few lines of code, and a test or two.</p></li>
+<li><p><a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc+-label%3Abeginner">Help wanted issues</a> - issues which should be a bit more involved than <code class="docutils literal notranslate"><span class="pre">beginner</span></code> issues.</p></li>
 </ul>
 <p>Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.</p>
-<h4><a id="user-content-local-development" class="anchor" aria-hidden="true" href="#local-development"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Local development</h4>
-<p>Substra can be developed locally. For instructions on how to do this, see <a href="https://github.com/SubstraFoundation/substra-cli/blob/dev/docs/local_install.md">this document</a> which is part of the  Substra Documentation.</p>
-<h3><a id="user-content-pull-requests" class="anchor" aria-hidden="true" href="#pull-requests"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pull Requests</h3>
+<div class="section" id="local-development">
+<h4>Local development<a class="headerlink" href="#local-development" title="Permalink to this headline">¶</a></h4>
+<p>Substra can be developed locally. For instructions on how to do this, see <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli/blob/dev/docs/local_install">this document</a> which is part of the  Substra Documentation.</p>
+</div>
+</div>
+<div class="section" id="pull-requests">
+<h3>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h3>
 <p>The process described here has several goals:</p>
-<ul>
-<li>Maintain the quality of Substra</li>
-<li>Fix problems that are important to users</li>
-<li>Engage the community in working toward the best possible Substra</li>
-<li>Enable a sustainable system for Substra's maintainers to review contributions</li>
+<ul class="simple">
+<li><p>Maintain the quality of Substra</p></li>
+<li><p>Fix problems that are important to users</p></li>
+<li><p>Engage the community in working toward the best possible Substra</p></li>
+<li><p>Enable a sustainable system for Substra’s maintainers to review contributions</p></li>
 </ul>
 <p>Please follow these steps to have your contribution considered by the maintainers:</p>
-<ol>
-<li>Follow all instructions in <a href="/SubstraFoundation/.github/blob/master/PULL_REQUEST_TEMPLATE.md">the template</a></li>
-<li>Follow the <a href="#coding-guidelines">coding guidelines</a></li>
-<li>After you submit your pull request, verify that all <a href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details></li>
+<ol class="simple">
+<li><p>Follow all instructions in <a class="reference external" href="PULL_REQUEST_TEMPLATE">the template</a></p></li>
+<li><p>Follow the <a class="reference external" href="#coding-guidelines">coding guidelines</a></p></li>
+<li><p>After you submit your pull request, verify that all <a class="reference external" href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details></p></li>
 </ol>
 <p>While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.</p>
-<h3><a id="user-content-code-review" class="anchor" aria-hidden="true" href="#code-review"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code review</h3>
+</div>
+<div class="section" id="code-review">
+<h3>Code review<a class="headerlink" href="#code-review" title="Permalink to this headline">¶</a></h3>
 <p>Reviewing code is a crucial component of the development of the project.
 We strongly encourage anyone to start reviewing code of other developers.
 The code review process is often highly educational for everybody involved.</p>
-<h4><a id="user-content-review-checklist" class="anchor" aria-hidden="true" href="#review-checklist"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review checklist</h4>
+<div class="section" id="review-checklist">
+<h4>Review checklist<a class="headerlink" href="#review-checklist" title="Permalink to this headline">¶</a></h4>
 <p>Please make sure you went through this checklist:</p>
-<ul>
-<li>Does this code read like prose?</li>
-<li>Do the methods do what the name of the method claims that they’ll do? Same for classes?</li>
-<li>Is the code as modular as possible?</li>
-<li>Can I get an understanding of the desired behavior just by doing quick scans through unit and acceptance tests?</li>
-<li>Does the understanding of the desired behavior match the requirements/stories for this work?</li>
-<li>If there is a small doubt on the fact that acceptance tests might not be enough, have I tested that it works ?</li>
-<li>Is this code introducing any new dependencies between classes/components/modules and, if so, is it necessary to do that?</li>
-<li>Is this code idiomatic, taking full advantage of the language, frameworks, and tools that we use?</li>
-<li>Is anything here a re-implementation of existing functionality the developer may not be aware of?</li>
+<ul class="simple">
+<li><p>Does this code read like prose?</p></li>
+<li><p>Do the methods do what the name of the method claims that they’ll do? Same for classes?</p></li>
+<li><p>Is the code as modular as possible?</p></li>
+<li><p>Can I get an understanding of the desired behavior just by doing quick scans through unit and acceptance tests?</p></li>
+<li><p>Does the understanding of the desired behavior match the requirements/stories for this work?</p></li>
+<li><p>If there is a small doubt on the fact that acceptance tests might not be enough, have I tested that it works ?</p></li>
+<li><p>Is this code introducing any new dependencies between classes/components/modules and, if so, is it necessary to do that?</p></li>
+<li><p>Is this code idiomatic, taking full advantage of the language, frameworks, and tools that we use?</p></li>
+<li><p>Is anything here a re-implementation of existing functionality the developer may not be aware of?</p></li>
 </ul>
-<h4><a id="user-content-review-best-practices" class="anchor" aria-hidden="true" href="#review-best-practices"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review best practices</h4>
-<p>Please make sure to be <strong>as constructive as possible</strong>.<br>
-This article summarises unhelpful and helpful behaviors when doing a code review:
-<a href="https://medium.com/@sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c" rel="nofollow">Unlearning toxic behaviors in a code review culture</a></p>
+</div>
+<div class="section" id="review-best-practices">
+<h4>Review best practices<a class="headerlink" href="#review-best-practices" title="Permalink to this headline">¶</a></h4>
+<p>Please make sure to be <strong>as constructive as possible</strong>.<br />This article summarises unhelpful and helpful behaviors when doing a code review:
+<a class="reference external" href="https://medium.com/&#64;sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c">Unlearning toxic behaviors in a code review culture</a></p>
 <p><strong>TLDR;</strong></p>
-<h5><a id="user-content-unhelpful-behavior" class="anchor" aria-hidden="true" href="#unhelpful-behavior"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unhelpful behavior:</h5>
+<div class="section" id="unhelpful-behavior">
+<h5>Unhelpful behavior:<a class="headerlink" href="#unhelpful-behavior" title="Permalink to this headline">¶</a></h5>
 <ul>
-<li>
-<p>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.
+<li><p>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.
 Instead of saying:</p>
 <blockquote>
-<p>This component should be stateless.
+<div><p>This component should be stateless.
 Provide some context behind the recommendation:
 Since this component doesn’t have any lifecycle methods or state, it could be made a stateless functional component. This will improve performance and readability. <em>Here</em> is some documentation.</p>
-</blockquote>
+</div></blockquote>
 </li>
-<li>
-<p>Don't ask judgmental questions.
+<li><p>Don’t ask judgmental questions.
 Avoid asking questions like:</p>
 <blockquote>
-<p>Why didn’t you just do ___ here?
+<div><p>Why didn’t you just do ___ here?
 Oftentimes, these judgmental questions are just veiled demands. Instead, provide a recommendation (with documentation and citations) and leave out harsh words.</p>
-</blockquote>
+</div></blockquote>
 <blockquote>
-<p>You can do ___ which has the benefit of ___.</p>
-</blockquote>
+<div><p>You can do ___ which has the benefit of ___.</p>
+</div></blockquote>
 </li>
-<li>
-<p>Avoid being sarcastic.
+<li><p>Avoid being sarcastic.
 Unhelpful:</p>
 <blockquote>
-<p>Did you even test this code before you checked it in?
+<div><p>Did you even test this code before you checked it in?
 Helpful:
 This breaks when you enter a negative number. Can you please address this case?</p>
-</blockquote>
+</div></blockquote>
 </li>
-<li>
-<p>Don't ask engineers to solve problems they didn’t cause “while they are at it”.
-If the code solves the issue/ticket the dev was working on and doesn’t introduce any new issues to the codebase, give the pull request a “thumbs up” and then create a ticket to clean up the existing bad code.</p>
-</li>
-<li>
-<p>Don’t ghost people.</p>
-</li>
+<li><p>Don’t ask engineers to solve problems they didn’t cause “while they are at it”.
+If the code solves the issue/ticket the dev was working on and doesn’t introduce any new issues to the codebase, give the pull request a “thumbs up” and then create a ticket to clean up the existing bad code.</p></li>
+<li><p>Don’t ghost people.</p></li>
 </ul>
-<h5><a id="user-content-helpful-code-review-practices" class="anchor" aria-hidden="true" href="#helpful-code-review-practices"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Helpful Code Review Practices</h5>
+</div>
+<div class="section" id="helpful-code-review-practices">
+<h5>Helpful Code Review Practices<a class="headerlink" href="#helpful-code-review-practices" title="Permalink to this headline">¶</a></h5>
 <ul>
-<li>Use questions or recommendations to drive dialog</li>
-<li>Collaborate, don’t back-seat drive</li>
-<li>Respond to every comment</li>
-<li>Know when to take a discussion offline
+<li><p>Use questions or recommendations to drive dialog</p></li>
+<li><p>Collaborate, don’t back-seat drive</p></li>
+<li><p>Respond to every comment</p></li>
+<li><p>Know when to take a discussion offline</p>
 <blockquote>
-<p>The kinds of problems that take hours and tons of comments can usually be resolved in a few minutes of productive talk. — Tidy Java</p>
-</blockquote>
+<div><p>The kinds of problems that take hours and tons of comments can usually be resolved in a few minutes of productive talk. — Tidy Java</p>
+</div></blockquote>
 </li>
-<li>Use opportunities to teach, and don’t show off
+<li><p>Use opportunities to teach, and don’t show off</p>
 <blockquote>
-<p>Before choosing to participate in a code review, ask yourself:
+<div><p>Before choosing to participate in a code review, ask yourself:
 Is your comment helping the other developer learn or are you nitpicking to participate?</p>
-</blockquote>
+</div></blockquote>
 </li>
-<li>Don’t show surprise.
-Don’t make people feel bad that they “should already have known” this piece of info. <a href="https://www.recurse.com/manual#no-feigned-surprise" rel="nofollow">https://www.recurse.com/manual#no-feigned-surprise</a></li>
+<li><p>Don’t show surprise.
+Don’t make people feel bad that they “should already have known” this piece of info. https://www.recurse.com/manual#no-feigned-surprise</p></li>
 </ul>
-<h2><a id="user-content-coding-guidelines" class="anchor" aria-hidden="true" href="#coding-guidelines"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Coding guidelines</h2>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="coding-guidelines">
+<h2>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Permalink to this headline">¶</a></h2>
 <p><strong>This section points to standard guides we try to follow in the Substra project.</strong></p>
-<h3><a id="user-content-python-coding-guideline" class="anchor" aria-hidden="true" href="#python-coding-guideline"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python Coding Guideline</h3>
-<ul>
-<li>Our <strong>libraries</strong> supports python 3.6 and newer</li>
-<li>Our <strong>applications</strong> are written for python 3.6</li>
+<div class="section" id="python-coding-guideline">
+<h3>Python Coding Guideline<a class="headerlink" href="#python-coding-guideline" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Our <strong>libraries</strong> supports python 3.6 and newer</p></li>
+<li><p>Our <strong>applications</strong> are written for python 3.6</p></li>
 </ul>
-<p>The Substra project tries to closely follow the official Python guideleines detailed in <a href="https://www.python.org/dev/peps/pep-0008/" rel="nofollow">PEP8</a>. Please read it and follow it.</p>
-<p>Youn can check your code using <a href="http://flake8.pycqa.org/en/latest/" rel="nofollow">flake8</a>.</p>
+<p>The Substra project tries to closely follow the official Python guideleines detailed in <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>. Please read it and follow it.</p>
+<p>Youn can check your code using <a class="reference external" href="http://flake8.pycqa.org/en/latest/">flake8</a>.</p>
 <p>In addition apply the following guidelines:</p>
-<ul>
-<li>Line length up to 119 characters, contrary to the PEP8 guidelines. PEP8 recommends a 79 char limit, but we believe that sometimes it makes the code harder to read.</li>
-<li>Use double quote ". When a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</li>
-<li>String formatting: use <a href="https://www.python.org/dev/peps/pep-0498/" rel="nofollow">f-strings</a></li>
-<li>Docstings: <a href="https://www.python.org/dev/peps/pep-0257/" rel="nofollow">PEP-257</a> says that "The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions. However, it doesn't specify any details of what this should look like. Fortunately, the Google python style guide provides a <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">reasonable syntax for arguments and return values</a>.</li>
-<li>Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.</li>
-<li>When contributing to existing projects - do not change the style.</li>
+<ul class="simple">
+<li><p>Line length up to 119 characters, contrary to the PEP8 guidelines. PEP8 recommends a 79 char limit, but we believe that sometimes it makes the code harder to read.</p></li>
+<li><p>Use double quote “. When a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</p></li>
+<li><p>String formatting: use <a class="reference external" href="https://www.python.org/dev/peps/pep-0498/">f-strings</a></p></li>
+<li><p>Docstings: <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP-257</a> says that “The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions. However, it doesn’t specify any details of what this should look like. Fortunately, the Google python style guide provides a <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">reasonable syntax for arguments and return values</a>.</p></li>
+<li><p>Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.</p></li>
+<li><p>When contributing to existing projects - do not change the style.</p></li>
 </ul>
-<h3><a id="user-content-go-coding-guidelines" class="anchor" aria-hidden="true" href="#go-coding-guidelines"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Go Coding Guidelines</h3>
+</div>
+<div class="section" id="go-coding-guidelines">
+<h3>Go Coding Guidelines<a class="headerlink" href="#go-coding-guidelines" title="Permalink to this headline">¶</a></h3>
 <p>The Substra project tries to follow the following resources:</p>
-<ul>
-<li><a href="https://golang.org/doc/effective_go.html" rel="nofollow">Effective Go</a></li>
-<li><a href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a></li>
+<ul class="simple">
+<li><p><a class="reference external" href="https://golang.org/doc/effective_go.html">Effective Go</a></p></li>
+<li><p><a class="reference external" href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a></p></li>
 </ul>
-<h3><a id="user-content-third-party-library-usage" class="anchor" aria-hidden="true" href="#third-party-library-usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Third Party Library Usage</h3>
+</div>
+<div class="section" id="third-party-library-usage">
+<h3>Third Party Library Usage<a class="headerlink" href="#third-party-library-usage" title="Permalink to this headline">¶</a></h3>
 <p>There are several advantages of using third party libraries:</p>
-<ul>
-<li>saving time</li>
-<li>not reinventing the iPhone</li>
-<li>using tested code</li>
-<li>using modular code</li>
+<ul class="simple">
+<li><p>saving time</p></li>
+<li><p>not reinventing the iPhone</p></li>
+<li><p>using tested code</p></li>
+<li><p>using modular code</p></li>
 </ul>
 <p>There are also some disadvantages:</p>
-<ul>
-<li>Dependency</li>
-<li>Lack of Support</li>
-<li>Overuse</li>
-<li>Security Issues</li>
+<ul class="simple">
+<li><p>Dependency</p></li>
+<li><p>Lack of Support</p></li>
+<li><p>Overuse</p></li>
+<li><p>Security Issues</p></li>
 </ul>
-<h4><a id="user-content-how-to-choose-the-right-library-" class="anchor" aria-hidden="true" href="#how-to-choose-the-right-library-"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to choose the right library ?</h4>
+<div class="section" id="how-to-choose-the-right-library">
+<h4>How to choose the right library ?<a class="headerlink" href="#how-to-choose-the-right-library" title="Permalink to this headline">¶</a></h4>
 <p>To maximise adavantages over disadvantages, please consider carefully the following questions:</p>
+<ul class="simple">
+<li><p>Is this library going to be used for core features?</p></li>
+<li><p>Is the library maintained?</p>
 <ul>
-<li>Is this library going to be used for core features?</li>
-<li>Is the library maintained?
-<ul>
-<li>Release frequency, number of issues, pull requests could be a good indicators.</li>
+<li><p>Release frequency, number of issues, pull requests could be a good indicators.</p></li>
 </ul>
 </li>
-<li>How popular is the library?
+<li><p>How popular is the library?</p>
 <ul>
-<li>Ecosystem and community (stars on github, stackoverflow discussions, etc).
-<a href="https://github.com/Ullaakut/astronomer">Check fake stars on github</a></li>
-<li>Blog posts.</li>
-<li>Who use the library at scale?</li>
+<li><p>Ecosystem and community (stars on github, stackoverflow discussions, etc).
+<a class="reference external" href="https://github.com/Ullaakut/astronomer">Check fake stars on github</a></p></li>
+<li><p>Blog posts.</p></li>
+<li><p>Who use the library at scale?</p></li>
 </ul>
 </li>
-<li>How reliable is the author?</li>
-<li>How well-written is the library?
+<li><p>How reliable is the author?</p></li>
+<li><p>How well-written is the library?</p>
 <ul>
-<li>The library meet common langage good practicies.</li>
-<li>The library have tests and is well documented.</li>
+<li><p>The library meet common langage good practicies.</p></li>
+<li><p>The library have tests and is well documented.</p></li>
 </ul>
 </li>
-<li>Does the library meet your specific requirements?</li>
-<li>Does the library have the correct license?</li>
-<li>Is library Licence compatible with our project and licences policies?</li>
+<li><p>Does the library meet your specific requirements?</p></li>
+<li><p>Does the library have the correct license?</p></li>
+<li><p>Is library Licence compatible with our project and licences policies?</p></li>
 </ul>
-<h4><a id="user-content-how-to-check-licence-compatibility" class="anchor" aria-hidden="true" href="#how-to-check-licence-compatibility"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to check licence compatibility</h4>
+</div>
+<div class="section" id="how-to-check-licence-compatibility">
+<h4>How to check licence compatibility<a class="headerlink" href="#how-to-check-licence-compatibility" title="Permalink to this headline">¶</a></h4>
 <p>The Substra project is license under a Apache 2.0 license.
-<strong>Libraries used in the project must thus be <a href="https://www.wikiwand.com/en/Permissive_software_license" rel="nofollow">permissive licenses</a></strong>.</p>
-<h4><a id="user-content-further-reading" class="anchor" aria-hidden="true" href="#further-reading"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Further reading</h4>
-<ul>
-<li><a href="https://www.gnu.org/licenses/license-list.html" rel="nofollow">Licence List</a></li>
-<li><a href="https://tldrlegal.com" rel="nofollow">Check Legal</a></li>
-<li><a href="https://dwheeler.com/essays/floss-license-slide.pdf" rel="nofollow">Floss License Slide</a></li>
-<li><a href="https://safecode.org/wp-content/uploads/2017/05/SAFECode_TPC_Whitepaper.pdf" rel="nofollow">Managing Security Risks Inherent in the Use of Thirdparty Components</a></li>
+<strong>Libraries used in the project must thus be <a class="reference external" href="https://www.wikiwand.com/en/Permissive_software_license">permissive licenses</a></strong>.</p>
+</div>
+<div class="section" id="further-reading">
+<h4>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnu.org/licenses/license-list.html">Licence List</a></p></li>
+<li><p><a class="reference external" href="https://tldrlegal.com">Check Legal</a></p></li>
+<li><p><a class="reference external" href="https://dwheeler.com/essays/floss-license-slide.pdf">Floss License Slide</a></p></li>
+<li><p><a class="reference external" href="https://safecode.org/wp-content/uploads/2017/05/SAFECode_TPC_Whitepaper.pdf">Managing Security Risks Inherent in the Use of Thirdparty Components</a></p></li>
 </ul>
-<h2><a id="user-content-additional-notes" class="anchor" aria-hidden="true" href="#additional-notes"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional Notes</h2>
-<h3><a id="user-content-issue-and-pull-request-labels" class="anchor" aria-hidden="true" href="#issue-and-pull-request-labels"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Issue and Pull Request Labels</h3>
+</div>
+</div>
+</div>
+<div class="section" id="additional-notes">
+<h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="issue-and-pull-request-labels">
+<h3>Issue and Pull Request Labels<a class="headerlink" href="#issue-and-pull-request-labels" title="Permalink to this headline">¶</a></h3>
 <p>This section lists the labels we use to help us track and manage issues and pull requests. These labels are used across all Substra repositories.</p>
-<p><a href="https://help.github.com/articles/searching-issues/">GitHub search</a> makes it easy to use labels for finding groups of issues or pull requests you're interested in.</p>
-<p>The labels are loosely grouped by their purpose, but it's not required that every issue have a label from every group or that an issue can't have more than one label from the same group.</p>
+<p><a class="reference external" href="https://help.github.com/articles/searching-issues/">GitHub search</a> makes it easy to use labels for finding groups of issues or pull requests you’re interested in.</p>
+<p>The labels are loosely grouped by their purpose, but it’s not required that every issue have a label from every group or that an issue can’t have more than one label from the same group.</p>
 <p>Please open an issue on TODO define if you have suggestions for new labels, and if you notice some labels are missing on some repositories, then please open an issue on that repository.</p>
-<h4><a id="user-content-type-of-issue-and-issue-state" class="anchor" aria-hidden="true" href="#type-of-issue-and-issue-state"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type of Issue and Issue State</h4>
+<div class="section" id="type-of-issue-and-issue-state">
+<h4>Type of Issue and Issue State<a class="headerlink" href="#type-of-issue-and-issue-state" title="Permalink to this headline">¶</a></h4>
 <p>TODO</p>
-<p>| Label name | <g-emoji class="g-emoji" alias="mag_right" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png">🔎</g-emoji> | Description |
-| --- | --- | --- | --- |
-| <code>enhancement</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aenhancement">search</a> | Feature requests. |
-| <code>bug</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abug">search</a> | Confirmed bugs or reports that are very likely to be bugs. |
-| <code>question</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aquestion">search</a> | Questions more than bug reports or feature requests (e.g. how do I do X). |
-| <code>feedback</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Afeedback">search</a> | General feedback more than bug reports or feature requests. |
-| <code>help-wanted</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ahelp-wanted">search</a> | The Atom core team would appreciate help from the community in resolving these issues. |
-| <code>beginner</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abeginner">search</a> | Less complex issues which would be good first issues to work on for users who want to contribute to Atom. |
-| <code>more-information-needed</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Amore-information-needed">search</a> | More information needs to be collected about these problems or feature requests (e.g. steps to reproduce). |
-| <code>needs-reproduction</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aneeds-reproduction">search</a> | Likely bugs, but haven't been reliably reproduced. |
-| <code>blocked</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ablocked">search</a> | Issues blocked on other issues. |
-| <code>duplicate</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aduplicate">search</a> | Issues which are duplicates of other issues, i.e. they have been reported before. |
-| <code>wontfix</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awontfix">search</a> | The Atom core team has decided not to fix these issues for now, either because they're working as intended or for some other reason. |
-| <code>invalid</code> |  <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ainvalid">search</a> | Issues which aren't valid (e.g. user errors). |
-| <code>wrong-repo</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awrong-repo">search</a> | Issues reported on the wrong repository.  |</p>
-<h4><a id="user-content-topic-categories" class="anchor" aria-hidden="true" href="#topic-categories"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Topic Categories</h4>
+<p>| Label name | :mag_right: | Description |
+| — | — | — | — |
+| <code class="docutils literal notranslate"><span class="pre">enhancement</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aenhancement">search</a> | Feature requests. |
+| <code class="docutils literal notranslate"><span class="pre">bug</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abug">search</a> | Confirmed bugs or reports that are very likely to be bugs. |
+| <code class="docutils literal notranslate"><span class="pre">question</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aquestion">search</a> | Questions more than bug reports or feature requests (e.g. how do I do X). |
+| <code class="docutils literal notranslate"><span class="pre">feedback</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Afeedback">search</a> | General feedback more than bug reports or feature requests. |
+| <code class="docutils literal notranslate"><span class="pre">help-wanted</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ahelp-wanted">search</a> | The Atom core team would appreciate help from the community in resolving these issues. |
+| <code class="docutils literal notranslate"><span class="pre">beginner</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abeginner">search</a> | Less complex issues which would be good first issues to work on for users who want to contribute to Atom. |
+| <code class="docutils literal notranslate"><span class="pre">more-information-needed</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Amore-information-needed">search</a> | More information needs to be collected about these problems or feature requests (e.g. steps to reproduce). |
+| <code class="docutils literal notranslate"><span class="pre">needs-reproduction</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aneeds-reproduction">search</a> | Likely bugs, but haven’t been reliably reproduced. |
+| <code class="docutils literal notranslate"><span class="pre">blocked</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ablocked">search</a> | Issues blocked on other issues. |
+| <code class="docutils literal notranslate"><span class="pre">duplicate</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aduplicate">search</a> | Issues which are duplicates of other issues, i.e. they have been reported before. |
+| <code class="docutils literal notranslate"><span class="pre">wontfix</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awontfix">search</a> | The Atom core team has decided not to fix these issues for now, either because they’re working as intended or for some other reason. |
+| <code class="docutils literal notranslate"><span class="pre">invalid</span></code> |  <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ainvalid">search</a> | Issues which aren’t valid (e.g. user errors). |
+| <code class="docutils literal notranslate"><span class="pre">wrong-repo</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awrong-repo">search</a> | Issues reported on the wrong repository.  |</p>
+</div>
+<div class="section" id="topic-categories">
+<h4>Topic Categories<a class="headerlink" href="#topic-categories" title="Permalink to this headline">¶</a></h4>
 <p>TODO</p>
-<p>| Label name | <g-emoji class="g-emoji" alias="mag_right" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png">🔎</g-emoji> | Description |
-| --- | --- | --- | --- |
-| <code>documentation</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Adocumentation">search</a> | Related to any type of documentation. |
-| <code>security</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Asecurity">search</a> | Related to security. |</p>
-<h4><a id="user-content-pull-request-labels" class="anchor" aria-hidden="true" href="#pull-request-labels"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pull Request Labels</h4>
-<p>| Label name | <g-emoji class="g-emoji" alias="mag_right" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f50e.png">🔎</g-emoji> | Description
-| --- | --- | --- | --- |
-| <code>work-in-progress</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Awork-in-progress">search</a> | Pull requests which are still being worked on, more changes will follow. |
-| <code>needs-review</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-review">search</a> | Pull requests which need code review, and approval from maintainers or Atom core team. |
-| <code>under-review</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aunder-review">search</a> | Pull requests being reviewed by maintainers or Atom core team. |
-| <code>requires-changes</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Arequires-changes">search</a> | Pull requests which need to be updated based on review comments and then reviewed again. |
-| <code>needs-testing</code> | <a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-testing">search</a> | Pull requests which need manual testing. |</p>
-</article>
-  </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</pre></div>
+<p>| Label name | :mag_right: | Description |
+| — | — | — | — |
+| <code class="docutils literal notranslate"><span class="pre">documentation</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Adocumentation">search</a> | Related to any type of documentation. |
+| <code class="docutils literal notranslate"><span class="pre">security</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Asecurity">search</a> | Related to security. |</p>
 </div>
-  <details class="details-reset details-overlay details-overlay-dark">
-    <summary data-hotkey="l" aria-label="Jump to line"></summary>
-    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast linejump" aria-label="Jump to line">
-      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-jump-to-line-form Box-body d-flex" action="" accept-charset="UTF-8" method="get">
-        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
-        <button type="submit" class="btn" data-close-dialog>Go</button>
-</form>    </details-dialog>
-  </details>  </div>
-</div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">main</span><span class="o">&gt;</span>
-</pre></div>
+<div class="section" id="pull-request-labels">
+<h4>Pull Request Labels<a class="headerlink" href="#pull-request-labels" title="Permalink to this headline">¶</a></h4>
+<p>| Label name | :mag_right: | Description
+| — | — | — | — |
+| <code class="docutils literal notranslate"><span class="pre">work-in-progress</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Awork-in-progress">search</a> | Pull requests which are still being worked on, more changes will follow. |
+| <code class="docutils literal notranslate"><span class="pre">needs-review</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-review">search</a> | Pull requests which need code review, and approval from maintainers or Atom core team. |
+| <code class="docutils literal notranslate"><span class="pre">under-review</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aunder-review">search</a> | Pull requests being reviewed by maintainers or Atom core team. |
+| <code class="docutils literal notranslate"><span class="pre">requires-changes</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Arequires-changes">search</a> | Pull requests which need to be updated based on review comments and then reviewed again. |
+| <code class="docutils literal notranslate"><span class="pre">needs-testing</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-testing">search</a> | Pull requests which need manual testing. |</p>
 </div>
-  </div>  </div><div class="footer container-lg width-full p-responsive" role="contentinfo">
-  <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
-    <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-      <li class="mr-3 mr-lg-0">&copy; 2020 GitHub, Inc.</li>
-        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
-        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
-        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to security, text:security" href="https://github.com/security">Security</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
-        <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com">Help</a></li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+</div>
+</div>
+</div>
 
-<span class="o">&lt;</span><span class="n">a</span> <span class="n">aria</span><span class="o">-</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Homepage&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;GitHub&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;footer-octicon d-none d-lg-block mx-lg-4&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://github.com&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">svg</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;24&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;octicon octicon-mark-github&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 16 16&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;24&quot;</span> <span class="n">aria</span><span class="o">-</span><span class="n">hidden</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;&lt;</span><span class="n">path</span> <span class="n">fill</span><span class="o">-</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;evenodd&quot;</span> <span class="n">d</span><span class="o">=</span><span class="s2">&quot;M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</a>
-   <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to contact, text:contact" href="https://github.com/contact">Contact GitHub</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
-      <li class="mr-3 mr-lg-0"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
-      <li class="mr-3 mr-lg-0"><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
-        <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
-    </ul>
-  </div>
-  <div class="d-flex flex-justify-center pb-6">
-    <span class="f6 text-gray-light"></span>
-  </div>
-</div>  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
-    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
-    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
-      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
-    </button>
-    You can’t perform that action at this time.
-  </div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">script</span> <span class="n">crossorigin</span><span class="o">=</span><span class="s2">&quot;anonymous&quot;</span> <span class="k">async</span><span class="o">=</span><span class="s2">&quot;async&quot;</span> <span class="n">integrity</span><span class="o">=</span><span class="s2">&quot;sha512-WcQmT2vhcClFVOaaAJV/M+HqsJ2Gq/myvl6F3gCVBxykazXTs+i5fvxncSXwyG1CSfcrqmLFw/R/bmFYzprX2A==&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/javascript&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;js-conditional-compat&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/assets/compat-bootstrap-59c4264f.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">crossorigin</span><span class="o">=</span><span class="s2">&quot;anonymous&quot;</span> <span class="n">integrity</span><span class="o">=</span><span class="s2">&quot;sha512-6XBdUZGib4aqdruJTnLMOLpIh0VJsGlgQ7M3vndWJIH6YQNv+zqpo1TbCDzjHJ+YYEm4xkEinaY0VsemDUfi9A==&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/javascript&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/assets/environment-bootstrap-e9705d51.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">crossorigin</span><span class="o">=</span><span class="s2">&quot;anonymous&quot;</span> <span class="k">async</span><span class="o">=</span><span class="s2">&quot;async&quot;</span> <span class="n">integrity</span><span class="o">=</span><span class="s2">&quot;sha512-QKyxLBCBEvv42oSrCTf/MpyWhA/kKSeJz8jMaZfFYeyfEdYDOjoquIg34MNXgQE6clHO+iiR5il9DD9NtPzsvA==&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/javascript&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/assets/vendor-40acb12c.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">crossorigin</span><span class="o">=</span><span class="s2">&quot;anonymous&quot;</span> <span class="k">async</span><span class="o">=</span><span class="s2">&quot;async&quot;</span> <span class="n">integrity</span><span class="o">=</span><span class="s2">&quot;sha512-CcKFBqQZKOCZU5otP6R8GH2k+iJ3zC9r2z2Iakfs/Bo9/ptHy6JIWQN3FPhVuS3CR+Q/CkEOSfg+WJfoq3YMxQ==&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/javascript&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/assets/frameworks-09c28506.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">crossorigin</span><span class="o">=</span><span class="s2">&quot;anonymous&quot;</span> <span class="k">async</span><span class="o">=</span><span class="s2">&quot;async&quot;</span> <span class="n">integrity</span><span class="o">=</span><span class="s2">&quot;sha512-DHa5/4dDa0vQTQl0B15O85PTcdgWYQpQSTnP2aScFLQ4O6LnxyOBW47hkjYa1nvj503maSVmgRwJz0HJx5LzjA==&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/javascript&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.githubassets.com/assets/github-bootstrap-0c76b9ff.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-  <div class="js-stale-session-flash flash flash-warn flash-banner" hidden
-    >
-    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg>
-    <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
-    <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
-  </div>
-  <template id="site-details-dialog">
-  <details class="details-reset details-overlay details-overlay-dark lh-default text-gray-dark hx_rsm" open>
-    <summary role="button" aria-label="Close dialog"></summary>
-    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
-      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
-        <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
-      </button>
-      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
-    </details-dialog>
-  </details>
-</template>  <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
-  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
-  </div>
-</div>  <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>  </body>
-</html>
 
            </div>
            
