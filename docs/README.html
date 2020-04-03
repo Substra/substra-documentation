@@ -169,10 +169,39 @@
             
   <div class="section" id="let-s-build-publish-the-documentation">
 <h1>Let’s build &amp; publish the documentation<a class="headerlink" href="#let-s-build-publish-the-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="repositories">
+<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Substra <a class="reference external" href="https://github.com/SubstraFoundation/substra">repository</a></p></li>
+<li><p>Substra-documentation <a class="reference external" href="https://github.com/SubstraFoundation/substra-documentation/">repository</a></p></li>
+<li><p>Substra <a class="reference external" href="https://doc.substra.ai/">documentation</a></p></li>
+</ul>
+</div>
+<div class="section" id="files-directories">
+<h2>Files &amp; Directories<a class="headerlink" href="#files-directories" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Note: The <code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code> orignal source file is located in the <a class="reference external" href="https://github.com/SubstraFoundation/.github">.github repository</a> and then fetched into this documentation.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_static</span></code> contains static files (favicon, css, logo)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> contains all the source documents</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code> contains all the built documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> is the Python Sphinx configuration file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index.rst</span></code> is the general Table Of Content of this very documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build</span></code> is the default build output directory</p></li>
+</ul>
+</div>
 <div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the substra-documentation repository:</span>
-make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;Wouhou! New build moved to /docs&quot;</span>
+
+<span class="c1"># Install the dependencies</span>
+pip install -r requirements.txt
+
+<span class="c1"># Build the documentation</span>
+make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/
+
+<span class="c1"># Commit changes</span>
 git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push
@@ -201,7 +230,10 @@ git push
 │       └── usage.md
 ├── img
 │   ├── architecture_overview.png
-│   └── git_pr_status.png
+│   ├── git_pr_status.png
+│   ├── start_backend.png
+│   ├── start_frontend.png
+│   └── start_hlf-k8s.png
 ├── overview
 │   └── overview.md
 ├── platform_description
