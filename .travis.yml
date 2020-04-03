@@ -12,7 +12,7 @@ branches:
 script:
   - pip install -r requirements.txt
   # Fetch the last contributing.md document
-  - curl https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md -o src/contribute/CONTRIBUTING.md
+  # - curl https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md -o src/contribute/CONTRIBUTING.md
   # Sphinx build
   - make clean
   - make html
