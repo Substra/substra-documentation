@@ -10,14 +10,17 @@ branches:
     - master
 
 script:
+  # Install project dependencies
   - pip install -r requirements.txt
   # Fetch the last contributing.md document
   # - curl https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md -o src/contribute/CONTRIBUTING.md
+  - git clone https://github.com/SubstraFoundation/.github.git
+  - cp CONTRIBUTING.md src/contribute/CONTRIBUTING.md
+  - rm -rf SubstraFoundation/
   # Sphinx build
   - make clean
   - make html
   - cp -R _build/html/* docs/
-  - echo "Documentation build and copied to docs/"
 
 after_script:
   # Push the build to the substra-documentation repository
