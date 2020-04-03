@@ -14,7 +14,7 @@ script:
   - pip install -r requirements.txt
   # Fetch the last contributing.md document
   # - curl https://github.com/SubstraFoundation/.github/blob/master/CONTRIBUTING.md -o src/contribute/CONTRIBUTING.md
-  - git clone https://github.com/SubstraFoundation/.github.git
+  - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/.github.git
   - cp .github/CONTRIBUTING.md src/contribute/CONTRIBUTING.md
   - rm -rf .github/
   # Sphinx build
