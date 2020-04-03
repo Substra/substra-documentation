@@ -476,8 +476,6 @@ This is it, if you the `substra login` command exited successfully, you're good 
 
 Congratulations \o/
 
-![Victory dance](https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif)
-
 If you want to go further, please refer to:
 
 - Documentation:
