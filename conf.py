@@ -38,6 +38,7 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx_markdown_tables',
     'sphinx.ext.autodoc',
+    'sphinx_autodoc_typehints',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
