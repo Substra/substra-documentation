@@ -24,6 +24,7 @@ docs: clean html
 	rm -rf docs/*
 	cp -R _build/html/ docs/
 	touch docs/.nojekyll
+	echo "doc.substra.ai" > docs/CNAME
 
 livehtml:
 	sphinx-autobuild -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html -c "$(CONFDIR)"
