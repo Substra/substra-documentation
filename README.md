@@ -29,7 +29,7 @@ pip install -r requirements.txt
 make livehtml
 
 # Build the documentation
-make clean && make html && cp -R _build/html/* docs/
+make docs
 
 # Commit changes
 git add .
