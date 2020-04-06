@@ -5,9 +5,9 @@ python:
 
 cache: pip
 
-branches:
-  only:
-    - master
+# branches:
+#   only:
+#     - master
 
 script:
   # Install project dependencies
@@ -21,7 +21,7 @@ script:
   - make html
   - cp -R _build/html/* docs/
 
-after_script:
+after_success:
   # Push the build to the substra-documentation repository
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
