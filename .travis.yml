@@ -9,9 +9,10 @@ script:
   # Install project dependencies
   - pip install -r requirements.txt
   # Make sure contributing.md is the latest version
-  - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/.github.git
-  - cmp --silent .github/CONTRIBUTING.md src/contribute/CONTRIBUTING.md
+  - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/.github.git dotgithub
+  - cmp --silent dotgithub/CONTRIBUTING.md src/contribute/CONTRIBUTING.md
   # Sphinx build
   - make clean
   - make html
+  - touch _build/html/.nojekyll
   - diff -qr _build/html docs
