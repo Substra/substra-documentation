@@ -20,5 +20,9 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -c "$(CONFDIR)"
 
+docs: clean html
+	rm -rf docs/*
+	cp -R _build/html/ docs/
+
 livehtml:
 	sphinx-autobuild -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html -c "$(CONFDIR)"
