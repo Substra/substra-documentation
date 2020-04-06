@@ -1,6 +1,6 @@
 # Usage
 
-![Substra](../../../_static/substra-logo.png)
+![Substra](../../../_static/substra-logo.svg)
 
 CLI and SDK for interacting with Substra platform.
 
