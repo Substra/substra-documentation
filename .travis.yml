@@ -5,33 +5,13 @@ python:
 
 cache: pip
 
-# branches:
-#   only:
-#     - master
-
 script:
   # Install project dependencies
   - pip install -r requirements.txt
-  # Fetch the last contributing.md document
+  # Make sure contributing.md is the latest version
   - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/.github.git
-  - cp .github/CONTRIBUTING.md src/contribute/CONTRIBUTING.md
-  - rm -rf .github/
+  - cmp --silent .github/CONTRIBUTING.md src/contribute/CONTRIBUTING.md
   # Sphinx build
   - make clean
   - make html
-  - cp -R _build/html/* docs/
-
-after_success:
-  # Push the build to the substra-documentation repository
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis CI"
-  - git add .
-  - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
-  - git push https://${GH_TOKEN}@github.com/SubstraFoundation/substra-documentation.git HEAD:master
-  # Push the build to the SubstraFoundation.github.io Github Page
-  - git clone https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git
-  - cp -R docs/* SubstraFoundation.github.io/
-  - cd SubstraFoundation.github.io/
-  - git add .
-  - git commit --message "[travis] Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
-  - git push https://${GH_TOKEN}@github.com/SubstraFoundation/SubstraFoundation.github.io.git HEAD:master
+  - diff -qr _build/html docs
