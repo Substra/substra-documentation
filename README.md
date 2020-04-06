@@ -25,6 +25,9 @@
 # Install the dependencies
 pip install -r requirements.txt
 
+# Automatically build the documentation at each change and test the result in your browser at http://localhost:8000
+make livehtml
+
 # Build the documentation
 make clean && make html && cp -R _build/html/* docs/
 
