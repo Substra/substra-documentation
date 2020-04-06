@@ -14,4 +14,5 @@ script:
   # Sphinx build
   - make clean
   - make html
+  - touch _build/html/.nojekyll
   - diff -qr _build/html docs

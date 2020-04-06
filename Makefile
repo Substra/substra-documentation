@@ -23,6 +23,7 @@ help:
 docs: clean html
 	rm -rf docs/*
 	cp -R _build/html/ docs/
+	touch docs/.nojekyll
 
 livehtml:
 	sphinx-autobuild -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html -c "$(CONFDIR)"
