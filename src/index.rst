@@ -1,6 +1,6 @@
 .. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
     :target: https://travis-ci.org/SubstraFoundation/substra-documentation
-    
+
 Welcome to Substra's documentation!
 =========================================
 
@@ -10,8 +10,8 @@ What is Substra?
 .. toctree::
    :maxdepth: 2
 
-   src/overview/overview
-   
+   overview/overview
+
 Getting started
 ===============
 .. toctree::
@@ -22,15 +22,15 @@ Getting started
 .. toctree::
    :maxdepth: 2
 
-   src/getting_started/usage/usage
+   getting_started/usage/usage
 
 2. Installation
 ---------------
 .. toctree::
    :maxdepth: 2
 
-   src/getting_started/installation/local_install_skaffold
-   src/getting_started/installation/local_install_docker_compose
+   getting_started/installation/local_install_skaffold
+   getting_started/installation/local_install_docker_compose
 
 Platform Description
 ====================
@@ -38,7 +38,7 @@ Platform Description
 .. toctree::
    :maxdepth: 2
 
-   src/platform_description/platform
+   platform_description/platform
 
 Specific Entry points
 =====================
@@ -46,8 +46,8 @@ Specific Entry points
 .. toctree::
    :maxdepth: 1
 
-   src/entry_points/faq
-   src/entry_points/glossary
+   entry_points/faq
+   entry_points/glossary
 
 Contribute
 ==========
@@ -55,7 +55,7 @@ Contribute
 .. toctree::
    :maxdepth: 2
 
-   src/contribute/CONTRIBUTING
+   contribute/CONTRIBUTING
 
 Build the doc
 =============
@@ -63,7 +63,7 @@ Build the doc
 .. toctree::
    :maxdepth: 2
 
-   src/publish
+   publish
 
 Indices and tables
 ==================
