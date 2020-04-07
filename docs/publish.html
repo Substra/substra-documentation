@@ -170,15 +170,17 @@
             
   <div class="section" id="let-s-build-publish-the-documentation">
 <h1>Let’s build &amp; publish the documentation<a class="headerlink" href="#let-s-build-publish-the-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the substra-documentation repository:</span>
-make clean <span class="o">&amp;&amp;</span> make html <span class="o">&amp;&amp;</span> cp -R _build/html/* docs/ <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;Wouhou! New build moved to /docs&quot;</span>
-git add .
-git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-git push
+<p>In the substra-documentation repository:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the dependencies</span>
+pip install -r requirements.txt
 
-<span class="c1"># Copy the build to the github page:</span>
-cp -R docs/* ../SubstraFoundation.github.io/
-<span class="nb">cd</span> ../SubstraFoundation.github.io/
+<span class="c1"># Automatically build the documentation at each change and test the result in your browser at http://localhost:8000</span>
+make livehtml
+
+<span class="c1"># Build the documentation</span>
+make docs
+
+<span class="c1"># Commit changes</span>
 git add .
 git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 git push
