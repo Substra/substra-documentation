@@ -22,7 +22,7 @@ help:
 
 docs: clean html
 	rm -rf docs/*
-	cp -R _build/html/ docs/
+	cp -R _build/html/* docs/
 	touch docs/.nojekyll
 	echo "doc.substra.ai" > docs/CNAME
 
