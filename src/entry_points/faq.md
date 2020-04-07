@@ -8,11 +8,11 @@ Substra Foundation is managing the open source governance of the project. The pr
 
 ## [feature] How do I suggest an important feature to develop?
 
-You can refer to the [contributing section](https://substrafoundation.github.io/src/contribute/CONTRIBUTING.html) / feature request and open an issue or even open a PR!
+You can refer to the [contributing section](https://doc.substra.ai/contribute/CONTRIBUTING.html) / feature request and open an issue or even open a PR!
 
 ## [feature] I really need **this** feature, how can we work this out?
 
-Of course! Please refer to the feature request section in the [contributing guide](https://substrafoundation.github.io/src/contribute/CONTRIBUTING.html).
+Of course! Please refer to the feature request section in the [contributing guide](https://doc.substra.ai/contribute/CONTRIBUTING.html).
 
 ## [com] Do you guys have crazy stickers?
 

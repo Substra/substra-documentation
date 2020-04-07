@@ -1,15 +1,18 @@
 # Let's build & publish the documentation
 
-```sh
-# In the substra-documentation repository:
-make clean && make html && cp -R _build/html/* docs/ && echo "Wouhou! New build moved to /docs"
-git add .
-git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
-git push
+In the substra-documentation repository:
 
-# Copy the build to the github page:
-cp -R docs/* ../SubstraFoundation.github.io/
-cd ../SubstraFoundation.github.io/
+```sh
+# Install the dependencies
+pip install -r requirements.txt
+
+# Automatically build the documentation at each change and test the result in your browser at http://localhost:8000
+make livehtml
+
+# Build the documentation
+make docs
+
+# Commit changes
 git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push

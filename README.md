@@ -35,13 +35,6 @@ make docs
 git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
-
-# Copy the build to the github page:
-cp -R docs/* ../SubstraFoundation.github.io/
-cd ../SubstraFoundation.github.io/
-git add .
-git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
-git push
 ```
 
 ## Source Tree
