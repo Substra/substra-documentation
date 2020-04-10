@@ -16,6 +16,7 @@ CLI and SDK for interacting with Substra platform.
   - [Documentation](#documentation)
   - [Examples](#examples)
   - [Compatibility table](#compatibility-table)
+    - [Adding entries to the compatibility table](#adding-entries-to-the-compatibility-table)
   - [Contributing](#contributing)
     - [Setup](#setup)
     - [Documentation](#documentation-1)
@@ -73,8 +74,8 @@ client = substra.Client()
 
 Interacting with the Substra platform:
 
-- [Command line interface](./references/cli.md)
-- [SDK](./references/sdk.md)
+- [Command line interface](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
+- [SDK](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 
 Implementing your assets in python:
 
@@ -86,16 +87,16 @@ Implementing your assets in python:
 
 Learning about the Substra platform:
 
-- [Concepts](./docs/concepts.md)
-- [Machine Learning tasks](./docs/ml_tasks.md)
-- [Adding a full pipeline](./docs/full_pipeline_workflow.md)
-- [Adding data samples](./docs/add_data_samples.md)
+- [Concepts](https://github.com/SubstraFoundation/substra/blob/master/docs/concepts.md#substras-concepts)
+- [Machine Learning tasks](https://github.com/SubstraFoundation/substra/blob/master/docs/ml_tasks.md#machine-learning-tasks)
+- [Adding a full pipeline](https://github.com/SubstraFoundation/substra/blob/master/docs/full_pipeline_workflow.md#adding-a-full-pipeline)
+- [Adding data samples](https://github.com/SubstraFoundation/substra/blob/master/docs/add_data_samples.md#add-data-samples-to-substra)
 
 ## Examples
 
-- [Titanic](./examples/titanic/README.md)
-- [Cross-validation](./examples/cross_val/README.md)
-- [Compute plan](./examples/compute_plan/README.md)
+- [Titanic](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README.md#titanic)
+- [Cross-validation](https://github.com/SubstraFoundation/substra/blob/master/examples/cross_val/README.md#cross-validation)
+- [Compute plan](https://github.com/SubstraFoundation/substra/blob/master/examples/compute_plan/README.md#compute-plan)
 
 ## Compatibility table
 
@@ -106,16 +107,14 @@ These sets of versions have been tested for compatilibility:
 | [`0.4.0-alpha.3`](https://github.com/SubstraFoundation/substra/releases/tag/0.4.0-alpha.3) | [`0.0.8-alpha.6`](https://github.com/SubstraFoundation/substra-chaincode/releases/tag/0.0.8-alpha.6) | [`0.0.12-alpha.13`](https://github.com/SubstraFoundation/substra-backend/releases/tag/0.0.12-alpha.13) | [`0.2.0-alpha.1`](https://github.com/SubstraFoundation/substra-tests/releases/tag/0.2.0-alpha.1) | [`0.0.11-alpha.1`](https://github.com/SubstraFoundation/hlf-k8s/releases/tag/0.0.11-alpha.1) | |
 | [`0.4.0-alpha.4`](https://github.com/SubstraFoundation/substra/releases/tag/0.4.0-alpha.4) | [`0.0.8-alpha.9`](https://github.com/SubstraFoundation/substra-chaincode/releases/tag/0.0.8-alpha.9) | [`0.0.12-alpha.20`](https://github.com/SubstraFoundation/substra-backend/releases/tag/0.0.12-alpha.20) | [`0.2.0-alpha.2`](https://github.com/SubstraFoundation/substra-tests/releases/tag/0.2.0-alpha.2) | [`0.0.11-alpha.1`](https://github.com/SubstraFoundation/hlf-k8s/releases/tag/0.0.11-alpha.1) | |
 
-**Adding entries to the compatibility table**
+### Adding entries to the compatibility table
 
 - Please ensure that all the tests from [`substra-tests`](https://github.com/SubstraFoundation/substra-tests/) pass
 
+```sh
+cd substra-tests
+make test
 ```
-$ cd substra-tests
-$ make test
-```
-
-- To test the front end, please refer to the [front end testing checklist](https://github.com/SubstraFoundation/substra-frontend/docs/some_checklist_TODO_WRITE_THE_CHECKLIST)
 
 ## Contributing
 
@@ -148,7 +147,6 @@ pydocmd simple substra.sdk+ substra.sdk.Client+ > references/sdk.md
 ```
 
 Documentation will be available in *docs/* directory.
-
 
 ### Deploy
 
