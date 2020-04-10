@@ -1,7 +1,5 @@
 # Glossary
 
-___
-
 - [Glossary](#glossary)
   - [A](#a)
   - [C](#c)
@@ -14,8 +12,6 @@ ___
   - [P](#p)
   - [S](#s)
   - [T](#t)
-
-___
 
 ## A
 
