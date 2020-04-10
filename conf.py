@@ -65,6 +65,9 @@ exclude_patterns = [
 #
 html_theme = 'sphinx_rtd_theme'
 
+# Do not display "View page source"
+html_show_sourcelink = False
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -78,9 +81,6 @@ html_favicon = '_static/favicon.ico'
 
 # Code color; See: https://www.florian-diesch.de/doc/sphinx/themes-and-pygments-styles/index.html#
 pygments_style = 'colorful'
-
-# Do not display "View page source"
-html_show_sourcelink = False
 
 # Add a page
 # html_additional_pages = {
