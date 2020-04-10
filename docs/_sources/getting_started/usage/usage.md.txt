@@ -4,10 +4,7 @@
 
 CLI and SDK for interacting with Substra platform.
 
-## Table of contents
-
 - [Usage](#usage)
-  - [Table of contents](#table-of-contents)
   - [Install](#install)
   - [Running the Substra platform locally](#running-the-substra-platform-locally)
   - [Usage](#usage-1)
