@@ -78,3 +78,11 @@ html_favicon = '_static/favicon.ico'
 
 # Code color; See: https://www.florian-diesch.de/doc/sphinx/themes-and-pygments-styles/index.html#
 pygments_style = 'colorful'
+
+# Do not display "View page source"
+html_show_sourcelink = False
+
+# Add a page
+# html_additional_pages = {
+#     'download': 'customdownload.html',
+# }
