@@ -223,7 +223,7 @@
 <blockquote>
 <div><p>Please consider using the <a class="reference internal" href="local_install_skaffold.html"><span class="doc">Kubernetes &amp; Skaffold</span></a> installation which is recommended over this docker-compose method.</p>
 </div></blockquote>
-<p>This guide will help you to get Substra source code and to start a local instance with two nodes: <code class="docutils literal notranslate"><span class="pre">ORG_1</span></code> and <code class="docutils literal notranslate"><span class="pre">ORG_2</span></code>.</p>
+<p>This guide will help you to get Substra source code and to start a local instance with two nodes: <code class="docutils literal notranslate"><span class="pre">node-1</span></code> and <code class="docutils literal notranslate"><span class="pre">node-2</span></code>.</p>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -266,9 +266,9 @@
 </div>
 <div class="section" id="network">
 <h3>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h3>
-<p>You will need to map your <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">ORG_1</span></code> and <code class="docutils literal notranslate"><span class="pre">ORG_2</span></code> backend hostnames. To do so, please edit the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and add the following lines:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="m">127</span>.0.0.1       substra-backend.ORG_1.xyz
-<span class="m">127</span>.0.0.1       substra-backend.ORG_2.xyz
+<p>You will need to map your <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">node-1</span></code> and <code class="docutils literal notranslate"><span class="pre">node-2</span></code> backend hostnames. To do so, please edit the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and add the following lines:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="m">127</span>.0.0.1       substra-backend.node-1.xyz
+<span class="m">127</span>.0.0.1       substra-backend.node-2.xyz
 </pre></div>
 </div>
 </div>
@@ -420,7 +420,7 @@ python3 populate.py
 
 <span class="nb">alias</span> sbbac-start<span class="o">=</span><span class="s2">&quot;pushd .; cd </span><span class="nv">$SUBSTRA_SOURCE</span><span class="s2">/substra-backend/; sh build-docker-images.sh; sh scripts/clean_media.sh; cd docker; python3 start.py -d --no-backup; popd&quot;</span>
 
-<span class="nb">alias</span> sbbac-wait<span class="o">=</span><span class="s2">&quot;while ! curl substra-backend.ORG_1.xyz:8000 ; do sleep 2 ; done&quot;</span>
+<span class="nb">alias</span> sbbac-wait<span class="o">=</span><span class="s2">&quot;while ! curl substra-backend.node-1.xyz:8000 ; do sleep 2 ; done&quot;</span>
 </pre></div>
 </div>
 </div>
