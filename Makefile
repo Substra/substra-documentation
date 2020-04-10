@@ -27,4 +27,4 @@ docs: clean html
 	echo "doc.substra.ai" > docs/CNAME
 
 livehtml:
-	sphinx-autobuild -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html -c "$(CONFDIR)"
+	sphinx-autobuild --open-browser -b html $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html -c "$(CONFDIR)"
