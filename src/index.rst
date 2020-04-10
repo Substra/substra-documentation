@@ -29,9 +29,8 @@ Getting started
 .. toctree::
    :maxdepth: 2
 
-   getting_started/installation/local_install_skaffold
-   getting_started/installation/local_install_docker_compose
-
+   getting_started/installation/installation
+   
 Platform Description
 ====================
 
