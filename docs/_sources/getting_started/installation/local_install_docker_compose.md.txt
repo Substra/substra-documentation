@@ -17,7 +17,7 @@
 
 > Please consider using the [Kubernetes & Skaffold](./local_install_skaffold.md) installation which is recommended over this docker-compose method.
 
-This guide will help you to get Substra source code and to start a local instance with two nodes: `owkin` and `chunantes`.
+This guide will help you to get Substra source code and to start a local instance with two nodes: `ORG_1` and `ORG_2`.
 
 ## Dependencies
 
@@ -42,11 +42,11 @@ This guide will help you to get Substra source code and to start a local instanc
 
 ### Network
 
-You will need to map your `localhost` to `owkin` and `chunantes` backend hostnames. To do so, please edit the `/etc/hosts` file and add the following lines:
+You will need to map your `localhost` to `ORG_1` and `ORG_2` backend hostnames. To do so, please edit the `/etc/hosts` file and add the following lines:
 
 ```sh
-127.0.0.1       substra-backend.chunantes.xyz
-127.0.0.1       substra-backend.owkin.xyz
+127.0.0.1       substra-backend.ORG_1.xyz
+127.0.0.1       substra-backend.ORG_2.xyz
 ```
 
 ## Get source code
@@ -184,5 +184,5 @@ alias sbnet-start="cd $SUBSTRA_SOURCE/hlf-k8s/; ./bootstrap.sh && python3 python
 
 alias sbbac-start="pushd .; cd $SUBSTRA_SOURCE/substra-backend/; sh build-docker-images.sh; sh scripts/clean_media.sh; cd docker; python3 start.py -d --no-backup; popd"
 
-alias sbbac-wait="while ! curl substra-backend.owkin.xyz:8000 ; do sleep 2 ; done"
+alias sbbac-wait="while ! curl substra-backend.ORG_1.xyz:8000 ; do sleep 2 ; done"
 ```
