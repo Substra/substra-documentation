@@ -23,10 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -197,14 +197,15 @@
 <div class="section" id="distributed-ledger-technology-dlt-smart-contracts">
 <h3>Distributed Ledger Technology (DLT) &amp; Smart contracts<a class="headerlink" href="#distributed-ledger-technology-dlt-smart-contracts" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>Note: The network is based on the Chaincode repository and is initialized with Certificate Authorities via the deployment of the Hyperledger Fabric Kubernetes repository.</div></blockquote>
+<div><p>Note: The network is based on the Chaincode repository and is initialized with Certificate Authorities via the deployment of the Hyperledger Fabric Kubernetes repository.</p>
+</div></blockquote>
 <p>Substra Chaincode repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-chaincode">https://github.com/SubstraFoundation/substra-chaincode</a></p>
 <p>The DLT network is build with the open source software <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> (version 1.4).</p>
 <p>More precisely, we use Hyperledger Fabric to deploy a network of several nodes following this kind of configuration:</p>
 <ul class="simple">
-<li>Organisations (Orgs): multiple “application” orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an “orderer” organisation.</li>
-<li>Channel configuration: One channel whose members are all the orgs.</li>
-<li>Endorsement policies: for example, “any member of the orgs in the channel” (<a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#specifying-endorsement-policies-for-a-chaincode">details here</a>)</li>
+<li><p>Organisations (Orgs): multiple “application” orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an “orderer” organisation.</p></li>
+<li><p>Channel configuration: One channel whose members are all the orgs.</p></li>
+<li><p>Endorsement policies: for example, “any member of the orgs in the channel” (<a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#specifying-endorsement-policies-for-a-chaincode">details here</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="ledger-a-private-and-permissioned-blockchain">
@@ -216,28 +217,32 @@
 <p>It is a key-value that only contains information about the “compute plan”: <em>Which data was used with which model for x% performance</em>. It is consensually built and can not be corrupted. It is operated by the chaincode. The ledger of each node is updated frequently and consistently in order to register new Assets, set the Asset permissions, and append recent/requested computation tasks to the task history. Only non-sensitive metadata transit within this network.</p>
 <p>In the ledger, the following elements are stored:</p>
 <ul class="simple">
-<li>Objective<ul>
-<li>Hash of the metrics and url of to request it</li>
-<li>Id and hash of test data; node that stores them</li>
-<li>Permissions</li>
+<li><p>Objective</p>
+<ul>
+<li><p>Hash of the metrics and url of to request it</p></li>
+<li><p>Id and hash of test data; node that stores them</p></li>
+<li><p>Permissions</p></li>
 </ul>
 </li>
-<li>Dataset<ul>
-<li>Hash of the opener and url of to request it</li>
-<li>Id and hash of data; node that stores them</li>
-<li>Permissions</li>
+<li><p>Dataset</p>
+<ul>
+<li><p>Hash of the opener and url of to request it</p></li>
+<li><p>Id and hash of data; node that stores them</p></li>
+<li><p>Permissions</p></li>
 </ul>
 </li>
-<li>Algorithm<ul>
-<li>Hash of the algo and url of to request it</li>
-<li>Node that created it</li>
-<li>Permissions</li>
+<li><p>Algorithm</p>
+<ul>
+<li><p>Hash of the algo and url of to request it</p></li>
+<li><p>Node that created it</p></li>
+<li><p>Permissions</p></li>
 </ul>
 </li>
-<li>Models<ul>
-<li>Specification of training tasks</li>
-<li>Specification of aggregation tasks</li>
-<li>Specification of evaluation tasks</li>
+<li><p>Models</p>
+<ul>
+<li><p>Specification of training tasks</p></li>
+<li><p>Specification of aggregation tasks</p></li>
+<li><p>Specification of evaluation tasks</p></li>
 </ul>
 </li>
 </ul>
@@ -272,14 +277,14 @@
 <h2>Substra tools<a class="headerlink" href="#substra-tools" title="Permalink to this headline">¶</a></h2>
 <p>Python package defining base classes for assets submitted on the platform:</p>
 <ul class="simple">
-<li>Github repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools">https://github.com/SubstraFoundation/substra-tools</a>.</li>
-<li>Pypi webpage: <a class="reference external" href="https://pypi.org/project/substratools/">https://pypi.org/project/substratools/</a></li>
+<li><p>Github repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools">https://github.com/SubstraFoundation/substra-tools</a>.</p></li>
+<li><p>Pypi webpage: <a class="reference external" href="https://pypi.org/project/substratools/">https://pypi.org/project/substratools/</a></p></li>
 </ul>
 <p>It corresponds to the Python package defining base classes for assets submitted on the platform:</p>
 <ul class="simple">
-<li>Objective: metrics script</li>
-<li>Algo: algo script</li>
-<li>Dataset: data opener script</li>
+<li><p>Objective: metrics script</p></li>
+<li><p>Algo: algo script</p></li>
+<li><p>Dataset: data opener script</p></li>
 </ul>
 <div class="section" id="components-orchestration">
 <h3>4.5. Components orchestration<a class="headerlink" href="#components-orchestration" title="Permalink to this headline">¶</a></h3>

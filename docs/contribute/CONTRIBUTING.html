@@ -23,10 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -227,64 +227,76 @@
 <p>:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:</p>
 <p>The following is a set of guidelines for contributing to the Substra framework, which is hosted on the <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation Organization</a> on GitHub. These are mostly guidelines, not rules. Use your best judgment and feel free to propose changes to this document in a pull request.</p>
 <ul class="simple">
-<li><a class="reference external" href="#contributing-to-substra">Contributing to Substra</a><ul>
-<li><a class="reference external" href="#acknowledgements">Acknowledgements</a></li>
-<li><a class="reference external" href="#code-of-conduct">Code of Conduct</a></li>
-<li><a class="reference external" href="#i-dont-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!</a></li>
-<li><a class="reference external" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a><ul>
-<li><a class="reference external" href="#the-components-of-substra">The components of Substra</a></li>
+<li><p><a class="reference external" href="#contributing-to-substra">Contributing to Substra</a></p>
+<ul>
+<li><p><a class="reference external" href="#acknowledgements">Acknowledgements</a></p></li>
+<li><p><a class="reference external" href="#code-of-conduct">Code of Conduct</a></p></li>
+<li><p><a class="reference external" href="#i-dont-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!</a></p></li>
+<li><p><a class="reference external" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
+<ul>
+<li><p><a class="reference external" href="#the-components-of-substra">The components of Substra</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#how-can-i-contribute">How Can I Contribute?</a><ul>
-<li><a class="reference external" href="#improving-the-documentation">Improving the documentation</a></li>
-<li><a class="reference external" href="#reporting-bugs">Reporting Bugs</a><ul>
-<li><a class="reference external" href="#before-submitting-a-bug-report">Before Submitting A Bug Report</a></li>
-<li><a class="reference external" href="#how-do-i-submit-a-good-bug-report">How Do I Submit A (Good) Bug Report?</a></li>
+<li><p><a class="reference external" href="#how-can-i-contribute">How Can I Contribute?</a></p>
+<ul>
+<li><p><a class="reference external" href="#improving-the-documentation">Improving the documentation</a></p></li>
+<li><p><a class="reference external" href="#reporting-bugs">Reporting Bugs</a></p>
+<ul>
+<li><p><a class="reference external" href="#before-submitting-a-bug-report">Before Submitting A Bug Report</a></p></li>
+<li><p><a class="reference external" href="#how-do-i-submit-a-good-bug-report">How Do I Submit A (Good) Bug Report?</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#suggesting-enhancements">Suggesting Enhancements</a><ul>
-<li><a class="reference external" href="#before-submitting-an-enhancement-suggestion">Before Submitting An Enhancement Suggestion</a></li>
-<li><a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">How Do I Submit A (Good) Enhancement Suggestion?</a></li>
+<li><p><a class="reference external" href="#suggesting-enhancements">Suggesting Enhancements</a></p>
+<ul>
+<li><p><a class="reference external" href="#before-submitting-an-enhancement-suggestion">Before Submitting An Enhancement Suggestion</a></p></li>
+<li><p><a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">How Do I Submit A (Good) Enhancement Suggestion?</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#your-first-code-contribution">Your First Code Contribution</a><ul>
-<li><a class="reference external" href="#local-development">Local development</a></li>
+<li><p><a class="reference external" href="#your-first-code-contribution">Your First Code Contribution</a></p>
+<ul>
+<li><p><a class="reference external" href="#local-development">Local development</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="#pull-requests">Pull Requests</a></li>
-<li><a class="reference external" href="#code-review">Code review</a><ul>
-<li><a class="reference external" href="#review-checklist">Review checklist</a></li>
-<li><a class="reference external" href="#review-best-practices">Review best practices</a><ul>
-<li><a class="reference external" href="#tldr">TL;DR</a></li>
-<li><a class="reference external" href="#unhelpful-behavior">Unhelpful behavior</a></li>
-<li><a class="reference external" href="#helpful-code-review-practices">Helpful Code Review Practices</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference external" href="#coding-guidelines">Coding guidelines</a><ul>
-<li><a class="reference external" href="#python-coding-guideline">Python Coding Guideline</a></li>
-<li><a class="reference external" href="#go-coding-guidelines">Go Coding Guidelines</a></li>
-<li><a class="reference external" href="#third-party-library-usage">Third Party Library Usage</a><ul>
-<li><a class="reference external" href="#how-to-choose-the-right-library">How to choose the right library?</a></li>
-<li><a class="reference external" href="#how-to-check-licence-compatibility">How to check licence compatibility</a></li>
-<li><a class="reference external" href="#further-reading">Further reading</a></li>
+<li><p><a class="reference external" href="#pull-requests">Pull Requests</a></p></li>
+<li><p><a class="reference external" href="#code-review">Code review</a></p>
+<ul>
+<li><p><a class="reference external" href="#review-checklist">Review checklist</a></p></li>
+<li><p><a class="reference external" href="#review-best-practices">Review best practices</a></p>
+<ul>
+<li><p><a class="reference external" href="#tldr">TL;DR</a></p></li>
+<li><p><a class="reference external" href="#unhelpful-behavior">Unhelpful behavior</a></p></li>
+<li><p><a class="reference external" href="#helpful-code-review-practices">Helpful Code Review Practices</a></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="#additional-notes">Additional Notes</a><ul>
-<li><a class="reference external" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a><ul>
-<li><a class="reference external" href="#type-of-issue-and-issue-state">Type of Issue and Issue State</a></li>
-<li><a class="reference external" href="#topic-categories">Topic Categories</a></li>
-<li><a class="reference external" href="#pull-request-labels">Pull Request Labels</a></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#coding-guidelines">Coding guidelines</a></p>
+<ul>
+<li><p><a class="reference external" href="#python-coding-guideline">Python Coding Guideline</a></p></li>
+<li><p><a class="reference external" href="#go-coding-guidelines">Go Coding Guidelines</a></p></li>
+<li><p><a class="reference external" href="#third-party-library-usage">Third Party Library Usage</a></p>
+<ul>
+<li><p><a class="reference external" href="#how-to-choose-the-right-library">How to choose the right library?</a></p></li>
+<li><p><a class="reference external" href="#how-to-check-licence-compatibility">How to check licence compatibility</a></p></li>
+<li><p><a class="reference external" href="#further-reading">Further reading</a></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="#security-policy">Security Policy</a></li>
+<li><p><a class="reference external" href="#additional-notes">Additional Notes</a></p>
+<ul>
+<li><p><a class="reference external" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></p>
+<ul>
+<li><p><a class="reference external" href="#type-of-issue-and-issue-state">Type of Issue and Issue State</a></p></li>
+<li><p><a class="reference external" href="#topic-categories">Topic Categories</a></p></li>
+<li><p><a class="reference external" href="#pull-request-labels">Pull Request Labels</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#security-policy">Security Policy</a></p></li>
 </ul>
 </li>
 </ul>
@@ -362,12 +374,13 @@ We believe documentation is key to a great project and that it should be as aliv
 <p>This section guides you through submitting a bug report for Substra. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.</p>
 <p>Before creating bug reports, please check <a class="reference external" href="#before-submitting-a-bug-report">this list</a> as you might find out that you don’t need to create one. When you are creating a bug report, please <a class="reference external" href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Fill out <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the required template</a>, the required information will help us resolve issues faster.</p>
 <blockquote>
-<div><strong>Note:</strong> If you find a <strong>Closed</strong> issue that seems like it is the same thing that you’re experiencing, open a new issue and include a link to the original issue in the body of your new one.</div></blockquote>
+<div><p><strong>Note:</strong> If you find a <strong>Closed</strong> issue that seems like it is the same thing that you’re experiencing, open a new issue and include a link to the original issue in the body of your new one.</p>
+</div></blockquote>
 <div class="section" id="before-submitting-a-bug-report">
 <h4>Before Submitting A Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><strong>Determine <a class="reference external" href="#the-components-of-substra">in which repository the problem should be reported</a></strong>.</li>
-<li><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, please kindly add a comment to the existing issue instead of opening a new one.</li>
+<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">in which repository the problem should be reported</a></strong>.</p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, please kindly add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
 </div>
 <div class="section" id="how-do-i-submit-a-good-bug-report">
@@ -384,9 +397,9 @@ We believe documentation is key to a great project and that it should be as aliv
 <div class="section" id="before-submitting-an-enhancement-suggestion">
 <h4>Before Submitting An Enhancement Suggestion<a class="headerlink" href="#before-submitting-an-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><strong>Check if there is a newer version which already provides this enhancement.</strong></li>
-<li><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the enhancement should be suggested in</a>.</strong></li>
-<li><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, please kindly add a comment to the existing issue instead of opening a new one.</li>
+<li><p><strong>Check if there is a newer version which already provides this enhancement.</strong></p></li>
+<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the enhancement should be suggested in</a>.</strong></p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, please kindly add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
 </div>
 <div class="section" id="how-do-i-submit-a-good-enhancement-suggestion">
@@ -400,12 +413,13 @@ We believe documentation is key to a great project and that it should be as aliv
 <p>Not sure where to start?</p>
 <p>You can have a look through these <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Abeginner+org%3Asubstrafoundation+sort%3Acomments-desc&amp;type=Issues">[Beginner]</a> and <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc">[Help-wanted]</a> flagged issues:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">[Beginner]</span></code> issues are issues that should only require a few lines of code, and a test or two.</li>
-<li><code class="docutils literal notranslate"><span class="pre">[Help</span> <span class="pre">wanted]</span></code> issues are issues that should be a bit more involved than beginner issues.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Beginner]</span></code> issues are issues that should only require a few lines of code, and a test or two.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Help</span> <span class="pre">wanted]</span></code> issues are issues that should be a bit more involved than beginner issues.</p></li>
 </ul>
 <p>Both issues lists are sorted by total number of comments. While not perfect, the number of comments is a reasonable proxy for impact a given change will have.</p>
 <blockquote>
-<div>Note: <code class="docutils literal notranslate"><span class="pre">translation</span></code> or <code class="docutils literal notranslate"><span class="pre">reformulation</span></code> can be good entry points on the project.</div></blockquote>
+<div><p>Note: <code class="docutils literal notranslate"><span class="pre">translation</span></code> or <code class="docutils literal notranslate"><span class="pre">reformulation</span></code> can be good entry points on the project.</p>
+</div></blockquote>
 <div class="section" id="local-development">
 <h4>Local development<a class="headerlink" href="#local-development" title="Permalink to this headline">¶</a></h4>
 <p>Substra can be developed locally. For instructions on how to do this, see <a class="reference external" href="https://doc.substra.ai/getting_started/installation/local_install_skaffold.html">this page</a> which is part of the Substra Documentation.</p>
@@ -414,30 +428,32 @@ We believe documentation is key to a great project and that it should be as aliv
 <div class="section" id="pull-requests">
 <h3>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>Hint: Before starting a Pull Request, opening an issue is a good way to reach the team involved (most likely the reviewers of your submission) and discuss your proposition!</div></blockquote>
+<div><p>Hint: Before starting a Pull Request, opening an issue is a good way to reach the team involved (most likely the reviewers of your submission) and discuss your proposition!</p>
+</div></blockquote>
 <p>The process described here has several goals:</p>
 <ul class="simple">
-<li>Maintain the quality of Substra</li>
-<li>Fix problems that are important to users</li>
-<li>Engage the community in working toward the best possible Substra</li>
-<li>Enable a sustainable system for Substra’s maintainers to review contributions</li>
+<li><p>Maintain the quality of Substra</p></li>
+<li><p>Fix problems that are important to users</p></li>
+<li><p>Engage the community in working toward the best possible Substra</p></li>
+<li><p>Enable a sustainable system for Substra’s maintainers to review contributions</p></li>
 </ul>
 <p>Please follow these steps to have your contribution considered by the maintainers:</p>
 <ol class="simple">
-<li>Follow the <a class="reference external" href="#coding-guidelines">coding guidelines</a></li>
-<li>After submitting your pull request, verify that all <a class="reference external" href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing.</li>
+<li><p>Follow the <a class="reference external" href="#coding-guidelines">coding guidelines</a></p></li>
+<li><p>After submitting your pull request, verify that all <a class="reference external" href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing.</p></li>
 </ol>
 <p><img alt="Pull Requests Status" src="../_images/git_pr_status.png" /></p>
 <p>For example, in this caption of the open Pull Requests on the main Substra repository, we can see that:</p>
 <ul class="simple">
-<li>The Pull Request called “Type hints” is not passing tests</li>
-<li>Others are passing</li>
+<li><p>The Pull Request called “Type hints” is not passing tests</p></li>
+<li><p>Others are passing</p></li>
 </ul>
 <p>What if the status checks are failing?</p>
 <p>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</p>
 <p>While the prerequisites above must be satisfied prior to having your pull request reviewed, reviewer(s) may ask you to complete additional design work, tests, or other changes before your submission can be ultimately accepted.</p>
 <blockquote>
-<div>Note: In order to ease the process, please consider creating a <strong>specific branch</strong> with an explicit name pointing towards the <code class="docutils literal notranslate"><span class="pre">master</span></code>branch. You might even <code class="docutils literal notranslate"><span class="pre">fork</span></code> the whole repository and then open a Pull Request using <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">accross</span> <span class="pre">forks</span></code>. Please refer to <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Github documentation</a> for further information.</div></blockquote>
+<div><p>Note: In order to ease the process, please consider creating a <strong>specific branch</strong> with an explicit name pointing towards the <code class="docutils literal notranslate"><span class="pre">master</span></code>branch. You might even <code class="docutils literal notranslate"><span class="pre">fork</span></code> the whole repository and then open a Pull Request using <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">accross</span> <span class="pre">forks</span></code>. Please refer to <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Github documentation</a> for further information.</p>
+</div></blockquote>
 </div>
 <div class="section" id="code-review">
 <h3>Code review<a class="headerlink" href="#code-review" title="Permalink to this headline">¶</a></h3>
@@ -446,15 +462,15 @@ We believe documentation is key to a great project and that it should be as aliv
 <h4>Review checklist<a class="headerlink" href="#review-checklist" title="Permalink to this headline">¶</a></h4>
 <p>Please make sure you went through this checklist:</p>
 <ul class="simple">
-<li>Does this code read like prose?</li>
-<li>Do the methods do what their name claims they will do? Same for classes?</li>
-<li>Is the code as modular as possible?</li>
-<li>Can I get an understanding of the desired behavior just by doing quick scans through unit and acceptance tests?</li>
-<li>Does the understanding of the desired behavior match the requirements/stories for this work?</li>
-<li>If there is a small doubt on the fact that acceptance tests might not be enough? Have I tested that it works?</li>
-<li>Is this code introducing any new dependencies between classes/components/modules and, if so, is it necessary to do that?</li>
-<li>Is this code idiomatic, taking full advantage of the language, frameworks and tools we use?</li>
-<li>Is anything here a re-implementation of existing functionality the developer may not be aware of?</li>
+<li><p>Does this code read like prose?</p></li>
+<li><p>Do the methods do what their name claims they will do? Same for classes?</p></li>
+<li><p>Is the code as modular as possible?</p></li>
+<li><p>Can I get an understanding of the desired behavior just by doing quick scans through unit and acceptance tests?</p></li>
+<li><p>Does the understanding of the desired behavior match the requirements/stories for this work?</p></li>
+<li><p>If there is a small doubt on the fact that acceptance tests might not be enough? Have I tested that it works?</p></li>
+<li><p>Is this code introducing any new dependencies between classes/components/modules and, if so, is it necessary to do that?</p></li>
+<li><p>Is this code idiomatic, taking full advantage of the language, frameworks and tools we use?</p></li>
+<li><p>Is anything here a re-implementation of existing functionality the developer may not be aware of?</p></li>
 </ul>
 </div>
 <div class="section" id="review-best-practices">
@@ -466,58 +482,66 @@ We believe documentation is key to a great project and that it should be as aliv
 <div class="section" id="unhelpful-behavior">
 <h5>Unhelpful behavior<a class="headerlink" href="#unhelpful-behavior" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.</li>
+<li><p>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.</p></li>
 </ul>
 <p>Instead of saying:</p>
 <blockquote>
-<div>This component should be stateless.</div></blockquote>
+<div><p>This component should be stateless.</p>
+</div></blockquote>
 <p>Provide some context behind the recommendation:</p>
 <blockquote>
-<div>Since this component doesn’t have any lifecycle methods or state, it could be made a stateless functional component. This will improve performance and readability. <em>Here</em> is some documentation.</div></blockquote>
+<div><p>Since this component doesn’t have any lifecycle methods or state, it could be made a stateless functional component. This will improve performance and readability. <em>Here</em> is some documentation.</p>
+</div></blockquote>
 <ul class="simple">
-<li>Don’t ask judgmental questions.</li>
+<li><p>Don’t ask judgmental questions.</p></li>
 </ul>
 <p>Avoid asking questions like:</p>
 <blockquote>
-<div>Why didn’t you just do ___ here?</div></blockquote>
+<div><p>Why didn’t you just do ___ here?</p>
+</div></blockquote>
 <p>Oftentimes, these judgmental questions are just veiled demands. Instead, provide a recommendation (with documentation and citations) and leave out harsh words.</p>
 <blockquote>
-<div>You can do ___ which has the benefit of ___.</div></blockquote>
+<div><p>You can do ___ which has the benefit of ___.</p>
+</div></blockquote>
 <ul class="simple">
-<li>Avoid being sarcastic.</li>
+<li><p>Avoid being sarcastic.</p></li>
 </ul>
 <p>Unhelpful:</p>
 <blockquote>
-<div>Did you even test this code before you checked it in?</div></blockquote>
+<div><p>Did you even test this code before you checked it in?</p>
+</div></blockquote>
 <p>Helpful:</p>
 <blockquote>
-<div>This breaks when you enter a negative number. Can you please address this case?</div></blockquote>
+<div><p>This breaks when you enter a negative number. Can you please address this case?</p>
+</div></blockquote>
 <ul class="simple">
-<li>Don’t ask engineers to solve problems they didn’t cause “while they are at it”.</li>
+<li><p>Don’t ask engineers to solve problems they didn’t cause “while they are at it”.</p></li>
 </ul>
 <p>If the code solves the issue/ticket the dev was working on and doesn’t introduce any new issues to the codebase, give the pull request a “thumbs up” and then create a ticket to clean up the existing bad code.</p>
 <ul class="simple">
-<li>Don’t ghost people.</li>
+<li><p>Don’t ghost people.</p></li>
 </ul>
 </div>
 <div class="section" id="helpful-code-review-practices">
 <h5>Helpful Code Review Practices<a class="headerlink" href="#helpful-code-review-practices" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Use questions or recommendations to drive dialog</li>
-<li>Collaborate, don’t back-seat drive</li>
-<li>Respond to every comment</li>
-<li>Know when to take a discussion offline</li>
+<li><p>Use questions or recommendations to drive dialog</p></li>
+<li><p>Collaborate, don’t back-seat drive</p></li>
+<li><p>Respond to every comment</p></li>
+<li><p>Know when to take a discussion offline</p></li>
 </ul>
 <blockquote>
-<div>The kinds of problems that take hours and tons of comments can usually be resolved in a few minutes of productive talk. — Tidy Java</div></blockquote>
+<div><p>The kinds of problems that take hours and tons of comments can usually be resolved in a few minutes of productive talk. — Tidy Java</p>
+</div></blockquote>
 <ul class="simple">
-<li>Use opportunities to teach, and don’t show off</li>
+<li><p>Use opportunities to teach, and don’t show off</p></li>
 </ul>
 <blockquote>
-<div>Before choosing to participate in a code review, ask yourself:</div></blockquote>
+<div><p>Before choosing to participate in a code review, ask yourself:</p>
+</div></blockquote>
 <p>Is your comment helping the other developer learn or are you nitpicking to participate?</p>
 <ul class="simple">
-<li>Don’t show surprise. Don’t make people feel bad that they “should already have known” this piece of information, cf. <a class="reference external" href="https://www.recurse.com/manual#no-feigned-surprise">feigned surprise</a>.</li>
+<li><p>Don’t show surprise. Don’t make people feel bad that they “should already have known” this piece of information, cf. <a class="reference external" href="https://www.recurse.com/manual#no-feigned-surprise">feigned surprise</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -529,70 +553,73 @@ We believe documentation is key to a great project and that it should be as aliv
 <div class="section" id="python-coding-guideline">
 <h3>Python Coding Guideline<a class="headerlink" href="#python-coding-guideline" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Our <strong>libraries</strong> supports python 3.6 and newer</li>
-<li>Our <strong>applications</strong> are written for python 3.6</li>
+<li><p>Our <strong>libraries</strong> supports python 3.6 and newer</p></li>
+<li><p>Our <strong>applications</strong> are written for python 3.6</p></li>
 </ul>
 <p>The Substra project tries to closely follow the official Python guideleines detailed in <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>. Please read it and follow it.</p>
 <p>You can check your code using <a class="reference external" href="http://flake8.pycqa.org/en/latest/">flake8</a>.</p>
 <p>In addition, please apply the following guidelines:</p>
 <ul class="simple">
-<li>Line length up to 119 characters, contrary to the PEP8 guidelines. PEP8 recommends a 79 char limit, but we believe that sometimes it makes the code harder to read.</li>
-<li>Use double quote <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> when a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</li>
-<li>String formatting: use <a class="reference external" href="https://www.python.org/dev/peps/pep-0498/">f-strings</a></li>
-<li>Docstings: <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP-257</a> says that “The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions. However, it doesn’t specify any details of what this should look like. Fortunately, the Google python style guide provides a <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">reasonable syntax for arguments and return values</a>.</li>
-<li>Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.</li>
-<li>When contributing to existing projects - do not change the style.</li>
+<li><p>Line length up to 119 characters, contrary to the PEP8 guidelines. PEP8 recommends a 79 char limit, but we believe that sometimes it makes the code harder to read.</p></li>
+<li><p>Use double quote <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> when a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</p></li>
+<li><p>String formatting: use <a class="reference external" href="https://www.python.org/dev/peps/pep-0498/">f-strings</a></p></li>
+<li><p>Docstings: <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP-257</a> says that “The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions. However, it doesn’t specify any details of what this should look like. Fortunately, the Google python style guide provides a <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">reasonable syntax for arguments and return values</a>.</p></li>
+<li><p>Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.</p></li>
+<li><p>When contributing to existing projects - do not change the style.</p></li>
 </ul>
 </div>
 <div class="section" id="go-coding-guidelines">
 <h3>Go Coding Guidelines<a class="headerlink" href="#go-coding-guidelines" title="Permalink to this headline">¶</a></h3>
 <p>The Substra project tries to follow the following resources:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://golang.org/doc/effective_go.html">Effective Go</a></li>
-<li><a class="reference external" href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a></li>
+<li><p><a class="reference external" href="https://golang.org/doc/effective_go.html">Effective Go</a></p></li>
+<li><p><a class="reference external" href="https://github.com/golang/go/wiki/CodeReviewComments">Go Code Review Comments</a></p></li>
 </ul>
 </div>
 <div class="section" id="third-party-library-usage">
 <h3>Third Party Library Usage<a class="headerlink" href="#third-party-library-usage" title="Permalink to this headline">¶</a></h3>
 <p>There are several advantages of using third party libraries:</p>
 <ul class="simple">
-<li>Saving time</li>
-<li>Not reinventing the iPhone</li>
-<li>Using tested code</li>
-<li>Using modular code</li>
+<li><p>Saving time</p></li>
+<li><p>Not reinventing the iPhone</p></li>
+<li><p>Using tested code</p></li>
+<li><p>Using modular code</p></li>
 </ul>
 <p>But there are also some disadvantages:</p>
 <ul class="simple">
-<li>Dependencies</li>
-<li>Lack of Support</li>
-<li>Overuse</li>
-<li>Security Issues</li>
+<li><p>Dependencies</p></li>
+<li><p>Lack of Support</p></li>
+<li><p>Overuse</p></li>
+<li><p>Security Issues</p></li>
 </ul>
 <div class="section" id="how-to-choose-the-right-library">
 <h4>How to choose the right library?<a class="headerlink" href="#how-to-choose-the-right-library" title="Permalink to this headline">¶</a></h4>
 <p>To maximise advantages over disadvantages, please carefully consider the following questions:</p>
 <ul class="simple">
-<li>Is this library going to be used for core features?</li>
-<li>Is the library maintained?<ul>
-<li>Release frequency, number of issues, pull requests could be good indicators.</li>
+<li><p>Is this library going to be used for core features?</p></li>
+<li><p>Is the library maintained?</p>
+<ul>
+<li><p>Release frequency, number of issues, pull requests could be good indicators.</p></li>
 </ul>
 </li>
-<li>How popular is the library?<ul>
-<li>Ecosystem and community (stars on github, stackoverflow discussions, etc), you can also <a class="reference external" href="https://github.com/Ullaakut/astronomer">check fake stars on Github</a>.</li>
-<li>Blog posts.</li>
-<li>Who use the library at scale?</li>
+<li><p>How popular is the library?</p>
+<ul>
+<li><p>Ecosystem and community (stars on github, stackoverflow discussions, etc), you can also <a class="reference external" href="https://github.com/Ullaakut/astronomer">check fake stars on Github</a>.</p></li>
+<li><p>Blog posts.</p></li>
+<li><p>Who use the library at scale?</p></li>
 </ul>
 </li>
-<li>How reliable is the author?</li>
-<li>How well-written is the library?<ul>
-<li>The library meet common langage good practicies.</li>
-<li>The library have tests and is well documented.</li>
+<li><p>How reliable is the author?</p></li>
+<li><p>How well-written is the library?</p>
+<ul>
+<li><p>The library meet common langage good practicies.</p></li>
+<li><p>The library have tests and is well documented.</p></li>
 </ul>
 </li>
-<li>Does the library meet your specific requirements?</li>
-<li>Does the library have the correct license?</li>
-<li>Is library Licence compatible with our project and licences policies?</li>
-<li>Is there a security policy defined in the project?</li>
+<li><p>Does the library meet your specific requirements?</p></li>
+<li><p>Does the library have the correct license?</p></li>
+<li><p>Is library Licence compatible with our project and licences policies?</p></li>
+<li><p>Is there a security policy defined in the project?</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-check-licence-compatibility">
@@ -602,10 +629,10 @@ We believe documentation is key to a great project and that it should be as aliv
 <div class="section" id="further-reading">
 <h4>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><a class="reference external" href="https://www.gnu.org/licenses/license-list.html">Licence List</a></li>
-<li><a class="reference external" href="https://tldrlegal.com">Check Legal</a></li>
-<li><a class="reference external" href="https://dwheeler.com/essays/floss-license-slide.pdf">Floss License Slide</a></li>
-<li><a class="reference external" href="https://safecode.org/wp-content/uploads/2017/05/SAFECode_TPC_Whitepaper.pdf">Managing Security Risks Inherent in the Use of Thirdparty Components</a></li>
+<li><p><a class="reference external" href="https://www.gnu.org/licenses/license-list.html">Licence List</a></p></li>
+<li><p><a class="reference external" href="https://tldrlegal.com">Check Legal</a></p></li>
+<li><p><a class="reference external" href="https://dwheeler.com/essays/floss-license-slide.pdf">Floss License Slide</a></p></li>
+<li><p><a class="reference external" href="https://safecode.org/wp-content/uploads/2017/05/SAFECode_TPC_Whitepaper.pdf">Managing Security Risks Inherent in the Use of Thirdparty Components</a></p></li>
 </ul>
 </div>
 </div>
