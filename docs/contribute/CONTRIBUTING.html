@@ -101,12 +101,11 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Substra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table Of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!!!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-components-of-substra">The components of Substra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#substra-design-decisions">Substra Design Decisions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#how-can-i-contribute">How Can I Contribute?</a><ul>
@@ -137,7 +136,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#python-coding-guideline">Python Coding Guideline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#go-coding-guidelines">Go Coding Guidelines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#third-party-library-usage">Third Party Library Usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#how-to-choose-the-right-library">How to choose the right library ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-choose-the-right-library">How to choose the right library?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#how-to-check-licence-compatibility">How to check licence compatibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
@@ -153,6 +152,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#security-policy">Security Policy</a></li>
 </ul>
 </li>
 </ul>
@@ -225,46 +225,97 @@
   <div class="section" id="contributing-to-substra">
 <h1>Contributing to Substra<a class="headerlink" href="#contributing-to-substra" title="Permalink to this headline">¶</a></h1>
 <p>:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:</p>
-<p>The following is a set of guidelines for contributing to the framework Substra, which is hosted in the <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation Organization</a> on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.</p>
-<div class="section" id="table-of-contents">
-<h2>Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="#code-of-conduct">Code of Conduct</a></p>
-<p><a class="reference external" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
+<p>The following is a set of guidelines for contributing to the Substra framework, which is hosted on the <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation Organization</a> on GitHub. These are mostly guidelines, not rules. Use your best judgment and feel free to propose changes to this document in a pull request.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#components-of-substra">The components of Substra</a></p></li>
-<li><p><a class="reference external" href="#substra-design-decisions">Substra Design Decisions</a></p></li>
+<li><p><a class="reference external" href="#contributing-to-substra">Contributing to Substra</a></p>
+<ul>
+<li><p><a class="reference external" href="#acknowledgements">Acknowledgements</a></p></li>
+<li><p><a class="reference external" href="#code-of-conduct">Code of Conduct</a></p></li>
+<li><p><a class="reference external" href="#i-dont-want-to-read-this-whole-thing-i-just-have-a-question">I don’t want to read this whole thing I just have a question!</a></p></li>
+<li><p><a class="reference external" href="#what-should-i-know-before-i-get-started">What should I know before I get started?</a></p>
+<ul>
+<li><p><a class="reference external" href="#the-components-of-substra">The components of Substra</a></p></li>
 </ul>
-<p><a class="reference external" href="#how-can-i-contribute">How Can I Contribute?</a></p>
-<ul class="simple">
-<li><p><a class="reference external" href="#improving-documentation">Improving the documentation</a></p></li>
-<li><p><a class="reference external" href="#reporting-bugs">Reporting Bugs</a></p></li>
-<li><p><a class="reference external" href="#suggesting-enhancements">Suggesting Enhancements</a></p></li>
-<li><p><a class="reference external" href="#your-first-code-contribution">Your First Code Contribution</a></p></li>
+</li>
+<li><p><a class="reference external" href="#how-can-i-contribute">How Can I Contribute?</a></p>
+<ul>
+<li><p><a class="reference external" href="#improving-the-documentation">Improving the documentation</a></p></li>
+<li><p><a class="reference external" href="#reporting-bugs">Reporting Bugs</a></p>
+<ul>
+<li><p><a class="reference external" href="#before-submitting-a-bug-report">Before Submitting A Bug Report</a></p></li>
+<li><p><a class="reference external" href="#how-do-i-submit-a-good-bug-report">How Do I Submit A (Good) Bug Report?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#suggesting-enhancements">Suggesting Enhancements</a></p>
+<ul>
+<li><p><a class="reference external" href="#before-submitting-an-enhancement-suggestion">Before Submitting An Enhancement Suggestion</a></p></li>
+<li><p><a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">How Do I Submit A (Good) Enhancement Suggestion?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#your-first-code-contribution">Your First Code Contribution</a></p>
+<ul>
+<li><p><a class="reference external" href="#local-development">Local development</a></p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="#pull-requests">Pull Requests</a></p></li>
-<li><p><a class="reference external" href="#code-reviews">Code Reviews</a></p></li>
+<li><p><a class="reference external" href="#code-review">Code review</a></p>
+<ul>
+<li><p><a class="reference external" href="#review-checklist">Review checklist</a></p></li>
+<li><p><a class="reference external" href="#review-best-practices">Review best practices</a></p>
+<ul>
+<li><p><a class="reference external" href="#tldr">TL;DR</a></p></li>
+<li><p><a class="reference external" href="#unhelpful-behavior">Unhelpful behavior</a></p></li>
+<li><p><a class="reference external" href="#helpful-code-review-practices">Helpful Code Review Practices</a></p></li>
 </ul>
-<p><a class="reference external" href="#coding-guidelines">Coding Guidelines</a></p>
-<ul class="simple">
-<li><p><a class="reference external" href="#python-coding-guidelines">Python Coding Guideline</a></p></li>
-<li><p><a class="reference external" href="#go-coding-guideguide">Go Coding Guidelines</a></p></li>
-<li><p><a class="reference external" href="#third-party-library-usage">Third Party Library Usage</a></p></li>
+</li>
 </ul>
-<p><a class="reference external" href="#additional-notes">Additional Notes</a></p>
-<ul class="simple">
-<li><p><a class="reference external" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></p></li>
+</li>
 </ul>
+</li>
+<li><p><a class="reference external" href="#coding-guidelines">Coding guidelines</a></p>
+<ul>
+<li><p><a class="reference external" href="#python-coding-guideline">Python Coding Guideline</a></p></li>
+<li><p><a class="reference external" href="#go-coding-guidelines">Go Coding Guidelines</a></p></li>
+<li><p><a class="reference external" href="#third-party-library-usage">Third Party Library Usage</a></p>
+<ul>
+<li><p><a class="reference external" href="#how-to-choose-the-right-library">How to choose the right library?</a></p></li>
+<li><p><a class="reference external" href="#how-to-check-licence-compatibility">How to check licence compatibility</a></p></li>
+<li><p><a class="reference external" href="#further-reading">Further reading</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#additional-notes">Additional Notes</a></p>
+<ul>
+<li><p><a class="reference external" href="#issue-and-pull-request-labels">Issue and Pull Request Labels</a></p>
+<ul>
+<li><p><a class="reference external" href="#type-of-issue-and-issue-state">Type of Issue and Issue State</a></p></li>
+<li><p><a class="reference external" href="#topic-categories">Topic Categories</a></p></li>
+<li><p><a class="reference external" href="#pull-request-labels">Pull Request Labels</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#security-policy">Security Policy</a></p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>This amazing piece of software has been developed and open sourced by <a class="reference external" href="https://owkin.com/">Owkin</a> and its <a class="reference external" href="https://github.com/SubstraFoundation/substra/graphs/contributors">terrific software engineers</a>. The repositories are now maintained by <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation</a> and its community. Besides, Substra is really excited to welcome new members, feedbacks and contributions, so please, feel free to get in touch with us!</p>
 </div>
 <div class="section" id="code-of-conduct">
 <h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">¶</a></h2>
-<p>This project and everyone participating in it is governed by the Code of Conduct defined <a class="reference external" href="https://github.com/SubstraFoundation/.github/CODE_OF_CONDUCT">here</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a class="reference external" href="mailto:github&#37;&#52;&#48;substra&#46;org">github<span>&#64;</span>substra<span>&#46;</span>org</a>.</p>
+<p>This project and everyone involved is governed by the Code of Conduct defined <a class="reference external" href="https://github.com/SubstraFoundation/.github/CODE_OF_CONDUCT">here</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a class="reference external" href="mailto:github&#37;&#52;&#48;substra&#46;ai">github<span>&#64;</span>substra<span>&#46;</span>ai</a>.</p>
 </div>
 <div class="section" id="i-don-t-want-to-read-this-whole-thing-i-just-have-a-question">
-<h2>I don’t want to read this whole thing I just have a question!!!<a class="headerlink" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question" title="Permalink to this headline">¶</a></h2>
-<p>Please check <a class="reference external" href="https://forum.substra.org/">our forum</a>.</p>
+<h2>I don’t want to read this whole thing I just have a question!<a class="headerlink" href="#i-don-t-want-to-read-this-whole-thing-i-just-have-a-question" title="Permalink to this headline">¶</a></h2>
+<p>Please check <a class="reference external" href="https://forum.substra.org/">our forum</a>, <a class="reference external" href="https://github.com/SubstraFoundation/substra-documentation/issues/new">create an issue</a> or drop us an <a class="reference external" href="mailto:help&#37;&#52;&#48;substra&#46;ai">email</a>.</p>
 </div>
 <div class="section" id="what-should-i-know-before-i-get-started">
 <h2>What should I know before I get started?<a class="headerlink" href="#what-should-i-know-before-i-get-started" title="Permalink to this headline">¶</a></h2>
-<p>It might be useful to have a look at the <a class="reference external" href="https://github.com/SubstraFoundation/substra">documentation</a></p>
+<p>It might be useful to have a look at the <a class="reference external" href="https://doc.substra.ai">documentation</a>!</p>
 <div class="section" id="the-components-of-substra">
 <h3>The components of Substra<a class="headerlink" href="#the-components-of-substra" title="Permalink to this headline">¶</a></h3>
 <p>Substra is made of several open source components listed below. When you initially consider contributing to Subtra, you may be unsure of the component that implements the functionality you want to change or report a bug for. The table below should help you with that.</p>
@@ -285,7 +336,7 @@
 <td>Toolkit to design assets to be registered to Substra.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/SubstraFoundation/substra-frontend">substra-front</a></td>
+<td><a href="https://github.com/SubstraFoundation/substra-frontend">substra-frontend</a></td>
 <td>Frontend to visualize the state of the assets registered to a Substra channel.</td>
 </tr>
 <tr>
@@ -298,7 +349,7 @@
 </tr>
 <tr>
 <td><a href="https://github.com/SubstraFoundation/substra-chaincode">substra-chaincode</a></td>
-<td>Smart contracts responsible for the decentralised orchestration.</td>
+<td>Smart contracts responsible for the decentralized orchestration.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/SubstraFoundation/hlf-k8s">hlf-k8s</a></td>
@@ -310,74 +361,75 @@
 </tr>
 </tbody>
 </table></div>
-<div class="section" id="substra-design-decisions">
-<h3>Substra Design Decisions<a class="headerlink" href="#substra-design-decisions" title="Permalink to this headline">¶</a></h3>
-<p><strong>Currently being defined</strong></p>
-</div>
 </div>
 <div class="section" id="how-can-i-contribute">
 <h2>How Can I Contribute?<a class="headerlink" href="#how-can-i-contribute" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="improving-the-documentation">
 <h3>Improving the documentation<a class="headerlink" href="#improving-the-documentation" title="Permalink to this headline">¶</a></h3>
-<p>The documentation can be found <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>.
-We believe documentation is key to a project, do not hesitate to submit any feedback or PR to improve it!</p>
+<p>The documentation can be found <a class="reference external" href="https://github.com/SubstraFoundation/substra-documentation/">here</a>.
+We believe documentation is key to a great project and that it should be as alive as our project, so please, do not hesitate to submit any feedback or PR to improve it!</p>
 </div>
 <div class="section" id="reporting-bugs">
 <h3>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h3>
 <p>This section guides you through submitting a bug report for Substra. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.</p>
-<p>Before creating bug reports, please check <a class="reference external" href="#before-submitting-a-bug-report">this list</a> as you might find out that you don’t need to create one. When you are creating a bug report, please <a class="reference external" href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Fill out <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the required template</a>, the information it asks for helps us resolve issues faster.</p>
+<p>Before creating bug reports, please check <a class="reference external" href="#before-submitting-a-bug-report">this list</a> as you might find out that you don’t need to create one. When you are creating a bug report, please <a class="reference external" href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. Fill out <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the required template</a>, the required information will help us resolve issues faster.</p>
 <blockquote>
 <div><p><strong>Note:</strong> If you find a <strong>Closed</strong> issue that seems like it is the same thing that you’re experiencing, open a new issue and include a link to the original issue in the body of your new one.</p>
 </div></blockquote>
 <div class="section" id="before-submitting-a-bug-report">
 <h4>Before Submitting A Bug Report<a class="headerlink" href="#before-submitting-a-bug-report" title="Permalink to this headline">¶</a></h4>
-<!-- * Add debugging section ??--><ul class="simple">
-<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the problem should be reported in</a></strong>.</p></li>
-<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, add a comment to the existing issue instead of opening a new one.</p></li>
+<ul class="simple">
+<li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">in which repository the problem should be reported</a></strong>.</p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the problem has already been reported. If it has <strong>and the issue is still open</strong>, please kindly add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
 </div>
 <div class="section" id="how-do-i-submit-a-good-bug-report">
 <h4>How Do I Submit A (Good) Bug Report?<a class="headerlink" href="#how-do-i-submit-a-good-bug-report" title="Permalink to this headline">¶</a></h4>
-<p>Bugs are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#the-components-of-substra">which repository</a> your bug is related to, create an issue on that repository and provide relevant information by filling in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report">the template</a>.
-The template should guide you to submit a good bug report.
-If you don’t know which repository your bug is related to, submit an issue <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
+<p>Bugs are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#the-components-of-substra">which repository</a> your bug is related to, create an issue on that repository. This template should guide you to submit a good bug report.</p>
+<p>If you really don’t know which repository your bug is related to, submit an issue <a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/new">here</a>.</p>
 </div>
 </div>
 <div class="section" id="suggesting-enhancements">
 <h3>Suggesting Enhancements<a class="headerlink" href="#suggesting-enhancements" title="Permalink to this headline">¶</a></h3>
-<p>This section guides you through submitting an enhancement suggestion for Substra, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.</p>
-<p>Before creating enhancement suggestions, please check <a class="reference external" href="#before-submitting-an-enhancement-suggestion">this list</a> as you might find out that you don’t need to create one. When you are creating an enhancement suggestion, please <a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">include as many details as possible</a>. Fill in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request">the template</a>, including the steps that you imagine you would take if the feature you’re requesting existed.</p>
+<p>This section guides you through submitting an enhancement suggestion for Substra, ranging from minor improvements for already existing functionality to completely new features. Following these guidelines will help maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.</p>
+<p>Before creating enhancement suggestions, please check <a class="reference external" href="#before-submitting-an-enhancement-suggestion">this list</a> as you might find out that you don’t need to create a new one. When you are creating an enhancement suggestion, please <a class="reference external" href="#how-do-i-submit-a-good-enhancement-suggestion">include as many details as possible</a>. Fill in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request">the template</a>, including all the steps that you imagine you would take if the feature already existed.</p>
+<p>You can also start a new topic on the <a class="reference external" href="https://forum.substra.org/">forum</a> in order to engage the community in discussing your suggestion.</p>
 <div class="section" id="before-submitting-an-enhancement-suggestion">
 <h4>Before Submitting An Enhancement Suggestion<a class="headerlink" href="#before-submitting-an-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><strong>Check if there is a newer version which already provides that enhancement.</strong></p></li>
+<li><p><strong>Check if there is a newer version which already provides this enhancement.</strong></p></li>
 <li><p><strong>Determine <a class="reference external" href="#the-components-of-substra">which repository the enhancement should be suggested in</a>.</strong></p></li>
-<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.</p></li>
+<li><p><strong>Perform a <a class="reference external" href="https://github.com/search?q=+is%3Aissue+org%3Asubstrafoundation">cursory search</a></strong> to see if the enhancement has already been suggested. If it has, please kindly add a comment to the existing issue instead of opening a new one.</p></li>
 </ul>
 </div>
 <div class="section" id="how-do-i-submit-a-good-enhancement-suggestion">
 <h4>How Do I Submit A (Good) Enhancement Suggestion?<a class="headerlink" href="#how-do-i-submit-a-good-enhancement-suggestion" title="Permalink to this headline">¶</a></h4>
-<p>Enhancement suggestions are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#components-of-substra">which repository</a> your enhancement suggestion is related to, create an issue on that repository and provide relevant information by filling in <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/enhancement_suggestion">the template</a>.
-The template should guide you to submit a good enhancement suggestion.
-If you don’t know which repository your suggestion is related to, submit an issue to <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli">here (substra-cli)</a>.</p>
+<p>Enhancement suggestions are tracked as <a class="reference external" href="https://guides.github.com/features/issues/">GitHub issues</a>. After you’ve determined <a class="reference external" href="#components-of-substra">which repository</a> your enhancement suggestion is related to, create an issue on that repository. The template should guide you to submit a good enhancement suggestion.</p>
+<p>If you don’t know which repository your suggestion is related to, submit an issue to <a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/new">here</a>.</p>
 </div>
 </div>
 <div class="section" id="your-first-code-contribution">
 <h3>Your First Code Contribution<a class="headerlink" href="#your-first-code-contribution" title="Permalink to this headline">¶</a></h3>
-<p>Unsure where to begin contributing to the code of Substra?
-You can start by looking through these <code class="docutils literal notranslate"><span class="pre">beginner</span></code> and <code class="docutils literal notranslate"><span class="pre">help-wanted</span></code> issues:</p>
+<p>Not sure where to start?</p>
+<p>You can have a look through these <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Abeginner+org%3Asubstrafoundation+sort%3Acomments-desc&amp;type=Issues">[Beginner]</a> and <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc">[Help-wanted]</a> flagged issues:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/search?utf8=%E2%9C%93&amp;q=is%3Aopen+is%3Aissue+label%3Abeginner+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc">Beginner issues</a> - issues which should only require a few lines of code, and a test or two.</p></li>
-<li><p><a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+org%3Asubstrafoundation+sort%3Acomments-desc+-label%3Abeginner">Help wanted issues</a> - issues which should be a bit more involved than <code class="docutils literal notranslate"><span class="pre">beginner</span></code> issues.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Beginner]</span></code> issues are issues that should only require a few lines of code, and a test or two.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Help</span> <span class="pre">wanted]</span></code> issues are issues that should be a bit more involved than beginner issues.</p></li>
 </ul>
-<p>Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.</p>
+<p>Both issues lists are sorted by total number of comments. While not perfect, the number of comments is a reasonable proxy for impact a given change will have.</p>
+<blockquote>
+<div><p>Note: <code class="docutils literal notranslate"><span class="pre">translation</span></code> or <code class="docutils literal notranslate"><span class="pre">reformulation</span></code> can be good entry points on the project.</p>
+</div></blockquote>
 <div class="section" id="local-development">
 <h4>Local development<a class="headerlink" href="#local-development" title="Permalink to this headline">¶</a></h4>
-<p>Substra can be developed locally. For instructions on how to do this, see <a class="reference external" href="https://github.com/SubstraFoundation/substra-cli/blob/dev/docs/local_install">this document</a> which is part of the  Substra Documentation.</p>
+<p>Substra can be developed locally. For instructions on how to do this, see <a class="reference external" href="https://doc.substra.ai/getting_started/installation/local_install_skaffold.html">this page</a> which is part of the Substra Documentation.</p>
 </div>
 </div>
 <div class="section" id="pull-requests">
 <h3>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Hint: Before starting a Pull Request, opening an issue is a good way to reach the team involved (most likely the reviewers of your submission) and discuss your proposition!</p>
+</div></blockquote>
 <p>The process described here has several goals:</p>
 <ul class="simple">
 <li><p>Maintain the quality of Substra</p></li>
@@ -387,90 +439,109 @@ You can start by looking through these <code class="docutils literal notranslate
 </ul>
 <p>Please follow these steps to have your contribution considered by the maintainers:</p>
 <ol class="simple">
-<li><p>Follow all instructions in <a class="reference external" href="PULL_REQUEST_TEMPLATE">the template</a></p></li>
 <li><p>Follow the <a class="reference external" href="#coding-guidelines">coding guidelines</a></p></li>
-<li><p>After you submit your pull request, verify that all <a class="reference external" href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details></p></li>
+<li><p>After submitting your pull request, verify that all <a class="reference external" href="https://help.github.com/articles/about-status-checks/">status checks</a> are passing.</p></li>
 </ol>
-<p>While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.</p>
+<p><img alt="Pull Requests Status" src="../_images/git_pr_status.png" /></p>
+<p>For example, in this caption of the open Pull Requests on the main Substra repository, we can see that:</p>
+<ul class="simple">
+<li><p>The Pull Request called “Type hints” is not passing tests</p></li>
+<li><p>Others are passing</p></li>
+</ul>
+<p>What if the status checks are failing?</p>
+<p>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</p>
+<p>While the prerequisites above must be satisfied prior to having your pull request reviewed, reviewer(s) may ask you to complete additional design work, tests, or other changes before your submission can be ultimately accepted.</p>
+<blockquote>
+<div><p>Note: In order to ease the process, please consider creating a <strong>specific branch</strong> with an explicit name pointing towards the <code class="docutils literal notranslate"><span class="pre">master</span></code>branch. You might even <code class="docutils literal notranslate"><span class="pre">fork</span></code> the whole repository and then open a Pull Request using <code class="docutils literal notranslate"><span class="pre">compare</span> <span class="pre">accross</span> <span class="pre">forks</span></code>. Please refer to <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Github documentation</a> for further information.</p>
+</div></blockquote>
 </div>
 <div class="section" id="code-review">
 <h3>Code review<a class="headerlink" href="#code-review" title="Permalink to this headline">¶</a></h3>
-<p>Reviewing code is a crucial component of the development of the project.
-We strongly encourage anyone to start reviewing code of other developers.
-The code review process is often highly educational for everybody involved.</p>
+<p>Reviewing code is a crucial component of the development of the project. We strongly encourage anyone to start reviewing code of other developers as it often is highly educational for everyone involved.</p>
 <div class="section" id="review-checklist">
 <h4>Review checklist<a class="headerlink" href="#review-checklist" title="Permalink to this headline">¶</a></h4>
 <p>Please make sure you went through this checklist:</p>
 <ul class="simple">
 <li><p>Does this code read like prose?</p></li>
-<li><p>Do the methods do what the name of the method claims that they’ll do? Same for classes?</p></li>
+<li><p>Do the methods do what their name claims they will do? Same for classes?</p></li>
 <li><p>Is the code as modular as possible?</p></li>
 <li><p>Can I get an understanding of the desired behavior just by doing quick scans through unit and acceptance tests?</p></li>
 <li><p>Does the understanding of the desired behavior match the requirements/stories for this work?</p></li>
-<li><p>If there is a small doubt on the fact that acceptance tests might not be enough, have I tested that it works ?</p></li>
+<li><p>If there is a small doubt on the fact that acceptance tests might not be enough? Have I tested that it works?</p></li>
 <li><p>Is this code introducing any new dependencies between classes/components/modules and, if so, is it necessary to do that?</p></li>
-<li><p>Is this code idiomatic, taking full advantage of the language, frameworks, and tools that we use?</p></li>
+<li><p>Is this code idiomatic, taking full advantage of the language, frameworks and tools we use?</p></li>
 <li><p>Is anything here a re-implementation of existing functionality the developer may not be aware of?</p></li>
 </ul>
 </div>
 <div class="section" id="review-best-practices">
 <h4>Review best practices<a class="headerlink" href="#review-best-practices" title="Permalink to this headline">¶</a></h4>
-<p>Please make sure to be <strong>as constructive as possible</strong>.<br />This article summarises unhelpful and helpful behaviors when doing a code review:
-<a class="reference external" href="https://medium.com/&#64;sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c">Unlearning toxic behaviors in a code review culture</a></p>
-<p><strong>TLDR;</strong></p>
+<p>Please make sure to be <strong>as constructive as possible</strong>. This article summarises unhelpful and helpful behaviors when doing a code review: <a class="reference external" href="https://medium.com/&#64;sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c">Unlearning toxic behaviors in a code review culture</a>:</p>
+<div class="section" id="tl-dr">
+<h5>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h5>
+</div>
 <div class="section" id="unhelpful-behavior">
-<h5>Unhelpful behavior:<a class="headerlink" href="#unhelpful-behavior" title="Permalink to this headline">¶</a></h5>
-<ul>
-<li><p>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.
-Instead of saying:</p>
+<h5>Unhelpful behavior<a class="headerlink" href="#unhelpful-behavior" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Don’t make claims unless you can cite documentation, formalized guidelines and coding examples to back those claims up.</p></li>
+</ul>
+<p>Instead of saying:</p>
 <blockquote>
-<div><p>This component should be stateless.
-Provide some context behind the recommendation:
-Since this component doesn’t have any lifecycle methods or state, it could be made a stateless functional component. This will improve performance and readability. <em>Here</em> is some documentation.</p>
+<div><p>This component should be stateless.</p>
 </div></blockquote>
-</li>
-<li><p>Don’t ask judgmental questions.
-Avoid asking questions like:</p>
+<p>Provide some context behind the recommendation:</p>
 <blockquote>
-<div><p>Why didn’t you just do ___ here?
-Oftentimes, these judgmental questions are just veiled demands. Instead, provide a recommendation (with documentation and citations) and leave out harsh words.</p>
+<div><p>Since this component doesn’t have any lifecycle methods or state, it could be made a stateless functional component. This will improve performance and readability. <em>Here</em> is some documentation.</p>
 </div></blockquote>
+<ul class="simple">
+<li><p>Don’t ask judgmental questions.</p></li>
+</ul>
+<p>Avoid asking questions like:</p>
+<blockquote>
+<div><p>Why didn’t you just do ___ here?</p>
+</div></blockquote>
+<p>Oftentimes, these judgmental questions are just veiled demands. Instead, provide a recommendation (with documentation and citations) and leave out harsh words.</p>
 <blockquote>
 <div><p>You can do ___ which has the benefit of ___.</p>
 </div></blockquote>
-</li>
-<li><p>Avoid being sarcastic.
-Unhelpful:</p>
+<ul class="simple">
+<li><p>Avoid being sarcastic.</p></li>
+</ul>
+<p>Unhelpful:</p>
 <blockquote>
-<div><p>Did you even test this code before you checked it in?
-Helpful:
-This breaks when you enter a negative number. Can you please address this case?</p>
+<div><p>Did you even test this code before you checked it in?</p>
 </div></blockquote>
-</li>
-<li><p>Don’t ask engineers to solve problems they didn’t cause “while they are at it”.
-If the code solves the issue/ticket the dev was working on and doesn’t introduce any new issues to the codebase, give the pull request a “thumbs up” and then create a ticket to clean up the existing bad code.</p></li>
+<p>Helpful:</p>
+<blockquote>
+<div><p>This breaks when you enter a negative number. Can you please address this case?</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Don’t ask engineers to solve problems they didn’t cause “while they are at it”.</p></li>
+</ul>
+<p>If the code solves the issue/ticket the dev was working on and doesn’t introduce any new issues to the codebase, give the pull request a “thumbs up” and then create a ticket to clean up the existing bad code.</p>
+<ul class="simple">
 <li><p>Don’t ghost people.</p></li>
 </ul>
 </div>
 <div class="section" id="helpful-code-review-practices">
 <h5>Helpful Code Review Practices<a class="headerlink" href="#helpful-code-review-practices" title="Permalink to this headline">¶</a></h5>
-<ul>
+<ul class="simple">
 <li><p>Use questions or recommendations to drive dialog</p></li>
 <li><p>Collaborate, don’t back-seat drive</p></li>
 <li><p>Respond to every comment</p></li>
-<li><p>Know when to take a discussion offline</p>
+<li><p>Know when to take a discussion offline</p></li>
+</ul>
 <blockquote>
 <div><p>The kinds of problems that take hours and tons of comments can usually be resolved in a few minutes of productive talk. — Tidy Java</p>
 </div></blockquote>
-</li>
-<li><p>Use opportunities to teach, and don’t show off</p>
+<ul class="simple">
+<li><p>Use opportunities to teach, and don’t show off</p></li>
+</ul>
 <blockquote>
-<div><p>Before choosing to participate in a code review, ask yourself:
-Is your comment helping the other developer learn or are you nitpicking to participate?</p>
+<div><p>Before choosing to participate in a code review, ask yourself:</p>
 </div></blockquote>
-</li>
-<li><p>Don’t show surprise.
-Don’t make people feel bad that they “should already have known” this piece of info. https://www.recurse.com/manual#no-feigned-surprise</p></li>
+<p>Is your comment helping the other developer learn or are you nitpicking to participate?</p>
+<ul class="simple">
+<li><p>Don’t show surprise. Don’t make people feel bad that they “should already have known” this piece of information, cf. <a class="reference external" href="https://www.recurse.com/manual#no-feigned-surprise">feigned surprise</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -486,11 +557,11 @@ Don’t make people feel bad that they “should already have known” this piec
 <li><p>Our <strong>applications</strong> are written for python 3.6</p></li>
 </ul>
 <p>The Substra project tries to closely follow the official Python guideleines detailed in <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>. Please read it and follow it.</p>
-<p>Youn can check your code using <a class="reference external" href="http://flake8.pycqa.org/en/latest/">flake8</a>.</p>
-<p>In addition apply the following guidelines:</p>
+<p>You can check your code using <a class="reference external" href="http://flake8.pycqa.org/en/latest/">flake8</a>.</p>
+<p>In addition, please apply the following guidelines:</p>
 <ul class="simple">
 <li><p>Line length up to 119 characters, contrary to the PEP8 guidelines. PEP8 recommends a 79 char limit, but we believe that sometimes it makes the code harder to read.</p></li>
-<li><p>Use double quote “. When a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</p></li>
+<li><p>Use double quote <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> when a string contains single or double quote characters, however, use the other one to avoid backslashes in the string.</p></li>
 <li><p>String formatting: use <a class="reference external" href="https://www.python.org/dev/peps/pep-0498/">f-strings</a></p></li>
 <li><p>Docstings: <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP-257</a> says that “The docstring for a function or method should summarize its behavior and document its arguments, return value(s), side effects, exceptions raised, and restrictions. However, it doesn’t specify any details of what this should look like. Fortunately, the Google python style guide provides a <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings">reasonable syntax for arguments and return values</a>.</p></li>
 <li><p>Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.</p></li>
@@ -509,32 +580,31 @@ Don’t make people feel bad that they “should already have known” this piec
 <h3>Third Party Library Usage<a class="headerlink" href="#third-party-library-usage" title="Permalink to this headline">¶</a></h3>
 <p>There are several advantages of using third party libraries:</p>
 <ul class="simple">
-<li><p>saving time</p></li>
-<li><p>not reinventing the iPhone</p></li>
-<li><p>using tested code</p></li>
-<li><p>using modular code</p></li>
+<li><p>Saving time</p></li>
+<li><p>Not reinventing the iPhone</p></li>
+<li><p>Using tested code</p></li>
+<li><p>Using modular code</p></li>
 </ul>
-<p>There are also some disadvantages:</p>
+<p>But there are also some disadvantages:</p>
 <ul class="simple">
-<li><p>Dependency</p></li>
+<li><p>Dependencies</p></li>
 <li><p>Lack of Support</p></li>
 <li><p>Overuse</p></li>
 <li><p>Security Issues</p></li>
 </ul>
 <div class="section" id="how-to-choose-the-right-library">
-<h4>How to choose the right library ?<a class="headerlink" href="#how-to-choose-the-right-library" title="Permalink to this headline">¶</a></h4>
-<p>To maximise adavantages over disadvantages, please consider carefully the following questions:</p>
+<h4>How to choose the right library?<a class="headerlink" href="#how-to-choose-the-right-library" title="Permalink to this headline">¶</a></h4>
+<p>To maximise advantages over disadvantages, please carefully consider the following questions:</p>
 <ul class="simple">
 <li><p>Is this library going to be used for core features?</p></li>
 <li><p>Is the library maintained?</p>
 <ul>
-<li><p>Release frequency, number of issues, pull requests could be a good indicators.</p></li>
+<li><p>Release frequency, number of issues, pull requests could be good indicators.</p></li>
 </ul>
 </li>
 <li><p>How popular is the library?</p>
 <ul>
-<li><p>Ecosystem and community (stars on github, stackoverflow discussions, etc).
-<a class="reference external" href="https://github.com/Ullaakut/astronomer">Check fake stars on github</a></p></li>
+<li><p>Ecosystem and community (stars on github, stackoverflow discussions, etc), you can also <a class="reference external" href="https://github.com/Ullaakut/astronomer">check fake stars on Github</a>.</p></li>
 <li><p>Blog posts.</p></li>
 <li><p>Who use the library at scale?</p></li>
 </ul>
@@ -549,12 +619,12 @@ Don’t make people feel bad that they “should already have known” this piec
 <li><p>Does the library meet your specific requirements?</p></li>
 <li><p>Does the library have the correct license?</p></li>
 <li><p>Is library Licence compatible with our project and licences policies?</p></li>
+<li><p>Is there a security policy defined in the project?</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-check-licence-compatibility">
 <h4>How to check licence compatibility<a class="headerlink" href="#how-to-check-licence-compatibility" title="Permalink to this headline">¶</a></h4>
-<p>The Substra project is license under a Apache 2.0 license.
-<strong>Libraries used in the project must thus be <a class="reference external" href="https://www.wikiwand.com/en/Permissive_software_license">permissive licenses</a></strong>.</p>
+<p>The Substra project is license under a Apache 2.0 license. <strong>Libraries used in the project must thus be <a class="reference external" href="https://www.wikiwand.com/en/Permissive_software_license">permissive licenses</a></strong>.</p>
 </div>
 <div class="section" id="further-reading">
 <h4>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h4>
@@ -574,45 +644,151 @@ Don’t make people feel bad that they “should already have known” this piec
 <p>This section lists the labels we use to help us track and manage issues and pull requests. These labels are used across all Substra repositories.</p>
 <p><a class="reference external" href="https://help.github.com/articles/searching-issues/">GitHub search</a> makes it easy to use labels for finding groups of issues or pull requests you’re interested in.</p>
 <p>The labels are loosely grouped by their purpose, but it’s not required that every issue have a label from every group or that an issue can’t have more than one label from the same group.</p>
-<p>Please open an issue on TODO define if you have suggestions for new labels, and if you notice some labels are missing on some repositories, then please open an issue on that repository.</p>
+<p>Please open an issue with a <code class="docutils literal notranslate"><span class="pre">Add_Label</span></code> flag, define if you have suggestions for new labels, and if you notice some missing labels on some repositories, then please open an issue on that repository.</p>
 <div class="section" id="type-of-issue-and-issue-state">
 <h4>Type of Issue and Issue State<a class="headerlink" href="#type-of-issue-and-issue-state" title="Permalink to this headline">¶</a></h4>
-<p>TODO</p>
-<p>| Label name | :mag_right: | Description |
-| — | — | — | — |
-| <code class="docutils literal notranslate"><span class="pre">enhancement</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aenhancement">search</a> | Feature requests. |
-| <code class="docutils literal notranslate"><span class="pre">bug</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abug">search</a> | Confirmed bugs or reports that are very likely to be bugs. |
-| <code class="docutils literal notranslate"><span class="pre">question</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aquestion">search</a> | Questions more than bug reports or feature requests (e.g. how do I do X). |
-| <code class="docutils literal notranslate"><span class="pre">feedback</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Afeedback">search</a> | General feedback more than bug reports or feature requests. |
-| <code class="docutils literal notranslate"><span class="pre">help-wanted</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ahelp-wanted">search</a> | The Atom core team would appreciate help from the community in resolving these issues. |
-| <code class="docutils literal notranslate"><span class="pre">beginner</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abeginner">search</a> | Less complex issues which would be good first issues to work on for users who want to contribute to Atom. |
-| <code class="docutils literal notranslate"><span class="pre">more-information-needed</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Amore-information-needed">search</a> | More information needs to be collected about these problems or feature requests (e.g. steps to reproduce). |
-| <code class="docutils literal notranslate"><span class="pre">needs-reproduction</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aneeds-reproduction">search</a> | Likely bugs, but haven’t been reliably reproduced. |
-| <code class="docutils literal notranslate"><span class="pre">blocked</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ablocked">search</a> | Issues blocked on other issues. |
-| <code class="docutils literal notranslate"><span class="pre">duplicate</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aduplicate">search</a> | Issues which are duplicates of other issues, i.e. they have been reported before. |
-| <code class="docutils literal notranslate"><span class="pre">wontfix</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awontfix">search</a> | The Atom core team has decided not to fix these issues for now, either because they’re working as intended or for some other reason. |
-| <code class="docutils literal notranslate"><span class="pre">invalid</span></code> |  <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ainvalid">search</a> | Issues which aren’t valid (e.g. user errors). |
-| <code class="docutils literal notranslate"><span class="pre">wrong-repo</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awrong-repo">search</a> | Issues reported on the wrong repository.  |</p>
-</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Label name</th>
+<th>:mag_right:</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enhancement</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aenhancement">search</a></td>
+<td>Feature requests.</td>
+</tr>
+<tr>
+<td><code>bug</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abug">search</a></td>
+<td>Confirmed bugs or reports that are very likely to be bugs.</td>
+</tr>
+<tr>
+<td><code>question</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aquestion">search</a></td>
+<td>Questions more than bug reports or feature requests (e.g. how do I do X).</td>
+</tr>
+<tr>
+<td><code>feedback</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Afeedback">search</a></td>
+<td>General feedback more than bug reports or feature requests.</td>
+</tr>
+<tr>
+<td><code>help-wanted</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ahelp-wanted">search</a></td>
+<td>The Atom core team would appreciate help from the community in resolving these issues.</td>
+</tr>
+<tr>
+<td><code>beginner</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Abeginner">search</a></td>
+<td>Less complex issues which would be good first issues to work on for users who want to contribute to Atom.</td>
+</tr>
+<tr>
+<td><code>more-information-needed</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Amore-information-needed">search</a></td>
+<td>More information needs to be collected about these problems or feature requests (e.g. steps to reproduce).</td>
+</tr>
+<tr>
+<td><code>needs-reproduction</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aneeds-reproduction">search</a></td>
+<td>Likely bugs, but haven't been reliably reproduced.</td>
+</tr>
+<tr>
+<td><code>blocked</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ablocked">search</a></td>
+<td>Issues blocked on other issues.</td>
+</tr>
+<tr>
+<td><code>duplicate</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Aduplicate">search</a></td>
+<td>Issues which are duplicates of other issues, i.e. they have been reported before.</td>
+</tr>
+<tr>
+<td><code>wontfix</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awontfix">search</a></td>
+<td>The Atom core team has decided not to fix these issues for now, either because they're working as intended or for some other reason.</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Ainvalid">search</a></td>
+<td>Issues which aren't valid (e.g. user errors).</td>
+</tr>
+<tr>
+<td><code>wrong-repo</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Awrong-repo">search</a></td>
+<td>Issues reported on the wrong repository.</td>
+</tr>
+</tbody>
+</table></div>
 <div class="section" id="topic-categories">
 <h4>Topic Categories<a class="headerlink" href="#topic-categories" title="Permalink to this headline">¶</a></h4>
-<p>TODO</p>
-<p>| Label name | :mag_right: | Description |
-| — | — | — | — |
-| <code class="docutils literal notranslate"><span class="pre">documentation</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Adocumentation">search</a> | Related to any type of documentation. |
-| <code class="docutils literal notranslate"><span class="pre">security</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Asecurity">search</a> | Related to security. |</p>
-</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Label name</th>
+<th>:mag_right:</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>documentation</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Adocumentation">search</a></td>
+<td>Related to any type of documentation.</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Aissue+org%3Asubstrafoundation+label%3Asecurity">search</a></td>
+<td>Related to security.</td>
+</tr>
+</tbody>
+</table></div>
 <div class="section" id="pull-request-labels">
 <h4>Pull Request Labels<a class="headerlink" href="#pull-request-labels" title="Permalink to this headline">¶</a></h4>
-<p>| Label name | :mag_right: | Description
-| — | — | — | — |
-| <code class="docutils literal notranslate"><span class="pre">work-in-progress</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Awork-in-progress">search</a> | Pull requests which are still being worked on, more changes will follow. |
-| <code class="docutils literal notranslate"><span class="pre">needs-review</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-review">search</a> | Pull requests which need code review, and approval from maintainers or Atom core team. |
-| <code class="docutils literal notranslate"><span class="pre">under-review</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aunder-review">search</a> | Pull requests being reviewed by maintainers or Atom core team. |
-| <code class="docutils literal notranslate"><span class="pre">requires-changes</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Arequires-changes">search</a> | Pull requests which need to be updated based on review comments and then reviewed again. |
-| <code class="docutils literal notranslate"><span class="pre">needs-testing</span></code> | <a class="reference external" href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-testing">search</a> | Pull requests which need manual testing. |</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Label name</th>
+<th>:mag_right:</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>work-in-progress</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Awork-in-progress">search</a></td>
+<td>Pull requests which are still being worked on, more changes will follow.</td>
+</tr>
+<tr>
+<td><code>needs-review</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-review">search</a></td>
+<td>Pull requests which need code review, and approval from maintainers or Atom core team.</td>
+</tr>
+<tr>
+<td><code>under-review</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aunder-review">search</a></td>
+<td>Pull requests being reviewed by maintainers or Atom core team.</td>
+</tr>
+<tr>
+<td><code>requires-changes</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Arequires-changes">search</a></td>
+<td>Pull requests which need to be updated based on review comments and then reviewed again.</td>
+</tr>
+<tr>
+<td><code>needs-testing</code></td>
+<td><a href="https://github.com/search?q=is%3Aopen+is%3Apr+org%3Asubstrafoundation+label%3Aneeds-testing">search</a></td>
+<td>Pull requests which need manual testing.</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </div>
+<div class="section" id="security-policy">
+<h2>Security Policy<a class="headerlink" href="#security-policy" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to <a class="reference external" href="https://github.com/SubstraFoundation/.github/blob/master/SECURITY.md#security-policy">this section</a> if you want to submit any security related issue.</p>
 </div>
 </div>
 
