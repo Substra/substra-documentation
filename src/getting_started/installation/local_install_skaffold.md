@@ -471,12 +471,12 @@ Congratulations \o/
 If you want to go further, please refer to:
 
 - Documentation:
-  - [CLI](../references/cli.md)
-  - [SDK](../references/sdk.md)
+  - [CLI](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
+  - [SDK](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 - Examples:
-  - [Titanic](../examples/titanic/README.md)
-  - [Cross-validation](../examples/cross_val/README.md)
-  - [Compute plan](../examples/compute_plan/README.md)
+  - [Titanic](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README.md#titanic)
+  - [Cross-validation](https://github.com/SubstraFoundation/substra/blob/master/examples/cross_val/README.md#cross-validation)
+  - [Compute plan](https://github.com/SubstraFoundation/substra/blob/master/examples/compute_plan/README.md#compute-plan)
 
 ## Troubleshooting
 

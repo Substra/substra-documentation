@@ -372,4 +372,4 @@ Please open an issue with a `Add_Label` flag, define if you have suggestions for
 
 ## Security Policy
 
-Please refer to [this section](../../../.github/SECURITY.md) if you want to submit any security related issue.
+Please refer to [this section](https://github.com/SubstraFoundation/.github/blob/master/SECURITY.md#security-policy) if you want to submit any security related issue.
