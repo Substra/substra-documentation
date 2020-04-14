@@ -1,4 +1,4 @@
-# Platform Description
+# Architecture
 
 Main Substra repository: <https://github.com/SubstraFoundation/substra>
 
