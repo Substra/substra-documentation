@@ -23,10 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -186,23 +186,20 @@
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="#overview">Overview</a></p>
-<ul>
-<li><p><a class="reference external" href="#general-definitions--resources">General definitions &amp; resources</a></p>
-<ul>
-<li><p><a class="reference external" href="#roots">Roots</a></p></li>
+<li><a class="reference external" href="#overview">Overview</a><ul>
+<li><a class="reference external" href="#general-definitions--resources">General definitions &amp; resources</a><ul>
+<li><a class="reference external" href="#roots">Roots</a></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#find-your-way-in-this-documentation">Find your way in this documentation</a></p>
-<ul>
-<li><p><a class="reference external" href="#data-scientist--data-engineer">Data scientist &amp; data engineer</a></p></li>
-<li><p><a class="reference external" href="#system-administrator-devops-engineer-sre">System administrator, devops engineer, SRE</a></p></li>
-<li><p><a class="reference external" href="#software-engineer">Software engineer</a></p></li>
-<li><p><a class="reference external" href="#interested-by-substra">Interested by Substra</a></p></li>
+<li><a class="reference external" href="#find-your-way-in-this-documentation">Find your way in this documentation</a><ul>
+<li><a class="reference external" href="#data-scientist--data-engineer">Data scientist &amp; data engineer</a></li>
+<li><a class="reference external" href="#system-administrator-devops-engineer-sre">System administrator, devops engineer, SRE</a></li>
+<li><a class="reference external" href="#software-engineer">Software engineer</a></li>
+<li><a class="reference external" href="#interested-by-substra">Interested by Substra</a></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#use-cases">Use cases</a></p></li>
-<li><p><a class="reference external" href="#about-this-collaborative-documentation">About this <em>collaborative</em> documentation</a></p></li>
+<li><a class="reference external" href="#use-cases">Use cases</a></li>
+<li><a class="reference external" href="#about-this-collaborative-documentation">About this <em>collaborative</em> documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -211,16 +208,16 @@
 <p>Substra is a framework offering distributed orchestration of machine learning tasks among partners while guaranteeing secure and trustless traceability of all operations.</p>
 <p>Data scientist:</p>
 <ul class="simple">
-<li><p>Use your own ML algorithm with any Python ML framework</p></li>
-<li><p>Ship your algorithm on remote data for training and/or prediction and monitor their performances</p></li>
-<li><p>Build advanced Federated Learning strategies for learning accross several remote datasets</p></li>
+<li>Use your own ML algorithm with any Python ML framework</li>
+<li>Ship your algorithm on remote data for training and/or prediction and monitor their performances</li>
+<li>Build advanced Federated Learning strategies for learning accross several remote datasets</li>
 </ul>
 <p>Data controllers:</p>
 <ul class="simple">
-<li><p>Make your dataset(s) available to other partners for training/evaluation, being sure that it cannot be downloaded</p></li>
-<li><p>Choose fine tuned permissions for your dataset to control its lifecycle</p></li>
-<li><p>Monitor how your data were used</p></li>
-<li><p>Engage in advanced multi-partner data science collaborations, even with partners owning competing datasets</p></li>
+<li>Make your dataset(s) available to other partners for training/evaluation, being sure that it cannot be downloaded</li>
+<li>Choose fine tuned permissions for your dataset to control its lifecycle</li>
+<li>Monitor how your data were used</li>
+<li>Engage in advanced multi-partner data science collaborations, even with partners owning competing datasets</li>
 </ul>
 <p>Substra aims at being compatible with privacy-enhancing technologies to complement their use to provide efficient and transparent privacy-preserving workflows for data science. Its ambition is to make new scientific and economic data science collaborations possible.</p>
 <p>The sofware is Open Source, published under an Apache-2.0 license and the forge is located on <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation’s Github repositories</a>.</p>
@@ -228,18 +225,18 @@
 <h2>General definitions &amp; resources<a class="headerlink" href="#general-definitions-resources" title="Permalink to this headline">¶</a></h2>
 <p>Substra is a framework for operating distributed Machine Learning that aims at providing tool for traceable Data Science.</p>
 <ul class="simple">
-<li><p><strong>Data locality</strong>: Data remain in their owner’s data stores and are never transferred. AI models travel from one dataset to another.</p></li>
-<li><p><strong>Decentralized trust</strong>: All operations are orchestrated by a distributed ledger technology. There is no need for a single trusted actor or third party: security arises from the network.</p></li>
-<li><p><strong>Traceability</strong>: An immutable audit trail registers all the operations realized on the platform, simplifying certification of models.</p></li>
-<li><p><strong>Modularity</strong>: Substra framework is highly flexible: various permission regimes and workflow structures can be enforced corresponding to every specific use case.</p></li>
+<li><strong>Data locality</strong>: Data remain in their owner’s data stores and are never transferred. AI models travel from one dataset to another.</li>
+<li><strong>Decentralized trust</strong>: All operations are orchestrated by a distributed ledger technology. There is no need for a single trusted actor or third party: security arises from the network.</li>
+<li><strong>Traceability</strong>: An immutable audit trail registers all the operations realized on the platform, simplifying certification of models.</li>
+<li><strong>Modularity</strong>: Substra framework is highly flexible: various permission regimes and workflow structures can be enforced corresponding to every specific use case.</li>
 </ul>
 <div class="section" id="roots">
 <h3>Roots<a class="headerlink" href="#roots" title="Permalink to this headline">¶</a></h3>
 <p>Substra Foundation has published <em>open access</em> materials that will provide you with a great overview of the project:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/SubstraFoundation/welcome">Welcome Repository</a></p></li>
-<li><p><a class="reference external" href="https://github.com/SubstraFoundation/welcome/blob/master/Substra-Foundation_Manifesto-v0.3_2019.10.25.pdf">Manifesto</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1910.11567">White Paper</a></p></li>
+<li><a class="reference external" href="https://github.com/SubstraFoundation/welcome">Welcome Repository</a></li>
+<li><a class="reference external" href="https://github.com/SubstraFoundation/welcome/blob/master/Substra-Foundation_Manifesto-v0.3_2019.10.25.pdf">Manifesto</a></li>
+<li><a class="reference external" href="https://arxiv.org/abs/1910.11567">White Paper</a></li>
 </ul>
 </div>
 </div>
@@ -257,29 +254,28 @@
 <h3>Software engineer<a class="headerlink" href="#software-engineer" title="Permalink to this headline">¶</a></h3>
 <p>If you are interested in understanding how Substra works maybe how to contribute, please have a look over here:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#4-platform-description">Platform description</a></p></li>
-<li><p><a class="reference external" href="#5-contribution-guidelinestemplates">Contribution guidelines</a></p></li>
+<li><a class="reference external" href="#4-platform-description">Platform description</a></li>
+<li><a class="reference external" href="#5-contribution-guidelinestemplates">Contribution guidelines</a></li>
 </ul>
 </div>
 <div class="section" id="interested-by-substra">
 <h3>Interested by Substra<a class="headerlink" href="#interested-by-substra" title="Permalink to this headline">¶</a></h3>
 <p>If you are interested in Substra and would like to understand how it could be interesting for <em>your</em> project, you really should check the following sections:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#4-platform-description">Platform Description</a></p></li>
-<li><p>You can reach us <a class="reference external" href="../getting_started/installation/local_install_skaffold.md##need-help">here</a></p></li>
+<li><a class="reference external" href="#4-platform-description">Platform Description</a></li>
+<li>You can reach us <a class="reference external" href="../getting_started/installation/local_install_skaffold.md##need-help">here</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="use-cases">
 <h2>Use cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>One framwork, a lot of possibilities</p>
-</div></blockquote>
+<div>One framwork, a lot of possibilities</div></blockquote>
 <p>Substra is efficient on a range of issues like:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.substra.ai/en/consortiums">Consortium between competitors</a></p></li>
-<li><p><a class="reference external" href="https://www.substra.ai/en/collaborations-donnees-ds">Collaborations between data providers and scientists</a></p></li>
-<li><p><a class="reference external" href="https://www.substra.ai/en/challenges">Machine Learning on sensitive data</a></p></li>
+<li><a class="reference external" href="https://www.substra.ai/en/consortiums">Consortium between competitors</a></li>
+<li><a class="reference external" href="https://www.substra.ai/en/collaborations-donnees-ds">Collaborations between data providers and scientists</a></li>
+<li><a class="reference external" href="https://www.substra.ai/en/challenges">Machine Learning on sensitive data</a></li>
 </ul>
 </div>
 <div class="section" id="about-this-collaborative-documentation">
