@@ -36,6 +36,12 @@
 - Required packages: [Ubuntu help](https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages)
 - If you need more information about [libvirt & qemu](https://libvirt.org/drvqemu.html)
 
+### Http errors
+
+- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` is activated (in Firefox Network options). If so, please try again desactivating this option, or try with another browser...
+- If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
+- `Self-signed certificate` issues are related to your network provider/admin
+
 ### Serve the frontend with Yarn
 
 Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install):
@@ -113,12 +119,6 @@ Otherwise, you can try to import the following configuration to the extension (v
 
 See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-browsable-api>
 
-### [WIP] Ongoing issues
-
-- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` is activated (in Firefox Network options). If so, please try again desactivating this option, or try with another browser...
-- If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
-- [WIP] `Self-signed certificate` issues are related to your network provider/admin
-
 ## Tips and useful resources
 
 ### K8s
@@ -133,14 +133,16 @@ See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-brow
 
 ### K9s
 
-Here are some [k9s](https://github.com/derailed/k9s) tips:
+[k9s](https://github.com/derailed/k9s) is quite handy to inspect your Kubernetes setup. Here are some basic tips:
 
-- `CTRL + A`
-- `:xray deployments all`
 - `?` for help
+- `y` to see the `YAML` configuration
+- `d` for `describe`
+- `l` for `logs`
 - `/server` then `l` for the logs
 - `:jobs` might be useful to see what is happening behind the scene
-- `y` to see the YAML configuration
+- `CTRL` + `A`
+- `:xray deployments all`
 
 ### Helm
 
