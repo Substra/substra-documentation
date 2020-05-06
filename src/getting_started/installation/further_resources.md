@@ -119,17 +119,7 @@ See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-brow
 - If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
 - [WIP] `Self-signed certificate` issues are related to your network provider/admin
 
-## Need help?
-
-Let's talk:
-
-- [WIP] [Create an issue on Github](https://github.com/SubstraFoundation/substra/issues/new)
-- Come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) (Once your request is granted, you will be able to join us, especially the *#help* channel)
-- Have a look to the [forum](https://forum.substra.org/)
-- Drop us an [email](mailto:help@substra.ai)
-- Or come meet us *irl* in Paris, Nantes or Limoges!
-
-## Tips and usefull resources
+## Tips and useful resources
 
 ### K8s
 
@@ -137,6 +127,9 @@ Let's talk:
 - Local Kubernetes deployment with minikube: <https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/>
 - [Awesome Kubernetes list](https://github.com/ramitsurana/awesome-kubernetes#starting-point)
 - [Minikube](https://minikube.sigs.k8s.io/) is recommended on Ubuntu but you can also use [Microk8s](https://microk8s.io/).
+- Use k8s context:
+  - `kubectl config get-contexts`
+  - `kubectl config set current-context YOUR_CONTEXT`
 
 ### K9s
 
@@ -192,6 +185,16 @@ deactivate
 ```
 
 If you are looking for more Python Virtual Environment resource, you might be interested in this post from [Real Python](https://realpython.com/python-virtual-environments-a-primer/).
+
+## Need help?
+
+Let's talk:
+
+- [WIP] [Create an issue on Github](https://github.com/SubstraFoundation/substra/issues/new)
+- Come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) (Once your request is granted, you will be able to join us, especially the *#help* channel)
+- Have a look to the [forum](https://forum.substra.org/)
+- Drop us an [email](mailto:help@substra.ai)
+- Or come meet us *irl* in Paris, Nantes or Limoges!
 
 ## Acknowledgements
 
