@@ -186,14 +186,12 @@ deactivate
 
 If you are looking for more Python Virtual Environment resource, you might be interested in this post from [Real Python](https://realpython.com/python-virtual-environments-a-primer/).
 
-## Need help?
+## Get in touch
 
-Let's talk:
-
-- [WIP] [Create an issue on Github](https://github.com/SubstraFoundation/substra/issues/new)
 - Come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) (Once your request is granted, you will be able to join us, especially the *#help* channel)
 - Have a look to the [forum](https://forum.substra.org/)
 - Drop us an [email](mailto:help@substra.ai)
+- [Create an issue on Github](https://github.com/SubstraFoundation/substra/issues/new)
 - Or come meet us *irl* in Paris, Nantes or Limoges!
 
 ## Acknowledgements
