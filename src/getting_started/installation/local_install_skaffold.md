@@ -100,8 +100,8 @@ First of all, download the `Docker desktop` installer from <https://www.docker.c
 ```sh
 # Ubuntu only
 # Get the executable & install it
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_1.7.2-0_amd64.deb && \
-sudo dpkg -i minikube_1.7.2-0_amd64.deb
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
 ##### Installing [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
