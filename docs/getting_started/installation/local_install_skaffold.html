@@ -649,8 +649,7 @@ minikube delete
 <h3>Substra CLI config &amp; login (Mac &amp; Ubuntu)<a class="headerlink" href="#substra-cli-config-login-mac-ubuntu" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note 1: Substra works on Python 3.6.</p>
-<p>Note 2: On Ubuntu, if the command <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">substra</span></code> fails, you might need to install <code class="docutils literal notranslate"><span class="pre">keyrings-alt</span></code> with <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">keyrings-alt</span></code>; you might even have to do <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">remove</span> <span class="pre">python3-keyrings.alt</span> <span class="pre">python-keyrings.alt</span></code>.</p>
-<p>Note 3: If you are working inside a virtualized environment, you probably will have execute to <code class="docutils literal notranslate"><span class="pre">pip3</span></code> commands with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<p>Note 2: If you are working inside a virtualized environment, you probably will have to execute <code class="docutils literal notranslate"><span class="pre">pip3</span></code> commands with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
 </div></blockquote>
 <p>Install the CLI:</p>
 <blockquote>
@@ -661,7 +660,10 @@ minikube delete
 </div>
 <p>Login with the CLI</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration</span>
-substra config -u <span class="s2">&quot;node-1&quot;</span> -p <span class="s1">&#39;p@$swr0d44&#39;</span> http://substra-backend.node-1.com
+substra config http://substra-backend.node-1.com
+
+<span class="c1"># Login</span>
+substra login -u <span class="s2">&quot;node-1&quot;</span> -p <span class="s1">&#39;p@$swr0d44&#39;</span>
 
 <span class="c1"># Login</span>
 substra login
