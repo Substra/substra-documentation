@@ -447,10 +447,7 @@ Login with the CLI
 
 ```sh
 # Configuration
-substra config http://substra-backend.node-1.com
-
-# Login
-substra login -u "node-1" -p 'p@$swr0d44'
+substra config -u "node-1" -p 'p@$swr0d44' http://substra-backend.node-1.com
 
 # Login
 substra login
