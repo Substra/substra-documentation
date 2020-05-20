@@ -42,6 +42,18 @@
 - If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
 - `Self-signed certificate` issues are related to your network provider/admin
 
+## Unreachable backend
+
+If you are having trouble accessing the backends, at some point, you might want to try:
+
+```sh
+minikube addons disable ingress
+[wait 30 sec]
+minikube addons enable ingress
+[wait a couple minutes]
+curl $(minikube ip) -H 'Host: substra-backend.node-1.com'
+```
+
 ### Serve the frontend with Yarn
 
 Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install):
