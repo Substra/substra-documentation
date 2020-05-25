@@ -157,8 +157,8 @@ brew install skaffold
 - Ubuntu
 
 ```sh
-# Get the executable
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+# Get the executable (1.8 version)
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v1.8.0/skaffold-linux-amd64
 # Make it executable on your machine
 chmod +x skaffold
 # Move it to your local bin
