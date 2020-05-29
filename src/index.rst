@@ -1,6 +1,10 @@
 .. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
     :target: https://travis-ci.org/SubstraFoundation/substra-documentation
 
+.. image:: ../_static/substra-logo.svg
+   :width: 200px
+   :align: center
+
 Welcome to Substra's documentation!
 =========================================
 
