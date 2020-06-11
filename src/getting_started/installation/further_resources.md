@@ -15,11 +15,12 @@
 
 ### Minikube useful commands
 
+> Check that `helm-tiller` & `ingress` minikube modules are enabled with `minikube addons list`.
+
 - `minikube ip`
 - `minikube dashboard`
 - `minikube tunnel`
 - `minikube config view`
-- `minikube addons list`
 - If you are using microk8s:
   - `microk8s.status`
   - `microk8s.inspect`
