@@ -1,11 +1,5 @@
 # Let's build & publish the documentation
 
-## Repositories
-
-- Substra [repository](https://github.com/SubstraFoundation/substra)
-- Substra-documentation [repository](https://github.com/SubstraFoundation/substra-documentation/)
-- Substra [documentation](https://doc.substra.ai/)
-
 ## Files & Directories
 
 > Note: The `CONTRIBUTING.md` orignal source file is located in the [.github repository](https://github.com/SubstraFoundation/.github) and then fetched into this documentation.
@@ -16,6 +10,37 @@
 - `conf.py` is the Python Sphinx configuration file
 - `index.rst` is the general Table Of Content of this very documentation
 - `_build` is the default build output directory
+
+## Tree of the `src` folder
+
+```sh
+src/
+├── contribute
+│   └── CONTRIBUTING.md
+├── entry_points
+│   ├── faq.md
+│   └── glossary.md
+├── getting_started
+│   ├── installation
+│   │   ├── further_resources.md
+│   │   ├── installation.rst
+│   │   ├── local_install_docker_compose.md
+│   │   └── local_install_skaffold.md
+│   └── usage
+│       └── usage.md
+├── img
+│   ├── architecture_overview.png
+│   ├── git_pr_status.png
+│   ├── start_backend.png
+│   ├── start_frontend.png
+│   └── start_hlf-k8s.png
+├── index.rst
+├── overview
+│   └── overview.md
+├── platform_description
+│   └── platform.md
+└── publish.md
+```
 
 ## Commands
 
@@ -37,29 +62,13 @@ git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
 ```
 
-## Source Tree
+## Contributing
 
-```sh
-├── contribute
-│   └── CONTRIBUTING.md
-├── entry_points
-│   ├── faq.md
-│   └── glossary.md
-├── getting_started
-│   ├── installation
-│   │   ├── local_install_docker_compose.md
-│   │   └── local_install_skaffold.md
-│   └── usage
-│       └── usage.md
-├── img
-│   ├── architecture_overview.png
-│   ├── git_pr_status.png
-│   ├── start_backend.png
-│   ├── start_frontend.png
-│   └── start_hlf-k8s.png
-├── overview
-│   └── overview.md
-├── platform_description
-│   └── platform.md
-└── publish.md
-```
+- Source code: <https://github.com/SubstraFoundation/substra>
+- Issue tracker: <https://github.com/SubstraFoundation/substra/issues>
+- Documentation: <https://doc.substra.ai>
+- Documentation issue tracker: <https://github.com/SubstraFoundation/substra-documentation/issues>
+- Website: <https://www.substra.ai>
+- Slack: <https://substra-workspace.slack.com>
+- Contribution guidelines: <https://doc.substra.ai/contribute/CONTRIBUTING.html>
+- Licence: Apache License 2.0
