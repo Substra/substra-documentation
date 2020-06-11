@@ -243,6 +243,9 @@ helm init --upgrade
 
 # Check if Tiller is correctly running
 kubectl get pods --namespace kube-system
+
+# Install the bitnami repository
+helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 #### Network
