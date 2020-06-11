@@ -2,9 +2,10 @@
 
 > This is an ongoing document, please feel free to reach us or to [raise any issue](https://github.com/SubstraFoundation/substra-documentation/issues).
 
-This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.
+This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.
 
 - [Local installation of Substra using Kubernetes and Skaffold](#local-installation-of-substra-using-kubernetes-and-skaffold)
+  - [Compatibility table](#compatibility-table)
   - [Substra Setup](#substra-setup)
     - [General knowledge](#general-knowledge)
     - [Hardware requirements](#hardware-requirements)
@@ -58,6 +59,10 @@ skaffold dev
 # In the repository substra-frontend
 skaffold dev
 ```
+
+## Compatibility table
+
+Please always refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the suggested releases for each section.
 
 ## Substra Setup
 
