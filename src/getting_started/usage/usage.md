@@ -1,7 +1,5 @@
 # Usage
 
-![Substra](../../../_static/substra-logo.svg)
-
 CLI and SDK for interacting with Substra platform.
 
 - [Usage](#usage)
