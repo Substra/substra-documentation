@@ -429,7 +429,10 @@ sudo mv skaffold /usr/local/bin
 <div class="section" id="get-the-source-code-mac-ubuntu">
 <h3>Get the source code (Mac &amp; Ubuntu)<a class="headerlink" href="#get-the-source-code-mac-ubuntu" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Note: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html">Fabric documentation</a></p>
+<div><p>Note 1: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html">Fabric documentation</a></p>
+</div></blockquote>
+<blockquote>
+<div><p>Note 2: Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>.</p>
 </div></blockquote>
 <p>You will find the main Substra repository <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>, but in order to run the Substra framework, you will need to clone 3 repositories: <a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s">hlf-k8s</a> (Hyperledger Fabric), <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">susbtra-backend</a> and <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">substra-frontend</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository is in charge of the initialization of the <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> network. By default, it will create an <code class="docutils literal notranslate"><span class="pre">orderer</span></code> and two orgs (<code class="docutils literal notranslate"><span class="pre">org-1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">org-2</span></code>).</p>
@@ -573,6 +576,9 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 </div>
 <div class="section" id="running-the-platform">
 <h2>Running the platform<a class="headerlink" href="#running-the-platform" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>.</p>
+</div></blockquote>
 <div class="section" id="start-substra">
 <h3>Start Substra<a class="headerlink" href="#start-substra" title="Permalink to this headline">¶</a></h3>
 <blockquote>
