@@ -4,10 +4,6 @@ CLI and SDK for interacting with Substra platform.
 
 - [Usage](#usage)
   - [Install](#install)
-  - [Running the Substra platform locally](#running-the-substra-platform-locally)
-  - [Usage](#usage-1)
-    - [CLI](#cli)
-    - [SDK](#sdk)
   - [Documentation](#documentation)
   - [Examples](#examples)
   - [Compatibility table](#compatibility-table)
@@ -25,7 +21,7 @@ To install the command line interface and the python sdk, run the following comm
 pip install substra
 ```
 
-To enable Bash completion, you need to put into your .bashrc:
+To enable Bash completion, you need to put into your `.bashrc`:
 
 ```sh
 eval "$(_SUBSTRA_COMPLETE=source substra)"
@@ -38,32 +34,6 @@ eval "$(_SUBSTRA_COMPLETE=source_zsh substra)"
 ```
 
 From this point onwards, substra command line interface will have autocompletion enabled.
-
-## Running the Substra platform locally
-
-You can run the Substra platform locally on your machine using one of the two following methods:
-
-- [Using kubernetes and skaffold (recommended)](../installation/local_install_skaffold.md)
-- [Using docker-compose](../installation/local_install_docker_compose.md)
-
-## Usage
-
-Credentials are required for using this tool.
-
-### CLI
-
-```sh
-substra --help
-```
-
-### SDK
-
-```python
-import substra
-
-client = substra.Client()
-# enjoy...
-```
 
 ## Documentation
 
