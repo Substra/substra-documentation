@@ -2,6 +2,20 @@
 
 ## Troubleshooting
 
+## Reset 
+
+> Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!
+
+If you need to reset and want to start a new kubernetes configuration, you can try some of these:
+
+- `minikube delete`
+- `skaffold delete`
+- `helm reset` or `helm reset --force`
+- `helm delete --purge network-org-1-peer-1 --no-hooks`
+- `kubectl delete all -l app=helm -n kube-system`
+- `kubectl delete deployment tiller-deploy --namespace kube-system`
+- `kubectl delete ns org-1 org-2`
+
 ### Virtualization issues
 
 - If you are getting this error about libvirt: `[KVM_CONNECTION_ERROR] machine in unknown state: getting connection: getting domain: error connecting to libvirt socket`. You probably need to install additional package: `sudo apt-get install libvirt-daemon-system`
@@ -12,6 +26,8 @@
 - `kubectl cluster-info`
 - `kubectl get all --all-namespaces`
 - `kubectl delete ns YOUR_NAMESPACE`
+- `kubectl get nodes -o wide`
+- `kubectl get pods -o wide`
 
 ### Minikube useful commands
 

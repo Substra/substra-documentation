@@ -94,7 +94,8 @@
 <li class="toctree-l2"><a class="reference internal" href="local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="local_install_docker_compose.html">Local installation of Substra using Docker</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Further resources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reset">Reset</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#virtualization-issues">Virtualization issues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kubectl-useful-commands">Kubectl useful commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#minikube-useful-commands">Minikube useful commands</a></li>
@@ -205,6 +206,22 @@
 <h1>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="reset">
+<h2>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!</p>
+</div></blockquote>
+<p>If you need to reset and want to start a new kubernetes configuration, you can try some of these:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">delete</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">delete</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">reset</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">reset</span> <span class="pre">--force</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">all</span> <span class="pre">-l</span> <span class="pre">app=helm</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">deployment</span> <span class="pre">tiller-deploy</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">org-1</span> <span class="pre">org-2</span></code></p></li>
+</ul>
 <div class="section" id="virtualization-issues">
 <h3>Virtualization issues<a class="headerlink" href="#virtualization-issues" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -218,6 +235,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">YOUR_NAMESPACE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">nodes</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="minikube-useful-commands">
