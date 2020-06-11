@@ -37,12 +37,12 @@ From this point onwards, substra command line interface will have autocompletion
 
 ## Documentation
 
-Interacting with the Substra platform:
+Interacting with the Substra platform
 
 - [Command line interface](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
 - [SDK](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 
-Implementing your assets in python:
+Implementing your assets in Python with [Substra Tools](https://github.com/SubstraFoundation/substra-tools)
 
 - [Objective base class](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics)
 - [Dataset base class](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener)
@@ -50,7 +50,7 @@ Implementing your assets in python:
 - [Composite algo base class](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#compositealgo)
 - [Aggregate algo base class](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#aggregatealgo)
 
-Learning about the Substra platform:
+Learning about the Substra platform
 
 - [Concepts](https://github.com/SubstraFoundation/substra/blob/master/docs/concepts.md#substras-concepts)
 - [Machine Learning tasks](https://github.com/SubstraFoundation/substra/blob/master/docs/ml_tasks.md#machine-learning-tasks)
