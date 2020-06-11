@@ -2,9 +2,10 @@
 
 > This is an ongoing document, please feel free to reach us or to [raise any issue](https://github.com/SubstraFoundation/substra-documentation/issues).
 
-This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.
+This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.
 
 - [Local installation of Substra using Kubernetes and Skaffold](#local-installation-of-substra-using-kubernetes-and-skaffold)
+  - [Compatibility table](#compatibility-table)
   - [Substra Setup](#substra-setup)
     - [General knowledge](#general-knowledge)
     - [Hardware requirements](#hardware-requirements)
@@ -59,6 +60,10 @@ skaffold dev
 skaffold dev
 ```
 
+## Compatibility table
+
+Please always refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the suggested releases for each section.
+
 ## Substra Setup
 
 ### General knowledge
@@ -93,9 +98,7 @@ Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great too
 
 First of all, download the `Docker desktop` installer from <https://www.docker.com/products/docker-desktop>. You'll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its "preferences" panel. In the Kubernetes tab, check the `Enable Kubernetes` checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.
 
-- Ubuntu: [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-
-> Please use the up-to-date version
+- Ubuntu: [Docker](https://docs.docker.com/engine/install/ubuntu/) & [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ```sh
 # Ubuntu only
@@ -240,6 +243,9 @@ helm init --upgrade
 
 # Check if Tiller is correctly running
 kubectl get pods --namespace kube-system
+
+# Install the bitnami repository
+helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 #### Network
