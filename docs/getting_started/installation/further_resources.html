@@ -101,6 +101,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#tiller">Tiller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtualization-resources">Virtualization resources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#http-errors">Http errors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#unreachable-backend">Unreachable backend</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#serve-the-frontend-with-yarn">Serve the frontend with Yarn</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#backend-browser-extension">Backend &amp; Browser extension</a></li>
 </ul>
@@ -219,12 +222,14 @@
 </div>
 <div class="section" id="minikube-useful-commands">
 <h3>Minikube useful commands<a class="headerlink" href="#minikube-useful-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Check that <code class="docutils literal notranslate"><span class="pre">helm-tiller</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">ingress</span></code> minikube modules are enabled with <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">list</span></code>.</p>
+</div></blockquote>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">ip</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">dashboard</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">tunnel</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">config</span> <span class="pre">view</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">list</span></code></p></li>
 <li><p>If you are using microk8s:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">microk8s.status</span></code></p></li>
@@ -256,6 +261,17 @@
 <li><p>If you are getting <code class="docutils literal notranslate"><span class="pre">bad</span> <span class="pre">certificate</span></code> issues: please try to investigate your setup with <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span> <span class="pre">--all</span></code>; you can try <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code> &amp; in k9s <code class="docutils literal notranslate"><span class="pre">:jobs</span></code> and delete the <code class="docutils literal notranslate"><span class="pre">orgs</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">orderer</span></code>; you can also<code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">RELEASE_NAME</span></code> (ex. <code class="docutils literal notranslate"><span class="pre">network-org-1-peer-1</span></code>) and then restart with <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Self-signed</span> <span class="pre">certificate</span></code> issues are related to your network provider/admin</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="unreachable-backend">
+<h2>Unreachable backend<a class="headerlink" href="#unreachable-backend" title="Permalink to this headline">¶</a></h2>
+<p>If you are having trouble accessing the backends, at some point, you might want to try:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>minikube addons disable ingress
+<span class="o">[</span><span class="nb">wait</span> <span class="m">30</span> sec<span class="o">]</span>
+minikube addons <span class="nb">enable</span> ingress
+<span class="o">[</span><span class="nb">wait</span> a couple minutes<span class="o">]</span>
+curl <span class="k">$(</span>minikube ip<span class="k">)</span> -H <span class="s1">&#39;Host: substra-backend.node-1.com&#39;</span>
+</pre></div>
 </div>
 <div class="section" id="serve-the-frontend-with-yarn">
 <h3>Serve the frontend with Yarn<a class="headerlink" href="#serve-the-frontend-with-yarn" title="Permalink to this headline">¶</a></h3>
