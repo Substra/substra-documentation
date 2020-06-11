@@ -98,9 +98,7 @@ Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great too
 
 First of all, download the `Docker desktop` installer from <https://www.docker.com/products/docker-desktop>. You'll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its "preferences" panel. In the Kubernetes tab, check the `Enable Kubernetes` checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.
 
-- Ubuntu: [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-
-> Please use the up-to-date version
+- Ubuntu: [Docker](https://docs.docker.com/engine/install/ubuntu/) & [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ```sh
 # Ubuntu only
