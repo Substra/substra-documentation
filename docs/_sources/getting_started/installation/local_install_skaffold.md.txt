@@ -53,7 +53,7 @@ minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.1
 # In the repository hlf-k8s
 skaffold dev
 
-# In the repository susbtra-backend
+# In the repository substra-backend
 skaffold dev
 
 # In the repository substra-frontend
@@ -184,7 +184,7 @@ sudo mv skaffold /usr/local/bin
 >
 > Note 2: Please refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the relevant releases. For example, in the `substra-backend` repository, use `git checkout 0.0.14`. You can also only clone a single specific branch/release with the `--single-branch` option, for example: `git clone https://github.com/SubstraFoundation/substra.git --single-branch --branch 0.5.0`.
 
-You will find the main Substra repository [here](https://github.com/SubstraFoundation/substra), but in order to run the Substra framework, you will need to clone 3 repositories: [hlf-k8s](https://github.com/SubstraFoundation/hlf-k8s) (Hyperledger Fabric), [susbtra-backend](https://github.com/SubstraFoundation/substra-backend) and [substra-frontend](https://github.com/SubstraFoundation/substra-frontend).
+You will find the main Substra repository [here](https://github.com/SubstraFoundation/substra), but in order to run the Substra framework, you will need to clone 3 repositories: [hlf-k8s](https://github.com/SubstraFoundation/hlf-k8s) (Hyperledger Fabric), [substra-backend](https://github.com/SubstraFoundation/substra-backend) and [substra-frontend](https://github.com/SubstraFoundation/substra-frontend).
 
 The `hlf-k8s` repository is in charge of the initialization of the [Hyperledger Fabric](https://www.hyperledger.org/projects/fabric) network. By default, it will create an `orderer` and two orgs (`org-1` & `org-2`).
 
@@ -388,7 +388,7 @@ In the `substra-backend` repository, please run the command `skaffold dev`. The 
 
 #### 3. substra-frontend repository
 
-In the `susbtra-frontend` repository, please run the command `skaffold dev`. The platform will be ready once the terminal displays:
+In the `substra-frontend` repository, please run the command `skaffold dev`. The platform will be ready once the terminal displays:
 
 ```sh
 [frontend-org-2-substra-frontend-787554fc4b-pmh2g substra-frontend] CACHING:  /login
@@ -560,8 +560,8 @@ You will then need add these three elements:
 | Resource | Name | Value |
 | -------- | ---- | ----- |
 | Request Headers | `Accept` | `text/html;version=0.0, */*; version=0.0` |
-| Filters | `URL Pattern` | `http://susbtra-backend.node-1.com` |
-| Filters | `URL Pattern` | `http://susbtra-backend.node-2.com` |
+| Filters | `URL Pattern` | `http://substra-backend.node-1.com` |
+| Filters | `URL Pattern` | `http://substra-backend.node-2.com` |
 
 Otherwise, you can try to import the following configuration to the extension (via the Import menu):
 
@@ -588,7 +588,7 @@ Otherwise, you can try to import the following configuration to the extension (v
             {
                 "enabled": true,
                 "type": "urls",
-                "urlRegex": "http://susbtra-backend.node-1.com"
+                "urlRegex": "http://substra-backend.node-1.com"
             }
         ],
         "urlReplacements": [],

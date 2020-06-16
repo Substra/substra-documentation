@@ -289,7 +289,7 @@ minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</sp
 <span class="c1"># In the repository hlf-k8s</span>
 skaffold dev
 
-<span class="c1"># In the repository susbtra-backend</span>
+<span class="c1"># In the repository substra-backend</span>
 skaffold dev
 
 <span class="c1"># In the repository substra-frontend</span>
@@ -432,7 +432,7 @@ sudo mv skaffold /usr/local/bin
 <div><p>Note 1: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html">Fabric documentation</a></p>
 <p>Note 2: Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>. You can also only clone a single specific branch/release with the <code class="docutils literal notranslate"><span class="pre">--single-branch</span></code> option, for example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/SubstraFoundation/substra.git</span> <span class="pre">--single-branch</span> <span class="pre">--branch</span> <span class="pre">0.5.0</span></code>.</p>
 </div></blockquote>
-<p>You will find the main Substra repository <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>, but in order to run the Substra framework, you will need to clone 3 repositories: <a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s">hlf-k8s</a> (Hyperledger Fabric), <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">susbtra-backend</a> and <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">substra-frontend</a>.</p>
+<p>You will find the main Substra repository <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>, but in order to run the Substra framework, you will need to clone 3 repositories: <a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s">hlf-k8s</a> (Hyperledger Fabric), <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">substra-backend</a> and <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">substra-frontend</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository is in charge of the initialization of the <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> network. By default, it will create an <code class="docutils literal notranslate"><span class="pre">orderer</span></code> and two orgs (<code class="docutils literal notranslate"><span class="pre">org-1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">org-2</span></code>).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> is powered by Django and is responsible for, among other things, handling the api endpoints.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> will serve a neat interface for the end-users.</p>
@@ -608,7 +608,7 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 </div>
 <div class="section" id="substra-frontend-repository">
 <h4>3. substra-frontend repository<a class="headerlink" href="#substra-frontend-repository" title="Permalink to this headline">¶</a></h4>
-<p>In the <code class="docutils literal notranslate"><span class="pre">susbtra-frontend</span></code> repository, please run the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>. The platform will be ready once the terminal displays:</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> repository, please run the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>. The platform will be ready once the terminal displays:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>frontend-org-2-substra-frontend-787554fc4b-pmh2g substra-frontend<span class="o">]</span> CACHING:  /login
 </pre></div>
 </div>
@@ -798,12 +798,12 @@ substra get traintuple HASH
 <tr>
 <td>Filters</td>
 <td><code>URL Pattern</code></td>
-<td><code>http://susbtra-backend.node-1.com</code></td>
+<td><code>http://substra-backend.node-1.com</code></td>
 </tr>
 <tr>
 <td>Filters</td>
 <td><code>URL Pattern</code></td>
-<td><code>http://susbtra-backend.node-2.com</code></td>
+<td><code>http://substra-backend.node-2.com</code></td>
 </tr>
 </tbody>
 </table><p>Otherwise, you can try to import the following configuration to the extension (via the Import menu):</p>
@@ -829,7 +829,7 @@ substra get traintuple HASH
             <span class="p">{</span>
                 <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
                 <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;urls&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;urlRegex&quot;</span><span class="p">:</span> <span class="s2">&quot;http://susbtra-backend.node-1.com&quot;</span>
+                <span class="nt">&quot;urlRegex&quot;</span><span class="p">:</span> <span class="s2">&quot;http://substra-backend.node-1.com&quot;</span>
             <span class="p">}</span>
         <span class="p">],</span>
         <span class="nt">&quot;urlReplacements&quot;</span><span class="p">:</span> <span class="p">[],</span>
