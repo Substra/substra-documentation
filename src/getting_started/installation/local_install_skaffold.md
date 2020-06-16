@@ -447,7 +447,7 @@ You should find the credentials in the charts: `skaffold.yaml` files or in the `
 
 Install the CLI:
 
-> Need help to setup a Python Virtual Environment? [Check this out](#python-virtual-environment)
+> Need help to setup a Python Virtual Environment? [Check this out](further_resources.md#python-virtual-environment)
 
 ```sh
 pip3 install substra
