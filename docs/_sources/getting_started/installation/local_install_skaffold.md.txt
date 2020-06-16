@@ -2,9 +2,10 @@
 
 > This is an ongoing document, please feel free to reach us or to [raise any issue](https://github.com/SubstraFoundation/substra-documentation/issues).
 
-This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.
+This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.
 
 - [Local installation of Substra using Kubernetes and Skaffold](#local-installation-of-substra-using-kubernetes-and-skaffold)
+  - [Compatibility table](#compatibility-table)
   - [Substra Setup](#substra-setup)
     - [General knowledge](#general-knowledge)
     - [Hardware requirements](#hardware-requirements)
@@ -59,6 +60,10 @@ skaffold dev
 skaffold dev
 ```
 
+## Compatibility table
+
+Please always refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the suggested releases for each section.
+
 ## Substra Setup
 
 ### General knowledge
@@ -93,9 +98,7 @@ Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great too
 
 First of all, download the `Docker desktop` installer from <https://www.docker.com/products/docker-desktop>. You'll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its "preferences" panel. In the Kubernetes tab, check the `Enable Kubernetes` checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.
 
-- Ubuntu: [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-
-> Please use the up-to-date version
+- Ubuntu: [Docker](https://docs.docker.com/engine/install/ubuntu/) & [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ```sh
 # Ubuntu only
@@ -177,7 +180,9 @@ sudo mv skaffold /usr/local/bin
 
 ### Get the source code (Mac & Ubuntu)
 
-> Note: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see [Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html)
+> Note 1: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see [Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html)
+>
+> Note 2: Please refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the relevant releases. For example, in the `substra-backend` repository, use `git checkout 0.0.14`. You can also only clone a single specific branch/release with the `--single-branch` option, for example: `git clone https://github.com/SubstraFoundation/substra.git --single-branch --branch 0.5.0`.
 
 You will find the main Substra repository [here](https://github.com/SubstraFoundation/substra), but in order to run the Substra framework, you will need to clone 3 repositories: [hlf-k8s](https://github.com/SubstraFoundation/hlf-k8s) (Hyperledger Fabric), [susbtra-backend](https://github.com/SubstraFoundation/substra-backend) and [substra-frontend](https://github.com/SubstraFoundation/substra-frontend).
 
@@ -240,6 +245,9 @@ helm init --upgrade
 
 # Check if Tiller is correctly running
 kubectl get pods --namespace kube-system
+
+# Install the bitnami repository
+helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 #### Network
@@ -341,6 +349,8 @@ echo "192.168.65.2 substra-backend.node-1.com substra-frontend.node-1.com substr
 ```
 
 ## Running the platform
+
+> Please refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the relevant releases. For example, in the `substra-backend` repository, use `git checkout 0.0.14`. You can also only clone a single specific branch/release with the `--single-branch` option, for example: `git clone https://github.com/SubstraFoundation/substra.git --single-branch --branch 0.5.0`.
 
 ### Start Substra
 

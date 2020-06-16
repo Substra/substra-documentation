@@ -1,6 +1,6 @@
 # Let's build & publish the documentation
 
-In the substra-documentation repository:
+In the `substra-documentation` repository:
 
 ```sh
 # Install the dependencies

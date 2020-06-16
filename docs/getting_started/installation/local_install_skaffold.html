@@ -92,6 +92,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="installation.html">Setup</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Local installation of Substra using Kubernetes and Skaffold</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compatibility-table">Compatibility table</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#substra-setup">Substra Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#general-knowledge">General knowledge</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
@@ -213,10 +214,11 @@
 <blockquote>
 <div><p>This is an ongoing document, please feel free to reach us or to <a class="reference external" href="https://github.com/SubstraFoundation/substra-documentation/issues">raise any issue</a>.</p>
 </div></blockquote>
-<p>This guide will help you to run the Substra platform on your machine in development mode, with a two nodes setup.</p>
+<p>This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="#local-installation-of-substra-using-kubernetes-and-skaffold">Local installation of Substra using Kubernetes and Skaffold</a></p>
 <ul>
+<li><p><a class="reference external" href="#compatibility-table">Compatibility table</a></p></li>
 <li><p><a class="reference external" href="#substra-setup">Substra Setup</a></p>
 <ul>
 <li><p><a class="reference external" href="#general-knowledge">General knowledge</a></p></li>
@@ -294,6 +296,10 @@ skaffold dev
 skaffold dev
 </pre></div>
 </div>
+<div class="section" id="compatibility-table">
+<h2>Compatibility table<a class="headerlink" href="#compatibility-table" title="Permalink to this headline">¶</a></h2>
+<p>Please always refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the suggested releases for each section.</p>
+</div>
 <div class="section" id="substra-setup">
 <h2>Substra Setup<a class="headerlink" href="#substra-setup" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general-knowledge">
@@ -329,11 +335,8 @@ Note: This setup has been tested on Ubuntu 19.10, 18.04.3 &amp; Linux Mint 19 Ci
 </ul>
 <p>First of all, download the <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">desktop</span></code> installer from <a class="reference external" href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a>. You’ll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its “preferences” panel. In the Kubernetes tab, check the <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Kubernetes</span></code> checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.</p>
 <ul class="simple">
-<li><p>Ubuntu: <a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></p></li>
+<li><p>Ubuntu: <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">Docker</a> &amp; <a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></p></li>
 </ul>
-<blockquote>
-<div><p>Please use the up-to-date version</p>
-</div></blockquote>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu only</span>
 <span class="c1"># Get the executable &amp; install it</span>
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -426,7 +429,8 @@ sudo mv skaffold /usr/local/bin
 <div class="section" id="get-the-source-code-mac-ubuntu">
 <h3>Get the source code (Mac &amp; Ubuntu)<a class="headerlink" href="#get-the-source-code-mac-ubuntu" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Note: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html">Fabric documentation</a></p>
+<div><p>Note 1: As Hyperledger Fabric is a permissioned blockchain, ordering nodes are in charge of the transaction ordering, see <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html">Fabric documentation</a></p>
+<p>Note 2: Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>. You can also only clone a single specific branch/release with the <code class="docutils literal notranslate"><span class="pre">--single-branch</span></code> option, for example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/SubstraFoundation/substra.git</span> <span class="pre">--single-branch</span> <span class="pre">--branch</span> <span class="pre">0.5.0</span></code>.</p>
 </div></blockquote>
 <p>You will find the main Substra repository <a class="reference external" href="https://github.com/SubstraFoundation/substra">here</a>, but in order to run the Substra framework, you will need to clone 3 repositories: <a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s">hlf-k8s</a> (Hyperledger Fabric), <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">susbtra-backend</a> and <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">substra-frontend</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository is in charge of the initialization of the <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> network. By default, it will create an <code class="docutils literal notranslate"><span class="pre">orderer</span></code> and two orgs (<code class="docutils literal notranslate"><span class="pre">org-1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">org-2</span></code>).</p>
@@ -483,6 +487,9 @@ helm init --upgrade
 
 <span class="c1"># Check if Tiller is correctly running</span>
 kubectl get pods --namespace kube-system
+
+<span class="c1"># Install the bitnami repository</span>
+helm repo add bitnami https://charts.bitnami.com/bitnami
 </pre></div>
 </div>
 </div>
@@ -567,6 +574,9 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 </div>
 <div class="section" id="running-the-platform">
 <h2>Running the platform<a class="headerlink" href="#running-the-platform" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>. You can also only clone a single specific branch/release with the <code class="docutils literal notranslate"><span class="pre">--single-branch</span></code> option, for example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/SubstraFoundation/substra.git</span> <span class="pre">--single-branch</span> <span class="pre">--branch</span> <span class="pre">0.5.0</span></code>.</p>
+</div></blockquote>
 <div class="section" id="start-substra">
 <h3>Start Substra<a class="headerlink" href="#start-substra" title="Permalink to this headline">¶</a></h3>
 <blockquote>
