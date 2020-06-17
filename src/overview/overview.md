@@ -58,25 +58,25 @@ Substra Foundation has published *open access* materials that will provide you w
 
 ### Data scientist & data engineer
 
-If you are looking at how to start a data science project with Substra installed in your IT environment, you might directly want to check the [usage section](#2-usage).
+If you are looking at how to start a data science project with Substra installed in your IT environment, you might directly want to check the [usage section](../getting_started/usage/usage.md#usage).
 
 ### System administrator, devops engineer, SRE
 
-If you interested in installing Substra, please refer to the [installation section](#3-setup).
+If you interested in installing Substra, please refer to the [installation section](../getting_started/installation/installation.rst).
 
 ### Software engineer
 
 If you are interested in understanding how Substra works maybe how to contribute, please have a look over here:
 
-- [Platform description](#4-platform-description)
-- [Contribution guidelines](#5-contribution-guidelinestemplates)
+- [Platform description](../platform_description/platform.md)
+- [Contribution guidelines](../contribute/CONTRIBUTING.md)
 
 ### Interested by Substra
 
 If you are interested in Substra and would like to understand how it could be interesting for *your* project, you really should check the following sections:
 
-- [Platform Description](#4-platform-description)
-- You can reach us [here](../getting_started/installation/local_install_skaffold.md##need-help)
+- [Platform Description](../platform_description/platform.md)
+- You can reach us [here](../getting_started/installation/further_resources.md#get-in-touch)
 
 ## Use cases
 
