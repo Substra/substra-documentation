@@ -2,7 +2,7 @@
 
 ## Troubleshooting
 
-## Reset 
+### Reset 
 
 > Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!
 
@@ -15,11 +15,6 @@ If you need to reset and want to start a new kubernetes configuration, you can t
 - `kubectl delete all -l app=helm -n kube-system`
 - `kubectl delete deployment tiller-deploy --namespace kube-system`
 - `kubectl delete ns org-1 org-2`
-
-### Virtualization issues
-
-- If you are getting this error about libvirt: `[KVM_CONNECTION_ERROR] machine in unknown state: getting connection: getting domain: error connecting to libvirt socket`. You probably need to install additional package: `sudo apt-get install libvirt-daemon-system`
-- You might need to change the owner as well: `sudo chown -R $USER:$USER $HOME/.kube` `sudo chown -R $USER:$USER $HOME/.minikube`; See <https://medium.com/@nieldw/running-minikube-with-vm-driver-none-47de91eab84c>
 
 ### Kubectl useful commands
 
@@ -47,8 +42,10 @@ If you need to reset and want to start a new kubernetes configuration, you can t
 - tiller issues: <https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259>
 - After running `skaffold dev` in the `hlf-k8s` repo, in case of error related to the `tempchart` folder, please do `rm -rf tempchart`
 
-### Virtualization resources
+### Virtualization issues & resources
 
+- If you are getting this error about `libvirt`: `[KVM_CONNECTION_ERROR] machine in unknown state: getting connection: getting domain: error connecting to libvirt socket`. You probably need to install additional package: `sudo apt-get install libvirt-daemon-system`
+- You might need to change the owner as well: `sudo chown -R $USER:$USER $HOME/.kube` `sudo chown -R $USER:$USER $HOME/.minikube`; See <https://medium.com/@nieldw/running-minikube-with-vm-driver-none-47de91eab84c>
 - [KVM (Kernel Virtual Machine) installation](https://help.ubuntu.com/community/KVM/Installation#Installation)
 - Required packages: [Ubuntu help](https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages)
 - If you need more information about [libvirt & qemu](https://libvirt.org/drvqemu.html)
@@ -73,7 +70,7 @@ curl $(minikube ip) -H 'Host: substra-backend.node-1.com'
 
 ### Serve the frontend with Yarn
 
-Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install):
+Instead of using `skaffold`, you might want to start the Substra frontend with [Yarn](https://yarnpkg.com/getting-started/install):
 
 Start Redis in one terminal window:
 
@@ -158,7 +155,7 @@ See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-brow
 - [Minikube](https://minikube.sigs.k8s.io/) is recommended on Ubuntu but you can also use [Microk8s](https://microk8s.io/).
 - Use k8s context:
   - `kubectl config get-contexts`
-  - `kubectl config set current-context YOUR_CONTEXT`
+  - `kubectl config set current-context <YOUR_CONTEXT>`
 
 ### K9s
 
