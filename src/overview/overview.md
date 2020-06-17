@@ -62,7 +62,7 @@ If you are looking at how to start a data science project with Substra installed
 
 ### System administrator, devops engineer, SRE
 
-If you interested in installing Substra, please refer to the [installation section](../getting_started/installation/installation.rst).
+If you interested in installing Substra, please refer to the [installation section](../getting_started/installation/local_install_skaffold.md).
 
 ### Software engineer
 
