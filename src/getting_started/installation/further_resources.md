@@ -36,6 +36,10 @@ If you need to reset and want to start a new kubernetes configuration, you can t
   - `microk8s.status`
   - `microk8s.inspect`
 
+### Minikube Errors
+
+If you are having this error : `[JUJU_LOCK_DENIED] Failed to start none bare metal machine. "minikube start" may fix it. boot lock: unable to open /tmp/juju-[...] permission denied`, you will need to execute this command : `sudo sysctl fs.protected_regular=0` before restarting minikube.
+
 ### Tiller
 
 - Tiller might need you to use this command in case of error during init: `helm init --service-account tiller --upgrade`. You can also try to create a service account with `kubectl create serviceaccount --namespace kube-system tiller`. Otherwise, please have a look here: <https://github.com/SubstraFoundation/substra-backend/pull/1>
