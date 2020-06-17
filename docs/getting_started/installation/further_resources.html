@@ -94,13 +94,12 @@
 <li class="toctree-l2"><a class="reference internal" href="local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="local_install_docker_compose.html">Local installation of Substra using Docker</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Further resources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reset">Reset</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#virtualization-issues">Virtualization issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reset">Reset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kubectl-useful-commands">Kubectl useful commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#minikube-useful-commands">Minikube useful commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tiller">Tiller</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtualization-resources">Virtualization resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtualization-issues-resources">Virtualization issues &amp; resources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#http-errors">Http errors</a></li>
 </ul>
 </li>
@@ -206,9 +205,8 @@
 <h1>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="reset">
-<h2>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
+<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!</p>
 </div></blockquote>
@@ -221,12 +219,6 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">all</span> <span class="pre">-l</span> <span class="pre">app=helm</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">deployment</span> <span class="pre">tiller-deploy</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">org-1</span> <span class="pre">org-2</span></code></p></li>
-</ul>
-<div class="section" id="virtualization-issues">
-<h3>Virtualization issues<a class="headerlink" href="#virtualization-issues" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>If you are getting this error about libvirt: <code class="docutils literal notranslate"><span class="pre">[KVM_CONNECTION_ERROR]</span> <span class="pre">machine</span> <span class="pre">in</span> <span class="pre">unknown</span> <span class="pre">state:</span> <span class="pre">getting</span> <span class="pre">connection:</span> <span class="pre">getting</span> <span class="pre">domain:</span> <span class="pre">error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">libvirt</span> <span class="pre">socket</span></code>. You probably need to install additional package: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libvirt-daemon-system</span></code></p></li>
-<li><p>You might need to change the owner as well: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.kube</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.minikube</span></code>; See <a class="reference external" href="https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c">https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c</a></p></li>
 </ul>
 </div>
 <div class="section" id="kubectl-useful-commands">
@@ -265,9 +257,11 @@
 <li><p>After running <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code> in the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repo, in case of error related to the <code class="docutils literal notranslate"><span class="pre">tempchart</span></code> folder, please do <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">tempchart</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="virtualization-resources">
-<h3>Virtualization resources<a class="headerlink" href="#virtualization-resources" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virtualization-issues-resources">
+<h3>Virtualization issues &amp; resources<a class="headerlink" href="#virtualization-issues-resources" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p>If you are getting this error about <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>: <code class="docutils literal notranslate"><span class="pre">[KVM_CONNECTION_ERROR]</span> <span class="pre">machine</span> <span class="pre">in</span> <span class="pre">unknown</span> <span class="pre">state:</span> <span class="pre">getting</span> <span class="pre">connection:</span> <span class="pre">getting</span> <span class="pre">domain:</span> <span class="pre">error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">libvirt</span> <span class="pre">socket</span></code>. You probably need to install additional package: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libvirt-daemon-system</span></code></p></li>
+<li><p>You might need to change the owner as well: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.kube</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.minikube</span></code>; See <a class="reference external" href="https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c">https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c</a></p></li>
 <li><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation">KVM (Kernel Virtual Machine) installation</a></p></li>
 <li><p>Required packages: <a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages">Ubuntu help</a></p></li>
 <li><p>If you need more information about <a class="reference external" href="https://libvirt.org/drvqemu.html">libvirt &amp; qemu</a></p></li>
@@ -294,7 +288,7 @@ curl <span class="k">$(</span>minikube ip<span class="k">)</span> -H <span class
 </div>
 <div class="section" id="serve-the-frontend-with-yarn">
 <h3>Serve the frontend with Yarn<a class="headerlink" href="#serve-the-frontend-with-yarn" title="Permalink to this headline">¶</a></h3>
-<p>Alternatively, instead of using <code class="docutils literal notranslate"><span class="pre">skaffold</span></code>, you might want to start the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> with <a class="reference external" href="https://yarnpkg.com/getting-started/install">Yarn</a>:</p>
+<p>Instead of using <code class="docutils literal notranslate"><span class="pre">skaffold</span></code>, you might want to start the Substra frontend with <a class="reference external" href="https://yarnpkg.com/getting-started/install">Yarn</a>:</p>
 <p>Start Redis in one terminal window:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>redis-cli
 </pre></div>
@@ -391,7 +385,7 @@ curl <span class="k">$(</span>minikube ip<span class="k">)</span> -H <span class
 <li><p>Use k8s context:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">config</span> <span class="pre">get-contexts</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">current-context</span> <span class="pre">YOUR_CONTEXT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">current-context</span> <span class="pre">&lt;YOUR_CONTEXT&gt;</span></code></p></li>
 </ul>
 </li>
 </ul>
