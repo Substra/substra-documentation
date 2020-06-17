@@ -53,7 +53,9 @@ This project and everyone involved is governed by the Code of Conduct defined [h
 
 ## I don't want to read this whole thing I just have a question!
 
-Please check [our forum](https://forum.substra.org/), [create an issue](https://github.com/SubstraFoundation/substra-documentation/issues/new) or drop us an [email](mailto:help@substra.ai).
+- Come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) (Once your request is granted, you will be able to join us, especially the *#help* channel)
+- Drop us an [email](mailto:help@substra.ai)
+- [Create an issue on Github](https://github.com/SubstraFoundation/substra/issues/new)
 
 ## What should I know before I get started?
 
@@ -106,7 +108,7 @@ This section guides you through submitting an enhancement suggestion for Substra
 
 Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create a new one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion). Fill in [the template](https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request.md), including all the steps that you imagine you would take if the feature already existed.
 
-You can also start a new topic on the [forum](https://forum.substra.org/) in order to engage the community in discussing your suggestion.
+You can also come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) in order to engage the community in discussing your suggestion.
 
 #### Before Submitting An Enhancement Suggestion
 
@@ -372,4 +374,4 @@ Please open an issue with a `Add_Label` flag, define if you have suggestions for
 
 ## Security Policy
 
-Please refer to [this section](https://github.com/SubstraFoundation/.github/blob/master/SECURITY.md#security-policy) if you want to submit any security related issue.
+Please refer to [this section](../../../.github/SECURITY.md) if you want to submit any security related issue.
