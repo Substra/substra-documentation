@@ -98,6 +98,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#reset">Reset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kubectl-useful-commands">Kubectl useful commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#minikube-useful-commands">Minikube useful commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minikube-errors">Minikube Errors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tiller">Tiller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtualization-issues-resources">Virtualization issues &amp; resources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#http-errors">Http errors</a></li>
@@ -248,6 +249,10 @@
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="minikube-errors">
+<h3>Minikube Errors<a class="headerlink" href="#minikube-errors" title="Permalink to this headline">¶</a></h3>
+<p>If you are having this error: <code class="docutils literal notranslate"><span class="pre">[JUJU_LOCK_DENIED]</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">start</span> <span class="pre">none</span> <span class="pre">bare</span> <span class="pre">metal</span> <span class="pre">machine.</span> <span class="pre">&quot;minikube</span> <span class="pre">start&quot;</span> <span class="pre">may</span> <span class="pre">fix</span> <span class="pre">it.</span> <span class="pre">boot</span> <span class="pre">lock:</span> <span class="pre">unable</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">/tmp/juju-[...]</span> <span class="pre">permission</span> <span class="pre">denied</span></code>, you will need to execute this command: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sysctl</span> <span class="pre">fs.protected_regular=0</span></code> before restarting minikube.</p>
 </div>
 <div class="section" id="tiller">
 <h3>Tiller<a class="headerlink" href="#tiller" title="Permalink to this headline">¶</a></h3>
