@@ -38,7 +38,7 @@ If you need to reset and want to start a new kubernetes configuration, you can t
 
 ### Minikube Errors
 
-If you are having this error : `[JUJU_LOCK_DENIED] Failed to start none bare metal machine. "minikube start" may fix it. boot lock: unable to open /tmp/juju-[...] permission denied`, you will need to execute this command : `sudo sysctl fs.protected_regular=0` before restarting minikube.
+If you are having this error: `[JUJU_LOCK_DENIED] Failed to start none bare metal machine. "minikube start" may fix it. boot lock: unable to open /tmp/juju-[...] permission denied`, you will need to execute this command: `sudo sysctl fs.protected_regular=0` before restarting minikube.
 
 ### Tiller
 
