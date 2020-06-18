@@ -1,52 +1,19 @@
 # Concepts
 
-## TODO
-
-### FIX LINKS
-
-### IMPORT IMG
-
-## An introduction to Substra
-
-To enable machine learning on distributed data, four types of objects are defined within a Substra network.
-
-### Objective
-
-It clearly defines the scientific question to be answered with a ML model. It specifies:
-
-- the data format that the **Dataset**, **Algo** and **Model** have to follow,
-- the identity of the test data points used to compare and evaluate the models,
-- the metrics script which is used to quantify the accuracy of a model.
-  
-### Dataset
-
-It aggregates numerous data points under a single format. It includes a single *Opener* script which imports and opens the file using libraries specific to the data type.
-  
-### Algorithm
-
-It corresponds to a script which specifies the method to train a **Model** on a **Dataset**. In particular it specifies the model type and architecture, the loss function, the optimizer, hyperparameters and identifies the parameters that are tuned during training. Algo dependencies are also specified.
-  
-### Model
-
-It corresponds to a file containing the parameters of a trained model. In the case of neural networks, it gathers the weights of the connections. It is associated with:
-
-#### Training tasks specification (*Traintuple*)  
-
-A *Traintuple* specifies which **Algo** must be trained on which **Dataset** for which **Objective** and starting from which **Model(s)**. Once the training is done, it specifies the resulting **Model**.
-
-#### Evaluation tasks specification (*Testtuple*)
-
-A **Testtuple** specifies the output of Traintuple to be evaluated. This corresponds to evaluating a **Model** against a (test) **Dataset** associated with an **Objective**.
-
-The core idea of Substra is to keep **Dataset** in the different nodes of a network and make **Algo** and **Models** travel from one node to another to train them on **Dataset**.
-
-## Concepts
+- [Objective](#objective)
+- [Dataset](#dataset)
+- [Algo](#algo)
+- [Model](#model)
+- [Traintuple](#traintuple)
+- [Testtuple](#testtuple)
+- [Machine Learning tasks](#machine-learning-tasks)
+- [Adding data samples to Substra](#adding-data-samples-to-substra)
 
 All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.
 
 ![Relationships between assets](./img/assets_relationships.png)
 
-### Objective
+## Objective
 
 An objective is simply made of:
 
@@ -55,7 +22,7 @@ An objective is simply made of:
 
 It mainly aims at standardising the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.
 
-### Dataset
+## Dataset
 
 A *dataset* is the abstraction that manages a coherent collection of *data samples* for a specific purpose.
 It makes the link between a set of **data samples** and an **Objective** through an **opener**.
@@ -83,7 +50,7 @@ A data opener is a script which reads files and returns in-memory objects that a
 
 A dataset can only be associated with a single objective.
 
-### Algo
+## Algo
 
 An algo is a script (typically a python file) for defining and training an ML architecture, together with a specific context specifying the dependencies (represented as a Dockerfile) for running the script.
 
@@ -98,7 +65,7 @@ The algo must follow a specific template to be executed properly, basically over
 
 An algorithm is linked to a unique objective.
 
-### Model
+## Model
 
 A model is an architecture and a set of parameters specifying completely a predictive function. Typically, it corresponds to the weights of a neural networks in the form of a parsable file (e.g. json or hdf5). Substra helps training new models from older ones by using an algorithm and a dataset.
 
@@ -106,7 +73,7 @@ A model is an architecture and a set of parameters specifying completely a predi
 
 A model is linked with one or several input models, a dataset, and an algo (and a objective by transitivity).
 
-### Traintuple
+## Traintuple
 
 A traintuple is the explicit specification of a training task. It contains the references of all the assets involved in the training task:
 
@@ -121,7 +88,7 @@ A sequence of traintuple defines a training trajectory.
 
 A traintuple is linked with an objective, one algo, several models, and several train data samples.
 
-### Testtuple
+## Testtuple
 
 A testtuple is the explicit specification of a testing task, corresponding to the evaluation of a model on test data.  It contains the references of all the assets involved in the testing task:
 
@@ -227,8 +194,7 @@ You can see a full example of this in the [Titanic example](../examples/titanic)
 
 ## Adding data samples to Substra
 
-Data samples can be ingested to Substra using our python SDK or our command line
-interface tool.
+Data samples can be ingested to Substra using our python SDK or our command line interface tool.
 
 2 different modes are available when adding data samples:
 
