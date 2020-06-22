@@ -28,7 +28,7 @@
 
 - **Certificate Authority**: A Certificate Authority is a certificate provider for different actors. These certificates are signed by the Certificate Authority and link the actor with its public key. So, if you the Certificate Authority and its public key, you can trust that the specific actor is related to the public key provided with the certificate. [Source](http://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html#certificate-authorities), See also: [Root CAs, Intermediate CAs and Chains of Trust](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html#root-cas-intermediate-cas-and-chains-of-trust)
 
-- **Chaincode**:  The chaincode is a library of [smart contracts](#S) used to read and write to the ledger.
+- **Chaincode**:  The chaincode is a library of [smart contracts](#s) used to read and write to the ledger.
 
 - **Channel**: A channel is a private blockchain zone which allows for data isolation and confidentiality. A channel-specific ledger is shared across the peers in the channel, and transacting parties must be authenticated to a channel in order to interact with it. Channels are defined by a [Configuration-Block](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#configuration-block). [Source](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#channel)
 
@@ -62,7 +62,7 @@
 
 - **Machine learning orchestration**: In contexts where multiple parties collaborate for elaborating machine learning models, the different operations (e.g. algorithms transfers, training computations, model evaluations, predictions…) need to be orchestrated in time and space. Such an orchestration is done over a network connecting the parties, and requires complete traceability of all operations, identities certifications, security (among others). Substra Framework enables the implementation of applications or services requiring secure, traceable, distributed machine learning orchestration. src: <https://www.substra.ai/en/faq>
 
-- **Metrics**:  The metrics corresponds to a `tar.gz/.zip` containing a `Dockerfile` and a Python script. The metric calculation script is used to quantify the accuracy of a model, during the evaluation of an [objective](#O). The organization has to implement the score method of this script which, given the predictions of a model and the true results, gives the accuracy score of the model.
+- **Metrics**:  The metrics corresponds to a `tar.gz/.zip` containing a `Dockerfile` and a Python script. The metric calculation script is used to quantify the accuracy of a model, during the evaluation of an [objective](#o). The organization has to implement the score method of this script which, given the predictions of a model and the true results, gives the accuracy score of the model.
 
 - **Membership Service Provider** (MSP): Certificate Authorities issue identities by generating a public and private key that can be used to prove identity. "Because a private key can never be shared publicly, a mechanism is required to enable that proof which is where the MSP comes in." (...) MSP is used to define an organization both inwardly (organizations decide who its admins are) and outwardly (by allowing other organizations to validate that entities have the authority to do what they are attempting to do). Whereas Certificate Authorities generate the certificates that represent identities, the MSP contains a list of permissioned identities. The MSP identifies which Root CAs and Intermediate CAs are accepted to define the members of a trust domain by listing the identities of their members, or by identifying which CAs are authorized to issue valid identities for their members." [Source](http://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html)
 
@@ -74,7 +74,7 @@
 
 ## O
 
-- **Objective**: An objective correspond to a machine learning task on defined data types, a scientific question, which can be evaluated with a [metrics](#M) on a test dataset.
+- **Objective**: An objective correspond to a machine learning task on defined data types, a scientific question, which can be evaluated with a [metrics](#m) on a test dataset.
 
 - **Orderer**: An orderer is a special node the "orders transactions into a block and then distributes blocks to connected peers for validation and commit. The ordering service exists independent of the peer processes and orders transactions on a first-come-first-serve basis for all channels on the network. (...) It is a common binding for the overall network; it contains the cryptographic identity material tied to each Member." [Source](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#ordering-service)
 
