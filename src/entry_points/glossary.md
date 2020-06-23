@@ -15,14 +15,14 @@
 
 ## A
 
-- **Algorithm**: An algorithm specifies the method to train a model on a dataset. It specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. For now, concretely, an algorithm corresponds to a tar.gz/.zip containing a Dockerfile andPython scripts. There are three types of algorithms:
+- **Algorithm**: An algorithm specifies the method to train a model on a dataset. It specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. For now, concretely, an algorithm corresponds to a tar.gz/.zip containing a Dockerfile and Python scripts. There are three types of algorithms:
   - classic algorithm
   - composite algorithm, which makes it possible to train a trunk and head model. The trunk being potentially shared among all nodes. The head remaining private to the node where it was trained.
   - aggregate algorithm, used to aggregate models or model updates. An aggregate algorithm does notneed data to be used
 
 - **AggregateTuple**: An AggregateTuple corresponds to the specification of an aggregation task of several model /model updates using an aggregate algo. It leads to the creation of one model / model update.
 
-- **Assets**: Assets are objects that define a ML project, and have to be implemented by an organization before being added in the Substra network. Substra registers, stores and organizes computations on four different kinds of Assets: Objectives, Datasets, Algorithms and, Models. These assets can be private or shared depending on their permission regime. [Source : Substra Whitepaper](https://arxiv.org/abs/1910.11567)
+- **Assets**: Assets are objects that define a ML project, and have to be implemented by an organization before being added in the Substra network. Substra registers, stores and organizes computations on four different kinds of Assets: [Objectives](#o), [Datasets](#d), [Algorithms](#a) and [Model](#m). These assets can be private or shared depending on their [permission](#p) regime. [Source : Substra Whitepaper](https://arxiv.org/abs/1910.11567)
 
 ## C
 
