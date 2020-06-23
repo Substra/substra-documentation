@@ -18,7 +18,15 @@
 - **Algorithm**: An algorithm specifies the method to train a model on a dataset. It specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. For now, concretely, an algorithm corresponds to a tar.gz/.zip containing a Dockerfile and Python scripts. There are three types of algorithms:
   - classic algorithm
   - composite algorithm, which makes it possible to train a trunk and head model. The trunk being potentially shared among all nodes. The head remaining private to the node where it was trained.
-  - aggregate algorithm, used to aggregate models or model updates. An aggregate algorithm does notneed data to be used
+  - aggregate algorithm, used to aggregate models or model updates. An aggregate algorithm does notneed data to be used  
+  
+  In Substra, this object has the following attributes stored in the ledger:  
+        - Name of the Algorithm  
+        - Storage address and hash of the algorithm files  
+        - Owner  
+        - Associated Objective key  
+        - Storage address and hash of the description of the algorithm  
+        - Permissions  
 
 - **AggregateTuple**: An AggregateTuple corresponds to the specification of an aggregation task of several model /model updates using an aggregate algo. It leads to the creation of one model / model update.
 
@@ -40,9 +48,20 @@
 
 - **Data Manager**: A data manager corresponds to tools to interact with a set of data. It contains a name, adescription, and a data opener, which is a script used to read data.
 
-- **Data Sample**: A data sample corresponds to a record containing features and target(s) associated to one or several objectives.
+- **Data Sample**: A data sample corresponds to a record containing features and target(s) associated to one or several objectives.  
+In Substra, this object has the following attributes stored in the ledger:  
+      - Hash of data stored in local storage  
+      - List of keys of associated Datasets  
+      - A boolean indicating if data is dedicated to testing  
 
-- **Dataset**: A dataset corresponds to the abstraction made of a data manager and a set of data.
+- **Dataset**: A dataset corresponds to the abstraction made of a data manager and a set of data.  
+In Substra, this object has the following attributes stored in the ledger:  
+      - Name of the Dataset  
+      - Storage address and hash of its data opener type of data in the dataset (tabular, image, ...)  
+      - Storage address and hash of its description file  
+      - Owner  
+      - Associated Objective key  
+      - Permissions  
 
 - **Distributed Ledger Technology (DLT)**: DLT is a consensus of replicated, shared, and synchronized data geographically spread across multiple sites, institutions, or countries (Distributed Ledger Technology: beyond block chain [PDF](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/492972/gs-16-1-distributed-ledger-technology.pdf). UK Government, Office for Science. January 2016)
 
@@ -74,7 +93,13 @@
 
 ## O
 
-- **Objective**: An objective correspond to a machine learning task on defined data types, a scientific question, which can be evaluated with a [metrics](#m) on a test dataset.
+- **Objective**: An objective correspond to a machine learning task on defined data types, a scientific question, which can be evaluated with a [metrics](#m) on a test dataset. In Substra, this object has the following attributes stored in the ledger:  
+      - Name of the Objective  
+      - Storage address and hash of its description  
+      - Name, storage address and hash of its metrics  
+      - Owner (node who defined the objective)  
+      - Test datasets (list of data keys for the test split, and their associated dataset)  
+      - Permissions  
 
 - **Orderer**: An orderer is a special node the "orders transactions into a block and then distributes blocks to connected peers for validation and commit. The ordering service exists independent of the peer processes and orders transactions on a first-come-first-serve basis for all channels on the network. (...) It is a common binding for the overall network; it contains the cryptographic identity material tied to each Member." [Source](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#ordering-service)
 
@@ -99,8 +124,29 @@ More globally, a smart contract defines the "transaction logic that controls the
 
 ## T
 
-- **Testtuple**: A Testtuple corresponds to the specification of a testing task of a model. It evaluates the performance of the model using the metrics of an objective.
+- **Testtuple**: A Testtuple corresponds to the specification of a testing task of a model. It evaluates the performance of the model using the metrics of an objective.  
+In Substra, this object has the following attributes stored in the ledger:  
+      - Associated Objective key (for the metrics)  
+      - Associated Algorithm key  
+      - Model to evaluate (hash, address)  
+      - List of testing data and the node where they are stored  
+      - Status of the task: waiting, todo, done, failed  
+      - Log  
+      - Optional arguments necessary for complex ML orchestration (e.g. a tag regrouping several ML tasks)  
+      - Permissions  
+      - Creator (node who defined the testtuple)  
 
-- **Traintuple**: A Traintuple corresponds to the specification of a training task of a classic algorithm on a dataset potentially using input models/model updates. It leads to the creation of a model or model update.
+- **Traintuple**: A Traintuple corresponds to the specification of a training task of a classic algorithm on a dataset potentially using input models/model updates. It leads to the creation of a model or model update.  
+In Substra, this object has the following attributes stored in the ledger:  
+      - Associated Objective key (for its metrics)  
+      - Associated Algorithm key  
+      - List of input models (list of traintuple keys, hashes, addresses)  
+      - Output Model (hash, address)  
+      - List of training data and the node where they are stored  
+      - Status of the task: waiting, todo, doing, done, failed  
+      - Log  
+      - Optional arguments necessary for complex ML orchestration (a rank and a tag)  
+      - Permissions  
+      - Creator (node who defined the traintuple)  
 
 - **Trustless**: Substra Framework is a ‘trustless’ ML orchestration framework. The word ‘trustless’ might be ambiguous in certain circumstances. We believe it should be used as ‘doesn’t require trust a priori between parties’: the code implementation of the software enables parties to collaborate without trusting each other, it technically guarantees that actions and transactions will be performed as defined in the rules agreed upon. What is required is to ‘trust the code’: it might not be straightforward and even require some audit effort, but in many cases it is easier than trusting a number of other independent organiations. src: <https://www.substra.ai/en/faq>
