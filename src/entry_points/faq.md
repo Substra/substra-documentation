@@ -45,3 +45,7 @@ Not yet, but we are working on it. In the meantime, you try our [examples](../ge
 ## [setup] I need help for the setup and deployment, can you help me?
 
 Please reach us [here](../getting_started/installation/local_install_skaffold.md##need-help).
+
+## [usage] What if I gave access to a dataset with a too wide set of permissions and I change my mind?
+
+As the dataset is hosted on your side, you can always remove or de-reference it to make it unreachable.
