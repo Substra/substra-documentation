@@ -48,4 +48,4 @@ Please reach us [here](../getting_started/installation/local_install_skaffold.md
 
 ## [usage] What if I gave access to a dataset with a too wide set of permissions and I change my mind?
 
-As the dataset is hosted on your side, you can always remove or de-reference it to make it unreachable.
+As the dataset is hosted on your side, you can always delete your local files to make it unreachable.
