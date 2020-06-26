@@ -647,19 +647,16 @@ minikube delete
 </div>
 <p>Login with the CLI</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration</span>
-substra config -u <span class="s2">&quot;node-1&quot;</span> -p <span class="s1">&#39;p@$swr0d44&#39;</span> http://substra-backend.node-1.com
+ substra config --profile node-1 --username node-1 --password <span class="s1">&#39;p@$swr0d44&#39;</span> http://substra-backend.node-1.com
 
 <span class="c1"># Login</span>
-substra login
+substra login --profile node-1
 
 <span class="c1"># Then you can try</span>
-substra list node
-<span class="c1"># or</span>
-substra --help
-<span class="c1"># or</span>
-substra list traintuple
-<span class="c1"># or</span>
-substra get traintuple HASH
+substra list node --profile node-1
+
+<span class="c1"># And you can always get help</span>
+substra  --help
 </pre></div>
 </div>
 <p>This is it, if you the <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">login</span></code> command exited successfully, you’re good to go!</p>
