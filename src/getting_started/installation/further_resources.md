@@ -2,7 +2,7 @@
 
 ## Troubleshooting
 
-### Reset 
+### Reset
 
 > Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!
 

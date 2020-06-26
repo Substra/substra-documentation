@@ -32,7 +32,7 @@ Not yet, but we are working on it. In the meantime, you can try our [examples](.
 
 ## [setup] I need help for the setup and deployment, can you help me?
 
-You can reach out to us [here](../getting_started/installation/local_install_skaffold.md#need-help).
+You can reach out to us [here](../getting_started/installation/further_resources.md#get-in-touch).
 
 ## [privacy] Is it *really* privacy-preserving to deploy Substra on third-party hosting solutions?
 
