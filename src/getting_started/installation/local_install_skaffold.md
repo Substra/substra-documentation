@@ -448,19 +448,17 @@ Login with the CLI
 
 ```sh
 # Configuration
-substra config -u "node-1" -p 'p@$swr0d44' http://substra-backend.node-1.com
+substra config --profile node-1 --username node-1 --password 'p@$swr0d44' http://substra-backend.node-1.com
 
 # Login
-substra login
+substra login --profile node-1
 
 # Then you can try
-substra list node
+substra list node --profile node-1
 # or
 substra --help
 # or
-substra list traintuple
-# or
-substra get traintuple HASH
+substra list dataset --profile node-1
 ```
 
 This is it, if you the `substra login` command exited successfully, you're good to go!
