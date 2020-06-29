@@ -7,7 +7,6 @@
 - [Traintuple](#traintuple)
 - [Testtuple](#testtuple)
 - [Machine Learning tasks](#machine-learning-tasks)
-- [Adding data samples to Substra](#adding-data-samples-to-substra)
 
 All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.
 
