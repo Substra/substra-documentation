@@ -7,7 +7,6 @@
 - [Traintuple](#traintuple)
 - [Testtuple](#testtuple)
 - [Machine Learning tasks](#machine-learning-tasks)
-- [Adding data samples to Substra](#adding-data-samples-to-substra)
 
 All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.
 
@@ -163,45 +162,7 @@ A new container is then automatically created. Its goal is to compute the metric
 
 This time however, the **pred** volume contains the predictions. The metrics script is therefore able to compare them with the actual values in **data**. It generates a **perf.json** file containing the score and saves it to the **pred** volume.
 
-### Summary of volumes
+### Summary of Docker containers and volumes
 
 ![Docker containers and volumes](../img/training_phase1.png)
 
-## Adding a full pipeline
-
-In order to add a full pipeline, you'll have to follow these steps **in this order**:
-
-1. Data prep
-   1. split your raw data into individual data assets
-   2. split these assets between train and test
-2. Add dataset
-   1. write an opener following [the requirements](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener)
-   2. write a text describing the dataset, its structure and content
-   3. write and push a [json description of the dataset](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-dataset) 
-3. [Add the prepared data assets](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-data_sample)
-4. Add objective
-   1. write a metrics file following [the requirements](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics)
-   2. write a text describing the objective and how it's evaluated
-   3. write and push [json description of the objective](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-objective)
-5. Add algo
-   1. write your algorithm script following [the requirements](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo)
-   2. write a targz archive with Dockerfile and algo script
-   3. write a text describing the algo
-   4. write and push a [json description of the algorithm](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-algo)
-6. [Add a traintuple to launch training task](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-traintuple)
-
-You can see a full example of this in the [Titanic example](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README.md)
-
-## Adding data samples to Substra
-
-Data samples can be ingested to Substra using our python SDK or our command line interface tool.
-
-2 different modes are available when adding data samples:
-
-- local: data are located on the local filesystem and are transferred through HTTP
-  requests. This mode is most likely to be used to add relatively small files or for
-  testing purposes.
-- remote: data are located on the server filesystem. Data must have been transferred
-  previously to the server. Please ask the substra server administrator for further
-  details regarding how to transfer the data. This mode is recommended for adding
-  relatively big data samples or for adding many data samples.

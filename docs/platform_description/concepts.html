@@ -121,11 +121,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#train-and-test-data">Train and test data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#training-task">Training task</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-task">Testing task</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#summary-of-volumes">Summary of volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-docker-containers-and-volumes">Summary of Docker containers and volumes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-full-pipeline">Adding a full pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-data-samples-to-substra">Adding data samples to Substra</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="platform.html">Architecture</a></li>
@@ -213,7 +211,6 @@
 <li><p><a class="reference external" href="#traintuple">Traintuple</a></p></li>
 <li><p><a class="reference external" href="#testtuple">Testtuple</a></p></li>
 <li><p><a class="reference external" href="#machine-learning-tasks">Machine Learning tasks</a></p></li>
-<li><p><a class="reference external" href="#adding-data-samples-to-substra">Adding data samples to Substra</a></p></li>
 </ul>
 <p>All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.</p>
 <p><img alt="Relationships between assets" src="../_images/assets_relationships.png" /></p>
@@ -358,61 +355,10 @@ It occurs in the node where the associated test data are located.</p>
 </ul>
 <p>This time however, the <strong>pred</strong> volume contains the predictions. The metrics script is therefore able to compare them with the actual values in <strong>data</strong>. It generates a <strong>perf.json</strong> file containing the score and saves it to the <strong>pred</strong> volume.</p>
 </div>
-<div class="section" id="summary-of-volumes">
-<h3>Summary of volumes<a class="headerlink" href="#summary-of-volumes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="summary-of-docker-containers-and-volumes">
+<h3>Summary of Docker containers and volumes<a class="headerlink" href="#summary-of-docker-containers-and-volumes" title="Permalink to this headline">¶</a></h3>
 <p><img alt="Docker containers and volumes" src="../_images/training_phase1.png" /></p>
 </div>
-</div>
-<div class="section" id="adding-a-full-pipeline">
-<h2>Adding a full pipeline<a class="headerlink" href="#adding-a-full-pipeline" title="Permalink to this headline">¶</a></h2>
-<p>In order to add a full pipeline, you’ll have to follow these steps <strong>in this order</strong>:</p>
-<ol class="simple">
-<li><p>Data prep</p>
-<ol class="simple">
-<li><p>split your raw data into individual data assets</p></li>
-<li><p>split these assets between train and test</p></li>
-</ol>
-</li>
-<li><p>Add dataset</p>
-<ol class="simple">
-<li><p>write an opener following <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener">the requirements</a></p></li>
-<li><p>write a text describing the dataset, its structure and content</p></li>
-<li><p>write and push a <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-dataset">json description of the dataset</a></p></li>
-</ol>
-</li>
-<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-data_sample">Add the prepared data assets</a></p></li>
-<li><p>Add objective</p>
-<ol class="simple">
-<li><p>write a metrics file following <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics">the requirements</a></p></li>
-<li><p>write a text describing the objective and how it’s evaluated</p></li>
-<li><p>write and push <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-objective">json description of the objective</a></p></li>
-</ol>
-</li>
-<li><p>Add algo</p>
-<ol class="simple">
-<li><p>write your algorithm script following <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo">the requirements</a></p></li>
-<li><p>write a targz archive with Dockerfile and algo script</p></li>
-<li><p>write a text describing the algo</p></li>
-<li><p>write and push a <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-algo">json description of the algorithm</a></p></li>
-</ol>
-</li>
-<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#substra-add-traintuple">Add a traintuple to launch training task</a></p></li>
-</ol>
-<p>You can see a full example of this in the <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README">Titanic example</a></p>
-</div>
-<div class="section" id="adding-data-samples-to-substra">
-<h2>Adding data samples to Substra<a class="headerlink" href="#adding-data-samples-to-substra" title="Permalink to this headline">¶</a></h2>
-<p>Data samples can be ingested to Substra using our python SDK or our command line interface tool.</p>
-<p>2 different modes are available when adding data samples:</p>
-<ul class="simple">
-<li><p>local: data are located on the local filesystem and are transferred through HTTP
-requests. This mode is most likely to be used to add relatively small files or for
-testing purposes.</p></li>
-<li><p>remote: data are located on the server filesystem. Data must have been transferred
-previously to the server. Please ask the substra server administrator for further
-details regarding how to transfer the data. This mode is recommended for adding
-relatively big data samples or for adding many data samples.</p></li>
-</ul>
 </div>
 </div>
 

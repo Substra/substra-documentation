@@ -162,7 +162,7 @@ A new container is then automatically created. Its goal is to compute the metric
 
 This time however, the **pred** volume contains the predictions. The metrics script is therefore able to compare them with the actual values in **data**. It generates a **perf.json** file containing the score and saves it to the **pred** volume.
 
-### Summary of volumes
+### Summary of Docker containers and volumes
 
 ![Docker containers and volumes](../img/training_phase1.png)
 
