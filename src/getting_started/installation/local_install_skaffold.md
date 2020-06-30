@@ -460,7 +460,7 @@ substra list node --profile node-1
 substra  --help
 ```
 
-This is it, if you the `substra login` command exited successfully, you're good to go!
+This is it, if the `substra login` command exited successfully, you're good to go!
 
 Congratulations \o/
 
