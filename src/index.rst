@@ -1,3 +1,6 @@
+.. image:: https://img.shields.io/badge/chat-on%20slack-blue
+   :target: https://substra-workspace.slack.com 
+
 .. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
     :target: https://travis-ci.org/SubstraFoundation/substra-documentation
 
