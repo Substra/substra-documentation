@@ -165,4 +165,3 @@ This time however, the **pred** volume contains the predictions. The metrics scr
 ### Summary of Docker containers and volumes
 
 ![Docker containers and volumes](../img/training_phase1.png)
-
