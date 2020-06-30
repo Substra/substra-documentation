@@ -78,3 +78,7 @@ html_favicon = '_static/favicon.ico'
 
 # Code color; See: https://www.florian-diesch.de/doc/sphinx/themes-and-pygments-styles/index.html#
 pygments_style = 'colorful'
+
+# Remove "view page source"
+html_show_sourcelink = False
+

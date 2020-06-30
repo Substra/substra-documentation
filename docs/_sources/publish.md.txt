@@ -1,5 +1,7 @@
 # Let's build & publish the documentation
 
+> Note: In order to ease the code review, please consider submitting your modifications and build in different commits
+
 In the `substra-documentation` repository:
 
 ```sh
