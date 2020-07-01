@@ -31,7 +31,7 @@ Interacting with the Substra platform
 - [Command line interface](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
 - [SDK](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 
-You can also implement your assets in Python with the help of [Substra Tools](https://github.com/SubstraFoundation/substra-tools).
+To help you implement your assets in Python, please have a look to the [Substra Tools](https://github.com/SubstraFoundation/substra-tools).
 
 ## Examples
 
