@@ -8,11 +8,8 @@
    :width: 200px
    :align: center
 
-Welcome to Substra's documentation!
-=========================================
-
-What is Substra?
-================
+Substra documentation
+=====================
 
 .. toctree::
    :maxdepth: 2
@@ -42,8 +39,9 @@ Platform Description
 ====================
 
 .. toctree::
-   :maxdepth: 2
-
+   :maxdepth: 1
+   
+   platform_description/concepts
    platform_description/platform
 
 Specific Entry points
@@ -59,7 +57,7 @@ Contribute
 ==========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    contribute/CONTRIBUTING
 

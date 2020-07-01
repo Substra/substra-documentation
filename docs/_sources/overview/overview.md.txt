@@ -1,15 +1,13 @@
 # Overview
 
-- [Overview](#overview)
-  - [General definitions & resources](#general-definitions--resources)
-    - [Roots](#roots)
-  - [Find your way in this documentation](#find-your-way-in-this-documentation)
-    - [Data scientist & data engineer](#data-scientist--data-engineer)
-    - [System administrator, devops engineer, SRE](#system-administrator-devops-engineer-sre)
-    - [Software engineer](#software-engineer)
-    - [Interested by Substra](#interested-by-substra)
-  - [Use cases](#use-cases)
-  - [About this *collaborative* documentation](#about-this-collaborative-documentation)
+- [General definitions & resources](#general-definitions--resources)
+- [Find your way in this documentation](#find-your-way-in-this-documentation)
+  - [Data scientist & data engineer](#data-scientist--data-engineer)
+  - [System administrator, devops engineer, SRE](#system-administrator-devops-engineer-sre)
+  - [Software engineer](#software-engineer)
+  - [Interested by Substra](#interested-by-substra)
+- [Use cases](#use-cases)
+- [About this *collaborative* documentation](#about-this-collaborative-documentation)
 
 ___
 
@@ -45,8 +43,6 @@ Substra is a framework for operating distributed Machine Learning that aims at p
 - **Traceability**: An immutable audit trail registers all the operations realized on the platform, simplifying certification of models.
 
 - **Modularity**: Substra framework is highly flexible: various permission regimes and workflow structures can be enforced corresponding to every specific use case.
-
-### Roots
 
 Substra Foundation has published *open access* materials that will provide you with a great overview of the project:
 

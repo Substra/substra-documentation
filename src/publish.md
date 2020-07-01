@@ -1,4 +1,4 @@
-# Let's build & publish the documentation
+# Build & publish the documentation
 
 > Note: In order to ease the code review, please consider submitting your modifications and build in different commits.
 
@@ -19,4 +19,3 @@ git add .
 git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
 git push
 ```
-
