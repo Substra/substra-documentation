@@ -1,8 +1,14 @@
-.. image:: https://img.shields.io/badge/chat-on%20slack-blue
-   :target: https://substra-workspace.slack.com 
+.. image:: https://img.shields.io/badge/substra-repo-brightgreen
+   :target: https://github.com/SubstraFoundation/substra
+
+.. image:: https://img.shields.io/badge/doc-repo-brightgreen
+   :target: https://github.com/SubstraFoundation/substra-documentation/
 
 .. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
-    :target: https://travis-ci.org/SubstraFoundation/substra-documentation
+   :target: https://travis-ci.org/SubstraFoundation/substra-documentation
+
+.. image:: https://img.shields.io/badge/chat-on%20slack-blue
+   :target: https://substra-workspace.slack.com
 
 .. image:: ../_static/substra-logo.svg
    :width: 200px
