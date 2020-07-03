@@ -448,10 +448,10 @@ Login with the CLI
 
 ```sh
 # Configuration
- substra config --profile node-1 --username node-1 --password 'p@$swr0d44' http://substra-backend.node-1.com
+substra config --profile node-1 http://substra-backend.node-1.com
 
 # Login
-substra login --profile node-1
+substra login --profile node-1 --username node-1 --password 'p@$swr0d44'
 
 # Then you can try
 substra list node --profile node-1
