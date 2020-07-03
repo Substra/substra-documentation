@@ -646,10 +646,10 @@ minikube delete
 </div>
 <p>Login with the CLI</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration</span>
- substra config --profile node-1 --username node-1 --password <span class="s1">&#39;p@$swr0d44&#39;</span> http://substra-backend.node-1.com
+substra config --profile node-1 http://substra-backend.node-1.com
 
 <span class="c1"># Login</span>
-substra login --profile node-1
+substra login --profile node-1 --username node-1 --password <span class="s1">&#39;p@$swr0d44&#39;</span>
 
 <span class="c1"># Then you can try</span>
 substra list node --profile node-1
