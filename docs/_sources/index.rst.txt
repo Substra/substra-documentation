@@ -8,11 +8,15 @@
    :target: https://travis-ci.org/SubstraFoundation/substra-documentation
 
 .. image:: https://img.shields.io/badge/chat-on%20slack-blue
-   :target: https://substra-workspace.slack.com
+   :target: https://substra.us18.list-manage.com/track/click?e=2effed55c9&id=fa49875322&u=385fa3f9736ea94a1fcca969f
+
+.. image:: https://img.shields.io/badge/licence-Apache%202.0-orange
+   :target: https://www.apache.org/licenses/LICENSE-2.0.html 
+
+\
 
 .. image:: ../_static/substra-logo.svg
    :width: 200px
-   :align: center
 
 Substra documentation
 =====================
