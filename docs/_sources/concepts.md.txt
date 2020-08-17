@@ -10,7 +10,7 @@
 
 All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.
 
-![Relationships between assets](../img/assets_relationships.png)
+![Relationships between assets](img/assets_relationships.png)
 
 ## Objective
 
@@ -43,7 +43,7 @@ Datasets act as an interface between algorithms and objectives on one side and d
 
 A data opener is a script which reads files and returns in-memory objects that algorithms and metrics will be able to use.
 
-![Data opener](../img/dataset-files-opener.png)
+![Data opener](img/dataset-files-opener.png)
 
 #### Link with other concepts
 
@@ -164,4 +164,4 @@ This time however, the **pred** volume contains the predictions. The metrics scr
 
 ### Summary of Docker containers and volumes
 
-![Docker containers and volumes](../img/training_phase1.png)
+![Docker containers and volumes](img/training_phase1.png)

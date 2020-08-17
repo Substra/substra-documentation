@@ -24,15 +24,15 @@ This has not been tested yet. If you are experiencing it we would be glad to hea
 
 ## [setup] I am having trouble downloading the images, is there something I can do?
 
-You can refer to [the section *Get the source code*](../getting_started/installation/local_install_skaffold.md#get-the-source-code-mac--ubuntu), but you will need to gather all the sources before being able to run Substra.
+You can refer to [the section *Get the source code*](setup/local_install_skaffold.md#get-the-source-code-mac--ubuntu), but you will need to gather all the sources before being able to run Substra.
 
 ## [usage] Do you organize trainings?
 
-Not yet, but we are working on it. In the meantime, you can try our [examples](../getting_started/usage/usage#examples).
+Not yet, but we are working on it. In the meantime, you can try our [examples](usage/usage#examples).
 
 ## [setup] I need help for the setup and deployment, can you help me?
 
-You can reach out to us [here](../getting_started/installation/further_resources.md#get-in-touch).
+You can reach out to us [here](setup/further_resources.md#get-in-touch).
 
 ## [privacy] Is it *really* privacy-preserving to deploy Substra on third-party hosting solutions?
 

@@ -155,7 +155,7 @@ Please follow these steps to have your contribution considered by the maintainer
 1. Follow the [coding guidelines](#coding-guidelines)
 1. After submitting your pull request, verify that all [status checks](https://help.github.com/articles/about-status-checks/) are passing.
 
-![Pull Requests Status](../img/git_pr_status.png "Pull Requests Status")
+![Pull Requests Status](img/git_pr_status.png "Pull Requests Status")
 
 For example, in this caption of the open Pull Requests on the main Substra repository, we can see that:
 
