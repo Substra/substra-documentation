@@ -2,7 +2,7 @@
 
 Main Substra repository: <https://github.com/SubstraFoundation/substra>
 
-![Software Architecture Overview](../img/architecture_overview.png)
+![Software Architecture Overview]img/architecture_overview.png)
 
 ## Network
 

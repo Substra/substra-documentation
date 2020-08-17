@@ -58,20 +58,24 @@ If you are looking at how to start a data science project with Substra installed
 
 ### System administrator, devops engineer, SRE
 
-If you interested in installing Substra, please refer to the [installation section](../getting_started/installation/local_install_skaffold.md).
+If you interested in installing Substra, please refer to the [installation section](setup/local_install_skaffold.md).
 
 ### Software engineer
 
 If you are interested in understanding how Substra works maybe how to contribute, please have a look over here:
 
-- [Platform description](../platform_description/platform.md)
-- [Contribution guidelines](../contribute/CONTRIBUTING.md)
+- Platform description:
+  - [Concepts](concepts.md) 
+  - [Architecture](architecture.md) 
+- [Contribution guidelines](CONTRIBUTING.md)
 
 ### Interested by Substra
 
 If you are interested in Substra and would like to understand how it could be interesting for *your* project, you really should check the following sections:
 
-- [Platform Description](../platform_description/platform.md)
+- Platform description:
+  - [Concepts](concepts.md) 
+  - [Architecture](architecture.md) 
 - You can reach us [here](../getting_started/installation/further_resources.md#get-in-touch)
 
 ## Use cases

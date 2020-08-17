@@ -18,66 +18,34 @@ Substra documentation
 =====================
 
 .. toctree::
-   :maxdepth: 2
-
-   overview/overview
-
-Getting started
-===============
-.. toctree::
-   :maxdepth: 2
-
-1. How to use Substra
----------------------
-.. toctree::
-   :maxdepth: 2
-
-   getting_started/usage/usage
-
-2. Installation
----------------
-.. toctree::
-   :maxdepth: 2
-
-   getting_started/installation/installation
-   
-Platform Description
-====================
-
-.. toctree::
-   :maxdepth: 1
-   
-   platform_description/concepts
-   platform_description/platform
-
-Specific Entry points
-=====================
-
-.. toctree::
    :maxdepth: 1
 
-   entry_points/faq
-   entry_points/glossary
-
-Contribute
-==========
+   overview
 
 .. toctree::
-   :maxdepth: 1
-
-   contribute/CONTRIBUTING
-
-Build the doc
-=============
-
-.. toctree::
+   :caption: Getting started
    :maxdepth: 2
 
+   usage
+   setup/index
+
+.. toctree::
+   :caption: Platform description
+   :maxdepth: 1
+
+   concepts
+   architecture
+
+.. toctree::
+   :caption: Specific entry points
+   :maxdepth: 1
+
+   faq
+   glossary
+
+.. toctree::
+   :caption: Contribute
+   :maxdepth: 1
+
+   CONTRIBUTING
    publish
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
