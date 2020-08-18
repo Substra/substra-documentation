@@ -259,7 +259,7 @@
 <hr class="docutils" />
 <p>When everything is ready, you will be able to start Substra with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you use Minikube</span>
-minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</span> --disk-size 50g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.15.4&#39;</span>
+minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</span> --disk-size 50g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.16.7&#39;</span>
 
 <span class="c1"># In 3 different terminal windows, in this order:</span>
 <span class="c1"># In the repository hlf-k8s</span>
@@ -446,11 +446,11 @@ https://github.com/SubstraFoundation/substra-backend.git
 <p>Please enable the ingress minikube module: <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">enable</span> <span class="pre">ingress</span></code>. You might need to edit <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> files and set <code class="docutils literal notranslate"><span class="pre">nginx-ingress.enabled</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <p>You can now start Minikube with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comfortable setup</span>
-minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</span> --disk-size 50g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.15.4&#39;</span>
+minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</span> --disk-size 50g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.16.7&#39;</span>
 <span class="c1"># Frugal setup</span>
-minikube start --cpus <span class="m">4</span> --memory <span class="m">8192</span> --disk-size 30g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.15.4&#39;</span>
+minikube start --cpus <span class="m">4</span> --memory <span class="m">8192</span> --disk-size 30g --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.16.7&#39;</span>
 <span class="c1"># VM setup (Inside a VM, you will have to execute all commands with sudo)</span>
-sudo minikube start --vm-driver<span class="o">=</span>none --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.15.4&#39;</span>
+sudo minikube start --vm-driver<span class="o">=</span>none --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.16.7&#39;</span>
 </pre></div>
 </div>
 </div>
