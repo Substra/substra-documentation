@@ -38,7 +38,7 @@ When everything is ready, you will be able to start Substra with:
 
 ```sh
 # If you use Minikube
-minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.15.4'
+minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.16.7'
 
 # In 3 different terminal windows, in this order:
 # In the repository hlf-k8s
@@ -218,11 +218,11 @@ You can now start Minikube with:
 
 ```sh
 # Comfortable setup
-minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.15.4'
+minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.16.7'
 # Frugal setup
-minikube start --cpus 4 --memory 8192 --disk-size 30g --kubernetes-version='v1.15.4'
+minikube start --cpus 4 --memory 8192 --disk-size 30g --kubernetes-version='v1.16.7'
 # VM setup (Inside a VM, you will have to execute all commands with sudo)
-sudo minikube start --vm-driver=none --kubernetes-version='v1.15.4'
+sudo minikube start --vm-driver=none --kubernetes-version='v1.16.7'
 ```
 
 #### Helm init (Mac & Ubuntu)
