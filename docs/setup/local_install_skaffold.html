@@ -293,7 +293,7 @@ skaffold dev
 <h3>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note: Please <strong>always</strong> refer to the package provider website before installing any software!
-Note: Please use LTS versions of Ubuntu to ensure best compatibitity.</p>
+Note: Please use LTS versions of Ubuntu to ensure best compatibitity (18.04 &amp; 20.04).</p>
 </div></blockquote>
 <p>Substra deployment is orchestrated by <code class="docutils literal notranslate"><span class="pre">Kubernetes</span></code> and <code class="docutils literal notranslate"><span class="pre">Minikube</span></code> is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Helm</span></code> is a Kubernetes package manager that helps install and manage Kubernetes applications. <code class="docutils literal notranslate"><span class="pre">Tiller</span></code> runs inside the Kubernetes Cluster and manages releases of your charts. Helm has two parts : helm (client) &amp; tiller (server). Charts are Helm packages that contains a package description (<code class="docutils literal notranslate"><span class="pre">Chart.yaml</span></code>) and one or more templates which contain Kubernetes manifest files. Charts can be stored locally or on a distant repository.</p>

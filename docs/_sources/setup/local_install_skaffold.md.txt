@@ -72,7 +72,7 @@ If you wish to comfortably run Substra, it is advised to have:
 ### Software requirements
 
 > Note: Please **always** refer to the package provider website before installing any software!
-> Note: Please use LTS versions of Ubuntu to ensure best compatibitity.
+> Note: Please use LTS versions of Ubuntu to ensure best compatibitity (18.04 & 20.04).
 
 Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.
 
