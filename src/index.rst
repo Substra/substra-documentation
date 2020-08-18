@@ -27,6 +27,7 @@ Substra documentation
    :maxdepth: 2
 
    usage
+   debugging
    setup/index
 
 .. toctree::
