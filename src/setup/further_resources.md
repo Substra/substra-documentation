@@ -20,7 +20,7 @@ If you need to reset and want to start a new kubernetes configuration, you can t
 
 - `kubectl cluster-info`
 - `kubectl get all --all-namespaces`
-- `kubectl delete ns YOUR_NAMESPACE`
+- `kubectl delete ns <YOUR_NAMESPACE>`
 - `kubectl get nodes -o wide`
 - `kubectl get pods -o wide`
 
@@ -196,18 +196,18 @@ In order to keep your installation of Substra separated from your general Python
 pip3 install --user virtualenv
 
 # Create a new virtual environment
-virtualenv -p python3 NAME_OF_YOUR_VENV
+virtualenv -p python3 <NAME_OF_YOUR_VENV>
 # or even
-virtualenv -p $(which python3) NAME_OF_YOUR_VENV
+virtualenv -p $(which python3) <NAME_OF_YOUR_VENV>
 
 # Method 2: install the python3-venv package
 sudo apt install python3-venv # (Ubuntu)
 
 # Create a new virtual environment
-python3 -m venv NAME_OF_YOUR_VENV
+python3 -m venv <NAME_OF_YOUR_VENV>
 
 # Method 1 & 2: activate your new virtual env
-source NAME_OF_YOUR_VENV/bin/activate
+source <NAME_OF_YOUR_VENV>/bin/activate
 
 # Method 1 & 2: install Substra package inside your fresh new virtual environment
 pip3 install substra
