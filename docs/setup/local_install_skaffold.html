@@ -204,8 +204,6 @@
 </div></blockquote>
 <p>This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#local-installation-of-substra-using-kubernetes-and-skaffold">Local installation of Substra using Kubernetes and Skaffold</a></p>
-<ul>
 <li><p><a class="reference external" href="#compatibility-table">Compatibility table</a></p></li>
 <li><p><a class="reference external" href="#substra-setup">Substra Setup</a></p>
 <ul>
@@ -254,8 +252,6 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <hr class="docutils" />
 <p>When everything is ready, you will be able to start Substra with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you use Minikube</span>
@@ -297,7 +293,7 @@ skaffold dev
 <h3>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note: Please <strong>always</strong> refer to the package provider website before installing any software!
-Note: This setup has been tested on Ubuntu 19.10, 18.04.3 &amp; Linux Mint 19 Cinnamon (4.15.0-45-generic Kernel)</p>
+Note: Please use LTS versions of Ubuntu to ensure best compatibitity (18.04 &amp; 20.04).</p>
 </div></blockquote>
 <p>Substra deployment is orchestrated by <code class="docutils literal notranslate"><span class="pre">Kubernetes</span></code> and <code class="docutils literal notranslate"><span class="pre">Minikube</span></code> is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Helm</span></code> is a Kubernetes package manager that helps install and manage Kubernetes applications. <code class="docutils literal notranslate"><span class="pre">Tiller</span></code> runs inside the Kubernetes Cluster and manages releases of your charts. Helm has two parts : helm (client) &amp; tiller (server). Charts are Helm packages that contains a package description (<code class="docutils literal notranslate"><span class="pre">Chart.yaml</span></code>) and one or more templates which contain Kubernetes manifest files. Charts can be stored locally or on a distant repository.</p>

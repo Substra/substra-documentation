@@ -4,33 +4,32 @@
 
 This guide will help you run the Substra platform on your machine in development mode, with a two nodes setup.
 
-- [Local installation of Substra using Kubernetes and Skaffold](#local-installation-of-substra-using-kubernetes-and-skaffold)
-  - [Compatibility table](#compatibility-table)
-  - [Substra Setup](#substra-setup)
-    - [General knowledge](#general-knowledge)
-    - [Hardware requirements](#hardware-requirements)
-    - [Software requirements](#software-requirements)
-      - [Kubernetes](#kubernetes)
-        - [Running Kubernetes locally](#running-kubernetes-locally)
-        - [Installing Kubectl](#installing-kubectl)
-      - [Helm](#helm)
-      - [Skaffold](#skaffold)
-    - [Virtualization](#virtualization)
-    - [Get the source code (Mac & Ubuntu)](#get-the-source-code-mac--ubuntu)
-    - [Configuration](#configuration)
-      - [Minikube (Ubuntu)](#minikube-ubuntu)
-      - [Helm init (Mac & Ubuntu)](#helm-init-mac--ubuntu)
-      - [Network](#network)
-  - [Running the platform](#running-the-platform)
-    - [Start Substra](#start-substra)
-      - [1. hlf-k8s repository](#1-hlf-k8s-repository)
-      - [2. substra-backend repository](#2-substra-backend-repository)
-      - [3. substra-frontend repository](#3-substra-frontend-repository)
-    - [Stop Substra](#stop-substra)
-    - [Reset Substra](#reset-substra)
-  - [Login, password and urls](#login-password-and-urls)
-    - [Credentials and urls](#credentials-and-urls)
-    - [Substra CLI config & login (Mac & Ubuntu)](#substra-cli-config--login-mac--ubuntu)
+- [Compatibility table](#compatibility-table)
+- [Substra Setup](#substra-setup)
+  - [General knowledge](#general-knowledge)
+  - [Hardware requirements](#hardware-requirements)
+  - [Software requirements](#software-requirements)
+    - [Kubernetes](#kubernetes)
+      - [Running Kubernetes locally](#running-kubernetes-locally)
+      - [Installing Kubectl](#installing-kubectl)
+    - [Helm](#helm)
+    - [Skaffold](#skaffold)
+  - [Virtualization](#virtualization)
+  - [Get the source code (Mac & Ubuntu)](#get-the-source-code-mac--ubuntu)
+  - [Configuration](#configuration)
+    - [Minikube (Ubuntu)](#minikube-ubuntu)
+    - [Helm init (Mac & Ubuntu)](#helm-init-mac--ubuntu)
+    - [Network](#network)
+- [Running the platform](#running-the-platform)
+  - [Start Substra](#start-substra)
+    - [1. hlf-k8s repository](#1-hlf-k8s-repository)
+    - [2. substra-backend repository](#2-substra-backend-repository)
+    - [3. substra-frontend repository](#3-substra-frontend-repository)
+  - [Stop Substra](#stop-substra)
+  - [Reset Substra](#reset-substra)
+- [Login, password and urls](#login-password-and-urls)
+  - [Credentials and urls](#credentials-and-urls)
+  - [Substra CLI config & login (Mac & Ubuntu)](#substra-cli-config--login-mac--ubuntu)
 
 ___
 
@@ -73,7 +72,7 @@ If you wish to comfortably run Substra, it is advised to have:
 ### Software requirements
 
 > Note: Please **always** refer to the package provider website before installing any software!
-> Note: This setup has been tested on Ubuntu 19.10, 18.04.3 & Linux Mint 19 Cinnamon (4.15.0-45-generic Kernel)
+> Note: Please use LTS versions of Ubuntu to ensure best compatibitity (18.04 & 20.04).
 
 Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.
 
