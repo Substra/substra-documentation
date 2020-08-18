@@ -17,7 +17,7 @@ For a complete example, see the [debugging example](https://github.com/SubstraFo
 
 - Docker is required since the training and testing tasks are run in Docker containers:
   - Mac: [Docker Desktop](https://www.docker.com/products/docker-desktop)
-  - Ubuntu/Debian: `sudo apt install docker`
+  - Ubuntu/Debian: [installation instructions](https://docs.docker.com/engine/install/ubuntu/))
 
 If you want to debug your script using assets from the Substra platform, you also need access to the platform the assets are on.
 
