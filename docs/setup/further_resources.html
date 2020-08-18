@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Further resources &mdash; Substra 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Concepts" href="../concepts.html" />
+    <link rel="prev" title="Local installation of Substra using Kubernetes and Skaffold" href="local_install_skaffold.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Substra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Further resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reset">Reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kubectl-useful-commands">Kubectl useful commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minikube-useful-commands">Minikube useful commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#minikube-errors">Minikube Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tiller">Tiller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtualization-issues-resources">Virtualization issues &amp; resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#http-errors">Http errors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#unreachable-backend">Unreachable backend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#serve-the-frontend-with-yarn">Serve the frontend with Yarn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-browser-extension">Backend &amp; Browser extension</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-and-useful-resources">Tips and useful resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k8s">K8s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k9s">K9s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#helm">Helm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hyperledger-fabric">Hyperledger Fabric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-virtual-environment">Python Virtual Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-in-touch">Get in touch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Platform description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing to Substra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publish.html">Build &amp; publish the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Substra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Setup</a> &raquo;</li>
+        
+      <li>Further resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="further-resources">
+<h1>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reset">
+<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Caution: Please be aware that theses commands will delete some resources. Be sure to know what you are doing before using it!</p>
+</div></blockquote>
+<p>If you need to reset and want to start a new kubernetes configuration, you can try some of these:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">delete</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">delete</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">reset</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">reset</span> <span class="pre">--force</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">all</span> <span class="pre">-l</span> <span class="pre">app=helm</span> <span class="pre">-n</span> <span class="pre">kube-system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">deployment</span> <span class="pre">tiller-deploy</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">org-1</span> <span class="pre">org-2</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="kubectl-useful-commands">
+<h3>Kubectl useful commands<a class="headerlink" href="#kubectl-useful-commands" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">YOUR_NAMESPACE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">nodes</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="minikube-useful-commands">
+<h3>Minikube useful commands<a class="headerlink" href="#minikube-useful-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Check that <code class="docutils literal notranslate"><span class="pre">helm-tiller</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">ingress</span></code> minikube modules are enabled with <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">addons</span> <span class="pre">list</span></code>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">ip</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">dashboard</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">tunnel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">config</span> <span class="pre">view</span></code></p></li>
+<li><p>If you are using microk8s:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">microk8s.status</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">microk8s.inspect</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="minikube-errors">
+<h3>Minikube Errors<a class="headerlink" href="#minikube-errors" title="Permalink to this headline">¶</a></h3>
+<p>If you are having this error: <code class="docutils literal notranslate"><span class="pre">[JUJU_LOCK_DENIED]</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">start</span> <span class="pre">none</span> <span class="pre">bare</span> <span class="pre">metal</span> <span class="pre">machine.</span> <span class="pre">&quot;minikube</span> <span class="pre">start&quot;</span> <span class="pre">may</span> <span class="pre">fix</span> <span class="pre">it.</span> <span class="pre">boot</span> <span class="pre">lock:</span> <span class="pre">unable</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">/tmp/juju-[...]</span> <span class="pre">permission</span> <span class="pre">denied</span></code>, you will need to execute this command: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sysctl</span> <span class="pre">fs.protected_regular=0</span></code> before restarting minikube.</p>
+</div>
+<div class="section" id="tiller">
+<h3>Tiller<a class="headerlink" href="#tiller" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Tiller might need you to use this command in case of error during init: <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">init</span> <span class="pre">--service-account</span> <span class="pre">tiller</span> <span class="pre">--upgrade</span></code>. You can also try to create a service account with <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">serviceaccount</span> <span class="pre">--namespace</span> <span class="pre">kube-system</span> <span class="pre">tiller</span></code>. Otherwise, please have a look here: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/pull/1">https://github.com/SubstraFoundation/substra-backend/pull/1</a></p></li>
+<li><p>tiller issues: <a class="reference external" href="https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259">https://stackoverflow.com/questions/51646957/helm-could-not-find-tiller#51662259</a></p></li>
+<li><p>After running <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code> in the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repo, in case of error related to the <code class="docutils literal notranslate"><span class="pre">tempchart</span></code> folder, please do <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">tempchart</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="virtualization-issues-resources">
+<h3>Virtualization issues &amp; resources<a class="headerlink" href="#virtualization-issues-resources" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>If you are getting this error about <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>: <code class="docutils literal notranslate"><span class="pre">[KVM_CONNECTION_ERROR]</span> <span class="pre">machine</span> <span class="pre">in</span> <span class="pre">unknown</span> <span class="pre">state:</span> <span class="pre">getting</span> <span class="pre">connection:</span> <span class="pre">getting</span> <span class="pre">domain:</span> <span class="pre">error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">libvirt</span> <span class="pre">socket</span></code>. You probably need to install additional package: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libvirt-daemon-system</span></code></p></li>
+<li><p>You might need to change the owner as well: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.kube</span></code> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">$USER:$USER</span> <span class="pre">$HOME/.minikube</span></code>; See <a class="reference external" href="https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c">https://medium.com/&#64;nieldw/running-minikube-with-vm-driver-none-47de91eab84c</a></p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation">KVM (Kernel Virtual Machine) installation</a></p></li>
+<li><p>Required packages: <a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Install_Necessary_Packages">Ubuntu help</a></p></li>
+<li><p>If you need more information about <a class="reference external" href="https://libvirt.org/drvqemu.html">libvirt &amp; qemu</a></p></li>
+</ul>
+</div>
+<div class="section" id="http-errors">
+<h3>Http errors<a class="headerlink" href="#http-errors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>If you are getting a <code class="docutils literal notranslate"><span class="pre">403</span></code> error only on <a class="reference external" href="http://substra-backend.node-1.com/">http://substra-backend.node-1.com/</a> and <a class="reference external" href="http://substra-frontend.node-1.com/">http://substra-frontend.node-1.com/</a> with Firefox, please check if <code class="docutils literal notranslate"><span class="pre">dns</span> <span class="pre">over</span> <span class="pre">https</span></code> is activated (in Firefox Network options). If so, please try again desactivating this option, or try with another browser…</p></li>
+<li><p>If you are getting <code class="docutils literal notranslate"><span class="pre">bad</span> <span class="pre">certificate</span></code> issues: please try to investigate your setup with <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">list</span> <span class="pre">--all</span></code>; you can try <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">network-org-1-peer-1</span> <span class="pre">--no-hooks</span></code> &amp; in k9s <code class="docutils literal notranslate"><span class="pre">:jobs</span></code> and delete the <code class="docutils literal notranslate"><span class="pre">orgs</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">orderer</span></code>; you can also<code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">--purge</span> <span class="pre">RELEASE_NAME</span></code> (ex. <code class="docutils literal notranslate"><span class="pre">network-org-1-peer-1</span></code>) and then restart with <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Self-signed</span> <span class="pre">certificate</span></code> issues are related to your network provider/admin</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="unreachable-backend">
+<h2>Unreachable backend<a class="headerlink" href="#unreachable-backend" title="Permalink to this headline">¶</a></h2>
+<p>If you are having trouble accessing the backends, at some point, you might want to try:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>minikube addons disable ingress
+<span class="o">[</span><span class="nb">wait</span> <span class="m">30</span> sec<span class="o">]</span>
+minikube addons <span class="nb">enable</span> ingress
+<span class="o">[</span><span class="nb">wait</span> a couple minutes<span class="o">]</span>
+curl <span class="k">$(</span>minikube ip<span class="k">)</span> -H <span class="s1">&#39;Host: substra-backend.node-1.com&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="serve-the-frontend-with-yarn">
+<h3>Serve the frontend with Yarn<a class="headerlink" href="#serve-the-frontend-with-yarn" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using <code class="docutils literal notranslate"><span class="pre">skaffold</span></code>, you might want to start the Substra frontend with <a class="reference external" href="https://yarnpkg.com/getting-started/install">Yarn</a>:</p>
+<p>Start Redis in one terminal window:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>redis-cli
+</pre></div>
+</div>
+<p>Launch Yarn in another terminal window:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>yarn install
+
+<span class="nv">API_URL</span><span class="o">=</span>http://substra-backend.node-2.com yarn start
+</pre></div>
+</div>
+<p>You will then have to map the frontend urls to your localhost, like this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="m">127</span>.0.0.1 substra-frontend.node-1.com substra-frontend.node-2.com
+</pre></div>
+</div>
+<p>You can now head to <a class="reference external" href="http://substra-frontend.node-2.com:3000/">http://substra-frontend.node-2.com:3000/</a> and start to play with Substra!</p>
+</div>
+<div class="section" id="backend-browser-extension">
+<h3>Backend &amp; Browser extension<a class="headerlink" href="#backend-browser-extension" title="Permalink to this headline">¶</a></h3>
+<p>In order to use the backend webpage on your browser, you will need to install this extension that will send a special header containing a <code class="docutils literal notranslate"><span class="pre">version</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/modheader-firefox/">Firefox</a></p></li>
+<li><p><a class="reference external" href="https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj">Chrome</a></p></li>
+</ul>
+<p>You will then need add these three elements:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Resource</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request Headers</td>
+<td><code>Accept</code></td>
+<td><code>text/html;version=0.0, */*; version=0.0</code></td>
+</tr>
+<tr>
+<td>Filters</td>
+<td><code>URL Pattern</code></td>
+<td><code>http://susbtra-backend.node-1.com</code></td>
+</tr>
+<tr>
+<td>Filters</td>
+<td><code>URL Pattern</code></td>
+<td><code>http://susbtra-backend.node-2.com</code></td>
+</tr>
+</tbody>
+</table><p>Otherwise, you can try to import the following configuration to the extension (via the Import menu):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Profile 1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;hideComment&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Accept&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html;version=0.0, */*; version=0.0&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;respHeaders&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;urls&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;urlRegex&quot;</span><span class="p">:</span> <span class="s2">&quot;http://substra-backend.node-2.com&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;urls&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;urlRegex&quot;</span><span class="p">:</span> <span class="s2">&quot;http://susbtra-backend.node-1.com&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;urlReplacements&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;appendMode&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend#testing-with-the-browsable-api">https://github.com/SubstraFoundation/substra-backend#testing-with-the-browsable-api</a></p>
+</div>
+</div>
+<div class="section" id="tips-and-useful-resources">
+<h2>Tips and useful resources<a class="headerlink" href="#tips-and-useful-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="k8s">
+<h3>K8s<a class="headerlink" href="#k8s" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectx</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">kubens</span></code>: <a class="reference external" href="https://github.com/ahmetb/kubectx#installation">https://github.com/ahmetb/kubectx#installation</a></p></li>
+<li><p>Local Kubernetes deployment with minikube: <a class="reference external" href="https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/">https://kubernetes.io/blog/2019/03/28/running-kubernetes-locally-on-linux-with-minikube-now-with-kubernetes-1.14-support/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ramitsurana/awesome-kubernetes#starting-point">Awesome Kubernetes list</a></p></li>
+<li><p><a class="reference external" href="https://minikube.sigs.k8s.io/">Minikube</a> is recommended on Ubuntu but you can also use <a class="reference external" href="https://microk8s.io/">Microk8s</a>.</p></li>
+<li><p>Use k8s context:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">config</span> <span class="pre">get-contexts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">config</span> <span class="pre">set</span> <span class="pre">current-context</span> <span class="pre">&lt;YOUR_CONTEXT&gt;</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="k9s">
+<h3>K9s<a class="headerlink" href="#k9s" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/derailed/k9s">k9s</a> is quite handy to inspect your Kubernetes setup. Here are some basic tips:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> for help</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> to see the <code class="docutils literal notranslate"><span class="pre">YAML</span></code> configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code> for <code class="docutils literal notranslate"><span class="pre">describe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for <code class="docutils literal notranslate"><span class="pre">logs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/server</span></code> then <code class="docutils literal notranslate"><span class="pre">l</span></code> for the logs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:jobs</span></code> might be useful to see what is happening behind the scene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CTRL</span></code> + <code class="docutils literal notranslate"><span class="pre">A</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:xray</span> <span class="pre">deployments</span> <span class="pre">all</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="helm">
+<h3>Helm<a class="headerlink" href="#helm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">ls</span></code> to get the list of your helm releases (packages). You can also use commands like <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span> <span class="pre">NAME_OF_THE_CHART</span></code></p></li>
+<li><p><a class="reference external" href="https://www.linux.com/tutorials/helm-kubernetes-package-manager/">https://www.linux.com/tutorials/helm-kubernetes-package-manager/</a></p></li>
+<li><p><a class="reference external" href="https://hub.helm.sh/charts/substra/hlf-k8s">Substra Helm charts</a></p></li>
+<li><p><a class="reference external" href="https://v2.helm.sh/docs/">Helm 2 documentation</a></p></li>
+<li><p><a class="reference external" href="https://v2.helm.sh/docs/developing_charts/#the-chart-file-structure">Helm general file structure</a></p></li>
+</ul>
+</div>
+<div class="section" id="hyperledger-fabric">
+<h3>Hyperledger Fabric<a class="headerlink" href="#hyperledger-fabric" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Installation: <a class="reference external" href="https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566">https://medium.com/hackernoon/hyperledger-fabric-installation-guide-74065855eca9#c566</a></p></li>
+<li><p>Building your first network: <a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html">https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html</a></p></li>
+</ul>
+</div>
+<div class="section" id="python-virtual-environment">
+<h3>Python Virtual Environment<a class="headerlink" href="#python-virtual-environment" title="Permalink to this headline">¶</a></h3>
+<p>In order to keep your installation of Substra separated from your general Python environement, which is a general Python good practice, it is recommanded to prepare a Python <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtual environment</a>. In a new terminal window, please use one of the following method:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 1: install the virtualenv package</span>
+pip3 install --user virtualenv
+
+<span class="c1"># Create a new virtual environment</span>
+virtualenv -p python3 NAME_OF_YOUR_VENV
+<span class="c1"># or even</span>
+virtualenv -p <span class="k">$(</span>which python3<span class="k">)</span> NAME_OF_YOUR_VENV
+
+<span class="c1"># Method 2: install the python3-venv package</span>
+sudo apt install python3-venv <span class="c1"># (Ubuntu)</span>
+
+<span class="c1"># Create a new virtual environment</span>
+python3 -m venv NAME_OF_YOUR_VENV
+
+<span class="c1"># Method 1 &amp; 2: activate your new virtual env</span>
+<span class="nb">source</span> NAME_OF_YOUR_VENV/bin/activate
+
+<span class="c1"># Method 1 &amp; 2: install Substra package inside your fresh new virtual environment</span>
+pip3 install substra
+
+<span class="c1"># Method 1 &amp; 2: stop your virtual environment</span>
+deactivate
+</pre></div>
+</div>
+<p>If you are looking for more Python Virtual Environment resource, you might be interested in this post from <a class="reference external" href="https://realpython.com/python-virtual-environments-a-primer/">Real Python</a>.</p>
+</div>
+</div>
+<div class="section" id="get-in-touch">
+<h2>Get in touch<a class="headerlink" href="#get-in-touch" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Come chat with us on <a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">Slack</a> (Once your request is granted, you will be able to join us, especially the <em>#help</em> channel)</p></li>
+<li><p>Drop us an <a class="reference external" href="mailto:help&#37;&#52;&#48;substra&#46;ai">email</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/new">Create an issue on Github</a></p></li>
+<li><p>Or come meet us <em>irl</em> in Paris, Nantes or Limoges!</p></li>
+</ul>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>This amazing piece of software has been developed and open sourced by <a class="reference external" href="https://owkin.com/">Owkin</a> and its <a class="reference external" href="https://github.com/SubstraFoundation/substra/graphs/contributors">terrific software engineers</a>. The repositories are now maintained by <a class="reference external" href="https://github.com/SubstraFoundation">Substra Foundation</a> and its community. Besides, Substra is really excited to welcome new members, feedbacks and contributions, so please, feel free to get in touch with us!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../concepts.html" class="btn btn-neutral float-right" title="Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="local_install_skaffold.html" class="btn btn-neutral float-left" title="Local installation of Substra using Kubernetes and Skaffold" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Substra Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

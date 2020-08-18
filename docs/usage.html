@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build &amp; publish the documentation &mdash; Substra 1.0 documentation</title>
+  <title>Usage &mdash; Substra 1.0 documentation</title>
   
 
   
@@ -38,7 +38,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Contributing to Substra" href="CONTRIBUTING.html" /> 
+    <link rel="next" title="Setup" href="setup/index.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,8 +87,13 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Setup</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Platform description</span></p>
@@ -101,9 +107,9 @@
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contribute</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Build &amp; publish the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
 </ul>
 
             
@@ -149,7 +155,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Build &amp; publish the documentation</li>
+      <li>Usage</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,26 +172,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="build-publish-the-documentation">
-<h1>Build &amp; publish the documentation<a class="headerlink" href="#build-publish-the-documentation" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Note: In order to ease the code review, please consider submitting your modifications and build in different commits.</p>
-</div></blockquote>
-<p>In the <code class="docutils literal notranslate"><span class="pre">substra-documentation</span></code> repository:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the dependencies</span>
-pip install -r requirements.txt
-
-<span class="c1"># Automatically build the documentation at each change and test the result in your browser at http://localhost:8000</span>
-make livehtml
-
-<span class="c1"># Build the documentation</span>
-make docs
-
-<span class="c1"># Commit changes</span>
-git add .
-git commit -m <span class="s2">&quot;Documentation Update </span><span class="k">$(</span>date -u +<span class="s2">&quot;%Y-%m-%d %H:%M&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-git push
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>CLI and SDK for interacting with Substra platform.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install the command line interface and the python sdk, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install substra
 </pre></div>
+</div>
+<p>To enable Bash completion, you need to put into your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nv">_SUBSTRA_COMPLETE</span><span class="o">=</span><span class="nb">source</span> substra<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>For zsh users add this to your .zshrc:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nv">_SUBSTRA_COMPLETE</span><span class="o">=</span>source_zsh substra<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>From this point onwards, substra command line interface will have autocompletion enabled.</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Interacting with the Substra platform</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary">CLI</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">SDK</a></p></li>
+</ul>
+<p>To help you implement your assets in Python, please have a look to the <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools">Substra Tools</a>.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Substra comes with a set of handy <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/examples">examples</a> that will help you getting started!</p>
 </div>
 </div>
 
@@ -197,8 +214,10 @@ git push
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="setup/index.html" class="btn btn-neutral float-right" title="Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="CONTRIBUTING.html" class="btn btn-neutral float-left" title="Contributing to Substra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
