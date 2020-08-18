@@ -22,6 +22,12 @@ For zsh users add this to your .zshrc:
 eval "$(_SUBSTRA_COMPLETE=source_zsh substra)"
 ```
 
+> Note: Substra CLI isn't compatible yet with Windows unless you use the Linux Sub System. Please have a look at those resources:
+>
+> - WSL: <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
+> - Vscode: <https://code.visualstudio.com/docs/remote/wsl>
+> - Docker: <https://docs.docker.com/docker-for-windows/wsl/>
+
 From this point onwards, substra command line interface will have autocompletion enabled.
 
 ## Documentation
