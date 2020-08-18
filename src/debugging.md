@@ -2,22 +2,20 @@
 
 For a complete example, see the [debugging example](https://github.com/SubstraFoundation/substra/tree/master/examples/debugging).
 
-- [Debugging your scripts locally](#debugging-your-scripts-locally)
-  - [Dependencies](#dependencies)
-  - [Run your code locally](#run-your-code-locally)
-    - [Use assets from a deployed Substra platform and local assets](#use-assets-from-a-deployed-substra-platform-and-local-assets)
-    - [Dependency between assets](#dependency-between-assets)
-    - [Debugging with logs and breakpoints](#debugging-with-logs-and-breakpoints)
-      - [Access the logs](#access-the-logs)
-      - [Debug with pdb](#debug-with-pdb)
+- [Dependencies](#dependencies)
+- [Run your code locally](#run-your-code-locally)
+  - [Use assets from a deployed Substra platform and local assets](#use-assets-from-a-deployed-substra-platform-and-local-assets)
+  - [Dependency between assets](#dependency-between-assets)
+  - [Debugging with logs and breakpoints](#debugging-with-logs-and-breakpoints)
+    - [Access the logs](#access-the-logs)
+    - [Debug with pdb](#debug-with-pdb)
 
 ## Dependencies
 
 - Substra must be installed.
-
 - Docker is required since the training and testing tasks are run in Docker containers:
   - Mac: [Docker Desktop](https://www.docker.com/products/docker-desktop)
-  - Ubuntu/Debian: [installation instructions](https://docs.docker.com/engine/install/ubuntu/))
+  - Ubuntu/Debian: [installation instructions](https://docs.docker.com/engine/install/ubuntu/)
 
 If you want to debug your script using assets from the Substra platform, you also need access to the platform the assets are on.
 
