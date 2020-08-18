@@ -226,7 +226,7 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">cluster-info</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">all</span> <span class="pre">--all-namespaces</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">YOUR_NAMESPACE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">delete</span> <span class="pre">ns</span> <span class="pre">&lt;YOUR_NAMESPACE&gt;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">nodes</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span> <span class="pre">-o</span> <span class="pre">wide</span></code></p></li>
 </ul>
@@ -432,18 +432,18 @@ curl <span class="k">$(</span>minikube ip<span class="k">)</span> -H <span class
 pip3 install --user virtualenv
 
 <span class="c1"># Create a new virtual environment</span>
-virtualenv -p python3 NAME_OF_YOUR_VENV
+virtualenv -p python3 &lt;NAME_OF_YOUR_VENV&gt;
 <span class="c1"># or even</span>
-virtualenv -p <span class="k">$(</span>which python3<span class="k">)</span> NAME_OF_YOUR_VENV
+virtualenv -p <span class="k">$(</span>which python3<span class="k">)</span> &lt;NAME_OF_YOUR_VENV&gt;
 
 <span class="c1"># Method 2: install the python3-venv package</span>
 sudo apt install python3-venv <span class="c1"># (Ubuntu)</span>
 
 <span class="c1"># Create a new virtual environment</span>
-python3 -m venv NAME_OF_YOUR_VENV
+python3 -m venv &lt;NAME_OF_YOUR_VENV&gt;
 
 <span class="c1"># Method 1 &amp; 2: activate your new virtual env</span>
-<span class="nb">source</span> NAME_OF_YOUR_VENV/bin/activate
+<span class="nb">source</span> &lt;NAME_OF_YOUR_VENV&gt;/bin/activate
 
 <span class="c1"># Method 1 &amp; 2: install Substra package inside your fresh new virtual environment</span>
 pip3 install substra
