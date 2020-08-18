@@ -15,31 +15,31 @@
 
 ```sh
 src/
-├── contribute
-│   └── CONTRIBUTING.md
-├── entry_points
-│   ├── faq.md
-│   └── glossary.md
-├── getting_started
-│   ├── installation
-│   │   ├── further_resources.md
-│   │   ├── installation.rst
-│   │   ├── local_install_docker_compose.md
-│   │   └── local_install_skaffold.md
-│   └── usage
-│       └── usage.md
+├── architecture.md
+├── concepts.md
+├── CONTRIBUTING.md
+├── debugging.md
+├── faq.md
+├── glossary.md
 ├── img
 │   ├── architecture_overview.png
+│   ├── assets_relationships.png
+│   ├── dataset-files-opener.png
 │   ├── git_pr_status.png
 │   ├── start_backend.png
 │   ├── start_frontend.png
-│   └── start_hlf-k8s.png
+│   ├── start_hlf-k8s.png
+│   ├── training_phase1.png
+│   └── training.svg
 ├── index.rst
-├── overview
-│   └── overview.md
-├── platform_description
-│   └── platform.md
-└── publish.md
+├── overview.md
+├── publish.md
+├── setup
+│   ├── further_resources.md
+│   ├── index.rst
+│   └── local_install_skaffold.md
+└── usage.md
+
 ```
 
 ## Commands
