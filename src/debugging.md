@@ -39,7 +39,7 @@ With this, you gain access to the platform in 'read-only' mode and any asset you
 This means that any function to get, describe or download an asset works with assets from the platform and local assets. Functions to
 list assets will list the assets from the platform and the local ones.  
 Functions that create a new asset (they start with `add`) only create local assets.  
-To differentiate between a local asset and a remote one, look at their key (or pkhash): for local assets, it starts with `local_`.
+To differentiate between a local asset and a remote one, look at their key: for local assets, it starts with `local_`.
 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
 
@@ -93,7 +93,7 @@ class Algo(tools.algo.Algo):
 I add the algo and a traintuple that depends on it to the client in debug mode. When I add the traintuple to the client, it is immediately executed 
 and pauses on the pdb breakpoint.
 
-For this, I need the algo key (or pkhash):
+For this, I need the algo key:
 ```python
 algo_key = client.add_algo(...)["key"]
 print(algo_key)
