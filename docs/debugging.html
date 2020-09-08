@@ -224,7 +224,7 @@ set the <code class="docutils literal notranslate"><span class="pre">debug</span
 <h3>Use assets from a deployed Substra platform and local assets<a class="headerlink" href="#use-assets-from-a-deployed-substra-platform-and-local-assets" title="Permalink to this headline">¶</a></h3>
 <p>With this, you gain access to the platform in ‘read-only’ mode and any asset you create is created locally.</p>
 <p>This means that any function to get, describe or download an asset works with assets from the platform and local assets. Functions to
-list assets will list the assets from the platform and the local ones.<br />Functions that create a new asset (they start with <code class="docutils literal notranslate"><span class="pre">add</span></code>) only create local assets.<br />To differentiate between a local asset and a remote one, look at their key (or pkhash): for local assets, it starts with <code class="docutils literal notranslate"><span class="pre">local_</span></code>.</p>
+list assets will list the assets from the platform and the local ones.<br />Functions that create a new asset (they start with <code class="docutils literal notranslate"><span class="pre">add</span></code>) only create local assets.<br />To differentiate between a local asset and a remote one, look at their key: for local assets, it starts with <code class="docutils literal notranslate"><span class="pre">local_</span></code>.</p>
 <p>Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).</p>
 </div>
 <div class="section" id="dependency-between-assets">
@@ -268,7 +268,7 @@ until you connect to the container.</p>
 </div>
 <p>I add the algo and a traintuple that depends on it to the client in debug mode. When I add the traintuple to the client, it is immediately executed
 and pauses on the pdb breakpoint.</p>
-<p>For this, I need the algo key (or pkhash):</p>
+<p>For this, I need the algo key:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">algo_key</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">add_algo</span><span class="p">(</span><span class="o">...</span><span class="p">)[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">algo_key</span><span class="p">)</span>
 </pre></div>
