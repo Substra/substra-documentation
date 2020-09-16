@@ -12,4 +12,4 @@ script:
   - make clean
   - make html
   - touch _build/html/.nojekyll
-  - diff -x "CNAME" -qr _build/html docs
+  - diff -x "CNAME" -r _build/html docs
