@@ -13,8 +13,6 @@ This guide will help you run the Substra platform on your machine in development
       - [Running Kubernetes locally](#running-kubernetes-locally)
       - [Installing Kubectl](#installing-kubectl)
     - [Helm](#helm)
-      - [Helm v2](#helm-v2)
-      - [Helm v3](#helm-v3)
     - [Skaffold](#skaffold)
   - [Virtualization](#virtualization)
   - [Get the source code (Mac & Ubuntu)](#get-the-source-code-mac--ubuntu)
