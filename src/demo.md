@@ -1,4 +1,4 @@
-# Hands-on Substra demo
+# Demo
 
 Check this [page](https://www.substra.ai/en/demo) and get in touch with us, we will then provide you with instructions and credentials!
 

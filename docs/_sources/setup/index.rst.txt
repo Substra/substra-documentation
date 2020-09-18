@@ -1,9 +1,9 @@
-Setup
-=====
+Server setup
+============
 
 .. toctree::
    :maxdepth: 2
 
    local_install_skaffold
-   demo
+   cheatsheet_vm
    further_resources

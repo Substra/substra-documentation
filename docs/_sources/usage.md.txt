@@ -1,4 +1,4 @@
-# Usage
+# Client
 
 CLI and SDK for interacting with Substra platform.
 
@@ -42,5 +42,3 @@ To help you implement your assets in Python, please have a look to the [Substra 
 ## Examples
 
 Substra comes with a set of handy [examples](https://github.com/SubstraFoundation/substra/blob/master/examples) that will help you getting started! If you want to go further, you can also have a look at the [community driven examples](https://github.com/SubstraFoundation/substra-examples) where you will see how to implement MNIST, MNIST with differential privacy or Deepfake detection!
-
-
