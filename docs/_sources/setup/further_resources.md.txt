@@ -35,6 +35,7 @@ If you need to reset and want to start a new kubernetes configuration, you can t
 - If you are using microk8s:
   - `microk8s.status`
   - `microk8s.inspect`
+- Start minikube with `--alsologtostderr -v=8` to get logs
 
 ### Minikube Errors
 
