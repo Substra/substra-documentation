@@ -339,17 +339,19 @@ sudo apt-get install -y <span class="nv">kubectl</span><span class="o">=</span><
 </div>
 <div class="section" id="helm">
 <h4><a class="reference external" href="https://helm.sh/">Helm</a><a class="headerlink" href="#helm" title="Permalink to this headline">¶</a></h4>
-<p>V3 is not supported yet, please use <a class="reference external" href="https://github.com/helm/helm/releases/tag/v2.16.1">Helm v2.16.1</a> to get Helm and Tiller. Tiller has been removed from v3.</p>
+<p>Please use <a class="reference external" href="https://github.com/helm/helm/releases/tag/v2.16.1">Helm v2.16.1</a> to get Helm and Tiller for setups using <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">0.6.0</span></code> or lower (see <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a>). Following releases should work fine with Helm v3 (which has removed Tiller).</p>
 <ul class="simple">
 <li><p>Mac</p></li>
 </ul>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install helm@2
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helm v2</span>
+brew install helm@2
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Ubuntu</p></li>
 </ul>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the executable</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helm v2</span>
+<span class="c1"># Get the executable</span>
 curl -LO https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
 <span class="c1"># Extract the downloaded archive</span>
 tar xzvf helm-v2.16.1-linux-amd64.tar.gz
@@ -358,6 +360,7 @@ tar xzvf helm-v2.16.1-linux-amd64.tar.gz
 sudo mv tiller helm /usr/local/bin/
 </pre></div>
 </div>
+<p>To install Helm v3, please refer to the <a class="reference external" href="https://v3.helm.sh/docs/intro/install/">official documentation</a>.</p>
 </div>
 <div class="section" id="skaffold">
 <h4><a class="reference external" href="https://skaffold.dev/">Skaffold</a><a class="headerlink" href="#skaffold" title="Permalink to this headline">¶</a></h4>
@@ -453,7 +456,8 @@ sudo minikube start --vm-driver<span class="o">=</span>none --kubernetes-version
 <div class="section" id="helm-init-mac-ubuntu">
 <h4>Helm init (Mac &amp; Ubuntu)<a class="headerlink" href="#helm-init-mac-ubuntu" title="Permalink to this headline">¶</a></h4>
 <p>The first time you install Substra, you will need to use:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>helm init
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helm v2</span>
+helm init
 <span class="c1"># or</span>
 helm init --upgrade
 
