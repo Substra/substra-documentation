@@ -20,7 +20,7 @@ If you are facing issues with Substra (CLI or SDK), you can have a look at:
 model.save_weights(path)
 # with
 model.save_weights(path, save_format="h5")
-# and make sure the path and filename are corrects
+# make sure the path and filename are correct
 os.rename(path+'.h5', path)
 ```
 
