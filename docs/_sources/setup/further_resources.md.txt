@@ -1,5 +1,31 @@
 # Further resources
 
+## Hands on Substra
+
+If you are facing issues with Substra (CLI or SDK), you can have a look at:
+
+- [Github issues](https://github.com/SubstraFoundation/substra/issues)
+- [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md)
+- [SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md)
+- [Debugging](https://doc.substra.ai/debugging.html)
+- [Official examples](https://github.com/SubstraFoundation/substra/tree/master/examples#substra-examples) (shipped with substra package)
+- [Community examples](https://github.com/SubstraFoundation/substra-examples#substra-examples) (using datasets with images or even video files)
+
+### If you are having issues with:
+
+- A model that cannot be found by the platform: it can be related with the way your model is saved. For example, depending on the assets you are using, the `save_weights()` method from keras might require a path and a file extension:
+
+```python
+# replace
+model.save_weights(path)
+# with
+model.save_weights(path, save_format="h5")
+# make sure the path and filename are correct
+os.rename(path+'.h5', path)
+```
+
+> If you didn't find an appropriate answer, you can join our Slack [#help](https://substra.us18.list-manage.com/track/click?e=2effed55c9&id=fa49875322&u=385fa3f9736ea94a1fcca969f) channel!
+
 ## Troubleshooting
 
 ### Reset
