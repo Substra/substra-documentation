@@ -357,7 +357,7 @@ On both Mac and Ubuntu, once your Kubernetes cluster is up and running (started 
 
 #### 1. hlf-k8s repository
 
-In the `hlf-k8s` repository, please run the command `skaffold dev` (or `skaffold run` for detached mode). The platform will be ready once the terminal displays:
+In the `hlf-k8s` repository, please run the command `skaffold dev` (or `skaffold run` for detached mode, or even `skffold debug`). The platform will be ready once the terminal displays:
 
 ```sh
 [network-org-2-peer-1-hlf-k8s-chaincode-install-0-4bdd4 fabric-tools] 2019-11-14 09:14:52.070 UTC [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" >
