@@ -411,7 +411,6 @@ python3 assets/objective/metrics.py <span class="se">\</span>
 </pre></div>
 </div>
 <p>This <code class="docutils literal notranslate"><span class="pre">assets_keys.json</span></code> file contains the keys of your registered assets that have been registered by the platform:</p>
-<p>TODO remove algo keys here and add in algo section</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;dataset_key&quot;</span><span class="p">:</span> <span class="s2">&quot;cb8d7f928d956ba6e9596a9b8624a0c7b0312eccd099f8791ca284bc05bd9416&quot;</span><span class="p">,</span>
   <span class="nt">&quot;objective_key&quot;</span><span class="p">:</span> <span class="s2">&quot;0a2e88018601d035f65788d2a081f84a35427474c4bde9fa357af2406be9b52c&quot;</span><span class="p">,</span>
@@ -431,11 +430,6 @@ python3 assets/objective/metrics.py <span class="se">\</span>
     <span class="s2">&quot;fd4a10303ebbcc378679ff51ef592bd661f4923e306f69873cc7300c5e7c9f8c&quot;</span><span class="p">,</span>
     <span class="s2">&quot;98af9156cd1445f8164d2b8b83f512d62ec67e8d2598a585a8564660c3aaef06&quot;</span>
   <span class="p">],</span>
-  <span class="nt">&quot;algo&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;algo_key&quot;</span><span class="p">:</span> <span class="s2">&quot;39630fb427fb416912ab4279944ed88b8cf8596d9bc3b0bdf0abbbd2b05b87c5&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;traintuple_key&quot;</span><span class="p">:</span> <span class="s2">&quot;f8a62c5ab8fdafcf81940313eaa9b1dec42ccf18fc1be92f59c4b26f78b928d2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;testtuple_key&quot;</span><span class="p">:</span> <span class="s2">&quot;4ab2c81b9aaae8fe01bc7a230365def23ed0f3b23620bc892c11bd08cd9bbb70&quot;</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -473,12 +467,15 @@ Run the following commands to track the status of the tuples:
 </div>
 <div class="section" id="consult-the-performance-from-the-ledger">
 <h3>Consult the performance from the ledger<a class="headerlink" href="#consult-the-performance-from-the-ledger" title="Permalink to this headline">¶</a></h3>
-<p>TO DO</p>
-<p>Performances will be exported to a <code class="docutils literal notranslate"><span class="pre">perf.json</span></code> file.</p>
+<p>Performances will be exported to a <code class="docutils literal notranslate"><span class="pre">perf.json</span></code> file. You can also use the CLI commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get traintuple &lt;KEY&gt; --profile &lt;PROFILE&gt;
+substra get testtuple &lt;KEY&gt; --profile &lt;PROFILE&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="fetch-the-trained-model">
 <h3>Fetch the trained model<a class="headerlink" href="#fetch-the-trained-model" title="Permalink to this headline">¶</a></h3>
-<p>TO DO</p>
+<p>TODO</p>
 </div>
 </div>
 <div class="section" id="resources">

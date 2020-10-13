@@ -219,8 +219,6 @@ Assets keys have been saved to /home/user/your_project/assets_keys.json
 
 This `assets_keys.json` file contains the keys of your registered assets that have been registered by the platform:
 
-TODO remove algo keys here and add in algo section
-
 ```json
 {
   "dataset_key": "cb8d7f928d956ba6e9596a9b8624a0c7b0312eccd099f8791ca284bc05bd9416",
@@ -241,11 +239,6 @@ TODO remove algo keys here and add in algo section
     "fd4a10303ebbcc378679ff51ef592bd661f4923e306f69873cc7300c5e7c9f8c",
     "98af9156cd1445f8164d2b8b83f512d62ec67e8d2598a585a8564660c3aaef06"
   ],
-  "algo": {
-    "algo_key": "39630fb427fb416912ab4279944ed88b8cf8596d9bc3b0bdf0abbbd2b05b87c5",
-    "traintuple_key": "f8a62c5ab8fdafcf81940313eaa9b1dec42ccf18fc1be92f59c4b26f78b928d2",
-    "testtuple_key": "4ab2c81b9aaae8fe01bc7a230365def23ed0f3b23620bc892c11bd08cd9bbb70"
-  }
 }
 ```
 
@@ -289,13 +282,16 @@ substra run-local assets/algo \
 
 ### Consult the performance from the ledger
 
-TO DO
+Performances will be exported to a `perf.json` file. You can also use the CLI commands:
 
-Performances will be exported to a `perf.json` file.
+```sh
+substra get traintuple <KEY> --profile <PROFILE>
+substra get testtuple <KEY> --profile <PROFILE>
+```
 
 ### Fetch the trained model
 
-TO DO
+TODO
 
 ## 4. Resources
 
