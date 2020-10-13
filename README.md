@@ -2,7 +2,7 @@
 
 ## Files & Directories
 
-> Note: The `CONTRIBUTING.md` orignal source file is located in the [.github repository](https://github.com/SubstraFoundation/.github) and then fetched into this documentation.
+> Note: The `CONTRIBUTING.md` original source file is located in the [.github repository](https://github.com/SubstraFoundation/.github) and then fetched into this documentation.
 
 - `_static` contains static files (favicon, css, logo)
 - `src` contains all the source documents
