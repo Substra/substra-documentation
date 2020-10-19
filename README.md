@@ -35,11 +35,11 @@ src/
 ├── overview.md
 ├── publish.md
 ├── setup
+│   ├── demo.md
 │   ├── further_resources.md
 │   ├── index.rst
 │   └── local_install_skaffold.md
 └── usage.md
-
 ```
 
 ## Commands
@@ -58,7 +58,7 @@ make docs
 
 # Commit changes
 git add .
-git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+git commit -m "[build]"
 git push
 ```
 
