@@ -63,7 +63,7 @@ It might be useful to have a look at the [documentation](https://doc.substra.ai)
 
 ### The components of Substra
 
-Substra is made of several open source components listed below. When you initially consider contributing to Subtra, you may be unsure of the component that implements the functionality you want to change or report a bug for. The table below should help you with that.
+Substra is made of several open source components listed below. When you initially consider contributing to Substra, you may be unsure of the component that implements the functionality you want to change or report a bug for. The table below should help you with that.
 
 | Component  | Goal  |
 |---|---|
@@ -190,7 +190,7 @@ Please make sure you went through this checklist:
 
 #### Review best practices
 
-Please make sure to be **as constructive as possible**. This article summarises unhelpful and helpful behaviors when doing a code review: [Unlearning toxic behaviors in a code review culture](https://medium.com/@sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c):
+Please make sure to be **as constructive as possible**. This article summarizes unhelpful and helpful behaviors when doing a code review: [Unlearning toxic behaviors in a code review culture](https://medium.com/@sandya.sankarram/unlearning-toxic-behaviors-in-a-code-review-culture-b7c295452a3c):
 
 ##### TL;DR
 
@@ -258,7 +258,7 @@ Is your comment helping the other developer learn or are you nitpicking to parti
 - Our **libraries** supports python 3.6 and newer
 - Our **applications** are written for python 3.6
 
-The Substra project tries to closely follow the official Python guideleines detailed in [PEP8](https://www.python.org/dev/peps/pep-0008/). Please read it and follow it.
+The Substra project tries to closely follow the official Python guidelines detailed in [PEP8](https://www.python.org/dev/peps/pep-0008/). Please read it and follow it.
 
 You can check your code using [flake8](http://flake8.pycqa.org/en/latest/).
 
@@ -307,7 +307,7 @@ To maximise advantages over disadvantages, please carefully consider the followi
   - Who use the library at scale?
 - How reliable is the author?
 - How well-written is the library?
-  - The library meet common langage good practicies.
+  - The library meet common langage good practices.
   - The library have tests and is well documented.
 - Does the library meet your specific requirements?
 - Does the library have the correct license?

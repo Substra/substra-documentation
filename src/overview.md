@@ -30,7 +30,7 @@ Data controllers:
 
 Substra aims at being compatible with privacy-enhancing technologies to complement their use to provide efficient and transparent privacy-preserving workflows for data science. Its ambition is to make new scientific and economic data science collaborations possible.
 
-The sofware is Open Source, published under an Apache-2.0 license and the forge is located on [Substra Foundation's Github repositories](https://github.com/SubstraFoundation).
+The software is Open Source, published under an Apache-2.0 license and the forge is located on [Substra Foundation's Github repositories](https://github.com/SubstraFoundation).
 
 ## General definitions & resources
 
@@ -80,7 +80,7 @@ If you are interested in Substra and would like to understand how it could be in
 
 ## Use cases
 
-> One framwork, a lot of possibilities
+> One framework, a lot of possibilities
 
 Substra is efficient on a range of issues like:
 

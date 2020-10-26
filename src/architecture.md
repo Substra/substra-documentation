@@ -2,7 +2,7 @@
 
 Main Substra repository: <https://github.com/SubstraFoundation/substra>
 
-![Software Architecture Overview]img/architecture_overview.png)
+![Software Architecture Overview](img/architecture_overview.png)
 
 ## Network
 
@@ -20,7 +20,7 @@ The DLT network is build with the open source software [Hyperledger Fabric](http
 
 More precisely, we use Hyperledger Fabric to deploy a network of several nodes following this kind of configuration:
 
-- Organisations (Orgs): multiple "application" orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an "orderer" organisation.
+- Organisations (Orgs): multiple "application" orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an "*orderer*" organisation.
 - Channel configuration: One channel whose members are all the orgs.
 - Endorsement policies: for example, "any member of the orgs in the channel" ([details here](https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#specifying-endorsement-policies-for-a-chaincode))
 
@@ -55,13 +55,13 @@ In the ledger, the following elements are stored:
 
 Substra Chaincode repository: <https://github.com/SubstraFoundation/substra-chaincode>
 
-Smart contracts are a set of data, rules, definitions and processes that will govern the interactions between the different stakeholders and enable the complete traceability of data use. Aditionally, smart contracts can be used for distributed and unfalsifiable permissions.
+Smart contracts are a set of data, rules, definitions and processes that will govern the interactions between the different stakeholders and enable the complete traceability of data use. Additionally, smart contracts can be used for distributed and infalsifiable permissions.
 
 ## Backend / API endpoints
 
 Substra backend repository: <https://github.com/SubstraFoundation/substra-backend>
 
-The backend is developped in Python and uses the [Django Rest Framework](https://www.django-rest-framework.org/). Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the [Python Fabric SDK](https://github.com/hyperledger/fabric-sdk-py).
+The backend is developed in Python and uses the [Django Rest Framework](https://www.django-rest-framework.org/). Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the [Python Fabric SDK](https://github.com/hyperledger/fabric-sdk-py).
 
 The backend implements workflows illustrated in the previous figure. Note that these workflows are only an overview, these representations are not perfectly accurate. Please also note that authentication is not represented in these workflows.
 
@@ -79,7 +79,7 @@ The SDK provides a Python SDK that permits interactions with the Substra backend
 
 Substra Frontend repository: <https://github.com/SubstraFoundation/substra-frontend>
 
-The Frontend is a neat tool to viszualize and monitor your operations on the platform, your assets and the associated permissions.
+The Frontend is a neat tool to visualize and monitor your operations on the platform, your assets and the associated permissions.
 
 ## Substra tools
 

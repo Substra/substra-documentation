@@ -72,7 +72,7 @@ If you wish to comfortably run Substra, it is advised to have:
 ### Software requirements
 
 > Note: Please **always** refer to the package provider website before installing any software!
-> Note: Please use LTS versions of Ubuntu to ensure best compatibitity (18.04 & 20.04).
+> Note: Please use LTS versions of Ubuntu to ensure best compatibility (18.04 & 20.04).
 
 Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great tool for your local Kubernetes deployments. For Mac users, we recommend to use Docker Desktop with Kubernetes, but Minikube is an alternative.
 
@@ -86,7 +86,7 @@ Substra deployment is orchestrated by `Kubernetes` and `Minikube` is a great too
 
 - Mac
 
-First of all, download the `Docker desktop` installer from <https://www.docker.com/products/docker-desktop>. You'll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its "preferences" panel. In the Kubernetes tab, check the `Enable Kubernetes` checkbox. If you want, you can select minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.
+First of all, download the `Docker desktop` installer from <https://www.docker.com/products/docker-desktop>. You'll have to create an account there to do so. Then run it to install Docker on your machine. Once installed, launch Docker and open its "preferences" panel. In the Kubernetes tab, check the `Enable Kubernetes` checkbox. If you want, you can select Minikube from the Docker toolbar and restart Docker. Kubernetes will take a while to launch the first time, but once it is done, you can move on to configuring.
 
 - Ubuntu: [Docker](https://docs.docker.com/engine/install/ubuntu/) & [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 

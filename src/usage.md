@@ -4,7 +4,7 @@ CLI and SDK for interacting with Substra platform.
 
 ## Installation
 
-To install the command line interface and the python sdk, run the following command:
+To install the command line interface and the Python SDK, run the following command:
 
 ```sh
 pip install substra
@@ -16,7 +16,7 @@ To enable Bash completion, you need to put into your `.bashrc`:
 eval "$(_SUBSTRA_COMPLETE=source substra)"
 ```
 
-For zsh users add this to your .zshrc:
+For zsh users add this to your `.zshrc`:
 
 ```sh
 eval "$(_SUBSTRA_COMPLETE=source_zsh substra)"
@@ -28,7 +28,7 @@ eval "$(_SUBSTRA_COMPLETE=source_zsh substra)"
 > - Vscode: <https://code.visualstudio.com/docs/remote/wsl>
 > - Docker: <https://docs.docker.com/docker-for-windows/wsl/>
 
-From this point onwards, substra command line interface will have autocompletion enabled.
+From this point onward, substra command line interface will have autocompletion enabled.
 
 ## Documentation
 

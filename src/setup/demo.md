@@ -13,7 +13,7 @@ To follow this tutorial for using the demo instance, it is assumed you have read
 The demo instance is deployed on a cloud infrastructure. To use it you will need:
 
 - the credentials that was provided to you after you contacted us for accessing the demo instance
-- access to a computer (e.g. a laptop, a VM...) with an internet connection, on which you have sudo privileges. Preferably not a Windows machine, although this is still manageable (see below).
+- access to a computer (e.g. a laptop, a VM...) with an internet connection, on which you have `sudo` privileges. Preferably not a Windows machine, although this is still manageable (see below).
 
 ### Overview: what you can do with the demo instance
 
@@ -196,7 +196,7 @@ You will need to update or follow the relevant path to add your assets or get th
 
 ### Adding your dataset & the associated objective
 
-You will now have to prepare the `opener.py` & `metrics.py` files, including their corresponding `description.md` and `Dockerfile` (where you have to add your depedencies). All assets are based on [substratools](https://github.com/SubstraFoundation/substra-tools/tree/master/substratools) classes to ease the process.
+You will now have to prepare the `opener.py` & `metrics.py` files, including their corresponding `description.md` and `Dockerfile` (where you have to add your dependencies). All assets are based on [substratools](https://github.com/SubstraFoundation/substra-tools/tree/master/substratools) classes to ease the process.
 
 The `add_dataset_objective.py` script is in charge of registering your dataset as an asset of the `organisation` you belong to. With your dataset will also be registered the `opener.py` & `metrics.py` files. Before running the script, please make sure you edit it to update the following:
 
@@ -242,7 +242,7 @@ This `assets_keys.json` file contains the keys of your registered assets that ha
 }
 ```
 
-Theses keys are usefull when you want to get information about a specific resource, you can for example use:
+Theses keys are useful when you want to get information about a specific resource, you can for example use:
 
 ```sh
 substra get dataset cb8d7f928d956ba6e9596a9b8624a0c7b0312eccd099f8791ca284bc05bd9416 --profile node-1

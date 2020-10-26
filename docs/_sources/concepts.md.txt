@@ -19,7 +19,7 @@ An objective is simply made of:
 - a test dataset, that is to say a data manager associated with several test data samples
 - a metrics script ([python implementation](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics)).
 
-It mainly aims at standardising the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.
+It mainly aims at standardizing the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.
 
 ## Dataset
 
@@ -31,7 +31,7 @@ A *dataset* is composed of:
 - an **opener**: it is in fact a script that opens and loads data in memory to fit the purpose of the objective ([python implementation](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener)). It can also apply preprocessing to the **data samples**.
 - a description: define the opener interface, that is to say what is returned by the opener.
 
-For now Substra users only work with labelled datasets. Substra users are expected to design preprocess and build specific clean and labelled datasets by applying preprocessing tasks and for a specific objective. Part of the operations can be done in the opener.
+For now Substra users only work with labeled datasets. Substra users are expected to design preprocess and build specific clean and labeled datasets by applying preprocessing tasks and for a specific objective. Part of the operations can be done in the opener.
 
 #### Data samples and datasets
 
@@ -114,16 +114,16 @@ The training and testing tasks take place in the node where data are located.
 
 ### Train and test data
 
-Each data asset is labelled as either *test* or *train* data. An objective then references which data assets should be used during the testing phase of an algorithm through the `test_data_keys` objective.
+Each data asset is labeled as either *test* or *train* data. An objective then references which data assets should be used during the testing phase of an algorithm through the `test_data_keys` objective.
 Of course, only assets set as test data can be referenced as test data for an objective, and only the ones set as train data can be referenced by traintuples for training. This ensures test data can never be used during the training phase.
 However, it is possible to specify testing tasks with train data, in order to enable cross-validation.
 
 In other words,
 
-- `traintuples` can only have train data that are labelled as train data.
+- `traintuples` can only have train data that are labeled as train data.
 - `testtuples` can have test data that are:
-  - labelled as test data. This corresponds to a `certified testtuple` that can be used to benchmark models for a given objective.
-  - labelled as train data. This corresponds to a testtuple to enable cross-validation.
+  - labeled as test data. This corresponds to a `certified testtuple` that can be used to benchmark models for a given objective.
+  - labeled as train data. This corresponds to a testtuple to enable cross-validation.
 
 ### Training task
 
