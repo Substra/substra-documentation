@@ -16,7 +16,7 @@ make docs
 
 # Commit changes
 git add .
-git commit -m "Documentation Update $(date -u +"%Y-%m-%d %H:%M")"
+git commit -m "[build]"
 git push
 ```
 

@@ -83,7 +83,7 @@ If you are having this error: `[JUJU_LOCK_DENIED] Failed to start none bare meta
 
 ### Http errors
 
-- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` is activated (in Firefox Network options). If so, please try again desactivating this option, or try with another browser...
+- If you are getting a `403` error only on <http://substra-backend.node-1.com/> and <http://substra-frontend.node-1.com/> with Firefox, please check if `dns over https` is activated (in Firefox Network options). If so, please try again deactivating this option, or try with another browser...
 - If you are getting `bad certificate` issues: please try to investigate your setup with `helm list` or `helm list --all`; you can try `helm delete network-org-1-peer-1 --no-hooks` & in k9s `:jobs` and delete the `orgs` & `orderer`; you can also`helm delete --purge RELEASE_NAME` (ex. `network-org-1-peer-1`) and then restart with `skaffold dev`.
 - `Self-signed certificate` issues are related to your network provider/admin
 
@@ -216,7 +216,7 @@ See: <https://github.com/SubstraFoundation/substra-backend#testing-with-the-brow
 
 ### Python Virtual Environment
 
-In order to keep your installation of Substra separated from your general Python environement, which is a general Python good practice, it is recommanded to prepare a Python [virtual environment](https://virtualenv.pypa.io/en/latest/). In a new terminal window, please use one of the following method:
+In order to keep your installation of Substra separated from your general Python environment, which is a general Python good practice, it is recommended to prepare a Python [virtual environment](https://virtualenv.pypa.io/en/latest/). In a new terminal window, please use one of the following method:
 
 ```sh
 # Method 1: install the virtualenv package

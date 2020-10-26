@@ -219,7 +219,7 @@
 <p>The demo instance is deployed on a cloud infrastructure. To use it you will need:</p>
 <ul class="simple">
 <li><p>the credentials that was provided to you after you contacted us for accessing the demo instance</p></li>
-<li><p>access to a computer (e.g. a laptop, a VM…) with an internet connection, on which you have sudo privileges. Preferably not a Windows machine, although this is still manageable (see below).</p></li>
+<li><p>access to a computer (e.g. a laptop, a VM…) with an internet connection, on which you have <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges. Preferably not a Windows machine, although this is still manageable (see below).</p></li>
 </ul>
 </div>
 <div class="section" id="overview-what-you-can-do-with-the-demo-instance">
@@ -394,7 +394,7 @@ python3 assets/objective/metrics.py <span class="se">\</span>
 </div>
 <div class="section" id="adding-your-dataset-the-associated-objective">
 <h3>Adding your dataset &amp; the associated objective<a class="headerlink" href="#adding-your-dataset-the-associated-objective" title="Permalink to this headline">¶</a></h3>
-<p>You will now have to prepare the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> files, including their corresponding <code class="docutils literal notranslate"><span class="pre">description.md</span></code> and <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> (where you have to add your depedencies). All assets are based on <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/tree/master/substratools">substratools</a> classes to ease the process.</p>
+<p>You will now have to prepare the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> files, including their corresponding <code class="docutils literal notranslate"><span class="pre">description.md</span></code> and <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> (where you have to add your dependencies). All assets are based on <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/tree/master/substratools">substratools</a> classes to ease the process.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">add_dataset_objective.py</span></code> script is in charge of registering your dataset as an asset of the <code class="docutils literal notranslate"><span class="pre">organisation</span></code> you belong to. With your dataset will also be registered the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> files. Before running the script, please make sure you edit it to update the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">profile</span></code> in <code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">=</span> <span class="pre">substra.Client(profile_name=&quot;&lt;PROFILE&gt;&quot;)</span></code>, using the profile you created before</p></li>
@@ -433,7 +433,7 @@ python3 assets/objective/metrics.py <span class="se">\</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Theses keys are usefull when you want to get information about a specific resource, you can for example use:</p>
+<p>Theses keys are useful when you want to get information about a specific resource, you can for example use:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get dataset cb8d7f928d956ba6e9596a9b8624a0c7b0312eccd099f8791ca284bc05bd9416 --profile node-1
 </pre></div>
 </div>

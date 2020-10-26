@@ -220,7 +220,7 @@
 <li><p>a test dataset, that is to say a data manager associated with several test data samples</p></li>
 <li><p>a metrics script (<a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics">python implementation</a>).</p></li>
 </ul>
-<p>It mainly aims at standardising the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.</p>
+<p>It mainly aims at standardizing the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.</p>
 </div>
 <div class="section" id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
@@ -231,7 +231,7 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 <li><p>an <strong>opener</strong>: it is in fact a script that opens and loads data in memory to fit the purpose of the objective (<a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#opener">python implementation</a>). It can also apply preprocessing to the <strong>data samples</strong>.</p></li>
 <li><p>a description: define the opener interface, that is to say what is returned by the opener.</p></li>
 </ul>
-<p>For now Substra users only work with labelled datasets. Substra users are expected to design preprocess and build specific clean and labelled datasets by applying preprocessing tasks and for a specific objective. Part of the operations can be done in the opener.</p>
+<p>For now Substra users only work with labeled datasets. Substra users are expected to design preprocess and build specific clean and labeled datasets by applying preprocessing tasks and for a specific objective. Part of the operations can be done in the opener.</p>
 <div class="section" id="data-samples-and-datasets">
 <h3>Data samples and datasets<a class="headerlink" href="#data-samples-and-datasets" title="Permalink to this headline">¶</a></h3>
 <p>Datasets are not a fixed set of data samples. Data samples can be linked to multiple datasets and new data samples can be linked to existing datasets even if these already have links to other data samples.</p>
@@ -307,16 +307,16 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 <p>The training and testing tasks take place in the node where data are located.</p>
 <div class="section" id="train-and-test-data">
 <h3>Train and test data<a class="headerlink" href="#train-and-test-data" title="Permalink to this headline">¶</a></h3>
-<p>Each data asset is labelled as either <em>test</em> or <em>train</em> data. An objective then references which data assets should be used during the testing phase of an algorithm through the <code class="docutils literal notranslate"><span class="pre">test_data_keys</span></code> objective.
+<p>Each data asset is labeled as either <em>test</em> or <em>train</em> data. An objective then references which data assets should be used during the testing phase of an algorithm through the <code class="docutils literal notranslate"><span class="pre">test_data_keys</span></code> objective.
 Of course, only assets set as test data can be referenced as test data for an objective, and only the ones set as train data can be referenced by traintuples for training. This ensures test data can never be used during the training phase.
 However, it is possible to specify testing tasks with train data, in order to enable cross-validation.</p>
 <p>In other words,</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">traintuples</span></code> can only have train data that are labelled as train data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">traintuples</span></code> can only have train data that are labeled as train data.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">testtuples</span></code> can have test data that are:</p>
 <ul>
-<li><p>labelled as test data. This corresponds to a <code class="docutils literal notranslate"><span class="pre">certified</span> <span class="pre">testtuple</span></code> that can be used to benchmark models for a given objective.</p></li>
-<li><p>labelled as train data. This corresponds to a testtuple to enable cross-validation.</p></li>
+<li><p>labeled as test data. This corresponds to a <code class="docutils literal notranslate"><span class="pre">certified</span> <span class="pre">testtuple</span></code> that can be used to benchmark models for a given objective.</p></li>
+<li><p>labeled as train data. This corresponds to a testtuple to enable cross-validation.</p></li>
 </ul>
 </li>
 </ul>

@@ -189,7 +189,7 @@
   <div class="section" id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
 <p>Main Substra repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra">https://github.com/SubstraFoundation/substra</a></p>
-<p>![Software Architecture Overview]img/architecture_overview.png)</p>
+<p><img alt="Software Architecture Overview" src="_images/architecture_overview.png" /></p>
 <div class="section" id="network">
 <h2>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository is an implementation of <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> and is in charge of the initialization of the Fabric network. By default, it will create an <code class="docutils literal notranslate"><span class="pre">orderer</span></code> and two orgs (<code class="docutils literal notranslate"><span class="pre">org-1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">org-2</span></code>).</p>
@@ -203,7 +203,7 @@
 <p>The DLT network is build with the open source software <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> (version 1.4).</p>
 <p>More precisely, we use Hyperledger Fabric to deploy a network of several nodes following this kind of configuration:</p>
 <ul class="simple">
-<li><p>Organisations (Orgs): multiple “application” orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an “orderer” organisation.</p></li>
+<li><p>Organisations (Orgs): multiple “application” orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an “<em>orderer</em>” organisation.</p></li>
 <li><p>Channel configuration: One channel whose members are all the orgs.</p></li>
 <li><p>Endorsement policies: for example, “any member of the orgs in the channel” (<a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#specifying-endorsement-policies-for-a-chaincode">details here</a>)</p></li>
 </ul>
@@ -250,13 +250,13 @@
 <div class="section" id="smart-contracts-chaincode">
 <h3>Smart contracts (Chaincode)<a class="headerlink" href="#smart-contracts-chaincode" title="Permalink to this headline">¶</a></h3>
 <p>Substra Chaincode repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-chaincode">https://github.com/SubstraFoundation/substra-chaincode</a></p>
-<p>Smart contracts are a set of data, rules, definitions and processes that will govern the interactions between the different stakeholders and enable the complete traceability of data use. Aditionally, smart contracts can be used for distributed and unfalsifiable permissions.</p>
+<p>Smart contracts are a set of data, rules, definitions and processes that will govern the interactions between the different stakeholders and enable the complete traceability of data use. Additionally, smart contracts can be used for distributed and infalsifiable permissions.</p>
 </div>
 </div>
 <div class="section" id="backend-api-endpoints">
 <h2>Backend / API endpoints<a class="headerlink" href="#backend-api-endpoints" title="Permalink to this headline">¶</a></h2>
 <p>Substra backend repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">https://github.com/SubstraFoundation/substra-backend</a></p>
-<p>The backend is developped in Python and uses the <a class="reference external" href="https://www.django-rest-framework.org/">Django Rest Framework</a>. Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the <a class="reference external" href="https://github.com/hyperledger/fabric-sdk-py">Python Fabric SDK</a>.</p>
+<p>The backend is developed in Python and uses the <a class="reference external" href="https://www.django-rest-framework.org/">Django Rest Framework</a>. Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the <a class="reference external" href="https://github.com/hyperledger/fabric-sdk-py">Python Fabric SDK</a>.</p>
 <p>The backend implements workflows illustrated in the previous figure. Note that these workflows are only an overview, these representations are not perfectly accurate. Please also note that authentication is not represented in these workflows.</p>
 </div>
 <div class="section" id="interface">
@@ -270,7 +270,7 @@
 <div class="section" id="frontend-interface">
 <h3>Frontend Interface<a class="headerlink" href="#frontend-interface" title="Permalink to this headline">¶</a></h3>
 <p>Substra Frontend repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">https://github.com/SubstraFoundation/substra-frontend</a></p>
-<p>The Frontend is a neat tool to viszualize and monitor your operations on the platform, your assets and the associated permissions.</p>
+<p>The Frontend is a neat tool to visualize and monitor your operations on the platform, your assets and the associated permissions.</p>
 </div>
 </div>
 <div class="section" id="substra-tools">

@@ -46,7 +46,7 @@
 
 ## D
 
-- **Data Manager**: A data manager corresponds to tools to interact with a set of data. It contains a name, adescription, and a data opener, which is a script used to read data.
+- **Data Manager**: A data manager corresponds to tools to interact with a set of data. It contains a name, a description and a data opener, which is a script used to read data.
 
 - **Data Sample**: A data sample corresponds to a record containing features and target(s) associated to one or several objectives.  
 In Substra, this object has the following attributes stored in the ledger:
@@ -109,7 +109,7 @@ In Substra, this object has the following attributes stored in the ledger:
 
 - **Peer**: A blockchain network is composed with a set of peer nodes, that are a fundamental element of the network as they host ledgers and smart contracts. [Source](http://hyperledger-fabric.readthedocs.io/en/latest/peers/peers.html)
 
-- **Permissions**: Assets are protected with permissions to process them. When registering a data manager, an algo/aggregate_algo/composite_algo, a user can specify a list of nodes whose assets will be allowed tobe processed it.
+- **Permissions**: Assets are protected with permissions to process them. When registering a data manager, an algo/aggregate_algo/composite_algo, a user can specify a list of nodes whose assets will be allowed to be processed.
 
 - **Policy**: "Policies are expressions composed of properties of digital identities, for example: `Org1.Peer OR Org2.Peer`. They are used to restrict access to resources on a blockchain network. For instance, they dictate who can read from or write to a channel, or who can use a specific chaincode API via an [ACL](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#acl). Policies may be defined in `configtx.yaml` prior to bootstrapping an ordering service or creating a channel, or they can be specified when instantiating chaincode on a channel. A default set of policies ship in the sample `configtx.yaml` which will be appropriate for most networks." [Source](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html?highlight=orderer#policy)
 
@@ -147,4 +147,4 @@ More globally, a smart contract defines the "transaction logic that controls the
   - Permissions  
   - Creator (node who defined the traintuple)  
 
-- **Trustless**: Substra Framework is a ‘trustless’ ML orchestration framework. The word ‘trustless’ might be ambiguous in certain circumstances. We believe it should be used as ‘doesn’t require trust a priori between parties’: the code implementation of the software enables parties to collaborate without trusting each other, it technically guarantees that actions and transactions will be performed as defined in the rules agreed upon. What is required is to ‘trust the code’: it might not be straightforward and even require some audit effort, but in many cases it is easier than trusting a number of other independent organiations. src: <https://www.substra.ai/en/faq>
+- **Trustless**: Substra Framework is a ‘trustless’ ML orchestration framework. The word ‘trustless’ might be ambiguous in certain circumstances. We believe it should be used as ‘doesn’t require trust a priori between parties’: the code implementation of the software enables parties to collaborate without trusting each other, it technically guarantees that actions and transactions will be performed as defined in the rules agreed upon. What is required is to ‘trust the code’: it might not be straightforward and even require some audit effort, but in many cases it is easier than trusting a number of other independent organizations. src: <https://www.substra.ai/en/faq>
