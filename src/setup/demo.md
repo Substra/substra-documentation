@@ -115,7 +115,7 @@ substra list dataset --profile <PROFILE>
 
 ## 2. Follow Titanic example
 
-With this example you will find everything you need to run a first end-to-end example with the tabular data of the Titanic: see this [repository](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README.md) for further details.
+With this example you will find everything you need to run a first end-to-end example with the tabular data of the Titanic: see this [repository](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic) for further details.
 
 If you feel more comfortable working with local files, you can clone the [Substra repository](https://github.com/SubstraFoundation/substra) to get the full examples located in the `/example` folder.
 
@@ -340,9 +340,8 @@ You can also get help for specific commands, for example `substra download --hel
 
 ### Get inspired
 
-The [Titanic example](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic/README.md), included in the Substra repository, is ready to run but you can also have a look at the [community examples](https://github.com/SubstraFoundation/substra-examples):
+The [Titanic example](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic), included in the Substra repository, is ready to run but you can also have a look at the [community examples](https://github.com/SubstraFoundation/substra-examples):
 
-- [Titanic](https://github.com/SubstraFoundation/substra/tree/master/examples/titanic)
 - [Cross Validation](https://github.com/SubstraFoundation/substra/tree/master/examples/cross_val)
 - [Compute plan](https://github.com/SubstraFoundation/substra/tree/master/examples/compute_plan)
 - [Debugging](https://github.com/SubstraFoundation/substra/tree/master/examples/debugging)
