@@ -270,15 +270,26 @@ Run the following commands to track the status of the tuples:
     substra get testtuple <testtuple_key> --profile node-1
 ```
 
-If you need to test that your algorithm is working without having access to the data, you can use the CLI method `substra run-local` that will use the `fake_data` method from the `opener.py`:
+If you need to test that your algorithm is working without having access to the data, you can use
+the `fake_data` from the `opener.py` by:
 
-```sh
-substra run-local assets/algo \
-  --train-opener=assets/dataset/opener.py \
-  --test-opener=assets/dataset/opener.py \
-  --metrics=assets/objective/ \
-  --fake-data-samples
-```
+* **substra >= `0.7.0`**  
+  editing the `add_train_algo.py` script and setup the client in debug mode by adding `debug=True`.
+
+  ```python
+  client = substra.Client(profile_name="<PROFILE>", debug=True)
+  ```
+
+* **substra < `0.7.0`**  
+  using the CLI method `substra run-local`.
+
+  ```sh
+  substra run-local assets/algo \
+    --train-opener=assets/dataset/opener.py \
+    --test-opener=assets/dataset/opener.py \
+    --metrics=assets/objective/ \
+    --fake-data-samples
+  ```
 
 ### Consult the performance from the ledger
 

@@ -456,7 +456,15 @@ Run the following commands to track the status of the tuples:
     substra get testtuple &lt;testtuple_key&gt; --profile node-1
 </pre></div>
 </div>
-<p>If you need to test that your algorithm is working without having access to the data, you can use the CLI method <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">run-local</span></code> that will use the <code class="docutils literal notranslate"><span class="pre">fake_data</span></code> method from the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code>:</p>
+<p>If you need to test that your algorithm is working without having access to the data, you can use
+the <code class="docutils literal notranslate"><span class="pre">fake_data</span></code> from the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> by:</p>
+<ul>
+<li><p><strong>substra &gt;= <code class="docutils literal notranslate"><span class="pre">0.7.0</span></code></strong><br />editing the <code class="docutils literal notranslate"><span class="pre">add_train_algo.py</span></code> script and setup the client in debug mode by adding <code class="docutils literal notranslate"><span class="pre">debug=True</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">substra</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">profile_name</span><span class="o">=</span><span class="s2">&quot;&lt;PROFILE&gt;&quot;</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>substra &lt; <code class="docutils literal notranslate"><span class="pre">0.7.0</span></code></strong><br />using the CLI method <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">run-local</span></code>.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra run-local assets/algo <span class="se">\</span>
   --train-opener<span class="o">=</span>assets/dataset/opener.py <span class="se">\</span>
   --test-opener<span class="o">=</span>assets/dataset/opener.py <span class="se">\</span>
@@ -464,6 +472,8 @@ Run the following commands to track the status of the tuples:
   --fake-data-samples
 </pre></div>
 </div>
+</li>
+</ul>
 </div>
 <div class="section" id="consult-the-performance-from-the-ledger">
 <h3>Consult the performance from the ledger<a class="headerlink" href="#consult-the-performance-from-the-ledger" title="Permalink to this headline">¶</a></h3>
