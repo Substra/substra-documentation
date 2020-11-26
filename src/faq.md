@@ -8,11 +8,11 @@ Substra Foundation is managing the open source governance of the project. The pr
 
 ## [feature] How do I suggest an important feature to develop?
 
-You can refer to the [contributing section](https://doc.substra.ai/contribute/CONTRIBUTING.html) to learn where to open a feature request, an issue or even a PR!
+You can refer to the [contributing section](https://doc.substra.ai/CONTRIBUTING.html) to learn where to open a feature request, an issue or even a PR!
 
 ## [feature] I really need *this* feature, how can we work this out?
 
-As of now, the development of the open source Substra Framework is on a best effort approach, by the contributors from the community. Please refer to the feature request section in the [contributing guide](https://doc.substra.ai/contribute/CONTRIBUTING.html).
+As of now, the development of the open source Substra Framework is on a best effort approach, by the contributors from the community. Please refer to the feature request section in the [contributing guide](https://doc.substra.ai/CONTRIBUTING.html).
 
 ## [setup] Is there an *easy* way to install Substra on my machine?
 
@@ -24,15 +24,15 @@ This has not been tested yet. If you are experiencing it we would be glad to hea
 
 ## [setup] I am having trouble downloading the images, is there something I can do?
 
-You can refer to [the section *Get the source code*](setup/local_install_skaffold.md#get-the-source-code-mac--ubuntu), but you will need to gather all the sources before being able to run Substra.
+You can refer to [the section *Get the source code*](setup/local_install_skaffold.md), but you will need to gather all the sources before being able to run Substra.
 
 ## [usage] Do you organize trainings?
 
-Not yet, but we are working on it. In the meantime, you can try our [examples](usage/usage#examples).
+Not yet, but we are working on it. In the meantime, you can try our [examples](https://github.com/SubstraFoundation/substra/blob/master/examples).
 
 ## [setup] I need help for the setup and deployment, can you help me?
 
-You can reach out to us [here](setup/further_resources.md#get-in-touch).
+You can reach out to us [here](https://doc.substra.ai/setup/further_resources.html#get-in-touch).
 
 ## [privacy] Is it *really* privacy-preserving to deploy Substra on third-party hosting solutions?
 

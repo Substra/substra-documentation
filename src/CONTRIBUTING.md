@@ -137,7 +137,7 @@ Both issues lists are sorted by total number of comments. While not perfect, the
 
 #### Local development
 
-Substra can be developed locally. For instructions on how to do this, see [this page](https://doc.substra.ai/getting_started/installation/local_install_skaffold.html) which is part of the Substra Documentation.
+Substra can be developed locally. For instructions on how to do this, see [this page](https://doc.substra.ai/setup/local_install_skaffold.html) which is part of the Substra Documentation.
 
 ### Pull Requests
 

@@ -19,7 +19,7 @@ Data scientist:
 
 - Use your own ML algorithm with any Python ML framework
 - Ship your algorithm on remote data for training and/or prediction and monitor their performances
-- Build advanced Federated Learning strategies for learning accross several remote datasets
+- Build advanced Federated Learning strategies for learning across several remote datasets
 
 Data controllers:
 
@@ -47,14 +47,14 @@ Substra is a framework for operating distributed Machine Learning that aims at p
 Substra Foundation has published *open access* materials that will provide you with a great overview of the project:
 
 - [Welcome Repository](https://github.com/SubstraFoundation/welcome)
-- [Manifesto](https://github.com/SubstraFoundation/welcome/blob/master/Substra-Foundation_Manifesto-v0.3_2019.10.25.pdf)
+- [Manifesto](https://github.com/SubstraFoundation/welcome/blob/master/Substra-Foundation_Manifesto-v0.4_2020.05.11.pdf)
 - [White Paper](https://arxiv.org/abs/1910.11567)
 
 ## Find your way in this documentation
 
 ### Data scientist & data engineer
 
-If you are looking at how to start a data science project with Substra installed in your IT environment, you might directly want to check the [usage section](../getting_started/usage/usage.md#usage).
+If you are looking at how to start a data science project with Substra installed in your IT environment, you might directly want to check the [usage section](usage.md).
 
 ### System administrator, devops engineer, SRE
 
@@ -65,8 +65,8 @@ If you interested in installing Substra, please refer to the [installation secti
 If you are interested in understanding how Substra works maybe how to contribute, please have a look over here:
 
 - Platform description:
-  - [Concepts](concepts.md) 
-  - [Architecture](architecture.md) 
+  - [Concepts](concepts.md)
+  - [Architecture](architecture.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 
 ### Interested by Substra
@@ -74,9 +74,9 @@ If you are interested in understanding how Substra works maybe how to contribute
 If you are interested in Substra and would like to understand how it could be interesting for *your* project, you really should check the following sections:
 
 - Platform description:
-  - [Concepts](concepts.md) 
-  - [Architecture](architecture.md) 
-- You can reach us [here](../getting_started/installation/further_resources.md#get-in-touch)
+  - [Concepts](concepts.md)
+  - [Architecture](architecture.md)
+- You can reach us [here](https://doc.substra.ai/setup/further_resources.html#get-in-touch)
 
 ## Use cases
 
