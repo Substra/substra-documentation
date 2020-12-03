@@ -16,7 +16,7 @@ Substra Hyperledger Fabric Kubernetes repository: <https://github.com/SubstraFou
 
 Substra Chaincode repository: <https://github.com/SubstraFoundation/substra-chaincode>
 
-The DLT network is build with the open source software [Hyperledger Fabric](https://www.hyperledger.org/projects/fabric) (version 1.4).
+The DLT network is build with the open source software [Hyperledger Fabric](https://www.hyperledger.org/projects/fabric).
 
 More precisely, we use Hyperledger Fabric to deploy a network of several nodes following this kind of configuration:
 
@@ -94,6 +94,7 @@ It corresponds to the Python package defining base classes for assets submitted 
 - Algo: algo script
 - Dataset: data opener script
 
-### 4.5. Components orchestration
+### Components orchestration
 
-Substra relies on several software layers that need to be coordinated together. To do so, we use either Kubernetes or Docker, but we strongly recommend you to use the Kubernetes deployment method.
+Substra relies on several software layers that need to be coordinated together.
+To do so, we use [Kubernetes](https://kubernetes.io).
