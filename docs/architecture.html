@@ -109,7 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#substra-tools">Substra tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#components-orchestration">4.5. Components orchestration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#components-orchestration">Components orchestration</a></li>
 </ul>
 </li>
 </ul>
@@ -200,7 +200,7 @@
 <div><p>Note: The network is based on the Chaincode repository and is initialized with Certificate Authorities via the deployment of the Hyperledger Fabric Kubernetes repository.</p>
 </div></blockquote>
 <p>Substra Chaincode repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-chaincode">https://github.com/SubstraFoundation/substra-chaincode</a></p>
-<p>The DLT network is build with the open source software <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> (version 1.4).</p>
+<p>The DLT network is build with the open source software <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a>.</p>
 <p>More precisely, we use Hyperledger Fabric to deploy a network of several nodes following this kind of configuration:</p>
 <ul class="simple">
 <li><p>Organisations (Orgs): multiple “application” orgs: For example, there will be one peer, a membership service provider (MSP) and a root certificate authority (RCA) for each organisation. Additionally, there is an “<em>orderer</em>” organisation.</p></li>
@@ -287,8 +287,9 @@
 <li><p>Dataset: data opener script</p></li>
 </ul>
 <div class="section" id="components-orchestration">
-<h3>4.5. Components orchestration<a class="headerlink" href="#components-orchestration" title="Permalink to this headline">¶</a></h3>
-<p>Substra relies on several software layers that need to be coordinated together. To do so, we use either Kubernetes or Docker, but we strongly recommend you to use the Kubernetes deployment method.</p>
+<h3>Components orchestration<a class="headerlink" href="#components-orchestration" title="Permalink to this headline">¶</a></h3>
+<p>Substra relies on several software layers that need to be coordinated together.
+To do so, we use <a class="reference external" href="https://kubernetes.io">Kubernetes</a>.</p>
 </div>
 </div>
 </div>

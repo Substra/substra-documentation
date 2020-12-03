@@ -106,7 +106,7 @@ A testtuple is linked with a traintuple.
 
 ## Machine Learning tasks
 
-Training and testing tasks are specified by [traintuples](./concepts.md#traintuple) and [testtuples](./concepts.md#testtuple) within Substra.
+Training and testing tasks are specified by [traintuples](#traintuple) and [testtuples](#testtuple) within Substra.
 
 In particular, they contain the specification of train or test data, that are located in one node for a given `traintuple` or `testtuple`.
 
@@ -130,7 +130,7 @@ In other words,
 When a new traintuple is added to Substra, the node containing the associated data will execute the training task.
 Within this node, Substra creates a new docker container containing the algorithm and mounts in separated volumes its training dependencies:
 
-- the **data** volume contains all train datas in separate directories (identified by their key)
+- the **data** volume contains all train data in separate directories (identified by their key)
 - the **opener** volume contains the opener library provided by the dataset
 - the **model** volume contains the input models (identified by their key)
 - optionally, for a task part of a compute plan, a *local* folder that is persistent from one model update to another within the node.

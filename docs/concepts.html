@@ -302,7 +302,7 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 </div>
 <div class="section" id="machine-learning-tasks">
 <h2>Machine Learning tasks<a class="headerlink" href="#machine-learning-tasks" title="Permalink to this headline">¶</a></h2>
-<p>Training and testing tasks are specified by <a class="reference external" href="./concepts.md#traintuple">traintuples</a> and <a class="reference external" href="./concepts.md#testtuple">testtuples</a> within Substra.</p>
+<p>Training and testing tasks are specified by <a class="reference external" href="#traintuple">traintuples</a> and <a class="reference external" href="#testtuple">testtuples</a> within Substra.</p>
 <p>In particular, they contain the specification of train or test data, that are located in one node for a given <code class="docutils literal notranslate"><span class="pre">traintuple</span></code> or <code class="docutils literal notranslate"><span class="pre">testtuple</span></code>.</p>
 <p>The training and testing tasks take place in the node where data are located.</p>
 <div class="section" id="train-and-test-data">
@@ -326,7 +326,7 @@ However, it is possible to specify testing tasks with train data, in order to en
 <p>When a new traintuple is added to Substra, the node containing the associated data will execute the training task.
 Within this node, Substra creates a new docker container containing the algorithm and mounts in separated volumes its training dependencies:</p>
 <ul class="simple">
-<li><p>the <strong>data</strong> volume contains all train datas in separate directories (identified by their key)</p></li>
+<li><p>the <strong>data</strong> volume contains all train data in separate directories (identified by their key)</p></li>
 <li><p>the <strong>opener</strong> volume contains the opener library provided by the dataset</p></li>
 <li><p>the <strong>model</strong> volume contains the input models (identified by their key)</p></li>
 <li><p>optionally, for a task part of a compute plan, a <em>local</em> folder that is persistent from one model update to another within the node.</p></li>
