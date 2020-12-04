@@ -18,7 +18,7 @@ This guide will help you run the Substra platform on your machine in development
   - [Get the source code (Mac & Ubuntu)](#get-the-source-code-mac--ubuntu)
   - [Configuration](#configuration)
     - [Minikube (Ubuntu)](#minikube-ubuntu)
-    - [Helm init (Mac & Ubuntu)](#helm-init-mac--ubuntu)
+    - [Helm init (Mac & Ubuntu)](#helm-init-mac-ubuntu)
     - [Network](#network)
 - [Running the platform](#running-the-platform)
   - [Start Substra](#start-substra)
@@ -233,16 +233,21 @@ sudo minikube start --vm-driver=none --kubernetes-version='v1.16.7'
 The first time you install Substra, you will need to use:
 
 ```sh
-# Helm v2
+# Helm v2 only, you can skip this with helm v3 and directly add repositories
 helm init
 # or
 helm init --upgrade
 
 # Check if Tiller is correctly running
 kubectl get pods --namespace kube-system
+```
 
-# Install the bitnami repository
+Substra uses charts coming from different helm repositories, which you need to add:
+
+```sh
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add owkin https://owkin.github.io/charts/
+helm repo add stable https://charts.helm.sh/stable
 ```
 
 #### Network

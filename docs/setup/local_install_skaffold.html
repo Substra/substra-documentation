@@ -227,7 +227,7 @@
 <li><p><a class="reference external" href="#configuration">Configuration</a></p>
 <ul>
 <li><p><a class="reference external" href="#minikube-ubuntu">Minikube (Ubuntu)</a></p></li>
-<li><p><a class="reference external" href="#helm-init-mac--ubuntu">Helm init (Mac &amp; Ubuntu)</a></p></li>
+<li><p><a class="reference external" href="#helm-init-mac-ubuntu">Helm init (Mac &amp; Ubuntu)</a></p></li>
 <li><p><a class="reference external" href="#network">Network</a></p></li>
 </ul>
 </li>
@@ -457,16 +457,19 @@ sudo minikube start --vm-driver<span class="o">=</span>none --kubernetes-version
 <div class="section" id="helm-init-mac-ubuntu">
 <h4>Helm init (Mac &amp; Ubuntu)<a class="headerlink" href="#helm-init-mac-ubuntu" title="Permalink to this headline">¶</a></h4>
 <p>The first time you install Substra, you will need to use:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helm v2</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helm v2 only, you can skip this with helm v3 and directly add repositories</span>
 helm init
 <span class="c1"># or</span>
 helm init --upgrade
 
 <span class="c1"># Check if Tiller is correctly running</span>
 kubectl get pods --namespace kube-system
-
-<span class="c1"># Install the bitnami repository</span>
-helm repo add bitnami https://charts.bitnami.com/bitnami
+</pre></div>
+</div>
+<p>Substra uses charts coming from different helm repositories, which you need to add:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add owkin https://owkin.github.io/charts/
+helm repo add stable https://charts.helm.sh/stable
 </pre></div>
 </div>
 </div>
