@@ -18,7 +18,7 @@ This guide will help you run the Substra platform on your machine in development
   - [Get the source code (Mac & Ubuntu)](#get-the-source-code-mac--ubuntu)
   - [Configuration](#configuration)
     - [Minikube (Ubuntu)](#minikube-ubuntu)
-    - [Helm init (Mac & Ubuntu)](#helm-init-mac--ubuntu)
+    - [Helm init (Mac & Ubuntu)](#helm-init-mac-ubuntu)
     - [Network](#network)
 - [Running the platform](#running-the-platform)
   - [Start Substra](#start-substra)
@@ -119,29 +119,9 @@ sudo apt-get install -y kubectl=1.16.7-00 -V
 
 #### [Helm](https://helm.sh/)
 
-Please use [Helm v2.16.1](https://github.com/helm/helm/releases/tag/v2.16.1) to get Helm and Tiller for setups using `substra 0.6.0` or lower (see [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table)). Following releases should work fine with Helm v3 (which has removed Tiller).
-
-- Mac
-
-```sh
-# Helm v2
-brew install helm@2
-```
-
-- Ubuntu
-
-```sh
-# Helm v2
-# Get the executable
-curl -LO https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
-# Extract the downloaded archive
-tar xzvf helm-v2.16.1-linux-amd64.tar.gz
-cd linux-amd64/
-# Move the executables to your local bin
-sudo mv tiller helm /usr/local/bin/
-```
-
 To install Helm v3, please refer to the [official documentation](https://v3.helm.sh/docs/intro/install/).
+
+Note: substra up to version 0.6.0 only supports helm v2.
 
 #### [Skaffold](https://skaffold.dev/)
 
@@ -230,19 +210,12 @@ sudo minikube start --vm-driver=none --kubernetes-version='v1.16.7'
 
 #### Helm init (Mac & Ubuntu)
 
-The first time you install Substra, you will need to use:
+Substra uses charts coming from different helm repositories, which you need to add:
 
 ```sh
-# Helm v2
-helm init
-# or
-helm init --upgrade
-
-# Check if Tiller is correctly running
-kubectl get pods --namespace kube-system
-
-# Install the bitnami repository
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add owkin https://owkin.github.io/charts/
+helm repo add stable https://charts.helm.sh/stable
 ```
 
 #### Network
