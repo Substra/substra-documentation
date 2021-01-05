@@ -4,8 +4,8 @@
 .. image:: https://img.shields.io/badge/doc-repo-brightgreen
    :target: https://github.com/SubstraFoundation/substra-documentation/
 
-.. image:: https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master
-   :target: https://travis-ci.org/SubstraFoundation/substra-documentation
+.. image:: https://github.com/SubstraFoundation/substra-documentation/workflows/Sphinx%20Build/badge.svg
+   :target: https://github.com/SubstraFoundation/substra-documentation/workflows/Sphinx%20Build/badge.svg
 
 .. image:: https://img.shields.io/badge/chat-on%20slack-blue
    :target: https://substra.us18.list-manage.com/track/click?e=2effed55c9&id=fa49875322&u=385fa3f9736ea94a1fcca969f
