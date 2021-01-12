@@ -26,7 +26,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -300,10 +299,10 @@ curl substra-backend.node-1.com/readiness
 <h3>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h3>
 <p>You can now configure your local Substra client, <em>with the credentials that were provided to access the demo instance</em>, to connect to the <code class="docutils literal notranslate"><span class="pre">node-1</span></code> which hosts the organisation <code class="docutils literal notranslate"><span class="pre">org-1</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure the client, with a profile, a user, a password and an url</span>
-substra config --profile &lt;PROFILE&gt; -u &lt;USER&gt; -p <span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span> http://substra-backend.node-1.com
+substra config --profile &lt;PROFILE&gt; http://substra-backend.node-1.com
 
 <span class="c1"># Login with the profile you created (located in your home folder: ~/.substra)</span>
-substra login --profile &lt;PROFILE&gt;
+substra login --profile &lt;PROFILE&gt; --username &lt;USERNAME&gt; --password <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span>
 
 <span class="c1"># You can then list the network nodes that are on the Substra network</span>
 substra list node --profile &lt;PROFILE&gt;
