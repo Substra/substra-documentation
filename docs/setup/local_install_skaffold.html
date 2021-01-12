@@ -400,7 +400,7 @@ https://github.com/SubstraFoundation/substra-frontend.git
 https://github.com/SubstraFoundation/substra-backend.git
 <span class="o">)</span>
 
-<span class="k">for</span> repo in <span class="si">${</span><span class="nv">RepoToClone</span><span class="p">[@]</span><span class="si">}</span>
+<span class="k">for</span> repo <span class="k">in</span> <span class="si">${</span><span class="nv">RepoToClone</span><span class="p">[@]</span><span class="si">}</span>
 <span class="k">do</span>
     <span class="nb">echo</span> <span class="s2">&quot;Cloning&quot;</span> <span class="nv">$repo</span>
     git clone <span class="nv">$repo</span>
