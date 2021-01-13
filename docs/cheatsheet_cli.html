@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CLI Cheatsheet &mdash; Substra 1.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Substra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Platform description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Substra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>CLI Cheatsheet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cli-cheatsheet">
+<h1>CLI Cheatsheet<a class="headerlink" href="#cli-cheatsheet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preflight-checks">
+<h2>Preflight Checks<a class="headerlink" href="#preflight-checks" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">--version</span></code> to ensure your installation is working and compatible with the server according to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a>.</p>
+<blockquote>
+<div><p>Note: the <code class="docutils literal notranslate"><span class="pre">--force-reinstall</span></code> option might help if you need to install a new version of the package: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">substra==&lt;VERSION&gt;</span> <span class="pre">--force-reinstall</span></code></p>
+</div></blockquote>
+<p>You can then test that your substra CLI is able to reach the substra network with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl &lt;DOMAIN_URL&gt;/readiness
+
+<span class="c1"># Demo example</span>
+curl substra-backend.node-1.com/readiness
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: If you do not see the “OK” message, we might need to check your configuration, for example the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file.</p>
+</div></blockquote>
+</div>
+<div class="section" id="substra-config">
+<h2>Substra config<a class="headerlink" href="#substra-config" title="Permalink to this headline">¶</a></h2>
+<p>You can setup a profile, this is useful if you work with several configurations, but not required, so you can omit the <code class="docutils literal notranslate"><span class="pre">--profile</span> <span class="pre">&lt;PROFILE_NAME&gt;</span></code> option if you don’t use a specific profile.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage</span>
+substra config <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;URL&gt;
+
+<span class="c1"># With a profile</span>
+substra config --profile &lt;PROFILE_NAME&gt; &lt;URL&gt;
+
+<span class="c1"># Demo example</span>
+substra config --profile node-1 http://substra-backend.node-1.com
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: the profile name is a local resource located in <code class="docutils literal notranslate"><span class="pre">~/.substra</span></code>, this means that you can use any name you want.</p>
+</div></blockquote>
+</div>
+<div class="section" id="substra-login">
+<h2>Substra login<a class="headerlink" href="#substra-login" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage</span>
+substra login <span class="o">[</span>OPTIONS<span class="o">]</span>
+
+<span class="c1"># You can simply use</span>
+substra login
+
+<span class="c1"># Or provide the required parameter like this</span>
+substra login --profile &lt;PROFILE_NAME&gt; --username &lt;USERNAME&gt; --password &lt;PASSWORD&gt;
+
+<span class="c1"># Demo example</span>
+substra login --profile node-1 --username node-1 --password <span class="s1">&#39;p@$swr0d44&#39;</span>
+</pre></div>
+</div>
+<p>There are also a bunch of useful options like <code class="docutils literal notranslate"><span class="pre">--log-level</span> <span class="pre">DEBUG</span></code> or <code class="docutils literal notranslate"><span class="pre">--verbose</span></code>.</p>
+</div>
+<div class="section" id="list-get-assets">
+<h2>List &amp; Get assets<a class="headerlink" href="#list-get-assets" title="Permalink to this headline">¶</a></h2>
+<p>Assets you can list:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code>: nodes in substra network</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>: registered datasets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objective</span></code>: Machine Learning question</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algo</span></code>: registered algorithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compute_plan</span></code>: the “blueprint” of tasks to be executed accross the substra network</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra list node <span class="c1"># with the profile: substra list node --profile node-1</span>
+substra list dataset
+substra list objective
+substra list algo
+substra list complute_plan
+
+substra list traintuple
+substra list testtupuble
+</pre></div>
+</div>
+<p>Theses commands will return the <strong>keys</strong> of the assets that you will then need to use commands like <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">describe</span></code> or <code class="docutils literal notranslate"><span class="pre">download</span></code>.</p>
+<p>You will then have to use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get traintuple &lt;KEY&gt;
+substra get testtuple &lt;KEY&gt;
+substra get compute_plan &lt;KEY&gt;
+substra get algo &lt;KEY&gt;
+</pre></div>
+</div>
+<p>For example, you will get more information about this <code class="docutils literal notranslate"><span class="pre">testuple</span></code>, like its <code class="docutils literal notranslate"><span class="pre">STATUS</span></code>, <code class="docutils literal notranslate"><span class="pre">RANK</span></code>, <code class="docutils literal notranslate"><span class="pre">PERF</span></code> or associated <code class="docutils literal notranslate"><span class="pre">PERMISSIONS</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get testtuple d8238915246f02c3b0f8cd4aa0a9546b31daa72477f98fddb5b2137a353d0c1c
+KEY                         d8238915246f02c3b0f8cd4aa0a9546b31daa72477f98fddb5b2137a353d0c1c
+TRAINTUPLE KEY              28d4c395daac2aa80f46792cbeb4572135cd0aa06042b47f400de65271eacc2f
+TRAINTUPLE TYPE             traintuple
+ALGO KEY                    7e039d490df04ed3f613191d3af004a1147f22b1f28b942f11a6c830caeb9e9b
+ALGO NAME                   Titanic: Random Forest
+OBJECTIVE KEY               1158d2f5c0cf9f80155704ca0faa28823b145b42ebdba2ca38bd726a1377e1cb
+CERTIFIED                   True
+STATUS                      doing
+PERF                        <span class="m">0</span>
+DATASET KEY                 c1d9b42d9538f825109c38c4f599d47391347d198a0770331ba790b7ebcfaa40
+TEST DATA SAMPLE KEYS       <span class="m">2</span> keys
+RANK                        <span class="m">0</span>
+TAG
+COMPUTE PLAN ID
+LOG
+CREATOR                     MyOrg1MSP
+WORKER                      MyOrg1MSP
+PERMISSIONS                 Processable by its owner only
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-assets">
+<h2>Register assets<a class="headerlink" href="#register-assets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dataset">
+<h3>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra add dataset <span class="o">[</span>OPTIONS<span class="o">]</span> PATH
+substra add dataset --help
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-samples">
+<h3>Data samples<a class="headerlink" href="#data-samples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra add data_sample <span class="o">[</span>OPTIONS<span class="o">]</span> PATH
+substra add data_sample --help
+</pre></div>
+</div>
+<p>You can use the same pattern for registering several kind of assets: <code class="docutils literal notranslate"><span class="pre">objective</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_plan</span></code>, <code class="docutils literal notranslate"><span class="pre">algo</span></code>, <code class="docutils literal notranslate"><span class="pre">testtuple</span></code>, <code class="docutils literal notranslate"><span class="pre">traintuple</span></code>, etc.</p>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">--output</span></code> formatting options like <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">json</span></code>; <code class="docutils literal notranslate"><span class="pre">pretty</span></code> is used by default.</p>
+</div>
+<div class="section" id="help">
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<p>Remember, you can use anytime the substra CLI <code class="docutils literal notranslate"><span class="pre">--help</span></code> command which will provide you with a lot of resources for each asset and method!</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra --help
+substra &lt;command&gt; --help
+</pre></div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doc.substra.ai/">General documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli">CLI documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk">Python SDK documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/examples/titanic">Titanic examples</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-examples">Community examples</a></p></li>
+<li><p><a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">Slack #help channel</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Substra Foundation
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

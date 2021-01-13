@@ -1,4 +1,4 @@
-# Debugging your scripts locally
+# Local Debug
 
 For a complete example, see the [debugging example](https://github.com/SubstraFoundation/substra/tree/master/examples/debugging).
 

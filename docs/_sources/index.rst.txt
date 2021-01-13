@@ -33,6 +33,7 @@ Substra documentation
    usage
    debugging
    setup/index
+   demo
 
 .. toctree::
    :caption: Platform description

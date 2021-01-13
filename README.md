@@ -22,9 +22,11 @@
 ```sh
 src/
 ├── architecture.md
+├── cheatsheet_cli.md
 ├── concepts.md
 ├── CONTRIBUTING.md
 ├── debugging.md
+├── demo.md
 ├── faq.md
 ├── glossary.md
 ├── img
@@ -41,7 +43,7 @@ src/
 ├── overview.md
 ├── publish.md
 ├── setup
-│   ├── demo.md
+│   ├── cheatsheet_vm.md
 │   ├── further_resources.md
 │   ├── index.rst
 │   └── local_install_skaffold.md

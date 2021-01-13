@@ -8,37 +8,37 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hands-on Substra demo &mdash; Substra 1.1 documentation</title>
+  <title>Demo &mdash; Substra 1.1 documentation</title>
   
 
   
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Further resources" href="further_resources.html" />
-    <link rel="prev" title="Local installation of Substra using Kubernetes and Skaffold" href="local_install_skaffold.html" /> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Concepts" href="concepts.html" />
+    <link rel="prev" title="Further resources" href="setup/further_resources.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Substra
+            <a href="index.html" class="icon icon-home"> Substra
           
 
           
@@ -65,7 +65,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -83,63 +83,62 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../debugging.html">Debugging your scripts locally</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Setup</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="local_install_skaffold.html">Local installation of Substra using Kubernetes and Skaffold</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Hands-on Substra demo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pre-requisites-overview-of-the-demo">0. Pre-requisites &amp; Overview of the demo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#terminology">Terminology</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#technical-pre-requisites">Technical pre-requisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#overview-what-you-can-do-with-the-demo-instance">Overview: what you can do with the demo instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites-overview-of-the-demo">Pre-requisites &amp; Overview of the demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-pre-requisites">Technical pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-what-you-can-do-with-the-demo-instance">Overview: what you can do with the demo instance</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">1. Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-the-substra-client">Install the Substra client</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#edit-your-hosts-file">Edit your hosts file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#login">Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">1. Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-substra-client">Install the Substra client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-your-hosts-file">Edit your hosts file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#login">Login</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#follow-titanic-example">2. Follow Titanic example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#work-with-your-own-assets">3. Work with your own assets</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#preparing-your-dataset">Preparing your dataset</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#testing-your-assets">Testing your assets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-your-dataset-the-associated-objective">Adding your dataset &amp; the associated objective</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-your-learning-algorithm">Adding your learning algorithm</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#consult-the-performance-from-the-ledger">Consult the performance from the ledger</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fetch-the-trained-model">Fetch the trained model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#follow-titanic-example">2. Follow Titanic example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#work-with-your-own-assets">3. Work with your own assets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-your-dataset">Preparing your dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-your-assets">Testing your assets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#training-tasks">Training tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-tasks">Testing tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#resources">4. Resources</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#find-help">Find help</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-inspired">Get inspired</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-your-dataset-the-associated-objective">Adding your dataset &amp; the associated objective</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-your-learning-algorithm">Adding your learning algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consult-the-performance-from-the-ledger">Consult the performance from the ledger</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">4. Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#find-help">Find help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-inspired">Get inspired</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="further_resources.html">Further resources</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Platform description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Specific entry points</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contribute</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing to Substra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publish.html">Build &amp; publish the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
 </ul>
 
             
@@ -154,7 +153,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Substra</a>
+          <a href="index.html">Substra</a>
         
       </nav>
 
@@ -183,11 +182,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Setup</a> &raquo;</li>
-        
-      <li>Hands-on Substra demo</li>
+      <li>Demo</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -204,11 +201,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hands-on-substra-demo">
-<h1>Hands-on Substra demo<a class="headerlink" href="#hands-on-substra-demo" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="demo">
+<h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
 <p>Check this <a class="reference external" href="https://www.substra.ai/en/demo">page</a> and get in touch with us, we will then provide you with instructions and credentials!</p>
 <div class="section" id="pre-requisites-overview-of-the-demo">
-<h2>0. Pre-requisites &amp; Overview of the demo<a class="headerlink" href="#pre-requisites-overview-of-the-demo" title="Permalink to this headline">¶</a></h2>
+<h2>Pre-requisites &amp; Overview of the demo<a class="headerlink" href="#pre-requisites-overview-of-the-demo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="terminology">
 <h3>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h3>
 <p>To follow this tutorial for using the demo instance, it is assumed you have read the documentation of the Substra Framework and are familiar with its core concepts (See <a class="reference external" href="https://doc.substra.ai/glossary.html">Glossary</a>). In particular the following terms: organisation, asset, algo, objective, metric, opener, train task, test task.</p>
@@ -482,10 +479,6 @@ substra get testtuple &lt;KEY&gt; --profile &lt;PROFILE&gt;
 </pre></div>
 </div>
 </div>
-<div class="section" id="fetch-the-trained-model">
-<h3>Fetch the trained model<a class="headerlink" href="#fetch-the-trained-model" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
-</div>
 </div>
 <div class="section" id="resources">
 <h2>4. Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
@@ -537,6 +530,7 @@ Commands:
 <li><p><a class="reference external" href="https://doc.substra.ai">General documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary">CLI documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">Python SDK documentation</a></p></li>
+<li><p><a class="reference internal" href="cheatsheet_cli.html"><span class="doc">Substra cheat sheet</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -550,10 +544,10 @@ Commands:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="further_resources.html" class="btn btn-neutral float-right" title="Further resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="concepts.html" class="btn btn-neutral float-right" title="Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="local_install_skaffold.html" class="btn btn-neutral float-left" title="Local installation of Substra using Kubernetes and Skaffold" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setup/further_resources.html" class="btn btn-neutral float-left" title="Further resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
