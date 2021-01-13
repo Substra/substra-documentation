@@ -101,10 +101,10 @@ You can now configure your local Substra client, *with the credentials that were
 
 ```sh
 # Configure the client, with a profile, a user, a password and an url
-substra config --profile <PROFILE> -u <USER> -p "<PASSWORD>" http://substra-backend.node-1.com
+substra config --profile <PROFILE> http://substra-backend.node-1.com
 
 # Login with the profile you created (located in your home folder: ~/.substra)
-substra login --profile <PROFILE>
+substra login --profile <PROFILE> --username <USERNAME> --password '<PASSWORD>'
 
 # You can then list the network nodes that are on the Substra network
 substra list node --profile <PROFILE>
