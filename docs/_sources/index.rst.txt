@@ -31,7 +31,6 @@ Substra documentation
    :maxdepth: 2
 
    usage
-   cheatsheet_cli
    debugging
    setup/index
    demo
