@@ -2,7 +2,7 @@
 
 Check this [page](https://www.substra.ai/en/demo) and get in touch with us, we will then provide you with instructions and credentials!
 
-## 0. Pre-requisites & Overview of the demo
+## Pre-requisites & Overview of the demo
 
 ### Terminology
 
@@ -300,10 +300,6 @@ substra get traintuple <KEY> --profile <PROFILE>
 substra get testtuple <KEY> --profile <PROFILE>
 ```
 
-### Fetch the trained model
-
-TODO
-
 ## 4. Resources
 
 ### Find help
@@ -354,3 +350,4 @@ The [Titanic example](https://github.com/SubstraFoundation/substra/blob/master/e
 - [General documentation](https://doc.substra.ai)
 - [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
 - [Python SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
+- [Substra cheat sheet](./cheatsheet_cli.md)
