@@ -2,7 +2,7 @@
 
 [![Substra Repository](https://img.shields.io/badge/substra-repo-brightgreen)](https://github.com/SubstraFoundation/substra)
 [![Substra Documentation Repository](https://img.shields.io/badge/doc-repo-brightgreen)](https://github.com/SubstraFoundation/substra-documentation/)
-[![Build Status](https://travis-ci.org/SubstraFoundation/substra-documentation.svg?branch=master)](https://travis-ci.org/SubstraFoundation/substra-documentation)
+[![Build Status](https://github.com/SubstraFoundation/substra-documentation/workflows/Sphinx%20Build/badge.svg)](https://github.com/SubstraFoundation/substra-documentation/workflows/Sphinx%20Build/badge.svg)
 [![Chat on Slack](https://img.shields.io/badge/chat-on%20slack-blue)](https://substra.us18.list-manage.com/track/click?e=2effed55c9&id=fa49875322&u=385fa3f9736ea94a1fcca969f)
 [![License Apache 2.0](https://img.shields.io/badge/licence-Apache%202.0-orange)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
