@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'Substra'
-copyright = '2020, Substra Foundation'
+copyright = '2021, Substra Foundation'
 author = 'Substra Foundation'
 
 # The full version, including alpha/beta/rc tags
