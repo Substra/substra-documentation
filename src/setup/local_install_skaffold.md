@@ -41,13 +41,19 @@ minikube start --cpus 6 --memory 8192 --disk-size 50g --kubernetes-version='v1.1
 
 # In 3 different terminal windows, in this order:
 # In the repository hlf-k8s
-skaffold dev
+SUBSTRA_HLF_VERSION=0.0.16
+git checkout $SUBSTRA_HLF_VERSION
+skaffold deploy --images substrafoundation/fabric-tools:$SUBSTRA_HLF_VERSION --images substrafoundation/fabric-peer:$SUBSTRA_HLF_VERSION
 
 # In the repository substra-backend
-skaffold dev
+SUBSTRA_BACKEND_VERSION=0.1.6
+git checkout $SUBSTRA_BACKEND_VERSION
+skaffold deploy --images substrafoundation/substra-backend:$SUBSTRA_BACKEND_VERSION
 
 # In the repository substra-frontend
-skaffold dev
+SUBSTRA_FRONTEND_VERSION=0.0.20
+git checkout $SUBSTRA_FRONTEND_VERSION
+skaffold deploy --images substrafoundation/substra-frontend:$SUBSTRA_FRONTEND_VERSION
 ```
 
 ## Compatibility table
@@ -320,17 +326,29 @@ echo "192.168.65.2 substra-backend.node-1.com substra-frontend.node-1.com substr
 
 > Please refer to the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table) and use the relevant releases. For example, in the `substra-backend` repository, use `git checkout 0.0.14`. You can also only clone a single specific branch/release with the `--single-branch` option, for example: `git clone https://github.com/SubstraFoundation/substra.git --single-branch --branch 0.5.0`.
 
+> note: These instructions assume you want to run a specific substra version for evaluation purpose.
+> This is **not** the development process, for which you should refer to the readme documents of each project.
+
 ### Start Substra
 
 > Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.
 
 On both Mac and Ubuntu, once your Kubernetes cluster is up and running (started via Minikube or Docker) and Tiller initialized, you will need to start Substra with Skaffold.
 
-**In 3 different terminal windows, in this order**:
-
 #### 1. hlf-k8s repository
 
-In the `hlf-k8s` repository, please run the command `skaffold dev` (or `skaffold run` for detached mode, or even `skffold debug`). The platform will be ready once the terminal displays:
+In the `hlf-k8s` repository, run the following commands:
+
+```sh
+SUBSTRA_HLF_VERSION=0.0.16
+git checkout $SUBSTRA_HLF_VERSION
+skaffold deploy --images substrafoundation/fabric-tools:$SUBSTRA_HLF_VERSION --images substrafoundation/fabric-peer:$SUBSTRA_HLF_VERSION --tail
+```
+
+This will checkout the appropriate code revision and install the deployment in your local cluster.
+The docker images will be pulled from the official registry.
+
+The platform will be ready once the terminal displays:
 
 ```sh
 [network-org-2-peer-1-hlf-k8s-chaincode-install-0-4bdd4 fabric-tools] 2019-11-14 09:14:52.070 UTC [chaincodeCmd] install -> INFO 003 Installed remotely response:<status:200 payload:"OK" >
@@ -342,9 +360,19 @@ In the `hlf-k8s` repository, please run the command `skaffold dev` (or `skaffold
 
 ![status:200 payload:"OK"](../img/start_hlf-k8s.png "status:200 payload:'OK'")
 
+You can stop the log output by pressing `ctrl-c`, this won't stop hlf-k8s.
+
 #### 2. substra-backend repository
 
-In the `substra-backend` repository, please run the command `skaffold dev`. The platform will be ready once the terminal displays:
+In the `substra-backend` repository, run the following commands:
+
+```sh
+SUBSTRA_BACKEND_VERSION=0.1.6
+git checkout $SUBSTRA_BACKEND_VERSION
+skaffold deploy --images substrafoundation/substra-backend:$SUBSTRA_BACKEND_VERSION --tail
+```
+
+The platform will be ready once the terminal displays:
 
 ```sh
 [backend-org-2-substra-backend-server-74bb8486fb-nkq6m substra-backend] INFO - 2020-02-10 10:24:42,514 - django.server - "GET /liveness HTTP/1.1" 200 2
@@ -354,9 +382,19 @@ In the `substra-backend` repository, please run the command `skaffold dev`. The 
 
 ![django.server readiness](../img/start_backend.png "django.server readiness")
 
+You can stop the log output by pressing `ctrl-c`, this won't stop substra-backend.
+
 #### 3. substra-frontend repository
 
-In the `substra-frontend` repository, please run the command `skaffold dev`. The platform will be ready once the terminal displays:
+In the `substra-frontend` repository, run the following commands:
+
+```sh
+SUBSTRA_FRONTEND_VERSION=0.0.20
+git checkout $SUBSTRA_FRONTEND_VERSION
+skaffold deploy --images substrafoundation/substra-frontend:$SUBSTRA_FRONTEND_VERSION --tail
+```
+
+The platform will be ready once the terminal displays:
 
 ```sh
 [frontend-org-2-substra-frontend-787554fc4b-pmh2g substra-frontend] CACHING:  /login
@@ -364,23 +402,27 @@ In the `substra-frontend` repository, please run the command `skaffold dev`. The
 
 ![CACHING Login](../img/start_frontend.png "CACHING Login")
 
-Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install). If you want to do see, please refer to [this section](#serve-the-frontend-with-yarn).
+You can stop the log output by pressing `ctrl-c`, this won't stop substra-backend.
+
+Alternatively, instead of using `skaffold`, you might want to start the `substra-frontend` with [Yarn](https://yarnpkg.com/getting-started/install).
+If you want to do, please refer to [this section](#serve-the-frontend-with-yarn).
 
 ### Stop Substra
 
-In order to stop Substra, hit `ctrl + c` in each repository. On Ubuntu, if you want to stop the minikube Kubernetes cluster, you can use `minikube stop`.
+In order to stop Substra, issue the command `skaffold delete` in each repository.
+On Ubuntu, if you want to stop the minikube Kubernetes cluster, you can use `minikube stop`.
 
-If you want to restart, you will just need to run again the `skaffold run` command in the 3 repositories.
+If you want to restart, you will just need to run again the `skaffold deploy` command in the 3 repositories.
 
 ### Reset Substra
 
-You can reset your installation (if you've used `skaffold run`) with:
+You can reset your installation (if you've used `skaffold deploy`) with:
 
 ```sh
 # run from each repositories (hlf-k8s, substra-backend, substra-frontend)
 skaffold delete
 # or
-kubectl rm ns peer-1 peer-2 orderer
+kubectl rm ns org-1 org-2 orderer
 # On Ubuntu, to remove all the Kubernetes cluster
 minikube delete
 ```
