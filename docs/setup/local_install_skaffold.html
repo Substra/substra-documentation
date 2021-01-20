@@ -260,13 +260,19 @@ minikube start --cpus <span class="m">6</span> --memory <span class="m">8192</sp
 
 <span class="c1"># In 3 different terminal windows, in this order:</span>
 <span class="c1"># In the repository hlf-k8s</span>
-skaffold dev
+<span class="nv">SUBSTRA_HLF_VERSION</span><span class="o">=</span><span class="m">0</span>.0.16
+git checkout <span class="nv">$SUBSTRA_HLF_VERSION</span>
+skaffold deploy --images substrafoundation/fabric-tools:<span class="nv">$SUBSTRA_HLF_VERSION</span> --images substrafoundation/fabric-peer:<span class="nv">$SUBSTRA_HLF_VERSION</span>
 
 <span class="c1"># In the repository substra-backend</span>
-skaffold dev
+<span class="nv">SUBSTRA_BACKEND_VERSION</span><span class="o">=</span><span class="m">0</span>.1.6
+git checkout <span class="nv">$SUBSTRA_BACKEND_VERSION</span>
+skaffold deploy --images substrafoundation/substra-backend:<span class="nv">$SUBSTRA_BACKEND_VERSION</span>
 
 <span class="c1"># In the repository substra-frontend</span>
-skaffold dev
+<span class="nv">SUBSTRA_FRONTEND_VERSION</span><span class="o">=</span><span class="m">0</span>.0.20
+git checkout <span class="nv">$SUBSTRA_FRONTEND_VERSION</span>
+skaffold deploy --images substrafoundation/substra-frontend:<span class="nv">$SUBSTRA_FRONTEND_VERSION</span>
 </pre></div>
 </div>
 <div class="section" id="compatibility-table">
@@ -527,16 +533,27 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 <blockquote>
 <div><p>Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a> and use the relevant releases. For example, in the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">0.0.14</span></code>. You can also only clone a single specific branch/release with the <code class="docutils literal notranslate"><span class="pre">--single-branch</span></code> option, for example: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/SubstraFoundation/substra.git</span> <span class="pre">--single-branch</span> <span class="pre">--branch</span> <span class="pre">0.5.0</span></code>.</p>
 </div></blockquote>
+<blockquote>
+<div><p>note: These instructions assume you want to run a specific substra version for evaluation purpose.
+This is <strong>not</strong> the development process, for which you should refer to the readme documents of each project.</p>
+</div></blockquote>
 <div class="section" id="start-substra">
 <h3>Start Substra<a class="headerlink" href="#start-substra" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.</p>
 </div></blockquote>
 <p>On both Mac and Ubuntu, once your Kubernetes cluster is up and running (started via Minikube or Docker) and Tiller initialized, you will need to start Substra with Skaffold.</p>
-<p><strong>In 3 different terminal windows, in this order</strong>:</p>
 <div class="section" id="hlf-k8s-repository">
 <h4>1. hlf-k8s repository<a class="headerlink" href="#hlf-k8s-repository" title="Permalink to this headline">¶</a></h4>
-<p>In the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository, please run the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code> (or <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">run</span></code> for detached mode, or even <code class="docutils literal notranslate"><span class="pre">skffold</span> <span class="pre">debug</span></code>). The platform will be ready once the terminal displays:</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository, run the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">SUBSTRA_HLF_VERSION</span><span class="o">=</span><span class="m">0</span>.0.16
+git checkout <span class="nv">$SUBSTRA_HLF_VERSION</span>
+skaffold deploy --images substrafoundation/fabric-tools:<span class="nv">$SUBSTRA_HLF_VERSION</span> --images substrafoundation/fabric-peer:<span class="nv">$SUBSTRA_HLF_VERSION</span> --tail
+</pre></div>
+</div>
+<p>This will checkout the appropriate code revision and install the deployment in your local cluster.
+The docker images will be pulled from the official registry.</p>
+<p>The platform will be ready once the terminal displays:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>network-org-2-peer-1-hlf-k8s-chaincode-install-0-4bdd4 fabric-tools<span class="o">]</span> <span class="m">2019</span>-11-14 <span class="m">09</span>:14:52.070 UTC <span class="o">[</span>chaincodeCmd<span class="o">]</span> install -&gt; INFO <span class="m">003</span> Installed remotely response:&lt;status:200 payload:<span class="s2">&quot;OK&quot;</span> &gt;
 <span class="c1"># or</span>
 <span class="o">[</span>network-org-2-peer-1-hlf-k8s-channel-join-0-kljgq fabric-tools<span class="o">]</span> <span class="m">2020</span>-02-10 <span class="m">10</span>:18:02.211 UTC <span class="o">[</span>channelCmd<span class="o">]</span> InitCmdFactory -&gt; INFO <span class="m">001</span> Endorser and orderer connections initialized
@@ -545,39 +562,56 @@ nd6 <span class="nv">options</span><span class="o">=</span><span class="m">201</
 </pre></div>
 </div>
 <p><img alt="status:200 payload:&quot;OK&quot;" src="../_images/start_hlf-k8s.png" /></p>
+<p>You can stop the log output by pressing <code class="docutils literal notranslate"><span class="pre">ctrl-c</span></code>, this won’t stop hlf-k8s.</p>
 </div>
 <div class="section" id="substra-backend-repository">
 <h4>2. substra-backend repository<a class="headerlink" href="#substra-backend-repository" title="Permalink to this headline">¶</a></h4>
-<p>In the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, please run the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>. The platform will be ready once the terminal displays:</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> repository, run the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">SUBSTRA_BACKEND_VERSION</span><span class="o">=</span><span class="m">0</span>.1.6
+git checkout <span class="nv">$SUBSTRA_BACKEND_VERSION</span>
+skaffold deploy --images substrafoundation/substra-backend:<span class="nv">$SUBSTRA_BACKEND_VERSION</span> --tail
+</pre></div>
+</div>
+<p>The platform will be ready once the terminal displays:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>backend-org-2-substra-backend-server-74bb8486fb-nkq6m substra-backend<span class="o">]</span> INFO - <span class="m">2020</span>-02-10 <span class="m">10</span>:24:42,514 - django.server - <span class="s2">&quot;GET /liveness HTTP/1.1&quot;</span> <span class="m">200</span> <span class="m">2</span>
 <span class="c1"># or</span>
 <span class="o">[</span>backend-org-1-substra-backend-server-77cf8cb9fd-cwgs6 substra-backend<span class="o">]</span> INFO - <span class="m">2020</span>-02-10 <span class="m">10</span>:24:51,393 - django.server - <span class="s2">&quot;GET /readiness HTTP/1.1&quot;</span> <span class="m">200</span> <span class="m">2</span>
 </pre></div>
 </div>
 <p><img alt="django.server readiness" src="../_images/start_backend.png" /></p>
+<p>You can stop the log output by pressing <code class="docutils literal notranslate"><span class="pre">ctrl-c</span></code>, this won’t stop substra-backend.</p>
 </div>
 <div class="section" id="substra-frontend-repository">
 <h4>3. substra-frontend repository<a class="headerlink" href="#substra-frontend-repository" title="Permalink to this headline">¶</a></h4>
-<p>In the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> repository, please run the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">dev</span></code>. The platform will be ready once the terminal displays:</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> repository, run the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">SUBSTRA_FRONTEND_VERSION</span><span class="o">=</span><span class="m">0</span>.0.20
+git checkout <span class="nv">$SUBSTRA_FRONTEND_VERSION</span>
+skaffold deploy --images substrafoundation/substra-frontend:<span class="nv">$SUBSTRA_FRONTEND_VERSION</span> --tail
+</pre></div>
+</div>
+<p>The platform will be ready once the terminal displays:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>frontend-org-2-substra-frontend-787554fc4b-pmh2g substra-frontend<span class="o">]</span> CACHING:  /login
 </pre></div>
 </div>
 <p><img alt="CACHING Login" src="../_images/start_frontend.png" /></p>
-<p>Alternatively, instead of using <code class="docutils literal notranslate"><span class="pre">skaffold</span></code>, you might want to start the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> with <a class="reference external" href="https://yarnpkg.com/getting-started/install">Yarn</a>. If you want to do see, please refer to <a class="reference external" href="#serve-the-frontend-with-yarn">this section</a>.</p>
+<p>You can stop the log output by pressing <code class="docutils literal notranslate"><span class="pre">ctrl-c</span></code>, this won’t stop substra-backend.</p>
+<p>Alternatively, instead of using <code class="docutils literal notranslate"><span class="pre">skaffold</span></code>, you might want to start the <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> with <a class="reference external" href="https://yarnpkg.com/getting-started/install">Yarn</a>.
+If you want to do, please refer to <a class="reference external" href="#serve-the-frontend-with-yarn">this section</a>.</p>
 </div>
 </div>
 <div class="section" id="stop-substra">
 <h3>Stop Substra<a class="headerlink" href="#stop-substra" title="Permalink to this headline">¶</a></h3>
-<p>In order to stop Substra, hit <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code> in each repository. On Ubuntu, if you want to stop the minikube Kubernetes cluster, you can use <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">stop</span></code>.</p>
-<p>If you want to restart, you will just need to run again the <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">run</span></code> command in the 3 repositories.</p>
+<p>In order to stop Substra, issue the command <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">delete</span></code> in each repository.
+On Ubuntu, if you want to stop the minikube Kubernetes cluster, you can use <code class="docutils literal notranslate"><span class="pre">minikube</span> <span class="pre">stop</span></code>.</p>
+<p>If you want to restart, you will just need to run again the <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">deploy</span></code> command in the 3 repositories.</p>
 </div>
 <div class="section" id="reset-substra">
 <h3>Reset Substra<a class="headerlink" href="#reset-substra" title="Permalink to this headline">¶</a></h3>
-<p>You can reset your installation (if you’ve used <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">run</span></code>) with:</p>
+<p>You can reset your installation (if you’ve used <code class="docutils literal notranslate"><span class="pre">skaffold</span> <span class="pre">deploy</span></code>) with:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># run from each repositories (hlf-k8s, substra-backend, substra-frontend)</span>
 skaffold delete
 <span class="c1"># or</span>
-kubectl rm ns peer-1 peer-2 orderer
+kubectl rm ns org-1 org-2 orderer
 <span class="c1"># On Ubuntu, to remove all the Kubernetes cluster</span>
 minikube delete
 </pre></div>
