@@ -175,18 +175,12 @@ The `substra-frontend` will serve a neat interface for the end-users.
 Go to the folder where you want to add the repositories and launch this command:
 
 ```sh
-RepoToClone=(
-https://github.com/SubstraFoundation/substra.git
-https://github.com/SubstraFoundation/hlf-k8s.git
-https://github.com/SubstraFoundation/substra-frontend.git
-https://github.com/SubstraFoundation/substra-backend.git
-)
+git clone https://github.com/SubstraFoundation/hlf-k8s.git
+git clone https://github.com/SubstraFoundation/substra-frontend.git
+git clone https://github.com/SubstraFoundation/substra-backend.git
 
-for repo in ${RepoToClone[@]}
-do
-    echo "Cloning" $repo
-    git clone $repo
-done
+# Optional
+git clone https://github.com/SubstraFoundation/substra.git
 ```
 
 > Note: if you do not have `git` on your machine, you can also download and unzip in the same folder the code using these links:
@@ -330,6 +324,66 @@ echo "192.168.65.2 substra-backend.node-1.com substra-frontend.node-1.com substr
 > This is **not** the development process, for which you should refer to the readme documents of each project.
 
 ### Start Substra
+
+#### Use Helm
+
+You can use `helm` to directly install Substra components. You will find an handy [usage section](https://helm.sh/docs/intro/using_helm/) directly on their website.
+
+Before starting, please refer to the [helm hub](https://artifacthub.io/packages/search?page=1&repo=substra) to get the charts version you want to install:
+
+1. [hlf-k8s](https://artifacthub.io/packages/helm/substra/hlf-k8s)
+2. [substra-backend](https://artifacthub.io/packages/helm/substra/substra-backend)
+3. [substra-frontend](https://artifacthub.io/packages/helm/substra/substra-frontend)
+
+Then, we will have to inspect and adjust to your needs (or just use it as it is for demo purpose) the different files located in the `values` folder and referenced in the root `skaffold.yaml` file with the `valuesFiles` parameter.
+
+You will find several configurations in the `/example` folder of the `hlf-k8s` repository, organized as:
+
+```sh
+# 2-orgs-policy-any example
+├── skaffold.yaml
+└── values
+    ├── orderer.yaml
+    ├── org-1-peer-1.yaml
+    └── org-2-peer-1.yaml
+
+# 4-orgs-policy-majority example
+├── skaffold.yaml
+└── values
+    ├── orderer.yaml
+    ├── org-1-peer-1.yaml
+    ├── org-2-peer-1.yaml
+    ├── org-3-peer-1.yaml
+    └── org-4-peer-1.yaml
+```
+
+When you are ready to go, you will have to install the different charts with helm. 
+For example, following the [compatibility table](https://github.com/SubstraFoundation/substra#compatibility-table), to install a [substra cli v0.8.0](https://github.com/SubstraFoundation/substra/releases/tag/0.8.0) compatible server:
+
+```sh
+# hlf-k8s orderer
+helm install orderer --namespace orderer substra/hlf-k8s --version 5.1.0 # -f values/orderer.yaml
+
+# hlf-k8s org-1
+helm install org-1-peer-1 --namespace org-1 substra/hlf-k8s --version 5.1.0 # -f values/org-1-peer-1.yaml
+
+# hlf-k8s org-2
+helm install org-2-peer-1 --namespace org-2 substra/hlf-k8s --version 5.1.0 # -f values/org-2-peer-1.yaml
+
+# substra-backend org-1
+helm install backend-org-1 --namespace org-1 substra/substra-backend --version 1.6.0 # -f values/backend-org-1.yaml
+
+# substra-backend org-2
+helm install backend-org-2 --namespace org-2 substra/substra-backend --version 1.6.0 # -f values/backend-org-2.yaml
+
+# substra-frontend org-1
+helm install frontend-org-1 --namespace org-1 substra/substra-frontend --version 1.0.0-alpha.2 # -f values/frontend-org-1.yaml
+
+# substra-frontend org-2
+helm install frontend-org-2 --namespace org-2 substra/substra-frontend --version 1.0.0-alpha.2 # -f values/frontend-org-2.yaml
+```
+
+#### Or just use skaffold
 
 > Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.
 

@@ -399,18 +399,12 @@ sudo mv skaffold /usr/local/bin
 <p>The <code class="docutils literal notranslate"><span class="pre">substra-backend</span></code> is powered by Django and is responsible for, among other things, handling the api endpoints.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">substra-frontend</span></code> will serve a neat interface for the end-users.</p>
 <p>Go to the folder where you want to add the repositories and launch this command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">RepoToClone</span><span class="o">=(</span>
-https://github.com/SubstraFoundation/substra.git
-https://github.com/SubstraFoundation/hlf-k8s.git
-https://github.com/SubstraFoundation/substra-frontend.git
-https://github.com/SubstraFoundation/substra-backend.git
-<span class="o">)</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/SubstraFoundation/hlf-k8s.git
+git clone https://github.com/SubstraFoundation/substra-frontend.git
+git clone https://github.com/SubstraFoundation/substra-backend.git
 
-<span class="k">for</span> repo <span class="k">in</span> <span class="si">${</span><span class="nv">RepoToClone</span><span class="p">[@]</span><span class="si">}</span>
-<span class="k">do</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Cloning&quot;</span> <span class="nv">$repo</span>
-    git clone <span class="nv">$repo</span>
-<span class="k">done</span>
+<span class="c1"># Optional</span>
+git clone https://github.com/SubstraFoundation/substra.git
 </pre></div>
 </div>
 <blockquote>
@@ -539,10 +533,66 @@ This is <strong>not</strong> the development process, for which you should refer
 </div></blockquote>
 <div class="section" id="start-substra">
 <h3>Start Substra<a class="headerlink" href="#start-substra" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="use-helm">
+<h4>Use Helm<a class="headerlink" href="#use-helm" title="Permalink to this headline">¶</a></h4>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">helm</span></code> to directly install Substra components. You will find an handy <a class="reference external" href="https://helm.sh/docs/intro/using_helm/">usage section</a> directly on their website.</p>
+<p>Before starting, please refer to the <a class="reference external" href="https://artifacthub.io/packages/search?page=1&amp;repo=substra">helm hub</a> to get the charts version you want to install:</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://artifacthub.io/packages/helm/substra/hlf-k8s">hlf-k8s</a></p></li>
+<li><p><a class="reference external" href="https://artifacthub.io/packages/helm/substra/substra-backend">substra-backend</a></p></li>
+<li><p><a class="reference external" href="https://artifacthub.io/packages/helm/substra/substra-frontend">substra-frontend</a></p></li>
+</ol>
+<p>Then, we will have to inspect and adjust to your needs (or just use it as it is for demo purpose) the different files located in the <code class="docutils literal notranslate"><span class="pre">values</span></code> folder and referenced in the root <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> file with the <code class="docutils literal notranslate"><span class="pre">valuesFiles</span></code> parameter.</p>
+<p>You will find several configurations in the <code class="docutils literal notranslate"><span class="pre">/example</span></code> folder of the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository, organized as:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2-orgs-policy-any example</span>
+├── skaffold.yaml
+└── values
+    ├── orderer.yaml
+    ├── org-1-peer-1.yaml
+    └── org-2-peer-1.yaml
+
+<span class="c1"># 4-orgs-policy-majority example</span>
+├── skaffold.yaml
+└── values
+    ├── orderer.yaml
+    ├── org-1-peer-1.yaml
+    ├── org-2-peer-1.yaml
+    ├── org-3-peer-1.yaml
+    └── org-4-peer-1.yaml
+</pre></div>
+</div>
+<p>When you are ready to go, you will have to install the different charts with helm.
+For example, following the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a>, to install a <a class="reference external" href="https://github.com/SubstraFoundation/substra/releases/tag/0.8.0">substra cli v0.8.0</a> compatible server:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># hlf-k8s orderer</span>
+helm install orderer --namespace orderer substra/hlf-k8s --version <span class="m">5</span>.1.0 <span class="c1"># -f values/orderer.yaml</span>
+
+<span class="c1"># hlf-k8s org-1</span>
+helm install org-1-peer-1 --namespace org-1 substra/hlf-k8s --version <span class="m">5</span>.1.0 <span class="c1"># -f values/org-1-peer-1.yaml</span>
+
+<span class="c1"># hlf-k8s org-2</span>
+helm install org-2-peer-1 --namespace org-2 substra/hlf-k8s --version <span class="m">5</span>.1.0 <span class="c1"># -f values/org-2-peer-1.yaml</span>
+
+<span class="c1"># substra-backend org-1</span>
+helm install backend-org-1 --namespace org-1 substra/substra-backend --version <span class="m">1</span>.6.0 <span class="c1"># -f values/backend-org-1.yaml</span>
+
+<span class="c1"># substra-backend org-2</span>
+helm install backend-org-2 --namespace org-2 substra/substra-backend --version <span class="m">1</span>.6.0 <span class="c1"># -f values/backend-org-2.yaml</span>
+
+<span class="c1"># substra-frontend org-1</span>
+helm install frontend-org-1 --namespace org-1 substra/substra-frontend --version <span class="m">1</span>.0.0-alpha.2 <span class="c1"># -f values/frontend-org-1.yaml</span>
+
+<span class="c1"># substra-frontend org-2</span>
+helm install frontend-org-2 --namespace org-2 substra/substra-frontend --version <span class="m">1</span>.0.0-alpha.2 <span class="c1"># -f values/frontend-org-2.yaml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="or-just-use-skaffold">
+<h4>Or just use skaffold<a class="headerlink" href="#or-just-use-skaffold" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><p>Note: Please be aware that these commands are quite long to be executed and might take a few minutes, especially for the first installation.</p>
 </div></blockquote>
 <p>On both Mac and Ubuntu, once your Kubernetes cluster is up and running (started via Minikube or Docker) and Tiller initialized, you will need to start Substra with Skaffold.</p>
+</div>
 <div class="section" id="hlf-k8s-repository">
 <h4>1. hlf-k8s repository<a class="headerlink" href="#hlf-k8s-repository" title="Permalink to this headline">¶</a></h4>
 <p>In the <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository, run the following commands:</p>
