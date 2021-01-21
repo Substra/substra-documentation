@@ -8,6 +8,8 @@ TODO:
 
 ## CLI
 
+CLI documentation: <https://github.com/SubstraFoundation/substra/blob/master/references/cli.md>
+
 > Remember: you can use `substra --help` and `substra <command> --help` anytime!
 
 ### substra config
@@ -37,7 +39,9 @@ You can try to reach the `/readiness` route to see if you get an `OK` answer, fo
 
 ## Python SDK
 
-> Debug mode is awesome, use it! You just need to define your client like this `client = substra.Client(debug=True)`
+SDK documentation: <https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md>
+
+> Remember: debug mode is awesome, use it! You just need to define your client like this `client = substra.Client(debug=True)`
 > to be able to use `pdb`/`ipdb`!
 
 ### Generate data sample
