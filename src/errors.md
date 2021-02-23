@@ -1,12 +1,6 @@
-# Some common errors
+# Common errors
 
-TODO:
-
-- permissions
-- Docker/GPU checks
-- CP
-
-## CLI
+## Command Line Interface
 
 [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md)
 
@@ -46,15 +40,36 @@ Error: Request failed: ConnectionError: HTTPConnectionPool(host='<url>', port=80
 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x109f80c88>: Failed to establish a new connection: [Errno 61] Connection refused',))
 ```
 
-This error occurs when you make more than X login calls in a given minute. You just need to wait a bit for it to disappear. 
-The value of X depends on which value you set for the `DEFAULT_THROTTLE_RATES` environment variable. 
-Default value when launching with skaffold is 120. 
-(tips from [jmorel](https://github.com/jmorel) [here](https://github.com/SubstraFoundation/substra/issues/209))
+This error occurs when you make more than X login calls in a given minute. You just need to wait a bit for it to disappear. The value of X depends on which value you set for the `DEFAULT_THROTTLE_RATES` environment variable. Default value when launching with skaffold is 120. (tips from [jmorel](https://github.com/jmorel) [here](https://github.com/SubstraFoundation/substra/issues/209))
 </details>
 
-### substra list/get/describe/download
+### substra list/get/describe/download an asset
 
-### substra add/update
+<details>
+<summary><b>Invalid token</b></summary>
+
+```sh
+substra list dataset --profile node-1
+
+Requests error status 401: {"detail":"Invalid token."}
+Error: Request failed: AuthenticationError: 401 Client Error: Unauthorized for url: http://substra-backend.node-1.com/data_manager/
+```
+
+Please login again in order to refresh the token.
+</details>
+
+<details>
+<summary><b>No asset for key <KEY></b></summary>
+
+```sh
+get dataset 09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c --profile node-1
+Requests error status 404: {"message":"no asset for key 09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c"}
+Error: Request failed: NotFound: 404 Client Error: Not Found for url: http://substra-backend.node-1.com/data_manager/09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c/
+```
+
+Please check the item key you are providing (with `substra list <ASSET>`).
+
+</details>
 
 ## Python SDK
 
@@ -74,8 +89,16 @@ This indicates that the `train_data_samples` & `test_data_samples` have already 
 
 ### Register dataset and objective
 
-Check the `add_dataset_objective.py` script and your assets (`DATASET`, `TEST_DATA_SAMPLES_PATHS`, `TRAIN_DATA_SAMPLES_PATHS`, `OBJECTIVE`, `METRICS_DOCKERFILE_FILES`)
+Check the `add_dataset_objective.py` script and your assets (`DATASET`, `TEST_DATA_SAMPLES_PATHS`, `TRAIN_DATA_SAMPLES_PATHS`, `OBJECTIVE`, `METRICS_DOCKERFILE_FILES`).
 
 ### Add an algorithm
 
 Check the `add_algo.py` script and your assets (`ALGO`, `ALGO_DOCKERFILE_FILES`).
+
+### Add a train tuple
+
+In debug mode, when you run the `add_train_tuple` method with large data, a Docker container is launched and then exit showing this last log `substratools.algo - launching training task` and no further stacktrace. This might be related to a lack of memory (use `docker stats`) and you tweak this limit by using a higher `shm_size` in the `spawner.py` file.
+
+## Exhaustive list of exceptions
+
+If you want to go further, you can have a look to the [full list of exceptions](https://github.com/SubstraFoundation/substra-backend/blob/master/backend/substrapp/tasks/exceptions.json) handled by the backend. This can provide you with some insight about the issue you are facing.
