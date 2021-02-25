@@ -142,8 +142,8 @@ substra <command> --help
 ## Resources
 
 - [General documentation](https://doc.substra.ai/)
-- [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md)
-- [Python SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md)
+- [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
+- [Python SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 - [Titanic examples](https://github.com/SubstraFoundation/substra/blob/master/examples/titanic)
 - [Community examples](https://github.com/SubstraFoundation/substra-examples)
 - [Slack #help channel](https://substra-workspace.slack.com/archives/CT54J1U2E)
