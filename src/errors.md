@@ -46,6 +46,18 @@ This error occurs when you make more than X login calls in a given minute. You j
 ### substra list/get/describe/download an asset
 
 <details>
+<summary><b>HTTPConnectionPool</b></summary>
+
+```sh
+substra list dataset
+
+Error: Request failed: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /data_manager/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f4ec7b4a910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+```
+
+This error is related to the fact that you need to provide a `--profile` option: `substra list dataset --profile node-1`.
+</details>
+
+<details>
 <summary><b>Invalid token</b></summary>
 
 ```sh
