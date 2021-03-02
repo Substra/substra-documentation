@@ -86,7 +86,7 @@ curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v1.8.0/skaffo
     sudo mv skaffold /usr/local/bin
 ```
 
-### [k9s v0.22.0](https://github.com/derailed/k9)
+### [k9s v0.22.0](https://github.com/derailed/k9s)
 
 > Note: this one is not mandatory but it is such a great k8s tool that I couldn't resist to add it!
 
