@@ -5,8 +5,8 @@
 If you are facing issues with Substra (CLI or SDK), you can have a look at:
 
 - [Github issues](https://github.com/SubstraFoundation/substra/issues)
-- [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md)
-- [SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md)
+- [CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
+- [SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 - [Debugging](https://doc.substra.ai/debugging.html)
 - [Official examples](https://github.com/SubstraFoundation/substra/tree/master/examples#substra-examples) (shipped with substra package)
 - [Community examples](https://github.com/SubstraFoundation/substra-examples#substra-examples) (using datasets with images or even video files)
