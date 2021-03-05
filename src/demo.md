@@ -69,7 +69,7 @@ class MyMetrics(tools.Metrics):
 class MyAlgo(tools.algo.Algo):
 ```
 
-This section is documented [here](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md).
+This section is documented [here](https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo).
 
 ### Edit your hosts file
 

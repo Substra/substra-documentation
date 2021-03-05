@@ -71,9 +71,9 @@ Substra SDK & CLI repository: <https://github.com/SubstraFoundation/substra>
 
 ### CLI & Python SDK
 
-The CLI provides an command line interface to interact with the Substra backend. The CLI makes it possible to add Assets to Substra and also to list registered Assets. See [CLI References](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md)
+The CLI provides an command line interface to interact with the Substra backend. The CLI makes it possible to add Assets to Substra and also to list registered Assets. See [CLI References](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
 
-The SDK provides a Python SDK that permits interactions with the Substra backend. The Python SDK provides the same functionalities as the CLI and offers the flexibility of a Python environment. As Python is a favored programming language of data scientists, it makes it easier for them to interact with Substra. In addition, the SDK makes it possible to integrate Substra in any Python-based application. See [SDK References](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md)
+The SDK provides a Python SDK that permits interactions with the Substra backend. The Python SDK provides the same functionalities as the CLI and offers the flexibility of a Python environment. As Python is a favored programming language of data scientists, it makes it easier for them to interact with Substra. In addition, the SDK makes it possible to integrate Substra in any Python-based application. See [SDK References](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
 
 ### Frontend Interface
 

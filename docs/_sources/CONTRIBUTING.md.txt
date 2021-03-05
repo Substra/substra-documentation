@@ -49,7 +49,7 @@ This amazing piece of software has been developed and open sourced by [Owkin](ht
 
 ## Code of Conduct
 
-This project and everyone involved is governed by the Code of Conduct defined [here](https://github.com/SubstraFoundation/.github/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [github@substra.ai](mailto:github@substra.ai).
+This project and everyone involved is governed by the Code of Conduct defined [here](https://github.com/SubstraFoundation/.github/blob/master/CODE_OF_CONDUCT.md#contributor-covenant-code-of-conduct). By participating, you are expected to uphold this code. Please report unacceptable behavior to [github@substra.ai](mailto:github@substra.ai).
 
 ## I don't want to read this whole thing I just have a question!
 
@@ -87,7 +87,7 @@ We believe documentation is key to a great project and that it should be as aliv
 
 This section guides you through submitting a bug report for Substra. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.
 
-Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out [the required template](https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/bug_report.md), the required information will help us resolve issues faster.
+Before creating bug reports, please check [this list](#before-submitting-a-bug-report) as you might find out that you don't need to create one. When you are creating a bug report, please [include as many details as possible](#how-do-i-submit-a-good-bug-report). Fill out the required template, the required information will help us resolve issues faster.
 
 > **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
 
@@ -106,7 +106,7 @@ If you really don't know which repository your bug is related to, submit an issu
 
 This section guides you through submitting an enhancement suggestion for Substra, ranging from minor improvements for already existing functionality to completely new features. Following these guidelines will help maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
 
-Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create a new one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion). Fill in [the template](https://github.com/SubstraFoundation/.github/blob/master/.github/ISSUE_TEMPLATE/feature_request.md), including all the steps that you imagine you would take if the feature already existed.
+Before creating enhancement suggestions, please check [this list](#before-submitting-an-enhancement-suggestion) as you might find out that you don't need to create a new one. When you are creating an enhancement suggestion, please [include as many details as possible](#how-do-i-submit-a-good-enhancement-suggestion). Fill in the template, including all the steps that you imagine you would take if the feature already existed.
 
 You can also come chat with us on [Slack](https://substra-workspace.slack.com/archives/CT54J1U2E) in order to engage the community in discussing your suggestion.
 
@@ -374,4 +374,4 @@ Please open an issue with a `Add_Label` flag, define if you have suggestions for
 
 ## Security Policy
 
-Please refer to [this section](https://github.com/SubstraFoundation/.github/blob/master/SECURITY.md) if you want to submit any security related issue.
+Please refer to [this section](https://github.com/SubstraFoundation/.github/blob/master/SECURITY.md#security-policy) if you want to submit any security related issue.
