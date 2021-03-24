@@ -39,6 +39,7 @@ Substra documentation
    :caption: Platform description
    :maxdepth: 1
 
+   ccconcepts
    concepts
    architecture
 
