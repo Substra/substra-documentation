@@ -54,4 +54,3 @@ If you are facing issues with Substra (CLI or SDK), you can have a look at:
 - Github [issues](https://github.com/SubstraFoundation/substra/issues)
 - [Debugging](https://doc.substra.ai/debugging.html)
 - Join our [Slack](https://substra.us18.list-manage.com/track/click?e=2effed55c9&id=fa49875322&u=385fa3f9736ea94a1fcca969f)
-
