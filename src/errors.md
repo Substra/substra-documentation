@@ -6,10 +6,6 @@
 
 > Remember: you can use `substra --help` and `substra <command> --help` anytime!
 
-### substra config
-
-> `substra config --profile <profile> <url>`
-
 ### substra login
 
 > `substra login --profile <profile> --username <username> --password '<password>'`
@@ -93,19 +89,6 @@ Please check the item key you are providing (with `substra list <ASSET>`).
 > Remember: debug mode is awesome, use it! You just need to define your client like this `client = substra.Client(debug=True)`
 > to be able to use `pdb`/`ipdb`!
 
-### Generate data sample
-
-Check the `generate_data_samples.py` script and the path to your dataset, the values of `N_TRAIN_DATA_SAMPLES` and `N_TEST_DATA_SAMPLES`.
-
-<details>
-<summary><b>FileExistsError</b></summary>
-This indicates that the `train_data_samples` & `test_data_samples` have already been generated in the `assets` folder. This means that you will need to remove it before re-generating data samples.
-</details>
-
-### Register dataset and objective
-
-Check the `add_dataset_objective.py` script and your assets (`DATASET`, `TEST_DATA_SAMPLES_PATHS`, `TRAIN_DATA_SAMPLES_PATHS`, `OBJECTIVE`, `METRICS_DOCKERFILE_FILES`).
-
 ### Add an algorithm
 
 Check the `add_algo.py` script and your assets (`ALGO`, `ALGO_DOCKERFILE_FILES`).
@@ -122,7 +105,3 @@ If after adding an algorithm it directly gets a `failed` status, it might be rel
 ### Add a train tuple
 
 In debug mode, when you run the `add_traintuple` method with large data, a Docker container is launched and then exit showing this last log `substratools.algo - launching training task` and no further stacktrace. This might be related to a lack of memory (use `docker stats`) and you tweak this limit by using a higher `shm_size` in the `spawner.py` file.
-
-## Exhaustive list of exceptions
-
-If you want to go further, you can have a look to the [full list of exceptions](https://github.com/SubstraFoundation/substra-backend/blob/master/backend/substrapp/tasks/exceptions.json) handled by the backend. This can provide you with some insight about the issue you are facing.
