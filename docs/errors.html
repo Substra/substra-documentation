@@ -182,12 +182,6 @@
 <blockquote>
 <div><p>Remember: you can use <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">--help</span></code> and <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">&lt;command&gt;</span> <span class="pre">--help</span></code> anytime!</p>
 </div></blockquote>
-<div class="section" id="substra-config">
-<h3>substra config<a class="headerlink" href="#substra-config" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">config</span> <span class="pre">--profile</span> <span class="pre">&lt;profile&gt;</span> <span class="pre">&lt;url&gt;</span></code></p>
-</div></blockquote>
-</div>
 <div class="section" id="substra-login">
 <h3>substra login<a class="headerlink" href="#substra-login" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -249,17 +243,6 @@ Error: Request failed: NotFound: <span class="m">404</span> Client Error: Not Fo
 <div><p>Remember: debug mode is awesome, use it! You just need to define your client like this <code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">=</span> <span class="pre">substra.Client(debug=True)</span></code>
 to be able to use <code class="docutils literal notranslate"><span class="pre">pdb</span></code>/<code class="docutils literal notranslate"><span class="pre">ipdb</span></code>!</p>
 </div></blockquote>
-<div class="section" id="generate-data-sample">
-<h3>Generate data sample<a class="headerlink" href="#generate-data-sample" title="Permalink to this headline">¶</a></h3>
-<p>Check the <code class="docutils literal notranslate"><span class="pre">generate_data_samples.py</span></code> script and the path to your dataset, the values of <code class="docutils literal notranslate"><span class="pre">N_TRAIN_DATA_SAMPLES</span></code> and <code class="docutils literal notranslate"><span class="pre">N_TEST_DATA_SAMPLES</span></code>.</p>
-<details>
-<summary><b>FileExistsError</b></summary>
-This indicates that the `train_data_samples` & `test_data_samples` have already been generated in the `assets` folder. This means that you will need to remove it before re-generating data samples.
-</details></div>
-<div class="section" id="register-dataset-and-objective">
-<h3>Register dataset and objective<a class="headerlink" href="#register-dataset-and-objective" title="Permalink to this headline">¶</a></h3>
-<p>Check the <code class="docutils literal notranslate"><span class="pre">add_dataset_objective.py</span></code> script and your assets (<code class="docutils literal notranslate"><span class="pre">DATASET</span></code>, <code class="docutils literal notranslate"><span class="pre">TEST_DATA_SAMPLES_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">TRAIN_DATA_SAMPLES_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">OBJECTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">METRICS_DOCKERFILE_FILES</span></code>).</p>
-</div>
 <div class="section" id="add-an-algorithm">
 <h3>Add an algorithm<a class="headerlink" href="#add-an-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Check the <code class="docutils literal notranslate"><span class="pre">add_algo.py</span></code> script and your assets (<code class="docutils literal notranslate"><span class="pre">ALGO</span></code>, <code class="docutils literal notranslate"><span class="pre">ALGO_DOCKERFILE_FILES</span></code>).</p>
@@ -273,10 +256,6 @@ This indicates that the `train_data_samples` & `test_data_samples` have already 
 <h3>Add a train tuple<a class="headerlink" href="#add-a-train-tuple" title="Permalink to this headline">¶</a></h3>
 <p>In debug mode, when you run the <code class="docutils literal notranslate"><span class="pre">add_traintuple</span></code> method with large data, a Docker container is launched and then exit showing this last log <code class="docutils literal notranslate"><span class="pre">substratools.algo</span> <span class="pre">-</span> <span class="pre">launching</span> <span class="pre">training</span> <span class="pre">task</span></code> and no further stacktrace. This might be related to a lack of memory (use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stats</span></code>) and you tweak this limit by using a higher <code class="docutils literal notranslate"><span class="pre">shm_size</span></code> in the <code class="docutils literal notranslate"><span class="pre">spawner.py</span></code> file.</p>
 </div>
-</div>
-<div class="section" id="exhaustive-list-of-exceptions">
-<h2>Exhaustive list of exceptions<a class="headerlink" href="#exhaustive-list-of-exceptions" title="Permalink to this headline">¶</a></h2>
-<p>If you want to go further, you can have a look to the <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend/blob/master/backend/substrapp/tasks/exceptions.json">full list of exceptions</a> handled by the backend. This can provide you with some insight about the issue you are facing.</p>
 </div>
 </div>
 
