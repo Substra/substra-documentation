@@ -27,6 +27,7 @@ src/
 ├── CONTRIBUTING.md
 ├── debugging.md
 ├── demo.md
+├── errors.md
 ├── faq.md
 ├── glossary.md
 ├── img

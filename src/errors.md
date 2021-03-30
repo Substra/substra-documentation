@@ -1,0 +1,107 @@
+# Common errors
+
+## Command Line Interface
+
+[CLI documentation](https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary)
+
+> Remember: you can use `substra --help` and `substra <command> --help` anytime!
+
+### substra login
+
+> `substra login --profile <profile> --username <username> --password '<password>'`
+
+<details>
+<summary><b>Requests error status 503</b></summary>
+
+```sh
+Requests error status 503: <html>
+<head><title>503 Service Temporarily Unavailable</title></head>
+    <body>
+        <center><h1>503 Service Temporarily Unavailable</h1></center>
+        <hr><center>openresty/1.15.8.2</center>
+    </body>
+</html>
+Error: Request failed: HTTPError: 503 Server Error: Service Temporarily Unavailable for url: http://substra-backend.node-1.com/api-token-auth/
+```
+
+This issue is likely to be related to the server-side, and it indicates that the server is not responding (correctly). You can either try later or get in touch with the server administrator.
+You can also try to reach the `/readiness` route to see if you get an `OK` answer, for example: `curl substra-backend.node-1.com/readiness`.
+</details>
+
+<details>
+<summary><b>HTTPConnectionPool Error</b></summary>
+
+```sh
+Error: Request failed: ConnectionError: HTTPConnectionPool(host='<url>', port=8000): Max retries exceeded with url: /api-token-auth/ 
+(Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x109f80c88>: Failed to establish a new connection: [Errno 61] Connection refused',))
+```
+
+This error occurs when you make more than X login calls in a given minute. You just need to wait a bit for it to disappear. The value of X depends on which value you set for the `DEFAULT_THROTTLE_RATES` environment variable. Default value when launching with skaffold is 120. (tips from [jmorel](https://github.com/jmorel) [here](https://github.com/SubstraFoundation/substra/issues/209))
+</details>
+
+### substra list/get/describe/download an asset
+
+<details>
+<summary><b>HTTPConnectionPool</b></summary>
+
+```sh
+substra list dataset
+
+Error: Request failed: ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /data_manager/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f4ec7b4a910>: Failed to establish a new connection: [Errno 111] Connection refused'))
+```
+
+This error is related to the fact that you need to provide a `--profile` option: `substra list dataset --profile node-1`.
+</details>
+
+<details>
+<summary><b>Invalid token</b></summary>
+
+```sh
+substra list dataset --profile node-1
+
+Requests error status 401: {"detail":"Invalid token."}
+Error: Request failed: AuthenticationError: 401 Client Error: Unauthorized for url: http://substra-backend.node-1.com/data_manager/
+```
+
+Please login again in order to refresh the token.
+
+> Note: Please be aware that initiating a new login will logout any already active connection!
+
+</details>
+
+<details>
+<summary><b>No asset for key <KEY></b></summary>
+
+```sh
+get dataset 09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c --profile node-1
+Requests error status 404: {"message":"no asset for key 09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c"}
+Error: Request failed: NotFound: 404 Client Error: Not Found for url: http://substra-backend.node-1.com/data_manager/09c741742ec4ce10360e0dcd1ca0b8ecf8edf97263593d5f6b1ce6c657d54c8c/
+```
+
+Please check the item key you are providing (with `substra list <ASSET>`).
+
+</details>
+
+## Python SDK
+
+[SDK documentation](https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk)
+
+> Remember: debug mode is awesome, use it! You just need to define your client like this `client = substra.Client(debug=True)`
+> to be able to use `pdb`/`ipdb`!
+
+### Add an algorithm
+
+Check the `add_algo.py` script and your assets (`ALGO`, `ALGO_DOCKERFILE_FILES`).
+
+<details>
+<summary><b>Status failed</b></summary>
+
+If after adding an algorithm it directly gets a `failed` status, it might be related to the `permissions`: please be sure to allow, in the dataset from the data provider org, the algo provider org to access the related dataset. You will also have to edit the algo permissions and to make it available for the data provider org.
+
+> Note: this is not required in debug mode
+
+</details>
+
+### Add a train tuple
+
+In debug mode, when you run the `add_traintuple` method with large data, a Docker container is launched and then exit showing this last log `substratools.algo - launching training task` and no further stacktrace. This might be related to a lack of memory (use `docker stats`) and you tweak this limit by using a higher `shm_size` in the `spawner.py` file.
