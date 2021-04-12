@@ -1,6 +1,6 @@
 # Permissions
 
-Assets are protected using a system of permissions.
+Assets are protected using a permissions system.
 
 Permissions are either specified  by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).
 
@@ -42,11 +42,11 @@ Unless stated otherwise, items in this list refer to *Process* permission.
   - *Process*: Permission to use this model as an *inModel*
   - *Download*: Permission to export this model
 
-## Permission inheritance
+### Permission inheritance
 
 Certain types of assets require the user to specify the permissions explicitly at creation time. Other types of assets have their permissions determined automatically from dependent assets.
 
-### Traintuple, Aggregatetuple
+#### Traintuple, Aggregatetuple
 
 *Traintuple* and *Aggregatetuple* permissions are the intersection of permissions for the associated *Dataset* and Algo. More precisely:
 
@@ -59,7 +59,7 @@ Certain types of assets require the user to specify the permissions explicitly a
 
 Default values are *owner only* for download and process.
 
-### Models
+#### Models
 
 *Traintuple* and *Aggregatetuple* out-models inherit their permissions from their *Traintuple* or *Aggregatetuple*.
 
