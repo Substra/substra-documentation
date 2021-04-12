@@ -43,6 +43,10 @@ To help you implement your assets in Python, please have a look to the [Substra 
 
 You can use this general [cheat sheet](./cheatsheet_cli.md) to help you getting started with Substra.
 
+## Permissions
+
+Learn more about asset Permissions in [this document](./permissions.md).
+
 ## Common errors
 
 If you are facing some issues manipulating your assets, we have a dedicated page [here](./errors.md).
