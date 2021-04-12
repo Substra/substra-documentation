@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>CLI Cheatsheet &mdash; Substra 1.1 documentation</title>
@@ -88,24 +89,24 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -174,9 +175,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cli-cheatsheet">
+  <section id="cli-cheatsheet">
 <h1>CLI Cheatsheet<a class="headerlink" href="#cli-cheatsheet" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preflight-checks">
+<section id="preflight-checks">
 <h2>Preflight Checks<a class="headerlink" href="#preflight-checks" title="Permalink to this headline">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">--version</span></code> to ensure your installation is working and compatible with the server according to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a>.</p>
 <blockquote>
@@ -192,8 +193,8 @@ curl substra-backend.node-1.com/readiness
 <blockquote>
 <div><p>Note: If you do not see the “OK” message, we might need to check your configuration, for example the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file.</p>
 </div></blockquote>
-</div>
-<div class="section" id="substra-config">
+</section>
+<section id="substra-config">
 <h2>Substra config<a class="headerlink" href="#substra-config" title="Permalink to this headline">¶</a></h2>
 <p>You can setup a profile, this is useful if you work with several configurations, but not required, so you can omit the <code class="docutils literal notranslate"><span class="pre">--profile</span> <span class="pre">&lt;PROFILE_NAME&gt;</span></code> option if you don’t use a specific profile.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage</span>
@@ -209,8 +210,8 @@ substra config --profile node-1 http://substra-backend.node-1.com
 <blockquote>
 <div><p>Note: the profile name is a local resource located in <code class="docutils literal notranslate"><span class="pre">~/.substra</span></code>, this means that you can use any name you want.</p>
 </div></blockquote>
-</div>
-<div class="section" id="substra-login">
+</section>
+<section id="substra-login">
 <h2>Substra login<a class="headerlink" href="#substra-login" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage</span>
 substra login <span class="o">[</span>OPTIONS<span class="o">]</span>
@@ -226,8 +227,8 @@ substra login --profile node-1 --username node-1 --password <span class="s1">&#3
 </pre></div>
 </div>
 <p>There are also a bunch of useful options like <code class="docutils literal notranslate"><span class="pre">--log-level</span> <span class="pre">DEBUG</span></code> or <code class="docutils literal notranslate"><span class="pre">--verbose</span></code>.</p>
-</div>
-<div class="section" id="list-get-assets">
+</section>
+<section id="list-get-assets">
 <h2>List &amp; Get assets<a class="headerlink" href="#list-get-assets" title="Permalink to this headline">¶</a></h2>
 <p>Assets you can list:</p>
 <ul class="simple">
@@ -277,38 +278,38 @@ WORKER                      MyOrg1MSP
 PERMISSIONS                 Processable by its owner only
 </pre></div>
 </div>
-</div>
-<div class="section" id="register-assets">
+</section>
+<section id="register-assets">
 <h2>Register assets<a class="headerlink" href="#register-assets" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="dataset">
+<section id="dataset">
 <h3>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra add dataset <span class="o">[</span>OPTIONS<span class="o">]</span> PATH
 substra add dataset --help
 </pre></div>
 </div>
-</div>
-<div class="section" id="data-samples">
+</section>
+<section id="data-samples">
 <h3>Data samples<a class="headerlink" href="#data-samples" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra add data_sample <span class="o">[</span>OPTIONS<span class="o">]</span> PATH
 substra add data_sample --help
 </pre></div>
 </div>
 <p>You can use the same pattern for registering several kind of assets: <code class="docutils literal notranslate"><span class="pre">objective</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_plan</span></code>, <code class="docutils literal notranslate"><span class="pre">algo</span></code>, <code class="docutils literal notranslate"><span class="pre">testtuple</span></code>, <code class="docutils literal notranslate"><span class="pre">traintuple</span></code>, etc.</p>
-</div>
-</div>
-<div class="section" id="tips">
+</section>
+</section>
+<section id="tips">
 <h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">--output</span></code> formatting options like <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">json</span></code>; <code class="docutils literal notranslate"><span class="pre">pretty</span></code> is used by default.</p>
-</div>
-<div class="section" id="help">
+</section>
+<section id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <p>Remember, you can use anytime the substra CLI <code class="docutils literal notranslate"><span class="pre">--help</span></code> command which will provide you with a lot of resources for each asset and method!</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra --help
 substra &lt;command&gt; --help
 </pre></div>
 </div>
-</div>
-<div class="section" id="resources">
+</section>
+<section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doc.substra.ai/">General documentation</a></p></li>
@@ -318,8 +319,8 @@ substra &lt;command&gt; --help
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-examples">Community examples</a></p></li>
 <li><p><a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">Slack #help channel</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

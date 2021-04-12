@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Cheatsheet Ubuntu 20.04 VM &mdash; Substra 1.1 documentation</title>
@@ -90,7 +91,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../debugging.html">Local Debug</a></li>
@@ -131,17 +132,17 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../demo.html">Demo</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publish.html">Build &amp; publish the documentation</a></li>
@@ -212,7 +213,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cheatsheet-ubuntu-20-04-vm">
+  <section id="cheatsheet-ubuntu-20-04-vm">
 <h1>Cheatsheet Ubuntu 20.04 VM<a class="headerlink" href="#cheatsheet-ubuntu-20-04-vm" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>/!\ This setup is only compatible with Substra v.0.6.0. It will soon be updated.
@@ -221,16 +222,16 @@ Please refer to the <a class="reference external" href="https://github.com/Subst
 <blockquote>
 <div><p>/!\ This configuration is totally not suitable for production environment!</p>
 </div></blockquote>
-<div class="section" id="system">
+<section id="system">
 <h2>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="hardware-check">
+<section id="hardware-check">
 <h3>Hardware check<a class="headerlink" href="#hardware-check" title="Permalink to this headline">¶</a></h3>
 <p>Please check first the hardware-related information of your machine and update accordingly installation procedures. This guide aims at <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> machines.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>uname -mp
 </pre></div>
 </div>
-</div>
-<div class="section" id="system-updates">
+</section>
+<section id="system-updates">
 <h3>System updates<a class="headerlink" href="#system-updates" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> <span class="se">\</span>
     sudo apt upgrade -y <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -238,11 +239,11 @@ Please refer to the <a class="reference external" href="https://github.com/Subst
 	sudo apt autoclean
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="softwares-installation">
+</section>
+</section>
+<section id="softwares-installation">
 <h2>Softwares installation<a class="headerlink" href="#softwares-installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="docker">
+<section id="docker">
 <h3><a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">Docker</a><a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt-get install <span class="se">\</span>
     apt-transport-https <span class="se">\</span>
@@ -266,16 +267,16 @@ sudo groupadd docker
 sudo usermod -aG docker <span class="nv">$USER</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="minikube-v1-9-2">
+</section>
+<section id="minikube-v1-9-2">
 <h3><a class="reference external" href="https://minikube.sigs.k8s.io/docs/start/">Minikube v1.9.2</a><a class="headerlink" href="#minikube-v1-9-2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -LO https://github.com/kubernetes/minikube/releases/download/v1.9.2/minikube-linux-amd64 <span class="o">&amp;&amp;</span> <span class="se">\</span>
     sudo install minikube-linux-amd64 /usr/local/bin/minikube <span class="o">&amp;&amp;</span> <span class="se">\</span>
     rm -rf minikube-linux-amd64
 </pre></div>
 </div>
-</div>
-<div class="section" id="kubectl-v1-16-7">
+</section>
+<section id="kubectl-v1-16-7">
 <h3><a class="reference external" href="https://github.com/kubernetes/kubectl/releases/tag/v0.16.7">Kubectl v1.16.7</a><a class="headerlink" href="#kubectl-v1-16-7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add - <span class="o">&amp;&amp;</span> <span class="se">\</span>
     <span class="nb">echo</span> <span class="s2">&quot;deb https://apt.kubernetes.io/ kubernetes-xenial main&quot;</span> <span class="p">|</span> sudo tee -a /etc/apt/sources.list.d/kubernetes.list
@@ -284,8 +285,8 @@ sudo apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
     sudo apt-get install -y <span class="nv">kubectl</span><span class="o">=</span><span class="m">1</span>.16.7-00 -V
 </pre></div>
 </div>
-</div>
-<div class="section" id="helm-v2-16-1">
+</section>
+<section id="helm-v2-16-1">
 <h3><a class="reference external" href="https://github.com/helm/helm/releases/tag/v2.16.1">Helm v2.16.1</a><a class="headerlink" href="#helm-v2-16-1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -LO https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz <span class="o">&amp;&amp;</span> <span class="se">\</span>
     tar xzvf helm-v2.16.1-linux-amd64.tar.gz <span class="o">&amp;&amp;</span> <span class="se">\</span>
@@ -293,16 +294,16 @@ sudo apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
     rm -rf helm-v2.16.1-linux-amd64.tar.gz linux-amd64
 </pre></div>
 </div>
-</div>
-<div class="section" id="skaffold-v1-8-0">
+</section>
+<section id="skaffold-v1-8-0">
 <h3><a class="reference external" href="https://skaffold.dev/">Skaffold v1.8.0</a><a class="headerlink" href="#skaffold-v1-8-0" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v1.8.0/skaffold-linux-amd64 <span class="o">&amp;&amp;</span> <span class="se">\</span>
     chmod +x skaffold <span class="o">&amp;&amp;</span> <span class="se">\</span>
     sudo mv skaffold /usr/local/bin
 </pre></div>
 </div>
-</div>
-<div class="section" id="k9s-v0-22-0">
+</section>
+<section id="k9s-v0-22-0">
 <h3><a class="reference external" href="https://github.com/derailed/k9s">k9s v0.22.0</a><a class="headerlink" href="#k9s-v0-22-0" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note: this one is not mandatory but it is such a great k8s tool that I couldn’t resist to add it!</p>
@@ -314,11 +315,11 @@ sudo apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
     rm -rf k9s
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="configuration">
+</section>
+</section>
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="minikube-config">
+<section id="minikube-config">
 <h3>Minikube config<a class="headerlink" href="#minikube-config" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo minikube start --vm-driver<span class="o">=</span>none --kubernetes-version<span class="o">=</span><span class="s1">&#39;v1.16.7&#39;</span>
 </pre></div>
@@ -340,30 +341,30 @@ sudo minikube addons <span class="nb">enable</span> ingress <span class="o">&amp
     sudo minikube addons <span class="nb">enable</span> helm-tiller
 </pre></div>
 </div>
-</div>
-<div class="section" id="helm-init">
+</section>
+<section id="helm-init">
 <h3>Helm init<a class="headerlink" href="#helm-init" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo helm init <span class="o">&amp;&amp;</span> <span class="se">\</span>
     sudo kubectl get pods --namespace kube-system <span class="p">|</span> grep tiller
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-bitnami-repo-to-helm-repos">
+</section>
+<section id="add-bitnami-repo-to-helm-repos">
 <h3>Add bitnami repo to Helm repos<a class="headerlink" href="#add-bitnami-repo-to-helm-repos" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo helm repo add bitnami https://charts.bitnami.com/bitnami
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="network-quick-config">
+</section>
+</section>
+<section id="network-quick-config">
 <h2>Network quick config<a class="headerlink" href="#network-quick-config" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="on-the-server">
+<section id="on-the-server">
 <h3>On the server<a class="headerlink" href="#on-the-server" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="k">$(</span>sudo minikube ip<span class="k">)</span><span class="s2"> substra-backend.node-1.com substra-frontend.node-1.com substra-backend.node-2.com substra-frontend.node-2.com&quot;</span> <span class="p">|</span> sudo tee -a /etc/hosts
 </pre></div>
 </div>
-</div>
-<div class="section" id="on-your-local-machine-mac-linux">
+</section>
+<section id="on-your-local-machine-mac-linux">
 <h3>On your local machine (Mac &amp; Linux)<a class="headerlink" href="#on-your-local-machine-mac-linux" title="Permalink to this headline">¶</a></h3>
 <p>Set the server external ip in the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file.</p>
 <blockquote>
@@ -372,9 +373,9 @@ sudo minikube addons <span class="nb">enable</span> ingress <span class="o">&amp
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;&lt;SERVER-EXTERNAL-IP&gt; substra-backend.node-1.com substra-frontend.node-1.com substra-backend.node-2.com substra-frontend.node-2.com&quot;</span> <span class="p">|</span> sudo tee -a /etc/hosts
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="clone-the-repositories-and-switch-to-the-correct-version">
+</section>
+</section>
+<section id="clone-the-repositories-and-switch-to-the-correct-version">
 <h2>Clone the repositories and switch to the correct version<a class="headerlink" href="#clone-the-repositories-and-switch-to-the-correct-version" title="Permalink to this headline">¶</a></h2>
 <p>Please refer to the <a class="reference external" href="https://github.com/SubstraFoundation/substra#compatibility-table">compatibility table</a>.</p>
 <blockquote>
@@ -387,8 +388,8 @@ git clone https://github.com/SubstraFoundation/substra-frontend.git --branch <sp
 git clone https://github.com/SubstraFoundation/substra-backend.git --branch <span class="m">0</span>.0.19
 </pre></div>
 </div>
-</div>
-<div class="section" id="fire-up">
+</section>
+<section id="fire-up">
 <h2>Fire up<a class="headerlink" href="#fire-up" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Note: In hlf-k8s repository, you will need to update the <code class="docutils literal notranslate"><span class="pre">skaffold.yaml</span></code> file and edit the <code class="docutils literal notranslate"><span class="pre">chaincodes[0].src</span></code> variable for each organisation.
@@ -417,8 +418,8 @@ curl substra-backend.node-1.com/readiness
 <li><p>Check the <a class="reference external" href="https://doc.substra.ai/setup/further_resources.html">troubleshooting section</a></p></li>
 <li><p>We also have a <a class="reference external" href="https://substra-workspace.slack.com/archives/CT54J1U2E">#help</a> channel on Slack</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
