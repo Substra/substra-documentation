@@ -2,7 +2,7 @@
 
 Assets are protected using a permission system.
 
-Permissions are either specified  by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).
+Permissions are either specified by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).
 
 ## Public vs Authorized_Ids
 
