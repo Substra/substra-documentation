@@ -14,7 +14,7 @@ Permissions are structured into two properties:
 Using this structure, there are 3 possible use-cases:
 
 - the asset is downloadable or processable by **all nodes** in the network => `Public = True`
-- the asset is downloadable or processable by **a set of nodes** in the network, listed by their identity -> `Public = True, Authorized_Ids = [NodeA, NodeB]`
+- the asset is downloadable or processable by **a set of nodes** in the network, listed by their identity -> `Public = False, Authorized_Ids = [NodeA, NodeB]`
 - the asset is only available for its owner => `Public  = False, Authorized_Ids = [MyNode]`
 
 
