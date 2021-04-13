@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Architecture &mdash; Substra 1.1 documentation</title>
@@ -90,14 +91,14 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
@@ -120,12 +121,12 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -194,15 +195,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="architecture">
+  <section id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
 <p>Main Substra repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra">https://github.com/SubstraFoundation/substra</a></p>
 <p><img alt="Software Architecture Overview" src="_images/architecture_overview.png" /></p>
-<div class="section" id="network">
+<section id="network">
 <h2>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">hlf-k8s</span></code> repository is an implementation of <a class="reference external" href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a> and is in charge of the initialization of the Fabric network. By default, it will create an <code class="docutils literal notranslate"><span class="pre">orderer</span></code> and two orgs (<code class="docutils literal notranslate"><span class="pre">org-1</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">org-2</span></code>).</p>
 <p>Substra Hyperledger Fabric Kubernetes repository: <a class="reference external" href="https://github.com/SubstraFoundation/hlf-k8s">https://github.com/SubstraFoundation/hlf-k8s</a></p>
-<div class="section" id="distributed-ledger-technology-dlt-smart-contracts">
+<section id="distributed-ledger-technology-dlt-smart-contracts">
 <h3>Distributed Ledger Technology (DLT) &amp; Smart contracts<a class="headerlink" href="#distributed-ledger-technology-dlt-smart-contracts" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Note: The network is based on the Chaincode repository and is initialized with Certificate Authorities via the deployment of the Hyperledger Fabric Kubernetes repository.</p>
@@ -215,8 +216,8 @@
 <li><p>Channel configuration: One channel whose members are all the orgs.</p></li>
 <li><p>Endorsement policies: for example, “any member of the orgs in the channel” (<a class="reference external" href="https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html#specifying-endorsement-policies-for-a-chaincode">details here</a>)</p></li>
 </ul>
-</div>
-<div class="section" id="ledger-a-private-and-permissioned-blockchain">
+</section>
+<section id="ledger-a-private-and-permissioned-blockchain">
 <h3>Ledger: a private and permissioned blockchain<a class="headerlink" href="#ledger-a-private-and-permissioned-blockchain" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>“The ledger is comprised of a blockchain (‘chain’) to store the immutable, sequenced record in blocks, as well as a state database to maintain current state. There is one ledger per channel. Each peer maintains a copy of the ledger for each channel of which they are a member.”</p>
@@ -254,34 +255,34 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="smart-contracts-chaincode">
+</section>
+<section id="smart-contracts-chaincode">
 <h3>Smart contracts (Chaincode)<a class="headerlink" href="#smart-contracts-chaincode" title="Permalink to this headline">¶</a></h3>
 <p>Substra Chaincode repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-chaincode">https://github.com/SubstraFoundation/substra-chaincode</a></p>
 <p>Smart contracts are a set of data, rules, definitions and processes that will govern the interactions between the different stakeholders and enable the complete traceability of data use. Additionally, smart contracts can be used for distributed and infalsifiable permissions.</p>
-</div>
-</div>
-<div class="section" id="backend-api-endpoints">
+</section>
+</section>
+<section id="backend-api-endpoints">
 <h2>Backend / API endpoints<a class="headerlink" href="#backend-api-endpoints" title="Permalink to this headline">¶</a></h2>
 <p>Substra backend repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-backend">https://github.com/SubstraFoundation/substra-backend</a></p>
 <p>The backend is developed in Python and uses the <a class="reference external" href="https://www.django-rest-framework.org/">Django Rest Framework</a>. Most tasks represented in workflows are run asynchronously. To plug the back-end to Hyperledger Fabric, we use the <a class="reference external" href="https://github.com/hyperledger/fabric-sdk-py">Python Fabric SDK</a>.</p>
 <p>The backend implements workflows illustrated in the previous figure. Note that these workflows are only an overview, these representations are not perfectly accurate. Please also note that authentication is not represented in these workflows.</p>
-</div>
-<div class="section" id="interface">
+</section>
+<section id="interface">
 <h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
 <p>Substra SDK &amp; CLI repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra">https://github.com/SubstraFoundation/substra</a></p>
-<div class="section" id="cli-python-sdk">
+<section id="cli-python-sdk">
 <h3>CLI &amp; Python SDK<a class="headerlink" href="#cli-python-sdk" title="Permalink to this headline">¶</a></h3>
 <p>The CLI provides an command line interface to interact with the Substra backend. The CLI makes it possible to add Assets to Substra and also to list registered Assets. See <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary">CLI References</a></p>
 <p>The SDK provides a Python SDK that permits interactions with the Substra backend. The Python SDK provides the same functionalities as the CLI and offers the flexibility of a Python environment. As Python is a favored programming language of data scientists, it makes it easier for them to interact with Substra. In addition, the SDK makes it possible to integrate Substra in any Python-based application. See <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">SDK References</a></p>
-</div>
-<div class="section" id="frontend-interface">
+</section>
+<section id="frontend-interface">
 <h3>Frontend Interface<a class="headerlink" href="#frontend-interface" title="Permalink to this headline">¶</a></h3>
 <p>Substra Frontend repository: <a class="reference external" href="https://github.com/SubstraFoundation/substra-frontend">https://github.com/SubstraFoundation/substra-frontend</a></p>
 <p>The Frontend is a neat tool to visualize and monitor your operations on the platform, your assets and the associated permissions.</p>
-</div>
-</div>
-<div class="section" id="substra-tools">
+</section>
+</section>
+<section id="substra-tools">
 <h2>Substra tools<a class="headerlink" href="#substra-tools" title="Permalink to this headline">¶</a></h2>
 <p>Python package defining base classes for assets submitted on the platform:</p>
 <ul class="simple">
@@ -294,13 +295,13 @@
 <li><p>Algo: algo script</p></li>
 <li><p>Dataset: data opener script</p></li>
 </ul>
-<div class="section" id="components-orchestration">
+<section id="components-orchestration">
 <h3>Components orchestration<a class="headerlink" href="#components-orchestration" title="Permalink to this headline">¶</a></h3>
 <p>Substra relies on several software layers that need to be coordinated together.
 To do so, we use <a class="reference external" href="https://kubernetes.io">Kubernetes</a>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
