@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Local Debug &mdash; Substra 1.1 documentation</title>
@@ -90,7 +91,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Local Debug</a><ul>
@@ -110,17 +111,17 @@
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -189,7 +190,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="local-debug">
+  <section id="local-debug">
 <h1>Local Debug<a class="headerlink" href="#local-debug" title="Permalink to this headline">¶</a></h1>
 <p>For a complete example, see the <a class="reference external" href="https://github.com/SubstraFoundation/substra/tree/master/examples/debugging">debugging example</a>.</p>
 <ul class="simple">
@@ -207,7 +208,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="dependencies">
+<section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Substra must be installed.</p></li>
@@ -219,8 +220,8 @@
 </li>
 </ul>
 <p>If you want to debug your script using assets from the Substra platform, you also need access to the platform the assets are on.</p>
-</div>
-<div class="section" id="run-your-code-locally">
+</section>
+<section id="run-your-code-locally">
 <h2>Run your code locally<a class="headerlink" href="#run-your-code-locally" title="Permalink to this headline">¶</a></h2>
 <p>With this installation, you can write scripts using the <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">SDK</a> as you would for a remote execution, then
 set the <code class="docutils literal notranslate"><span class="pre">debug</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the client.</p>
@@ -228,14 +229,14 @@ set the <code class="docutils literal notranslate"><span class="pre">debug</span
 </pre></div>
 </div>
 <p>Contrary to the default execution, the execution is done synchronously, so the script waits for the task in progress to end before continuing.<br />The execution of the tuples happens in Docker containers that are spawned on the fly and removed once the execution is done.</p>
-<div class="section" id="use-assets-from-a-deployed-substra-platform-and-local-assets">
+<section id="use-assets-from-a-deployed-substra-platform-and-local-assets">
 <h3>Use assets from a deployed Substra platform and local assets<a class="headerlink" href="#use-assets-from-a-deployed-substra-platform-and-local-assets" title="Permalink to this headline">¶</a></h3>
 <p>With this, you gain access to the platform in ‘read-only’ mode and any asset you create is created locally.</p>
 <p>This means that any function to get, describe or download an asset works with assets from the platform and local assets. Functions to
 list assets will list the assets from the platform and the local ones.<br />Functions that create a new asset (they start with <code class="docutils literal notranslate"><span class="pre">add</span></code>) only create local assets.<br />To differentiate between a local asset and a remote one, look at their key: for local assets, it starts with <code class="docutils literal notranslate"><span class="pre">local_</span></code>.</p>
 <p>Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).</p>
-</div>
-<div class="section" id="dependency-between-assets">
+</section>
+<section id="dependency-between-assets">
 <h3>Dependency between assets<a class="headerlink" href="#dependency-between-assets" title="Permalink to this headline">¶</a></h3>
 <p>Any asset created locally can depend on an asset from the platform or on another local asset:</p>
 <ul class="simple">
@@ -247,10 +248,10 @@ list assets will list the assets from the platform and the local ones.<br />Func
 or from a compute plan defined on the platform. This is impossible because it is forbidden to download models from the platform.</p>
 <p>Since no data can leave the platform, a task depending on a dataset from the platform uses the fake data generated from the opener. The
 number of fake samples generated is equal to the number of samples the task would have used.</p>
-</div>
-<div class="section" id="debugging-with-logs-and-breakpoints">
+</section>
+<section id="debugging-with-logs-and-breakpoints">
 <h3>Debugging with logs and breakpoints<a class="headerlink" href="#debugging-with-logs-and-breakpoints" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="access-the-logs">
+<section id="access-the-logs">
 <h4>Access the logs<a class="headerlink" href="#access-the-logs" title="Permalink to this headline">¶</a></h4>
 <p>In debug mode, the logs of the execution of the traintuples and testtuples are saved
 in the <code class="docutils literal notranslate"><span class="pre">log</span></code> field.</p>
@@ -260,8 +261,8 @@ in the <code class="docutils literal notranslate"><span class="pre">log</span></
 </pre></div>
 </div>
 <p>Moreover, if there is an error in the execution, those logs are displayed in the call stack.<br />So any <code class="docutils literal notranslate"><span class="pre">print</span></code> or warning in the algo file for example will be displayed.</p>
-</div>
-<div class="section" id="debug-with-pdb">
+</section>
+<section id="debug-with-pdb">
 <h4>Debug with pdb<a class="headerlink" href="#debug-with-pdb" title="Permalink to this headline">¶</a></h4>
 <p>As said above, the tuples are executed in Docker containers spawned on the fly and deleted at the end of the execution.<br />If you want access to the container while it runs, you can use <a class="reference external" href="https://docs.python.org/3.6/library/pdb.html#pdb.set_trace"><code class="docutils literal notranslate"><span class="pre">pdb</span></code></a> to pause the execution
 until you connect to the container.</p>
@@ -292,10 +293,10 @@ container (first column).</p>
 </pre></div>
 </div>
 <p>and can now use <code class="docutils literal notranslate"><span class="pre">pdb</span></code> commands.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>

@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Concepts &mdash; Substra 1.1 documentation</title>
@@ -90,14 +91,14 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#objective">Objective</a></li>
@@ -134,12 +135,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -208,7 +209,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="concepts">
+  <section id="concepts">
 <h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="#objective">Objective</a></p></li>
@@ -221,7 +222,7 @@
 </ul>
 <p>All of the concepts mentioned below are assets (basically a set of files) which are associated with a unique identifier on the platform. Below is a global figure gathering all the assets and the links between each other.</p>
 <p><img alt="Relationships between assets" src="_images/assets_relationships.png" /></p>
-<div class="section" id="objective">
+<section id="objective">
 <h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
 <p>An objective is simply made of:</p>
 <ul class="simple">
@@ -229,8 +230,8 @@
 <li><p>a metrics script (<a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#metrics">python implementation</a>).</p></li>
 </ul>
 <p>It mainly aims at standardizing the evaluation process of ML models. Since Substra focuses on supervised learning, each models trained on Substra has to be linked to an objective for evaluation.</p>
-</div>
-<div class="section" id="dataset">
+</section>
+<section id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
 <p>A <em>dataset</em> is the abstraction that manages a coherent collection of <em>data samples</em> for a specific purpose.
 It makes the link between a set of <strong>data samples</strong> and an <strong>Objective</strong> through an <strong>opener</strong>.</p>
@@ -240,22 +241,22 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 <li><p>a description: define the opener interface, that is to say what is returned by the opener.</p></li>
 </ul>
 <p>For now Substra users only work with labeled datasets. Substra users are expected to design preprocess and build specific clean and labeled datasets by applying preprocessing tasks and for a specific objective. Part of the operations can be done in the opener.</p>
-<div class="section" id="data-samples-and-datasets">
+<section id="data-samples-and-datasets">
 <h3>Data samples and datasets<a class="headerlink" href="#data-samples-and-datasets" title="Permalink to this headline">¶</a></h3>
 <p>Datasets are not a fixed set of data samples. Data samples can be linked to multiple datasets and new data samples can be linked to existing datasets even if these already have links to other data samples.</p>
 <p>Datasets act as an interface between algorithms and objectives on one side and data samples on the other side.</p>
-</div>
-<div class="section" id="data-opener">
+</section>
+<section id="data-opener">
 <h3>Data opener<a class="headerlink" href="#data-opener" title="Permalink to this headline">¶</a></h3>
 <p>A data opener is a script which reads files and returns in-memory objects that algorithms and metrics will be able to use.</p>
 <p><img alt="Data opener" src="_images/dataset-files-opener.png" /></p>
-</div>
-<div class="section" id="link-with-other-concepts">
+</section>
+<section id="link-with-other-concepts">
 <h3>Link with other concepts<a class="headerlink" href="#link-with-other-concepts" title="Permalink to this headline">¶</a></h3>
 <p>A dataset can only be associated with a single objective.</p>
-</div>
-</div>
-<div class="section" id="algo">
+</section>
+</section>
+<section id="algo">
 <h2>Algo<a class="headerlink" href="#algo" title="Permalink to this headline">¶</a></h2>
 <p>An algo is a script (typically a python file) for defining and training an ML architecture, together with a specific context specifying the dependencies (represented as a Dockerfile) for running the script.</p>
 <p>The Docker container is built from an archive containing:</p>
@@ -264,20 +265,20 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 <li><p>an algo python script</p></li>
 </ul>
 <p>The algo must follow a specific template to be executed properly, basically overloading a train and a predict function (<a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo">python implementation</a>).</p>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Link with other concepts<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>An algorithm is linked to a unique objective.</p>
-</div>
-</div>
-<div class="section" id="model">
+</section>
+</section>
+<section id="model">
 <h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>A model is an architecture and a set of parameters specifying completely a predictive function. Typically, it corresponds to the weights of a neural networks in the form of a parsable file (e.g. json or hdf5). Substra helps training new models from older ones by using an algorithm and a dataset.</p>
-<div class="section" id="id2">
+<section id="id2">
 <h3>Link with other concepts<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>A model is linked with one or several input models, a dataset, and an algo (and a objective by transitivity).</p>
-</div>
-</div>
-<div class="section" id="traintuple">
+</section>
+</section>
+<section id="traintuple">
 <h2>Traintuple<a class="headerlink" href="#traintuple" title="Permalink to this headline">¶</a></h2>
 <p>A traintuple is the explicit specification of a training task. It contains the references of all the assets involved in the training task:</p>
 <ul class="simple">
@@ -287,12 +288,12 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 <li><p>the set of input models (optional)</p></li>
 </ul>
 <p>A sequence of traintuple defines a training trajectory.</p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Link with other concepts<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>A traintuple is linked with an objective, one algo, several models, and several train data samples.</p>
-</div>
-</div>
-<div class="section" id="testtuple">
+</section>
+</section>
+<section id="testtuple">
 <h2>Testtuple<a class="headerlink" href="#testtuple" title="Permalink to this headline">¶</a></h2>
 <p>A testtuple is the explicit specification of a testing task, corresponding to the evaluation of a model on test data.  It contains the references of all the assets involved in the testing task:</p>
 <ul class="simple">
@@ -303,17 +304,17 @@ It makes the link between a set of <strong>data samples</strong> and an <strong>
 </ul>
 <p>However, this can be reduced to simply providing the sole traintuple. The platform will explore its relationship with other assets to find the matching algo, data manager and test data samples.</p>
 <p>Using the metrics of the objective linked to the algo, a performance is computed.</p>
-<div class="section" id="id4">
+<section id="id4">
 <h3>Link with other concepts<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>A testtuple is linked with a traintuple.</p>
-</div>
-</div>
-<div class="section" id="machine-learning-tasks">
+</section>
+</section>
+<section id="machine-learning-tasks">
 <h2>Machine Learning tasks<a class="headerlink" href="#machine-learning-tasks" title="Permalink to this headline">¶</a></h2>
 <p>Training and testing tasks are specified by <a class="reference external" href="#traintuple">traintuples</a> and <a class="reference external" href="#testtuple">testtuples</a> within Substra.</p>
 <p>In particular, they contain the specification of train or test data, that are located in one node for a given <code class="docutils literal notranslate"><span class="pre">traintuple</span></code> or <code class="docutils literal notranslate"><span class="pre">testtuple</span></code>.</p>
 <p>The training and testing tasks take place in the node where data are located.</p>
-<div class="section" id="train-and-test-data">
+<section id="train-and-test-data">
 <h3>Train and test data<a class="headerlink" href="#train-and-test-data" title="Permalink to this headline">¶</a></h3>
 <p>Each data asset is labeled as either <em>test</em> or <em>train</em> data. An objective then references which data assets should be used during the testing phase of an algorithm through the <code class="docutils literal notranslate"><span class="pre">test_data_keys</span></code> objective.
 Of course, only assets set as test data can be referenced as test data for an objective, and only the ones set as train data can be referenced by traintuples for training. This ensures test data can never be used during the training phase.
@@ -328,8 +329,8 @@ However, it is possible to specify testing tasks with train data, in order to en
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="training-task">
+</section>
+<section id="training-task">
 <h3>Training task<a class="headerlink" href="#training-task" title="Permalink to this headline">¶</a></h3>
 <p>When a new traintuple is added to Substra, the node containing the associated data will execute the training task.
 Within this node, Substra creates a new docker container containing the algorithm and mounts in separated volumes its training dependencies:</p>
@@ -341,8 +342,8 @@ Within this node, Substra creates a new docker container containing the algorith
 </ul>
 <p>Substra then runs the algorithm <strong>in training mode</strong> a new model is generated and saved to the <strong>model</strong> volume.</p>
 <p>At this point, the training is over.</p>
-</div>
-<div class="section" id="testing-task">
+</section>
+<section id="testing-task">
 <h3>Testing task<a class="headerlink" href="#testing-task" title="Permalink to this headline">¶</a></h3>
 <p>A testing task is triggered when a new testtuple is added to the platform.
 It occurs in the node where the associated test data are located.</p>
@@ -361,13 +362,13 @@ It occurs in the node where the associated test data are located.</p>
 <li><p>the <strong>metrics</strong> volume contains the objective metrics script</p></li>
 </ul>
 <p>This time however, the <strong>pred</strong> volume contains the predictions. The metrics script is therefore able to compare them with the actual values in <strong>data</strong>. It generates a <strong>perf.json</strong> file containing the score and saves it to the <strong>pred</strong> volume.</p>
-</div>
-<div class="section" id="summary-of-docker-containers-and-volumes">
+</section>
+<section id="summary-of-docker-containers-and-volumes">
 <h3>Summary of Docker containers and volumes<a class="headerlink" href="#summary-of-docker-containers-and-volumes" title="Permalink to this headline">¶</a></h3>
 <p><img alt="Docker containers and volumes" src="_images/training_phase1.png" /></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

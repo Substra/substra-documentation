@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Permissions &mdash; Substra 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Substra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+</ul>
+<p><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
+</ul>
+<p><span class="caption-text">Platform description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+</ul>
+<p><span class="caption-text">Specific entry points</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Substra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Permissions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="permissions">
+<h1>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h1>
+<p>Permissions are asset-based, which means every asset (dataset, model, etc) has its own permission.</p>
+<p>Permissions are either specified by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).</p>
+<section id="public-vs-authorized-ids">
+<h2>Public vs Authorized_Ids<a class="headerlink" href="#public-vs-authorized-ids" title="Permalink to this headline">¶</a></h2>
+<p>Permissions are structured into two properties:</p>
+<ul class="simple">
+<li><p><em>Public</em> (bool): if True, the asset is downloadable/processable <em>by all nodes</em>  in the channel.</p></li>
+<li><p><em>Authorized ids</em> (list of strings): a <em>list of nodes</em> allowed to process/download the asset.</p></li>
+</ul>
+<p>Using this structure, there are 3 possible use-cases:</p>
+<ul class="simple">
+<li><p>the asset is downloadable or processable by <strong>all nodes</strong> in the network =&gt; <code class="docutils literal notranslate"><span class="pre">Public</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p>the asset is downloadable or processable by <strong>a set of nodes</strong> in the network, listed by their identity -&gt; <code class="docutils literal notranslate"><span class="pre">Public</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">Authorized_Ids</span> <span class="pre">=</span> <span class="pre">[NodeA,</span> <span class="pre">NodeB]</span></code></p></li>
+<li><p>the asset is only available for its owner =&gt; <code class="docutils literal notranslate"><span class="pre">Public</span>&#160; <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">Authorized_Ids</span> <span class="pre">=</span> <span class="pre">[MyNode]</span></code></p></li>
+</ul>
+</section>
+<section id="process-vs-download">
+<h2>Process vs Download<a class="headerlink" href="#process-vs-download" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of permissions:</p>
+<ul class="simple">
+<li><p><strong>download</strong>: possibility to download the asset, for users of a node</p></li>
+<li><p><strong>process</strong>: possibility to use the asset in a node on the platform without downloading it</p></li>
+</ul>
+<p>Note that if a node has no permissions to process an asset, it won’t have permissions to download it.  Conversely, permissions to download imply permissions to process.</p>
+</section>
+<section id="updating-permissions">
+<h2>Updating permissions<a class="headerlink" href="#updating-permissions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Permissions are immutable</strong>: it is not possible to update permissions.</p>
+</section>
+<section id="permissions-by-asset-type">
+<h2>Permissions by asset type<a class="headerlink" href="#permissions-by-asset-type" title="Permalink to this headline">¶</a></h2>
+<p>Unless stated otherwise, items in this list refer to <em>Process</em> permission.</p>
+<ul class="simple">
+<li><p><strong>Dataset</strong>: Permission to use this dataset for training, or to download the opener/description using the CLI/SDK</p>
+<ul>
+<li><p>Note: The data itself can NEVER be downloaded. However, the opener and the dataset description can be downloaded.</p></li>
+</ul>
+</li>
+<li><p><strong>Algo</strong>: Permission to use this algo for training, or to download it using the CLI/SDK</p></li>
+<li><p><strong>Traintuple, Aggregatetuple</strong>: Permission to process/download the out-model</p></li>
+<li><p><strong>Composite Traintuple</strong>: Permission to process/download the trunk out-model. For the head out-model, see “Permission inheritance”.</p></li>
+<li><p><strong>Model</strong> (out-models)</p>
+<ul>
+<li><p><em>Process</em>: Permission to use this model as an <em>in-model</em></p></li>
+<li><p><em>Download</em>: Permission to download a model using the CLI/SDK</p></li>
+</ul>
+</li>
+</ul>
+<section id="permission-inheritance">
+<h3>Permission inheritance<a class="headerlink" href="#permission-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Certain types of assets require the user to specify the permissions explicitly at creation time. Other types of assets have their permissions determined automatically from dependent assets.</p>
+<section id="traintuple-aggregatetuple">
+<h4>Traintuple, Aggregatetuple<a class="headerlink" href="#traintuple-aggregatetuple" title="Permalink to this headline">¶</a></h4>
+<p><em>Traintuple</em> and <em>Aggregatetuple</em> permissions are the intersection of permissions for the associated <em>Dataset</em> and Algo. More precisely:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Set Dataset Permissions</th>
+<th>Set Algo Permissions</th>
+<th>Induced Model Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>all</code></td>
+<td><code>all</code></td>
+<td><code>all</code></td>
+</tr>
+<tr>
+<td>[<code>nodeA</code>, <code>nodeB</code>]</td>
+<td>[<code>nodeA</code>, <code>nodeC</code>]</td>
+<td>[<code>nodeA</code>]</td>
+</tr>
+<tr>
+<td>[] -&gt; owner only</td>
+<td>[] -&gt; owner only</td>
+<td>exists only if same owner of dataset and algo. In this case owner only</td>
+</tr>
+</tbody>
+</table><p>Default values are <em>owner only</em> for download and process.</p>
+</section>
+<section id="models">
+<h4>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h4>
+<p><em>Traintuple</em> and <em>Aggregatetuple</em> out-models inherit their permissions from their <em>Traintuple</em> or <em>Aggregatetuple</em>.</p>
+<p>For <em>Composite traintuples</em>:</p>
+<ul class="simple">
+<li><p>The <em>head</em> out-model permissions are set to be non-public, and processable/downloadable only by the associated <em>Dataset</em>’s owner</p></li>
+<li><p>The <em>trunk</em> out-model permissions are specified explicitly by the user when registering the <em>Composite traintuple</em></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Substra Foundation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

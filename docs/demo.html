@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Demo &mdash; Substra 1.1 documentation</title>
@@ -90,7 +91,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting started</span></p>
+<p><span class="caption-text">Getting started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
@@ -130,17 +131,17 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Platform description</span></p>
+<p><span class="caption-text">Platform description</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Specific entry points</span></p>
+<p><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Contribute</span></p>
+<p><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -209,24 +210,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="demo">
+  <section id="demo">
 <h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
 <p>Check this <a class="reference external" href="https://www.substra.ai/en/demo">page</a> and get in touch with us, we will then provide you with instructions and credentials!</p>
-<div class="section" id="pre-requisites-overview-of-the-demo">
+<section id="pre-requisites-overview-of-the-demo">
 <h2>Pre-requisites &amp; Overview of the demo<a class="headerlink" href="#pre-requisites-overview-of-the-demo" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="terminology">
+<section id="terminology">
 <h3>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h3>
 <p>To follow this tutorial for using the demo instance, it is assumed you have read the documentation of the Substra Framework and are familiar with its core concepts (See <a class="reference external" href="https://doc.substra.ai/glossary.html">Glossary</a>). In particular the following terms: organisation, asset, algo, objective, metric, opener, train task, test task.</p>
-</div>
-<div class="section" id="technical-pre-requisites">
+</section>
+<section id="technical-pre-requisites">
 <h3>Technical pre-requisites<a class="headerlink" href="#technical-pre-requisites" title="Permalink to this headline">¶</a></h3>
 <p>The demo instance is deployed on a cloud infrastructure. To use it you will need:</p>
 <ul class="simple">
 <li><p>the credentials that was provided to you after you contacted us for accessing the demo instance</p></li>
 <li><p>access to a computer (e.g. a laptop, a VM…) with an internet connection, on which you have <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges. Preferably not a Windows machine, although this is still manageable (see below).</p></li>
 </ul>
-</div>
-<div class="section" id="overview-what-you-can-do-with-the-demo-instance">
+</section>
+<section id="overview-what-you-can-do-with-the-demo-instance">
 <h3>Overview: what you can do with the demo instance<a class="headerlink" href="#overview-what-you-can-do-with-the-demo-instance" title="Permalink to this headline">¶</a></h3>
 <p>Although this can be inferred from the below tutorial by experienced readers, it might be good to be explicit about the proposed demo:</p>
 <ul class="simple">
@@ -243,11 +244,11 @@
 </ol>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="configuration">
+</section>
+</section>
+<section id="configuration">
 <h2>1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="install-the-substra-client">
+<section id="install-the-substra-client">
 <h3>Install the Substra client<a class="headerlink" href="#install-the-substra-client" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Substra is not yet compatible with Windows. However you should be able to make it work with the Windows Linux Subsystem (see <a class="reference external" href="https://doc.substra.ai/usage.html?highlight=wsl#installation">Substra documentation</a>), or inside a Linux virtual machine.</p>
@@ -281,8 +282,8 @@ pip install <span class="nv">substratools</span><span class="o">==</span><span c
 </pre></div>
 </div>
 <p>This section is documented <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/blob/master/docs/api.md#algo">here</a>.</p>
-</div>
-<div class="section" id="edit-your-hosts-file">
+</section>
+<section id="edit-your-hosts-file">
 <h3>Edit your hosts file<a class="headerlink" href="#edit-your-hosts-file" title="Permalink to this headline">¶</a></h3>
 <p>As the demo instance is a demo instance, you will have to create a link between the server ip address (that we provided you together with your credentials) and the 2 nodes domains used in the demo:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace &lt;CHANGE_ME&gt; with the ip that were provided together with your credentials</span>
@@ -299,8 +300,8 @@ curl substra-backend.node-1.com/readiness
 </pre></div>
 </div>
 <p>You should receive an <code class="docutils literal notranslate"><span class="pre">&quot;OK&quot;</span></code> answer, if not please check again your <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file. You can also use your browser to visit <a class="reference external" href="http:substra-frontend.node-1.com">substra-frontend.node-1.com</a> &amp; <a class="reference external" href="http:substra-frontend.node-2.com">substra-frontend.node-2.com</a> (without https, because this is demo).</p>
-</div>
-<div class="section" id="login">
+</section>
+<section id="login">
 <h3>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h3>
 <p>You can now configure your local Substra client, <em>with the credentials that were provided to access the demo instance</em>, to connect to the <code class="docutils literal notranslate"><span class="pre">node-1</span></code> which hosts the organisation <code class="docutils literal notranslate"><span class="pre">org-1</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure the client, with a profile, a user, a password and an url</span>
@@ -316,31 +317,31 @@ substra list node --profile &lt;PROFILE&gt;
 substra list dataset --profile &lt;PROFILE&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="follow-titanic-example">
+</section>
+</section>
+<section id="follow-titanic-example">
 <h2>2. Follow Titanic example<a class="headerlink" href="#follow-titanic-example" title="Permalink to this headline">¶</a></h2>
 <p>With this example you will find everything you need to run a first end-to-end example with the tabular data of the Titanic: see this <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/examples/titanic">repository</a> for further details.</p>
 <p>If you feel more comfortable working with local files, you can clone the <a class="reference external" href="https://github.com/SubstraFoundation/substra">Substra repository</a> to get the full examples located in the <code class="docutils literal notranslate"><span class="pre">/example</span></code> folder.</p>
-</div>
-<div class="section" id="work-with-your-own-assets">
+</section>
+<section id="work-with-your-own-assets">
 <h2>3. Work with your own assets<a class="headerlink" href="#work-with-your-own-assets" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><strong>Note</strong>: This is a demo instance, please do not use any sensitive asset on this platform!</p>
 </div></blockquote>
 <p>The <a class="reference external" href="https://github.com/SubstraFoundation/substra/tree/master/examples/debugging">debugging section</a> can be of help preparing your asset, please have a look!</p>
-<div class="section" id="preparing-your-dataset">
+<section id="preparing-your-dataset">
 <h3>Preparing your dataset<a class="headerlink" href="#preparing-your-dataset" title="Permalink to this headline">¶</a></h3>
 <p>The first step is partitioning your data, and create a test dataset and a train dataset. Following the Titanic example, you will first need to generate data samples (in the <code class="docutils literal notranslate"><span class="pre">/test_data_samples</span></code> and <code class="docutils literal notranslate"><span class="pre">/train_data_samples</span></code> folders respectively) by updating the <code class="docutils literal notranslate"><span class="pre">generate_data_samples.py</span></code> script with the path to you dataset and running it:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install -r scripts/requirements.txt
 python3 scripts/generate_data_samples.py
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-your-assets">
+</section>
+<section id="testing-your-assets">
 <h3>Testing your assets<a class="headerlink" href="#testing-your-assets" title="Permalink to this headline">¶</a></h3>
 <p>To test your assets, you will need to prepare the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code>, <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> and <code class="docutils literal notranslate"><span class="pre">algo.py</span></code> files which both rely on classes imported from the <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/tree/master/substratools">substratools</a>.</p>
-<div class="section" id="training-tasks">
+<section id="training-tasks">
 <h4>Training tasks<a class="headerlink" href="#training-tasks" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train your model with the train_data_samples</span>
 python3 assets/algo/algo.py train <span class="se">\</span>
@@ -370,8 +371,8 @@ python3 assets/objective/metrics.py <span class="se">\</span>
   --log-path assets/logs/train_metrics.log
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-tasks">
+</section>
+<section id="testing-tasks">
 <h4>Testing tasks<a class="headerlink" href="#testing-tasks" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict on test_data_samples with your previously trained model</span>
 python3 assets/algo/algo.py predict <span class="se">\</span>
@@ -394,9 +395,9 @@ python3 assets/objective/metrics.py <span class="se">\</span>
 </pre></div>
 </div>
 <p>You will need to update or follow the relevant path to add your assets or get the logs and model.</p>
-</div>
-</div>
-<div class="section" id="adding-your-dataset-the-associated-objective">
+</section>
+</section>
+<section id="adding-your-dataset-the-associated-objective">
 <h3>Adding your dataset &amp; the associated objective<a class="headerlink" href="#adding-your-dataset-the-associated-objective" title="Permalink to this headline">¶</a></h3>
 <p>You will now have to prepare the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> files, including their corresponding <code class="docutils literal notranslate"><span class="pre">description.md</span></code> and <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> (where you have to add your dependencies). All assets are based on <a class="reference external" href="https://github.com/SubstraFoundation/substra-tools/tree/master/substratools">substratools</a> classes to ease the process.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">add_dataset_objective.py</span></code> script is in charge of registering your dataset as an asset of the <code class="docutils literal notranslate"><span class="pre">organisation</span></code> you belong to. With your dataset will also be registered the <code class="docutils literal notranslate"><span class="pre">opener.py</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">metrics.py</span></code> files. Before running the script, please make sure you edit it to update the following:</p>
@@ -441,8 +442,8 @@ python3 assets/objective/metrics.py <span class="se">\</span>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get dataset cb8d7f928d956ba6e9596a9b8624a0c7b0312eccd099f8791ca284bc05bd9416 --profile node-1
 </pre></div>
 </div>
-</div>
-<div class="section" id="adding-your-learning-algorithm">
+</section>
+<section id="adding-your-learning-algorithm">
 <h3>Adding your learning algorithm<a class="headerlink" href="#adding-your-learning-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>You will need to update the <code class="docutils literal notranslate"><span class="pre">algo.py</span></code> file as well as the <code class="docutils literal notranslate"><span class="pre">description.md</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, and finally push it to the platform with the dedicated script:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 add_train_algo.py
@@ -478,19 +479,19 @@ the <code class="docutils literal notranslate"><span class="pre">fake_data</span
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="consult-the-performance-from-the-ledger">
+</section>
+<section id="consult-the-performance-from-the-ledger">
 <h3>Consult the performance from the ledger<a class="headerlink" href="#consult-the-performance-from-the-ledger" title="Permalink to this headline">¶</a></h3>
 <p>Performances will be exported to a <code class="docutils literal notranslate"><span class="pre">perf.json</span></code> file. You can also use the CLI commands:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra get traintuple &lt;KEY&gt; --profile &lt;PROFILE&gt;
 substra get testtuple &lt;KEY&gt; --profile &lt;PROFILE&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="resources">
+</section>
+</section>
+<section id="resources">
 <h2>4. Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="find-help">
+<section id="find-help">
 <h3>Find help<a class="headerlink" href="#find-help" title="Permalink to this headline">¶</a></h3>
 <p>Feeling lost? Remember, you can use <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">--help</span></code> anytime:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Usage: substra <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
@@ -519,8 +520,8 @@ Commands:
 </pre></div>
 </div>
 <p>You can also get help for specific commands, for example <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">download</span> <span class="pre">--help</span></code>.</p>
-</div>
-<div class="section" id="get-inspired">
+</section>
+<section id="get-inspired">
 <h3>Get inspired<a class="headerlink" href="#get-inspired" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/examples/titanic">Titanic example</a>, included in the Substra repository, is ready to run but you can also have a look at the <a class="reference external" href="https://github.com/SubstraFoundation/substra-examples">community examples</a>:</p>
 <ul class="simple">
@@ -531,8 +532,8 @@ Commands:
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-examples/tree/master/mnist-dp">MNIST with differential privacy</a></p></li>
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra-examples/tree/master/deepfake-detection">Deepfake detection</a></p></li>
 </ul>
-</div>
-<div class="section" id="documentation">
+</section>
+<section id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doc.substra.ai">General documentation</a></p></li>
@@ -540,9 +541,9 @@ Commands:
 <li><p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">Python SDK documentation</a></p></li>
 <li><p><a class="reference internal" href="cheatsheet_cli.html"><span class="doc">Substra cheat sheet</span></a></p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
