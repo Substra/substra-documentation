@@ -177,7 +177,7 @@
             
   <section id="permissions">
 <h1>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h1>
-<p>Assets are protected using a permission system.</p>
+<p>Permissions are asset-based, which means every asset (dataset, model, etc) has its own permission.</p>
 <p>Permissions are either specified by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).</p>
 <section id="public-vs-authorized-ids">
 <h2>Public vs Authorized_Ids<a class="headerlink" href="#public-vs-authorized-ids" title="Permalink to this headline">¶</a></h2>
@@ -210,14 +210,18 @@
 <h2>Permissions by asset type<a class="headerlink" href="#permissions-by-asset-type" title="Permalink to this headline">¶</a></h2>
 <p>Unless stated otherwise, items in this list refer to <em>Process</em> permission.</p>
 <ul class="simple">
-<li><p><strong>Dataset</strong>: Permission to use this dataset for training</p></li>
-<li><p><strong>Algo</strong>: Permission to use this algo for training</p></li>
+<li><p><strong>Dataset</strong>: Permission to use this dataset for training, or to download the opener/description using the CLI/SDK</p>
+<ul>
+<li><p>Note: The data itself can NEVER be downloaded. However, the opener and the dataset description can be downloaded.</p></li>
+</ul>
+</li>
+<li><p><strong>Algo</strong>: Permission to use this algo for training, or to download it using the CLI/SDK</p></li>
 <li><p><strong>Traintuple, Aggregatetuple</strong>: Permission to process/download the out-model</p></li>
 <li><p><strong>Composite Traintuple</strong>: Permission to process/download the trunk out-model. For the head out-model, see “Permission inheritance”.</p></li>
 <li><p><strong>Model</strong> (out-models)</p>
 <ul>
-<li><p><em>Process</em>: Permission to use this model as an <em>inModel</em></p></li>
-<li><p><em>Download</em>: Permission to export this model</p></li>
+<li><p><em>Process</em>: Permission to use this model as an <em>in-model</em></p></li>
+<li><p><em>Download</em>: Permission to download a model using the CLI/SDK</p></li>
 </ul>
 </li>
 </ul>

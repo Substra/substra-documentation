@@ -1,6 +1,6 @@
 # Permissions
 
-Assets are protected using a permission system.
+Permissions are asset-based, which means every asset (dataset, model, etc) has its own permission.
 
 Permissions are either specified by the user at asset registration time, or they are automatically inherited from dependent assets (see “Permission inheritance”).
 
@@ -34,13 +34,14 @@ Note that if a node has no permissions to process an asset, it won't have permis
 
 Unless stated otherwise, items in this list refer to *Process* permission.
 
-- **Dataset**: Permission to use this dataset for training
-- **Algo**: Permission to use this algo for training
+- **Dataset**: Permission to use this dataset for training, or to download the opener/description using the CLI/SDK
+  - Note: The data itself can NEVER be downloaded. However, the opener and the dataset description can be downloaded.
+- **Algo**: Permission to use this algo for training, or to download it using the CLI/SDK
 - **Traintuple, Aggregatetuple**: Permission to process/download the out-model
 - **Composite Traintuple**: Permission to process/download the trunk out-model. For the head out-model, see “Permission inheritance”.
 - **Model** (out-models)
-  - *Process*: Permission to use this model as an *inModel*
-  - *Download*: Permission to export this model
+  - *Process*: Permission to use this model as an *in-model*
+  - *Download*: Permission to download a model using the CLI/SDK
 
 ### Permission inheritance
 
