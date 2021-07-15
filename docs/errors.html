@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Common errors &mdash; Substra 1.1 documentation</title>
@@ -89,24 +88,24 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
-<p><span class="caption-text">Getting started</span></p>
+<p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Local Debug</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/index.html">Server setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo.html">Demo</a></li>
 </ul>
-<p><span class="caption-text">Platform description</span></p>
+<p class="caption"><span class="caption-text">Platform description</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
-<p><span class="caption-text">Specific entry points</span></p>
+<p class="caption"><span class="caption-text">Specific entry points</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
-<p><span class="caption-text">Contribute</span></p>
+<p class="caption"><span class="caption-text">Contribute</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing to Substra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publish.html">Build &amp; publish the documentation</a></li>
@@ -175,15 +174,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="common-errors">
+  <div class="section" id="common-errors">
 <h1>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h1>
-<section id="command-line-interface">
+<div class="section" id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/cli.md#summary">CLI documentation</a></p>
 <blockquote>
 <div><p>Remember: you can use <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">--help</span></code> and <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">&lt;command&gt;</span> <span class="pre">--help</span></code> anytime!</p>
 </div></blockquote>
-<section id="substra-login">
+<div class="section" id="substra-login">
 <h3>substra login<a class="headerlink" href="#substra-login" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">login</span> <span class="pre">--profile</span> <span class="pre">&lt;profile&gt;</span> <span class="pre">--username</span> <span class="pre">&lt;username&gt;</span> <span class="pre">--password</span> <span class="pre">'&lt;password&gt;'</span></code></p>
@@ -207,8 +206,8 @@ You can also try to reach the <code class="docutils literal notranslate"><span c
 </pre></div>
 </div>
 <p>This error occurs when you make more than X login calls in a given minute. You just need to wait a bit for it to disappear. The value of X depends on which value you set for the <code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES</span></code> environment variable. Default value when launching with skaffold is 120. (tips from <a class="reference external" href="https://github.com/jmorel">jmorel</a> <a class="reference external" href="https://github.com/SubstraFoundation/substra/issues/209">here</a>)</p>
-</details></section>
-<section id="substra-list-get-describe-download-an-asset">
+</details></div>
+<div class="section" id="substra-list-get-describe-download-an-asset">
 <h3>substra list/get/describe/download an asset<a class="headerlink" href="#substra-list-get-describe-download-an-asset" title="Permalink to this headline">¶</a></h3>
 <details>
 <summary><b>HTTPConnectionPool</b></summary><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>substra list dataset
@@ -235,16 +234,16 @@ Error: Request failed: NotFound: <span class="m">404</span> Client Error: Not Fo
 </pre></div>
 </div>
 <p>Please check the item key you are providing (with <code class="docutils literal notranslate"><span class="pre">substra</span> <span class="pre">list</span> <span class="pre">&lt;ASSET&gt;</span></code>).</p>
-</details></section>
-</section>
-<section id="python-sdk">
+</details></div>
+</div>
+<div class="section" id="python-sdk">
 <h2>Python SDK<a class="headerlink" href="#python-sdk" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/SubstraFoundation/substra/blob/master/references/sdk.md#substrasdk">SDK documentation</a></p>
 <blockquote>
 <div><p>Remember: debug mode is awesome, use it! You just need to define your client like this <code class="docutils literal notranslate"><span class="pre">client</span> <span class="pre">=</span> <span class="pre">substra.Client(debug=True)</span></code>
 to be able to use <code class="docutils literal notranslate"><span class="pre">pdb</span></code>/<code class="docutils literal notranslate"><span class="pre">ipdb</span></code>!</p>
 </div></blockquote>
-<section id="add-an-algorithm">
+<div class="section" id="add-an-algorithm">
 <h3>Add an algorithm<a class="headerlink" href="#add-an-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Check the <code class="docutils literal notranslate"><span class="pre">add_algo.py</span></code> script and your assets (<code class="docutils literal notranslate"><span class="pre">ALGO</span></code>, <code class="docutils literal notranslate"><span class="pre">ALGO_DOCKERFILE_FILES</span></code>).</p>
 <details>
@@ -252,13 +251,13 @@ to be able to use <code class="docutils literal notranslate"><span class="pre">p
 <blockquote>
 <div><p>Note: this is not required in debug mode</p>
 </div></blockquote>
-</details></section>
-<section id="add-a-train-tuple">
+</details></div>
+<div class="section" id="add-a-train-tuple">
 <h3>Add a train tuple<a class="headerlink" href="#add-a-train-tuple" title="Permalink to this headline">¶</a></h3>
 <p>In debug mode, when you run the <code class="docutils literal notranslate"><span class="pre">add_traintuple</span></code> method with large data, a Docker container is launched and then exit showing this last log <code class="docutils literal notranslate"><span class="pre">substratools.algo</span> <span class="pre">-</span> <span class="pre">launching</span> <span class="pre">training</span> <span class="pre">task</span></code> and no further stacktrace. This might be related to a lack of memory (use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stats</span></code>) and you tweak this limit by using a higher <code class="docutils literal notranslate"><span class="pre">shm_size</span></code> in the <code class="docutils literal notranslate"><span class="pre">spawner.py</span></code> file.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
