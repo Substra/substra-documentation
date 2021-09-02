@@ -15,8 +15,4 @@ jobs:
         run: pip install -r requirements.txt
       - name: Sphinx make
         run: make clean && make html
-      - name: Add nojekyll
-        run: touch _build/html/.nojekyll
-      - name: Check the diff
-        run: diff -x "CNAME" -x ".buildinfo" -r _build/html docs
 
