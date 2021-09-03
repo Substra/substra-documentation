@@ -8,7 +8,7 @@ This example is based on `the similarly named Kaggle challenge <https://www.kagg
 We will be training and testing with only one :term:`node`.
 
 Authors:
-  |    Romain Goussault :fa:`github` `RomainGoussault <https://github.com/RomainGoussault>`_
+  |    Romain Goussault, :fa:`github` `RomainGoussault <https://github.com/RomainGoussault>`_
   |    Maria Telenczuk, :fa:`github` `maikia <https://github.com/maikia>`_
 
 """
