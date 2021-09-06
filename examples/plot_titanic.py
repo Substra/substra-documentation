@@ -19,6 +19,7 @@ Authors:
 
 from pathlib import Path
 import os
+import subprocess
 import zipfile
 
 # %%
@@ -36,7 +37,15 @@ import substra
 # TODO: a link to some example on how to prepare your own assets + each file explained??
 #
 
-assets_directory = Path("../code_examples") / "titanic" / "assets"
+subprocess.run(['wget',
+                'https://github.com/Substra/substra-documentation/blob/b38747fab3b7ba4cc9e95f511d0c761348ccaf65/code_examples/assets.zip?raw=true']
+              )
+filename = 'assets.zip?raw=true'
+
+with zipfile.ZipFile(filename, 'r') as zip_ref:
+   zip_ref.extractall('.')
+
+assets_directory = Path('assets')
 
 # %%
 # Registering data samples and dataset
