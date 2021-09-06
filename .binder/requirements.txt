@@ -1,0 +1,3 @@
+matplotlib
+substra==0.9.0
+sphinx-gallery

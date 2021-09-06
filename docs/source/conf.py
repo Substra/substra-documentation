@@ -153,7 +153,8 @@ sphinx_gallery_conf = {
         'binderhub_url': 'https://mybinder.org',  # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
         'dependencies': ['../binder/requirements.txt'],
         # Optional keys
-        'filepath_prefix': 'substra', # A prefix to prepend to any filepaths in Binder links.
-        'use_jupyter_lab': True # Whether Binder links should start Jupyter Lab instead of the Jupyter Notebook interface.
+        # 'filepath_prefix': 'substra', # A prefix to prepend to any filepaths in Binder links.
+        'use_jupyter_lab': True, # Whether Binder links should start Jupyter Lab instead of the Jupyter Notebook interface.
+        'notebooks_dir': 'source'
         }
 }
