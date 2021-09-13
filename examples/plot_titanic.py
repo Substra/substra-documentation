@@ -18,9 +18,10 @@ Authors:
 # ---------------------------
 
 from pathlib import Path
+from io import BytesIO
 import os
-import subprocess
-import zipfile
+from urllib.request import urlopen
+import zipfile as zipfile
 
 # %%
 # You should have already Substra installed, if not follow the instructions here: :ref:`Installation`
@@ -37,13 +38,10 @@ import substra
 # TODO: a link to some example on how to prepare your own assets + each file explained??
 #
 
-subprocess.run(['wget',
-                'https://github.com/Substra/substra-documentation/blob/b38747fab3b7ba4cc9e95f511d0c761348ccaf65/code_examples/assets.zip?raw=true']
-              )
-filename = 'assets.zip?raw=true'
-
-with zipfile.ZipFile(filename, 'r') as zip_ref:
-   zip_ref.extractall('.')
+url_assets = 'https://github.com/Substra/substra-documentation/blob/b38747fab3b7ba4cc9e95f511d0c761348ccaf65/code_examples/assets.zip?raw=true'
+http_response = urlopen(url_assets)
+zipedfile = zipfile.ZipFile(BytesIO(http_response.read()))
+zipedfile.extractall()
 
 assets_directory = Path('assets')
 
