@@ -14,5 +14,6 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Sphinx make
+        working-directory: ./docs
         run: make clean && make html
 
