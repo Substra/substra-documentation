@@ -14,12 +14,6 @@ import os
 import re
 import sphinx_rtd_theme
 
-# TODO: get current substra version
-def _get_version():
-    version_ = {}
-    with open("../../substra/__version__.py") as fp:
-        exec(fp.read(), version_)  # pylint: disable=exec-used
-    return version_["__version__"]
 
 class SubSectionTitleOrder:
     """Sort example gallery by title of subsection.
@@ -61,12 +55,9 @@ class SubSectionTitleOrder:
 project = u"Substra"
 copyright = u"2020, OWKIN"
 author = u"Owkin"
-version = '1.0'  # _get_version()
-release = version
-
 # The full version, including alpha/beta/rc tags
-release = '1.0'
-
+version = '1.0'  # TODO: include _get_version() when ready
+release = version
 
 # -- General configuration ---------------------------------------------------
 
