@@ -56,7 +56,7 @@ project = u"Substra"
 copyright = u"2020, OWKIN"
 author = u"Owkin"
 # The full version, including alpha/beta/rc tags
-version = '1.0'  # TODO: include _get_version() when ready
+version = '0.1.0'  # TODO: include _get_version() when ready
 release = version
 
 # -- General configuration ---------------------------------------------------
