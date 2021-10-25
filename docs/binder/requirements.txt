@@ -1,6 +1,0 @@
-# A binder requirement file is required by sphinx-gallery.
-# We don't really need one since our binder requirement file lives in the
-# .binder directory.
-matplotlib
-substra==0.9.0
-sphinx-gallery

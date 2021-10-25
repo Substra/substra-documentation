@@ -136,14 +136,4 @@ sphinx_gallery_conf = {
     "examples_dirs": ["../../examples"],
     "gallery_dirs": ["auto_examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
-    "binder": {
-        # Required keys
-        'org': 'Substra',
-        'repo': 'substra-documentation',
-        'branch': 'docs-skeleton',  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
-        'binderhub_url': 'https://mybinder.org',  # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
-        'dependencies': ['../binder/requirements.txt'],
-        # Optional keys
-        'use_jupyter_lab': True, # Whether Binder links should start Jupyter Lab instead of the Jupyter Notebook interface.
-        }
 }
