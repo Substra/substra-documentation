@@ -7,13 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+
+      - name: Checkout pyconfig from a private repos
+        uses: actions/checkout@v2
+        with:
+          repository: owkin/substra
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: substra
+
+      - name: Install package
+        run: |
+             pip install -e substra
+
       - name: Install requirements
         run: pip install -r requirements.txt
+
       - name: Sphinx make
         working-directory: ./docs
         run: make clean && make html
-
