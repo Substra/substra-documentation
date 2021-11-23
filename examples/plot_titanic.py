@@ -28,3 +28,17 @@ import zipfile as zipfile
 #
 
 import substra
+
+# This is added to force sphinx gallery to use docker and substra
+# TODO: this part should be updated when the proper examples is made
+client = substra.Client(debug=True)
+cp = substra.sdk.schemas.ComputePlanSpec(
+            traintuples=[],
+            composite_traintuples=[],
+            aggregatetuples=[],
+            testtuples=[],
+            tag='',
+            metadata=None,
+            clean_models=False
+        )
+client.add_compute_plan(cp)

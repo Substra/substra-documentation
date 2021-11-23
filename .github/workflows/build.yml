@@ -1,6 +1,9 @@
-name: Sphinx Build
+name: Sphinx Build in CI
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - "main"
 
 jobs:
   build:
