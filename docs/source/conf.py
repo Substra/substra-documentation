@@ -12,6 +12,9 @@
 #
 import os
 import re
+import zipfile
+from pathlib import Path
+
 import sphinx_rtd_theme
 import substra
 
@@ -50,6 +53,22 @@ class SubSectionTitleOrder:
         if title_match is not None:
             return title_match.group(1)
         return directory
+
+# zip the assets directory found in the examples directory and place it in the current dir
+def zip_dir(source_dir):
+    # Create archive with compressed files
+    with zipfile.ZipFile(file='assets.zip',
+                           mode='w',
+                           compression=zipfile.ZIP_DEFLATED) as ziph:
+        for root, dirs, files in os.walk(source_dir):
+            for file in files:
+                ziph.write(os.path.join(root, file),
+                        os.path.relpath(os.path.join(root, file),
+                                        os.path.join(source_dir, '..')))
+
+assets_dir = Path(__file__).parents[2] / "examples" / "assets"
+zip_dir(assets_dir)
+
 
 # -- Project information -----------------------------------------------------
 

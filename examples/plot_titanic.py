@@ -11,6 +11,18 @@ Authors:
   |    Romain Goussault, :fa:`github` `RomainGoussault <https://github.com/RomainGoussault>`_
   |    Maria Telenczuk, :fa:`github` `maikia <https://github.com/maikia>`_
 
+Requirements:
+
+  - Please make sure to download and unzip in the same directory as this example
+    the assets needed to run this example:
+
+    .. only:: builder_html or readthedocs
+
+        :download:`assets required to run this example <../assets.zip>`
+
+  - You must have docker running
+  - You should have already Substra installed, if not follow the instructions described here: :ref:`Installation`
+
 """
 
 # %%
@@ -20,17 +32,32 @@ Authors:
 from pathlib import Path
 from io import BytesIO
 import os
-from urllib.request import urlopen
-import zipfile as zipfile
-
-# %%
-# You should have already Substra installed, if not follow the instructions here: :ref:`Installation`
-#
+import zipfile
 
 import substra
 
+# %%
+# Next, we need to link to the already defined assets. You can download them from here:
+#
+# TODO: in the assets directory you can find XXX files including datafiles which we will use next
+# TODO: a link to some example on how to prepare your own assets + each file explained??
+#
+
+assets_directory = Path('assets')
+
+# %%
+# Registering data samples and dataset
+# ------------------------------------
+#
+# Now we need to register the data samples on the client (also called :term:`node`). This is usually done by a data
+# scientists working on a given node. Here we set debug to True... TODO: explain
+#
+# To do that we also need to set the permissions.
+# TODO: explain what are the pemissions/ possible permissions/ and/or link to more
+#
+
 # This is added to force sphinx gallery to use docker and substra
-# TODO: this part should be updated when the proper examples is made
+# TODO: this part should be updated when the proper example is made
 client = substra.Client(debug=True)
 cp = substra.sdk.schemas.ComputePlanSpec(
             traintuples=[],
