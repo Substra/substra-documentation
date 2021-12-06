@@ -33,3 +33,13 @@ jobs:
       - name: Sphinx make
         working-directory: ./docs
         run: make clean && make html
+
+      # exchange the absolute path given by sphinx-gallery with relative path
+      - name: replace absolute paths
+        run: sed -i "s+//home/runner/work/connect-documentation/connect-documentation/docs/source/auto_examples/++g;" docs/source/auto_examples/index.rst
+
+      # uploads artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-for-${{ github.sha }}
+          path: docs/source/
