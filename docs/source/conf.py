@@ -138,14 +138,14 @@ intersphinx_mapping = {
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
 # icon file (.ico).
-html_favicon = "favicon.ico"
+html_favicon = "static/favicon.png"
 
 # this is needed for some reason...
 # see https://github.com/numpy/numpydoc/issues/69
 numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['templates/']
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -176,7 +176,21 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []
+html_static_path = ['./static']
+
+html_css_files = [
+    "owkin.css",
+
+]
+
+html_logo = 'static/logo.svg'
+html_show_sourcelink = False
+html_show_sphinx = False
+
+html_context = {
+    "display_github": False,
+}
+
 
 if not on_rtd:
     sphinx_gallery_conf = {
