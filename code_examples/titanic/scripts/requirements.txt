@@ -1,4 +1,0 @@
-tqdm
-sklearn
-pandas
-substratools==0.9.0
