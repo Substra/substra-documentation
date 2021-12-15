@@ -1,2 +1,2 @@
-Debugging
-=========
+How to debug
+============

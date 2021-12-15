@@ -5,7 +5,7 @@ Titanic
 
 This example is based on `the similarly named Kaggle challenge <https://www.kaggle.com/c/titanic/overview>`_
 
-We will be training and testing with only one :term:`node`.
+We will be training and testing with only one :term:`Node`.
 
 Authors:
   |    Romain Goussault, :fa:`github` `RomainGoussault <https://github.com/RomainGoussault>`_
@@ -49,7 +49,7 @@ assets_directory = Path('assets')
 # Registering data samples and dataset
 # ------------------------------------
 #
-# Now we need to register the data samples on the client (also called :term:`node`). This is usually done by a data
+# Now we need to register the data samples on the client (also called :term:`Node`). This is usually done by a data
 # scientists working on a given node. Here we set debug to True... TODO: explain
 #
 # To do that we also need to set the permissions.

@@ -3,19 +3,18 @@
 Glossary
 ========
 
-.. hint::
 
-    Get started with glossary: Please refer to
-    `Sphinx documentation <https://sublime-and-sphinx-guide.readthedocs.io/en/latest/glossary.html>`_ on how to make a
-    glossary in Sphinx, eg:
+.. glossary::
 
-    .. glossary::
+    Node
+        A Node represents an independant partner organization in the network. The data of the organisation is stored on its node,
+        and it has its own computing and storage resources.
+        
+    Channel
+        TODO
+    
+    Vertical FL
+        TODO
 
-        node
-            .. todo:: explain what is node here (term used in the examples)
-
-        Owkin
-            world-renown company providing federated learning solutions for healthcare
-
-        Substra
-            best existing software for federated learning strategies
+    Horizontal FL
+        TODO
