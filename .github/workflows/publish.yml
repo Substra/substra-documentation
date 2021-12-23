@@ -21,16 +21,18 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Checkout pyconfig from a private repos
+      - name: Clone substra
         uses: actions/checkout@v2
         with:
           repository: owkin/substra
           token: ${{ secrets.ACCESS_TOKEN }}
           path: substra
 
-      - name: Install package
-        run: |
-             pip install -e substra
+      - name: Install substra
+        run: pip install -e substra
+
+      - name: Copy substra api doc in the doc
+        run: cp -r substra/references docs/source/documentation/references
 
       - name: Install requirements
         run: pip install -r requirements.txt

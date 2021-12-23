@@ -69,6 +69,26 @@ def zip_dir(source_dir):
 assets_dir = Path(__file__).parents[2] / "examples" / "assets"
 zip_dir(assets_dir)
 
+# reformat links to a section in a markdown files (not supported by myst_parser)
+def reformat_md_section_links(file_path: Path):
+    # Read in the file
+    with open(file_path, 'r') as file :
+        filedata = file.read()
+
+    # replace ".md#" by ".html#"
+    filedata = filedata.replace(".md#", ".html#")
+    filedata = re.sub(r"#(.*)\)", lambda m: m.group().lower(), filedata)
+
+    # Write the file out again
+    with open(file_path, 'w') as file:
+        file.write(filedata)
+
+for file_path in Path('.').rglob('*.md'):
+    reformat_md_section_links(file_path)
+
+# suppress warnings due to sections with the same name in substra api reference
+# TODO: change those sections names in substra ? Or ignore warnings just for those files
+suppress_warnings = ['autosectionlabel.*']
 
 # -- Project information -----------------------------------------------------
 
@@ -102,12 +122,12 @@ extensions.extend([
     "sphinx.ext.napoleon",
     "sphinx.ext.ifconfig",
     "sphinx_click",
-    "recommonmark",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.todo",
-    "sphinx_fontawesome"
+    "sphinx_fontawesome",
+    "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
 ])
-todo_include_todos=True
+todo_include_todos = True
 
 if on_rtd:
     # The name of your GitHub repository
@@ -154,9 +174,6 @@ exclude_patterns = []
 
 # generate autosummary even if no references
 autosummary_generate = True
-
-# The suffix of source filenames.
-source_suffix = '.rst'
 
 # Generate the plot for the gallery
 # plot_gallery = True

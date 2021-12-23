@@ -24,7 +24,7 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
   Connect changelog and compatibility table.
 
-   
+
 
 .. toctree::
    :glob:
@@ -77,4 +77,3 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
    additional/release.rst
    additional/contact.rst
-

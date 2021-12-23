@@ -91,12 +91,12 @@ Permissons for a node to process an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A node can execute a task (train task, composite train task, aggregate task, test task) if it has the permissions on the input assets of the task. For example, if a node wants to execute a train task, the node needs to have process permissions on the algorithm, the dataset and the input models used in the task.
-The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every node. Permissions cannot be modified once the asset is created. 
+The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every node. Permissions cannot be modified once the asset is created.
 
 
 Datasets, algorithms, metrics
 """""""""""""""""""""""""""""
-Permissions are defined at creation by their owner for datasets, algorithms and metrics. 
+Permissions are defined at creation by their owner for datasets, algorithms and metrics.
 
 
 Models
@@ -104,7 +104,7 @@ Models
 For train tasks and aggregate tasks, permissions on the model outputted by the task are defined by inheritance (intersection) of the permissions of the input assets. If a node can execute a train task or an aggregate task, it will necessarily have permissions on the model outputted by this task.
 
 
-For composite train tasks, the out model is split in a trunk model and a head model: 
+For composite train tasks, the out model is split in a trunk model and a head model:
 
 * The trunk model permissions are specified by the user when registering the composite train task.
 * The head model permissions are set to be non-public, meaning that the head model can only be processed by the node where the task is executed.
