@@ -1,0 +1,62 @@
+name: Sphinx Build and RTD publish for releases = stable versions
+
+env:
+  SUBSTRA_VERSION: 0.14.0  # RELEASE: put the substra version associated with the connect release here
+
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+      - '*'           # Push events to every tag not containing /
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Clone substra
+        uses: actions/checkout@v2
+        with:
+          repository: owkin/substra
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: substra
+          ref: ${{ env.SUBSTRA_VERSION }}
+
+      - name: Install substra
+        run: pip install -e substra
+
+      - name: Copy substra api doc in the doc
+        run: cp -r substra/references docs/source/documentation/references
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Sphinx make
+        working-directory: ./docs
+        run: make clean && make html
+
+      # exchange the absolute path given by sphinx-gallery with relative path
+      - name: replace absolute paths
+        run: sed -i "s+//home/runner/work/connect-documentation/connect-documentation/docs/source/auto_examples/++g;" docs/source/auto_examples/index.rst
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-for-${{ github.sha }}
+          path: docs/source/
+
+      - name: Trigger RTDs build
+        # TODO: for now using personal repo because of changes which needed to be applied
+        # to the action so it works on private repos. Once the original one is published it should be updated to:
+        # dfm/rtds-action  -> commit of interest 66a4e12
+        uses: maikia/rtds-action@v1
+        with:
+          webhook_url: ${{ secrets.RTDS_WEBHOOK_URL }}
+          webhook_token: ${{ secrets.RTDS_WEBHOOK_TOKEN }}
+          commit_ref: ${{ github.ref }}

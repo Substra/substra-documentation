@@ -1,6 +1,8 @@
 API reference
 =============
 
+`substra` version: |substra_version|
+
 CLI Reference
 -------------
 .. toctree::

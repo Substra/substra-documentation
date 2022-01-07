@@ -30,8 +30,8 @@ Thank you for helping us improving!
     # See the tags
     git tag
     # Add a new tag
-    git tag -a X.X.X-your-branch
-    git push origin X.X.X-your-branch
+    git tag -a dev-your-branch
+    git push origin dev-your-branch
 ```
 
 Check the publish action is running: https://github.com/owkin/connect-documentation/actions
@@ -40,7 +40,14 @@ Activate your version on RTD (need admin rights): https://readthedocs.com/projec
 
 Follow the build here : https://readthedocs.com/projects/owkin-connect-documentation/builds/
 
-See the doc on https://owkin-connect-documentation.readthedocs-hosted.com/en/X.X.X-your-branch
+See the doc on https://owkin-connect-documentation.readthedocs-hosted.com/en/dev-your-branch
 
 If everything is OK, you can delete your version on RTD (wipe button): https://readthedocs.com/projects/owkin-connect-documentation/versions/
-and delete your tag : `git push --delete origin X.X.X-your-branch`
+and delete your tag : `git push --delete origin dev-your-branch`
+
+## Releases
+
+The doc is released for each Connect release. The release guide is in the [tech-team repo](https://github.com/owkin/tech-team/blob/main/releasing_guide.md#release-connect-and-connect-documentation).
+
+When a semver tag is pushed or a release is created, the doc is builded and published to RTD by the [CI](https://github.com/owkin/connect-documentation/.github/workflows/publish_stable.yml).
+Then RTD [automatically](https://readthedocs.com/dashboard/owkin-connect-documentation/rules/regex/411/) activate this version and set it as default (takes a few minutes).

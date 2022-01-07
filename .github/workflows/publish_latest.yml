@@ -1,14 +1,10 @@
 name: Sphinx Build and RTD publish
 
 on:
-  release:
-    types: [published]
   push:
     branches:
       - main
     # Pattern matched against refs/tags
-    tags:
-      - '*'           # Push events to every tag not containing /
 
 jobs:
   build:

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- feat: Substra versioning (#18)
 - doc:  include Substra API Reference (#17)
 ## [0.1.1] - 2021-12-07
 ### Added
