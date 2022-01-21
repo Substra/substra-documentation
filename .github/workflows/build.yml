@@ -34,4 +34,4 @@ jobs:
 
       - name: Sphinx make
         working-directory: ./docs
-        run: make clean && make html SPHINXOPTS="-W"
+        run: make clean && make html
