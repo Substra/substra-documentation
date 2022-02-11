@@ -97,9 +97,7 @@ To do so, instantiate a Client with the parameter `debug=True`:
 
     client = substra.Client.from_config_file(profile_name="node-1", debug=True)
 
-and use remote assets when creating tasks.
-Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones.
-Functions that create a new asset will only create local assets.
+and use remote assets when creating tasks.  Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other assets, models on the platform can not be used in local tasks. Moreover functions that create a new asset will only create local assets.
 
 Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the `fake_X()` and `fake_y()` methods in the dataset opener.
 
