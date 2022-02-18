@@ -24,6 +24,10 @@ Once you are happy with your changes push your branch and make a pull request.
 
 Thank you for helping us improving!
 
+## Access to ReadTheDocs
+
+To access the [connect-documentation project on ReadTheDocs](https://readthedocs.com/projects/owkin-connect-documentation/), ask on Slack, on the #tech-support channel.
+
 ## To publish on RTD before merging your PR:
 
 ```sh
@@ -44,6 +48,15 @@ See the doc on https://connect-docs.owkin.com/en/dev-your-branch
 
 If everything is OK, you can delete your version on RTD (wipe button): https://readthedocs.com/projects/owkin-connect-documentation/versions/
 and delete your tag : `git push --delete origin dev-your-branch`
+
+## Documentation - latest version
+
+To generate the "latest" version of the documentation, trigger a build "latest" on RTD [here](https://readthedocs.com/projects/owkin-connect-documentation/builds/).
+
+The build "latest" on RTD uses the artefacts created by the latest `publish_latest` workflow on the connect-documentation repository.
+This means that the version of Substra used is the latest commit on `main` **at the time of the connect-documentation workflow run**.
+
+If there have been changes on Substra that should appear in the documentation, manually trigger the workflow on connect-documentation [here](https://github.com/owkin/connect-documentation/actions/workflows/publish_latest.yml) then trigger a build on latest from RTD.
 
 ## Releases
 

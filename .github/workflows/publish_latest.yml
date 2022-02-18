@@ -1,6 +1,7 @@
-name: Sphinx Build and RTD publish
+name: Sphinx Build and RTD publish for latest
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
