@@ -10,7 +10,26 @@ If you would like to contribute to this documentation please clone it locally an
 
 To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`
 
-Install substra: `pip install substra`
+### Install substra from owkin pypi
+
+```sh
+pip install substra
+```
+
+Then copy the [references folder](https://github.com/owkin/substra/tree/main/references) from substra to [./docs/source/documentation/references](./docs/source/documentation/references).
+
+### Install substra from your own computer
+
+Go in the substra repository (clone the [substra repo](https://github.com/owkin/substra) if needed) and execute `pip install .`
+
+Then, copy past the `references` repository to [./docs/source/documentation/references](./docs/source/documentation/references) :
+
+```sh
+cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/documentation/references
+```
+
+### Build the doc locally
+
 Next, to build the documentation move to the docs directory: `cd docs`
 
 And then: `make html`
@@ -28,7 +47,7 @@ Thank you for helping us improving!
 
 To access the [connect-documentation project on ReadTheDocs](https://readthedocs.com/projects/owkin-connect-documentation/), ask on Slack, on the #tech-support channel.
 
-## To publish on RTD before merging your PR:
+## To publish on RTD before merging your PR
 
 ```sh
     # See the tags
