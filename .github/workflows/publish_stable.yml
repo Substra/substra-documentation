@@ -1,7 +1,7 @@
 name: Sphinx Build and RTD publish for releases = stable versions
 
 env:
-  SUBSTRA_VERSION: 0.16.0  # RELEASE: put the substra version associated with the connect release here
+  SUBSTRA_VERSION: 0.17.0  # RELEASE: put the substra version associated with the connect release here
 
 on:
   release:

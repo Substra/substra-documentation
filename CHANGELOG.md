@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-01-19
+
+### Added
+
+* docs: add page -> How to test code and understand errors (#25)
+
+### Fixes
+
+* chore: explain what are models and specs (#22)
+* doc(release): fix links and add links (#21)
+
 ## [0.6.0] - 2022-01-19
 
 * chore: Connect 0.6.0 - update substra to 0.16.0 by @Esadruhn in https://github.com/owkin/connect-documentation/pull/23
