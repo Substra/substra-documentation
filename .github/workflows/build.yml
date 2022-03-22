@@ -14,7 +14,14 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
+
+      - name: Clone connect-tools
+        uses: actions/checkout@v2
+        with:
+          repository: owkin/connect-tools
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: connect-tools
 
       - name: Clone substra
         uses: actions/checkout@v2
@@ -23,11 +30,24 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           path: substra
 
-      - name: Install substra
-        run: pip install -e substra
+      - name: Clone connectlib
+        uses: actions/checkout@v2
+        with:
+          repository: owkin/connectlib
+          token: ${{ secrets.ACCESS_TOKEN }}
+          ref: main
+          path: connectlib
 
-      - name: Copy substra api doc in the doc
-        run: cp -r substra/references docs/source/documentation/references
+      - name: Install substra, connect-tools and connectlib and connectlib
+        run: |
+          pip install -e substra
+          pip install -e connect-tools
+          pip install -e connectlib[dev]
+
+      - name: Copy substra and connectlib api doc in the doc
+        run: |
+          cp -r substra/references docs/source/documentation/references
+          cp -r connectlib/docs/api docs/source/connectlib/  
 
       - name: Install requirements
         run: pip install -r requirements.txt

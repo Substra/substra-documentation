@@ -133,14 +133,10 @@ _build/
 
 # Misc build artefacts
 docs/source/assets.zip
-docs/source/auto_examples/auto_examples_jupyter.zip
-docs/source/auto_examples/auto_examples_python.zip
-docs/source/auto_examples/index.rst
-docs/source/auto_examples/plot_titanic_codeobj.pickle
-docs/source/auto_examples/plot_titanic.ipynb
-docs/source/auto_examples/plot_titanic.py
-docs/source/auto_examples/plot_titanic.py.md5
-docs/source/auto_examples/plot_titanic.rst
-docs/source/auto_examples/searchindex.db
-docs/source/auto_examples/sg_execution_times.rst
-docs/source/auto_examples/images/thumb/sphx_glr_plot_titanic_thumb.png
+docs/source/auto_examples/**
+
+docs/source/documentation/references/**
+
+# Connectlib
+connectlib/**
+docs/source/connectlib/api

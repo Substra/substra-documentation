@@ -8,6 +8,8 @@ Welcome to Connect documentation. [Here](https://connect-docs.owkin.com/en/lates
 
 If you would like to contribute to this documentation please clone it locally and make a new branch with the suggested changes.
 
+You should use python `3.9.10`.
+
 To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`
 
 ### Install substra from owkin pypi
@@ -28,6 +30,16 @@ Then, copy past the `references` repository to [./docs/source/documentation/refe
 cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/documentation/references
 ```
 
+### Install connectlib from your own computer
+
+Go in the connectlib repository (clone the [connectlib repo](https://github.com/owkin/connectlib) if needed) and execute `pip install .[dev]`
+
+Copy past the `api` folder to [./docs/source/connectlib/api](./docs/source/connectlib/api) :
+
+```sh
+cp -r <PATH_TO_CONNECTLIB>/connectlib/docs/api <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/connectlib/ 
+```
+
 ### Build the doc locally
 
 Next, to build the documentation move to the docs directory: `cd docs`
@@ -36,7 +48,7 @@ And then: `make html`
 
 The first time you run it or if you updated the examples library it may take a little longer to build the whole documentation.
 
-To see the doc on your browser : `make live-html`
+To see the doc on your browser : `make livehtml`
 And then go to http://127.0.0.1:8000
 
 Once you are happy with your changes push your branch and make a pull request.

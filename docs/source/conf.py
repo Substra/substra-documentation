@@ -14,10 +14,12 @@ import os
 import re
 import zipfile
 from pathlib import Path
+import sys
+from datetime import date
+import connectlib
 
 import sphinx_rtd_theme
 import substra
-
 
 class SubSectionTitleOrder:
     """Sort example gallery by title of subsection.
@@ -93,11 +95,10 @@ suppress_warnings = ['autosectionlabel.*']
 
 # -- Project information -----------------------------------------------------
 
-
-
 project = u"Connect"
-copyright = u"2020, OWKIN"
+copyright = f"{date.today().year}, OWKIN"
 author = u"Owkin"
+
 
 # parse the current doc version to display it in the menu
 _doc_version = re.sub('^v', '', os.popen('git describe --tags').read().strip())
@@ -122,6 +123,7 @@ if on_rtd:
 else:
     extensions = ["sphinx_gallery.gen_gallery"]
 
+
 extensions.extend([
     "sphinx.ext.intersphinx",
     "sphinx.ext.autodoc",
@@ -133,7 +135,9 @@ extensions.extend([
     "sphinx.ext.todo",
     "sphinx_fontawesome",
     "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
+    "sphinx_autodoc_typehints",
 ])
+
 todo_include_todos = True
 
 if on_rtd:
@@ -161,15 +165,46 @@ intersphinx_mapping = {
     "torch": ("https://pytorch.org/docs/stable/", None),
 }
 
+################
+# Connectlib API
+################
+
+autosectionlabel_prefix_document = True
+
+# Napoleon settings
+# https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
+
+# Remove the prompt when copying examples
+copybutton_prompt_text = ">>> "
+
+# Ignore class references errors
+nitpick_ignore = [
+    ("py:class", "pydantic.main.BaseModel"),
+    ("py:class", "np.ndarray"),
+    ("py:class", "Path"),
+    ("py:class", "torch.nn.modules.module.Module"),
+    ("py:class", "torch.nn.Module.loss._Loss"),
+    ("py:class", "torch.optim.lr_scheduler._LRScheduler"),
+    ("py:class", "substra.sdk.schemas.Permissions"),
+    ("py:class", "substra.Client"),
+    ("py:class", "ComputePlan"),
+    ("py:class", "pydantic.main.BaseModel"),
+]
+
+# autodoc config
+autodoc_default_options = {
+    "show-inheritance": True,
+}
+
+autoclass_content = "both"
+
 # This must be the name of an image file (path relative to the configuration
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
 # icon file (.ico).
 html_favicon = "static/favicon.png"
-
-# this is needed for some reason...
-# see https://github.com/numpy/numpydoc/issues/69
-numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['templates/']
@@ -177,7 +212,7 @@ templates_path = ['templates/']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # generate autosummary even if no references
 autosummary_generate = True
@@ -185,9 +220,9 @@ autosummary_generate = True
 # Generate the plot for the gallery
 # plot_gallery = True
 
-
 rst_epilog = f"""
 .. |substra_version| replace:: {substra.__version__}
+.. |connectlib_version| replace:: {connectlib.__version__}
 """
 
 # -- Options for HTML output -------------------------------------------------
@@ -209,7 +244,6 @@ html_static_path = ['./static']
 
 html_css_files = [
     "owkin.css",
-
 ]
 
 html_logo = 'static/logo.svg'

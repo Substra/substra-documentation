@@ -1,9 +1,9 @@
 recommonmark==0.6.0
-sphinx==3.4.3
+sphinx==4.4.0
 sphinx-markdown-tables==0.0.12
 sphinx-rtd-theme==0.5.1
-sphinx-autobuild==0.7.1
-sphinx-click==2.5.0
+sphinx-autobuild==2020.9.1
+sphinx_click==3.1.0
 click==7.1.2
 texttable==1.6.3
 myst-parser==0.16.1
@@ -12,6 +12,6 @@ myst-parser==0.16.1
 # original issue: https://github.com/sphinx-doc/sphinx/issues/9051
 docutils==0.16
 sphinx-gallery==0.7.0
-sphinx_fontawesome
-
-matplotlib
+sphinx-autodoc-typehints==1.17.0
+sphinx-fontawesome==0.0.6
+matplotlib==3.5.1
