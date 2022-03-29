@@ -32,7 +32,7 @@ cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/d
 
 ### Install connectlib from your own computer
 
-Go in the connectlib repository (clone the [connectlib repo](https://github.com/owkin/connectlib) if needed) and execute `pip install .[dev]`
+Go in the connectlib repository (clone the [connectlib repo](https://github.com/owkin/connectlib) if needed) and execute `pip install ".[dev]"`
 
 Copy past the `api` folder to [./docs/source/connectlib/api](./docs/source/connectlib/api) :
 

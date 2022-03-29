@@ -136,7 +136,13 @@ docs/source/assets.zip
 docs/source/auto_examples/**
 
 docs/source/documentation/references/**
+!docs/source/auto_examples/titanic_example/images/thumb/sphx_glr_plot_titanic_thumb.jpg
 
-# Connectlib
-connectlib/**
 docs/source/connectlib/api
+
+# Assets built when ran locally
+examples/titanic_example/assets/**/*.zip
+examples/titanic_example/local-worker
+
+# Mac spec
+*.DS_Store

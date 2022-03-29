@@ -39,6 +39,9 @@ Model / Model updates
 ^^^^^^^^^^^^^^^^^^^^^^
 A model or model updates is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task (`train tuple <train_tuple_>`_ or `composite train tuple <composite_train_tuple_>`_); or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task (`aggregate tuple <aggregate_tuple_>`_).
 
+
+.. _SDK Metric:
+
 Metric
 ^^^^^^
 A metric corresponds to a function to evaluate the performance of a model_ on a dataset_. Concretely, a metric corresponds to an archive (tar or zip file) containing:

@@ -17,14 +17,18 @@ SDK Reference
 
     references/sdk.md
 
+
 Models
 ^^^^^^
+
 Models describe the objects returned by the platform.
 
 .. toctree::
     :maxdepth: 2
 
     references/sdk_models.md
+
+.. _SDK Schemas:
 
 Schemas
 ^^^^^^^
