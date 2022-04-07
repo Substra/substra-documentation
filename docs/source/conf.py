@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -139,7 +141,6 @@ extensions.extend([
     "sphinx.ext.todo",
     "sphinx_fontawesome",
     "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
-    "sphinx_autodoc_typehints",
 ])
 
 todo_include_todos = True
@@ -169,6 +170,8 @@ intersphinx_mapping = {
     "torch": ("https://pytorch.org/docs/stable/", None),
 }
 
+autodoc_typehints = "both"
+
 ################
 # Connectlib API
 ################
@@ -183,18 +186,20 @@ napoleon_numpy_docstring = False
 # Remove the prompt when copying examples
 copybutton_prompt_text = ">>> "
 
-# Ignore class references errors
+# As we defined the type of our args, auto doc is trying to find a link to a
+# documentation for each type specified
+# The following elements are the link that auto doc were not able to do
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
-    ("py:class", "np.ndarray"),
-    ("py:class", "Path"),
     ("py:class", "torch.nn.modules.module.Module"),
-    ("py:class", "torch.nn.Module.loss._Loss"),
+    ("py:class", "torch.nn.modules.loss._Loss"),
+    ("py:class", "torch.optim.optimizer.Optimizer"),
     ("py:class", "torch.optim.lr_scheduler._LRScheduler"),
     ("py:class", "substra.sdk.schemas.Permissions"),
     ("py:class", "substra.Client"),
+    ("py:class", "substra.sdk.client.Client"),
+    ("py:class", "substra.sdk.models.ComputePlan"),
     ("py:class", "ComputePlan"),
-    ("py:class", "pydantic.main.BaseModel"),
 ]
 
 # autodoc config
