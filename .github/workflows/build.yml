@@ -35,7 +35,7 @@ jobs:
         with:
           repository: owkin/connectlib
           token: ${{ secrets.ACCESS_TOKEN }}
-          ref: basetorchlayer
+          ref: main
           path: connectlib
 
       - name: Install substra, connect-tools and connectlib and connectlib
