@@ -176,7 +176,18 @@ autodoc_typehints = "both"
 # Connectlib API
 ################
 
+# generate autosummary even if no references
+autosummary_generate = True
+
 autosectionlabel_prefix_document = True
+
+# autodoc settings
+autodoc_default_options = {
+    "show-inheritance": True,
+    "members": True,
+}
+autoclass_content = "both"
+autodoc_typehints = "both"
 
 # Napoleon settings
 # https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
@@ -202,13 +213,6 @@ nitpick_ignore = [
     ("py:class", "ComputePlan"),
 ]
 
-# autodoc config
-autodoc_default_options = {
-    "show-inheritance": True,
-}
-
-autoclass_content = "both"
-
 # This must be the name of an image file (path relative to the configuration
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
@@ -223,8 +227,6 @@ templates_path = ["templates/"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-# generate autosummary even if no references
-autosummary_generate = True
 
 # Generate the plot for the gallery
 # plot_gallery = True
