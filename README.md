@@ -18,13 +18,15 @@ To deploy the documentation locally you will need to install all the necessary r
 pip install substra
 ```
 
-Then copy the [references folder](https://github.com/owkin/substra/tree/main/references) from substra to [./docs/source/documentation/references](./docs/source/documentation/references).
+Then copy the [references folder](https://github.com/owkin/substra/tree/main/references) from substra to
+`./docs/source/documentation/references` of your `connect-documentation` directory.
 
 ### Install substra from your own computer
 
 Go in the substra repository (clone the [substra repo](https://github.com/owkin/substra) if needed) and execute `pip install .`
 
-Then, copy past the `references` repository to [./docs/source/documentation/references](./docs/source/documentation/references) :
+Then, copy past the `references` repository to `./docs/source/documentation/references` of your `connect-documentation`
+directory :
 
 ```sh
 cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/documentation/references
@@ -34,10 +36,11 @@ cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/d
 
 Go in the connectlib repository (clone the [connectlib repo](https://github.com/owkin/connectlib) if needed) and execute `pip install ".[dev]"`
 
-Copy past the `api` folder to [./docs/source/connectlib/api](./docs/source/connectlib/api) :
+Copy past the `api` folder to `./docs/source/connectlib/api` of your `connect-documentation`
+directory :
 
 ```sh
-cp -r <PATH_TO_CONNECTLIB>/connectlib/docs/api <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/connectlib/ 
+cp -r <PATH_TO_CONNECTLIB>/connectlib/docs/api <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/connectlib/
 ```
 
 ### Build the doc locally
