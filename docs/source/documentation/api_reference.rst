@@ -28,8 +28,6 @@ Models describe the objects returned by the platform.
 
     references/sdk_models.md
 
-.. _SDK Schemas:
-
 Schemas
 ^^^^^^^
 Specs are the specifications to register the assets on the platform.

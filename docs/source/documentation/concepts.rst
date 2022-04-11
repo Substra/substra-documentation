@@ -22,7 +22,7 @@ A dataset represents the data in Connect. It is made up of:
 Algorithm
 ^^^^^^^^^
 
-An algorithm specifies the method to train a model_ on a dataset_ or the method to aggregate models. For algorithms used to train a model on a dataset, it specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. Concretely, an algorithm corresponds to an archive (tar or zip file) containing:
+An algorithm specifies the method to train models_ on a dataset_ or the method to aggregate models. For algorithms used to train a model on a dataset, it specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. Concretely, an algorithm corresponds to an archive (tar or zip file) containing:
 
     * One or more Python scripts that implement the algorithm. Importantly, a train and a predict functions have to be defined.
     * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
@@ -33,18 +33,14 @@ There are three types of algorithms:
 * Composite algorithm: this algorithm has to be used with composite train tasks and makes it possible to train a trunk and a head model. The trunk model can be shared among all nodes whereas the head model always remains private to the node where it was trained.
 * Aggregate algorithm: this algorithm has to be used with aggregated task. It is used to aggregate models or model updates. An aggregate algorithm does not need data to be used.
 
-.. _model:
-
 Model / Model updates
 ^^^^^^^^^^^^^^^^^^^^^^
-A model or model updates is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task (`train tuple <train_tuple_>`_ or `composite train tuple <composite_train_tuple_>`_); or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task (`aggregate tuple <aggregate_tuple_>`_).
+A model or model updates is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task (`train tuple <train tuple_>`_ or `composite train tuple <composite train tuple_>`_); or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task (`aggregate tuple <aggregate tuple_>`_).
 
-
-.. _SDK Metric:
 
 Metric
 ^^^^^^
-A metric corresponds to a function to evaluate the performance of a model_ on a dataset_. Concretely, a metric corresponds to an archive (tar or zip file) containing:
+A metric corresponds to a function to evaluate the performance of a models_ on a dataset_. Concretely, a metric corresponds to an archive (tar or zip file) containing:
 
 * Python scripts that implement the metric computation
 * a Dockerfile on which the user can specify the required dependencies of the Python scripts
@@ -63,25 +59,17 @@ Gathering tasks into a single compute plan has several benefits:
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Connect will still create a compute plan for you for this specific task.
 
-.. _train_tuple:
-
 Train tuple
 """""""""""
 The specification of a training task of a simple algorithm_ on a dataset_. The task can use any existing model or model updates to train on. It leads to the creation of a new model or model updates.
-
-.. _composite_train_tuple:
 
 Composite train tuple
 """""""""""""""""""""
 The specification of a training task of a composite algorithm_ on a dataset_ potentially using input trunk and head models or model updates. It leads to the creation of a trunk and head model or model update. Depending on associated permissions, a trunk model or model update can be shared with other nodes, whereas a head model remains in the node where it was created.
 
-.. _aggregate_tuple:
-
 Aggregate tuple
 """""""""""""""
 The specification of an aggregation task of several models or model updates using an aggregate algorithm_. It leads to the creation of one model or model update.
-
-.. _test_tuple:
 
 Test tuple
 """"""""""

@@ -49,7 +49,7 @@ jobs:
       - name: Copy substra and connectlib api doc in the doc
         run: |
           cp -r substra/references docs/source/documentation/references
-          cp -r connectlib/docs/api docs/source/connectlib/  
+          cp -r connectlib/docs/api docs/source/connectlib/
 
       - name: Install requirements
         run: pip install -r requirements.txt
@@ -59,8 +59,11 @@ jobs:
         run: make clean && make html
 
       # exchange the absolute path given by sphinx-gallery with relative path
-      - name: replace absolute paths
+      - name: replace absolute paths for main examples
         run: sed -i "s+//home/runner/work/connect-documentation/connect-documentation/docs/source/auto_examples/++g;" docs/source/auto_examples/index.rst
+
+      - name: replace absolute paths for connectlib examples
+        run: sed -i "s+//home/runner/work/connect-documentation/connect-documentation/docs/source/connectlib/examples/++g;" docs/source/connectlib/examples/index.rst
 
       - uses: actions/upload-artifact@v2
         with:

@@ -11,4 +11,8 @@ API Reference
 Examples
 ========
 
-Work in progress ...
+.. toctree::
+   :glob:
+   :maxdepth: 5
+
+   examples/*

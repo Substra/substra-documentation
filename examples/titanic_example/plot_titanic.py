@@ -12,7 +12,7 @@ Here you will learn how to interact with Substra including:
 
 - instantiating Substra Client
 - creating and registering of the assets
-- launching an experiment 
+- launching an experiment
 
 
 There is no federated learning in this example, training and testing will happen on only one :term:`Node`.
@@ -24,11 +24,11 @@ Requirements:
 
     .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../assets.zip>`
-    
+        :download:`assets required to run this example <../../titanic_assets.zip>`
+
     Please ensure you have all the libraries in this file installed, the requirements.txt file is included in this zip, you can pip install it with a command: `pip install -r requirements.txt`.
 
-  - Substra should already be installed, if not follow the instructions described here: :ref:`installation`
+  - Substra should already be installed, if not follow the instructions described here: :ref:`get_started/installation:Installation`
 
 
 """
@@ -74,7 +74,7 @@ client = substra.Client(debug=True)
 # ---------------------------------------
 #
 # Every asset will be created respecting its respective predefined schemas (Spec) previously imported from
-# substra.sdk.schemas. To register assets, first assets :ref:`SDK Schemas`
+# substra.sdk.schemas. To register assets, first assets :ref:`documentation/api_reference:Schemas`
 # are instantiated and then the specs are registered, which creates the real assets.
 #
 # Permissions are defined when registering assets, in a nutshell:
@@ -170,7 +170,7 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 #
 # You will find detailed information about the metric
-# concept here: :ref:`SDK Metric`.
+# concept here: :ref:`documentation/concepts:Metric`.
 
 METRICS = MetricSpec(
     name="Accuracy",

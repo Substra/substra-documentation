@@ -23,6 +23,7 @@ import connectlib
 import sphinx_rtd_theme
 import substra
 
+
 class SubSectionTitleOrder:
     """Sort example gallery by title of subsection.
     Assumes README.txt exists for all subsections and uses the subsection with
@@ -60,25 +61,24 @@ class SubSectionTitleOrder:
 
 
 # zip the assets directory found in the examples directory and place it in the current dir
-def zip_dir(source_dir):
+def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(
-        file="assets.zip", mode="w", compression=zipfile.ZIP_DEFLATED
-    ) as ziph:
+    with zipfile.ZipFile(file=zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
         for root, dirs, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
                     os.path.join(root, file),
-                    os.path.relpath(
-                        os.path.join(root, file), os.path.join(source_dir, "..")
-                    ),
+                    os.path.relpath(os.path.join(root, file), os.path.join(source_dir, "..")),
                 )
 
 
-assets_dir_titanic = (
-    Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+zip_dir(assets_dir_titanic, "titanic_assets.zip")
+
+assets_dir_connectlib_fedavg = (
+    Path(__file__).parents[2] / "connectlib_examples" / "connectlib_fedavg_example" / "assets"
 )
-zip_dir(assets_dir_titanic)
+zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
 
 # reformat links to a section in a markdown files (not supported by myst_parser)
 def reformat_md_section_links(file_path: Path):
@@ -101,9 +101,9 @@ for file_path in Path(".").rglob("*.md"):
 
 # -- Project information -----------------------------------------------------
 
-project = u"Connect"
+project = "Connect"
 copyright = f"{date.today().year}, OWKIN"
-author = u"Owkin"
+author = "Owkin"
 
 
 # parse the current doc version to display it in the menu
@@ -130,18 +130,20 @@ else:
     extensions = ["sphinx_gallery.gen_gallery"]
 
 
-extensions.extend([
-    "sphinx.ext.intersphinx",
-    "sphinx.ext.autodoc",
-    "sphinx_rtd_theme",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.ifconfig",
-    "sphinx_click",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.todo",
-    "sphinx_fontawesome",
-    "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
-])
+extensions.extend(
+    [
+        "sphinx.ext.intersphinx",
+        "sphinx.ext.autodoc",
+        "sphinx_rtd_theme",
+        "sphinx.ext.napoleon",
+        "sphinx.ext.ifconfig",
+        "sphinx_click",
+        "sphinx.ext.autosectionlabel",
+        "sphinx.ext.todo",
+        "sphinx_fontawesome",
+        "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
+    ]
+)
 
 todo_include_todos = True
 
@@ -273,8 +275,8 @@ if not on_rtd:
         {
             "doc_module": "substra",
             "reference_url": {"Substra": None},
-            "examples_dirs": ["../../examples"],
-            "gallery_dirs": ["auto_examples"],
+            "examples_dirs": ["../../examples", "../../connectlib_examples"],
+            "gallery_dirs": ["auto_examples", "connectlib/examples"],
             "subsection_order": SubSectionTitleOrder("../../examples"),
         }
     )

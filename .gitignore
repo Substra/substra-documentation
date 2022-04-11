@@ -132,17 +132,25 @@ dmypy.json
 _build/
 
 # Misc build artefacts
-docs/source/assets.zip
 docs/source/auto_examples/**
 
 docs/source/documentation/references/**
 !docs/source/auto_examples/titanic_example/images/thumb/sphx_glr_plot_titanic_thumb.jpg
 
 docs/source/connectlib/api
+docs/source/connectlib/examples
+
+# Zip files
+*.zip
 
 # Assets built when ran locally
-examples/titanic_example/assets/**/*.zip
-examples/titanic_example/local-worker
+**/local-worker
+
+# Experiment summaries when run locally
+**/experiment_summaries
+
+# Data folder when run locally
+**/data
 
 # Mac spec
 *.DS_Store
