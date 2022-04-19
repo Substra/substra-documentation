@@ -3,6 +3,18 @@ Status](https://readthedocs.com/projects/owkin-connect-documentation/badge/?vers
 
 # Substra documentation
 
+- [Substra documentation](#substra-documentation)
+  - [Contributing](#contributing)
+    - [Install substra from owkin pypi](#install-substra-from-owkin-pypi)
+    - [Install substra from your own computer](#install-substra-from-your-own-computer)
+    - [Install connectlib from your own computer](#install-connectlib-from-your-own-computer)
+    - [Build the doc locally](#build-the-doc-locally)
+  - [Access to ReadTheDocs](#access-to-readthedocs)
+  - [To publish on RTD before merging your PR](#to-publish-on-rtd-before-merging-your-pr)
+  - [Documentation - latest version](#documentation---latest-version)
+  - [Releases](#releases)
+  - [Add a new example](#add-a-new-example)
+
 Welcome to Connect documentation. [Here](https://connect-docs.owkin.com/en/latest/index.html) you can find the latest version.
 ## Contributing
 
@@ -99,3 +111,22 @@ The doc is released for each Connect release. The release guide is in the [tech-
 When a semver tag is pushed or a release is created, the doc is builded and published to RTD by the [CI](https://github.com/owkin/connect-documentation/blob/main/.github/workflows/publish_stable.yml).
 Then RTD [automatically](https://readthedocs.com/dashboard/owkin-connect-documentation/rules/regex/411/) activate this version and set it as default (takes a few minutes).
 You can follow the build on the CI [here](https://github.com/owkin/connect-documentation/actions) and then on RTD [here](https://readthedocs.com/projects/owkin-connect-documentation/builds/)
+
+## Add a new example
+
+- Put the example folder in `connect-documentation/examples` if it is a Substra example, `connect-documentation/connectlib_examples` if it is a Connectlib example.
+- create a `README.rst` file at the root of the example
+- The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))
+- The main file must start by a docstring like described in the [Sphinx gallery documentation](- The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))). It must also be structured as described in the Sphinx gallery documentation.
+- Add the assets:
+  - use the `zip_dir` function in the `conf.py` file to zip the assets
+  - add the link to download the assets to the example's docstring:
+
+    ```rst
+    .. only:: builder_html or readthedocs
+
+        :download:`assets required to run this example <../../ASSET_NAME.zip>`
+    ```
+- thumbnail: add the path to the image in a comment in a cell of the example
+
+    `# sphinx_gallery_thumbnail_path = 'auto_examples/EXAMPLE_FOLDER_NAME/images/thumb/sphx_glr_plot_thumb.jpg'`
