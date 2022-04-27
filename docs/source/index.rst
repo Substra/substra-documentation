@@ -52,7 +52,7 @@ Connect is a framework offering distributed orchestration of machine learning ta
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: Examples
+   :caption: Substra examples
    :hidden:
 
    auto_examples/index
@@ -60,11 +60,12 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
 .. toctree::
    :glob:
-   :maxdepth: 1
-   :caption: Architecture
+   :maxdepth: 2
+   :caption: ConnectLib
    :hidden:
 
-   architecture.rst
+
+   connectlib/index.rst
 
 
 .. toctree::
@@ -76,13 +77,3 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
    additional/release.rst
    additional/contact.rst
-
-
-.. toctree::
-   :glob:
-   :maxdepth: 2
-   :caption: ConnectLib
-   :hidden:
-
-
-   connectlib/index.rst

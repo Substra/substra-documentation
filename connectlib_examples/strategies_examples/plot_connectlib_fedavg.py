@@ -349,6 +349,7 @@ from connectlib.dependency import Dependency
 from connectlib.strategies import FedAvg
 from connectlib.nodes import AggregationNode
 from connectlib.evaluation_strategy import EvaluationStrategy
+from connectlib.index_generator import NpIndexGenerator
 from connectlib.experiment import execute_experiment
 
 # %%
@@ -368,6 +369,10 @@ NUM_UPDATES = 1
 # Number of samples per update.
 BATCH_SIZE = 124
 
+index_generator = NpIndexGenerator(
+    batch_size=BATCH_SIZE,
+    num_updates=NUM_UPDATES,
+)
 
 class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
@@ -375,8 +380,7 @@ class MyAlgo(TorchFedAvgAlgo):
             model=model,
             criterion=torch.nn.CrossEntropyLoss(),
             optimizer=optimizer,
-            num_updates=NUM_UPDATES,
-            batch_size=BATCH_SIZE,
+            index_generator=index_generator,
         )
 
     def preprocess(self, x):
