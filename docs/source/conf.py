@@ -213,6 +213,8 @@ nitpick_ignore = [
     ("py:class", "substra.sdk.client.Client"),
     ("py:class", "substra.sdk.models.ComputePlan"),
     ("py:class", "ComputePlan"),
+    ("py:class", "substratools.algo.CompositeAlgo"),
+    ("py:class", "substratools.algo.AggregateAlgo"),
 ]
 
 # This must be the name of an image file (path relative to the configuration
