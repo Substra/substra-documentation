@@ -132,6 +132,8 @@ dmypy.json
 _build/
 
 # Misc build artefacts
+tmp/**
+
 docs/source/auto_examples/**
 
 docs/source/documentation/references/**

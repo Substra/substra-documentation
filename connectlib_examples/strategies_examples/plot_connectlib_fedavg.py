@@ -24,7 +24,7 @@ This example does not use the deployed platform of Connect and will run in local
 
     .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../../connectlib_fedavg_assets.zip>`
+        :download:`assets required to run this example <../../../../../tmp/connectlib_fedavg_assets.zip>`
 
     Please ensure to have all the libraries installed, a *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
@@ -71,7 +71,10 @@ ALGO_NODE_ID = NODES_ID[1]
 DEBUG_SPAWNER = "subprocess"
 os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
 
-data_path = pathlib.Path.cwd() / "data"
+# Create the temporary directory for generated data
+(pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
+
+data_path = pathlib.Path.cwd() / "tmp" / "data"
 assets_directory = pathlib.Path.cwd() / "assets"
 
 client = Client(debug=True)
@@ -468,7 +471,7 @@ computed_plan = execute_experiment(
     evaluation_strategy=my_eval_strategy,
     aggregation_node=aggregation_node,
     num_rounds=NUM_ROUNDS,
-    experiment_folder=str(pathlib.Path.cwd() / "experiment_summaries"),
+    experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=algo_deps,
 )
 # %%

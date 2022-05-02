@@ -24,7 +24,7 @@ Requirements:
 
     .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../titanic_assets.zip>`
+        :download:`assets required to run this example <../../../../tmp/titanic_assets.zip>`
 
     Please ensure you have all the libraries in this file installed, the requirements.txt file is included in this zip, you can pip install it with a command: `pip install -r requirements.txt`.
 

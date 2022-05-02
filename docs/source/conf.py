@@ -16,12 +16,14 @@ import os
 import re
 import zipfile
 from pathlib import Path
-import sys
 from datetime import date
 import connectlib
 
 import sphinx_rtd_theme
 import substra
+
+
+TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 
 class SubSectionTitleOrder:
@@ -60,10 +62,13 @@ class SubSectionTitleOrder:
         return directory
 
 
+TMP_FOLDER.mkdir(exist_ok=True)
+
+
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(file=zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
+    with zipfile.ZipFile(file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
         for root, dirs, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
@@ -79,6 +84,7 @@ assets_dir_connectlib_fedavg = (
     Path(__file__).parents[2] / "connectlib_examples" / "connectlib_fedavg_example" / "assets"
 )
 zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
+
 
 # reformat links to a section in a markdown files (not supported by myst_parser)
 def reformat_md_section_links(file_path: Path):
