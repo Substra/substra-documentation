@@ -1,9 +1,9 @@
 name: Sphinx Build and RTD publish for releases = stable versions
 
 env:
-  SUBSTRA_VERSION: 0.18.0 # RELEASE: put the substra version associated with the connect release here
-  CONNECTLIB_VERSION: 0.10.0 # RELEASE: put the connectlib version associated with the connect release here
-  TOOLS_VERSION: 0.11.0 # RELEASE: put the connect-tools version associated with the connect release here
+  SUBSTRA_VERSION: 0.19.0 # RELEASE: put the substra version associated with the connect release here
+  CONNECTLIB_VERSION: 0.11.0 # RELEASE: put the connectlib version associated with the connect release here
+  TOOLS_VERSION: 0.12.0 # RELEASE: put the connect-tools version associated with the connect release here
 on:
   release:
     types: [published]

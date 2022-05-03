@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0]
+
+* feat: index clean up (#47)
+* update connect-tools version in example Dockerfiles
+* add clean instruction to Makefile
+* fix the substratools reference warning
+
 ## [0.9.0]
 
 ## [0.8.1]
