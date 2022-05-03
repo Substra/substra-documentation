@@ -22,7 +22,7 @@ If you would like to contribute to this documentation please clone it locally an
 
 You should use python `3.9.10`.
 
-To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`
+To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`.
 
 ### Install substra from owkin pypi
 
