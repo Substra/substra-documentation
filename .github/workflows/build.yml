@@ -47,7 +47,7 @@ jobs:
       - name: Copy substra and connectlib api doc in the doc
         run: |
           cp -r substra/references docs/source/documentation/references
-          cp -r connectlib/docs/api docs/source/connectlib/  
+          cp -r connectlib/docs/api docs/source/connectlib_doc/
 
       - name: Install requirements
         run: pip install -r requirements.txt

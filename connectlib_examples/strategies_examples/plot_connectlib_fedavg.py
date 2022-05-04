@@ -242,7 +242,7 @@ metric_key = client.add_metric(objective)
 # it is based on, in order to have access to the proper `opener.py` file.
 #
 # Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
-# :ref:`connectlib/api/nodes:TrainDataNode` and :ref:`connectlib/api/nodes:TestDataNode` to gathered the
+# :ref:`connectlib_doc/api/nodes:TrainDataNode` and :ref:`connectlib_doc/api/nodes:TestDataNode` to gathered the
 # :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
 
 train_data_nodes = list()
@@ -359,12 +359,12 @@ from connectlib.experiment import execute_experiment
 # Connectlib algo definition
 # ==========================
 #
-# To instantiate a Connectlib :ref:`connectlib/api/algorithms:Torch Algorithms`, it is mandatory to overwrite the
+# To instantiate a Connectlib :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, it is mandatory to overwrite the
 # `_local_train` and `_local_predict` functions.
 #
 # These two functions will be called locally on each batch of data. This is the place where preprocessing on data can
 # be done. To simplify the preprocessing, we can easily create our own function `preprocess` (see below) directly
-# in the :ref:`connectlib/api/algorithms:Torch Algorithms`.
+# in the :ref:`connectlib_doc/api/algorithms:Torch Algorithms`.
 
 # Number of model update between each FL strategy aggregation.
 NUM_UPDATES = 1
@@ -419,8 +419,8 @@ class MyAlgo(TorchFedAvgAlgo):
 # Algo dependencies
 # =================
 #
-# The **dependencies** needed for the :ref:`connectlib/api/algorithms:Torch Algorithms` are specified by a
-# :ref:`connectlib/api/dependency:Dependency` object, in order to install the right library in the Python
+# The **dependencies** needed for the :ref:`connectlib_doc/api/algorithms:Torch Algorithms` are specified by a
+# :ref:`connectlib_doc/api/dependency:Dependency` object, in order to install the right library in the Python
 # environment of each nodes.
 
 algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
@@ -429,7 +429,7 @@ algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
 # Federated Learning strategies
 # =============================
 #
-# For this example, we choose to use the **Federated averaging Strategy** (:ref:`connectlib/api/strategies:Strategies`),
+# For this example, we choose to use the **Federated averaging Strategy** (:ref:`connectlib_doc/api/strategies:Strategies`),
 # based on `the FedAvg paper by McMahan et al., 2017 <https://arxiv.org/abs/1602.05629>`__.
 
 strategy = FedAvg()
@@ -443,18 +443,18 @@ strategy = FedAvg()
 #
 # - A :ref:`documentation/references/sdk:Client` to orchestrate all the assets of our project, using their keys to
 #   identify them
-# - An :ref:`connectlib/api/algorithms:Torch Algorithms`, to define the training parameters *(optimizer, train function,
+# - An :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, to define the training parameters *(optimizer, train function,
 #   predict function, etc...)*
-# - A :ref:`connectlib/api/strategies:Strategies`, to specify the federated learning aggregation operation
-# - :ref:`connectlib/api/nodes:TrainDataNode`, to indicate where we can process training task, on which data and using
+# - A :ref:`connectlib_doc/api/strategies:Strategies`, to specify the federated learning aggregation operation
+# - :ref:`connectlib_doc/api/nodes:TrainDataNode`, to indicate where we can process training task, on which data and using
 #   which *opener*
-# - An :ref:`connectlib/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
+# - An :ref:`connectlib_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model
-# - An :ref:`connectlib/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
+# - An :ref:`connectlib_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
 #   computed
 # - The **number of round**, a round being defined by a local training step followed by an aggregation operation
 # - An **experiment folder** to save a summary of the operation made
-# - The :ref:`connectlib/api/dependency:Dependency` to define the libraries the experiment needs to run.
+# - The :ref:`connectlib_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
 aggregation_node = AggregationNode(ALGO_NODE_ID)
 

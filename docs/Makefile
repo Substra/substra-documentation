@@ -8,7 +8,9 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 SUBSTRAEXAMPLEDIR 		= source/auto_examples
-CONNECTLIBEXAMPLEDIR	= source/connectlib/examples
+SUBSTRADOCDIR 		= source/documentation/references
+CONNECTLIBEXAMPLEDIR	= source/connectlib_doc/examples
+CONNECTLIBDOCDIR	= source/connectlib_doc/api
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -29,6 +31,8 @@ livetheme:
 
 clean:
 	rm -rf $(BUILDDIR)
+	rm -rf $(SUBSTRADOCDIR)
+	rm -rf $(CONNECTLIBDOCDIR)
 	rm -rf $(SUBSTRAEXAMPLEDIR)
 	rm -rf $(CONNECTLIBEXAMPLEDIR)
 # Delete the local worker folders in connect-documentation

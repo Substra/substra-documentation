@@ -16,50 +16,56 @@ Status](https://readthedocs.com/projects/owkin-connect-documentation/badge/?vers
   - [Add a new example](#add-a-new-example)
 
 Welcome to Connect documentation. [Here](https://connect-docs.owkin.com/en/latest/index.html) you can find the latest version.
+
+
+:warning: **WARNING** :warning:
+
+Do not make the RTD project public !
+The github token to clone the repositories in the RTD build is displayed in the build logs, do not expose that information.
+
 ## Contributing
 
 If you would like to contribute to this documentation please clone it locally and make a new branch with the suggested changes.
 
-You should use python `3.9.10`.
+You should use python `3.8`.
 
 To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`.
 
-### Install substra from owkin pypi
+### Install substra, substratools and connectlib in editable mode
+
+:warning: if you have these repositories installed in non-editable mode, it will not work.
+
+Either install the repositories in editable mode yourself:
 
 ```sh
-pip install substra
+git clone git@github.com:owkin/substra.git
+cd substra && pip install -e . && cd ..
 ```
-
-Then copy the [references folder](https://github.com/owkin/substra/tree/main/references) from substra to
-`./docs/source/documentation/references` of your `connect-documentation` directory.
-
-### Install substra from your own computer
-
-Go in the substra repository (clone the [substra repo](https://github.com/owkin/substra) if needed) and execute `pip install .`
-
-Then, copy past the `references` repository to `./docs/source/documentation/references` of your `connect-documentation`
-directory :
 
 ```sh
-cp -r <PATH_TO_SUBSTRA>/references <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/documentation/references
+git clone git@github.com:owkin/connect-tools.git
+cd connect-tools && pip install -e . && cd ..
 ```
-
-### Install connectlib from your own computer
-
-Go in the connectlib repository (clone the [connectlib repo](https://github.com/owkin/connectlib) if needed) and execute `pip install ".[dev]"`
-
-Copy past the `api` folder to `./docs/source/connectlib/api` of your `connect-documentation`
-directory :
 
 ```sh
-cp -r <PATH_TO_CONNECTLIB>/connectlib/docs/api <PATH_TO_CONNECT-DOCUMENTATION>/docs/source/connectlib/
+git clone git@github.com:owkin/connectlib.git
+cd connectlib && pip install -e '.[dev]' && cd ..
 ```
+
+or you can export a
+[github token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+with `repo` rights and let the doc do it for you during the build:
+
+```sh
+export GITHUB_TOKEN=my_github_token
+```
+
 
 ### Build the doc locally
 
 Next, to build the documentation move to the docs directory: `cd docs`
 
-And then: `make html`
+And then: `make clean html`
 
 The first time you run it or if you updated the examples library it may take a little longer to build the whole documentation.
 
@@ -74,35 +80,6 @@ Thank you for helping us improving!
 
 To access the [connect-documentation project on ReadTheDocs](https://readthedocs.com/projects/owkin-connect-documentation/), ask on Slack, on the #tech-support channel.
 
-## To publish on RTD before merging your PR
-
-```sh
-    # See the tags
-    git tag
-    # Add a new tag
-    git tag -a dev-your-branch
-    git push origin dev-your-branch
-```
-
-Check the publish action is running: https://github.com/owkin/connect-documentation/actions
-
-Activate your version on RTD (need admin rights): https://readthedocs.com/projects/owkin-connect-documentation/versions/
-
-Follow the build here : https://readthedocs.com/projects/owkin-connect-documentation/builds/
-
-See the doc on https://connect-docs.owkin.com/en/dev-your-branch
-
-If everything is OK, you can delete your version on RTD (wipe button): https://readthedocs.com/projects/owkin-connect-documentation/versions/
-and delete your tag : `git push --delete origin dev-your-branch`
-
-## Documentation - latest version
-
-To generate the "latest" version of the documentation, trigger a build "latest" on RTD [here](https://readthedocs.com/projects/owkin-connect-documentation/builds/).
-
-The build "latest" on RTD uses the artefacts created by the latest `publish_latest` workflow on the connect-documentation repository.
-This means that the version of Substra used is the latest commit on `main` **at the time of the connect-documentation workflow run**.
-
-If there have been changes on Substra that should appear in the documentation, manually trigger the workflow on connect-documentation [here](https://github.com/owkin/connect-documentation/actions/workflows/publish_latest.yml) then trigger a build on latest from RTD.
 
 ## Releases
 

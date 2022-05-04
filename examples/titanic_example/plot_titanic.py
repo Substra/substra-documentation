@@ -109,7 +109,7 @@ expected in the same location as this py file"""
 dataset = DatasetSpec(
     name="Titanic dataset - Node 1",
     type="csv",
-    data_opener=assets_directory / "dataset" / "opener.py",
+    data_opener=assets_directory / "dataset" / "titanic_opener.py",
     description=assets_directory / "dataset" / "description.md",
     permissions=permissions,
     logs_permission=permissions,
@@ -180,7 +180,7 @@ METRICS = MetricSpec(
 )
 
 METRICS_DOCKERFILE_FILES = [
-    assets_directory / "metric" / "metrics.py",
+    assets_directory / "metric" / "titanic_metrics.py",
     assets_directory / "metric" / "Dockerfile",
 ]
 
@@ -207,7 +207,7 @@ print(f"Metric key {metric_key}")
 ALGO_KEYS_JSON_FILENAME = "algo_random_forest_keys.json"
 
 ALGO_DOCKERFILE_FILES = [
-    assets_directory / "algo_random_forest/algo.py",
+    assets_directory / "algo_random_forest/titanic_algo_rf.py",
     assets_directory / "algo_random_forest/Dockerfile",
 ]
 

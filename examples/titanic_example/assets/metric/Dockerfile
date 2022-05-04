@@ -5,7 +5,7 @@ FROM gcr.io/connect-314908/connect-tools:0.12.0-nvidiacuda11.6.0-base-ubuntu20.0
 RUN pip3 install scikit-learn==1.0.2
 
 # add your metrics script to docker image
-ADD metrics.py .
+ADD titanic_metrics.py .
 
 # define how script is run
-ENTRYPOINT ["python3", "metrics.py"]
+ENTRYPOINT ["python3", "titanic_metrics.py"]
