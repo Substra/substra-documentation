@@ -22,9 +22,23 @@ import importlib
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
-SUBSTRA_VERSION = "0.19.0"
-TOOLS_VERSION = "0.12.0"
-CONNECTLIB_VERSION = "0.11.0"
+if os.environ.get('READTHEDOCS_VERSION_TYPE') == 'tag':
+    SUBSTRA_VERSION = "0.19.0"
+    TOOLS_VERSION = "0.12.0"
+    CONNECTLIB_VERSION = "0.11.0"
+else:
+    SUBSTRA_VERSION = "main"
+    TOOLS_VERSION = "main"
+    CONNECTLIB_VERSION = "main"
+
+
+print(
+    f'Versions of the components used:'
+    f'\n - substra: {SUBSTRA_VERSION}'
+    f'\n - connect-tools: {TOOLS_VERSION}'
+    f'\n - connectlib: {CONNECTLIB_VERSION}'
+)
+
 
 class SubSectionTitleOrder:
     """Sort example gallery by title of subsection.
