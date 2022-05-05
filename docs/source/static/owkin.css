@@ -58,7 +58,7 @@ a:visited {
 
 .wy-nav-content,
 .wy-nav-content-wrap {
-    background-color: var(--color-light-gold);
+    background-color: white;
 }
 
 .wy-nav-content {
@@ -137,6 +137,7 @@ a:visited {
     text-decoration: none;
     color: black;
     font-weight: inherit;
+    font-size: 14px;
 }
 
 .wy-menu-vertical a:hover {
@@ -151,8 +152,14 @@ a:visited {
     background-color: transparent;
 }
 
-.wy-menu-vertical li.current ul {
-    background-color: var(--color-light-gray);
+.wy-menu-vertical li.current ul,
+.wy-menu-vertical li.toctree-l2.current>a,
+.wy-menu-vertical li.toctree-l3.current>a,
+.wy-menu-vertical li.toctree-l4.current>a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a
+{
+    background-color: var(--color-lightest-gray);
 }
 
 .wy-menu-vertical li.current a {
