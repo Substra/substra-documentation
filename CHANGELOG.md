@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-* all but release and stable versions uses the main branch of the components (#54)
-* RTD builds the examples (#49)
+## [0.11.0]
+
+* feat: all but release and stable versions uses the main branch of the components (#54)
+* feat: RTD builds the examples (#49)
 
 ## [0.10.0]
 
