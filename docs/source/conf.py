@@ -22,10 +22,10 @@ import importlib
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
-if os.environ.get('READTHEDOCS_VERSION_TYPE') == 'tag':
-    SUBSTRA_VERSION = "0.19.0"
+if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
+    SUBSTRA_VERSION = "0.20.0"
     TOOLS_VERSION = "0.12.0"
-    CONNECTLIB_VERSION = "0.11.0"
+    CONNECTLIB_VERSION = "0.12.0"
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
@@ -33,10 +33,10 @@ else:
 
 
 print(
-    f'Versions of the components used:'
-    f'\n - substra: {SUBSTRA_VERSION}'
-    f'\n - connect-tools: {TOOLS_VERSION}'
-    f'\n - connectlib: {CONNECTLIB_VERSION}'
+    f"Versions of the components used:"
+    f"\n - substra: {SUBSTRA_VERSION}"
+    f"\n - connect-tools: {TOOLS_VERSION}"
+    f"\n - connectlib: {CONNECTLIB_VERSION}"
 )
 
 
@@ -125,22 +125,23 @@ import subprocess
 import shutil
 import sys
 
-EDITABLE_LIB_PATH = Path(__file__).resolve().parents[1] / 'src'
+EDITABLE_LIB_PATH = Path(__file__).resolve().parents[1] / "src"
+
 
 def install_dependency(library_name, repo_name, repo_args, version):
-    github_token = os.environ.get('GITHUB_TOKEN')
+    github_token = os.environ.get("GITHUB_TOKEN")
     assert github_token is not None, "Cloning the repos to get the sources, need a github token"
     try:
         subprocess.run(
             args=[
                 sys.executable,
-                '-m',
-                'pip',
-                'install',
-                '--src',
+                "-m",
+                "pip",
+                "install",
+                "--src",
                 str(EDITABLE_LIB_PATH),
-                '--editable',
-                f'git+https://{github_token}@github.com/owkin/{repo_name}.git@{version}{repo_args}'
+                "--editable",
+                f"git+https://{github_token}@github.com/owkin/{repo_name}.git@{version}{repo_args}",
             ],
             check=True,
             capture_output=True,
@@ -162,17 +163,15 @@ def copy_source_files(src, dest):
 
 
 for library, repo_name, repo_args, src_doc_files, dest_doc_files, version in [
-    ('substratools', 'connect-tools', '#egg=substratools', None, None, TOOLS_VERSION),
-    ('substra', 'substra', '#egg=substra', "references", "documentation/references", SUBSTRA_VERSION),
-    ('connectlib', 'connectlib', '#egg=connectlib[dev]', "docs/api", "connectlib_doc/api", CONNECTLIB_VERSION),
+    ("substratools", "connect-tools", "#egg=substratools", None, None, TOOLS_VERSION),
+    ("substra", "substra", "#egg=substra", "references", "documentation/references", SUBSTRA_VERSION),
+    ("connectlib", "connectlib", "#egg=connectlib[dev]", "docs/api", "connectlib_doc/api", CONNECTLIB_VERSION),
 ]:
     source_path = None
     if importlib.util.find_spec(library) is None or (
-            src_doc_files is not None and not (
-                Path(
-                    (importlib.import_module(library)).__file__).resolve().parents[1] / src_doc_files
-            ).exists()
-        ):
+        src_doc_files is not None
+        and not (Path((importlib.import_module(library)).__file__).resolve().parents[1] / src_doc_files).exists()
+    ):
         install_dependency(library_name=library, repo_name=repo_name, repo_args=repo_args, version=version)
 
     if src_doc_files is not None:
