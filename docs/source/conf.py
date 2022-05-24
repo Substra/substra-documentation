@@ -100,24 +100,6 @@ assets_dir_connectlib_fedavg = (
 zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
 
 
-# reformat links to a section in a markdown files (not supported by myst_parser)
-def reformat_md_section_links(file_path: Path):
-    # Read in the file
-    with open(file_path, "r") as file:
-        filedata = file.read()
-
-    # replace ".md#" by ".html#"
-    filedata = filedata.replace(".md#", ".html#")
-    filedata = re.sub(r"#(.*)\)", lambda m: m.group().lower(), filedata)
-
-    # Write the file out again
-    with open(file_path, "w") as file:
-        file.write(filedata)
-
-
-for file_path in Path(".").rglob("*.md"):
-    reformat_md_section_links(file_path)
-
 # Copy the source documentation files from substra and connectlib to their right place
 # in the connect-documentation repository
 from distutils.dir_util import copy_tree
@@ -178,6 +160,24 @@ for library, repo_name, repo_args, src_doc_files, dest_doc_files, version in [
         imported_module = importlib.import_module(library)
         source_path = Path(imported_module.__file__).resolve().parents[1] / src_doc_files
         copy_source_files(source_path, dest_doc_files)
+
+# reformat links to a section in a markdown files (not supported by myst_parser)
+def reformat_md_section_links(file_path: Path):
+    # Read in the file
+    with open(file_path, "r") as file:
+        filedata = file.read()
+
+    # replace ".md#" by ".html#"
+    filedata = filedata.replace(".md#", ".html#")
+    filedata = re.sub(r"#(.*)\)", lambda m: m.group().lower(), filedata)
+
+    # Write the file out again
+    with open(file_path, "w") as file:
+        file.write(filedata)
+
+
+for file_path in Path(".").rglob("*.md"):
+    reformat_md_section_links(file_path)
 
 # -- Project information -----------------------------------------------------
 
