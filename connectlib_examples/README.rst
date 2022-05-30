@@ -1,3 +1,4 @@
-`connectlib` version: |connectlib_version|
+Connectlib examples
+===================
 
-If you are a beginner feel free to follow one of the examples below
+The examples below are compatible with connectlib |connectlib_version|.

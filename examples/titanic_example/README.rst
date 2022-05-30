@@ -1,2 +1,2 @@
-Titanic Example
-===============
+Examples to get started
+^^^^^^^^^^^^^^^^^^^^^^^

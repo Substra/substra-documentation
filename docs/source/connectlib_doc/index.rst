@@ -1,18 +1,15 @@
-API Reference
-=============
 
 .. toctree::
    :glob:
-   :maxdepth: 5
+   :caption: API Reference
+   :maxdepth: 2
 
-   api/*
+   api/index
 
-
-Examples
-========
 
 .. toctree::
    :glob:
+   :caption: Connectlib Examples
    :maxdepth: 5
 
    examples/*

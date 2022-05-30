@@ -1,6 +1,4 @@
-Examples to get started
-=======================
+Substra examples
+================
 
-`substra` version: |substra_version|
-
-If you are a beginner feel free to follow one of the examples below
+The examples below are compatible with substra |substra_version|.

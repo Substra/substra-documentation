@@ -1,2 +1,2 @@
-Strategies
-==========
+Examples to get started
+^^^^^^^^^^^^^^^^^^^^^^^

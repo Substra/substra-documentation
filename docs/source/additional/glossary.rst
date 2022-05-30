@@ -11,10 +11,5 @@ Glossary
         and it has its own computing and storage resources.
         
     Channel
-        TODO
-    
-    Vertical FL
-        TODO
+        A channel is a group of Connect nodes which operate on a common set of assets. Several channels can be built on top of a Connect network.
 
-    Horizontal FL
-        TODO
