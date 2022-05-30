@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-fix: broken link in sdk section (#61)
+### Fixes
+
+* fix: broken link in sdk section (#61)
+
+### Added
+
+* docs: add compatibility tables (#62)
 
 ## [0.13.0]
 
