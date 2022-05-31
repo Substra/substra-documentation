@@ -21,6 +21,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.14.0
+     - `0.15.0 <https://github.com/owkin/connectlib/releases/tag/0.15.0>`__
+     - `0.23.0 <https://github.com/owkin/substra/releases/tag/0.23.0>`__
+     - `0.13.0 <https://github.com/owkin/connect-tools/releases/tag/0.13.0>`__
+     - `0.16.0 <https://github.com/owkin/connect-backend/releases/tag/0.16.0>`__ | `helm 17.2.0 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/17.2.0>`__
+     - `0.14.0 <https://github.com/owkin/orchestrator/releases/tag/0.14.0>`__ | `helm 6.2.1 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/6.2.1>`__
+     - `0.24.0 <https://github.com/owkin/connect-frontend/releases/tag/0.24.0>`__ | `helm 0.15.0 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/0.15.0>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.20.0 <https://github.com/owkin/connect-tests/releases/tag/0.20.0>`__
+     -
    * - 0.13.0
      - `0.14.0 <https://github.com/owkin/connectlib/releases/tag/0.14.0>`__
      - `0.22.0 <https://github.com/owkin/substra/releases/tag/0.22.0>`__
