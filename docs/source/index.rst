@@ -65,6 +65,6 @@ Connect is a framework offering distributed orchestration of machine learning ta
    :caption: Additional Information
    :hidden:
 
-   additional/glossary.rst
    additional/release.rst
+   additional/glossary.rst
    additional/contact.rst
