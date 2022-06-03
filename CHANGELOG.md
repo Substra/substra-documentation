@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* doc: add Performance monitoring in local mode page (#58)
+
 ## [0.14.0]
 
 ### Fixes
@@ -16,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * docs: add compatibility tables (#62)
+* fix: broken link in sdk section (#61)
 
 ## [0.13.0]
 

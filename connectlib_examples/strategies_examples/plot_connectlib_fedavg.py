@@ -252,6 +252,7 @@ for ind, node_id in enumerate(NODES_ID):
     client = clients[node_id]
 
     # Add the dataset to the client to provide access to the opener in each node.
+    dataset.metadata = {DEBUG_OWNER: node_id}
     dataset_key = client.add_dataset(dataset)
     assert dataset_key, "Missing data manager key"
 
@@ -376,6 +377,7 @@ index_generator = NpIndexGenerator(
     batch_size=BATCH_SIZE,
     num_updates=NUM_UPDATES,
 )
+
 
 class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
