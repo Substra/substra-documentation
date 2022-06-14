@@ -7,7 +7,7 @@ Here three modes will be distinguished:
 
 * Connect `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine.
 * Connect `deployed mode <deployed_mode_>`_  mode where all the tasks run on deployed Connect platform.
-* Connect `hybrid mode <hybrid_mode_>`_  mode where tasks run locally but can use assets from remote nodes.
+* Connect `hybrid mode <hybrid_mode_>`_  mode where tasks run locally but can use assets from remote organizations.
 
 
 Test your assets locally without Connect
@@ -39,7 +39,7 @@ Run tasks locally with the local mode
 All the tasks that can be run on a deployed network can also be run locally in your Python environment. The only change needed is to set the debug parameter to `True` when instantiating the client:
 ::
 
-    client = substra.Client.from_config_file(profile_name="node-1", debug=True)
+    client = substra.Client.from_config_file(profile_name="org-1", debug=True)
 
 Contrary to the default (remote) execution, the execution is done synchronously, so the script waits for the task in progress to end before continuing.
 
@@ -78,12 +78,12 @@ To simulate a run with several clients, copy the debug client::
 
     clients = [client] * n_clients
 
-To ensure that each node has its own compute plan folder, set the following variable in the dataset metadata::
+To ensure that each organization has its own compute plan folder, set the following variable in the dataset metadata::
 
-    dataset = client.add_dataset(DatasetSpec(..., metadata = {substra.sdk.DEBUG_OWNER = my_node_name}))
+    dataset = client.add_dataset(DatasetSpec(..., metadata = {substra.sdk.DEBUG_OWNER = my_org_name}))
 
-`my_node_name` is an arbitrary name, different for each node.
-Also set the worker of any aggregatetuple to `my_node_name`.
+`my_org_name` is an arbitrary name, different for each organization.
+Also set the worker of any aggregatetuple to `my_org_name`.
 
 
 .. _hybrid_mode:
@@ -95,7 +95,7 @@ An hybrid step between testing everything locally and launching tasks on a deplo
 To do so, instantiate a Client with the parameter `debug=True`: 
 ::
 
-    client = substra.Client.from_config_file(profile_name="node-1", debug=True)
+    client = substra.Client.from_config_file(profile_name="org-1", debug=True)
 
 and use remote assets when creating tasks.  Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other assets, models on the platform can not be used in local tasks. Moreover functions that create a new asset will only create local assets.
 
@@ -114,7 +114,7 @@ To facilitate debugging where the task(s) has failed on a deployed platform it i
 Error types
 ^^^^^^^^^^^
 
-Every task has an `error_type` property that can be read by any user of any node.
+Every task has an `error_type` property that can be read by any user of any organization.
 
 The `error_type` can take three values:
 
@@ -138,7 +138,7 @@ Accessing failed tasks logs
 Logs of tasks that were run on the deployed platform can be accessed under two conditions:
 
 * The task has failed and the `error_type` is an `EXECUTION_ERROR`.
-* The user belongs to a node that has permissions to access the logs of this task.
+* The user belongs to a organization that has permissions to access the logs of this task.
 
 Logs of failed tasks can be accessed if the right permission is set on the dataset used in the task. Permissions are set when the dataset is created using the `logs_permission` field of the `DatasetSpec`. Permissions cannot be changed once the dataset is created.
 

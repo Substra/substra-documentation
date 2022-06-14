@@ -15,7 +15,7 @@ Here you will learn how to interact with Substra including:
 - launching an experiment
 
 
-There is no federated learning in this example, training and testing will happen on only one :term:`Node`.
+There is no federated learning in this example, training and testing will happen on only one :term:`Organization`.
 
 Requirements:
 
@@ -84,7 +84,7 @@ client = substra.Client(debug=True)
 # - permissions are permissions to execute an algorithm on a certain dataset.
 #
 # On a remote deployment setting the parameter ``public`` to false means that the dataset can only be used by tasks in
-# the same node or nodes that are in the ``authorized_ids``. However permissions are ignored in local mode.
+# the same organization or organizations that are in the ``authorized_ids``. However permissions are ignored in local mode.
 
 permissions = Permissions(public=False, authorized_ids=[])
 
@@ -107,7 +107,7 @@ expected in the same location as this py file"""
 # in the API reference.
 
 dataset = DatasetSpec(
-    name="Titanic dataset - Node 1",
+    name="Titanic dataset - Org 1",
     type="csv",
     data_opener=assets_directory / "dataset" / "titanic_opener.py",
     description=assets_directory / "dataset" / "description.md",

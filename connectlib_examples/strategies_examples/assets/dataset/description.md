@@ -8,7 +8,7 @@ The target is the number (0 -> 9) represented by the pixels.
 
 ### Train and test
 
-### Split data between nodes
+### Split data between organizations
 
 ## Opener usage
 

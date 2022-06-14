@@ -11,7 +11,7 @@ It is based on `the MNIST Dataset of handwritten digits <http://yann.lecun.com/e
 In this example, we work on **the grayscale images** of size **28x28 pixels**. The problem considered is a
 classification problem aiming to recognize the number written on each image.
 
-The objective of this example is to launch a two-node *federated learning* experiment using the **FedAvg strategy** on a
+The objective of this example is to launch a *federated learning* experiment on two organizations, using the **FedAvg strategy** on a
 **convolutional neural network** (CNN)
 torch model.
 
@@ -49,11 +49,10 @@ import numpy as np
 from torchvision.datasets import MNIST
 
 # %%
-# Connecting nodes to the Client
-# ==============================
+# Creating the Substra Client
+# ===========================
 #
-# We work with two different nodes, defined by their IDs. One of them is the **algo node**, on which the
-# computation tasks are registered.
+# We work with two different organizations, defined by their IDs. Both organizations provide a dataset. One of them will also provide the algorithm and # will register the machine learning tasks.
 #
 # Once these variables defined, we can create our Substra :ref:`documentation/references/sdk:Client`.
 #
@@ -62,10 +61,10 @@ from torchvision.datasets import MNIST
 from substra import Client
 
 # The list of their associated ids (for substra permissions)
-NODES_ID = ["org-1MSP", "org-2MSP"]
+ORGS_ID = ["org-1MSP", "org-2MSP"]
 
-# The node id on which your computation tasks are registered
-ALGO_NODE_ID = NODES_ID[1]
+# The org id on which your computation tasks are registered
+ALGO_ORG_ID = ORGS_ID[1]
 
 # Choose the subprocess mode to locally simulate the FL process
 DEBUG_SPAWNER = "subprocess"
@@ -78,7 +77,7 @@ data_path = pathlib.Path.cwd() / "tmp" / "data"
 assets_directory = pathlib.Path.cwd() / "assets"
 
 client = Client(debug=True)
-clients = {node_name: client for node_name in NODES_ID}
+clients = {org_name: client for org_name in ORGS_ID}
 
 
 # %%
@@ -87,9 +86,9 @@ clients = {node_name: client for node_name in NODES_ID}
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
-# It extracts the images from the raw files and locally create two folders: one for each node.
+# It extracts the images from the raw files and locally create two folders: one for each organization.
 #
-# Each node will have access to half the train data, and to half the test data (which correspond to **30,000**
+# Each organization will have access to half the train data, and to half the test data (which correspond to **30,000**
 # images for training and **5,000** for testing each).
 
 
@@ -131,28 +130,28 @@ train_labels = MNISTraw2numpy(str(raw_path / "train-labels-idx1-ubyte"))
 test_images = MNISTraw2numpy(str(raw_path / "t10k-images-idx3-ubyte"))
 test_labels = MNISTraw2numpy(str(raw_path / "t10k-labels-idx1-ubyte"))
 
-# Split array into the number of nodes
-train_images_folds = np.split(train_images, len(NODES_ID))
-train_labels_folds = np.split(train_labels, len(NODES_ID))
-test_images_folds = np.split(test_images, len(NODES_ID))
-test_labels_folds = np.split(test_labels, len(NODES_ID))
+# Split array into the number of organization
+train_images_folds = np.split(train_images, len(ORGS_ID))
+train_labels_folds = np.split(train_labels, len(ORGS_ID))
+test_images_folds = np.split(test_images, len(ORGS_ID))
+test_labels_folds = np.split(test_labels, len(ORGS_ID))
 
-# Save splits in different folders to simulate node independence.
-for node in range(len(NODES_ID)):
+# Save splits in different folders to simulate the different organization
+for org in range(len(ORGS_ID)):
 
-    # Save train dataset on each node
-    os.makedirs(str(data_path / f"node_{node+1}/train"), exist_ok=True)
-    filename = data_path / f"node_{node+1}/train/train_images.npy"
-    np.save(str(filename), train_images_folds[node])
-    filename = data_path / f"node_{node+1}/train/train_labels.npy"
-    np.save(str(filename), train_labels_folds[node])
+    # Save train dataset on each org
+    os.makedirs(str(data_path / f"org_{org+1}/train"), exist_ok=True)
+    filename = data_path / f"org_{org+1}/train/train_images.npy"
+    np.save(str(filename), train_images_folds[org])
+    filename = data_path / f"org_{org+1}/train/train_labels.npy"
+    np.save(str(filename), train_labels_folds[org])
 
-    # Save test dataset on each node
-    os.makedirs(str(data_path / f"node_{node+1}/test"), exist_ok=True)
-    filename = data_path / f"node_{node+1}/test/test_images.npy"
-    np.save(str(filename), test_images_folds[node])
-    filename = data_path / f"node_{node+1}/test/test_labels.npy"
-    np.save(str(filename), test_labels_folds[node])
+    # Save test dataset on each org
+    os.makedirs(str(data_path / f"org_{org+1}/test"), exist_ok=True)
+    filename = data_path / f"org_{org+1}/test/test_images.npy"
+    np.save(str(filename), test_images_folds[org])
+    filename = data_path / f"org_{org+1}/test/test_labels.npy"
+    np.save(str(filename), test_labels_folds[org])
 
 # %%
 # Registering assets
@@ -179,7 +178,7 @@ from connectlib.nodes import TestDataNode, TrainDataNode
 #
 # The metadata are visible by all the users of a :term:`Channel`.
 
-permissions = Permissions(public=False, authorized_ids=NODES_ID)
+permissions = Permissions(public=False, authorized_ids=ORGS_ID)
 
 # %%
 # Registering dataset
@@ -248,19 +247,19 @@ metric_key = client.add_metric(objective)
 train_data_nodes = list()
 test_data_nodes = list()
 
-for ind, node_id in enumerate(NODES_ID):
-    client = clients[node_id]
+for ind, org_id in enumerate(ORGS_ID):
+    client = clients[org_id]
 
-    # Add the dataset to the client to provide access to the opener in each node.
-    dataset.metadata = {DEBUG_OWNER: node_id}
+    # Add the dataset to the client to provide access to the opener in each organization.
+    dataset.metadata = {DEBUG_OWNER: org_id}
     dataset_key = client.add_dataset(dataset)
     assert dataset_key, "Missing data manager key"
 
-    # Add the training data on each node.
+    # Add the training data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_key],
         test_only=False,
-        path=data_path / f"node_{ind+1}" / "train",
+        path=data_path / f"org_{ind+1}" / "train",
     )
     train_datasample_key = client.add_data_sample(
         data_sample,
@@ -269,17 +268,17 @@ for ind, node_id in enumerate(NODES_ID):
 
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
-        node_id=node_id,
+        organization_id=org_id,
         data_manager_key=dataset_key,
         data_sample_keys=[train_datasample_key],
     )
     train_data_nodes.append(train_data_node)
 
-    # Add the testing data on each node.
+    # Add the testing data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_key],
         test_only=True,
-        path=data_path / f"node_{ind+1}" / "test",
+        path=data_path / f"org_{ind+1}" / "test",
     )
     test_datasample_key = client.add_data_sample(
         data_sample,
@@ -288,7 +287,7 @@ for ind, node_id in enumerate(NODES_ID):
 
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
-        node_id=node_id,
+        organization_id=org_id,
         data_manager_key=dataset_key,
         test_data_sample_keys=[test_datasample_key],
         metric_keys=[metric_key],
@@ -423,7 +422,7 @@ class MyAlgo(TorchFedAvgAlgo):
 #
 # The **dependencies** needed for the :ref:`connectlib_doc/api/algorithms:Torch Algorithms` are specified by a
 # :ref:`connectlib_doc/api/dependency:Dependency` object, in order to install the right library in the Python
-# environment of each nodes.
+# environment of each organization.
 
 algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
 
@@ -458,7 +457,7 @@ strategy = FedAvg()
 # - An **experiment folder** to save a summary of the operation made
 # - The :ref:`connectlib_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
-aggregation_node = AggregationNode(ALGO_NODE_ID)
+aggregation_node = AggregationNode(ALGO_ORG_ID)
 
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
@@ -466,7 +465,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 NUM_ROUNDS = 3
 
 computed_plan = execute_experiment(
-    client=clients[ALGO_NODE_ID],
+    client=clients[ALGO_ORG_ID],
     algo=MyAlgo(),
     strategy=strategy,
     train_data_nodes=train_data_nodes,
@@ -480,16 +479,16 @@ computed_plan = execute_experiment(
 # Listing results
 # ===============
 
-testtuples = clients[ALGO_NODE_ID].list_testtuple(filters=[f"testtuple:compute_plan_key:{computed_plan.key}"])
+testtuples = clients[ALGO_ORG_ID].list_testtuple(filters=[f"testtuple:compute_plan_key:{computed_plan.key}"])
 metrics = dict()
 cumul_metrics = {}
 for testtuple in testtuples:
     for metric_key in testtuple.test.perfs:
         if metric_key not in metrics:
-            metrics[metric_key] = clients[ALGO_NODE_ID].get_metric(metric_key)
+            metrics[metric_key] = clients[ALGO_ORG_ID].get_metric(metric_key)
     metrics_to_print = {metrics[k].name: v for k, v in testtuple.test.perfs.items()}
 
-    for ds in clients[ALGO_NODE_ID].list_data_sample():
+    for ds in clients[ALGO_ORG_ID].list_data_sample():
         if ds.key == testtuple.test.data_sample_keys[0]:
             test_data_path = str(ds.path).split("/")[-2:]
 

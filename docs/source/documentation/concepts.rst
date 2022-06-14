@@ -30,7 +30,7 @@ An algorithm specifies the method to train models_ on a dataset_ or the method t
 There are three types of algorithms:
 
 * Simple algorithm: this algorithm has to be used with train tasks and produces a single model.
-* Composite algorithm: this algorithm has to be used with composite train tasks and makes it possible to train a trunk and a head model. The trunk model can be shared among all nodes whereas the head model always remains private to the node where it was trained.
+* Composite algorithm: this algorithm has to be used with composite train tasks and makes it possible to train a trunk and a head model. The trunk model can be shared among all organizations whereas the head model always remains private to the organization where it was trained.
 * Aggregate algorithm: this algorithm has to be used with aggregated task. It is used to aggregate models or model updates. An aggregate algorithm does not need data to be used.
 
 Model / Model updates
@@ -55,7 +55,7 @@ A set of training (train tuple or composite train tuple), aggregation (aggregate
 Gathering tasks into a single compute plan has several benefits:
 
 * It will lead to a more optimized compute.
-* A local folder will be accessible on every node where the tasks run. This local folder is NOT wiped at the end of every task.
+* A local folder will be accessible on every organization where the tasks run. This local folder is NOT wiped at the end of every task.
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Connect will still create a compute plan for you for this specific task.
 
@@ -65,7 +65,7 @@ The specification of a training task of a simple algorithm_ on a dataset_. The t
 
 Composite train tuple
 """""""""""""""""""""
-The specification of a training task of a composite algorithm_ on a dataset_ potentially using input trunk and head models or model updates. It leads to the creation of a trunk and head model or model update. Depending on associated permissions, a trunk model or model update can be shared with other nodes, whereas a head model remains in the node where it was created.
+The specification of a training task of a composite algorithm_ on a dataset_ potentially using input trunk and head models or model updates. It leads to the creation of a trunk and head model or model update. Depending on associated permissions, a trunk model or model update can be shared with other organizations, whereas a head model remains in the organization where it was created.
 
 Aggregate tuple
 """""""""""""""
@@ -78,11 +78,11 @@ The specification of a testing task of a model. It evaluates the performance of 
 Permissions
 -----------
 
-Permissons for a node to process an asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Permissons for a organization to process an asset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A node can execute a task (train task, composite train task, aggregate task, test task) if it has the permissions on the input assets of the task. For example, if a node wants to execute a train task, the node needs to have process permissions on the algorithm, the dataset and the input models used in the task.
-The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every node. Permissions cannot be modified once the asset is created.
+An organization can execute a task (train task, composite train task, aggregate task, test task) if it has the permissions on the input assets of the task. For example, if an organization wants to execute a train task, the organization needs to have process permissions on the algorithm, the dataset and the input models used in the task.
+The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset is created.
 
 
 Datasets, algorithms, metrics
@@ -92,49 +92,49 @@ Permissions are defined at creation by their owner for datasets, algorithms and 
 
 Models
 """"""
-For train tasks and aggregate tasks, permissions on the model outputted by the task are defined by inheritance (intersection) of the permissions of the input assets. If a node can execute a train task or an aggregate task, it will necessarily have permissions on the model outputted by this task.
+For train tasks and aggregate tasks, permissions on the model outputted by the task are defined by inheritance (intersection) of the permissions of the input assets. If a organization can execute a train task or an aggregate task, it will necessarily have permissions on the model outputted by this task.
 
 
 For composite train tasks, the out model is split in a trunk model and a head model:
 
 * The trunk model permissions are specified by the user when registering the composite train task.
-* The head model permissions are set to be non-public, meaning that the head model can only be processed by the node where the task is executed.
+* The head model permissions are set to be non-public, meaning that the head model can only be processed by the organization where the task is executed.
 
 
 Permissons for a user to download an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Users of a node can export (aka download) from Connect to their local environment:
+Users of a organization can export (aka download) from Connect to their local environment:
 
-* the opener of a dataset if the node has process permissions on the dataset
-* the archive of an algorithm if the node has process permissions on the algorithm
-* the archive of a metric if the node has process permissions on the metric
-* the model outputted by a task if the node has process permissions on the model and if this type of export has been enabled at deployment for the node (environment variable model_export_enabled should be set to True)
+* the opener of a dataset if the organization has process permissions on the dataset
+* the archive of an algorithm if the organization has process permissions on the algorithm
+* the archive of a metric if the organization has process permissions on the metric
+* the model outputted by a task if the organization has process permissions on the model and if this type of export has been enabled at deployment for the organization (environment variable model_export_enabled should be set to True)
 
 
 Permissions summary table
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the following tables, the asset is registered by nodeA with the permissions:
+In the following tables, the asset is registered by orgA with the permissions:
 
 .. code-block:: python
 
-    {public: False, authorized_ids: [nodeA, nodeB]}
+    {public: False, authorized_ids: [orgA, orgB]}
 
 
 .. list-table:: Dataset permissions
    :widths: 15 50 50
    :header-rows: 1
 
-   * - Node
-     - What can the node do?
-     - Can the user of the node export the asset?
-   * - nodeA
-     - nodeA can run tasks on this dataset on nodeA
+   * - Organization
+     - What can the organization do?
+     - Can the user of the organization export the asset?
+   * - orgA
+     - orgA can run tasks on this dataset on orgA
      - Yes - opener only
-   * - nodeB
-     - nodeB can run tasks on this dataset on nodeA
+   * - orgB
+     - orgB can run tasks on this dataset on orgA
      - Yes - opener only
-   * - nodeC
+   * - orgC
      - Nothing
      - No
 
@@ -142,16 +142,16 @@ In the following tables, the asset is registered by nodeA with the permissions:
    :widths: 5 50 50
    :header-rows: 1
 
-   * - Node
-     - What can the node do?
-     - Can the user of the node export the asset?
-   * - nodeA
-     - nodeA can use the algo in a task on any node
+   * - Organization
+     - What can the organization do?
+     - Can the user of the organization export the asset?
+   * - orgA
+     - orgA can use the algo in a task on any organization
      - Yes - the algo archive
-   * - nodeB
-     - nodeB can use the algo in a task on any node
+   * - orgB
+     - orgB can use the algo in a task on any organization
      - Yes - the algo archive
-   * - nodeC
+   * - orgC
      - Nothing
      - No
 
@@ -159,16 +159,16 @@ In the following tables, the asset is registered by nodeA with the permissions:
    :widths: 15 50 50
    :header-rows: 1
 
-   * - Node
-     - What can the node do?
-     - Can the user of the node export the asset?
-   * - nodeA
-     - nodeA can use the metric in a test task on any node
+   * - Organization
+     - What can the organization do?
+     - Can the user of the organization export the asset?
+   * - orgA
+     - orgA can use the metric in a test task on any organization
      - Yes - the metric archive
-   * - nodeB
-     - nodeB can use the metric in a test task on any node
+   * - orgB
+     - orgB can use the metric in a test task on any organization
      - Yes - the metric archive
-   * - nodeC
+   * - orgC
      - Nothing
      - No
 
@@ -178,7 +178,7 @@ In the following tables, the asset is registered by nodeA with the permissions:
 Parallelization
 ---------------
 
-There are two ways to run several tasks in parallel on a same node. The first one, named vertical scaling, is when several tasks are run in parallel on the same machine. The second one, horizontal scaling, is when several taks are run in parallel on several machines belonging to the same node.
+There are two ways to run several tasks in parallel on a same organization. The first one, named vertical scaling, is when several tasks are run in parallel on the same machine. The second one, horizontal scaling, is when several taks are run in parallel on several machines belonging to the same organization.
 
 Vertical scaling
 ^^^^^^^^^^^^^^^^
