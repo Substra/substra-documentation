@@ -2,7 +2,7 @@ Release notes
 =============
 
 Compatibility table (close source)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 These sets of versions have been tested for compatibility:
 
@@ -21,6 +21,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.15.0
+     - `0.17.0 <https://github.com/owkin/connectlib/releases/tag/0.17.0>`__
+     - `0.25.0 <https://github.com/owkin/substra/releases/tag/0.25.0>`__
+     - `0.13.0 <https://github.com/owkin/connect-tools/releases/tag/0.13.0>`__
+     - `0.18.0 <https://github.com/owkin/connect-backend/releases/tag/0.18.0>`__ | `helm 18.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/18.1.0>`__
+     - `0.16.0 <https://github.com/owkin/orchestrator/releases/tag/0.16.0>`__ | `helm 7.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.1.0>`__
+     - `0.25.0 <https://github.com/owkin/connect-frontend/releases/tag/0.25.0>`__ | `helm 0.15.0 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/0.15.0>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.22.0 <https://github.com/owkin/connect-tests/releases/tag/0.22.0>`__
+     -
    * - 0.14.0
      - `0.15.0 <https://github.com/owkin/connectlib/releases/tag/0.15.0>`__
      - `0.23.0 <https://github.com/owkin/substra/releases/tag/0.23.0>`__
@@ -184,7 +194,7 @@ These sets of versions have been tested for compatibility:
 
 
 Compatibility table (open source)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 These sets of versions have been tested for compatibility:
 
@@ -271,3 +281,23 @@ These sets of versions have been tested for compatibility:
      - `0.0.11-alpha.1 <https://github.com/SubstraFoundation/hlf-k8s/releases/tag/0.0.11-alpha.1>`__
      - `0.0.16 <https://github.com/SubstraFoundation/substra-frontend/releases/tag/0.0.16>`__
      -
+
+Changelog
+---------
+
+0.15.0
+^^^^^^
+
+- BREAKING CHANGE: Nodes were renamed into Organizations.
+
+    - This also impacts functions like ``client.list_node()`` and ``client.node_info()`` which become ``client.list_organization()`` and ``client.organization_info()``.
+    - The OneNode strategy has been renamed SingleOrganization.
+
+- GUI: The newsfeed in the GUI is automatically refreshed every minute.
+- GUI: you can customize the columns of the Compute Plan listing and share this configuration with other users.
+- GUI: The omnisearch was implemented in the GUI, with a single search bar to search for compute plans, datasets, algorithms and metrics with their name or key.
+- An initialization round was added to centralized strategies (this has been done for the upcoming download model feature):
+
+    - Each centralized strategy starts with an initialization round composed of one composite train tuple on each train data organization.
+    - One round of a centralized strategy is now: Aggregation -> Composite training.
+    - Strategy rounds start at 1 and the initialization round is now 0. It used to start at 0 and the initialization round was -1. For each composite train tuple, aggregate tuple and test tuple the metadata ``round_idx`` has changed accordingly to the rule stated above.

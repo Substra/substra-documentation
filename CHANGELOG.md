@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.0]
+
 * doc: add Performance monitoring in local mode page (#58)
+* feat: rename node to organization (#67)
 
 ## [0.14.0]
 
