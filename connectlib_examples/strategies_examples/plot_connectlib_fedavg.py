@@ -464,7 +464,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 # Number of time to apply the compute plan.
 NUM_ROUNDS = 3
 
-computed_plan = execute_experiment(
+compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
     algo=MyAlgo(),
     strategy=strategy,
@@ -479,7 +479,9 @@ computed_plan = execute_experiment(
 # Listing results
 # ===============
 
-testtuples = clients[ALGO_ORG_ID].list_testtuple(filters=[f"testtuple:compute_plan_key:{computed_plan.key}"])
+testtuples = clients[ALGO_ORG_ID].list_testtuple(
+    filters={"compute_plan_key": [compute_plan.key]}
+)
 metrics = dict()
 cumul_metrics = {}
 for testtuple in testtuples:
