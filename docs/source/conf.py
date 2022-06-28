@@ -23,9 +23,9 @@ import importlib
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-    SUBSTRA_VERSION = "0.25.0"
+    SUBSTRA_VERSION = "0.27.0"
     TOOLS_VERSION = "0.13.0"
-    CONNECTLIB_VERSION = "0.17.0"
+    CONNECTLIB_VERSION = "0.19.0"
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
@@ -82,20 +82,29 @@ TMP_FOLDER.mkdir(exist_ok=True)
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
+    with zipfile.ZipFile(
+        file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED
+    ) as ziph:
         for root, _, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
                     os.path.join(root, file),
-                    os.path.relpath(os.path.join(root, file), os.path.join(source_dir, "..")),
+                    os.path.relpath(
+                        os.path.join(root, file), os.path.join(source_dir, "..")
+                    ),
                 )
 
 
-assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+assets_dir_titanic = (
+    Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+)
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
 assets_dir_connectlib_fedavg = (
-    Path(__file__).parents[2] / "connectlib_examples" / "connectlib_fedavg_example" / "assets"
+    Path(__file__).parents[2]
+    / "connectlib_examples"
+    / "connectlib_fedavg_example"
+    / "assets"
 )
 zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
 
@@ -112,7 +121,9 @@ EDITABLE_LIB_PATH = Path(__file__).resolve().parents[1] / "src"
 
 def install_dependency(library_name, repo_name, repo_args, version):
     github_token = os.environ.get("GITHUB_TOKEN")
-    assert github_token is not None, "Cloning the repos to get the sources, need a github token"
+    assert (
+        github_token is not None
+    ), "Cloning the repos to get the sources, need a github token"
     try:
         subprocess.run(
             args=[
@@ -146,19 +157,43 @@ def copy_source_files(src, dest):
 
 for library, repo_name, repo_args, src_doc_files, dest_doc_files, version in [
     ("substratools", "connect-tools", "#egg=substratools", None, None, TOOLS_VERSION),
-    ("substra", "substra", "#egg=substra", "references", "documentation/references", SUBSTRA_VERSION),
-    ("connectlib", "connectlib", "#egg=connectlib[dev]", "docs/api", "connectlib_doc/api", CONNECTLIB_VERSION),
+    (
+        "substra",
+        "substra",
+        "#egg=substra",
+        "references",
+        "documentation/references",
+        SUBSTRA_VERSION,
+    ),
+    (
+        "connectlib",
+        "connectlib",
+        "#egg=connectlib[dev]",
+        "docs/api",
+        "connectlib_doc/api",
+        CONNECTLIB_VERSION,
+    ),
 ]:
     source_path = None
     if importlib.util.find_spec(library) is None or (
         src_doc_files is not None
-        and not (Path((importlib.import_module(library)).__file__).resolve().parents[1] / src_doc_files).exists()
+        and not (
+            Path((importlib.import_module(library)).__file__).resolve().parents[1]
+            / src_doc_files
+        ).exists()
     ):
-        install_dependency(library_name=library, repo_name=repo_name, repo_args=repo_args, version=version)
+        install_dependency(
+            library_name=library,
+            repo_name=repo_name,
+            repo_args=repo_args,
+            version=version,
+        )
 
     if src_doc_files is not None:
         imported_module = importlib.import_module(library)
-        source_path = Path(imported_module.__file__).resolve().parents[1] / src_doc_files
+        source_path = (
+            Path(imported_module.__file__).resolve().parents[1] / src_doc_files
+        )
         copy_source_files(source_path, dest_doc_files)
 
 # reformat links to a section in a markdown files (not supported by myst_parser)

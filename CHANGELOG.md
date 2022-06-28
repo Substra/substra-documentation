@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.16.0]
+
+* fix: new filters api (#72)
+* doc: update get_performances.rst (#70)
+
 ## [0.15.0]
 
 * doc: add Performance monitoring in local mode page (#58)

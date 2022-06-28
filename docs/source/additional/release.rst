@@ -21,6 +21,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.16.0
+     - `0.19.0 <https://github.com/owkin/connectlib/releases/tag/0.19.0>`__
+     - `0.27.0 <https://github.com/owkin/substra/releases/tag/0.27.0>`__
+     - `0.13.0 <https://github.com/owkin/connect-tools/releases/tag/0.13.0>`__
+     - `0.20.0 <https://github.com/owkin/connect-backend/releases/tag/0.20.0>`__ | `helm 18.3.0 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/18.3.0>`__
+     - `0.16.0 <https://github.com/owkin/orchestrator/releases/tag/0.16.0>`__ | `helm 7.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.1.0>`__
+     - `0.25.0 <https://github.com/owkin/connect-frontend/releases/tag/0.25.0>`__ | `helm 0.15.0 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/0.15.0>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.23.0 <https://github.com/owkin/connect-tests/releases/tag/0.23.0>`__
+     -
    * - 0.15.0
      - `0.17.0 <https://github.com/owkin/connectlib/releases/tag/0.17.0>`__
      - `0.25.0 <https://github.com/owkin/substra/releases/tag/0.25.0>`__
@@ -285,8 +295,26 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
-0.15.0
-^^^^^^
+
+Connect 0.16.0 - 2022-06-27
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+- GUI: filter on compute plans metadata using the Filters button in the compute plans listing
+- BREAKING CHANGE: new filtering and ordering functionalities for list methods in SDK:
+    - new syntax for filters: ``filters={key:["value1", "value2"]}``
+        - new possible filters:  name, owner, metadata, permissions, compute_plan_key, algo_key, rank, dataset_key, ​​data_sample_key.
+        - For instance: ``client.list_dataset(filters={compute_plan_key="d193a5eb", owner=["org-1"]}, ascending=True)``
+    - new ordering possibilities:
+        - Order compute plans and tasks on creation date, start date, end date. Default: creation date.
+        - Order all assets by ascending or descending creation date (or another date for compute plans and tasks). Default: descending.
+        - For instance: ``list_testtuple(filters={data_sample_key=["d193a5eb",”15256612”], compute_plan_key="18a5dfc6"}, order_by='creation_date', ascending=True)``
+    - See `documentation <https://connect-docs.owkin.com/en/latest/documentation/references/sdk.html?highlight=list_dataset#list-dataset>`__ for a more detailed view on the filtering and ordering possibilities
+- New strategy in Connectlib: Newton Raphson
+
+
+Connect 0.15.0 - 2022-06-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - BREAKING CHANGE: Nodes were renamed into Organizations.
 
