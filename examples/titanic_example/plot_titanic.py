@@ -46,9 +46,9 @@ from pathlib import Path
 import substra
 from substra.sdk.schemas import (
     AlgoSpec,
+    AlgoCategory,
     DataSampleSpec,
     DatasetSpec,
-    MetricSpec,
     Permissions,
     TesttupleSpec,
     TraintupleSpec,
@@ -172,7 +172,8 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # You will find detailed information about the metric
 # concept here: :ref:`documentation/concepts:Metric`.
 
-METRICS = MetricSpec(
+METRICS = AlgoSpec(
+    category=AlgoCategory.metric,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=assets_directory / "metric" / "metrics.zip",
@@ -189,7 +190,7 @@ with zipfile.ZipFile(archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-metric_key = client.add_metric(METRICS)
+metric_key = client.add_algo(METRICS)
 
 print(f"Metric key {metric_key}")
 

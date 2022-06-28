@@ -165,7 +165,8 @@ from substra.sdk.schemas import (
     DatasetSpec,
     Permissions,
     DataSampleSpec,
-    MetricSpec,
+    AlgoCategory,
+    AlgoSpec,
 )
 from connectlib.nodes import TestDataNode, TrainDataNode
 
@@ -211,7 +212,8 @@ dataset = DatasetSpec(
 #   **Python scripts**
 
 
-objective = MetricSpec(
+objective = AlgoSpec(
+    category=AlgoCategory.metric,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=assets_directory / "metric" / "metrics.zip",
@@ -228,7 +230,7 @@ with zipfile.ZipFile(archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=filepath.name)
 
-metric_key = client.add_metric(objective)
+metric_key = client.add_algo(objective)
 
 # %%
 # Train and test data nodes
@@ -487,7 +489,7 @@ cumul_metrics = {}
 for testtuple in testtuples:
     for metric_key in testtuple.test.perfs:
         if metric_key not in metrics:
-            metrics[metric_key] = clients[ALGO_ORG_ID].get_metric(metric_key)
+            metrics[metric_key] = clients[ALGO_ORG_ID].get_algo(metric_key)
     metrics_to_print = {metrics[k].name: v for k, v in testtuple.test.perfs.items()}
 
     for ds in clients[ALGO_ORG_ID].list_data_sample():
