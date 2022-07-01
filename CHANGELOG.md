@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* fix: mnist example plot
+
 ## [0.16.0]
 
 * fix: new filters api (#72)

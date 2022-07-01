@@ -342,6 +342,7 @@ class CNN(nn.Module):
 
 model = CNN()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+criterion = torch.nn.CrossEntropyLoss()
 
 # %%
 # Connectlib imports
@@ -369,10 +370,10 @@ from connectlib.experiment import execute_experiment
 # in the :ref:`connectlib_doc/api/algorithms:Torch Algorithms`.
 
 # Number of model update between each FL strategy aggregation.
-NUM_UPDATES = 1
+NUM_UPDATES = 15
 
 # Number of samples per update.
-BATCH_SIZE = 124
+BATCH_SIZE = 32
 
 index_generator = NpIndexGenerator(
     batch_size=BATCH_SIZE,
@@ -384,13 +385,13 @@ class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
         super().__init__(
             model=model,
-            criterion=torch.nn.CrossEntropyLoss(),
+            criterion=criterion,
             optimizer=optimizer,
             index_generator=index_generator,
         )
 
     def preprocess(self, x):
-        # Optional function to facilitate the preprocessing of our data
+        # Optional function to facilitate the preprocessing of images
         return x / 255
 
     def _local_train(self, x: Any, y: Any):
@@ -481,29 +482,10 @@ compute_plan = execute_experiment(
 # Listing results
 # ===============
 
-testtuples = clients[ALGO_ORG_ID].list_testtuple(
-    filters={"compute_plan_key": [compute_plan.key]}
-)
-metrics = dict()
-cumul_metrics = {}
-for testtuple in testtuples:
-    for metric_key in testtuple.test.perfs:
-        if metric_key not in metrics:
-            metrics[metric_key] = clients[ALGO_ORG_ID].get_algo(metric_key)
-    metrics_to_print = {metrics[k].name: v for k, v in testtuple.test.perfs.items()}
+import pandas as pd
 
-    for ds in clients[ALGO_ORG_ID].list_data_sample():
-        if ds.key == testtuple.test.data_sample_keys[0]:
-            test_data_path = str(ds.path).split("/")[-2:]
-
-    if "/".join(test_data_path) in cumul_metrics:
-        cumul_metrics["/".join(test_data_path)] += [metrics_to_print["Accuracy"]]
-    else:
-        cumul_metrics["/".join(test_data_path)] = [metrics_to_print["Accuracy"]]
-
-    acc_to_print = metrics_to_print["Accuracy"]
-
-    print(f"Accuracy on the dataset {'/'.join(test_data_path)}: {acc_to_print}")
+performances_df = pd.DataFrame(client.get_performances(compute_plan.key).dict())
+print(performances_df[["worker", "round_idx", "performance"]])
 
 # %%
 # Plot results
@@ -515,8 +497,9 @@ plt.title("Test dataset results")
 plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
-for k in cumul_metrics:
-    plt.plot(cumul_metrics[k], label=k)
+for id in ORGS_ID:
+    df = performances_df.query(f"worker == '{id}'")
+    plt.plot(df["round_idx"], df["performance"], label=id)
 
 plt.legend(loc="lower right")
 plt.show()
