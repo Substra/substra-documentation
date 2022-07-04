@@ -59,7 +59,7 @@ with `repo` rights and let the doc do it for you during the build:
 ```sh
 export GITHUB_TOKEN=my_github_token
 ```
-
+Note that you should not have any repository already installed in non-editable mode, for this method to work.
 
 ### Build the doc locally
 
