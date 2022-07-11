@@ -33,11 +33,10 @@ class Algo(tools.algo.Algo):
         mean = X["Age"].mean()
         std = X["Age"].std()
         is_null = X["Age"].isnull().sum()
-        # compute random numbers between the mean, std and is_null
-        rand_age = np.random.randint(mean - std, mean + std, size=is_null)
-        # fill NaN values in Age column with random values generated
+        
+        # fill NaN values in Age column with mean
         age_slice = X["Age"].copy()
-        age_slice[np.isnan(age_slice)] = rand_age
+        age_slice[np.isnan(age_slice)] = mean
         X["Age"] = age_slice
         X["Age"] = X["Age"].astype(int)
         # make Age into a category
