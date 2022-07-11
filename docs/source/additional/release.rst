@@ -21,6 +21,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.17.0
+     - `0.21.0 <https://github.com/owkin/connectlib/releases/tag/0.21.0>`__
+     - `0.29.0 <https://github.com/owkin/substra/releases/tag/0.29.0>`__
+     - `0.13.0 <https://github.com/owkin/connect-tools/releases/tag/0.13.0>`__
+     - `0.22.0 <https://github.com/owkin/connect-backend/releases/tag/0.22.0>`__ | `helm 18.3.1 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/18.3.1>`__
+     - `0.19.0 <https://github.com/owkin/orchestrator/releases/tag/0.19.0>`__ | `helm 7.1.4 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.1.4>`__
+     - `0.28.0 <https://github.com/owkin/connect-frontend/releases/tag/0.28.0>`__ | `helm 0.15.0 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/0.15.0>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.25.0 <https://github.com/owkin/connect-tests/releases/tag/0.25.0>`__
+     -
    * - 0.16.0
      - `0.19.0 <https://github.com/owkin/connectlib/releases/tag/0.19.0>`__
      - `0.27.0 <https://github.com/owkin/substra/releases/tag/0.27.0>`__
@@ -294,6 +304,29 @@ These sets of versions have been tested for compatibility:
 
 Changelog
 ---------
+
+Connect 0.17.0 - 2022-07-11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+- **BREAKING CHANGE**: The metric concept does not exist anymore. Instead the metric is simply an algo belonging to the metric category.
+- **BREAKING CHANGE**: Convert the test task to two tasks: predict task + test task. This change was necessary on the way to have a generic task.
+- **BREAKING CHANGE**: The method to add tasks to a compute plan: ``Client.update_compute_plan`` is renamed ``Client.add_compute_plan_tuples``.
+- **BREAKING CHANGE**: Remove CLI commands: add, get and list.
+- Library: Added functions to download the model of a strategy:
+
+  - The function ``connectlib.model_loading.download_algo_files`` downloads the files needed to load the output model of a strategy according to the given round. These files are downloaded to the given folder.
+  - The ``connectlib.model_loading.load_algo`` function to load the output model of a strategy from the files previously downloaded via the the function ``connectlib.model_loading.download_algo_files``.
+  - Those two functions works together:
+
+.. code-block:: python
+
+  download_algo_files(client=substra_client, compute_plan_key=key, round_idx=None, dest_folder=session_dir)
+  model = load_algo(input_folder=session_dir)
+
+- GUI: A compute plan can be canceled from the GUI.
+- GUI: The compute plan workflow can be viewed in the GUI.
+- GUI: Filters on duration for compute plans and tasks.
 
 
 Connect 0.16.0 - 2022-06-27
