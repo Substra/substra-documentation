@@ -103,7 +103,7 @@ zip_dir(assets_dir_titanic, "titanic_assets.zip")
 assets_dir_connectlib_fedavg = (
     Path(__file__).parents[2]
     / "connectlib_examples"
-    / "connectlib_fedavg_example"
+    / "strategies_examples"
     / "assets"
 )
 zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
