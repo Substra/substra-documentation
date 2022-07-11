@@ -202,9 +202,9 @@ dataset = DatasetSpec(
 # Adding Metrics
 # ==============
 #
-# A :ref:`documentation/concepts:Metric` corresponds to a function to evaluate the performances of a model on a
+# A metric corresponds to an algorithm used to compute the score of predictions on a
 # **datasample**.
-# Concretely, a :ref:`documentation/concepts:Metric` corresponds to an archive *(tar or zip file)*, automatically build
+# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically build
 # from:
 #
 # - a **Python scripts** that implement the metric computation

@@ -9,7 +9,7 @@ Main Substra concepts
 Assets
 ------
 
-Assets are a set of files which are required to run a compute plan. In order to enable the privacy-preserving machine learning, different types of assets live within the platform: datasets, algorithms, models, metrics, tasks and compute plans.
+Assets are a set of files which are required to run a compute plan. In order to enable the privacy-preserving machine learning, different types of assets live within the platform: datasets, algorithms, models, tasks and compute plans.
 
 Dataset
 ^^^^^^^
@@ -22,28 +22,22 @@ A dataset represents the data in Connect. It is made up of:
 Algorithm
 ^^^^^^^^^
 
-An algorithm specifies the method to train models_ on a dataset_ or the method to aggregate models. For algorithms used to train a model on a dataset, it specifies the model type and architecture, the loss function, the optimizer, hyperparameters and, also identifies the parameters that are tuned during training. Concretely, an algorithm corresponds to an archive (tar or zip file) containing:
+An algorithm corresponds to an archive (tar or zip file) containing:
 
     * One or more Python scripts that implement the algorithm. Importantly, a train and a predict functions have to be defined.
     * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
-There are three types of algorithms:
+There are five types of algorithms:
 
 * Simple algorithm: this algorithm has to be used with train tasks and produces a single model.
 * Composite algorithm: this algorithm has to be used with composite train tasks and makes it possible to train a trunk and a head model. The trunk model can be shared among all organizations whereas the head model always remains private to the organization where it was trained.
 * Aggregate algorithm: this algorithm has to be used with aggregated task. It is used to aggregate models or model updates. An aggregate algorithm does not need data to be used.
+* Predict algorithm: this algorithm has to be used with a predict task. It is used to generate predictions with a model and a dataset.
+* Metric algorithm: this algorithm has to be used with a test task. It corresponds to a function to compute the score of predictions on a dataset_.
 
-Model / Model updates
-^^^^^^^^^^^^^^^^^^^^^^
+Model
+^^^^^
 A model or model updates is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task (`train tuple <train tuple_>`_ or `composite train tuple <composite train tuple_>`_); or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task (`aggregate tuple <aggregate tuple_>`_).
-
-
-Metric
-^^^^^^
-A metric corresponds to a function to evaluate the performance of a models_ on a dataset_. Concretely, a metric corresponds to an archive (tar or zip file) containing:
-
-* Python scripts that implement the metric computation
-* a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 
 Compute plan and tasks
@@ -71,9 +65,13 @@ Aggregate tuple
 """""""""""""""
 The specification of an aggregation task of several models or model updates using an aggregate algorithm_. It leads to the creation of one model or model update.
 
+Predict tuple
+"""""""""""""
+The specification of a prediction task. It generates prediction using a prediction algorithm_. with a dataset_ and an already trained model_.
+
 Test tuple
 """"""""""
-The specification of a testing task of a model. It evaluates the performance of the model using one or several `metrics <metric_>`_ with a dataset_.
+The specification of a testing task of predictions. It computes the score of the predictions using a metric algorithm_. with a dataset_.
 
 Permissions
 -----------
@@ -85,9 +83,9 @@ An organization can execute a task (train task, composite train task, aggregate 
 The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset is created.
 
 
-Datasets, algorithms, metrics
-"""""""""""""""""""""""""""""
-Permissions are defined at creation by their owner for datasets, algorithms and metrics.
+Datasets, algorithms
+""""""""""""""""""""
+Permissions are defined at creation by their owner for datasets and algorithms.
 
 
 Models
@@ -107,7 +105,6 @@ Users of a organization can export (aka download) from Connect to their local en
 
 * the opener of a dataset if the organization has process permissions on the dataset
 * the archive of an algorithm if the organization has process permissions on the algorithm
-* the archive of a metric if the organization has process permissions on the metric
 * the model outputted by a task if the organization has process permissions on the model and if this type of export has been enabled at deployment for the organization (environment variable model_export_enabled should be set to True)
 
 
@@ -154,24 +151,6 @@ In the following tables, the asset is registered by orgA with the permissions:
    * - orgC
      - Nothing
      - No
-
-.. list-table:: Metric permissions
-   :widths: 15 50 50
-   :header-rows: 1
-
-   * - Organization
-     - What can the organization do?
-     - Can the user of the organization export the asset?
-   * - orgA
-     - orgA can use the metric in a test task on any organization
-     - Yes - the metric archive
-   * - orgB
-     - orgB can use the metric in a test task on any organization
-     - Yes - the metric archive
-   * - orgC
-     - Nothing
-     - No
-
 
 
 

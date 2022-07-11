@@ -51,6 +51,7 @@ from substra.sdk.schemas import (
     DatasetSpec,
     Permissions,
     TesttupleSpec,
+    PredicttupleSpec,
     TraintupleSpec,
 )
 
@@ -168,9 +169,7 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 #
 # - Python scripts that implement the metric computation
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
-#
-# You will find detailed information about the metric
-# concept here: :ref:`documentation/concepts:Metric`.
+
 
 METRICS = AlgoSpec(
     category=AlgoCategory.metric,
@@ -259,9 +258,18 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
+predicttuple = PredicttupleSpec(
+        traintuple_key=traintuple_key,
+        algo_key=algo_key,
+        data_manager_key=dataset_key,
+        test_data_sample_keys=test_data_sample_keys,
+    )
+
+predicttuple_key = client.add_predicttuple(predicttuple)
+
 testtuple = TesttupleSpec(
-    metric_keys=[metric_key],
-    traintuple_key=traintuple_key,
+    algo_key=metric_key,
+    predicttuple_key=predicttuple_key,
     test_data_sample_keys=test_data_sample_keys,
     data_manager_key=dataset_key,
 )
@@ -278,6 +286,5 @@ print(f"Testtuple key {testtuple_key}")
 
 testtuple = client.get_testtuple(testtuple_key)
 print(testtuple.status)
-print("Algorithm: ", testtuple.algo.name)
-print("Metric: ", testtuple.test.metrics[0].name)
+print("Metric: ", testtuple.algo.name)
 print("Performance on the metric: ", list(testtuple.test.perfs.values())[0])
