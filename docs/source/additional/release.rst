@@ -21,6 +21,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.17.1
+     - `0.21.0 <https://github.com/owkin/connectlib/releases/tag/0.21.0>`__
+     - `0.29.0 <https://github.com/owkin/substra/releases/tag/0.29.0>`__
+     - `0.13.0 <https://github.com/owkin/connect-tools/releases/tag/0.13.0>`__
+     - `0.22.0 <https://github.com/owkin/connect-backend/releases/tag/0.22.0>`__ | `helm 18.3.1 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/18.3.1>`__
+     - `0.19.1 <https://github.com/owkin/orchestrator/releases/tag/0.19.1>`__ | `helm 7.1.4 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.1.4>`__
+     - `0.28.0 <https://github.com/owkin/connect-frontend/releases/tag/0.28.0>`__ | `helm 0.15.0 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/0.15.0>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.25.0 <https://github.com/owkin/connect-tests/releases/tag/0.25.0>`__
+     -
    * - 0.17.0
      - `0.21.0 <https://github.com/owkin/connectlib/releases/tag/0.21.0>`__
      - `0.29.0 <https://github.com/owkin/substra/releases/tag/0.29.0>`__
@@ -304,6 +314,10 @@ These sets of versions have been tested for compatibility:
 
 Changelog
 ---------
+
+Connect 0.17.1 - 2022-07-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- fix an orchestrator issue when upgrading existing instances
 
 Connect 0.17.0 - 2022-07-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
