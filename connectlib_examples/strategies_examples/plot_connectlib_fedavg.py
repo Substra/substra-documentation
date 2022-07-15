@@ -362,12 +362,19 @@ from connectlib.experiment import execute_experiment
 # Connectlib algo definition
 # ==========================
 #
-# To instantiate a Connectlib :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, it is mandatory to overwrite the
-# `_local_train` and `_local_predict` functions.
+# To instantiate a Connectlib :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, you need to define a torch Dataset
+# with a specific `__init__` signature, that must contain (self, x, y, is_inference). This torch Dataset is useful to
+# preprocess your data on the `__getitem__` function.
+# The `__getitem__` function is expected to return x and y if is_inference is False, else x.
+# This behavior can be changed by re-writing the `_local_train` or `predict` methods.
 #
-# These two functions will be called locally on each batch of data. This is the place where preprocessing on data can
-# be done. To simplify the preprocessing, we can easily create our own function `preprocess` (see below) directly
-# in the :ref:`connectlib_doc/api/algorithms:Torch Algorithms`.
+# This dataset is passed **as a class** to the :ref:`connectlib_doc/api/algorithms:Torch Algorithms`.
+# Indeed, this torch Dataset will be instantiated within the algorithm, using the opener functions as x and y
+# parameters.
+#
+# The index generator will be used a the batch sampler of the dataset, in order to save the state of the seen samples
+# during the training, as Federated Algorithms have a notion of `num_updates`, which forced the batch sampler of the
+# dataset to be stateful.
 
 # Number of model update between each FL strategy aggregation.
 NUM_UPDATES = 15
@@ -381,6 +388,22 @@ index_generator = NpIndexGenerator(
 )
 
 
+class TorchDataset(torch.utils.data.Dataset):
+    def __init__(self, x, y, is_inference: bool):
+        self.x = x
+        self.y = y
+        self.is_inference = is_inference
+
+    def __getitem__(self, idx):
+        if not self.is_inference:
+            return self.x[idx] / 255, self.y[idx]
+        else:
+            return self.x[idx] / 255
+
+    def __len__(self):
+        return len(self.x)
+
+
 class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
         super().__init__(
@@ -388,35 +411,8 @@ class MyAlgo(TorchFedAvgAlgo):
             criterion=criterion,
             optimizer=optimizer,
             index_generator=index_generator,
+            dataset=TorchDataset,
         )
-
-    def preprocess(self, x):
-        # Optional function to facilitate the preprocessing of images
-        return x / 255
-
-    def _local_train(self, x: Any, y: Any):
-        # Mandatory function
-        for batch_index in self._index_generator:
-            x_batch, y_batch = self.preprocess(x[batch_index]), y[batch_index]
-
-            # Forward pass
-            y_pred = self._model(x_batch)
-
-            # Compute Loss
-            loss = self._criterion(y_pred, y_batch)
-            self._optimizer.zero_grad()
-            loss.backward()
-            self._optimizer.step()
-
-            if self._scheduler is not None:
-                self._scheduler.step()
-
-    def _local_predict(self, x: Any) -> Any:
-        # Mandatory function
-        with torch.inference_mode():
-            y = self._model(self.preprocess(x), eval=True)
-        y_pred = y.detach().numpy()
-        return y_pred
 
 
 # %%
@@ -485,6 +481,7 @@ compute_plan = execute_experiment(
 import pandas as pd
 
 performances_df = pd.DataFrame(client.get_performances(compute_plan.key).dict())
+print("\nPerformance Table: \n")
 print(performances_df[["worker", "round_idx", "performance"]])
 
 # %%
