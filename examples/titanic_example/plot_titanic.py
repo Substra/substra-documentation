@@ -53,7 +53,7 @@ from substra.sdk.schemas import (
     TesttupleSpec,
     PredicttupleSpec,
     TraintupleSpec,
-    ComputeTaskOuput,
+    ComputeTaskOutput,
 )
 
 # %%
@@ -245,7 +245,7 @@ traintuple = TraintupleSpec(
     algo_key=algo_key,
     data_manager_key=dataset_key,
     train_data_sample_keys=train_data_sample_keys,
-    outputs={"model": ComputeTaskOuput(permissions=permissions)},
+    outputs={"model": ComputeTaskOutput(permissions=permissions)},
 )
 
 traintuple_key = client.add_traintuple(traintuple)
@@ -265,7 +265,7 @@ predicttuple = PredicttupleSpec(
         algo_key=algo_key,
         data_manager_key=dataset_key,
         test_data_sample_keys=test_data_sample_keys,
-        outputs={"predictions": ComputeTaskOuput(permissions=permissions)},
+        outputs={"predictions": ComputeTaskOutput(permissions=permissions)},
     )
 
 predicttuple_key = client.add_predicttuple(predicttuple)
@@ -275,7 +275,7 @@ testtuple = TesttupleSpec(
     predicttuple_key=predicttuple_key,
     test_data_sample_keys=test_data_sample_keys,
     data_manager_key=dataset_key,
-    outputs={"performance": ComputeTaskOuput(permissions=permissions)},
+    outputs={"performance": ComputeTaskOutput(permissions=permissions)},
 )
 
 testtuple_key = client.add_testtuple(testtuple)

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0]
+
+* fix: mnist example plot
+* chore: update mnist example to include torch Dataset class as argument for torch Algo
+
 ## [0.17.0]
 
 * fix: mnist example plot

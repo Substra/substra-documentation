@@ -38,11 +38,11 @@ jobs:
           ref: main
           path: connectlib
 
-      - name: Install substra, connect-tools and connectlib and connectlib
+      - name: Install substra, connect-tools and connectlib
         run: |
-          pip install -e substra
-          pip install -e connect-tools
-          pip install -e connectlib[dev]
+          pip install -e ./substra
+          pip install -e ./connect-tools
+          pip install -e ./connectlib[dev]
 
       - name: Copy substra and connectlib api doc in the doc
         run: |

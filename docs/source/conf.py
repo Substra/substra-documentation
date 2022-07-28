@@ -23,9 +23,9 @@ import importlib
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-    SUBSTRA_VERSION = "0.29.0"
+    SUBSTRA_VERSION = "0.30.1"
     TOOLS_VERSION = "0.13.0"
-    CONNECTLIB_VERSION = "0.21.0"
+    CONNECTLIB_VERSION = "0.22.0"
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
