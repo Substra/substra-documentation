@@ -54,6 +54,7 @@ from substra.sdk.schemas import (
     PredicttupleSpec,
     TraintupleSpec,
     ComputeTaskOutput,
+    InputRef,
 )
 
 # %%
@@ -241,11 +242,16 @@ print(f"Algo key {algo_key}")
 # First a training task is registered which will produce a machine learning model.
 # Then a testing task is registered, testing the model of the training task.
 
+data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
+train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
+test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
+
 traintuple = TraintupleSpec(
     algo_key=algo_key,
     data_manager_key=dataset_key,
     train_data_sample_keys=train_data_sample_keys,
     outputs={"model": ComputeTaskOutput(permissions=permissions)},
+    inputs=data_manager_input + train_data_sample_inputs,
 )
 
 traintuple_key = client.add_traintuple(traintuple)
@@ -260,15 +266,20 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
+model_input = [InputRef(identifier="model", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
+
 predicttuple = PredicttupleSpec(
         traintuple_key=traintuple_key,
         algo_key=algo_key,
         data_manager_key=dataset_key,
         test_data_sample_keys=test_data_sample_keys,
         outputs={"predictions": ComputeTaskOutput(permissions=permissions)},
+        inputs=data_manager_input + test_data_sample_inputs + model_input,
     )
 
 predicttuple_key = client.add_predicttuple(predicttuple)
+
+predictions_input = [InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")]
 
 testtuple = TesttupleSpec(
     algo_key=metric_key,
@@ -276,6 +287,7 @@ testtuple = TesttupleSpec(
     test_data_sample_keys=test_data_sample_keys,
     data_manager_key=dataset_key,
     outputs={"performance": ComputeTaskOutput(permissions=permissions)},
+    inputs=data_manager_input + test_data_sample_inputs + predictions_input,
 )
 
 testtuple_key = client.add_testtuple(testtuple)
