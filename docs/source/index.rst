@@ -24,6 +24,8 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
   Connect changelog and compatibility table.
 
+- :doc:`Operating a Substra network <operations/index>`
+
 
 
 .. toctree::
@@ -62,6 +64,15 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
 .. toctree::
    :glob:
+   :maxdepth: 1
+   :caption: Operating Substra
+   :hidden:
+
+   operations/index.rst
+
+
+.. toctree::
+   :glob:
    :maxdepth: 2
    :caption: Additional Information
    :hidden:
@@ -69,3 +80,4 @@ Connect is a framework offering distributed orchestration of machine learning ta
    additional/release.rst
    additional/glossary.rst
    additional/contact.rst
+

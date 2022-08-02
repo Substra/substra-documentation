@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* doc: add documentation on the remote backend (#90)
+
 ## [0.18.0]
 
 * fix: mnist example plot

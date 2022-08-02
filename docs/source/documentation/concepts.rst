@@ -19,6 +19,8 @@ A dataset represents the data in Connect. It is made up of:
 * An opener, which is a script used to load the data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
 
+.. _concept_algorithm:
+
 Algorithm
 ^^^^^^^^^
 
@@ -34,6 +36,8 @@ There are five types of algorithms:
 * Aggregate algorithm: this algorithm has to be used with aggregated task. It is used to aggregate models or model updates. An aggregate algorithm does not need data to be used.
 * Predict algorithm: this algorithm has to be used with a predict task. It is used to generate predictions with a model and a dataset.
 * Metric algorithm: this algorithm has to be used with a test task. It corresponds to a function to compute the score of predictions on a dataset_.
+
+.. _concept_model:
 
 Model
 ^^^^^

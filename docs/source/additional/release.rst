@@ -1,6 +1,8 @@
 Release notes
 =============
 
+.. _compatibility table:
+
 Compatibility table (close source)
 ----------------------------------
 
