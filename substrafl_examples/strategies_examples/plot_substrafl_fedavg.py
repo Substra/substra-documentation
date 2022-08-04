@@ -424,7 +424,7 @@ class MyAlgo(TorchFedAvgAlgo):
 # :ref:`substrafl_doc/api/dependency:Dependency` object, in order to install the right library in the Python
 # environment of each organization.
 
-algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
+algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.12.0"])
 
 # %%
 # Federated Learning strategies
