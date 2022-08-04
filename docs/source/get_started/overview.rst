@@ -7,7 +7,7 @@ It supports simple training and evaluation schemes, such as training a model on 
 
 Connect has four user interfaces:
     * **Substra**: a low-evel python library (also called SDK). Substra is used to create datasets, algorithms and machine learning tasks on the platform.
-    * **Connectlib**: a high-level federated learning python library. Connectlib is used to quickly run complex federated leraning experiments at scale.
+    * **Substrafl**: a high-level federated learning python library. Substrafl is used to quickly run complex federated leraning experiments at scale.
     * a CLI - Command Line Interface
     * a web interface
 

@@ -139,8 +139,8 @@ docs/source/auto_examples/**
 docs/source/documentation/references/**
 !docs/source/auto_examples/titanic_example/images/thumb/sphx_glr_plot_titanic_thumb.jpg
 
-docs/source/connectlib_doc/api
-docs/source/connectlib_doc/examples
+docs/source/substrafl_doc/api
+docs/source/substrafl_doc/examples
 
 # Zip files
 *.zip

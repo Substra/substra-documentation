@@ -7,7 +7,7 @@ Status](https://readthedocs.com/projects/owkin-connect-documentation/badge/?vers
   - [Contributing](#contributing)
     - [Install substra from owkin pypi](#install-substra-from-owkin-pypi)
     - [Install substra from your own computer](#install-substra-from-your-own-computer)
-    - [Install connectlib from your own computer](#install-connectlib-from-your-own-computer)
+    - [Install substrafl from your own computer](#install-substrafl-from-your-own-computer)
     - [Build the doc locally](#build-the-doc-locally)
   - [Access to ReadTheDocs](#access-to-readthedocs)
   - [To publish on RTD before merging your PR](#to-publish-on-rtd-before-merging-your-pr)
@@ -31,7 +31,7 @@ You should use python `3.8`.
 
 To deploy the documentation locally you will need to install all the necessary requirements which you can find in the 'requirements.txt' file of the root of this repository. You can use pip in your terminal to install it: `pip install -r requirements.txt`.
 
-### Install substra, substratools and connectlib in editable mode
+### Install substra, substratools and substrafl in editable mode
 
 :warning: if you have these repositories installed in non-editable mode, it will not work.
 
@@ -49,7 +49,7 @@ cd connect-tools && pip install -e . && cd ..
 
 ```sh
 git clone git@github.com:owkin/connectlib.git
-cd connectlib && pip install -e '.[dev]' && cd ..
+cd substrafl && pip install -e '.[dev]' && cd ..
 ```
 
 or you can export a
@@ -91,7 +91,7 @@ You can follow the build on the CI [here](https://github.com/owkin/connect-docum
 
 ## Add a new example
 
-- Put the example folder in `connect-documentation/examples` if it is a Substra example, `connect-documentation/connectlib_examples` if it is a Connectlib example.
+- Put the example folder in `connect-documentation/examples` if it is a Substra example, `connect-documentation/substrafl_examples` if it is a Substrafl example.
 - create a `README.rst` file at the root of the example
 - The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))
 - The main file must start by a docstring like described in the [Sphinx gallery documentation](- The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))). It must also be structured as described in the Sphinx gallery documentation.

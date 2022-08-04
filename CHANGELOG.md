@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0]
 
-* feat: Connectlib FedAvg example on MNIST dataset by @ThibaultFy in <https://github.com/owkin/connect-documentation/pull/36>
+* feat: Substrafl FedAvg example on MNIST dataset by @ThibaultFy in <https://github.com/owkin/connect-documentation/pull/36>
 * feat: Titanic Substra example
 
 ## [0.7.0] - 2022-01-19

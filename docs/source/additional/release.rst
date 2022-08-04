@@ -13,7 +13,7 @@ These sets of versions have been tested for compatibility:
    :header-rows: 1
 
    * - connect
-     - connectlib
+     - substrafl
      - substra
      - connect-tools
      - connect-backend
@@ -333,7 +333,7 @@ Connect 0.18.0 - 2022-07-25
 - **BREAKING CHANGE**: in substra,
   - Compute task outputs are not hardcoded anymore.
   This makes it possible to explicitly specify model permissions, instead of having to follow a rule-based logic.
-- **BREAKING CHANGE**: in Connectlib,
+- **BREAKING CHANGE**: in Substrafl,
   - torch Dataset has been added as an argument of `TorchAlgo` to preprocess the data.
   - `_local_train` is no longer mandatory to overwrite any more. Its signature passed from (x, y) to (train_dataset).
   - `_local_predict` has been deleted.
@@ -357,8 +357,8 @@ Connect 0.17.0 - 2022-07-11
 - **BREAKING CHANGE**: Remove CLI commands: add, get and list.
 - Library: Added functions to download the model of a strategy:
 
-  - The function ``connectlib.model_loading.download_algo_files`` downloads the files needed to load the output model of a strategy according to the given round. These files are downloaded to the given folder.
-  - The ``connectlib.model_loading.load_algo`` function to load the output model of a strategy from the files previously downloaded via the the function ``connectlib.model_loading.download_algo_files``.
+  - The function ``substrafl.model_loading.download_algo_files`` downloads the files needed to load the output model of a strategy according to the given round. These files are downloaded to the given folder.
+  - The ``substrafl.model_loading.load_algo`` function to load the output model of a strategy from the files previously downloaded via the the function ``substrafl.model_loading.download_algo_files``.
   - Those two functions works together:
 
 .. code-block:: python
@@ -385,7 +385,7 @@ Connect 0.16.0 - 2022-06-27
         - Order all assets by ascending or descending creation date (or another date for compute plans and tasks). Default: descending.
         - For instance: ``list_testtuple(filters={data_sample_key=["d193a5eb",”15256612”], compute_plan_key="18a5dfc6"}, order_by='creation_date', ascending=True)``
     - See `documentation <https://connect-docs.owkin.com/en/latest/documentation/references/sdk.html?highlight=list_dataset#list-dataset>`__ for a more detailed view on the filtering and ordering possibilities
-- New strategy in Connectlib: Newton Raphson
+- New strategy in Substrafl: Newton Raphson
 
 
 Connect 0.15.0 - 2022-06-13

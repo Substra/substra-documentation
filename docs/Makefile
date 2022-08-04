@@ -9,8 +9,8 @@ SOURCEDIR     = source
 BUILDDIR      = build
 SUBSTRAEXAMPLEDIR 		= source/auto_examples
 SUBSTRADOCDIR 		= source/documentation/references
-CONNECTLIBEXAMPLEDIR	= source/connectlib_doc/examples
-CONNECTLIBDOCDIR	= source/connectlib_doc/api
+SUBSTRAFLEXAMPLEDIR	= source/substrafl_doc/examples
+SUBSTRAFLDOCDIR	= source/substrafl_doc/api
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -32,9 +32,9 @@ livetheme:
 clean:
 	rm -rf $(BUILDDIR)
 	rm -rf $(SUBSTRADOCDIR)
-	rm -rf $(CONNECTLIBDOCDIR)
+	rm -rf $(SUBSTRAFLDOCDIR)
 	rm -rf $(SUBSTRAEXAMPLEDIR)
-	rm -rf $(CONNECTLIBEXAMPLEDIR)
+	rm -rf $(SUBSTRAFLEXAMPLEDIR)
 # Delete the local worker folders in connect-documentation
 	find .. -type d -name local-worker -prune -exec rm -rf {} \;
 # Delete the tmp folders in connect-documentation

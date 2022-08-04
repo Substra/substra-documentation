@@ -9,7 +9,7 @@
 
 .. toctree::
    :glob:
-   :caption: Connectlib Examples
+   :caption: Substrafl Examples
    :maxdepth: 5
 
    examples/*

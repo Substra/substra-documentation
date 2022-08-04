@@ -17,6 +17,7 @@ import re
 import zipfile
 from pathlib import Path
 from datetime import date
+from pyparsing import Optional
 import sphinx_rtd_theme
 import importlib
 
@@ -25,18 +26,18 @@ TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     SUBSTRA_VERSION = "0.30.1"
     TOOLS_VERSION = "0.13.0"
-    CONNECTLIB_VERSION = "0.22.0"
+    SUBSTRAFL_VERSION = "0.22.0"
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
-    CONNECTLIB_VERSION = "main"
+    SUBSTRAFL_VERSION = "main"
 
 
 print(
     f"Versions of the components used:"
     f"\n - substra: {SUBSTRA_VERSION}"
     f"\n - connect-tools: {TOOLS_VERSION}"
-    f"\n - connectlib: {CONNECTLIB_VERSION}"
+    f"\n - substrafl: {SUBSTRAFL_VERSION}"
 )
 
 
@@ -100,23 +101,41 @@ assets_dir_titanic = (
 )
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_connectlib_fedavg = (
+assets_dir_substrafl_fedavg = (
     Path(__file__).parents[2]
-    / "connectlib_examples"
+    / "substrafl_examples"
     / "strategies_examples"
     / "assets"
 )
-zip_dir(assets_dir_connectlib_fedavg, "connectlib_fedavg_assets.zip")
+zip_dir(assets_dir_substrafl_fedavg, "substrafl_fedavg_assets.zip")
 
 
-# Copy the source documentation files from substra and connectlib to their right place
+# Copy the source documentation files from substra and substrafl to their right place
 # in the connect-documentation repository
+from dataclasses import dataclass
 from distutils.dir_util import copy_tree
 import subprocess
 import shutil
 import sys
+import typing
 
 EDITABLE_LIB_PATH = Path(__file__).resolve().parents[1] / "src"
+
+@dataclass
+class Repo:
+    pkg_name: str
+    repo_name: str
+    installation_cmd: str
+    version: str
+    doc_dir: typing.Optional[str] = None
+    dest_doc_dir: typing.Optional[str] = None
+
+
+SUBSTRA_REPOS = [
+    Repo(pkg_name="substratools",repo_name="connect-tools",installation_cmd="#egg=substratools", version=TOOLS_VERSION),
+    Repo(pkg_name="substra",repo_name="substra",installation_cmd="#egg=substra", version=SUBSTRA_VERSION, doc_dir="references", dest_doc_dir="documentation/references"),
+    Repo(pkg_name="substrafl",repo_name="connectlib",installation_cmd="#egg=substrafl[dev]", version=SUBSTRAFL_VERSION, doc_dir="docs/api", dest_doc_dir="substrafl_doc/api"),
+]
 
 
 def install_dependency(library_name, repo_name, repo_args, version):
@@ -155,46 +174,28 @@ def copy_source_files(src, dest):
     copy_tree(str(src), str(full_dest_path))
 
 
-for library, repo_name, repo_args, src_doc_files, dest_doc_files, version in [
-    ("substratools", "connect-tools", "#egg=substratools", None, None, TOOLS_VERSION),
-    (
-        "substra",
-        "substra",
-        "#egg=substra",
-        "references",
-        "documentation/references",
-        SUBSTRA_VERSION,
-    ),
-    (
-        "connectlib",
-        "connectlib",
-        "#egg=connectlib[dev]",
-        "docs/api",
-        "connectlib_doc/api",
-        CONNECTLIB_VERSION,
-    ),
-]:
+for repo in SUBSTRA_REPOS:
     source_path = None
-    if importlib.util.find_spec(library) is None or (
-        src_doc_files is not None
+    if importlib.util.find_spec(repo.pkg_name) is None or (
+        repo.doc_dir is not None
         and not (
-            Path((importlib.import_module(library)).__file__).resolve().parents[1]
-            / src_doc_files
+            Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1]
+            / repo.doc_dir
         ).exists()
     ):
         install_dependency(
-            library_name=library,
-            repo_name=repo_name,
-            repo_args=repo_args,
-            version=version,
+            library_name=repo.pkg_name,
+            repo_name=repo.repo_name,
+            repo_args=repo.installation_cmd,
+            version=repo.version,
         )
 
-    if src_doc_files is not None:
-        imported_module = importlib.import_module(library)
+    if repo.doc_dir is not None:
+        imported_module = importlib.import_module(repo.pkg_name)
         source_path = (
-            Path(imported_module.__file__).resolve().parents[1] / src_doc_files
+            Path(imported_module.__file__).resolve().parents[1] / repo.doc_dir
         )
-        copy_source_files(source_path, dest_doc_files)
+        copy_source_files(source_path, repo.dest_doc_dir)
 
 # reformat links to a section in a markdown files (not supported by myst_parser)
 def reformat_md_section_links(file_path: Path):
@@ -263,7 +264,7 @@ intersphinx_mapping = {
 autodoc_typehints = "both"
 
 ################
-# Connectlib API
+# Substrafl API
 ################
 
 # generate autosummary even if no references
@@ -328,7 +329,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
-.. |connectlib_version| replace:: {importlib.import_module('connectlib').__version__}
+.. |substrafl_version| replace:: {importlib.import_module('substrafl').__version__}
 """
 
 # -- Options for HTML output -------------------------------------------------
@@ -364,7 +365,7 @@ sphinx_gallery_conf = {
     "remove_config_comments": True,
     "doc_module": "substra",
     "reference_url": {"Substra": None},
-    "examples_dirs": ["../../examples", "../../connectlib_examples"],
-    "gallery_dirs": ["auto_examples", "connectlib_doc/examples"],
+    "examples_dirs": ["../../examples", "../../substrafl_examples"],
+    "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
 }

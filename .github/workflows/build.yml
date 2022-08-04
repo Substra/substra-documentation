@@ -14,7 +14,7 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.8
 
       - name: Clone connect-tools
         uses: actions/checkout@v2
@@ -30,28 +30,28 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           path: substra
 
-      - name: Clone connectlib
+      - name: Clone substrafl
         uses: actions/checkout@v2
         with:
           repository: owkin/connectlib
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
-          path: connectlib
+          path: substrafl
 
-      - name: Install substra, connect-tools and connectlib
+      - name: Install substra, connect-tools and substrafl
         run: |
           pip install -e ./substra
           pip install -e ./connect-tools
-          pip install -e ./connectlib[dev]
+          pip install -e './substrafl[dev]'
 
-      - name: Copy substra and connectlib api doc in the doc
+      - name: Copy substra and substrafl api doc in the doc
         run: |
           cp -r substra/references docs/source/documentation/references
-          cp -r connectlib/docs/api docs/source/connectlib_doc/
+          cp -r substrafl/docs/api docs/source/substrafl_doc/
 
       - name: Install requirements
         run: pip install -r requirements.txt
 
       - name: Sphinx make
         working-directory: ./docs
-        run: make clean && make html
+        run: make clean html

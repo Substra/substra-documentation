@@ -1,9 +1,9 @@
 """
 ==================================
-Connectlib FedAvg on MNIST dataset
+Substrafl FedAvg on MNIST dataset
 ==================================
 
-This example illustrate the basic usage of Connectlib, and propose a model training by Federated Learning
+This example illustrate the basic usage of Substrafl, and propose a model training by Federated Learning
 using de Federated Average strategy.
 
 It is based on `the MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__.
@@ -24,12 +24,12 @@ This example does not use the deployed platform of Connect and will run in local
 
     .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../../../../tmp/connectlib_fedavg_assets.zip>`
+        :download:`assets required to run this example <../../../../../tmp/substrafl_fedavg_assets.zip>`
 
     Please ensure to have all the libraries installed, a *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
 
-  - **Substra** and **Connectlib** should already be installed, if not follow the instructions described here:
+  - **Substra** and **Substrafl** should already be installed, if not follow the instructions described here:
     :ref:`get_started/installation:Installation`
 
 """
@@ -157,7 +157,7 @@ for org in range(len(ORGS_ID)):
 # Registering assets
 # ******************
 #
-# Substra and Connectlib imports
+# Substra and Substrafl imports
 # ==============================
 
 from substra.sdk import DEBUG_OWNER
@@ -168,7 +168,7 @@ from substra.sdk.schemas import (
     AlgoCategory,
     AlgoSpec,
 )
-from connectlib.nodes import TestDataNode, TrainDataNode
+from substrafl.nodes import TestDataNode, TrainDataNode
 
 # %%
 # Permissions
@@ -243,7 +243,7 @@ metric_key = client.add_algo(objective)
 # it is based on, in order to have access to the proper `opener.py` file.
 #
 # Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
-# :ref:`connectlib_doc/api/nodes:TrainDataNode` and :ref:`connectlib_doc/api/nodes:TestDataNode` to gathered the
+# :ref:`substrafl_doc/api/nodes:TrainDataNode` and :ref:`substrafl_doc/api/nodes:TestDataNode` to gathered the
 # :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
 
 train_data_nodes = list()
@@ -312,7 +312,7 @@ import torch.nn.functional as F
 # ==============
 #
 # We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
-# of Connectlib.
+# of Substrafl.
 
 seed = 42
 torch.manual_seed(seed)
@@ -345,30 +345,30 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 criterion = torch.nn.CrossEntropyLoss()
 
 # %%
-# Connectlib imports
+# Substrafl imports
 # ==================
 
 from typing import Any
 
-from connectlib.algorithms.pytorch import TorchFedAvgAlgo
-from connectlib.dependency import Dependency
-from connectlib.strategies import FedAvg
-from connectlib.nodes import AggregationNode
-from connectlib.evaluation_strategy import EvaluationStrategy
-from connectlib.index_generator import NpIndexGenerator
-from connectlib.experiment import execute_experiment
+from substrafl.algorithms.pytorch import TorchFedAvgAlgo
+from substrafl.dependency import Dependency
+from substrafl.strategies import FedAvg
+from substrafl.nodes import AggregationNode
+from substrafl.evaluation_strategy import EvaluationStrategy
+from substrafl.index_generator import NpIndexGenerator
+from substrafl.experiment import execute_experiment
 
 # %%
-# Connectlib algo definition
+# Substrafl algo definition
 # ==========================
 #
-# To instantiate a Connectlib :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, you need to define a torch Dataset
+# To instantiate a Substrafl :ref:`substrafl_doc/api/algorithms:Torch Algorithms`, you need to define a torch Dataset
 # with a specific `__init__` signature, that must contain (self, x, y, is_inference). This torch Dataset is useful to
 # preprocess your data on the `__getitem__` function.
 # The `__getitem__` function is expected to return x and y if is_inference is False, else x.
 # This behavior can be changed by re-writing the `_local_train` or `predict` methods.
 #
-# This dataset is passed **as a class** to the :ref:`connectlib_doc/api/algorithms:Torch Algorithms`.
+# This dataset is passed **as a class** to the :ref:`substrafl_doc/api/algorithms:Torch Algorithms`.
 # Indeed, this torch Dataset will be instantiated within the algorithm, using the opener functions as x and y
 # parameters.
 #
@@ -419,8 +419,8 @@ class MyAlgo(TorchFedAvgAlgo):
 # Algo dependencies
 # =================
 #
-# The **dependencies** needed for the :ref:`connectlib_doc/api/algorithms:Torch Algorithms` are specified by a
-# :ref:`connectlib_doc/api/dependency:Dependency` object, in order to install the right library in the Python
+# The **dependencies** needed for the :ref:`substrafl_doc/api/algorithms:Torch Algorithms` are specified by a
+# :ref:`substrafl_doc/api/dependency:Dependency` object, in order to install the right library in the Python
 # environment of each organization.
 
 algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
@@ -429,7 +429,7 @@ algo_deps = Dependency(pypi_dependencies=["numpy==1.21.5", "torch==1.11.0"])
 # Federated Learning strategies
 # =============================
 #
-# For this example, we choose to use the **Federated averaging Strategy** (:ref:`connectlib_doc/api/strategies:Strategies`),
+# For this example, we choose to use the **Federated averaging Strategy** (:ref:`substrafl_doc/api/strategies:Strategies`),
 # based on `the FedAvg paper by McMahan et al., 2017 <https://arxiv.org/abs/1602.05629>`__.
 
 strategy = FedAvg()
@@ -443,18 +443,18 @@ strategy = FedAvg()
 #
 # - A :ref:`documentation/references/sdk:Client` to orchestrate all the assets of our project, using their keys to
 #   identify them
-# - An :ref:`connectlib_doc/api/algorithms:Torch Algorithms`, to define the training parameters *(optimizer, train function,
+# - An :ref:`substrafl_doc/api/algorithms:Torch Algorithms`, to define the training parameters *(optimizer, train function,
 #   predict function, etc...)*
-# - A :ref:`connectlib_doc/api/strategies:Strategies`, to specify the federated learning aggregation operation
-# - :ref:`connectlib_doc/api/nodes:TrainDataNode`, to indicate where we can process training task, on which data and using
+# - A :ref:`substrafl_doc/api/strategies:Strategies`, to specify the federated learning aggregation operation
+# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate where we can process training task, on which data and using
 #   which *opener*
-# - An :ref:`connectlib_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
+# - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model
-# - An :ref:`connectlib_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
+# - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
 #   computed
 # - The **number of round**, a round being defined by a local training step followed by an aggregation operation
 # - An **experiment folder** to save a summary of the operation made
-# - The :ref:`connectlib_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
+# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
 aggregation_node = AggregationNode(ALGO_ORG_ID)
 
