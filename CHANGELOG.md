@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * doc: add documentation on the remote backend (#90)
+* feat: add seed to mnist example (#103)
 
 ## [0.18.0]
 

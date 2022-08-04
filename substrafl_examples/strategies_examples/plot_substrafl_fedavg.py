@@ -412,6 +412,7 @@ class MyAlgo(TorchFedAvgAlgo):
             optimizer=optimizer,
             index_generator=index_generator,
             dataset=TorchDataset,
+            seed=seed,
         )
 
 
