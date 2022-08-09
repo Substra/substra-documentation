@@ -217,10 +217,9 @@ for file_path in Path(".").rglob("*.md"):
 
 # -- Project information -----------------------------------------------------
 
-project = "Connect"
+project = "Substra"
 copyright = f"{date.today().year}, OWKIN"
 author = "Owkin"
-
 
 # parse the current doc version to display it in the menu
 _doc_version = re.sub("^v", "", os.popen("git describe --tags").read().strip())
