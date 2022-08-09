@@ -47,6 +47,9 @@ import substra
 from substra.sdk.schemas import (
     AlgoSpec,
     AlgoCategory,
+    AlgoInputSpec,
+    AlgoOutputSpec,
+    AssetKind,
     DataSampleSpec,
     DatasetSpec,
     Permissions,
@@ -172,8 +175,17 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - Python scripts that implement the metric computation
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
+inputs_metrics = [
+         AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+         AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+         AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    ]
+
+outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
 METRICS = AlgoSpec(
+    inputs=inputs_metrics,
+    outputs=outputs_metrics,
     category=AlgoCategory.metric,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
@@ -218,9 +230,18 @@ with zipfile.ZipFile(archive_path, "w") as z:
     for filepath in ALGO_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
+inputs_algo_simple = [
+        AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+        AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+        AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=True),
+    ]
+
+outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
 ALGO = AlgoSpec(
     name="Titanic: Random Forest",
+    inputs=inputs_algo_simple,
+    outputs=outputs_algo_simple,
     description=assets_directory / "algo_random_forest" / "description.md",
     file=archive_path,
     permissions=permissions,

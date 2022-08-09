@@ -163,6 +163,9 @@ for org in range(len(ORGS_ID)):
 from substra.sdk import DEBUG_OWNER
 from substra.sdk.schemas import (
     DatasetSpec,
+    AlgoInputSpec,
+    AlgoOutputSpec,
+    AssetKind,
     Permissions,
     DataSampleSpec,
     AlgoCategory,
@@ -212,8 +215,18 @@ dataset = DatasetSpec(
 #   **Python scripts**
 
 
+inputs_metrics = [
+         AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+         AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+         AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    ]
+
+outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+
 objective = AlgoSpec(
     category=AlgoCategory.metric,
+    inputs=inputs_metrics,
+    outputs=outputs_metrics,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=assets_directory / "metric" / "metrics.zip",
