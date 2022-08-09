@@ -24,9 +24,9 @@ import importlib
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-    SUBSTRA_VERSION = "0.30.1"
-    TOOLS_VERSION = "0.13.0"
-    SUBSTRAFL_VERSION = "0.22.0"
+    SUBSTRA_VERSION = "0.32.0"
+    TOOLS_VERSION = "0.14.0"
+    SUBSTRAFL_VERSION = "0.24.0"
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
@@ -83,30 +83,19 @@ TMP_FOLDER.mkdir(exist_ok=True)
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(
-        file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED
-    ) as ziph:
+    with zipfile.ZipFile(file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
         for root, _, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
                     os.path.join(root, file),
-                    os.path.relpath(
-                        os.path.join(root, file), os.path.join(source_dir, "..")
-                    ),
+                    os.path.relpath(os.path.join(root, file), os.path.join(source_dir, "..")),
                 )
 
 
-assets_dir_titanic = (
-    Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
-)
+assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_substrafl_fedavg = (
-    Path(__file__).parents[2]
-    / "substrafl_examples"
-    / "strategies_examples"
-    / "assets"
-)
+assets_dir_substrafl_fedavg = Path(__file__).parents[2] / "substrafl_examples" / "strategies_examples" / "assets"
 zip_dir(assets_dir_substrafl_fedavg, "substrafl_fedavg_assets.zip")
 
 
@@ -121,6 +110,7 @@ import typing
 
 EDITABLE_LIB_PATH = Path(__file__).resolve().parents[1] / "src"
 
+
 @dataclass
 class Repo:
     pkg_name: str
@@ -132,17 +122,31 @@ class Repo:
 
 
 SUBSTRA_REPOS = [
-    Repo(pkg_name="substratools",repo_name="connect-tools",installation_cmd="#egg=substratools", version=TOOLS_VERSION),
-    Repo(pkg_name="substra",repo_name="substra",installation_cmd="#egg=substra", version=SUBSTRA_VERSION, doc_dir="references", dest_doc_dir="documentation/references"),
-    Repo(pkg_name="substrafl",repo_name="connectlib",installation_cmd="#egg=substrafl[dev]", version=SUBSTRAFL_VERSION, doc_dir="docs/api", dest_doc_dir="substrafl_doc/api"),
+    Repo(
+        pkg_name="substratools", repo_name="connect-tools", installation_cmd="#egg=substratools", version=TOOLS_VERSION
+    ),
+    Repo(
+        pkg_name="substra",
+        repo_name="substra",
+        installation_cmd="#egg=substra",
+        version=SUBSTRA_VERSION,
+        doc_dir="references",
+        dest_doc_dir="documentation/references",
+    ),
+    Repo(
+        pkg_name="substrafl",
+        repo_name="connectlib",
+        installation_cmd="#egg=substrafl[dev]",
+        version=SUBSTRAFL_VERSION,
+        doc_dir="docs/api",
+        dest_doc_dir="substrafl_doc/api",
+    ),
 ]
 
 
 def install_dependency(library_name, repo_name, repo_args, version):
     github_token = os.environ.get("GITHUB_TOKEN")
-    assert (
-        github_token is not None
-    ), "Cloning the repos to get the sources, need a github token"
+    assert github_token is not None, "Cloning the repos to get the sources, need a github token"
     try:
         subprocess.run(
             args=[
@@ -178,10 +182,7 @@ for repo in SUBSTRA_REPOS:
     source_path = None
     if importlib.util.find_spec(repo.pkg_name) is None or (
         repo.doc_dir is not None
-        and not (
-            Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1]
-            / repo.doc_dir
-        ).exists()
+        and not (Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1] / repo.doc_dir).exists()
     ):
         install_dependency(
             library_name=repo.pkg_name,
@@ -192,9 +193,7 @@ for repo in SUBSTRA_REPOS:
 
     if repo.doc_dir is not None:
         imported_module = importlib.import_module(repo.pkg_name)
-        source_path = (
-            Path(imported_module.__file__).resolve().parents[1] / repo.doc_dir
-        )
+        source_path = Path(imported_module.__file__).resolve().parents[1] / repo.doc_dir
         copy_source_files(source_path, repo.dest_doc_dir)
 
 # reformat links to a section in a markdown files (not supported by myst_parser)

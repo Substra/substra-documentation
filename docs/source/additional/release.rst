@@ -23,6 +23,16 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
+   * - 0.19.0
+     - `0.24.0 <https://github.com/owkin/connectlib/releases/tag/0.24.0>`__
+     - `0.32.0 <https://github.com/owkin/substra/releases/tag/0.32.0>`__
+     - `0.14.0 <https://github.com/owkin/connect-tools/releases/tag/0.14.0>`__
+     - `0.25.0 <https://github.com/owkin/connect-backend/releases/tag/0.25.0>`__ | `helm 21.1.1 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/21.1.1>`__
+     - `0.22.0 <https://github.com/owkin/orchestrator/releases/tag/0.22.0>`__ | `helm 7.1.10 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.1.10>`__
+     - `0.31.0 <https://github.com/owkin/connect-frontend/releases/tag/0.31.0>`__ | `helm 1.0.2 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.2>`__
+     - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.28.0 <https://github.com/owkin/connect-tests/releases/tag/0.28.0>`__
+     -
    * - 0.18.0
      - `0.22.0 <https://github.com/owkin/connectlib/releases/tag/0.22.0>`__
      - `0.30.1 <https://github.com/owkin/substra/releases/tag/0.30.1>`__
@@ -326,6 +336,26 @@ These sets of versions have been tested for compatibility:
 
 Changelog
 ---------
+
+Connect 0.19.0 - 2022-08-09
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- **BREAKING CHANGE**: Connectlib is now named **Substrafl**.
+- **BREAKING CHANGE**: Python 3.7 support has been dropped.
+- **BREAKING CHANGE**: in substra, the compute task permission field has been deleted. The outputs field on compute task should be used instead.
+- **BREAKING CHANGE**: in the CLI, only the cancel, profile, login and organization commands are now available.
+- In substrafl,
+  - Default batching has been added to predict.
+  - Compute task inputs have been added as a parameter of TraintupleSpec.
+  - A seed can be set in torch algorithms.
+  - GPU execution has been fixed (the RNG state is now set to CPU in case the checkpoint has been loaded on the GPU).
+- In substra,
+  - `inputs` field has been added to `substra.sdk.schemas.tupleSpec` and `substra.sdk.models.tupleModel`.
+  - models and performances have been added as `outputs` to `substra.sdk.schemas.tupleSpec` and `substra.sdk.models.tupleModel`.
+  - `inputs` and `outputs` fields have been added to the Algo model.
+- GUI: log scale can be used to display compute plan performances.
+- GUI: non-metadata columns (i.e. default elements such as status/tasks, creation date, start date / end date / duration) can be selected/removed in custom columns.
+
 
 Connect 0.18.0 - 2022-07-25
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
