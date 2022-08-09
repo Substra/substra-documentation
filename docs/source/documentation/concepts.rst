@@ -83,8 +83,8 @@ Permissions
 Permissons for a organization to process an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An organization can execute a task (train task, composite train task, aggregate task, test task) if it has the permissions on the input assets of the task. For example, if an organization wants to execute a train task, the organization needs to have process permissions on the algorithm, the dataset and the input models used in the task.
-The permission on an asset is defined either at creation or by inheritance. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset is created.
+An organization can execute a task if it has the permission to process the inputs of the task. For example, to execute a train task an organization must have the permission to process the algorithm, dataset and input models of the task.
+The permission on an asset is defined when creating the asset or when creating the task that will create the asset. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset (or the task producing the asset) is created.
 
 
 Datasets, algorithms
@@ -94,8 +94,9 @@ Permissions are defined at creation by their owner for datasets and algorithms.
 
 Models
 """"""
-For train tasks and aggregate tasks, permissions on the model outputted by the task are defined by inheritance (intersection) of the permissions of the input assets. If a organization can execute a train task or an aggregate task, it will necessarily have permissions on the model outputted by this task.
+The permissions of the train, aggregate and predict task outputs (models and predictions) are defined when creating the tasks.
 
+The performance output by test tasks is always public.
 
 For composite train tasks, the out model is split in a trunk model and a head model:
 
