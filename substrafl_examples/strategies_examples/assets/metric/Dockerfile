@@ -1,8 +1,8 @@
 # this base image works in both CPU and GPU enabled environments
-FROM gcr.io/connect-314908/connect-tools:0.12.0-nvidiacuda11.6.0-base-ubuntu20.04-python3.9
+FROM gcr.io/connect-314908/connect-tools:0.14.0-nvidiacuda11.6.0-base-ubuntu20.04-python3.9
 
 # install dependencies
-RUN pip3 install numpy==1.23.1 scikit-learn==1.1.1 torch==1.12.0
+RUN pip3 install numpy==1.23.1 scikit-learn==1.1.1 torch==1.11.0
 
 # add your metrics script to docker image
 ADD metrics.py .
