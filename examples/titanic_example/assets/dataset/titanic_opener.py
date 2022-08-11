@@ -82,6 +82,6 @@ class TitanicOpener(tools.Opener):
         # load data
         data = pd.DataFrame()
         for path in paths:
-            data = data.append(pd.read_csv(path))
+            data = pd.concat([data, pd.read_csv(path)])
 
         return data

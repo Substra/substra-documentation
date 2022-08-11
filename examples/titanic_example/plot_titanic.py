@@ -176,10 +176,10 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 inputs_metrics = [
-         AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-         AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-         AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
-    ]
+    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+]
 
 outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
@@ -231,10 +231,10 @@ with zipfile.ZipFile(archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_simple = [
-        AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-        AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-        AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=True),
-    ]
+    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=True, multiple=True),
+]
 
 outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
@@ -252,6 +252,31 @@ ALGO = AlgoSpec(
 algo_key = client.add_algo(ALGO)
 
 print(f"Algo key {algo_key}")
+
+# %%
+# The predict algo uses the same files as the algo used for training.
+
+inputs_algo_predict = [
+    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
+]
+
+outputs_algo_predict = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+
+predict_algo_spec = AlgoSpec(
+    name="Titanic: Random Forest - predict",
+    inputs=inputs_algo_predict,
+    outputs=outputs_algo_predict,
+    description=assets_directory / "algo_random_forest" / "description.md",
+    file=archive_path,
+    permissions=permissions,
+    category="ALGO_SIMPLE",
+)
+
+predict_algo_key = client.add_algo(predict_algo_spec)
+
+print(f"Predict algo key {predict_algo_key}")
 
 # %%
 # The data, the algorithm and the metric are now registered.
@@ -287,11 +312,11 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
-model_input = [InputRef(identifier="model", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
+model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
 
 predicttuple = PredicttupleSpec(
         traintuple_key=traintuple_key,
-        algo_key=algo_key,
+        algo_key=predict_algo_key,
         data_manager_key=dataset_key,
         test_data_sample_keys=test_data_sample_keys,
         outputs={"predictions": ComputeTaskOutput(permissions=permissions)},
