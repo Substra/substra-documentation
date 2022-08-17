@@ -71,21 +71,6 @@ The subprocess mode is much faster than the Docker mode, but does not test that 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
 Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible. 
 
-
-Simulating a run with several clients
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To simulate a run with several clients, copy the debug client::
-
-    clients = [client] * n_clients
-
-To ensure that each organization has its own compute plan folder, set the following variable in the dataset metadata::
-
-    dataset = client.add_dataset(DatasetSpec(..., metadata = {substra.sdk.DEBUG_OWNER = my_org_name}))
-
-`my_org_name` is an arbitrary name, different for each organization.
-Also set the worker of any aggregatetuple to `my_org_name`.
-
-
 .. _hybrid_mode:
 
 Test remote assets locally with the hybrid mode

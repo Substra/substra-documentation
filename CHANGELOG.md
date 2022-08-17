@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* doc: remove the `DEBUG_OWNER` mechanism, the substra local clients share the same db and have their own organization_id
+
 ## [0.19.0]
 
 * doc: add documentation on the remote backend (#90)

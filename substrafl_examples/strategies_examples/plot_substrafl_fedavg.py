@@ -76,8 +76,7 @@ os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
 data_path = pathlib.Path.cwd() / "tmp" / "data"
 assets_directory = pathlib.Path.cwd() / "assets"
 
-client = Client(debug=True)
-clients = {org_name: client for org_name in ORGS_ID}
+clients = {org_name: Client(debug=True) for org_name in ORGS_ID}
 
 
 # %%
@@ -160,7 +159,6 @@ for org in range(len(ORGS_ID)):
 # Substra and Substrafl imports
 # ==============================
 
-from substra.sdk import DEBUG_OWNER
 from substra.sdk.schemas import (
     DatasetSpec,
     AlgoInputSpec,
@@ -243,7 +241,7 @@ with zipfile.ZipFile(archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=filepath.name)
 
-metric_key = client.add_algo(objective)
+metric_key = clients[ALGO_ORG_ID].add_algo(objective)
 
 # %%
 # Train and test data nodes
@@ -266,7 +264,6 @@ for ind, org_id in enumerate(ORGS_ID):
     client = clients[org_id]
 
     # Add the dataset to the client to provide access to the opener in each organization.
-    dataset.metadata = {DEBUG_OWNER: org_id}
     dataset_key = client.add_dataset(dataset)
     assert dataset_key, "Missing data manager key"
 
