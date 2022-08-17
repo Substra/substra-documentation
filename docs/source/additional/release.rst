@@ -344,15 +344,17 @@ Connect 0.19.0 - 2022-08-09
 - **BREAKING CHANGE**: Python 3.7 support has been dropped.
 - **BREAKING CHANGE**: in substra, the compute task permission field has been deleted. The outputs field on compute task should be used instead.
 - **BREAKING CHANGE**: in the CLI, only the cancel, profile, login and organization commands are now available.
-- In substrafl,
+- In substrafl:
+
   - Default batching has been added to predict.
   - Compute task inputs have been added as a parameter of TraintupleSpec.
   - A seed can be set in torch algorithms.
   - GPU execution has been fixed (the RNG state is now set to CPU in case the checkpoint has been loaded on the GPU).
-- In substra,
-  - `inputs` field has been added to `substra.sdk.schemas.tupleSpec` and `substra.sdk.models.tupleModel`.
-  - models and performances have been added as `outputs` to `substra.sdk.schemas.tupleSpec` and `substra.sdk.models.tupleModel`.
-  - `inputs` and `outputs` fields have been added to the Algo model.
+- In substra:
+
+  - ``inputs`` field has been added to ``substra.sdk.schemas.tupleSpec`` and ``substra.sdk.models.tupleModel``.
+  - models and performances have been added as ``outputs`` to ``substra.sdk.schemas.tupleSpec`` and ``substra.sdk.models.tupleModel``.
+  - ``inputs`` and ``outputs`` fields have been added to the Algo model.
 - GUI: log scale can be used to display compute plan performances.
 - GUI: non-metadata columns (i.e. default elements such as status/tasks, creation date, start date / end date / duration) can be selected/removed in custom columns.
 
@@ -363,13 +365,13 @@ Connect 0.18.0 - 2022-07-25
 - **BREAKING CHANGE**: in substra,
   - Compute task outputs are not hardcoded anymore.
   This makes it possible to explicitly specify model permissions, instead of having to follow a rule-based logic.
-- **BREAKING CHANGE**: in Substrafl,
-  - torch Dataset has been added as an argument of `TorchAlgo` to preprocess the data.
-  - `_local_train` is no longer mandatory to overwrite any more. Its signature passed from (x, y) to (train_dataset).
-  - `_local_predict` has been deleted.
-  - `_get_len_from_x` has been deleted
-- In substra, the number of tuples uploaded in each batch by default is now 500 (instead of 20).
-  - This parameter can be changed using the `batch_size` parameter from the `add_compute_plan_tuples` function.
+- **BREAKING CHANGE**: in Substrafl:
+
+  - torch Dataset has been added as an argument of ``TorchAlgo`` to preprocess the data.
+  - ``_local_train`` is no longer mandatory to overwrite any more. Its signature passed from (x, y) to (train_dataset).
+  - ``_local_predict`` has been deleted.
+  - ``_get_len_from_x`` has been deleted
+- In substra, the number of tuples uploaded in each batch by default is now 500 (instead of 20). This parameter can be changed using the ``batch_size`` parameter from the ``add_compute_plan_tuples`` function.
 - GUI: compute plan workflow view now zooms as default on failed/doing tasks.
 
 
