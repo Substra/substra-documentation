@@ -423,6 +423,8 @@ Connect 0.16.0 - 2022-06-27
 Connect 0.15.0 - 2022-06-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*Maintainers also check :ref:`upgrade notes <deployment/upgrade_notes:Connect 0.15.0>`*
+
 - BREAKING CHANGE: Nodes were renamed into Organizations.
 
     - This also impacts functions like ``client.list_node()`` and ``client.node_info()`` which become ``client.list_organization()`` and ``client.organization_info()``.
