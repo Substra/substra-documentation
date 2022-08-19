@@ -1,6 +1,8 @@
 Community
 =========
 
+.. _community:
+
 Github
 ^^^^^^
 For bug reports you can raise `issues on Github <https://github.com/Substra/substra/issues>`_.

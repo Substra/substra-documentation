@@ -3,6 +3,11 @@ Main Substra concepts
 
 .. concepts:
 
+.. warning::
+    In the near future there will be only one type of task: a generic task, and one type of algorithm. This will reduce the number the substra concepts and will allow more flexible usages of the library.
+
+    This new paradigm implies a lot of heavy changes at every release. We strive to make this documentation as up to date as possible at every release but in case something is not clear please :ref:`reach out <community>`.
+
 .. contents::
     :depth: 3
 
