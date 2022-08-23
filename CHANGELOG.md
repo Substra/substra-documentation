@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.20.0]
+
+* doc: add GPU page on substra documentation
 * doc: add new "Deployment" section with some upgrade notes
 * doc: remove the `DEBUG_OWNER` mechanism, the substra local clients share the same db and have their own organization_id
 
