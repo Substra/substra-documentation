@@ -271,7 +271,7 @@ predict_algo_spec = AlgoSpec(
     description=assets_directory / "algo_random_forest" / "description.md",
     file=archive_path,
     permissions=permissions,
-    category="ALGO_SIMPLE",
+    category="ALGO_PREDICT",
 )
 
 predict_algo_key = client.add_algo(predict_algo_spec)
@@ -312,20 +312,42 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
+inputs_algo_predict = [
+    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=True),
+]
+outputs_algo_predict = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+
+PREDICT_ALGO = AlgoSpec(
+    name="Titanic: Random Forest",
+    inputs=inputs_algo_predict,
+    outputs=outputs_algo_predict,
+    description=assets_directory / "algo_random_forest" / "description.md",
+    file=archive_path,
+    permissions=permissions,
+    category="ALGO_PREDICT",
+)
+
+
+predict_algo_key = client.add_algo(PREDICT_ALGO)
+
 model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
 
 predicttuple = PredicttupleSpec(
-        traintuple_key=traintuple_key,
-        algo_key=predict_algo_key,
-        data_manager_key=dataset_key,
-        test_data_sample_keys=test_data_sample_keys,
-        outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
-        inputs=data_manager_input + test_data_sample_inputs + model_input,
-    )
+    traintuple_key=traintuple_key,
+    algo_key=predict_algo_key,
+    data_manager_key=dataset_key,
+    test_data_sample_keys=test_data_sample_keys,
+    outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
+    inputs=data_manager_input + test_data_sample_inputs + model_input,
+)
 
 predicttuple_key = client.add_predicttuple(predicttuple)
 
-predictions_input = [InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")]
+predictions_input = [
+    InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")
+]
 
 testtuple = TesttupleSpec(
     algo_key=metric_key,

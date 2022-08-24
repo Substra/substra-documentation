@@ -4,16 +4,15 @@ import numpy as np
 
 
 class AccuracyMetrics(tools.Metrics):
-    def score(self, y_true, y_pred):
-        """Returns the macro-average recall
+    def score(self, inputs, outputs):
+        y_true = inputs["y"]
+        y_pred = self.load_predictions(inputs["predictions"])
 
-        :param y_true: actual values from test data
-        :type y_true: pd.DataFrame
-        :param y_true: predicted values from test data
-        :type y_pred: pd.DataFrame
-        :rtype: float
-        """
-        return accuracy_score(np.argmax(y_true, axis=1), np.argmax(y_pred, axis=1))
+        perf = accuracy_score(np.argmax(y_true, axis=1), np.argmax(y_pred, axis=1))
+        tools.save_performance(perf, outputs["performance"])
+
+    def load_predictions(self, path):
+        return np.load(path)
 
 
 if __name__ == "__main__":

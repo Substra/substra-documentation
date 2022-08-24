@@ -21,9 +21,7 @@ class Algo(tools.algo.Algo):
         # Cabin
         deck = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "U": 8}
         X["Cabin"] = X["Cabin"].fillna("U0")
-        X["Deck"] = X["Cabin"].map(
-            lambda x: re.compile("([a-zA-Z]+)").search(x).group()
-        )
+        X["Deck"] = X["Cabin"].map(lambda x: re.compile("([a-zA-Z]+)").search(x).group())
         X["Deck"] = X["Deck"].map(deck)
         X["Deck"] = X["Deck"].fillna(0)
         X["Deck"] = X["Deck"].astype(int)
@@ -33,7 +31,7 @@ class Algo(tools.algo.Algo):
         mean = X["Age"].mean()
         std = X["Age"].std()
         is_null = X["Age"].isnull().sum()
-        
+
         # fill NaN values in Age column with mean
         age_slice = X["Age"].copy()
         age_slice[np.isnan(age_slice)] = mean
@@ -119,7 +117,10 @@ class Algo(tools.algo.Algo):
         y_pred = model.predict(X)
         return pd.DataFrame(columns=["Survived"], data=y_pred)
 
-    def train(self, X, y, models, rank):
+    def train(self, inputs, outputs):
+
+        X = inputs["X"]
+        y = inputs["y"]
         X = self._normalize_X(X)
 
         # the following RFC hyperparameters were determined using:
@@ -144,11 +145,15 @@ class Algo(tools.algo.Algo):
         )
         random_forest.fit(X, y.values.ravel())
 
-        return random_forest
+        self.save_model(random_forest, outputs["model"])
 
-    def predict(self, X, model):
+    def predict(self, inputs, outputs):
+        X = inputs["X"]
+        model = self.load_model(inputs["model"])
         X = self._normalize_X(X)
-        return self._predict_pandas(model, X)
+        pred = self._predict_pandas(model, X)
+
+        self.save_predictions(pred, outputs["predictions"])
 
     def load_model(self, path):
         with open(path, "rb") as f:
@@ -157,6 +162,10 @@ class Algo(tools.algo.Algo):
     def save_model(self, model, path):
         with open(path, "wb") as f:
             pickle.dump(model, f)
+
+    def save_predictions(self, y_pred, path):
+        with open(path, "w") as f:
+            y_pred.to_csv(f, index=False)
 
 
 if __name__ == "__main__":

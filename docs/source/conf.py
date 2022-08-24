@@ -17,7 +17,6 @@ import re
 import zipfile
 from pathlib import Path
 from datetime import date
-from pyparsing import Optional
 import sphinx_rtd_theme
 import importlib
 
@@ -307,6 +306,8 @@ nitpick_ignore = [
     ("py:class", "ComputePlan"),
     ("py:class", "substratools.algo.CompositeAlgo"),
     ("py:class", "substratools.algo.AggregateAlgo"),
+    ("py:class", "substrafl.remote.substratools_methods.inputs"),
+    ("py:class", "substrafl.remote.substratools_methods.outputs"),
 ]
 
 # This must be the name of an image file (path relative to the configuration

@@ -14,13 +14,6 @@ class MnistOpener(tools.Opener):
         data = self._get_data(folders)
         return self._get_y(data)
 
-    def save_predictions(self, y_pred, path):
-        with open(path, "wb") as f:
-            np.save(f, y_pred)
-
-    def get_predictions(self, path):
-        return np.load(path)
-
     def fake_X(self, n_samples=None):
         data = self._fake_data(n_samples)
         return self._get_X(data)

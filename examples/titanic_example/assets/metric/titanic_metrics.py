@@ -1,18 +1,19 @@
 import substratools as tools
 from sklearn.metrics import accuracy_score
+import pandas as pd
 
 
 class TitanicMetrics(tools.Metrics):
-    def score(self, y_true, y_pred):
-        """Returns the macro-average recall
+    def score(self, inputs, outputs):
 
-        :param y_true: actual values from test data
-        :type y_true: pd.DataFrame
-        :param y_true: predicted values from test data
-        :type y_pred: pd.DataFrame
-        :rtype: float
-        """
-        return accuracy_score(y_true, y_pred)
+        y_true = inputs["y"]
+        y_pred = self.load_predictions(inputs["predictions"])
+
+        perf = accuracy_score(y_true, y_pred)
+        tools.save_performance(perf, outputs["performance"])
+
+    def load_predictions(self, path):
+        return pd.read_csv(path)
 
 
 if __name__ == "__main__":
