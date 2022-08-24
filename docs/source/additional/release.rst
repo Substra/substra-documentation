@@ -23,13 +23,13 @@ These sets of versions have been tested for compatibility:
      - connect-tests
      - connect-chaincode
 
-   * - 0.20.0
+   * - 0.20.1
      - `0.26.0 <https://github.com/owkin/connectlib/releases/tag/0.26.0>`__
      - `0.34.0 <https://github.com/owkin/substra/releases/tag/0.34.0>`__
      - `0.14.0 <https://github.com/owkin/connect-tools/releases/tag/0.14.0>`__
      - `0.27.0 <https://github.com/owkin/connect-backend/releases/tag/0.27.0>`__ | `helm 21.1.1 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/21.1.1>`__
      - `0.24.0 <https://github.com/owkin/orchestrator/releases/tag/0.24.0>`__ | `helm 7.2.1 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.2.1>`__
-     - `0.32.0 <https://github.com/owkin/connect-frontend/releases/tag/0.32.0>`__ | `helm 1.0.3 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.3>`__
+     - `0.32.1 <https://github.com/owkin/connect-frontend/releases/tag/0.32.1>`__ | `helm 1.0.4 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.4>`__
      - `0.2.1 <https://github.com/owkin/connect-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
      - `0.30.0 <https://github.com/owkin/connect-tests/releases/tag/0.30.0>`__
      -
@@ -327,9 +327,8 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
-Connect 0.20.0 - 2022-08-22
+Connect 0.20.1 - 2022-08-24
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 - **BREAKING CHANGE**: Connectlib is now named **Substrafl**.
 - **BREAKING CHANGE**: Python 3.7 support has been dropped.
 - **BREAKING CHANGE**: in the CLI, only the cancel, profile, login and organization commands are now available.
@@ -376,6 +375,7 @@ do:
   - The number of tuples uploaded in each batch by default is now 500 (instead of 20). This parameter can be changed using the ``batch_size`` parameter from the ``add_compute_plan_tuples`` function.
   - zoom controls have been added in the compute plan workflow view.
   - the compute plans filtered list can be reset when clicking on a refresh button.
+  - fix issue on compute plan tasks display
 
 Connect 0.17.1 - 2022-07-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
