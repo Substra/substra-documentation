@@ -19,13 +19,13 @@ minio
     `MinIO`_ is an object storage service and stores all assets registered on the :term:`Organization`.
     You should back up the data of this Pod.
 postgresql
-    This is the database supporting the Backend. 
+    This is the database supporting the Backend.
     You should back up the data of this Pod.
 rabbitmq
     This is an organization-specific message broker to support `Celery`_ tasks.
 backend-events
-    This component will consume the RabbitMQ queue of this :term:`Organization` on the Orchestrator.
-    It should be able to access the Orchestrator in both gRPC and AMQP.
+    This component will consume events from the Orchestrator.
+    It should be able to access the Orchestrator over gRPC.
     It handles events and triggers appropriate responses such as starting compute tasks.
     On startup, it will also register the Organization on the Orchestrator.
 migrations

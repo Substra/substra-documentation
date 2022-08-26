@@ -14,12 +14,6 @@ Kubernetes pods
 postgresql
     This is the database supporting the ledger.
     You should back up the data of this Pod.
-rabbitmq
-    This is the message broker used to dispatch events to :term:`Organizations<Organization>` of the network.
-    You should back up the data of this Pod.
-rabbitmq-operator
-    This will create necessary exchanges and queues on RabbitMQ according to channel configuration.
-    It also creates accounts for each :term:`Organization` and assigns them restrictive ACLs.
 orchestrator-server
     This is the actual orchestration service, accessed over gRPC.
 migrations
@@ -33,11 +27,8 @@ Communication
 
 .. for now let's ignore distributed mode
 
-The Orchestrator is a central component. 
-All Backends from each :term:`Organization` must have access to the Orchestrator:
-
-* over gRPC for command/queries and their responses
-* over AMQP to subscribe to event queues
+The Orchestrator is a central component.
+All Backends from each :term:`Organization` must have access to the Orchestrator over gRPC for command/queries and event subsription.
 
 The Orchestrator authenticates clients with their TLS certificates.
 As a consequence, the Kubernetes Ingress must do SSL passthrough.
@@ -47,8 +38,3 @@ Storage
 
 The Orchestrator stores its data in a PostgreSQL database.
 Migrations are executed using a Kubernetes Job on installation and update (this relies on a Helm hook).
-
-The Orchestrator dispatches events through RabbitMQ.
-You should back up this Pod data to make sure not event get lost.
-
-
