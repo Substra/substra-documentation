@@ -55,10 +55,7 @@ Compute plan and tasks
 Compute plan
 """"""""""""
 A set of training (train tuple or composite train tuple), aggregation (aggregate tuple) and testing tasks (test tuple) gathered together towards building a final model.
-Gathering tasks into a single compute plan has several benefits:
-
-* It will lead to a more optimized compute.
-* A local folder will be accessible on every organization where the tasks run. This local folder is NOT wiped at the end of every task.
+Gathering tasks into a single compute plan will lead to a more optimized compute.
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Connect will still create a compute plan for you for this specific task.
 
