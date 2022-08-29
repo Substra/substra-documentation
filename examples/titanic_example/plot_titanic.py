@@ -92,7 +92,7 @@ client = substra.Client(debug=True)
 # On a remote deployment setting the parameter ``public`` to false means that the dataset can only be used by tasks in
 # the same organization or organizations that are in the ``authorized_ids``. However permissions are ignored in local mode.
 
-permissions = Permissions(public=False, authorized_ids=[])
+permissions = Permissions(public=True, authorized_ids=[])
 
 # %%
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
