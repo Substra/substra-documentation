@@ -17,9 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.19.0]
 
-* doc: add documentation on the remote backend (#90)
-* feat: add seed to mnist example (#103)
-* Drop Python 3.7 support (#96)
+* doc: add documentation on the remote backend
+* feat: add seed to mnist example
+* Drop Python 3.7 support
 
 ## [0.18.0]
 
@@ -33,24 +33,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.16.0]
 
-* fix: new filters api (#72)
-* doc: update get_performances.rst (#70)
+* fix: new filters api
+* doc: update get_performances.rst
 
 ## [0.15.0]
 
-* doc: add Performance monitoring in local mode page (#58)
-* feat: rename node to organization (#67)
+* doc: add Performance monitoring in local mode page
+* feat: rename node to organization
 
 ## [0.14.0]
 
 ### Fixes
 
-* fix: broken link in sdk section (#61)
+* fix: broken link in sdk section
 
 ### Added
 
-* docs: add compatibility tables (#62)
-* fix: broken link in sdk section (#61)
+* docs: add compatibility tables
+* fix: broken link in sdk section
 
 ## [0.13.0]
 
@@ -58,12 +58,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.11.0]
 
-* feat: all but release and stable versions uses the main branch of the components (#54)
-* feat: RTD builds the examples (#49)
+* feat: all but release and stable versions uses the main branch of the components
+* feat: RTD builds the examples
 
 ## [0.10.0]
 
-* feat: index clean up (#47)
+* feat: index clean up
 * update connect-tools version in example Dockerfiles
 * add clean instruction to Makefile
 * fix the substratools reference warning
@@ -74,42 +74,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0]
 
-* feat: Substrafl FedAvg example on MNIST dataset by @ThibaultFy in <https://github.com/owkin/connect-documentation/pull/36>
+* feat: Substrafl FedAvg example on MNIST dataset by @ThibaultFy in <https://github.com/Substra/substra-documentation/pull/36>
 * feat: Titanic Substra example
 
 ## [0.7.0] - 2022-01-19
 
 ### Added
 
-* docs: add page -> How to test code and understand errors (#25)
+* docs: add page -> How to test code and understand errors
 
 ### Fixes
 
-* chore: explain what are models and specs (#22)
-* doc(release): fix links and add links (#21)
+* chore: explain what are models and specs
+* doc(release): fix links and add links
 
 ## [0.6.0] - 2022-01-19
 
-* chore: Connect 0.6.0 - update substra to 0.16.0 by @Esadruhn in <https://github.com/owkin/connect-documentation/pull/23>
+* chore: Substra 0.6.0 - update substra to 0.16.0 by @Esadruhn in <https://github.com/Substra/substra-documentation/pull/23>
 
 ## [0.5.0] - 2022-01-12
 
 ### Added
 
-* Add look and feel override to RTD theme by @jmorel in <https://github.com/owkin/connect-documentation/pull/11>
-* remove unused files by @maikia in <https://github.com/owkin/connect-documentation/pull/15>
-* save artefacts only when needed by @maikia in <https://github.com/owkin/connect-documentation/pull/14>
-* feat: doc content full rewrite by @RomainGoussault in <https://github.com/owkin/connect-documentation/pull/9>
-* Fail the build when there are warnings by @RomainGoussault in <https://github.com/owkin/connect-documentation/pull/16>
-* doc:  include Substra API Reference by @Fabien-GELUS in <https://github.com/owkin/connect-documentation/pull/17>
-* feat: Substra versioning by @Fabien-GELUS in <https://github.com/owkin/connect-documentation/pull/18>
-* chore: update substra to 0.15.0 by @Esadruhn in <https://github.com/owkin/connect-documentation/pull/19>
+* Add look and feel override to RTD theme by @jmorel in <https://github.com/Substra/substra-documentation/pull/11>
+* remove unused files by @maikia in <https://github.com/Substra/substra-documentation/pull/15>
+* save artefacts only when needed by @maikia in <https://github.com/Substra/substra-documentation/pull/14>
+* feat: doc content full rewrite by @RomainGoussault in <https://github.com/Substra/substra-documentation/pull/9>
+* Fail the build when there are warnings by @RomainGoussault in <https://github.com/Substra/substra-documentation/pull/16>
+* doc:  include Substra API Reference by @Fabien-GELUS in <https://github.com/Substra/substra-documentation/pull/17>
+* feat: Substra versioning by @Fabien-GELUS in <https://github.com/Substra/substra-documentation/pull/18>
+* chore: update substra to 0.15.0 by @Esadruhn in <https://github.com/Substra/substra-documentation/pull/19>
 
 ## [0.1.1] - 2021-12-07
 
 ### Added
 
-* Skeleton for Connect Documentation
+* Skeleton for Substra Documentation
 
 * Examples are build by Sphinx-gallery in CI and copied to artifacts
 * Artifacts are copied to read the docs and the rest of documentation is then build
