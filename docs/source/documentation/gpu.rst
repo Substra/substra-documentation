@@ -12,7 +12,4 @@ For Torch use cases in substrafl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 By default everything runs on CPU.
 
-If you want to make your torch model run on GPU, you have to:
-
-- Put the data in the GPU memory: you can do it batch by batch in the training loop by using the ``Tensor.to(torch.device("cuda"))`` Torch function.
-- Put the model in the GPU memory: substrafl does it for you if you set ``use_gpu=True`` in your :ref:`Torch Algorithm<substrafl_doc/api/algorithms:Torch Algorithms>`.
+If you want to make your torch model run on GPU, you have to put the model and your data in the GPU memory. Substrafl does it for you if you set ``use_gpu=True`` in your :ref:`Torch Algorithm<substrafl_doc/api/algorithms:Torch Algorithms>`.

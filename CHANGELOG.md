@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * chore: change the assets and tools algo to feed with inputs outputs dictionary. (#113)
+* doc: update GPU page. The data are now automatically move to cpu or gpu by substrafl.
 
 ## [0.20.0]
 
