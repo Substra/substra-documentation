@@ -16,12 +16,12 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Clone connect-tools
+      - name: Clone substra-tools
         uses: actions/checkout@v2
         with:
           repository: owkin/connect-tools
           token: ${{ secrets.ACCESS_TOKEN }}
-          path: connect-tools
+          path: substra-tools
 
       - name: Clone substra
         uses: actions/checkout@v2
@@ -38,10 +38,10 @@ jobs:
           ref: main
           path: substrafl
 
-      - name: Install substra, connect-tools and substrafl
+      - name: Install substra, substra-tools and substrafl
         run: |
           pip install -e ./substra
-          pip install -e ./connect-tools
+          pip install -e ./substra-tools
           pip install -e './substrafl[dev]'
 
       - name: Copy substra and substrafl api doc in the doc
