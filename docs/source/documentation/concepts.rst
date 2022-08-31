@@ -19,7 +19,7 @@ Assets are a set of files which are required to run a compute plan. In order to 
 Dataset
 ^^^^^^^
 
-A dataset represents the data in Connect. It is made up of:
+A dataset represents the data in Substra. It is made up of:
 
 * An opener, which is a script used to load the data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
@@ -57,7 +57,7 @@ Compute plan
 A set of training (train tuple or composite train tuple), aggregation (aggregate tuple) and testing tasks (test tuple) gathered together towards building a final model.
 Gathering tasks into a single compute plan will lead to a more optimized compute.
 
-Note that you can register a task alone, i.e. not put the task in a compute plan, but Connect will still create a compute plan for you for this specific task.
+Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
 Train tuple
 """""""""""
@@ -108,7 +108,7 @@ For composite train tasks, the out model is split in a trunk model and a head mo
 
 Permissons for a user to download an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Users of a organization can export (aka download) from Connect to their local environment:
+Users of a organization can export (aka download) from Substra to their local environment:
 
 * the opener of a dataset if the organization has process permissions on the dataset
 * the archive of an algorithm if the organization has process permissions on the algorithm

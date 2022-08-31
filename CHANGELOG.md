@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-* chore: change the assets and tools algo to feed with inputs outputs dictionary. (#113)
+* chore: change the assets and tools algo to feed with inputs outputs dictionary
+* feat: rename Connect to Substra
 * doc: update GPU page. The data are now automatically move to cpu or gpu by substrafl.
 * chore: rename connect-tools to substra-tools
 
@@ -66,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.10.0]
 
 * feat: index clean up
-* update connect-tools version in example Dockerfiles
+* update substra-tools version in example Dockerfiles
 * add clean instruction to Makefile
 * fix the substratools reference warning
 

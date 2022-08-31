@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Connect documentation
+Substra documentation
 =====================
 
-Connect is a framework offering distributed orchestration of machine learning tasks among partners while guaranteeing secure and trustless traceability of all operations.
+Substra is a framework offering distributed orchestration of machine learning tasks among partners while guaranteeing secure and trustless traceability of all operations.
 
 - :doc:`Getting started <get_started/overview>`
 
@@ -14,15 +14,15 @@ Connect is a framework offering distributed orchestration of machine learning ta
 
 - :doc:`Documentation <documentation/concepts>`
 
-  In depth documentation of Connect concepts and API reference.
+  In depth documentation of Substra concepts and API reference.
 
 - :doc:`Examples <auto_examples/index>`
 
-  Examples of usage of Connect.
+  Examples of usage of Substra.
 
 - :doc:`Releases notes <additional/release>`
 
-  Connect changelog and compatibility table.
+  Substra changelog and compatibility table.
 
 - :doc:`Operating a Substra network <operations/index>`
 

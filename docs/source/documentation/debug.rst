@@ -1,19 +1,19 @@
 How to test code and understand errors
 ======================================
 
-Doing machine learning on remote data is hard and it might not work on the first try. That is why debugging is important. Connect offers several ways to debug and iterate on code, from local simulation to accessing logs of failed tasks executed on remote data.
+Doing machine learning on remote data is hard and it might not work on the first try. That is why debugging is important. Substra offers several ways to debug and iterate on code, from local simulation to accessing logs of failed tasks executed on remote data.
 
 Here three modes will be distinguished:
 
-* Connect `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine.
-* Connect `deployed mode <deployed_mode_>`_  mode where all the tasks run on deployed Connect platform.
-* Connect `hybrid mode <hybrid_mode_>`_  mode where tasks run locally but can use assets from remote organizations.
+* Substra `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine.
+* Substra `deployed mode <deployed_mode_>`_  mode where all the tasks run on deployed Substra platform.
+* Substra `hybrid mode <hybrid_mode_>`_  mode where tasks run locally but can use assets from remote organizations.
 
 
-Test your assets locally without Connect
+Test your assets locally without Substra
 ----------------------------------------
 
-The first step is to make sure your assets are working outside Connect. For instance to test an opener and an algo the following code can be used:
+The first step is to make sure your assets are working outside Substra. For instance to test an opener and an algo the following code can be used:
 ::
 
     # Opener test:
@@ -105,7 +105,7 @@ The `error_type` can take three values:
 
 * **BUILD_ERROR**: the error happened when building the Docker image.
 * **EXECUTION_ERROR**: the error happened when executing the algo (training, prediction) or the metric.
-* **INTERNAL_ERROR**: Error in the Connect product. It is likely that the help of an administrator is required to solve this type of issue, in that case contact `support@owkin.com <support@owkin.com>`_.
+* **INTERNAL_ERROR**: Error in the Substra product. It is likely that the help of an administrator is required to solve this type of issue, in that case contact `support@owkin.com <support@owkin.com>`_.
 
 If the field is `None`, it means there was no error, and the task status is not FAILED.
 

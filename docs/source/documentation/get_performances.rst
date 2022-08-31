@@ -3,7 +3,7 @@ Performance monitoring in local mode
 
 Performances of a compute plan can be retrieved
 - with the get_performances(CP_KEY) function of the `SDK <api_reference.html#sdk-reference>`_
-- on the Connect GUI when using the `deployed mode <debug.html#deployed-mode>`_.
+- on the Substra GUI when using the `deployed mode <debug.html#deployed-mode>`_.
 However in the `local mode <debug.html#local-mode>`_, there is no GUI. This page explains how to use `MLFlow <https://mlflow.org/>`_ to perform live monitoring of the compute plan performances in `local mode <debug.html#local-mode>`_.
 
 Performance monitoring using MLFlow

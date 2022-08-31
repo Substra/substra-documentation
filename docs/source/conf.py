@@ -35,7 +35,7 @@ else:
 print(
     f"Versions of the components used:"
     f"\n - substra: {SUBSTRA_VERSION}"
-    f"\n - connect-tools: {TOOLS_VERSION}"
+    f"\n - substra-tools: {TOOLS_VERSION}"
     f"\n - substrafl: {SUBSTRAFL_VERSION}"
 )
 
@@ -99,7 +99,7 @@ zip_dir(assets_dir_substrafl_fedavg, "substrafl_fedavg_assets.zip")
 
 
 # Copy the source documentation files from substra and substrafl to their right place
-# in the connect-documentation repository
+# in the substra-documentation repository
 from dataclasses import dataclass
 from distutils.dir_util import copy_tree
 import subprocess

@@ -35,7 +35,7 @@ clean:
 	rm -rf $(SUBSTRAFLDOCDIR)
 	rm -rf $(SUBSTRAEXAMPLEDIR)
 	rm -rf $(SUBSTRAFLEXAMPLEDIR)
-# Delete the local worker folders in connect-documentation
+# Delete the local worker folders in substra-documentation
 	find .. -type d -name local-worker -prune -exec rm -rf {} \;
-# Delete the tmp folders in connect-documentation
+# Delete the tmp folders in substra-documentation
 	find .. -type d -name tmp -prune -exec rm -rf {} \;

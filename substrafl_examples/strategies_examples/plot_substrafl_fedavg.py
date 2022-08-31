@@ -15,7 +15,7 @@ The objective of this example is to launch a *federated learning* experiment on 
 **convolutional neural network** (CNN)
 torch model.
 
-This example does not use the deployed platform of Connect and will run in local mode.
+This example does not use the deployed platform of Substra and will run in local mode.
 
 **Requirements:**
 
@@ -214,10 +214,10 @@ dataset = DatasetSpec(
 
 
 inputs_metrics = [
-         AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-         AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-         AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
-    ]
+    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+]
 
 outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 

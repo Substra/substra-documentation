@@ -64,7 +64,7 @@ from substra.sdk.schemas import (
 # Instantiating the Substra Client
 # ================================
 #
-# The client allows us to interact with the connect platform. Setting the debug argument to ``True`` allow us to work locally by emulating a platform.
+# The client allows us to interact with the Substra platform. Setting the debug argument to ``True`` allow us to work locally by emulating a platform.
 #
 # By setting the environment variable ``DEBUG_SPAWNER`` to:
 #
@@ -108,7 +108,7 @@ expected in the same location as this py file"""
 # Registering data samples and dataset
 # ====================================
 #
-# A dataset represents the data in Connect. It is made up of an opener, which is a script used to load the
+# A dataset represents the data in Substra. It is made up of an opener, which is a script used to load the
 # data from files into memory. You can find more details about the Dataset
 # in the API reference.
 
