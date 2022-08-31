@@ -249,7 +249,7 @@ extensions.extend(
     ]
 )
 
-todo_include_todos = True
+todo_include_todos = False
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),

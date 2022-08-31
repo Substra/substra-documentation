@@ -166,15 +166,7 @@ Parallelization
 
 There are two ways to run several tasks in parallel on a same organization. The first one, named vertical scaling, is when several tasks are run in parallel on the same machine. The second one, horizontal scaling, is when several taks are run in parallel on several machines belonging to the same organization.
 
-Vertical scaling
-^^^^^^^^^^^^^^^^
-TODO
 
-Horizontal scaling
-^^^^^^^^^^^^^^^^^^
-TODO
+.. TODO:: Detail vertical and horizontal scaling
 
-Substra Tools
--------------
-
-TODO
+.. TODO:: Explain what is substra tools
