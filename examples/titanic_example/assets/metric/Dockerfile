@@ -8,4 +8,4 @@ RUN pip3 install scikit-learn==1.0.2
 ADD titanic_metrics.py .
 
 # define how script is run
-ENTRYPOINT ["python3", "titanic_metrics.py"]
+ENTRYPOINT ["python3", "titanic_metrics.py", "--method-name", "score"]

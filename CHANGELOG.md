@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* chore: change the Dockerfile `ENTRYPOINT` definition of algorithm relying on `substratools` to pass
+  the method to execute under the `--method-name` argument
 * chore: change the assets and tools algo to feed with inputs outputs dictionary
 * feat: rename Connect to Substra
 * doc: update GPU page. The data are now automatically move to cpu or gpu by substrafl.

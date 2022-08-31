@@ -183,25 +183,27 @@ inputs_metrics = [
 
 outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
-METRICS = AlgoSpec(
-    inputs=inputs_metrics,
-    outputs=outputs_metrics,
-    category=AlgoCategory.metric,
-    name="Accuracy",
-    description=assets_directory / "metric" / "description.md",
-    file=assets_directory / "metric" / "metrics.zip",
-    permissions=permissions,
-)
 
 METRICS_DOCKERFILE_FILES = [
     assets_directory / "metric" / "titanic_metrics.py",
     assets_directory / "metric" / "Dockerfile",
 ]
 
-archive_path = METRICS.file
-with zipfile.ZipFile(archive_path, "w") as z:
+metric_archive_path = assets_directory / "metric" / "metrics.zip"
+
+with zipfile.ZipFile(metric_archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
+
+METRICS = AlgoSpec(
+    inputs=inputs_metrics,
+    outputs=outputs_metrics,
+    category=AlgoCategory.metric,
+    name="Accuracy",
+    description=assets_directory / "metric" / "description.md",
+    file=metric_archive_path,
+    permissions=permissions,
+)
 
 metric_key = client.add_algo(METRICS)
 
@@ -217,17 +219,18 @@ print(f"Metric key {metric_key}")
 # - One or more Python scripts that implement the algorithm. Importantly, a train and a
 #   predict functions have to be defined.
 # - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
+#   this dockerfile also specifies the method name to execute (either train or predict here)
 
 ALGO_KEYS_JSON_FILENAME = "algo_random_forest_keys.json"
 
-ALGO_DOCKERFILE_FILES = [
+ALGO_TRAIN_DOCKERFILE_FILES = [
     assets_directory / "algo_random_forest/titanic_algo_rf.py",
-    assets_directory / "algo_random_forest/Dockerfile",
+    assets_directory / "algo_random_forest/train/Dockerfile",
 ]
 
-archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
-with zipfile.ZipFile(archive_path, "w") as z:
-    for filepath in ALGO_DOCKERFILE_FILES:
+train_archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+with zipfile.ZipFile(train_archive_path, "w") as z:
+    for filepath in ALGO_TRAIN_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_simple = [
@@ -238,23 +241,32 @@ inputs_algo_simple = [
 
 outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
-ALGO = AlgoSpec(
+TRAIN_ALGO = AlgoSpec(
     name="Titanic: Random Forest",
     inputs=inputs_algo_simple,
     outputs=outputs_algo_simple,
     description=assets_directory / "algo_random_forest" / "description.md",
-    file=archive_path,
+    file=train_archive_path,
     permissions=permissions,
     category="ALGO_SIMPLE",
 )
 
 
-algo_key = client.add_algo(ALGO)
+train_algo_key = client.add_algo(TRAIN_ALGO)
 
-print(f"Algo key {algo_key}")
+print(f"Train algo key {train_algo_key}")
 
 # %%
-# The predict algo uses the same files as the algo used for training.
+# The predict algo uses the python file as the algo used for training.
+ALGO_PREDICT_DOCKERFILE_FILES = [
+    assets_directory / "algo_random_forest/titanic_algo_rf.py",
+    assets_directory / "algo_random_forest/predict/Dockerfile",
+]
+
+predict_archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+with zipfile.ZipFile(predict_archive_path, "w") as z:
+    for filepath in ALGO_PREDICT_DOCKERFILE_FILES:
+        z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_predict = [
     AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
@@ -269,7 +281,7 @@ predict_algo_spec = AlgoSpec(
     inputs=inputs_algo_predict,
     outputs=outputs_algo_predict,
     description=assets_directory / "algo_random_forest" / "description.md",
-    file=archive_path,
+    file=predict_archive_path,
     permissions=permissions,
     category="ALGO_PREDICT",
 )
@@ -293,7 +305,7 @@ train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) fo
 test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
 
 traintuple = TraintupleSpec(
-    algo_key=algo_key,
+    algo_key=train_algo_key,
     data_manager_key=dataset_key,
     train_data_sample_keys=train_data_sample_keys,
     outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
@@ -311,26 +323,6 @@ print(f"Traintuple key {traintuple_key}")
 # In deployed mode, the registered task is added to a queue and treated asynchronously: this means that the
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
-
-inputs_algo_predict = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=True),
-]
-outputs_algo_predict = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
-
-PREDICT_ALGO = AlgoSpec(
-    name="Titanic: Random Forest",
-    inputs=inputs_algo_predict,
-    outputs=outputs_algo_predict,
-    description=assets_directory / "algo_random_forest" / "description.md",
-    file=archive_path,
-    permissions=permissions,
-    category="ALGO_PREDICT",
-)
-
-
-predict_algo_key = client.add_algo(PREDICT_ALGO)
 
 model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
 

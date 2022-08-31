@@ -26,6 +26,7 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     SUBSTRA_VERSION = "0.34.0"
     TOOLS_VERSION = "0.14.0"
     SUBSTRAFL_VERSION = "0.26.0"
+
 else:
     SUBSTRA_VERSION = "main"
     TOOLS_VERSION = "main"
