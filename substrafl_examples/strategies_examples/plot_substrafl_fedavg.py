@@ -60,8 +60,14 @@ from torchvision.datasets import MNIST
 
 from substra import Client
 
-# The list of their associated ids (for substra permissions)
-ORGS_ID = ["org-1MSP", "org-2MSP"]
+N_CLIENTS = 2
+
+# Create the substra clients
+clients = [Client(debug=True) for _ in range(N_CLIENTS)]
+clients = {client.organization_info().organization_id: client for client in clients}
+
+# Store their IDs
+ORGS_ID = list(clients.keys())
 
 # The org id on which your computation tasks are registered
 ALGO_ORG_ID = ORGS_ID[1]
@@ -75,8 +81,6 @@ os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
 
 data_path = pathlib.Path.cwd() / "tmp" / "data"
 assets_directory = pathlib.Path.cwd() / "assets"
-
-clients = {org_name: Client(debug=True) for org_name in ORGS_ID}
 
 
 # %%
@@ -130,27 +134,27 @@ test_images = MNISTraw2numpy(str(raw_path / "t10k-images-idx3-ubyte"))
 test_labels = MNISTraw2numpy(str(raw_path / "t10k-labels-idx1-ubyte"))
 
 # Split array into the number of organization
-train_images_folds = np.split(train_images, len(ORGS_ID))
-train_labels_folds = np.split(train_labels, len(ORGS_ID))
-test_images_folds = np.split(test_images, len(ORGS_ID))
-test_labels_folds = np.split(test_labels, len(ORGS_ID))
+train_images_folds = np.split(train_images, N_CLIENTS)
+train_labels_folds = np.split(train_labels, N_CLIENTS)
+test_images_folds = np.split(test_images, N_CLIENTS)
+test_labels_folds = np.split(test_labels, N_CLIENTS)
 
 # Save splits in different folders to simulate the different organization
-for org in range(len(ORGS_ID)):
+for i in range(N_CLIENTS):
 
     # Save train dataset on each org
-    os.makedirs(str(data_path / f"org_{org+1}/train"), exist_ok=True)
-    filename = data_path / f"org_{org+1}/train/train_images.npy"
-    np.save(str(filename), train_images_folds[org])
-    filename = data_path / f"org_{org+1}/train/train_labels.npy"
-    np.save(str(filename), train_labels_folds[org])
+    os.makedirs(str(data_path / f"org_{i+1}/train"), exist_ok=True)
+    filename = data_path / f"org_{i+1}/train/train_images.npy"
+    np.save(str(filename), train_images_folds[i])
+    filename = data_path / f"org_{i+1}/train/train_labels.npy"
+    np.save(str(filename), train_labels_folds[i])
 
     # Save test dataset on each org
-    os.makedirs(str(data_path / f"org_{org+1}/test"), exist_ok=True)
-    filename = data_path / f"org_{org+1}/test/test_images.npy"
-    np.save(str(filename), test_images_folds[org])
-    filename = data_path / f"org_{org+1}/test/test_labels.npy"
-    np.save(str(filename), test_labels_folds[org])
+    os.makedirs(str(data_path / f"org_{i+1}/test"), exist_ok=True)
+    filename = data_path / f"org_{i+1}/test/test_images.npy"
+    np.save(str(filename), test_images_folds[i])
+    filename = data_path / f"org_{i+1}/test/test_labels.npy"
+    np.save(str(filename), test_labels_folds[i])
 
 # %%
 # Registering assets
