@@ -70,15 +70,8 @@ Substra is a framework offering distributed orchestration of machine learning ta
    :hidden:
 
    operations/index.rst
-
-.. toctree::
-   :glob:
-   :maxdepth: 2
-   :caption: Deployment documentation
-   :hidden:
-
-
-   deployment/upgrade_notes.rst
+   operations/deploy.rst
+   operations/upgrade_notes.rst
 
 
 .. toctree::
@@ -90,4 +83,3 @@ Substra is a framework offering distributed orchestration of machine learning ta
    additional/community.rst
    additional/release.rst
    additional/glossary.rst
-
