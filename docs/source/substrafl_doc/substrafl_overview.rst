@@ -17,7 +17,7 @@ Substrafl uses the Substra library to handle tasks creation and orchestration. N
 
 Substrafl strives to be as flexible and modular as possible. You can easily change one part of the federated learning experiment (let's say the local training algorithm for instance) without having to change everything else (the federated learning strategy, the metrics, the dataset, etc).
 
-**ML framework compatibility**
+**ML framework compatibility**:
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
 
 Main concepts
@@ -73,6 +73,7 @@ Federated Learning Strategies
 A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged gradients. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL strategies are already implemented in Substrafl.
 
 Strategies can be centralized or decentralized:
+
 * A centralized FL strategy: during the training, the organization containing train data communicates exclusively with a central organization.
 * A decentralized FL strategy: during the training, the organizations communicate between themselves, there is no central organization.
 
@@ -80,9 +81,10 @@ Strategies can be centralized or decentralized:
 Round
 ^^^^^
 Each round represents one iteration of the training loop in the federated setting. For example, in a centralized federated learning strategy, a round consist of:
-Initialize the same model (architecture and initial weights) on each training organization
-Each training organization locally trains the model on its own data and calculates the weight updates to send to the aggregator (and sometimes other statistics depending on the strategy).
-The training organizations send the weight updates to the aggregator organization
-The weight updates are aggregated by the aggregator organization
-The aggregated organization send the aggregated updates to the training organizations
-The training organizations update their model with the aggregated updates.
+
+* Initialize the same model (architecture and initial weights) on each training organization.
+* Each training organization locally trains the model on its own data and calculates the weight updates to send to the aggregator (and sometimes other statistics depending on the strategy).
+* The training organizations send the weight updates to the aggregator organization.
+* The weight updates are aggregated by the aggregator organization.
+* The aggregated organization send the aggregated updates to the training organizations.
+* The training organizations update their model with the aggregated updates.
