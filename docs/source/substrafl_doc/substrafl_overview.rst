@@ -27,14 +27,14 @@ Experiment
 ^^^^^^^^^^
 
 An experiment is made up of all the different bricks needed to perform a federated learning training and testing: the training data, the algorithm used to do the local training, the federated learning strategy, the metric and the test data.
-Launching an experiment creates a compute plan.
+Launching an experiment creates a :ref:`concept_compute_plan`.
 
 
 Algorithm
 ^^^^^^^^^
 
 .. warning::
-    A Substrafl algorithm is not the same as a Substra algorithm!
+    A Substrafl algorithm is not the same as a Substra :ref:`concept_algorithm`!
 
 A Substrafl algorithm contains the local training and predict code and all the associated hyper parameters (batch size, loss, optimizer, etc).
 
@@ -52,9 +52,9 @@ Index Generator
 ^^^^^^^^^^^^^^^
 
 The notion of epochs does not fully apply to the FL setting. Usually we don't want to train on a full epoch on each organization at every round but on a lesser amount of data to prevent models from different organizations from diverging too much.
-In a federated setting, at each round, in each organization, the model is trained for num_updates batches, each batch containing batch_size data points.
+In a federated setting, at each round, in each organization, the model is trained for ``num_updates`` batches, each batch containing ``batch_size`` data points.
 
-For instance you have a dataset of 1000 data points at every organization. You specify num_updates=10 and batch_size=32. At each round your model trains on 10x32=320 data points per organization.
+For instance you have a dataset of 1000 data points at every organization. You specify ``num_updates=10`` and ``batch_size=32``. At each round your model trains on 10x32=320 data points per organization.
 
 The index generator remembers which data has been used in the previous rounds and generates the new batches so that the model is trained on the full dataset (given enough number of rounds and updates). When the whole dataset has been used, the index generator shuffles the data and starts generating batches from the whole dataset again.
 

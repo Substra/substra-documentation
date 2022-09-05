@@ -52,6 +52,8 @@ A model or model updates is a potentially large file containing the parameters o
 Compute plan and tasks
 ^^^^^^^^^^^^^^^^^^^^^^
 
+.. _concept_compute_plan:
+
 Compute plan
 """"""""""""
 A set of training (train tuple or composite train tuple), aggregation (aggregate tuple) and testing tasks (test tuple) gathered together towards building a final model.
