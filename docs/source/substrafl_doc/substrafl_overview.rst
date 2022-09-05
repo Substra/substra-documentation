@@ -21,6 +21,7 @@ Substrafl strives to be as flexible and modular as possible. You can easily chan
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
 
 
+
 Main concepts
 -------------
 
@@ -71,7 +72,7 @@ There are three types of node:
 
 Federated Learning Strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged gradients. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL strategies are already implemented in Substrafl.
+A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged gradients. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in Substrafl.
 
 Strategies can be centralized or decentralized:
 
