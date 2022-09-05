@@ -20,6 +20,7 @@ Substrafl strives to be as flexible and modular as possible. You can easily chan
 **ML framework compatibility**:
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
 
+
 Main concepts
 -------------
 
