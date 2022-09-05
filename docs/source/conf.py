@@ -123,7 +123,10 @@ class Repo:
 
 SUBSTRA_REPOS = [
     Repo(
-        pkg_name="substratools", repo_name="connect-tools", installation_cmd="#egg=substratools", version=TOOLS_VERSION
+        pkg_name="substratools",
+        repo_name="substra-tools",
+        installation_cmd="#egg=substratools",
+        version=TOOLS_VERSION,
     ),
     Repo(
         pkg_name="substra",
@@ -135,7 +138,7 @@ SUBSTRA_REPOS = [
     ),
     Repo(
         pkg_name="substrafl",
-        repo_name="connectlib",
+        repo_name="substrafl",
         installation_cmd="#egg=substrafl[dev]",
         version=SUBSTRAFL_VERSION,
         doc_dir="docs/api",
@@ -157,7 +160,7 @@ def install_dependency(library_name, repo_name, repo_args, version):
                 "--src",
                 str(EDITABLE_LIB_PATH),
                 "--editable",
-                f"git+https://{github_token}@github.com/owkin/{repo_name}.git@{version}{repo_args}",
+                f"git+https://{github_token}@github.com/substra/{repo_name}.git@{version}{repo_args}",
             ],
             check=True,
             capture_output=True,

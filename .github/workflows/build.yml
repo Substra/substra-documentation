@@ -19,21 +19,21 @@ jobs:
       - name: Clone substra-tools
         uses: actions/checkout@v2
         with:
-          repository: owkin/connect-tools
+          repository: substra/substra-tools
           token: ${{ secrets.ACCESS_TOKEN }}
           path: substra-tools
 
       - name: Clone substra
         uses: actions/checkout@v2
         with:
-          repository: owkin/substra
+          repository: substra/substra
           token: ${{ secrets.ACCESS_TOKEN }}
           path: substra
 
       - name: Clone substrafl
         uses: actions/checkout@v2
         with:
-          repository: owkin/connectlib
+          repository: substra/substrafl
           token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
           path: substrafl
