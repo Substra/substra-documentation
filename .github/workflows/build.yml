@@ -20,21 +20,18 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: substra/substra-tools
-          token: ${{ secrets.ACCESS_TOKEN }}
           path: substra-tools
 
       - name: Clone substra
         uses: actions/checkout@v2
         with:
           repository: substra/substra
-          token: ${{ secrets.ACCESS_TOKEN }}
           path: substra
 
       - name: Clone substrafl
         uses: actions/checkout@v2
         with:
           repository: substra/substrafl
-          token: ${{ secrets.ACCESS_TOKEN }}
           ref: main
           path: substrafl
 
