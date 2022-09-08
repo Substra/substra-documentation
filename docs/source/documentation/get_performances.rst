@@ -25,13 +25,14 @@ This script will automatically end if the :code:`performance.json` file as not b
     import json
     from pathlib import Path
     from mlflow import log_metric
-    from itertools import islice
     import time
     import os
 
-    TIMEOUT = 60  # Number of seconds to stop the script after the last update of the json file
+    TIMEOUT = (
+        60  # Number of seconds to stop the script after the last update of the json file
+    )
     CP_KEY = "..."  # Compute plan key
-    POLLING_FREQUENCY = 10 # Try to read the updates in the file every 10 seconds
+    POLLING_FREQUENCY = 10  # Try to read the updates in the file every 10 seconds
 
     path_to_json = Path("local-worker") / "live_performances" / CP_KEY / "performances.json"
 
@@ -40,7 +41,9 @@ This script will automatically end if the :code:`performance.json` file as not b
     while not path_to_json.exists():
         time.sleep(POLLING_FREQUENCY)
         if time.time() - start >= TIMEOUT:
-            raise TimeoutError("The performance file does not exist, maybe no test task has been executed yet.")
+            raise TimeoutError(
+                "The performance file does not exist, maybe no test task has been executed yet."
+            )
 
 
     logged_rows = []
@@ -65,7 +68,6 @@ This script will automatically end if the :code:`performance.json` file as not b
 
             logged_rows.append(row["testtuple_key"])
 
-            step = row["round_idx"] or row["testtuple_rank"]
+            step = int(row["round_idx"]) or int(row["testtuple_rank"])
 
             log_metric(f"{row['metric_name']}_{row['worker']}", row["performance"], step)
-
