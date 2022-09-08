@@ -28,9 +28,7 @@ This script will automatically end if the :code:`performance.json` file as not b
     import time
     import os
 
-    TIMEOUT = (
-        60  # Number of seconds to stop the script after the last update of the json file
-    )
+    TIMEOUT = 60  # Number of seconds to stop the script after the last update of the json file
     CP_KEY = "..."  # Compute plan key
     POLLING_FREQUENCY = 10  # Try to read the updates in the file every 10 seconds
 
@@ -41,9 +39,7 @@ This script will automatically end if the :code:`performance.json` file as not b
     while not path_to_json.exists():
         time.sleep(POLLING_FREQUENCY)
         if time.time() - start >= TIMEOUT:
-            raise TimeoutError(
-                "The performance file does not exist, maybe no test task has been executed yet."
-            )
+            raise TimeoutError("The performance file does not exist, maybe no test task has been executed yet.")
 
 
     logged_rows = []
