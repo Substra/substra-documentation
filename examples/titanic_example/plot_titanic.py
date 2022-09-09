@@ -28,7 +28,7 @@ Requirements:
 
     Please ensure you have all the libraries in this file installed, the requirements.txt file is included in this zip, you can pip install it with a command: `pip install -r requirements.txt`.
 
-  - Substra should already be installed, if not follow the instructions described here: :ref:`get_started/installation:Installation`
+  - Substra should already be installed, if not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`
 
 
 """

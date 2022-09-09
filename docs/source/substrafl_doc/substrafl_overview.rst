@@ -1,11 +1,8 @@
-Main Substrafl concepts
-=======================
-
-.. substrafl_concepts:
-
-
 Overview
---------
+========
+
+.. _substrafl_concepts:
+
 
 Substrafl is a federated learning Python library that leverages the Substra framework to run federated learning experiments at scale on real distributed data.
 Its main usage is therefore a production usage. Yet Substrafl can also be used on a single machine on a virtually splitted dataset for two use cases:
@@ -21,6 +18,21 @@ Substrafl strives to be as flexible and modular as possible. You can easily chan
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
 
 
+Installation
+------------
+
+.. _installation:
+
+Substrafl and Substra are compatible with Python version 3.8 and 3.9 on both MacOS and Linux. For Windows users you can use the
+`Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_.
+
+To install the Substrafl run the following command:
+
+.. code-block:: console
+
+    $ pip install substrafl
+
+Substra is a dependency of Substrafl, so it will be automatically installed.
 
 Main concepts
 -------------

@@ -30,7 +30,7 @@ This example does not use the deployed platform of Substra and will run in local
     you can run the command: `pip install -r requirements.txt` to install them.
 
   - **Substra** and **Substrafl** should already be installed, if not follow the instructions described here:
-    :ref:`get_started/installation:Installation`
+    :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
 # %%
