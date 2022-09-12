@@ -43,7 +43,7 @@ Links
 
 Some quick links:
 
-* :ref:`* MNIST federated learning example <substrafl_doc/examples/strategies_examples/plot_substrafl_fedavg:Substrafl FedAvg on MNIST dataset>`
+* :ref:`MNIST federated learning example <substrafl_doc/examples/strategies_examples/plot_substrafl_fedavg:Substrafl FedAvg on MNIST dataset>`
 * :ref:`Substrafl main concepts <substrafl_doc/substrafl_overview:Overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table (close source)>`
 * :ref:`How to deploy Substra for SRE <operations/deploy:Deploying Substra>`
