@@ -8,7 +8,7 @@ Substra documentation
 
 Substra is an open source federated learning framework. It provides a flexible python interface and a web app to run federated learning training at scale.
 
-Substra main usage is a production usage. It has already been deployed and used by hospitals and biotech companies. Yet Substra can also be used on a single machine on a virtually splitted dataset for two use cases:
+Substra main usage is a production one. It has already been deployed and used by hospitals and biotech companies. Yet Substra can also be used on a single machine on a virtually splitted dataset for two use cases:
 * debugging code before launching experiments on a real network
 * performing FL simulations
 
