@@ -81,6 +81,11 @@ Test tuple
 """"""""""
 The specification of a testing task of predictions. It computes the score of the predictions using a metric algorithm_. with a dataset_.
 
+Transient task outputs
+""""""""""""""""""""""
+Task outputs flagged as ``transient`` are deleted from the storage when all the tasks depending on this output are complete.
+This prevents filling up your server with outputs that you will not use in the future.
+
 Permissions
 -----------
 
