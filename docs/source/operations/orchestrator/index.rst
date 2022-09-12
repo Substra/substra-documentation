@@ -38,3 +38,11 @@ Storage
 
 The Orchestrator stores its data in a PostgreSQL database.
 Migrations are executed using a Kubernetes Job on installation and update (this relies on a Helm hook).
+
+Helm chart
+==========
+
+We use Helm charts as a way to package our application deployments.
+If you want to deploy the Orchestrator you can use the `Helm chart orchestrator`_.
+
+.. _Helm chart orchestrator: https://artifacthub.io/packages/helm/substra/orchestrator
