@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * doc: update GPU page. The data are now automatically move to cpu or gpu by substrafl.
 * chore: rename connect-tools to substra-tools
 * fix: mnist example plot by using the real organization ID of the clients
+* fix: mlflow script
 
 ## [0.20.0]
 
