@@ -102,3 +102,30 @@ Each round represents one iteration of the training loop in the federated settin
 * The weight updates are aggregated by the aggregator organization.
 * The aggregated organization send the aggregated updates to the training organizations.
 * The training organizations update their model with the aggregated updates.
+
+Centralized strategy - workflow
+--------------------------------
+
+The workflow of a centralised strategy, unless specified otherwise, is as follows:
+
+- initialisation round: one train task on each organisation
+- then for each round: one aggregate task on the central organisation then one train task on each organisation
+
+Steps of an aggregate task:
+
+- Calculate the shared state from each organisation's shared state update
+
+Steps of a train task:
+
+- If there is an aggregate task before: update the model parameters with the shared state
+- Train the model on the local data
+- Calculate the shared state update
+- Reset the model parameters to before the local training
+
+So the local state that the train task outputs represents the state of the model just after the aggregation step of a federated learning strategy.
+This means that to test the output model of round 1, we can add a test task after the train task of round 1.
+
+This also means that for the final round of the strategy, we do a useless step of training the model on the local data. This is for 2 reasons:
+
+- Be able to implement checkpointing more easily (ie resume the experiment where we left it, feature not yet available)
+- Reuse the same algo as the other train tasks, which speeds up the execution
