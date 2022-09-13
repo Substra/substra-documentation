@@ -215,5 +215,5 @@ Docker container. This may take from a few minutes to an hour (or more), dependi
 For the following tasks that use the same algo, or a different algo with the same Docker image, Substra does not need to rebuild the image, resulting in a smaller execution time.
 
 To check how large the Docker image is and how long it takes to build, you can build it locally with `docker build .`.
-For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation<https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
+For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
 
