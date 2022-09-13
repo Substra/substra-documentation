@@ -184,9 +184,9 @@ Compute plan execution
 
 Read this paragraph to understand what happens during the compute plan execution and what can be done to improve the execution time.
 
-Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organisation.
+Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organization.
 
-On each organisation, Substra fetches the assets needed for the first task, builds the Docker image of the algo and creates a container with the relevant assets. The task executes and Substra saves its outputs.
+On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the algo and creates a container with the relevant assets. The task executes and Substra saves its outputs.
 Afterwards, every task **from the same compute plan** that uses the same algo is executed in the same Docker container.
 
 Asset preparation
@@ -195,10 +195,10 @@ Asset preparation
 The first step of the task execution is to fetch the necessary assets.
 These include the inputs (e.g. the algo or opener files), the output of other tasks (input artifacts of the task) and data samples.
 
-The assets, data samples excluded, come from the file systems of the organisations. If they are stored on other organisations, they are downloaded over HTTPS connections.
-Example: an algo submitted on another organisation
+The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
+Example: an algo submitted on another organization
 
-The data samples are stored on the organisation, in a storage solution (MiniO). They are downloaded for the task, this may take a long time if the dataset is large.
+The data samples are stored on the organization, in a storage solution (MiniO). They are downloaded for the task, this may take a long time if the dataset is large.
 Example: depending on the deployment configuration, downloading hundreds of gigabytes may take a few hours.
 
 Since this step can be quite long, there is a cache system: on a given organization, all the downloaded files (assets and data samples) are saved on disk. So when another tasks reuses the same assets there is no need to download them again. One the cache is full, all its contents are deleted.

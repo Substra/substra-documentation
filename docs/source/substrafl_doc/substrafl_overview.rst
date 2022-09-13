@@ -108,8 +108,8 @@ Centralized strategy - workflow
 
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 
-- initialisation round: one train task on each train organisation
-- then for each round: one aggregate task on the central organisation then one train task on each train organisation
+- initialisation round: one train task on each train organization
+- then for each round: one aggregate task on the central organization then one train task on each train organization
 
 Steps of an aggregate task:
 
