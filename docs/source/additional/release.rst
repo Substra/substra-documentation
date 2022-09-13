@@ -8,7 +8,41 @@ Compatibility table (close source)
 
 These sets of versions have been tested for compatibility:
 
-.. list-table:: Close Source Compatibility table
+.. list-table::
+   :widths: 5 5 5 5 5 5 5 5 5 5
+   :header-rows: 1
+
+   * - substra
+     - substrafl
+     - substra
+     - substra-tools
+     - substra-backend
+     - orchestrator
+     - substra-frontend
+     - substra-hlf-k8s
+     - substra-tests
+     - substra-chaincode
+
+   * - 0.21.0
+     - `0.28.0 <https://github.com/Substra/substrafl/releases/tag/0.28.0>`__
+     - `0.36.0 <https://github.com/Substra/substra/releases/tag/0.36.0>`__
+     - `0.16.0 <https://github.com/Substra/substra-tools/releases/tag/0.16.0>`__
+     - `0.29.0 <https://github.com/Substra/substra-backend/releases/tag/0.29.0>`__ | `helm 22.0.3 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/22.0.3>`__
+     - `0.26.1 <https://github.com/Substra/orchestrator/releases/tag/0.26.1>`__ | `helm 7.4.2 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.4.2>`__
+     - `0.33.0 <https://github.com/Substra/substra-frontend/releases/tag/0.33.0>`__ | `helm 1.0.4 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.4>`__
+     - `0.2.1 <https://github.com/Substra/substra-hlf-k8s/releases/tag/0.2.1>`__ | `helm 10.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.1.0>`__
+     - `0.32.0 <https://github.com/Substra/substra-tests/releases/tag/0.32.0>`__
+     -
+
+
+.. list-table::
+   :width: 50
+   :header-rows: 0
+
+   * - ↑ OPEN-SOURCING ↑
+
+
+.. list-table::
    :widths: 5 5 5 5 5 5 5 5 5 5
    :header-rows: 1
 
@@ -235,13 +269,14 @@ These sets of versions have been tested for compatibility:
      - `0.5.0 <https://github.com/owkin/substra-chaincode/releases/tag/0.5.0>`__
 
 
-Compatibility table (open source)
----------------------------------
+.. list-table::
+   :width: 50
+   :header-rows: 0
 
-These sets of versions have been tested for compatibility:
+   * - ↑ CLOSE-SOURCING ↑
 
 
-.. list-table:: Open Source Compatibility table
+.. list-table::
    :widths: 5 5 5 5 5 5 5
    :header-rows: 1
 
