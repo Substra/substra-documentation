@@ -13,6 +13,11 @@ To that end, a certificate authority is required. We recommend `cert-manager`_.
 .. TODO: IIRC letsencrypt was not cutting it, but can't remember why
 
 Both the orchestrator and the backend are deployed as Helm charts.
+The charts are available in the substra repository:
+
+.. code-block:: console
+
+    helm repo add substra https://substra.github.io/charts
 
 For each component section below, configuration options relates to the component's chart unless specified otherwise.
 
@@ -31,9 +36,7 @@ Orchestrator
 
 The Orchestrator being a standalone component, it should be deployed first.
 
-.. TODO: chart doc once open source
-
-For detailed information, please refer to the chart documentation.
+For detailed information, please refer to the `chart documentation <https://github.com/Substra/orchestrator/blob/main/charts/orchestrator/README.md>`_.
 
 There are two main attention point when configuring the orchestrator:
 
