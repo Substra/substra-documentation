@@ -108,12 +108,12 @@ Centralized strategy - workflow
 
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 
-- initialisation round: one train task on each organisation
-- then for each round: one aggregate task on the central organisation then one train task on each organisation
+- initialisation round: one train task on each train organisation
+- then for each round: one aggregate task on the central organisation then one train task on each train organisation
 
 Steps of an aggregate task:
 
-- Calculate the shared state from each organisation's shared state update
+- Calculate the common shared state from the previous train tasks shared state.
 
 Steps of a train task:
 
@@ -121,6 +121,7 @@ Steps of a train task:
 - Train the model on the local data
 - Calculate the shared state update
 - Reset the model parameters to before the local training
+- Output the local state (the model) and the shared state (parameters to aggregate)
 
 So the local state that the train task outputs represents the state of the model just after the aggregation step of a federated learning strategy.
 This means that to test the output model of round 1, we can add a test task after the train task of round 1.
@@ -129,3 +130,4 @@ This also means that for the final round of the strategy, we do a useless step o
 
 - Be able to implement checkpointing more easily (ie resume the experiment where we left it, feature not yet available)
 - Reuse the same algo as the other train tasks, which speeds up the execution
+
