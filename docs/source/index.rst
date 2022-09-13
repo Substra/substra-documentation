@@ -21,8 +21,7 @@ Interfaces
 Substra has four user interfaces:
     * **Substra**: a low-level Python library (also called SDK). Substra is used to create datasets, algorithms and machine learning tasks on the platform.
     * **Substrafl**: a high-level federated learning Python library based on Substra. Substrafl is used to run complex federated learning experiments at scale.
-    * a CLI - Command Line Interface
-    * a web interface
+    * a web application
 
 
 Installation
