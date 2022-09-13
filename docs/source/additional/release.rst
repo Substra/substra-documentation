@@ -30,7 +30,7 @@ These sets of versions have been tested for compatibility:
      - `0.29.0 <https://github.com/Substra/substra-backend/releases/tag/0.29.0>`__ | `helm 22.0.3 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/22.0.3>`__
      - `0.26.1 <https://github.com/Substra/orchestrator/releases/tag/0.26.1>`__ | `helm 7.4.2 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.4.2>`__
      - `0.34.0 <https://github.com/Substra/substra-frontend/releases/tag/0.34.0>`__ | `helm 1.0.6 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.6>`__
-     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.1 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.2.1>`__
+     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.2.2>`__
      - `0.32.0 <https://github.com/Substra/substra-tests/releases/tag/0.32.0>`__
      -
 
