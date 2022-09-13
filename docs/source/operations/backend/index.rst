@@ -21,7 +21,7 @@ minio
 postgresql
     This is the database supporting the Backend.
     You should back up the data of this Pod.
-rabbitmq
+redis
     This is an organization-specific message broker to support `Celery`_ tasks.
 backend-events
     This component will consume events from the Orchestrator.
@@ -50,3 +50,11 @@ Communication
 
 The Backend should be able to reach its Orchestrator.
 If :term:`Organizations<Organization>` share :ref:`Models<concept_model>`, involved Backends must be able to communicate with each other.
+
+Helm chart
+==========
+
+We use Helm charts as a way to package our application deployments.
+If you want to deploy the Backend you can use the `Helm chart substra-backend`_.
+
+.. _Helm chart substra-backend: https://artifacthub.io/packages/helm/substra/substra-backend
