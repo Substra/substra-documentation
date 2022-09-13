@@ -6,36 +6,57 @@
 Substra documentation
 =====================
 
-Substra is a framework offering distributed orchestration of machine learning tasks among partners while guaranteeing secure and trustless traceability of all operations.
+Substra is an open source federated learning framework. It provides a flexible python interface and a web app to run federated learning training at scale.
 
-- :doc:`Getting started <get_started/overview>`
+Substra main usage is a production one. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Yet Substra can also be used on a single machine on a virtually splitted dataset for two use cases:
 
-  An overview and guide to install Connnect python library.
+* debugging code before launching experiments on a real network
+* performing FL simulations
 
-- :doc:`Documentation <documentation/concepts>`
+Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
 
-  In depth documentation of Substra concepts and API reference.
+Interfaces
+^^^^^^^^^^
 
-- :doc:`Examples <auto_examples/index>`
 
-  Examples of usage of Substra.
+Substra has three user interfaces:
+    * **Substra**: a low-level Python library (also called SDK). Substra is used to create datasets, algorithms and machine learning tasks on the platform.
+    * **Substrafl**: a high-level federated learning Python library based on Substra. Substrafl is used to run complex federated learning experiments at scale.
+    * a web application used to monitor training and explore their results.
 
-- :doc:`Releases notes <additional/release>`
 
-  Substra changelog and compatibility table.
 
-- :doc:`Operating a Substra network <operations/index>`
+Installation
+^^^^^^^^^^^^
 
+Install substra and substrafl with the following command:
+
+.. code-block:: console
+
+    $ pip install substrafl
+
+Substra is a dependency of Substrafl, so it will be automatically installed.
+
+Links
+^^^^^
+
+Some quick links:
+
+* :ref:`MNIST federated learning example <substrafl_doc/examples/strategies_examples/plot_substrafl_fedavg:Substrafl FedAvg on MNIST dataset>`
+* :ref:`Substrafl overview <substrafl_doc/substrafl_overview:Overview>`
+* :ref:`Compatibility table <additional/release:Compatibility table (close source)>`
+* :ref:`How to deploy Substra for Site Reliability Engineers <operations/deploy:Deploying Substra>`
+* :ref:`Community <additional/community:Community>`
 
 
 .. toctree::
    :glob:
-   :maxdepth: 1
-   :caption: How to get started
+   :maxdepth: 2
+   :caption: Substrafl documentation
    :hidden:
 
-   get_started/overview.rst
-   get_started/installation.rst
+
+   substrafl_doc/index.rst
 
 
 .. toctree::
@@ -50,17 +71,6 @@ Substra is a framework offering distributed orchestration of machine learning ta
    documentation/gpu.rst
    documentation/api_reference.rst
    auto_examples/index
-
-
-
-.. toctree::
-   :glob:
-   :maxdepth: 2
-   :caption: Substrafl documentation
-   :hidden:
-
-
-   substrafl_doc/index.rst
 
 
 .. toctree::
