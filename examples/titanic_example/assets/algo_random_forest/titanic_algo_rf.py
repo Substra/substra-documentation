@@ -149,7 +149,7 @@ class Algo(tools.algo.Algo):
 
     def predict(self, inputs, outputs):
         X = inputs["X"]
-        model = self.load_model(inputs["model"])
+        model = self.load_model(inputs["models"])
         X = self._normalize_X(X)
         pred = self._predict_pandas(model, X)
 
