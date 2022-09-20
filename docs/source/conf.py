@@ -27,6 +27,7 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     TOOLS_VERSION = "0.14.0"
     SUBSTRAFL_VERSION = "0.26.0"
 
+# TODO: change before merge (to build in local)
 else:
     SUBSTRA_VERSION = "gt/uniformize_inputs"
     TOOLS_VERSION = "gt/uniformize_inputs"
