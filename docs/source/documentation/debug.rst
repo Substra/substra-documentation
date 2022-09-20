@@ -33,54 +33,37 @@ The first step is to make sure your assets are working outside Substra. For inst
 
 .. _local_mode:
 
-Run tasks locally with the local mode 
+Run tasks locally with the local mode
 -------------------------------------
 
-All the tasks that can be run on a deployed network can also be run locally in your Python environment. The only change needed is to set the debug parameter to `True` when instantiating the client:
+All the tasks that can be run on a deployed network can also be run locally in your Python environment. The only change needed is to set the backend_type parameter either to `subprocess` or `docker` when instantiating the client:
 ::
 
-    client = substra.Client.from_config_file(profile_name="org-1", debug=True)
+    client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
+    client = substra.Client.from_config_file(profile_name="org-1", backend_type="docker")
 
 Contrary to the default (remote) execution, the execution is done synchronously, so the script waits for the task in progress to end before continuing.
 
-Two debug modes are available:
+Two local modes are available:
 
 * **Docker mode**: the execution of the tasks happens in Docker containers that are spawned on the fly and removed once the execution is done.
 * **Subprocess mode**: the execution of the tasks happens in subprocesses (terminal commands executed from the Python code).
 
-The default mode is the Docker mode. Set the environment variable `DEBUG_SPAWNER` to change this. This can for instance be done in the terminal:
-
-* .. code-block:: bash
-
-    export DEBUG_SPAWNER=subprocess
-* .. code-block:: bash
-
-    export DEBUG_SPAWNER=docker
-
-Or with Python:
-
-* ::
-
-    os.environ["DEBUG_SPAWNER"] = "subprocess”
-*  ::
-
-    os.environ["DEBUG_SPAWNER"] = "docker”
-
 The subprocess mode is much faster than the Docker mode, but does not test that the Dockerfiles of the assets are valid, and may fail if advanced COPY or ADD commands are used in the Dockerfile. It is recommended to run your experiment locally in subprocess mode and when it is ready, test it with the Docker mode.
 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
-Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible. 
+Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible.
 
 .. _hybrid_mode:
 
 Test remote assets locally with the hybrid mode
 -----------------------------------------------
 
-An hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in ‘read-only’ mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets. For instance using an algo from the deployed platform on a local dataset produces a local model.
-To do so, instantiate a Client with the parameter `debug=True`: 
+An hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only`` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets. For instance using an algo from the deployed platform on a local dataset produces a local model.
+To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"`:
 ::
 
-    client = substra.Client.from_config_file(profile_name="org-1", debug=True)
+    client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
 
 and use remote assets when creating tasks.  Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other assets, models on the platform can not be used in local tasks. Moreover functions that create a new asset will only create local assets.
 
