@@ -62,6 +62,10 @@ from substra import Client
 
 N_CLIENTS = 2
 
+# Choose the subprocess mode to locally simulate the FL process
+DEBUG_SPAWNER = "subprocess"
+os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
+
 # Create the substra clients
 clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients}
@@ -387,7 +391,7 @@ from substrafl.experiment import execute_experiment
 # dataset to be stateful.
 
 # Number of model update between each FL strategy aggregation.
-NUM_UPDATES = 15
+NUM_UPDATES = 100
 
 # Number of samples per update.
 BATCH_SIZE = 32
@@ -399,9 +403,9 @@ index_generator = NpIndexGenerator(
 
 
 class TorchDataset(torch.utils.data.Dataset):
-    def __init__(self, x, y, is_inference: bool):
-        self.x = x
-        self.y = y
+    def __init__(self, datasamples, is_inference: bool):
+        self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
+        self.y = F.one_hot(torch.from_numpy(datasamples["labels"]).type(torch.int64), 10).type(torch.float32)
         self.is_inference = is_inference
 
     def __getitem__(self, idx):

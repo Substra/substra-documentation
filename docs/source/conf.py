@@ -28,9 +28,9 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     SUBSTRAFL_VERSION = "0.26.0"
 
 else:
-    SUBSTRA_VERSION = "main"
-    TOOLS_VERSION = "main"
-    SUBSTRAFL_VERSION = "main"
+    SUBSTRA_VERSION = "gt/uniformize_inputs"
+    TOOLS_VERSION = "gt/uniformize_inputs"
+    SUBSTRAFL_VERSION = "gt/uniformize_inputs"
 
 
 print(
