@@ -199,7 +199,7 @@ These include the inputs (e.g. the algo or opener files), the output of other ta
 The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
 Example: an algo submitted on another organization.
 
-The data samples are stored on the organization, in a storage solution (MiniO). They are downloaded for the task, this may take a long time if the dataset is large.
+All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded to the organization filesystem which may take a long time if the dataset is large.
 Example: depending on the deployment configuration, downloading hundreds of gigabytes may take a few hours.
 
 Since this step can be quite long, there is a cache system: on a given organization, all the downloaded files (assets and data samples) are saved on disk. So when another tasks reuses the same assets there is no need to download them again. Once the cache is full, the worker deletes all its content.
@@ -207,7 +207,7 @@ Since this step can be quite long, there is a cache system: on a given organizat
 Docker image build
 ^^^^^^^^^^^^^^^^^^^
 
-For the first task of the compute plan that uses a given algo, Substra needs to build the image, transfer it to the local registry then use it to spawn the container. This takes a few minutes for a small image, it may take a lot of time for larger images.
+For the first task of the compute plan that uses a given algo, Substra needs to build the image, transfer it to the local image registry then use it to spawn the container. This takes a few minutes for a small image, it may take a lot of time for larger images.
 
 For the tasks in the same compute plan that use either the same algo, or a different algo with the same Docker image, Substra does not need to rebuild the image, so the task execution is faster.
 
