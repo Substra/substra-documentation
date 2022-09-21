@@ -66,13 +66,12 @@ from substra.sdk.schemas import (
 #
 # The client allows us to interact with the Substra platform. Setting the debug argument to ``True`` allow us to work locally by emulating a platform.
 #
-# By setting the environment variable ``DEBUG_SPAWNER`` to:
+# By setting the argument ``backend_type`` to:
 #
 #  - ``docker`` all tasks will be executed from docker containers (default)
 #  - ``subprocess`` all tasks will be executed from Python subprocesses (faster)
 
-os.environ["DEBUG_SPAWNER"] = "subprocess"
-client = substra.Client(debug=True)
+client = substra.Client(backend_type="subprocess")
 
 # %%
 #
