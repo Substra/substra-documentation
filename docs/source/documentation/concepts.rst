@@ -199,7 +199,8 @@ These include the inputs (e.g. the algo or opener files), the output of other ta
 The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
 Example: an algo submitted on another organization.
 
-All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded to the organization filesystem which may take a long time if the dataset is large.
+All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded from the organization storage solution to the organization filesystem which may take a long time if the dataset is large.
+Note that data samples never leave the organization.
 Example: depending on the deployment configuration, downloading hundreds of gigabytes may take a few hours.
 
 Since this step can be quite long, there is a cache system: on a given organization, all the downloaded files (assets and data samples) are saved on disk. So when another tasks reuses the same assets there is no need to download them again. Once the cache is full, the worker deletes all its content.
