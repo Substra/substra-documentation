@@ -14,6 +14,7 @@ class TitanicOpener(tools.Opener):
 
     def get_y(self, folders):
         data = self._get_data(folders)
+        breakpoint()
         return self._get_y(data)
 
     def fake_X(self, n_samples=None):
@@ -30,7 +31,7 @@ class TitanicOpener(tools.Opener):
 
     @classmethod
     def _get_y(cls, data):
-        return pd.DataFrame(data=data.get("Survived"), columns=["Survived"])
+        return pd.DataFrame(data=data["Survived"], columns=["Survived"])
 
     @classmethod
     def _fake_data(cls, n_samples=None):
@@ -63,5 +64,4 @@ class TitanicOpener(tools.Opener):
         data = pd.DataFrame()
         for path in paths:
             data = pd.concat([data, pd.read_csv(path)])
-
         return data

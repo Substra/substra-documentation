@@ -37,7 +37,7 @@ Requirements:
 # Import all the dependencies
 # ---------------------------
 
-# sphinx_gallery_thumbnail_path = 'auto_examples/titanic_example/images/thumb/sphx_glr_plot_titanic_thumb.jpg'
+# sphinx_gallery_thumbnail_path = 'examples/titanic_example/titanic-image.png'
 
 import os
 import zipfile
