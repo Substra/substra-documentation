@@ -58,13 +58,8 @@ Whenever a task fails, an error will be raised and logs of the tasks will be inc
 Test remote assets locally with the hybrid mode
 -----------------------------------------------
 
-<<<<<<< HEAD
 An hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only`` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets. For instance using an algo from the deployed platform on a local dataset produces a local model.
 To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"`:
-=======
-An hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in ‘read-only’ mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets. For instance using an algo from the deployed platform on a local dataset produces a local model.
-To do so, instantiate a Client with the parameter `debug=True`:
->>>>>>> 2229df3 (fix benchmark)
 ::
 
     client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
