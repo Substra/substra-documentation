@@ -62,10 +62,6 @@ from substra import Client
 
 N_CLIENTS = 2
 
-# Choose the subprocess mode to locally simulate the FL process
-DEBUG_SPAWNER = "subprocess"
-os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
-
 # Create the substra clients
 clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients}
@@ -218,12 +214,23 @@ dataset = DatasetSpec(
 
 
 inputs_metrics = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples",
+        kind=AssetKind.data_sample,
+        optional=False,
+        multiple=True,
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 objective = AlgoSpec(
     category=AlgoCategory.metric,
@@ -405,7 +412,9 @@ index_generator = NpIndexGenerator(
 class TorchDataset(torch.utils.data.Dataset):
     def __init__(self, datasamples, is_inference: bool):
         self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
-        self.y = F.one_hot(torch.from_numpy(datasamples["labels"]).type(torch.int64), 10).type(torch.float32)
+        self.y = F.one_hot(
+            torch.from_numpy(datasamples["labels"]).type(torch.int64), 10
+        ).type(torch.float32)
         self.is_inference = is_inference
 
     def __getitem__(self, idx):

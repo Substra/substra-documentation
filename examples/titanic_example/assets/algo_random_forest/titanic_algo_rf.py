@@ -21,7 +21,9 @@ class Algo(tools.algo.Algo):
         # Cabin
         deck = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "U": 8}
         X["Cabin"] = X["Cabin"].fillna("U0")
-        X["Deck"] = X["Cabin"].map(lambda x: re.compile("([a-zA-Z]+)").search(x).group())
+        X["Deck"] = X["Cabin"].map(
+            lambda x: re.compile("([a-zA-Z]+)").search(x).group()
+        )
         X["Deck"] = X["Deck"].map(deck)
         X["Deck"] = X["Deck"].fillna(0)
         X["Deck"] = X["Deck"].astype(int)
@@ -119,8 +121,8 @@ class Algo(tools.algo.Algo):
 
     def train(self, inputs, outputs, task_properties):
 
-        X: pd.DataFrame = inputs["datasamples"].drop(columns="Survived")
-        y: pd.Series = inputs["datasamples"].Survived
+        X = inputs["datasamples"].drop(columns="Survived")
+        y = inputs["datasamples"].Survived
         X = self._normalize_X(X)
 
         # the following RFC hyperparameters were determined using:
