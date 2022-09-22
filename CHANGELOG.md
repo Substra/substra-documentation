@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * chore: rename connect-tools to substra-tools
 * fix: mnist example plot by using the real organization ID of the clients
 * fix: mlflow script
+* doc: add documentation on the execution steps in remote mode and the centralized strategy workflow (#173)
 
 ## [0.20.0]
 

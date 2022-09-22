@@ -177,3 +177,40 @@ There are two ways to run several tasks in parallel on a same organization. The 
 .. TODO:: Detail vertical and horizontal scaling
 
 .. TODO:: Explain what is substra tools
+
+
+Compute plan execution - deployed mode
+---------------------------------------
+
+Read this paragraph to understand what happens during the compute plan execution in deployed mode and what can be done to improve the execution time.
+In local mode, these steps are either skipped or simplified.
+
+Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organization.
+
+On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the algo and creates a container with the relevant assets. The task executes and Substra saves its outputs.
+Afterwards, every task **from the same compute plan** that uses the same Algo is executed in the same container.
+
+Asset preparation
+^^^^^^^^^^^^^^^^^^
+
+The first step of the task execution is to fetch the necessary assets.
+These include the inputs (e.g. the algo or opener files), the output of other tasks (input artifacts of the task) and data samples.
+
+The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
+Example: an algo submitted on another organization.
+
+All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded from the organization storage solution to the organization filesystem which may take a long time if the dataset is large.
+Note that data samples never leave the organization.
+Example: depending on the deployment configuration, downloading hundreds of gigabytes may take a few hours.
+
+Since this step can be quite long, there is a cache system: on a given organization, all the downloaded files (assets and data samples) are saved on disk. So when another tasks reuses the same assets there is no need to download them again. Once the cache is full, the worker deletes all its content.
+
+Docker image build
+^^^^^^^^^^^^^^^^^^^
+
+For the first task of the compute plan that uses a given algo, Substra needs to build the image, transfer it to the local image registry then use it to spawn the container. This takes a few minutes for a small image, it may take a lot of time for larger images.
+
+For the tasks in the same compute plan that use either the same algo, or a different algo with the same Docker image, Substra does not need to rebuild the image, so the task execution is faster.
+
+To check how large the image is and how long it takes to build, you can build it locally with ``docker build .``.
+For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
