@@ -131,3 +131,4 @@ This also means that for the final round of the strategy, we do a useless step o
 - Be able to implement checkpointing more easily (ie resume the experiment where we left it, feature not yet available)
 - Reuse the same algo as the other train tasks, which speeds up the execution
 
+For a more detailed example, see the :ref:`Federated Averaging <torchfedavgalgo>` implementation.
