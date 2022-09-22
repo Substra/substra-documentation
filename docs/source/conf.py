@@ -27,11 +27,10 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     TOOLS_VERSION = "0.14.0"
     SUBSTRAFL_VERSION = "0.26.0"
 
-# TODO: change before merge (to build in local)
 else:
-    SUBSTRA_VERSION = "gt/uniformize_inputs"
-    TOOLS_VERSION = "gt/uniformize_inputs"
-    SUBSTRAFL_VERSION = "gt/uniformize_inputs"
+    SUBSTRA_VERSION = "main"
+    TOOLS_VERSION = "main"
+    SUBSTRAFL_VERSION = "main"
 
 
 print(
@@ -84,19 +83,27 @@ TMP_FOLDER.mkdir(exist_ok=True)
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
+    with zipfile.ZipFile(
+        file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED
+    ) as ziph:
         for root, _, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
                     os.path.join(root, file),
-                    os.path.relpath(os.path.join(root, file), os.path.join(source_dir, "..")),
+                    os.path.relpath(
+                        os.path.join(root, file), os.path.join(source_dir, "..")
+                    ),
                 )
 
 
-assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+assets_dir_titanic = (
+    Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+)
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_substrafl_fedavg = Path(__file__).parents[2] / "substrafl_examples" / "strategies_examples" / "assets"
+assets_dir_substrafl_fedavg = (
+    Path(__file__).parents[2] / "substrafl_examples" / "strategies_examples" / "assets"
+)
 zip_dir(assets_dir_substrafl_fedavg, "substrafl_fedavg_assets.zip")
 
 
@@ -184,7 +191,10 @@ for repo in SUBSTRA_REPOS:
     source_path = None
     if importlib.util.find_spec(repo.pkg_name) is None or (
         repo.doc_dir is not None
-        and not (Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1] / repo.doc_dir).exists()
+        and not (
+            Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1]
+            / repo.doc_dir
+        ).exists()
     ):
         install_dependency(
             library_name=repo.pkg_name,
