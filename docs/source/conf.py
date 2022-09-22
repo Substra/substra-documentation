@@ -369,4 +369,5 @@ sphinx_gallery_conf = {
     "examples_dirs": ["../../examples", "../../substrafl_examples"],
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
+    "download_all_examples": False,
 }
