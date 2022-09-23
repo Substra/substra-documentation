@@ -72,7 +72,7 @@ To setup TLS, follow these steps:
 
    #. Create an openssl config file named ``example-openssl.cnf`` with the following content:
 
-        .. code-block::
+        .. code-block:: ini
 
            [ req ]
            default_bits		= 2048
