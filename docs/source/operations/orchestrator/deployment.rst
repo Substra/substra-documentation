@@ -98,9 +98,7 @@ To setup TLS, follow these steps:
         
       .. code-block:: bash
 
-        openssl req -new -x509 -days 365 -sha256 -key orchestrator-ca.key -extensions v3_ca -config example-openssl.cnf -subj "/C=FR/ST=Loire-Atlantique/L=Nantes/O=ORC-ORG-NAME/CN=Orchestrator Root CA" -out orchestrator-ca.crt
-
-      | Replace ``ORC-ORG-NAME`` with the name of your organization.
+        openssl req -new -x509 -days 365 -sha256 -key orchestrator-ca.key -extensions v3_ca -config example-openssl.cnf -subj "/CN=Orchestrator Root CA" -out orchestrator-ca.crt
 
 #. Generate a certificate for the Orchestrator
 
@@ -108,9 +106,8 @@ To setup TLS, follow these steps:
 
       .. code-block:: bash
 
-         openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/C=FR/ST=Loire-Atlantique/L=Nantes/O=ORC-ORG-NAME/CN=HOSTNAME" -out orchestrator-cert.csr
+         openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/CN=HOSTNAME" -out orchestrator-cert.csr
 
-      | Replace ``ORC-ORG-NAME`` with the name of your organization.
       | Replace ``HOSTNAME`` with the hostname of your Orchestrator as in the ingress configuration.
       
       This will generate a private key for the orchestrator and a certificate signing request.
