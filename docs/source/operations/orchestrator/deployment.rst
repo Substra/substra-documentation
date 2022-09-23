@@ -54,8 +54,9 @@ If you want you can jump directly to the section deploy or you can follow along 
 Setup TLS for the Orchestrator
 ------------------------------
 
-If you want to you can enable TLS for your orchestrator.
-For this you will need to generate a few certificates, here we will generate them manually but you can also use automated tools for this task.
+In a production environment, it is highly recommended to enable TLS for your orchestrator.
+For this, you will need to generate a few certificates.
+Here we will generate them manually but you can also use automated tools for this task.
 If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_, check out the ``orchestrator.tls.createCertificates`` values.
 
 To setup TLS, follow these steps:
@@ -68,7 +69,7 @@ To setup TLS, follow these steps:
         tls:
           enabled: true
 
-#. Generate a Certificate Authority certificate:
+#. Generate a self-signed Certificate Authority:
 
    #. Create an openssl config file named ``example-openssl.cnf`` with the following content:
 
