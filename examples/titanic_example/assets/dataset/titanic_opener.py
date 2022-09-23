@@ -14,7 +14,6 @@ class TitanicOpener(tools.Opener):
 
     def get_y(self, folders):
         data = self._get_data(folders)
-        breakpoint()
         return self._get_y(data)
 
     def fake_X(self, n_samples=None):
