@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 
 
-class TitanicMetrics(tools.Metrics):
+class TitanicMetrics(tools.MetricAlgo):
     def score(self, inputs, outputs, task_properties):
 
         y_true = inputs["datasamples"].Survived.values
@@ -17,4 +17,4 @@ class TitanicMetrics(tools.Metrics):
 
 
 if __name__ == "__main__":
-    tools.metrics.execute(TitanicMetrics())
+    tools.algo.execute(TitanicMetrics())
