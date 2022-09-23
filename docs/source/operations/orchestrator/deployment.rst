@@ -72,20 +72,20 @@ To setup TLS, follow these steps:
 
    #. Create an openssl config file named ``example-openssl.cnf`` with the following content:
 
-        .. code-block:: ini
+      .. code-block:: ini
 
-           [ req ]
-           default_bits		= 2048
-           default_md		= sha256
-           distinguished_name	= req_distinguished_name
+         [ req ]
+         default_bits		= 2048
+         default_md		= sha256
+         distinguished_name	= req_distinguished_name
 
-           [ req_distinguished_name ]
+         [ req_distinguished_name ]
 
-           [ v3_ca ]
-           basicConstraints = critical,CA:TRUE
-           subjectKeyIdentifier = hash
-           authorityKeyIdentifier = keyid:always,issuer:always
-           keyUsage = cRLSign, keyCertSign
+         [ v3_ca ]
+         basicConstraints = critical,CA:TRUE
+         subjectKeyIdentifier = hash
+         authorityKeyIdentifier = keyid:always,issuer:always
+         keyUsage = cRLSign, keyCertSign
 
    #. Generate a private key for signing certificates:
 
