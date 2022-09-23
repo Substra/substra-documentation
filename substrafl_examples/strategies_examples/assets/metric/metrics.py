@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 
-class AccuracyMetrics(tools.Metrics):
+class AccuracyMetrics(tools.MetricAlgo):
     def score(self, inputs, outputs, task_properties):
         y_true = inputs["datasamples"]["labels"]
         y_pred = self.load_predictions(inputs["predictions"])
@@ -16,4 +16,4 @@ class AccuracyMetrics(tools.Metrics):
 
 
 if __name__ == "__main__":
-    tools.metrics.execute(AccuracyMetrics())
+    tools.algo.execute(AccuracyMetrics())
