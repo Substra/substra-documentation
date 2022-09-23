@@ -59,6 +59,7 @@ For this you will need to generate a few certificates, here we will generate the
 If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_, check out the ``orchestrator.tls.createCertificates`` values.
 
 To setup TLS, follow these steps:
+
 #. Enable TLS, in the ``orchestrator-values.yaml`` file add the following content:
 
    .. code-block:: yaml
