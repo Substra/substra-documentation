@@ -4,9 +4,9 @@ import pandas as pd
 
 
 class TitanicMetrics(tools.Metrics):
-    def score(self, inputs, outputs):
+    def score(self, inputs, outputs, task_properties):
 
-        y_true = inputs["y"]
+        y_true = inputs["datasamples"].Survived.values
         y_pred = self.load_predictions(inputs["predictions"])
 
         perf = accuracy_score(y_true, y_pred)

@@ -21,7 +21,9 @@ class Algo(tools.algo.Algo):
         # Cabin
         deck = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "U": 8}
         X["Cabin"] = X["Cabin"].fillna("U0")
-        X["Deck"] = X["Cabin"].map(lambda x: re.compile("([a-zA-Z]+)").search(x).group())
+        X["Deck"] = X["Cabin"].map(
+            lambda x: re.compile("([a-zA-Z]+)").search(x).group()
+        )
         X["Deck"] = X["Deck"].map(deck)
         X["Deck"] = X["Deck"].fillna(0)
         X["Deck"] = X["Deck"].astype(int)
@@ -117,10 +119,10 @@ class Algo(tools.algo.Algo):
         y_pred = model.predict(X)
         return pd.DataFrame(columns=["Survived"], data=y_pred)
 
-    def train(self, inputs, outputs):
+    def train(self, inputs, outputs, task_properties):
 
-        X = inputs["X"]
-        y = inputs["y"]
+        X = inputs["datasamples"].drop(columns="Survived")
+        y = inputs["datasamples"].Survived
         X = self._normalize_X(X)
 
         # the following RFC hyperparameters were determined using:
@@ -138,7 +140,6 @@ class Algo(tools.algo.Algo):
             min_samples_leaf=1,
             min_samples_split=10,
             n_estimators=100,
-            max_features="auto",
             oob_score=True,
             random_state=1,
             n_jobs=-1,
@@ -147,8 +148,8 @@ class Algo(tools.algo.Algo):
 
         self.save_model(random_forest, outputs["model"])
 
-    def predict(self, inputs, outputs):
-        X = inputs["X"]
+    def predict(self, inputs, outputs, task_properties):
+        X = inputs["datasamples"].drop(columns="Survived")
         model = self.load_model(inputs["models"])
         X = self._normalize_X(X)
         pred = self._predict_pandas(model, X)

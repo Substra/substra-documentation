@@ -214,12 +214,23 @@ dataset = DatasetSpec(
 
 
 inputs_metrics = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples",
+        kind=AssetKind.data_sample,
+        optional=False,
+        multiple=True,
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 objective = AlgoSpec(
     category=AlgoCategory.metric,
@@ -387,7 +398,7 @@ from substrafl.experiment import execute_experiment
 # dataset to be stateful.
 
 # Number of model update between each FL strategy aggregation.
-NUM_UPDATES = 15
+NUM_UPDATES = 100
 
 # Number of samples per update.
 BATCH_SIZE = 32
@@ -399,9 +410,11 @@ index_generator = NpIndexGenerator(
 
 
 class TorchDataset(torch.utils.data.Dataset):
-    def __init__(self, x, y, is_inference: bool):
-        self.x = x
-        self.y = y
+    def __init__(self, datasamples, is_inference: bool):
+        self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
+        self.y = F.one_hot(
+            torch.from_numpy(datasamples["labels"]).type(torch.int64), 10
+        ).type(torch.float32)
         self.is_inference = is_inference
 
     def __getitem__(self, idx):

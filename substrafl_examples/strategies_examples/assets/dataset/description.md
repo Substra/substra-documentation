@@ -14,9 +14,5 @@ The target is the number (0 -> 9) represented by the pixels.
 
 The opener exposes 6 methods:
 
-* `get_X` returns a torch.FloatTensor containing the images
-* `get_y` returns a torch.FloatTensor containing the labels converted in OneHot tensor
-* `fake_X` returns a fake data sample of images
-* `fake_y`returns a fake data sample of labels
-* `save_predictions` saves a numpy array as npy,
-* `get_predictions` loads the npy saved with `save_predictions` and returns a numpy array
+- `get_data` returns a dictionary containing containing the images and the labels as numpy arrays
+- `fake_data` returns a fake data sample of images and labels in a dict

@@ -19,8 +19,7 @@ The first step is to make sure your assets are working outside Substra. For inst
     # Opener test:
     import opener # Assuming the opener is implemented in the opener.py file
     my_opener = opener.TabularDataOpener()
-    X = my_opener.get_X(["/path/to/data"])
-    y = my_opener.get_y(["/path/to/data"])
+    datasamples = my_opener.get_data(["/path/to/data"])
     #  data exploration, check the format and shape returned by the opener
 
 ::
@@ -28,7 +27,7 @@ The first step is to make sure your assets are working outside Substra. For inst
     # Algo test:
     import algo  # Assuming the opener is implemented in the algo.py file
     linear_regression = algo.LinearRegression()
-    model = linear_regression.train(X, y)
+    model = linear_regression.train(datasamples)
     # test the model
 
 .. _local_mode:
@@ -67,7 +66,7 @@ To do so, instantiate a Client with the parameter `backend_type="subprocess"` or
 
 and use remote assets when creating tasks.  Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other assets, models on the platform can not be used in local tasks. Moreover functions that create a new asset will only create local assets.
 
-Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the `fake_X()` and `fake_y()` methods in the dataset opener.
+Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the `fake_data()` methods in the dataset opener.
 
 .. _deployed_mode:
 
