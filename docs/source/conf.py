@@ -259,6 +259,7 @@ extensions.extend(
         "sphinx.ext.todo",
         "sphinx_fontawesome",
         "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
+        "sphinx_copybutton",
     ]
 )
 
