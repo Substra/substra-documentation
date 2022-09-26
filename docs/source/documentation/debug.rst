@@ -104,7 +104,7 @@ Accessing failed tasks logs
 
 Logs of tasks that were run on the deployed platform can be accessed under two conditions:
 
-* The task has failed and the `error_type` is an `EXECUTION_ERROR`.
+* The task has failed and the `error_type` is an `EXECUTION_ERROR` or a `BUILD_ERROR`.
 * The user belongs to a organization that has permissions to access the logs of this task.
 
 Logs of failed tasks can be accessed if the right permission is set on the dataset used in the task. Permissions are set when the dataset is created using the `logs_permission` field of the `DatasetSpec`. Permissions cannot be changed once the dataset is created.
