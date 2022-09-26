@@ -49,7 +49,7 @@ You can find the complete description of values that can be used to configure th
    | If you want more than one channels you can add more items in the list.
 
 Here you have created the most basic configuration required to have a running orchestrator that can support a Substra network.
-If you want you can jump directly to the section deploy or you can follow along the next sections to enhance the security of your orchestrator.
+If you want you can jump directly to the section :ref:`deploy-orchestrator` or you can follow along the next sections to enhance the security of your orchestrator.
 
 Setup TLS for the Orchestrator
 ------------------------------
@@ -121,6 +121,9 @@ To setup TLS, follow these steps:
 
       | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
 
+      .. caution:: 
+         We don't recommend having your certificate valid for a year, you should change this value based on your company policy.
+
    #. Delete the Certificate Signing Request:
 
       .. code-block:: bash
@@ -139,83 +142,38 @@ To setup TLS, follow these steps:
       
       kubectl create secret tls orchestrator-tls-server-pair --cert=orchestrator-tls.crt --key=orchestrator-tls.key
 
+.. _deploy-orchestrator:
 
+Deploy the Chart
+----------------
 
+To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
-We want to validate clients identity usigng mTLS so we need to enable some additional settings:
-In the same values file add:
+#. Deploy the Orchestrator Helm chart:
 
-```
-orchestrator:
-  verifyClientMSPID: true
-```
+   .. code-block:: bash
 
-We enable TLS for the server:
-in te same values.yaml file
-```
-orchestrator:
-  verifyClientMSPID true
-  tls:
-    enabled: true
-```
+      helm install my-orchestrator substra/orchestrator --version 7.4.3 --values orchestrator-values.yaml
 
-Now for this to work we need to generate some certificates.
+   | Replace ``RELEASE-NAME`` with the name of your orchestrator release.
+   | Replace ``VERSION`` with the version of the orchestrator helm chart you want to deploy.
+   
+   This will create all the Kubernetes resources required for a functional Orchestrator in your Kubernetes cluster.
 
-First we need to generate a CA certificate:
-for this example we will generate them manually but you can use external providers like let's encrypt for this step.
+#. Validate that the deployment was successful:
 
-> Include sample openssl config: https://github.com/Substra/orchestrator/blob/9c8106dde71ae379da0a8ae4d0bb0e8d88b68f4d/examples/tools/openssl-with-ca.cnf
+   .. code-block:: bash
 
-```
-openssl genrsa -out ca.key 2048
-openssl req -new -x509 -days 365 -sha256 -key ca.key -extensions v3_ca -config openssl-with-ca.cnf -subj "/C=FR/ST=Loire-Atlantique/L=Nantes/O=Orchestrator Root CA/CN=Orchestrator Root CA" -out ca.crt
-```
+      grpcurl [--cacert orchestrator-ca.crt] HOSTNAME:443 list
 
-You should now have these files in your current directory: `ca.crt` and `ca.key`.
+   | Replace ``HOSTNAME`` with the hostname of your orchestrator.
+   | Add the ``--cacert`` argument if you deployed your orchestrator with TLS.
+        
+   The output of this command should be the following:
 
-You can already create a ConfigMap in you cluster named `orchestrator-tls-cacert` using the command:
-```
-kubectl create configmap orchestrator-tls-cacert --from-file=ca.crt
-```
+   .. code-block::
 
-> list configmap to see that it is created
+      Failed to list services: rpc error: code = Unknown desc = OE0003: missing or invalid header 'mspid'
 
-Generate a certificate key for the orchestrator
-```
-openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/C=FR/ST=Loire-Atlantique/L=Nantes/O=Substra/CN=orc.my-corp.org" -out orchestrator-cert.csr
-```
-
-and 
-```
-openssl x509 -req -days 365 -in orchestrator-cert.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out orchestrator-tls.crt -extfile <(printf "subjectAltName=DNS:orc.my-corp.org")
-```
-
-Then we need to create a kubernetes secret containing these informations
-
-```
-kubectl create secret tls orchestrator-tls-server-pair --cert=orchestrator-tls.crt --key=orchestrator-tls.key
-```
-
-Now you can run an orchestrator that is secured
-
-```
-helm install my-orchestrator substra/orchestrator --version 7.4.3 --values orchestrator-values.yaml
-```
-
-
-```
-GODEBUG=x509sha1=1 grpcurl --cacert ca.crt --rpc-header 'mspid: MyOrg1MSP' --rpc-header 'channel: mychannel' --rpc-header 'chaincode: mycc' orchestrator.install-guide.cg.owkin.tech:443 describe
-```
-
-Substra backend 
-===============
-
-
-
-helm repo add substra https://substra.github.io/charts/
-
-helm install my-substra-backend substra/substra-backend --version 22.1.1
-
-Add the orchestrator CAcert from before:
-
-kubectl create configmap orchestrator-tls-cacert --from-file=ca.crt
+   This is expected because the Orchestrator server expects some gRPC headers to be present but we did not provide them.
+   Even if it is an error, since this response is from the server it is sufficient to tell your setup is working.
