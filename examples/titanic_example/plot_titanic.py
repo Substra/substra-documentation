@@ -76,7 +76,7 @@ client = substra.Client(debug=True)
 
 # %%
 #
-# Instead, if you want to use a remote backend, you will need to precise url and login to your client
+# Instead, if you want to use a remote backend, you will need to give the url and login to your client
 
 #client = substra.Client(url="https://example.com")
 #client.login("org-id", "*****")
