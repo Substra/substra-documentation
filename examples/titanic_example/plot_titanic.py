@@ -46,7 +46,6 @@ from pathlib import Path
 import substra
 from substra.sdk.schemas import (
     AlgoSpec,
-    AlgoCategory,
     AlgoInputSpec,
     AlgoOutputSpec,
     AssetKind,
@@ -175,12 +174,23 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 inputs_metrics = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples",
+        kind=AssetKind.data_sample,
+        optional=False,
+        multiple=True,
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 
 METRICS_DOCKERFILE_FILES = [
@@ -197,7 +207,6 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
 METRICS = AlgoSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
-    category=AlgoCategory.metric,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=metric_archive_path,
@@ -233,12 +242,23 @@ with zipfile.ZipFile(train_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_simple = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=True, multiple=True),
+    AlgoInputSpec(
+        identifier="datasamples",
+        kind=AssetKind.data_sample,
+        optional=False,
+        multiple=True,
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="models", kind=AssetKind.model, optional=True, multiple=True
+    ),
 ]
 
-outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
+outputs_algo_simple = [
+    AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)
+]
 
 TRAIN_ALGO = AlgoSpec(
     name="Titanic: Random Forest",
@@ -262,18 +282,31 @@ ALGO_PREDICT_DOCKERFILE_FILES = [
     assets_directory / "algo_random_forest/predict/Dockerfile",
 ]
 
-predict_archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+predict_archive_path = (
+    assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+)
 with zipfile.ZipFile(predict_archive_path, "w") as z:
     for filepath in ALGO_PREDICT_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_predict = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples",
+        kind=AssetKind.data_sample,
+        optional=False,
+        multiple=True,
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="models", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_algo_predict = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+outputs_algo_predict = [
+    AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)
+]
 
 predict_algo_spec = AlgoSpec(
     name="Titanic: Random Forest - predict",
@@ -300,8 +333,12 @@ print(f"Predict algo key {predict_algo_key}")
 # Then a testing task is registered, testing the model of the training task.
 
 data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
-train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
-test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
+train_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys
+]
+test_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys
+]
 
 traintuple = TraintupleSpec(
     algo_key=train_algo_key,
@@ -323,7 +360,13 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
-model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
+model_input = [
+    InputRef(
+        identifier="models",
+        parent_task_key=traintuple_key,
+        parent_task_output_identifier="model",
+    )
+]
 
 predicttuple = PredicttupleSpec(
     traintuple_key=traintuple_key,
@@ -337,7 +380,11 @@ predicttuple = PredicttupleSpec(
 predicttuple_key = client.add_predicttuple(predicttuple)
 
 predictions_input = [
-    InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")
+    InputRef(
+        identifier="predictions",
+        parent_task_key=predicttuple_key,
+        parent_task_output_identifier="predictions",
+    )
 ]
 
 testtuple = TesttupleSpec(

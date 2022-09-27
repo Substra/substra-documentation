@@ -166,7 +166,6 @@ from substra.sdk.schemas import (
     AssetKind,
     Permissions,
     DataSampleSpec,
-    AlgoCategory,
     AlgoSpec,
 )
 from substrafl.nodes import TestDataNode, TrainDataNode
@@ -233,7 +232,6 @@ outputs_metrics = [
 ]
 
 objective = AlgoSpec(
-    category=AlgoCategory.metric,
     inputs=inputs_metrics,
     outputs=outputs_metrics,
     name="Accuracy",
