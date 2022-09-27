@@ -374,7 +374,7 @@ repos to have a full grasp on what has changed:
 - `frontend changelog <https://github.com/Substra/substra-frontend/blob/0.34.0/CHANGELOG.md>`__
 - `substra-tools changelog <https://github.com/Substra/substra-tools/blob/0.16.0/CHANGELOG.md>`__
 - `backend changelog <https://github.com/Substra/substra-backend/blob/0.29.0/CHANGELOG.md>`__
-- `orchestrator changelog <https://github.com/Substra/substra-orchestrator/blob/0.28.0/CHANGELOG.md>`__
+- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/0.26.1/CHANGELOG.md>`__
 
 Main changes
 
