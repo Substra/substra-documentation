@@ -365,7 +365,7 @@ Changelog
 Substra 0.21.0 (first OS release) - 2022-09-12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is our first open source release since 2021! The product was renamed Substra.
+This is our first open source release since 2021! When the product was closed source it used to be named Connect. It is now renamed Substra.
 This is an overview of the main changes, please have a look at the changelog of every
 repos to have a full grasp on what has changed:
 
