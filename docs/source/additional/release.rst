@@ -27,10 +27,10 @@ These sets of versions have been tested for compatibility:
      - `0.28.0 <https://github.com/Substra/substrafl/releases/tag/0.28.0>`__
      - `0.36.0 <https://github.com/Substra/substra/releases/tag/0.36.0>`__
      - `0.16.0 <https://github.com/Substra/substra-tools/releases/tag/0.16.0>`__
-     - `0.29.0 <https://github.com/Substra/substra-backend/releases/tag/0.29.0>`__ | `helm 22.0.3 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/22.0.3>`__
-     - `0.26.1 <https://github.com/Substra/orchestrator/releases/tag/0.26.1>`__ | `helm 7.4.2 <https://core.harbor.tooling.owkin.com/harbor/projects/2/helm-charts/orchestrator/versions/7.4.2>`__
-     - `0.34.0 <https://github.com/Substra/substra-frontend/releases/tag/0.34.0>`__ | `helm 1.0.6 <https://core.harbor.tooling.owkin.com/harbor/projects/5/helm-charts/connect-frontend/versions/1.0.6>`__
-     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://core.harbor.tooling.owkin.com/harbor/projects/4/helm-charts/hlf-k8s/versions/10.2.2>`__
+     - `0.29.0 <https://github.com/Substra/substra-backend/releases/tag/0.29.0>`__ | `helm 22.0.3 <https://artifacthub.io/packages/helm/substra/substra-backend/22.0.3>`__
+     - `0.26.1 <https://github.com/Substra/orchestrator/releases/tag/0.26.1>`__ | `helm 7.4.2 <https://artifacthub.io/packages/helm/substra/orchestrator/7.4.2>`__
+     - `0.34.0 <https://github.com/Substra/substra-frontend/releases/tag/0.34.0>`__ | `helm 1.0.6 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.6>`__
+     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
      - `0.32.0 <https://github.com/Substra/substra-tests/releases/tag/0.32.0>`__
      -
 
@@ -361,6 +361,111 @@ These sets of versions have been tested for compatibility:
 
 Changelog
 ---------
+
+Substra 0.21.0 (first OS release) - 2022-09-12
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is our first open source release since 2021! When the product was closed source it used to be named Connect. It is now renamed Substra.
+This is an overview of the main changes, please have a look at the changelog of every
+repos to have a full grasp on what has changed:
+
+- `substra changelog <https://github.com/Substra/substra/blob/0.36.0/CHANGELOG.md>`__
+- `substrafl changelog <https://github.com/Substra/substrafl/blob/0.28.0/CHANGELOG.md>`__
+- `frontend changelog <https://github.com/Substra/substra-frontend/blob/0.34.0/CHANGELOG.md>`__
+- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/0.16.0/CHANGELOG.md>`__
+- `backend changelog <https://github.com/Substra/substra-backend/blob/0.29.0/CHANGELOG.md>`__
+- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/0.26.1/CHANGELOG.md>`__
+
+Main changes
+
+- Admin and user roles have been introduced. The user role is the same as the previous role. The admin role can, in addition, manage users and define their roles. The admin can create users and reset their password in the GUI.
+- **BREAKING CHANGE**: remove the shared local folder of the compute plan
+- **BREAKING CHANGE**: pass the algo method to execute under the ``--method-name`` argument within the within the cli of the task execution. If the interface between substra and the backend is handled via substratools, there are no changes to apply within the substra code but algo and metric ``Dockerfiles`` should expose a ``--method-name`` argument in the ``ENTRYPOINT``.
+- **BREAKING CHANGE**: an extra argument ``predictions_path`` has been added to both ``predict`` and ``_local_predict`` methods from all ``TorchAlgo`` classes. The user now have to use the ``_save_predictions`` method to save its predictions in ``_local_predict``. The user defined metrics will load those saved prediction with ``np.load(inputs['predictions'])``. The ``_save_predictions`` method can be overwritten.
+
+
+Default ``_local_predict`` method from substrafl algorithms went from:
+
+.. code-block:: python
+
+  def _local_predict(self, predict_dataset: torch.utils.data.Dataset):
+          if self._index_generator is not None:
+              predict_loader = torch.utils.data.DataLoader(predict_dataset, batch_size=self._index_generator.batch_size)
+          else:
+              raise BatchSizeNotFoundError(
+                  "No default batch size has been found to perform local prediction. "
+                  "Please overwrite the _local_predict function of your algorithm."
+              )
+
+          self._model.eval()
+
+          predictions = torch.Tensor([])
+          with torch.inference_mode():
+              for x in predict_loader:
+                  predictions = torch.cat((predictions, self._model(x)), 0)
+
+          return predictions
+
+to
+
+.. code-block:: python
+
+  def _local_predict(self, predict_dataset: torch.utils.data.Dataset, predictions_path: Path):
+
+        if self._index_generator is not None:
+            predict_loader = torch.utils.data.DataLoader(predict_dataset, batch_size=self._index_generator.batch_size)
+        else:
+            raise BatchSizeNotFoundError(
+                "No default batch size has been found to perform local prediction. "
+                "Please overwrite the _local_predict function of your algorithm."
+            )
+
+        self._model.eval()
+
+        predictions = torch.Tensor([])
+        with torch.inference_mode():
+            for x in predict_loader:
+                predictions = torch.cat((predictions, self._model(x)), 0)
+
+        self._save_predictions(predictions, predictions_path)
+
+        return predictions
+
+
+GUI
+
+- GUI: the page size has been increased from 10 to 30 items displayed
+- GUI: Fixed: keep filtering/ordering setup when refreshing an asset list page
+- GUI: Fixed: filtering on compute plan duration
+- GUI: Fixed: the columns ``name``, ``status`` and ``dates`` are displayed by default in the compute plans page
+- GUI: Fixed: broken unselection of compute plans in comparison page
+- GUI: Fixed: CP columns and favorites disappear on logout
+- GUI: the CP workflow graph now displays CPs with up to 1000 tasks, instead of 300
+- The test task rank now have the same behaviour as for other tasks (parent task rank + 1)
+
+Substra
+
+- added ``list_model`` to the SDK client
+- Download function of the client return the path of downloaded file
+- Local mode: add a check, a task output of type performance must have public permissions
+- Fix the filters on status for compute plans and tasks. This fix also introduces some changes: the value for the filters on status must now be a list (like for other filters, there is a OR condition between elements of the list) and its value must be ``substra.models.ComputePlanStatus.{name of the status}.value`` for compute plans and ``substra.models.Status.{name of the status}.value`` for tasks.
+
+  Example:
+
+.. code-block:: python
+
+  # Return all the composite traintuples with the status "doing"
+  client.list_composite_traintuple(filters={"status": [substra.models.Status.doing.value]})
+
+- changed the ``metrics`` and ``algo`` definition relying on substra tools. All the methods of those objects now take ``inputs`` and ``outputs`` as arguments; which are ``TypedDict``.
+
+Substrafl
+
+- Throw an error if ``pytorch 1.12.0`` is used. There is a regression bug in ``torch 1.12.0``, that impacts optimizers that have been pickled and unpickled. This bug occurs for Adam optimizer for example (but not for SGD). Here is a link to one issue covering it: pytorch/pytorch#80345
+- In the PyTorch algorithms, move the data to the device (GPU or CPU) in the training loop and predict function so that the user does not need to do it.
+
+
+
 
 Substra 0.20.1 - 2022-08-24
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
