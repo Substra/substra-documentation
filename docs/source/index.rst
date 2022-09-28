@@ -82,6 +82,7 @@ Some quick links:
    operations/index.rst
    operations/deploy.rst
    operations/upgrade_notes.rst
+   operations/howto.rst
 
 
 .. toctree::
