@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fix: mlflow script
 * doc: add documentation on the execution steps in remote mode and the centralized strategy workflow (#173)
 * doc: remove download all examples button
+* doc: container build error logs are now accessible to end users
 
 ## [0.20.0]
 
