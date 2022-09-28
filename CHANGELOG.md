@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.21.0]
 
+* fix: Environment variable not set properly in Substrafl example
+* fix: Substrafl example not working in docker mode (change torch version)
 * chore: change the Dockerfile `ENTRYPOINT` definition of algorithm relying on `substratools` to pass
   the method to execute under the `--method-name` argument
 * chore: change the assets and tools algo to feed with inputs outputs dictionary
