@@ -121,7 +121,7 @@ To setup TLS, follow these steps:
 
       .. code-block:: bash
 
-         openssl x509 -req -days 365 -in orchestrator-cert.csr -CA orchestrator-ca.crt -CAkey orchestrator-ca.key -CAcreateserial -out orchestrator-tls.crt -extfile <(printf "subjectAltName=DNS:HOSTNAME")
+         openssl x509 -req -days 365 -in orchestrator-cert.csr -CA orchestrator-ca.crt -CAkey orchestrator-ca.key -CAcreateserial -out orchestrator-tls.crt -sha256 -extfile <(printf "subjectAltName=DNS:HOSTNAME")
 
       | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
 
@@ -138,7 +138,7 @@ To setup TLS, follow these steps:
    
    .. code-block:: bash
       
-      kubectl create configmap orchestrator-tls-cacert --from-file=orchestrator-ca.crt
+      kubectl create configmap orchestrator-tls-cacert --from-file=ca.crt=orchestrator-ca.crt
 
 #. Create a Kubernetes Secret for the orchestrator TLS key and certificate:
 
