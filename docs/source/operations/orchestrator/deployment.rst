@@ -4,16 +4,17 @@ How to deploy the Orchestrator
 
 This guide shows you how to deploy the Orchestrator component of Substra.
 
-Deployment
-==========
-
 Prerequisites
--------------
+=============
 
-In order to deploy the Orchestrator you will need a fully configured Kubernetes cluster.
+To deploy the Orchestrator you will need a fully configured Kubernetes cluster.
+You will also need some tools: 
+
+* `Helm <https://helm.sh/>`_
+* `gRPCurl <https://github.com/fullstorydev/grpcurl>`_
 
 Preparing your Helm values
---------------------------
+==========================
 
 The orchestrator deployment is packaged using Helm.
 You can find the complete description of values that can be used to configure the chart on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.
@@ -33,7 +34,7 @@ You can find the complete description of values that can be used to configure th
         hostname: HOSTNAME
 
    | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
-   | This will setup the ingress in order to make your Orchestrator accessible at the defined hostname.
+   | This will setup the ingress to make your Orchestrator accessible at the defined hostname.
 
 #. Setup your :term:`Substra channels<Channel>`.
    In the ``orchestrator-values.yaml`` file, add the following content:
@@ -45,19 +46,21 @@ You can find the complete description of values that can be used to configure th
           organizations: [ORG-NAME, ...]
 
    | Replace ``CHANNEL-NAME`` with the name you want to give to your channel.
-   | Replace ``ORG-NAME, ...`` with the names of the :term:`Organizations<Organization>` that you want to participate in this channel.
-   | If you want more than one channels you can add more items in the list.
+   | Replace ``ORG-NAME, ...`` with the names of the :term:`Organizations<Organization>` that you want to include in this channel.
+   | If you want more than one channel you can add more items in the list.
 
-Here you have created the most basic configuration required to have a running orchestrator that can support a Substra network.
-If you want you can jump directly to the section :ref:`deploy-orchestrator` or you can follow along the next sections to enhance the security of your orchestrator.
+Here you have created the configuration required to have a running orchestrator that can support a Substra network.
+If you want you can jump directly to the section :ref:`deploy-orchestrator`.
+You can also follow along the next sections to enhance the security of your orchestrator.
 
-Setup TLS for the Orchestrator
-------------------------------
+Setup TLS
+=========
 
-In a production environment, it is highly recommended to enable TLS for your orchestrator.
+In a production environment, we recommend to enable TLS for your orchestrator.
 For this, you will need to generate a few certificates.
 Here we will generate them manually but you can also use automated tools for this task.
-If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_, check out the ``orchestrator.tls.createCertificates`` values.
+If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_.
+The ``orchestrator.tls.createCertificates`` values should be a good place for you to get started.
 
 To setup TLS, follow these steps:
 
@@ -108,7 +111,8 @@ To setup TLS, follow these steps:
 
          openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/CN=HOSTNAME" -out orchestrator-cert.csr
 
-      | Replace ``HOSTNAME`` with the hostname of your Orchestrator as in the ingress configuration.
+      | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
+        This should be the same ``HOSTNAME`` as in the ingress configuration.
       
       This will generate a private key for the orchestrator and a certificate signing request.
       You should have two new files in your current directory ``orchestrator-tls.key`` and ``orchestrator-cert.csr``.
@@ -145,7 +149,7 @@ To setup TLS, follow these steps:
 .. _deploy-orchestrator:
 
 Deploy the Chart
-----------------
+================
 
 To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
@@ -153,9 +157,9 @@ To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
    .. code-block:: bash
 
-      helm install my-orchestrator substra/orchestrator --version 7.4.3 --values orchestrator-values.yaml
+      helm install RELEASE-NAME substra/orchestrator --version VERSION --values orchestrator-values.yaml
 
-   | Replace ``RELEASE-NAME`` with the name of your orchestrator release.
+   | Replace ``RELEASE-NAME`` with the name of your orchestrator release (it can be any arbitrary name).
    | Replace ``VERSION`` with the version of the orchestrator helm chart you want to deploy.
    
    This will create all the Kubernetes resources required for a functional Orchestrator in your Kubernetes cluster.
