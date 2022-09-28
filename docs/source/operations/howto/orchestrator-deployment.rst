@@ -62,6 +62,10 @@ Here we will generate them manually but you can also use automated tools for thi
 If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_.
 The ``orchestrator.tls.createCertificates`` values should be a good place for you to get started.
 
+The Orchestrator needs to handle SSL termination for this to work.
+You may need to adapt your proxy configuration to let the traffic go through it.
+For example if you use ``ingress-nginx`` you may want to read the `ssl passthrough <https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough>`_ chapter of their documentation.
+
 To setup TLS, follow these steps:
 
 #. Enable TLS, in the ``orchestrator-values.yaml`` file add the following content:
