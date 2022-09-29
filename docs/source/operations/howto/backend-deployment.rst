@@ -116,3 +116,19 @@ To configure your values:
    | Replace ``USERNAME`` with the name of the user you want to add.
    | Replace ``PASSWORD`` with the password of the user you want to add. It should be at least 20 characters long.
    | Replace ``CHANNEL`` with the name of the channel this user is part of. It should match one of the channels defined in your :ref:`Substra Channel configuration <backend-channel-config>`.
+
+Deploy the Chart
+================
+
+To deploy the Substra Backend chart in your Kubernete cluster follow these steps:
+
+#. Deploy the orchestrator Helm chart:
+
+   .. code-block:: bash
+
+      helm install RELEASE-NAME substra/substra-backend --version VERSION --values backend-values.yaml
+
+   | Replace ``RELEASE-NAME`` with the name of your substra backend release (it can be an arbitrary name).
+   | Replace ``VERSION`` with the version of the substra backend helm chart you want to deploy.
+
+   This will create all the Kubernetes resources required for a functional substra backend in your Kubernetes cluster.
