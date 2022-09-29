@@ -82,7 +82,7 @@ To configure your values:
    | Replace ``RESTRICTED`` with ``true`` if you should be the only member of this channel else ``false``.
    | Replace ``MODEL_EXPORT`` with ``true`` if you want users from this channel to be able to download models produced by the platform, else ``false``.
 
-#. Optional: If your Orchestrator have TLS enabled:
+#. Optional: If your Orchestrator has TLS enabled:
 
    #. Retrieve the CA certificate from your orchestrator:
 
@@ -120,7 +120,7 @@ To configure your values:
 Deploy the Chart
 ================
 
-To deploy the Substra Backend chart in your Kubernete cluster follow these steps:
+To deploy the Substra Backend chart in your Kubernetes cluster follow these steps:
 
 #. Deploy the orchestrator Helm chart:
 
