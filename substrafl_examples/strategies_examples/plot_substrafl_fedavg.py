@@ -61,16 +61,8 @@ from torchvision.datasets import MNIST
 from substra import Client
 
 # Choose the subprocess mode to locally simulate the FL process
-DEBUG_SPAWNER = "subprocess"
-os.environ["DEBUG_SPAWNER"] = DEBUG_SPAWNER
-
-# Create the substra clients
-<<<<<<< HEAD
-clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
-=======
 N_CLIENTS = 2
-clients = [Client(debug=True) for _ in range(N_CLIENTS)]
->>>>>>> 2ec0c9a (chore: release 0.21.0 (#189))
+clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients}
 
 # Store their IDs
@@ -79,10 +71,6 @@ ORGS_ID = list(clients.keys())
 # The org id on which your computation tasks are registered
 ALGO_ORG_ID = ORGS_ID[1]
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ec0c9a (chore: release 0.21.0 (#189))
 # Create the temporary directory for generated data
 (pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
 

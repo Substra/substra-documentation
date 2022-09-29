@@ -7,14 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-<<<<<<< HEAD
 * Update the examples metrics with the change on Metrics from substratools (#183)
-=======
+
 ## [0.21.0]
 
 * fix: Environment variable not set properly in Substrafl example
 * fix: Substrafl example not working in docker mode (change torch version)
->>>>>>> 2ec0c9a (chore: release 0.21.0 (#189))
 * chore: change the Dockerfile `ENTRYPOINT` definition of algorithm relying on `substratools` to pass
   the method to execute under the `--method-name` argument
 * chore: change the assets and tools algo to feed with inputs outputs dictionary

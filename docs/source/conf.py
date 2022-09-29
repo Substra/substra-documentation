@@ -23,15 +23,9 @@ import importlib
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-<<<<<<< HEAD
     SUBSTRA_VERSION = "0.38.0"
     TOOLS_VERSION = "0.18.0"
     SUBSTRAFL_VERSION = "0.30.0"
-=======
-    SUBSTRA_VERSION = "0.36.0"
-    TOOLS_VERSION = "0.16.0"
-    SUBSTRAFL_VERSION = "0.28.0"
->>>>>>> 2ec0c9a (chore: release 0.21.0 (#189))
 
 else:
     SUBSTRA_VERSION = "main"
