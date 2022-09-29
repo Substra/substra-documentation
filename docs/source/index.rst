@@ -80,6 +80,7 @@ Some quick links:
    :hidden:
 
    operations/index.rst
+   operations/getting-started.rst
    operations/deploy.rst
    operations/upgrade_notes.rst
    operations/howto.rst
