@@ -5,9 +5,11 @@ set -ex
 
 pip uninstall -y -r docs_requirements.txt
 
-mv /docs/build/html/notebooks/* /notebooks/
-mv /examples/titanic_example/assets/* /notebooks/auto_examples/titanic_example/assets/
-mv /substrafl_examples/strategies_examples/assets* /notebooks/substrafl_doc/examples/strategies_examples/assets/
+ls -la
+
+mv docs/build/html/notebooks/* notebooks/
+mv examples/titanic_example/assets/* notebooks/auto_examples/titanic_example/assets/
+mv substrafl_examples/strategies_examples/assets* notebooks/substrafl_doc/examples/strategies_examples/assets/
 
 shopt -s extglob
 rm -rf !(notebooks)
