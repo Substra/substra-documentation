@@ -36,6 +36,8 @@ You can find the complete description of values that can be used to configure th
    | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
    | This will setup the ingress to make your Orchestrator accessible at the defined hostname.
 
+.. _orchestrator-channel-config:
+
 #. Setup your :term:`Substra channels<Channel>`.
    In the ``orchestrator-values.yaml`` file, add the following content:
         
@@ -100,6 +102,8 @@ To setup TLS, follow these steps:
       .. code-block:: bash
 
          openssl genrsa -out orchestrator-ca.key 2048
+
+   .. _orchestrator-cacert-generation:
 
    #. Generate your Certificate Authority certificate:
         
