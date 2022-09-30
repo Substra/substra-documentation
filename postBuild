@@ -11,6 +11,3 @@ ls -la
 mv docs/build/html/notebooks .
 mv examples/titanic_example/assets notebooks/auto_examples/titanic_example
 mv substrafl_examples/strategies_examples/assets notebooks/substrafl_doc/examples/strategies_examples
-
-shopt -s extglob
-rm -rf !(notebooks)
