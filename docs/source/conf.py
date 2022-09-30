@@ -17,8 +17,10 @@ import re
 import zipfile
 from pathlib import Path
 from datetime import date
-import sphinx_rtd_theme
 import importlib
+
+import sphinx_rtd_theme
+import git
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
@@ -373,6 +375,8 @@ html_context = {
     "display_github": False,
 }
 
+current_commit = git.Repo(search_parent_directories=True).head.object.hexsha
+
 sphinx_gallery_conf = {
     "remove_config_comments": True,
     "doc_module": "substra",
@@ -384,8 +388,9 @@ sphinx_gallery_conf = {
     'binder': {
         'org': 'Substra',
         'repo': 'substra-documentation',
-        'branch': 'main', # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
+        'branch': current_commit, # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
         'binderhub_url': 'https://mybinder.org', # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
-        'dependencies': './binder/requirements.txt', # TDOO: dedicated binder requirements
+        'dependencies': str(Path(__file__).parents[2]  / 'requirements.txt'), # this value is not used
+        'notebooks_dir': 'notebooks',
     }
 }
