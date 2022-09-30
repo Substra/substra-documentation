@@ -265,35 +265,22 @@ Troubleshooting
 ===============
 
 .. note::
-<<<<<<< HEAD
    Before going further in this section, you should check the following points:
     * Check the version of Skaffold, Helm and Docker. For example, Skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
     * Check the version of the different Substra components:
 
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
-=======
-   Before going further in these section, you should check the following points:
-    * Check the version of skaffold, helm and docker. For example, skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
-    * Check the version of the different substra components:
-
-      * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
-      * if you are using the ``latest`` from main, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
->>>>>>> 5b72749 (docs: Add troubleshooting section)
 
    You can also go through :doc:`the instructions one more time </operations/getting-started>`, maybe they changed since you last saw them.
 
 Troubleshooting prerequisites
 -----------------------------
 
-<<<<<<< HEAD
 This section summarize errors happening when you are not meeting the hardware requirements. Please check if `you match these <#hardware>`__ first.
 
 .. note::
    The instructions are targeted to some specific platforms (Docker for Windows in certain cases and Docker for Mac), where you can set the resources allowed to Docker in the configuration panel (information available `here for Mac <https://docs.docker.com/desktop/settings/mac/>`__ and `here for Windows <https://docs.docker.com/desktop/settings/windows/>`__).
-=======
-The errors in this category are linked with not reaching the hardware requirements. Please check if `you match these <#hardware>`__ first.
->>>>>>> 5b72749 (docs: Add troubleshooting section)
 
 * .. code-block:: pycon
 
@@ -307,11 +294,7 @@ The errors in this category are linked with not reaching the hardware requiremen
 
    WARNING:root:Function _request failed: retrying in 1s>
 
-<<<<<<< HEAD
    You may have to increase the number of CPU available in the settings panel.
-=======
-   You may have to increase the number of CPU for the backend in ``substra-backend/charts/substra-backend/values.yaml``
->>>>>>> 5b72749 (docs: Add troubleshooting section)
 
 * .. code-block:: go
 
