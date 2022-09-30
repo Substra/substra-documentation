@@ -3,9 +3,9 @@ Getting started
 ***************
 
 
-This page gives you direction how to run locally the substra stack. This deployment is made of:
+This page gives you directions to locally run the Substra stack. This deployment is made of:
 
-* 1 orchestrator (running in standalone mode, runnign its own local DB)
+* 1 orchestrator (running in standalone mode, i.e. storing data in its own local database)
 * 2 backends (running in two organisations, ``org-1`` and ``org-2``)
 * 1 frontend
 
@@ -51,8 +51,8 @@ Software
 
 * k3d/k3s (>= 5.0.0)
 * `kubectl <https://kubernetes.io/>`_
-* `skaffold <https://skaffold.dev/>`_
-* `helm 3 <https://helm.sh/>`_ (>= 3.7.0)
+* `Skaffold <https://skaffold.dev/>`_
+* `Helm 3 <https://helm.sh/>`_ (>= 3.7.0)
 *  `nodeJS <https://nodejs.org/>`_ (== 16.13.0)
 
 Instructions for Mac
@@ -72,7 +72,7 @@ First, install `Homebrew <https://brew.sh/>`_, then run the following commands:
 First time configuration
 ========================
 
-1. Execute the script :download:`k3-create.sh<./getting-started/k3-create.sh>`. This script deletes the existing cluster, recreates a new one and apply a patch for SSL.
+1. Execute the script :download:`k3-create.sh<./getting-started/k3-create.sh>`. This script deletes the existing cluster, recreates a new one and applies a patch for SSL.
 
    1. Download :download:`k3-create.sh<./getting-started/k3-create.sh>`.
    2. Make the script executable.
@@ -81,7 +81,7 @@ First time configuration
 
          chmod +x ./k3-create.sh
 
-   1. Run the script
+   3. Run the script
 
       .. code-block:: bash
 
@@ -105,7 +105,7 @@ First time configuration
       helm repo add twuni https://helm.twun.io
       helm repo add jetstack https://charts.jetstack.io
 
-4. Clone the various Substra repositories
+4. Clone the Substra components repositories
 
    * `substra <https://github.com/substra/substra>`_
 
@@ -147,7 +147,7 @@ First time configuration
       npm install --dev
 
 Launching
-========
+=========
 
 * Deploy the orchestrator
 
@@ -250,8 +250,8 @@ Troubleshooting
 
 .. note::
    Before going further in these section, you should check the following points:
-    * Check the version of skaffold, helm and docker. For example, skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
-    * Check the version of the different substra components:
+    * Check the version of Skaffold, Helm and Docker. For example, Skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
+    * Check the version of the different Substra components:
 
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the ``latest`` from main, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
@@ -293,7 +293,7 @@ The errors in this category are linked with not reaching the hardware requiremen
 
    substrapp.exceptions.PodReadinessTimeoutError: Pod substra.ai/pod-name=substra-***-compute-*** failed to reach the \"Running\" phase after 300 seconds."
 
-  Your docker disk image might be full, increase it or clean docker with ``docker system prune -a``
+  Your Docker disk image might be full, increase it or clean it with ``docker system prune -a``
 
 Troubleshooting deployment
 --------------------------
@@ -304,7 +304,7 @@ Skaffold version 1.31.0
 Status check is broken in version 1.31.0 and kubectl secret manifests are not apply until helm deploy is done, but helm deploy depends on kubectl secret manifests.
 It has been fixed in `Skaffold 1.32.0 (PR #6574) <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__.
 
-The solution for the version 1.31.0 is to add ``--status-check=false`` when running skaffold:
+The solution for the version 1.31.0 is to add ``--status-check=false`` when running Skaffold:
 
 .. code-block:: bash
 
