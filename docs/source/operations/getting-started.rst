@@ -146,7 +146,7 @@ First time configuration
       cd substra-frontend
       npm install --dev
 
-Lauching
+Launching
 ========
 
 * Deploy the orchestrator
