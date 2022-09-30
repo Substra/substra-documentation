@@ -1,7 +1,8 @@
+#!/bin/bash
 # binder post build script
 set -ex
 
-(cd docs && make clean html)
+(cd docs && make html)
 
 pip uninstall -y -r docs_requirements.txt
 
