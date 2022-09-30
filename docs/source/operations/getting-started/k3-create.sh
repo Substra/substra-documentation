@@ -1,5 +1,12 @@
 #!/bin/sh
 set -e
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SED_EXEC="gsed"
+else
+    SED_EXEC="sed"
+fi
+
 k3d cluster delete || echo 'No cluster'
 mkdir -p /tmp/org-1
 mkdir -p /tmp/org-2
@@ -7,8 +14,8 @@ k3d cluster create --api-port 127.0.0.1:6443 -p 80:80@loadbalancer -p 443:443@lo
 
 # Patch and install nginx-ingress
 curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml > /tmp/deploy.yaml
-gsed -i 's/        - --publish-status-address=localhost/        - --publish-status-address=localhost\n        - --enable-ssl-passthrough/g' /tmp/deploy.yaml
-gsed -i "/ingress-ready: \"true\"/d" /tmp/deploy.yaml
+$SED_EXEC -i 's/        - --publish-status-address=localhost/        - --publish-status-address=localhost\n        - --enable-ssl-passthrough/g' /tmp/deploy.yaml
+$SED_EXEC -i "/ingress-ready: \"true\"/d" /tmp/deploy.yaml
 kubectl apply -f /tmp/deploy.yaml
 
 kubectl create ns orderer
