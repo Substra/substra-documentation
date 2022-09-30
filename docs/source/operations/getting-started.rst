@@ -74,6 +74,19 @@ First time configuration
 
 1. Execute the script :download:`k3-create.sh<./getting-started/k3-create.sh>`. This script deletes the existing cluster, recreates a new one and apply a patch for SSL.
 
+   1. Download :download:`k3-create.sh<./getting-started/k3-create.sh>`.
+   2. Make the script executable.
+
+      .. code-block:: bash
+
+         chmod +x ./k3-create.sh
+
+   1. Run the script
+
+      .. code-block:: bash
+
+         ./k3-create.sh
+
    .. tip::
       This script can be used to reset your development environment.
 
