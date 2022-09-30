@@ -79,8 +79,8 @@ To configure your values:
               name: mycc
 
    | Replace ``CHANNEL`` with the name of a channel you want to be part of, it should match one of the channels defined in your :ref:`Orchestrator Substra Channels <orchestrator-channel-config>`.
-   | Replace ``RESTRICTED`` with ``true`` if you should be the only member of this channel else ``false``.
-   | Replace ``MODEL_EXPORT`` with ``true`` if you want users from this channel to be able to download models produced by the platform, else ``false``.
+   | Replace ``RESTRICTED`` with ``true`` if your organization should be the only member of this channel else ``false``.
+   | Replace ``MODEL_EXPORT`` with ``true`` if you want to allow users from this channel to be able to download models produced by the platform, else ``false``.
 
 #. Optional: If your Orchestrator has TLS enabled:
 
