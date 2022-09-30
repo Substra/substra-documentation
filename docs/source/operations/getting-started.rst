@@ -36,6 +36,9 @@ The following table indicates the resources needed to run the Substra stack loca
      - 50
      - 8
 
+.. caution::
+   Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
+
 Software
 --------
 
@@ -51,9 +54,6 @@ Software
 * `skaffold <https://skaffold.dev/>`_
 * `helm 3 <https://helm.sh/>`_ (>= 3.7.0)
 *  `nodeJS <https://nodejs.org/>`_ (== 16.13.0)
-
-.. attention::
-   Please be cautious with the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
 
 Instructions for Mac
 ^^^^^^^^^^^^^^^^^^^^
