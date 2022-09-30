@@ -101,7 +101,6 @@ First time configuration
    .. code-block:: bash
 
       helm repo add bitnami https://charts.bitnami.com/bitnami
-      helm repo add owkin https://owkin.github.io/charts/
       helm repo add stable https://charts.helm.sh/stable
       helm repo add twuni https://helm.twun.io
       helm repo add jetstack https://charts.jetstack.io
