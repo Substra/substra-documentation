@@ -46,7 +46,6 @@ from pathlib import Path
 import substra
 from substra.sdk.schemas import (
     AlgoSpec,
-    AlgoCategory,
     AlgoInputSpec,
     AlgoOutputSpec,
     AssetKind,
@@ -197,7 +196,6 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
 METRICS = AlgoSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
-    category=AlgoCategory.metric,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=metric_archive_path,
