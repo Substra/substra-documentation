@@ -185,18 +185,18 @@ Lauching
 
     .. code-block:: bash
 
-      npm run dev
+      API_URL=http://substra-backend.org-1.com npm run dev
 
   b. Docker:
 
      .. code-block:: bash
 
       docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
-      docker run -it --rm -p 3000:3000 --name DOCKER_FRONTEND_CONTAINER_NAME -v ${PWD}/src:/workspace/src substra-frontend
+      docker run -it --rm -p 3000:3000 --name DOCKER_FRONTEND_CONTAINER_NAME -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
 
      | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container that will be used for the rest of the operations.
 
-  * In both case, you can access the frontend at http://substra-frontend.node-1.com:3000/.
+  * In both case, you can access the frontend at http://substra-frontend.org-1.com:3000/.
 
 Monitoring
 ==========
