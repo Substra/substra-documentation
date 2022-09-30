@@ -1,3 +1,4 @@
+# binder post build script
 set -ex
 
 (cd docs && make clean html)
