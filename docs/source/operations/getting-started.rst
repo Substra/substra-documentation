@@ -97,27 +97,27 @@ First time configuration
 
    * `substra <https://github.com/substra/substra>`_
 
-      .. code-block:: bash
+     .. code-block:: bash
 
-         git clone https://github.com/Substra/substra.git
+      git clone https://github.com/Substra/substra.git
 
    * `orchestrator <https://github.com/substra/orchestrator>`_
 
-      .. code-block:: bash
+     .. code-block:: bash
 
-         git clone https://github.com/Substra/orchestrator.git
+      git clone https://github.com/Substra/orchestrator.git
 
    * `substra-backend <https://github.com/substra/substra-backend>`_
 
-      .. code-block:: bash
+     .. code-block:: bash
 
-         git clone https://github.com/Substra/substra-backend.git
+      git clone https://github.com/Substra/substra-backend.git
 
    * `substra-frontend <https://github.com/substra/substra-frontend>`_
 
-      .. code-block:: bash
+     .. code-block:: bash
 
-         git clone https://github.com/Substra/substra-frontend.git
+      git clone https://github.com/Substra/substra-frontend.git
 
 
 5. Install substra in editable mode
@@ -139,20 +139,26 @@ Lauching
 
 * Deploy the orchestrator
 
-   .. code-block:: bash
+  .. code-block:: bash
 
-      cd orchestrator
-      skaffold run
+   cd orchestrator
+   skaffold run
+
+.. _Deploy the backend:
 
 * Deploy the backend
 
-   .. code-block:: bash
+  .. code-block:: bash
 
-      cd substra-backend
-      skaffold run
+   cd substra-backend
+   skaffold run
 
-   .. caution::
-      On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the ``arm64`` profile. For instance, ``skaffold run -p arm64``
+  .. caution::
+     On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev``and ``arm64``.
+
+     .. code-block:: bash
+
+      skaffold run -p dev,arm64
 
 .. tip::
    When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps`` and adding ``--status-check=false``.
@@ -197,22 +203,22 @@ To stop the Substra stack, you need to stop the 3 components (backend, orchestra
 
      .. code-block:: bash
 
-        docker stop DOCKER_FRONTEND_CONTAINER_NAME
+      docker stop DOCKER_FRONTEND_CONTAINER_NAME
 
      | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container you chose during the launch
 * Stop the orchestrator:
-*
-   .. code-block:: bash
 
-      cd orchestrator
-      skaffold delete
+  .. code-block:: bash
 
-* stop the backend:
-*
-   .. code-block:: bash
+   cd orchestrator
+   skaffold delete
 
-      cd substra-backend
-      skaffold delete
+* Stop the backend:
+
+  .. code-block:: bash
+
+   cd substra-backend
+   skaffold delete
 
 If this command fails and you still have pods up, you can use the following command to remove the ``org-1`` and ``org-2`` namespaces entirely.
 
@@ -226,3 +232,111 @@ Next steps
 Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl (low-level library) examples </substrafl_doc/examples/index>` (low-level library).
 
 If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/deploy` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
+
+Troubleshooting
+===============
+
+.. note::
+   Before going further in these section, you should check the following points:
+    * Check the version of skaffold, helm and docker. For example, skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
+    * Check the version of the different substra components:
+
+      * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
+      * if you are using the ``latest`` from main, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
+
+   You can also go through :doc:`the instructions one more time </operations/getting-started>`, maybe they changed since you last saw them.
+
+Troubleshooting prerequisites
+-----------------------------
+
+The errors in this category are linked with not reaching the hardware requirements. Please check if `you match these <#hardware>`__ first.
+
+* .. code-block:: pycon
+
+   <ERROR:substra.sdk.backends.remote.rest_client:Requests error status 502: <html>
+   <head><title>502 Bad Gateway</title></head>
+   <body>
+   <center><h1>502 Bad Gateway</h1></center>
+   <hr><center>nginx</center>
+   </body>
+   </html>
+
+   WARNING:root:Function _request failed: retrying in 1s>
+
+   You may have to increase the number of CPU for the backend in ``substra-backend/charts/substra-backend/values.yaml``
+
+* .. code-block:: go
+
+   Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)
+
+  .. code-block:: go
+
+   Unable to connect to the server: net/http: TLS handshake timeout
+
+  You may have to increase the RAM for the backend in ``substra-backend/charts/substra-backend/values.yaml``
+
+* If you've got a task with ``FAILED`` status and the logs in the worker are of this form:
+
+  .. code-block:: py3
+
+   substrapp.exceptions.PodReadinessTimeoutError: Pod substra.ai/pod-name=substra-***-compute-*** failed to reach the \"Running\" phase after 300 seconds."
+
+  Your docker disk image might be full, increase it or clean docker with ``docker system prune -a``
+
+Troubleshooting deployment
+--------------------------
+
+Skaffold version 1.31.0
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Status check is broken in version 1.31.0 and kubectl secret manifests are not apply until helm deploy is done, but helm deploy depends on kubectl secret manifests.
+It has been fixed in `Skaffold 1.32.0 (PR #6574) <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__.
+
+The solution for the version 1.31.0 is to add ``--status-check=false`` when running skaffold:
+
+.. code-block:: bash
+
+   skaffold dev/run/deploy --status-check=false
+
+Failed calling webhook ``validate.nginx.ingress.kubernetes.io``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you encounter the following error message when deploying the backend(s):
+
+
+.. code-block:: bash
+
+   Error: UPGRADE FAILED: failed to create resource: Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": an error on the server ("") has prevented the request from succeeding
+   failed to deploy: install: exit status 1
+
+As a workaround, you can delete the failing webhook by launching the following command:
+
+.. code-block:: bash
+
+   kubectl delete Validatingwebhookconfigurations ingress-nginx-admission
+
+You should now be able to :ref:`deploy again the backend(s)<Deploy the backend>`.
+
+Other errors during backend deployment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you encounter one of the following errors while deploying the backend:
+
+.. code-block:: bash
+
+   Error: UPGRADE FAILED: cannot patch "orchestrator-org-1-server" with kind Certificate: Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": dial tcp <ip>:443: connect: connection refused
+   deploying "orchestrator-org-1": install: exit status 1
+
+.. code-block:: bash
+
+   Error from server (InternalError): error when creating "STDIN": Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority
+
+Check that the orchestrator is deployed and relaunch the command ``skaffold run``.
+
+Troubleshooting monitoring
+--------------------------
+
+k9s limits on log lines
+^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, k9s limits the log to the last 200 lines. To increase this value, set ``logger.tail`` and ``logger.buffer`` to the desired number (e.g. 5000) in the `k9s config file <https://github.com/derailed/k9s#k9s-configuration>`_.
