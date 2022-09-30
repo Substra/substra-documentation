@@ -72,7 +72,7 @@ First, install `Homebrew <https://brew.sh/>`_, then run the following commands:
 First time configuration
 ========================
 
-1. Execute the script ``k3s-create.sh``. This script deletes the existing cluster, recreates a new one and apply a patch for SSL.
+1. Execute the script :download:`k3-create.sh<./getting-started/k3-create.sh>`. This script deletes the existing cluster, recreates a new one and apply a patch for SSL.
 
    .. tip::
       This script can be used to reset your development environment.
