@@ -161,11 +161,11 @@ Lauching
       skaffold run -p dev,arm64
 
 .. tip::
-   When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps`` and adding ``--status-check=false``.
+   When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
 
    .. code-block:: bash
 
-      skaffold run --status-check=false -p nodeps
+      skaffold run -p nodeps
 
 * Deploy the frontend. You can use two methods (described below)
 
