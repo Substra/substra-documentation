@@ -64,7 +64,7 @@ To configure your values:
    | Replace ``ORCHESTRATOR_PORT`` with the port of your orchestrator (Should be ``80`` if TLS is disabled, otherwise ``443``).
    | Replace ``ORGANIZATION`` with the name of your Organization. It should be the same value as for the ``organizationName`` key.
 
-.. _ backend-channel-config:
+.. _backend-channel-config:
 
 #. Configure your :term:`Substra Channels <Channel>`. 
    In the ``backend-values.yaml`` add the following content under the ``orchestrator`` key:
