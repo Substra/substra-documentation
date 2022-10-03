@@ -39,9 +39,6 @@ The following table indicates the resources needed to run the Substra stack loca
 .. caution::
    Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
 
-.. caution::
-   Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
-
 Software
 --------
 
@@ -252,11 +249,7 @@ Troubleshooting
 ===============
 
 .. note::
-<<<<<<< HEAD
    Before going further in this section, you should check the following points:
-=======
-   Before going further in these section, you should check the following points:
->>>>>>> 65ad733 (fix: Apply reviews comments)
     * Check the version of Skaffold, Helm and Docker. For example, Skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
     * Check the version of the different Substra components:
 
