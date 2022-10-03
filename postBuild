@@ -4,13 +4,14 @@ set -ex
 
 (cd docs && make html)
 
-pip uninstall -y -r docs_requirements.txt
+# uninstall docs requirements for a lighter docker image
+pip uninstall -y -r .binder/docs_requirements.txt
 
-ls -la
-
+# move examples to the notebooks folder
 mv docs/build/html/notebooks .
 mv examples/titanic_example/assets notebooks/auto_examples/titanic_example
 mv substrafl_examples/strategies_examples/assets notebooks/substrafl_doc/examples/strategies_examples
 
+# delete everything but the notebooks folder and the substra dependencies
 shopt -s extglob
 rm -rf !(notebooks|docs|docs/src/)
