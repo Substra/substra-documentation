@@ -51,6 +51,9 @@ To configure your values:
    | Replace ``HOSTDOMAIN`` with the domain of your server without the lowest subdomain (e.g. for a server exposed at ``api.substra.org`` ``HOSTDOMAIN`` would be ``substra.org``).
    | Replace ``SUBDOMAIN`` with the lowest subdomain (e.g. for a server exposed at ``api.substra.org`` ``SUBDOMAIN`` would be ``api``).
 
+   .. caution::
+      For ``ALLOWED_HOSTS``, note that the leading dot is important.
+
 #. Configure your connection to the orchestrator. In the ``backend-values.yaml`` file add the following content:
 
    .. code-block:: yaml
@@ -67,7 +70,7 @@ To configure your values:
 .. _backend-channel-config:
 
 #. Configure your :term:`Substra Channels <Channel>`. 
-   In the ``backend-values.yaml`` add the following content under the ``orchestrator`` key:
+   In the ``backend-values.yaml`` file add the following content under the ``orchestrator`` key:
 
    .. code-block:: yaml
 
@@ -122,7 +125,7 @@ Deploy the Chart
 
 To deploy the Substra Backend chart in your Kubernetes cluster follow these steps:
 
-#. Deploy the orchestrator Helm chart:
+#. Deploy the backend Helm chart:
 
    .. code-block:: bash
 
