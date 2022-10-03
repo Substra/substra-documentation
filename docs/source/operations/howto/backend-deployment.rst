@@ -70,7 +70,7 @@ To configure your values:
 .. _backend-channel-config:
 
 #. Configure your :term:`Substra Channels <Channel>`. 
-   In the ``backend-values.yaml`` file add the following content under the ``orchestrator`` key:
+   In the ``backend-values.yaml`` file, add the following content under the ``orchestrator`` key:
 
    .. code-block:: yaml
 
