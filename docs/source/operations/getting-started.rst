@@ -25,16 +25,16 @@ The following table indicates the resources needed to run the Substra stack loca
 
    * -
      - CPU
-     - Hard drive space (Go)
+     - Hard drive space
      - RAM
    * - Minimal
-     - 2
-     - 35
-     - 4
+     - 2 cores
+     - 35 GB
+     - 4 GB
    * - Recommended
-     - 4-8
-     - 50
-     - 8
+     - 4-8 cores
+     - 50 GB
+     - 16 GB
 
 .. caution::
    Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
@@ -254,7 +254,7 @@ Troubleshooting
     * Check the version of the different Substra components:
 
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
-      * if you are using the ``latest`` from main, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
+      * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
 
    You can also go through :doc:`the instructions one more time </operations/getting-started>`, maybe they changed since you last saw them.
 
@@ -301,7 +301,7 @@ Troubleshooting deployment
 Skaffold version 1.31.0
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Status check is broken in version 1.31.0 and kubectl secret manifests are not apply until helm deploy is done, but helm deploy depends on kubectl secret manifests.
+Status check is broken in version 1.31.0 and kubectl secret manifests are not applied until helm deploy is done, but helm deploy depends on kubectl secret manifests.
 It has been fixed in `Skaffold 1.32.0 (PR #6574) <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__.
 
 The solution for the version 1.31.0 is to add ``--status-check=false`` when running Skaffold:
@@ -327,7 +327,7 @@ As a workaround, you can delete the failing webhook by launching the following c
 
    kubectl delete Validatingwebhookconfigurations ingress-nginx-admission
 
-You should now be able to :ref:`deploy again the backend(s)<Deploy the backend>`.
+You should now be able to :ref:`deploy the backend(s) again<Deploy the backend>`.
 
 Other errors during backend deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
