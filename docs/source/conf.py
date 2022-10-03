@@ -392,5 +392,6 @@ sphinx_gallery_conf = {
         'binderhub_url': 'https://mybinder.org', # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
         'dependencies': str(Path(__file__).parents[2]  / 'requirements.txt'), # this value is not used
         'notebooks_dir': 'notebooks',
+        'use_jupyter_lab': True,
     }
 }
