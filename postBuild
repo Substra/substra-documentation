@@ -5,7 +5,7 @@ set -ex
 (cd docs && make html)
 
 # uninstall docs requirements for a lighter docker image
-pip uninstall -y -r .binder/docs_requirements.txt
+pip uninstall -y -r .binder_files/docs_requirements.txt
 
 # move examples to the notebooks folder
 mv docs/build/html/notebooks .
@@ -15,3 +15,6 @@ mv substrafl_examples/strategies_examples/assets notebooks/substrafl_doc/example
 # delete everything but the notebooks folder and the substra dependencies
 shopt -s extglob
 rm -rf !(notebooks|docs|docs/src/)
+
+# Setup a workspace
+jupyter lab workspaces import .binder_files/workspace.json

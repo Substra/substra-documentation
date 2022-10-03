@@ -396,7 +396,7 @@ from substrafl.experiment import execute_experiment
 # dataset to be stateful.
 
 # Number of model update between each FL strategy aggregation.
-NUM_UPDATES = 100
+NUM_UPDATES = 10
 
 # Number of samples per update.
 BATCH_SIZE = 32
@@ -483,7 +483,7 @@ aggregation_node = AggregationNode(ALGO_ORG_ID)
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
 # Number of time to apply the compute plan.
-NUM_ROUNDS = 3
+NUM_ROUNDS = 1
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
