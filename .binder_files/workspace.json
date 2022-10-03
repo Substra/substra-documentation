@@ -23,7 +23,7 @@
             }
           ]
         },
-        "mode": "multiple-document",
+        "mode": "multiple-document"
       },
       "left": {
         "collapsed": false,

@@ -396,7 +396,7 @@ from substrafl.experiment import execute_experiment
 # dataset to be stateful.
 
 # Number of model update between each FL strategy aggregation.
-NUM_UPDATES = 10
+NUM_UPDATES = 1
 
 # Number of samples per update.
 BATCH_SIZE = 32
