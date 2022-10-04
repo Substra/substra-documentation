@@ -262,7 +262,7 @@ Troubleshooting prerequisites
 -----------------------------
 
 The errors in this category are linked with not reaching the hardware requirements. Please check if `you match these <#hardware>`__ first.
-On some platforms (Docker for Windows in certain cases and Docker for Mac), you can set the resources allowed to Docker in the configuration panel (information available `here for Mac <<https://docs.docker.com/desktop/settings/mac/>`__ and `here for Windows https://docs.docker.com/desktop/settings/windows/>`__)
+On some platforms (Docker for Windows in certain cases and Docker for Mac), you can set the resources allowed to Docker in the configuration panel (information available `here for Mac <<https://docs.docker.com/desktop/settings/mac/>`__ and `here for Windows https://docs.docker.com/desktop/settings/windows/>`__). This section details when you should increase values in these panels.
 
 * .. code-block:: pycon
 
@@ -276,7 +276,7 @@ On some platforms (Docker for Windows in certain cases and Docker for Mac), you 
 
    WARNING:root:Function _request failed: retrying in 1s>
 
-   You may have to increase the number of CPU for the backend in ``substra-backend/charts/substra-backend/values.yaml``
+   You may have to increase the number of CPU available in the settings panel.
 
 * .. code-block:: go
 
@@ -286,7 +286,7 @@ On some platforms (Docker for Windows in certain cases and Docker for Mac), you 
 
    Unable to connect to the server: net/http: TLS handshake timeout
 
-  You may have to increase the RAM for the backend in ``substra-backend/charts/substra-backend/values.yaml``
+  You may have to increase the RAM available in the settings panel.
 
 * If you've got a task with ``FAILED`` status and the logs in the worker are of this form:
 
