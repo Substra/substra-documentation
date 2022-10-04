@@ -249,7 +249,7 @@ Troubleshooting
 ===============
 
 .. note::
-   Before going further in these section, you should check the following points:
+   Before going further in this section, you should check the following points:
     * Check the version of Skaffold, Helm and Docker. For example, Skaffold is released very often and sometime it introduces bugs, creating unexpected errors.
     * Check the version of the different Substra components:
 
