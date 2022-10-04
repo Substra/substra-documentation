@@ -280,7 +280,7 @@ The following list describes errors that have already occurred, and their resolu
 
      WARNING:root:Function _request failed: retrying in 1s>
 
-   You may have to increase the number of CPU available in the settings panel.
+  You may have to increase the number of CPU available in the settings panel.
 
 * .. code-block:: go
 
