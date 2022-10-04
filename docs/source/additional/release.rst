@@ -25,7 +25,7 @@ These sets of versions have been tested for compatibility:
 
    * - 0.22.0
      - `0.30.0 <https://github.com/Substra/substrafl/releases/tag/0.30.0>`__
-     - `0.38.1 <https://github.com/Substra/substra/releases/tag/0.38.0>`__
+     - `0.38.1 <https://github.com/Substra/substra/releases/tag/0.38.1>`__
      - `0.18.0 <https://github.com/Substra/substra-tools/releases/tag/0.18.0>`__
      - `0.31.1 <https://github.com/Substra/substra-backend/releases/tag/0.31.1>`__ | `helm 22.1.2 <https://artifacthub.io/packages/helm/substra/substra-backend/22.1.2>`__
      - `0.28.1 <https://github.com/Substra/orchestrator/releases/tag/0.28.1>`__ `helm 7.4.4 <https://artifacthub.io/packages/helm/substra/orchestrator/7.4.4>`__
