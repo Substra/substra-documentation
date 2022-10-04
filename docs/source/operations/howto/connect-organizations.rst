@@ -3,7 +3,7 @@ How to link multiple Substra backends
 *************************************
 
 This guide shows you how to enable communications between two Substra backends to make them exchange assets.
-This can be achieved either at deployment time or when the bakcend is already deployed.
+This can be achieved either at deployment time or when the backend is already deployed.
 
 Prerequisites
 =============
@@ -18,14 +18,14 @@ For the purpose of this guide we will use a setup with three Substra backends as
 .. _figure-1:
 .. mermaid:: diagrams/howto-link-backends-channels.mmd
 
-**Figure 1.** A channel with three nodes
+**Figure 1.** A channel with three organizations.
 
 In this setup we want MyOrg1 to exchange assets with MyOrg2.
 We will assume that you have two values files with the configuration for your existing deployment, one for each organization named: ``backend-1-values.yaml``, ``backend-2-values.yaml``.
 
 Configure matching values for your 2 :term:`Organizations <Organization>`:
 
-#. Create accounts for MyOrg2 on MyOrg1.
+#. Create an account for MyOrg2 on MyOrg1.
    In the ``backend-1-values.yaml`` file, add the following content:
 
    .. code-block:: yaml
@@ -83,7 +83,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
 Deploy the updated chart
 ========================
 
-Now that you have updated your values you can either continue your deployment or updated a deployed app.
+Now that you have updated your values you can either continue your deployment or update a deployed app.
 
 To update a deployed Substra application run:
 
