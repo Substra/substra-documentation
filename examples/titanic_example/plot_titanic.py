@@ -52,9 +52,7 @@ from substra.sdk.schemas import (
     DataSampleSpec,
     DatasetSpec,
     Permissions,
-    TesttupleSpec,
-    PredicttupleSpec,
-    TraintupleSpec,
+    TaskSpec,
     ComputeTaskOutputSpec,
     InputRef,
 )
@@ -301,15 +299,14 @@ data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
 train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
 test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
 
-traintuple = TraintupleSpec(
+traintuple = TaskSpec(
     algo_key=train_algo_key,
-    data_manager_key=dataset_key,
-    train_data_sample_keys=train_data_sample_keys,
-    outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + train_data_sample_inputs,
+    outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-traintuple_key = client.add_traintuple(traintuple)
+traintuple_key = client.add_task(traintuple)
 
 print(f"Traintuple key {traintuple_key}")
 
@@ -323,31 +320,27 @@ print(f"Traintuple key {traintuple_key}")
 
 model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
 
-predicttuple = PredicttupleSpec(
-    traintuple_key=traintuple_key,
+predicttuple = TaskSpec(
     algo_key=predict_algo_key,
-    data_manager_key=dataset_key,
-    test_data_sample_keys=test_data_sample_keys,
-    outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + test_data_sample_inputs + model_input,
+    outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-predicttuple_key = client.add_predicttuple(predicttuple)
+predicttuple_key = client.add_task(predicttuple)
 
 predictions_input = [
     InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")
 ]
 
-testtuple = TesttupleSpec(
+testtuple = TaskSpec(
     algo_key=metric_key,
-    predicttuple_key=predicttuple_key,
-    test_data_sample_keys=test_data_sample_keys,
-    data_manager_key=dataset_key,
-    outputs={"performance": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + test_data_sample_inputs + predictions_input,
+    outputs={"performance": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-testtuple_key = client.add_testtuple(testtuple)
+testtuple_key = client.add_task(testtuple)
 
 print(f"Testtuple key {testtuple_key}")
 
@@ -357,7 +350,7 @@ print(f"Testtuple key {testtuple_key}")
 # -------
 # Now we can view the results
 
-testtuple = client.get_testtuple(testtuple_key)
+testtuple = client.get_task(testtuple_key)
 print(testtuple.status)
 print("Metric: ", testtuple.algo.name)
-print("Performance on the metric: ", list(testtuple.test.perfs.values())[0])
+print("Performance on the metric: ", testtuple.outputs["performance"].value)
