@@ -91,7 +91,8 @@ To update a deployed Substra application run:
 
    helm upgrade RELEASE-NAME substra/substra-backend --version VERSION --values backend-1-values.yaml
 
-| Replace ``RELEASE-NAME`` with the name of your substra backend release. You can retrieve it with ``Helm list``.
+| Replace ``RELEASE-NAME`` with the name of your substra backend release.
+  You can retrieve it with ``helm list``.
 | Replace ``VERSION`` with the version of the substra backend helm chart you want to deploy.
 
 This will update the kubernetes resources to reflect your changes.
