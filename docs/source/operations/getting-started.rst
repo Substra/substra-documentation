@@ -262,6 +262,7 @@ Troubleshooting prerequisites
 -----------------------------
 
 The errors in this category are linked with not reaching the hardware requirements. Please check if `you match these <#hardware>`__ first.
+On some platforms (Docker for Windows in certain cases and Docker for Mac), you can set the resources allowed to Docker in the configuration panel (information available `here for Mac <<https://docs.docker.com/desktop/settings/mac/>`__ and `here for Windows https://docs.docker.com/desktop/settings/windows/>`__)
 
 * .. code-block:: pycon
 
