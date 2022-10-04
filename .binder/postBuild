@@ -14,4 +14,6 @@ mv substrafl_examples/strategies_examples/assets notebooks/substrafl_doc/example
 
 # delete everything but the notebooks folder and the substra dependencies
 shopt -s extglob
-rm -rf !(notebooks|docs|docs/src/)
+rm -rf .[!.]*
+rm -rf !(notebooks|docs)
+(cd docs && rm -rf !(src))
