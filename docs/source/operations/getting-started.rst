@@ -306,10 +306,7 @@ Troubleshooting deployment
 Skaffold version 1.31.0
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Status check is broken in version 1.31.0 and kubectl secret manifests are not applied until helm deploy is done, but helm deploy depends on kubectl secret manifests.
-It has been fixed in `Skaffold 1.32.0 (PR #6574) <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__.
-
-The solution for the version 1.31.0 is to add ``--status-check=false`` when running Skaffold:
+Due to a change in the deployment sequence in Skaffold 1.31.x our components cannot be deployed with this version using only ``skaffold run``. Either upgrade to `Skaffold 1.32.0 <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__ or add the ``--status-check=false`` flag.
 
 .. code-block:: bash
 
