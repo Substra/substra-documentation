@@ -13,12 +13,8 @@ You will need `Helm <https://helm.sh>`_.
 Updating your Helm values
 =========================
 
-For the purpose of this guide we will use a setup with three Substra backends as shown in :ref:`Figure 1 <figure-1>`.
-
-.. _figure-1:
-.. mermaid:: diagrams/howto-link-backends-channels.mmd
-
-**Figure 1.** A channel with three organizations.
+This guide assume that you have two organization in your network, one named MyOrg1 and the other MyOrg2.
+The process would be the same if you have more organizations as we have to pair them. For example with three orgs you would repeat it for (org1, org2), (org1, org3) and (org2, org3).
 
 In this setup we want MyOrg1 to exchange assets with MyOrg2.
 We will assume that you have two values files with the configuration for your existing deployment, one for each organization named: ``backend-1-values.yaml``, ``backend-2-values.yaml``.
