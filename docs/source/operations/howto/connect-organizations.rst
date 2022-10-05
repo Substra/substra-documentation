@@ -2,7 +2,7 @@
 How to link multiple Substra backends
 *************************************
 
-This guide shows you how to enable communications between two Substra backends to make them exchange assets.
+This guide shows you how to enable communication between two Substra backends to allow them to exchange :ref:`Algorithms <concept_algorithm>` and :ref:`Models <concept_model>`.
 This can be achieved either at deployment time or when the backend is already deployed.
 
 Prerequisites
@@ -80,6 +80,37 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
    | Replace ``SECRET_ORG1_ORG2`` with the password defined for MyOrg2 in ``backend-1-values.yaml``.
 
 
+In the end your configuration files should have a section looking like this:
+
+.. code-block:: yaml
+
+   addAccountOperator:
+     users: [...]
+     incomingOrganizations:
+       - name: ORG2NAME
+         secret: SECRET_ORG1_ORG2
+         channel: CHANNEL
+     outgoingOrganizations:
+       - name: ORG2NAME
+         secret: SECRET_ORG2_ORG1
+
+For the ``backend-1-values.yaml`` file.
+
+.. code-block:: yaml
+
+   addAccountOperator:
+     users: [...]
+     incomingOrganizations:
+       - name: ORG1NAME
+         secret: SECRET_ORG2_ORG1
+         channel: CHANNEL
+     outgoingOrganizations:
+       - name: ORG1NAME
+         secret: SECRET_ORG1_ORG2
+
+For the ``backend-2-values.yaml`` file.
+
+
 Deploy the updated chart
 ========================
 
@@ -89,10 +120,11 @@ To update a deployed Substra application run:
 
 .. code-block:: bash
 
-   helm upgrade RELEASE-NAME substra/substra-backend --version VERSION --values backend-1-values.yaml
+   helm upgrade RELEASE-NAME substra/substra-backend --version VERSION --values VALUES-FILE
 
 | Replace ``RELEASE-NAME`` with the name of your substra backend release.
   You can retrieve it with ``helm list``.
 | Replace ``VERSION`` with the version of the substra backend helm chart you want to deploy.
+| Replace ``VALUES-FILE`` with the values file. In our example, ``backend-1-values.yaml`` for the first backend and ``backend-2-values.yaml`` for the second one.
 
 This will update the kubernetes resources to reflect your changes.

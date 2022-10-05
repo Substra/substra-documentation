@@ -117,7 +117,7 @@ To configure your values:
    | Replace ``PASSWORD`` with the password of the user you want to add. It should be at least 20 characters long.
    | Replace ``CHANNEL`` with the name of the channel this user is part of. It should match one of the channels defined in your :ref:`Substra Channel configuration <backend-channel-config>`.
 
-#. Optional: Define configuration for inter organization communications.
+#. Optional: Define configuration for inter organization communication.
    For this you can follow the guide :doc:`connect-organizations`.
 
 Deploy the Chart
