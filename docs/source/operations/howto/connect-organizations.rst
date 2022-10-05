@@ -128,3 +128,32 @@ To update a deployed Substra application run:
 | Replace ``VALUES-FILE`` with the values file. In our example, ``backend-1-values.yaml`` for the first backend and ``backend-2-values.yaml`` for the second one.
 
 This will update the kubernetes resources to reflect your changes.
+
+Validate that organizations are connected
+=========================================
+
+We provide a small utility on the Substra backend server to test which nodes are accessible from the current node.
+To use this utility follow these steps:
+
+#. Connect to the substra backend pod:
+
+   .. code-block:: bash
+
+      kubectl exec -it $(kubectl get pod -l "app.kubernetes.io/name=substra-backend-server" -o name) -- /bin/bash
+
+   This will open a shell on the backend server pod.
+
+#. List all organizations defined in the outgoing list and their status:
+
+   .. code-block:: bash
+    
+       ./manage.py get_outgoing_organization
+
+   The output should look like this:
+
+   .. code-block:: bash
+
+      | org_id |       org_address       | http_status |
+      | MyOrg2 | http://api.org-2.com:80 |     200     |
+
+   If there is an error while trying to connect to the node it will appear in the ``http_status`` column.
