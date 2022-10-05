@@ -128,7 +128,7 @@ This will update the kubernetes resources to reflect your changes.
 Validate that organizations are connected
 =========================================
 
-We provide a small utility on the Substra backend server to test which nodes are accessible from the current node.
+We provide a small utility on the Substra backend server to test which organizations are accessible from the current organization.
 To use this utility follow these steps:
 
 #. Connect to the substra backend pod:
