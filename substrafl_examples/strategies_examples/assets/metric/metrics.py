@@ -3,17 +3,17 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 
-class AccuracyMetrics(tools.MetricAlgo):
-    def score(self, inputs, outputs, task_properties):
-        y_true = inputs["datasamples"]["labels"]
-        y_pred = self.load_predictions(inputs["predictions"])
+def score(self, inputs, outputs, task_properties):
+    y_true = inputs["datasamples"]["labels"]
+    y_pred = self.load_predictions(inputs["predictions"])
 
-        perf = accuracy_score(y_true, np.argmax(y_pred, axis=1))
-        tools.save_performance(perf, outputs["performance"])
+    perf = accuracy_score(y_true, np.argmax(y_pred, axis=1))
+    tools.save_performance(perf, outputs["performance"])
 
-    def load_predictions(self, path):
-        return np.load(path)
+
+def load_predictions(self, path):
+    return np.load(path)
 
 
 if __name__ == "__main__":
-    tools.algo.execute(AccuracyMetrics())
+    tools.method.execute_cli([score])
