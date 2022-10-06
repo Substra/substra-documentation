@@ -17,4 +17,4 @@ def load_predictions(path):
 
 
 if __name__ == "__main__":
-    tools.method.execute_cli([score])
+    tools.function.execute_cli([score])
