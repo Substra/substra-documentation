@@ -255,7 +255,7 @@ Troubleshooting
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
 
-   You can also go through :doc:`the instructions one more time </operations/getting-started>`, maybe they changed since you last saw them.
+   You can also go through :doc:`the instructions one more time </contributing/getting-started>`, maybe they changed since you last saw them.
 
 Troubleshooting prerequisites
 -----------------------------

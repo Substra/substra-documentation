@@ -61,6 +61,14 @@ Some quick links:
 * :ref:`How to deploy Substra for Site Reliability Engineers <operations/deploy:Deploying Substra>`
 * :ref:`Community <additional/community:Community>`
 
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: Contributing to Substra
+   :hidden:
+
+   contributing/getting-started.rst
+
 
 .. toctree::
    :glob:
@@ -90,7 +98,6 @@ Some quick links:
    :hidden:
 
    operations/index.rst
-   operations/getting-started.rst
    operations/deploy.rst
    operations/howto.rst
    operations/upgrade_notes.rst
