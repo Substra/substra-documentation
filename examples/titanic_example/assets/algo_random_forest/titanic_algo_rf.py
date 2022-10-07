@@ -173,4 +173,4 @@ def save_predictions(y_pred, path):
 
 
 if __name__ == "__main__":
-    tools.execute([train, predict])
+    tools.execute(train, predict)
