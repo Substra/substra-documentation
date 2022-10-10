@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Update the examples metrics with the change on Metrics from substratools (#183)
 * Update the examples with the generic tasks
+* feat: provide hosted jupyter notebook examples (#195)
 
 ## [0.21.0]
 

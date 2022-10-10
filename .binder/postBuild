@@ -1,0 +1,19 @@
+#!/bin/bash
+# binder post build script
+set -ex
+
+(cd docs && make html)
+
+# uninstall docs requirements for a lighter docker image
+pip uninstall -y -r docs/requirements.txt
+
+# move examples to the notebooks folder
+mv docs/build/html/notebooks .
+mv examples/titanic_example/assets notebooks/auto_examples/titanic_example
+mv substrafl_examples/strategies_examples/assets notebooks/substrafl_doc/examples/strategies_examples
+
+# delete everything but the notebooks folder and the substra dependencies
+shopt -s extglob
+rm -rf .[!.]*
+rm -rf !(notebooks|docs)
+(cd docs && rm -rf !(src))
