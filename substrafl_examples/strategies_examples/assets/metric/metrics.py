@@ -3,6 +3,7 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 
+@tools.register
 def score(inputs, outputs, task_properties):
     y_true = inputs["datasamples"]["labels"]
     y_pred = load_predictions(inputs["predictions"])
@@ -16,4 +17,4 @@ def load_predictions(path):
 
 
 if __name__ == "__main__":
-    tools.execute(score)
+    tools.execute()
