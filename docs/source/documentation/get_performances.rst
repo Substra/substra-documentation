@@ -64,6 +64,6 @@ This script will automatically end if the :code:`performance.json` file as not b
 
             logged_rows.append(row["testtuple_key"])
 
-            step = int(row["round_idx"]) or int(row["testtuple_rank"])
+            step = int(row["round_idx"]) if row["round_idx"] is not None else int(row["testtuple_rank"])
 
             log_metric(f"{row['metric_name']}_{row['worker']}", row["performance"], step)

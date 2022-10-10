@@ -52,9 +52,7 @@ from substra.sdk.schemas import (
     DataSampleSpec,
     DatasetSpec,
     Permissions,
-    TesttupleSpec,
-    PredicttupleSpec,
-    TraintupleSpec,
+    TaskSpec,
     ComputeTaskOutputSpec,
     InputRef,
 )
@@ -301,17 +299,16 @@ data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
 train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
 test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
 
-traintuple = TraintupleSpec(
+train_task = TaskSpec(
     algo_key=train_algo_key,
-    data_manager_key=dataset_key,
-    train_data_sample_keys=train_data_sample_keys,
-    outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + train_data_sample_inputs,
+    outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-traintuple_key = client.add_traintuple(traintuple)
+train_task_key = client.add_task(train_task)
 
-print(f"Traintuple key {traintuple_key}")
+print(f"Train task key {train_task_key}")
 
 # %%
 # In local mode, the registered task is executed at once:
@@ -321,35 +318,31 @@ print(f"Traintuple key {traintuple_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
-model_input = [InputRef(identifier="models", parent_task_key=traintuple_key, parent_task_output_identifier="model")]
+model_input = [InputRef(identifier="models", parent_task_key=train_task_key, parent_task_output_identifier="model")]
 
-predicttuple = PredicttupleSpec(
-    traintuple_key=traintuple_key,
+predict_task = TaskSpec(
     algo_key=predict_algo_key,
-    data_manager_key=dataset_key,
-    test_data_sample_keys=test_data_sample_keys,
-    outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + test_data_sample_inputs + model_input,
+    outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-predicttuple_key = client.add_predicttuple(predicttuple)
+predict_task_key = client.add_task(predict_task)
 
 predictions_input = [
-    InputRef(identifier="predictions", parent_task_key=predicttuple_key, parent_task_output_identifier="predictions")
+    InputRef(identifier="predictions", parent_task_key=predict_task_key, parent_task_output_identifier="predictions")
 ]
 
-testtuple = TesttupleSpec(
+test_task = TaskSpec(
     algo_key=metric_key,
-    predicttuple_key=predicttuple_key,
-    test_data_sample_keys=test_data_sample_keys,
-    data_manager_key=dataset_key,
-    outputs={"performance": ComputeTaskOutputSpec(permissions=permissions)},
     inputs=data_manager_input + test_data_sample_inputs + predictions_input,
+    outputs={"performance": ComputeTaskOutputSpec(permissions=permissions)},
+    worker=client.organization_info().organization_id,
 )
 
-testtuple_key = client.add_testtuple(testtuple)
+test_task_key = client.add_task(test_task)
 
-print(f"Testtuple key {testtuple_key}")
+print(f"Test task key {test_task_key}")
 
 
 # %%
@@ -357,7 +350,7 @@ print(f"Testtuple key {testtuple_key}")
 # -------
 # Now we can view the results
 
-testtuple = client.get_testtuple(testtuple_key)
-print(testtuple.status)
-print("Metric: ", testtuple.algo.name)
-print("Performance on the metric: ", list(testtuple.test.perfs.values())[0])
+test_task = client.get_task(test_task_key)
+print(test_task.status)
+print("Metric: ", test_task.algo.name)
+print("Performance on the metric: ", test_task.outputs["performance"].value)
