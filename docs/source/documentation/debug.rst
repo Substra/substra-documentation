@@ -94,8 +94,8 @@ If the field is `None`, it means there was no error, and the task status is not 
 Example:
 ::
 
-    traintuple = client.get_traintuple(“089a87…”)
-    print(traintuple.error_type)
+    train_task = client.get_task("089a87…")
+    print(train_task.error_type)
         EXECUTION_ERROR
 
 
