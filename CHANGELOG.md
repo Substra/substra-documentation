@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Update the examples with the generic tasks
 * feat: provide hosted jupyter notebook examples (#195)
 * Update the examples with the changes on algo to function in substratools (#201)
+* Register functions in substratools using decorator `@tools.register` (#202)
 
 ## [0.21.0]
 
