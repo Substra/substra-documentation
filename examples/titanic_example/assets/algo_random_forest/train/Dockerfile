@@ -8,4 +8,4 @@ RUN pip3 install pandas numpy 'scikit-learn==0.24.2' pillow scipy keras
 ADD titanic_algo_rf.py .
 
 # define how script is run
-ENTRYPOINT ["python3", "titanic_algo_rf.py", "--method-name", "train"]
+ENTRYPOINT ["python3", "titanic_algo_rf.py", "--function-name", "train"]
