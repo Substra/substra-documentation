@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 
 
-@tools.decorator.register
+@tools.register
 def score(inputs, outputs, task_properties):
 
     y_true = inputs["datasamples"].Survived.values
