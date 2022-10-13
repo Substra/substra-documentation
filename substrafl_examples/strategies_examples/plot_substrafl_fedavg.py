@@ -530,15 +530,15 @@ from substrafl.model_loading import load_algo
 client_to_dowload_from = ALGO_ORG_ID
 round_idx = None
 
-folder = str(pathlib.Path.cwd() / "experiment_summaries" / compute_plan.key / ALGO_ORG_ID / (round_idx or "last"))
+algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
 
 download_algo_files(
     client=clients[client_to_dowload_from],
     compute_plan_key=compute_plan.key,
     round_idx=round_idx,
-    dest_folder=folder,
+    dest_folder=algo_files_folder,
 )
 
-model = load_algo(input_folder=folder)._model
+model = load_algo(input_folder=algo_files_folder)._model
 
 print(model)
