@@ -154,5 +154,8 @@ docs/source/substrafl_doc/examples
 # Data folder when run locally
 **/data
 
+# Data folder when run locally
+**/algo_files
+
 # Mac spec
 *.DS_Store
