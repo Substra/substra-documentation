@@ -539,6 +539,6 @@ download_algo_files(
     dest_folder=algo_files_folder,
 )
 
-model = load_algo(input_folder=algo_files_folder)._model
+model = load_algo(input_folder=algo_files_folder).model
 
 print(model)
