@@ -219,17 +219,11 @@ inputs_metrics = [
         optional=False,
         multiple=True,
     ),
-    AlgoInputSpec(
-        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
-    AlgoInputSpec(
-        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
-    ),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_metrics = [
-    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
-]
+outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
 objective = AlgoSpec(
     inputs=inputs_metrics,
@@ -410,9 +404,7 @@ index_generator = NpIndexGenerator(
 class TorchDataset(torch.utils.data.Dataset):
     def __init__(self, datasamples, is_inference: bool):
         self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
-        self.y = F.one_hot(
-            torch.from_numpy(datasamples["labels"]).type(torch.int64), 10
-        ).type(torch.float32)
+        self.y = F.one_hot(torch.from_numpy(datasamples["labels"]).type(torch.int64), 10).type(torch.float32)
         self.is_inference = is_inference
 
     def __getitem__(self, idx):
@@ -522,3 +514,31 @@ for id in ORGS_ID:
 
 plt.legend(loc="lower right")
 plt.show()
+
+# %%
+# Download a model
+# ================
+#
+# After the experiment, you might be interested in getting your trained model. To do so, you will need the source code in order to reload in memory your code architecture.
+# You have the option to choose the client and the round you are interested in.
+#
+# If `round_idx` is set to `None`, the last round will be selected by default.
+
+from substrafl.model_loading import download_algo_files
+from substrafl.model_loading import load_algo
+
+client_to_dowload_from = ALGO_ORG_ID
+round_idx = None
+
+algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
+
+download_algo_files(
+    client=clients[client_to_dowload_from],
+    compute_plan_key=compute_plan.key,
+    round_idx=round_idx,
+    dest_folder=algo_files_folder,
+)
+
+model = load_algo(input_folder=algo_files_folder).model
+
+print(model)
