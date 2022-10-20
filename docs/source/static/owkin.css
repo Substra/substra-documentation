@@ -107,6 +107,12 @@
   font-family: "Gattica";
 }
 
+/* LAYOUT */
+
+.wy-nav-content {
+  margin: 0 auto;
+}
+
 /* TYPOGRAPHY */
 
 body {
