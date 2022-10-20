@@ -1,7 +1,14 @@
+
+/* VARIABLES */
+
 @import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
+    --color-primary-600: #4525ee;
+	--color-primary-500: #5752ff;
+	--color-primary-100: #dde3ff;
+	--color-primary-50: #f2f4ff;
     --color-gray-500: #7f7f7f;
     --color-teal: #32c6c6;
     --color-blue: #37b3ff;
@@ -9,56 +16,55 @@
     --color-lightest-gray: #f5f5f5;
     --color-light-gray: #d9d9d9;
     --color-light-gold: #faf3eb;
+    --color-font: #181a34;
 
     --font-family-heading: "Didact Gothic", sans-serif;
 }
 
+/* LAYOUT */
+
+.wy-nav-content{
+	margin: 0 auto;
+}
+
+
 /* TYPOGRAPHY */
+
 body {
     font-family: "Inter", sans-serif;
     font-size: 15px;
-    color: black;
+    color: var(--color-font);
+}
+
+h1, h2, h3, h4, h5, H6,
+.rst-content .toctree-wrapper > p.caption {
+    font-family: var(--font-family-heading);
+    font-weight: normal;
 }
 
 h1 {
-    font-family: var(--font-family-heading);
     font-size: 60px;
-    font-weight: normal;
 }
 
 .rst-content .toctree-wrapper > p.caption,
 h2 {
-    font-family: var(--font-family-heading);
     font-size: 40px;
-    font-weight: normal;
+    
 }
 
 h3 {
-    font-family: var(--font-family-heading);
     font-size: 30px;
-    font-weight: normal;
-}
-
-a {
-    color: inherit;
-    font-weight: 700;
-    text-decoration: underline;
-}
-
-a:hover,
-a:visited {
-    color: inherit;
 }
 
 .rst-content .toc-backref {
     text-decoration: none;
-    color: black;
+    color: var(--color-font);
     font-weight: normal;
 }
 
 .wy-nav-content,
 .wy-nav-content-wrap {
-    background-color: white;
+    background-color: inherit;
 }
 
 .wy-nav-content {
@@ -66,30 +72,30 @@ a:visited {
 }
 
 .wy-nav-top {
-    background-color: white;
-    color: black;
+    background-color: inherit;
+    color: var(--color-font);
 }
 
 .wy-nav-top a {
-    color: black;
+    color: var(--color-font);
 }
 
 /* SIDEBAR */
 .wy-nav-side {
-    background-color: white;
+    background-color: inherit;
 }
 
-/* SIDEBAR HEADER */
+/* SIDEBAR SEARCH */
 .wy-side-nav-search > a {
     font-size: 24px;
-    color: black;
+    color: var(--color-font);
     display: flex;
     flex-direction: column-reverse;
     text-transform: uppercase;
     text-decoration: none;
     align-items: center;
     padding: 0;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5em; /* TODO: Uniformize units */
     font-family: var(--font-family-heading);
     font-weight: normal;
 }
@@ -107,76 +113,101 @@ a:visited {
 .wy-side-nav-search > div.version {
     font-family: var(--font-family-heading);
     font-weight: normal;
-    color: black;
+    color: var(--color-font);
 }
 
 .wy-side-nav-search input[type="text"] {
     padding: 8px 20px;
-    margin: 2.8rem 1rem 0 1rem;
+    margin: 2.8rem 1rem 0 1rem; /* TODO: Uniformize units */
     border-radius: 30px;
     border: 1px solid;
     font-size: 17px;
     text-decoration: none;
     line-height: 2;
-    width: calc(100% - 2rem);
+    width: calc(100% - 2rem); /* TODO: Uniformize units */
 }
 
-/* SIDEBAR MENU */
 .wy-side-nav-search {
-    background-color: white;
+    background-color: inherit;
 }
+
+/* ============ */
+/* SIDEBAR MENU */
+/* ============ */
+
+/* GENERAL */
 
 .wy-menu-vertical p.caption {
-    color: var(--color-gray-500);
-    text-transform: none;
-    font-weight: normal;
+    color: var(--color-primary-500);
     margin-top: 30px;
 }
 
+.wy-side-scroll {
+	padding-bottom: 30px;
+}
+
+/* LINKS */
+
 .wy-menu-vertical a {
     text-decoration: none;
-    color: black;
+    color: var(--color-font);
     font-weight: inherit;
     font-size: 14px;
+    border-radius: 0 15px 15px 0;
+    transition: background-color 0.15s ease;
 }
 
-.wy-menu-vertical a:hover {
-    background-color: unset;
-}
+/* Active */
 
-.wy-menu-vertical li.current {
-    background-color: var(--color-lightest-gray);
-}
+.wy-menu-vertical li.current a,
 .wy-menu-vertical li.toctree-l1.current > a {
     border: none;
-    background-color: transparent;
 }
 
-.wy-menu-vertical li.current ul,
-.wy-menu-vertical li.toctree-l2.current>a,
-.wy-menu-vertical li.toctree-l3.current>a,
-.wy-menu-vertical li.toctree-l4.current>a,
-.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a,
-.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a
-{
-    background-color: var(--color-lightest-gray);
+.wy-menu-vertical li.current,
+:is(
+    .wy-menu-vertical li.current,
+    .wy-menu-vertical li.toctree-l2.current > a,
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a,
+    .wy-menu-vertical li.toctree-l3.current > a,
+    .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a
+):not(:hover){
+    background: transparent;
 }
 
-.wy-menu-vertical li.current a {
-    border-right: 0;
+:is(
+    .wy-menu-vertical li.toctree-l1.current,
+    .wy-menu-vertical li.toctree-l1.current li.toctree-l2,
+    .wy-menu-vertical li.toctree-l2.current,
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3,
+    .wy-menu-vertical li.toctree-l3.current,
+    .wy-menu-vertical li.toctree-l3.current li.toctree-l4
+) > a.current {
+    background-color: var(--color-primary-100);
 }
 
-.wy-menu-vertical li.toctree-l2 a,
-.wy-menu-vertical li.toctree-l3 a,
-.wy-menu-vertical li.toctree-l4 a,
-.wy-menu-vertical li.toctree-l5 a,
-.wy-menu-vertical li.toctree-l6 a,
-.wy-menu-vertical li.toctree-l7 a,
-.wy-menu-vertical li.toctree-l8 a,
-.wy-menu-vertical li.toctree-l9 a,
-.wy-menu-vertical li.toctree-l10 a {
-    color: black;
+/* Hover */
+
+.wy-menu-vertical a:hover,
+:is(
+    .wy-menu-vertical li.toctree-l1.current,
+    .wy-menu-vertical li.toctree-l1.current li.toctree-l2,
+    .wy-menu-vertical li.toctree-l2.current,
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3,
+    .wy-menu-vertical li.toctree-l3.current,
+    .wy-menu-vertical li.toctree-l3.current li.toctree-l4
+) > a:hover {
+    background-color: var(--color-primary-50);
 }
+
+/* FOCUS */
+
+.wy-menu-vertical a:focus,
+.wy-menu-vertical a.reference.internal:focus {
+    color: var(--color-font);
+    background-color: var(--color-primary-100);
+}
+
 /* ADMONITIONS */
 
 .rst-content .note,
@@ -189,7 +220,7 @@ a:visited {
 .rst-content .hint .admonition-title,
 .rst-content .note .admonition-title {
     font-weight: 600;
-    color: black;
+    color: var(--color-font);
     padding: 0;
     margin: 0 0 5px 0;
 }
