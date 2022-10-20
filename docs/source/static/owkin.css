@@ -162,6 +162,10 @@ h3 {
   font-weight: 600;
 }
 
+.rst-content dl dt {
+  font-weight: 600;
+}
+
 .rst-content .toc-backref {
   text-decoration: none;
   color: var(--color-font);
