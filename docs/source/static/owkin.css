@@ -82,7 +82,7 @@
     --color-red-200: #feb1b9;
     --color-red-100: #fed7da;
     --color-red-50: #fff5f6;
-    
+
     --color-font: var(--color-gray-900);
     --color-selection: #edbe1140;
     --font-family: "Gattica", serif;
@@ -96,6 +96,13 @@
 	margin: 0 auto;
 }
 
+/* LAYOUT */
+
+.wy-nav-content{
+	margin: 0 auto;
+}
+
+
 /* TYPOGRAPHY */
 
 body {
@@ -106,14 +113,12 @@ body {
 }
 
 ::-moz-selection {
-    /* color: var(--color-font); */
     background: var(--color-selection);
-  }
+}
   
 ::selection {
-    /* color: var(--color-font); */
     background: var(--color-selection);
-  }
+}
 
 h1, h2, h3, h4, h5, H6,
 .rst-content .toctree-wrapper > p.caption {
@@ -128,7 +133,6 @@ h1 {
 .rst-content .toctree-wrapper > p.caption,
 h2 {
     font-size: 40px;
-    
 }
 
 h3 {
@@ -594,6 +598,7 @@ html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(
     font-size: 20px;
     font-family: var(--font-family);
 }
+
 .btn.btn-neutral .fa {
     display: none;
 }
