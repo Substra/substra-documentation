@@ -3,213 +3,222 @@
 /* Font face */
 
 @font-face {
-    font-family: "Gattica";
-    src: url(Gattica-Light100.otf) format("opentype");
-    font-weight: 100;
-}
-
-
-@font-face {
-    font-family: "Gattica";
-    src: url(Gattica-Regular100.otf) format("opentype");
-    font-weight: 400;
+  font-family: "Gattica";
+  src: url(Gattica-Light100.otf) format("opentype");
+  font-weight: 100;
 }
 
 @font-face {
-    font-family: "Gattica";
-    src: url(Gattica-Medium100.otf) format("opentype");
-    font-weight: 500;
+  font-family: "Gattica";
+  src: url(Gattica-Regular100.otf) format("opentype");
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Gattica";
-    src: url(Gattica-Bold100.otf) format("opentype");
-    font-weight: 700;
+  font-family: "Gattica";
+  src: url(Gattica-Medium100.otf) format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Gattica";
+  src: url(Gattica-Bold100.otf) format("opentype");
+  font-weight: 700;
 }
 
 /* Colors */
 
 :root {
-    --color-primary-600: #4525ee;
-	--color-primary-500: #5752ff;
-	--color-primary-400: #656eef;
-    --color-primary-300: #96a4fe;
-    --color-primary-200: #c0caff;
-    --color-primary-100: #dde3ff;
-	--color-primary-50: #f2f4ff;
+  --color-primary-600: #4525ee;
+  --color-primary-500: #5752ff;
+  --color-primary-400: #656eef;
+  --color-primary-300: #96a4fe;
+  --color-primary-200: #c0caff;
+  --color-primary-100: #dde3ff;
+  --color-primary-50: #f2f4ff;
 
-    --color-gray-900: #181a34;
-    --color-gray-800: #1e1f37;
-    --color-gray-700: #393b51;
-    --color-gray-600: #515369;
-    --color-gray-500: #7b7d90;
-    --color-gray-400: #abadbc;
-    --color-gray-300: #d2d3df;
-    --color-gray-200: #e3e4ea;
-    --color-gray-100: #ededf0;
-    --color-gray-50: #fafafa;
+  --color-gray-900: #181a34;
+  --color-gray-800: #1e1f37;
+  --color-gray-700: #393b51;
+  --color-gray-600: #515369;
+  --color-gray-500: #7b7d90;
+  --color-gray-400: #abadbc;
+  --color-gray-300: #d2d3df;
+  --color-gray-200: #e3e4ea;
+  --color-gray-100: #ededf0;
+  --color-gray-50: #fafafa;
 
-    --color-green-900: #0f4019;
-    --color-green-800: #134c1e;
-    --color-green-700: #196728;
-    --color-green-600: #1c722c;
-    --color-green-500: #329642;
-    --color-green-400: #2aac43;
-    --color-green-300: #68ca7b;
-    --color-green-200: #abe1b5;
-    --color-green-100: #d0f8d8;
-    --color-green-50: #f5fcf6;
+  --color-green-900: #0f4019;
+  --color-green-800: #134c1e;
+  --color-green-700: #196728;
+  --color-green-600: #1c722c;
+  --color-green-500: #329642;
+  --color-green-400: #2aac43;
+  --color-green-300: #68ca7b;
+  --color-green-200: #abe1b5;
+  --color-green-100: #d0f8d8;
+  --color-green-50: #f5fcf6;
 
-    --color-yellow-900: #453500;
-    --color-yellow-800: #533f00;
-    --color-yellow-700: #816500;
-    --color-yellow-600: #a48200;
-    --color-yellow-500: #cea400;
-    --color-yellow-400: #edbe11;
-    --color-yellow-300: #ffcf35;
-    --color-yellow-200: #ffd86a;
-    --color-yellow-100: #ffedb3;
-    --color-yellow-50: #fffae9;
+  --color-yellow-900: #453500;
+  --color-yellow-800: #533f00;
+  --color-yellow-700: #816500;
+  --color-yellow-600: #a48200;
+  --color-yellow-500: #cea400;
+  --color-yellow-400: #edbe11;
+  --color-yellow-300: #ffcf35;
+  --color-yellow-200: #ffd86a;
+  --color-yellow-100: #ffedb3;
+  --color-yellow-50: #fffae9;
 
-    --color-red-900: #651227;
-    --color-red-800: #852139;
-    --color-red-700: #9f2342;
-    --color-red-600: #cb1c51;
-    --color-red-500: #f31b61;
-    --color-red-400: #f8607d;
-    --color-red-300: #fd7e92;
-    --color-red-200: #feb1b9;
-    --color-red-100: #fed7da;
-    --color-red-50: #fff5f6;
+  --color-red-900: #651227;
+  --color-red-800: #852139;
+  --color-red-700: #9f2342;
+  --color-red-600: #cb1c51;
+  --color-red-500: #f31b61;
+  --color-red-400: #f8607d;
+  --color-red-300: #fd7e92;
+  --color-red-200: #feb1b9;
+  --color-red-100: #fed7da;
+  --color-red-50: #fff5f6;
 
-    --color-font: var(--color-gray-900);
-    --color-selection: #edbe1140;
-    --font-family: "Gattica", serif;
-    --font-weight-default: 400;
-    --font-weight-bold: 700;
+  --color-font: var(--color-gray-900);
+  --color-selection: #edbe1140;
+  --font-family: "Gattica", serif;
+  --font-weight-default: 400;
+  --font-weight-bold: 700;
 }
 
 /* LAYOUT */
 
-.wy-nav-content{
-	margin: 0 auto;
+.wy-nav-content {
+  margin: 0 auto;
+}
+
+/* LAYOUT */
+
+.wy-nav-content {
+  margin: 0 auto;
 }
 
 /* TYPOGRAPHY */
 
 body {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-default);
-    font-size: 15px;
-    color: var(--color-font);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-default);
+  font-size: 15px;
+  color: var(--color-font);
 }
 
 ::-moz-selection {
-    background: var(--color-selection);
-}
-  
-::selection {
-    background: var(--color-selection);
+  background: var(--color-selection);
 }
 
-h1, h2, h3, h4, h5, H6,
+::selection {
+  background: var(--color-selection);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+H6,
 .rst-content .toctree-wrapper > p.caption {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-default);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-default);
 }
 
 h1 {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 .rst-content .toctree-wrapper > p.caption,
 h2 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 h3 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .rst-content dl dt {
-    font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
 }
 
 .rst-content .toc-backref {
-    text-decoration: none;
-    color: var(--color-font);
-    font-weight: var(--font-weight-default);
+  text-decoration: none;
+  color: var(--color-font);
+  font-weight: var(--font-weight-default);
 }
 
 .wy-nav-content,
 .wy-nav-content-wrap {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .wy-nav-content {
-    padding: 50px;
+  padding: 50px;
 }
 
 .wy-nav-top {
-    background-color: inherit;
-    color: var(--color-font);
+  background-color: inherit;
+  color: var(--color-font);
 }
 
 .wy-nav-top a {
-    color: var(--color-font);
+  color: var(--color-font);
 }
 
 /* SIDEBAR */
 
 .wy-nav-side {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 /* SIDEBAR SEARCH */
-
 .wy-side-nav-search > a {
-    font-size: 24px;
-    color: var(--color-font);
-    display: flex;
-    flex-direction: column-reverse;
-    text-transform: uppercase;
-    text-decoration: none;
-    align-items: center;
-    padding: 0;
-    margin-bottom: 0.5em; /* TODO: Uniformize units */
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-default);
+  font-size: 24px;
+  color: var(--color-font);
+  display: flex;
+  flex-direction: column-reverse;
+  text-transform: uppercase;
+  text-decoration: none;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 0.5em; /* TODO: Uniformize units */
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-default);
 }
 
 .wy-side-nav-search .wy-dropdown > a img.logo,
 .wy-side-nav-search > a img.logo {
-    width: 200px;
-    margin: 15px !important;
+  width: 200px;
+  margin: 15px !important;
 }
 
 .wy-side-nav-search > a:before {
-    display: none;
+  display: none;
 }
 
 .wy-side-nav-search > div.version {
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-default);
-    color: var(--color-font);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-default);
+  color: var(--color-font);
 }
 
 .wy-side-nav-search input[type="text"] {
-    padding: 8px 20px;
-    margin: 2.8rem 1rem 0 1rem; /* TODO: Uniformize units */
-    border-radius: 30px;
-    border: 1px solid;
-    font-size: 17px;
-    text-decoration: none;
-    line-height: 2;
-    width: calc(100% - 2rem); /* TODO: Uniformize units */
+  padding: 8px 20px;
+  margin: 2.8rem 1rem 0 1rem; /* TODO: Uniformize units */
+  border-radius: 30px;
+  border: 1px solid;
+  font-size: 17px;
+  text-decoration: none;
+  line-height: 2;
+  width: calc(100% - 2rem); /* TODO: Uniformize units */
 }
 
 .wy-side-nav-search {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 /* ============ */
@@ -219,30 +228,30 @@ h3 {
 /* GENERAL */
 
 .wy-menu-vertical p.caption {
-    color: var(--color-primary-500);
-    margin-top: 30px;
+  color: var(--color-primary-500);
+  margin-top: 30px;
 }
 
 .wy-side-scroll {
-	padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 /* LINKS */
 
 .wy-menu-vertical a {
-    text-decoration: none;
-    color: var(--color-font);
-    font-weight: var(--font-weight-default);
-    font-size: 14px;
-    border-radius: 0 15px 15px 0;
-    transition: background-color 0.15s ease;
+  text-decoration: none;
+  color: var(--color-font);
+  font-weight: var(--font-weight-default);
+  font-size: 14px;
+  border-radius: 0 15px 15px 0;
+  transition: background-color 0.15s ease;
 }
 
 /* Active */
 
 .wy-menu-vertical li.current a,
 .wy-menu-vertical li.toctree-l1.current > a {
-    border: none;
+  border: none;
 }
 
 .wy-menu-vertical li.current,
@@ -251,7 +260,7 @@ h3 {
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:not(:hover),
 .wy-menu-vertical li.toctree-l3.current > a:not(:hover),
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a:not(:hover) {
-    background: transparent;
+  background: transparent;
 }
 
 .wy-menu-vertical li.toctree-l1.current > a.current,
@@ -260,7 +269,7 @@ h3 {
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a.current,
 .wy-menu-vertical li.toctree-l3.current > a.current,
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a.current {
-    background-color: var(--color-primary-100);
+  background-color: var(--color-primary-100);
 }
 
 /* Hover */
@@ -272,24 +281,24 @@ h3 {
 .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:hover,
 .wy-menu-vertical li.toctree-l3.current > a:hover,
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a:hover {
-    background-color: var(--color-primary-50);
+  background-color: var(--color-primary-50);
 }
 
 /* Focus */
 
 .wy-menu-vertical a:focus,
 .wy-menu-vertical a.reference.internal:focus {
-    color: var(--color-font);
-    background-color: var(--color-primary-100);
+  color: var(--color-font);
+  background-color: var(--color-primary-100);
 }
 
 /* Visited */
 
 .wy-menu-vertical a:visited,
 .wy-menu-vertical a.reference.internal:visited {
-    color: var(--color-font);
-    font-weight: 600;
-    font-family: 'Gattica';
+  color: var(--color-font);
+  font-weight: 600;
+  font-family: "Gattica";
 }
 
 /* ======= */
@@ -302,112 +311,112 @@ a,
 a .pre,
 a:visited,
 a:visited .pre {
-    color: var(--color-primary-500);
-    text-decoration: underline;
+  color: var(--color-primary-500);
+  text-decoration: underline;
 }
 
 a:hover,
 a:hover .pre {
-    color: var(--color-primary-600);
+  color: var(--color-primary-600);
 }
 
 a:focus,
 a:focus .pre {
-    color: var(--color-primary-700);
+  color: var(--color-primary-700);
 }
 
 /* HIGHLIGHT */
 
-.rst-content div[class^=highlight],
+.rst-content div[class^="highlight"],
 .rst-content pre.literal-block {
-    border: 1px solid var(--color-gray-300);
-    border-radius: 5px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 5px;
 }
 
 .highlight,
 .sphx-glr-script-out .highlight pre {
-    background-color: var(--color-gray-50);
+  background-color: var(--color-gray-50);
 }
 
 /* ADMONITIONS */
 
 /* Default */
 
-.rst-content .admonition, 
-.rst-content .admonition-todo, 
-.rst-content .attention, 
-.rst-content .caution, 
-.rst-content .danger, 
-.rst-content .error, 
-.rst-content .hint, 
-.rst-content .important, 
-.rst-content .note, 
-.rst-content .seealso, 
-.rst-content .tip, 
-.rst-content .warning, 
+.rst-content .admonition,
+.rst-content .admonition-todo,
+.rst-content .attention,
+.rst-content .caution,
+.rst-content .danger,
+.rst-content .error,
+.rst-content .hint,
+.rst-content .important,
+.rst-content .note,
+.rst-content .seealso,
+.rst-content .tip,
+.rst-content .warning,
 .wy-alert {
-    border-radius: 5px;
-    border: 0px solid var(--color-primary-500);
-    border-left-width: 4px;
-    background-color: var(--color-primary-100);
-    padding: 16px;
+  border-radius: 5px;
+  border: 0px solid var(--color-primary-500);
+  border-left-width: 4px;
+  background-color: var(--color-primary-100);
+  padding: 16px;
 }
 
-.rst-content .admonition p, 
-.rst-content .admonition-todo p, 
-.rst-content .attention p, 
-.rst-content .caution p, 
-.rst-content .danger p, 
-.rst-content .error p, 
-.rst-content .hint p, 
-.rst-content .important p, 
-.rst-content .note p, 
-.rst-content .seealso p, 
-.rst-content .tip p, 
-.rst-content .warning p, 
+.rst-content .admonition p,
+.rst-content .admonition-todo p,
+.rst-content .attention p,
+.rst-content .caution p,
+.rst-content .danger p,
+.rst-content .error p,
+.rst-content .hint p,
+.rst-content .important p,
+.rst-content .note p,
+.rst-content .seealso p,
+.rst-content .tip p,
+.rst-content .warning p,
 .wy-alert p {
-    font-size: 14px;
-    line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-.rst-content .admonition-title, 
+.rst-content .admonition-title,
 .wy-alert-title {
-    font-weight: var(--font-weight-bold);
-    display: inline;
-    color: inherit;
-    background: transparent;
-    padding: 0;
-    margin: 0;
+  font-weight: var(--font-weight-bold);
+  display: inline;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
-.rst-content .note .admonition-title, 
-.rst-content .note .wy-alert-title, 
-.rst-content .seealso .admonition-title, 
-.rst-content .seealso .wy-alert-title, 
-.rst-content .wy-alert-info.admonition-todo .admonition-title, 
-.rst-content .wy-alert-info.admonition-todo .wy-alert-title, 
-.rst-content .wy-alert-info.admonition .admonition-title, 
-.rst-content .wy-alert-info.admonition .wy-alert-title, 
-.rst-content .wy-alert-info.attention .admonition-title, 
-.rst-content .wy-alert-info.attention .wy-alert-title, 
-.rst-content .wy-alert-info.caution .admonition-title, 
-.rst-content .wy-alert-info.caution .wy-alert-title, 
-.rst-content .wy-alert-info.danger .admonition-title, 
-.rst-content .wy-alert-info.danger .wy-alert-title, 
-.rst-content .wy-alert-info.error .admonition-title, 
-.rst-content .wy-alert-info.error .wy-alert-title, 
-.rst-content .wy-alert-info.hint .admonition-title, 
-.rst-content .wy-alert-info.hint .wy-alert-title, 
-.rst-content .wy-alert-info.important .admonition-title, 
-.rst-content .wy-alert-info.important .wy-alert-title, 
-.rst-content .wy-alert-info.tip .admonition-title, 
-.rst-content .wy-alert-info.tip .wy-alert-title, 
-.rst-content .wy-alert-info.warning .admonition-title, 
-.rst-content .wy-alert-info.warning .wy-alert-title, 
-.rst-content .wy-alert.wy-alert-info .admonition-title, 
-.wy-alert.wy-alert-info .rst-content .admonition-title, 
+.rst-content .note .admonition-title,
+.rst-content .note .wy-alert-title,
+.rst-content .seealso .admonition-title,
+.rst-content .seealso .wy-alert-title,
+.rst-content .wy-alert-info.admonition-todo .admonition-title,
+.rst-content .wy-alert-info.admonition-todo .wy-alert-title,
+.rst-content .wy-alert-info.admonition .admonition-title,
+.rst-content .wy-alert-info.admonition .wy-alert-title,
+.rst-content .wy-alert-info.attention .admonition-title,
+.rst-content .wy-alert-info.attention .wy-alert-title,
+.rst-content .wy-alert-info.caution .admonition-title,
+.rst-content .wy-alert-info.caution .wy-alert-title,
+.rst-content .wy-alert-info.danger .admonition-title,
+.rst-content .wy-alert-info.danger .wy-alert-title,
+.rst-content .wy-alert-info.error .admonition-title,
+.rst-content .wy-alert-info.error .wy-alert-title,
+.rst-content .wy-alert-info.hint .admonition-title,
+.rst-content .wy-alert-info.hint .wy-alert-title,
+.rst-content .wy-alert-info.important .admonition-title,
+.rst-content .wy-alert-info.important .wy-alert-title,
+.rst-content .wy-alert-info.tip .admonition-title,
+.rst-content .wy-alert-info.tip .wy-alert-title,
+.rst-content .wy-alert-info.warning .admonition-title,
+.rst-content .wy-alert-info.warning .wy-alert-title,
+.rst-content .wy-alert.wy-alert-info .admonition-title,
+.wy-alert.wy-alert-info .rst-content .admonition-title,
 .wy-alert.wy-alert-info .wy-alert-title {
-    background: none;
+  background: none;
 }
 
 /* Success */
@@ -426,38 +435,38 @@ a:focus .pre {
 .rst-content .wy-alert-success.note,
 .rst-content .wy-alert-success.seealso,
 .rst-content .wy-alert-success.warning {
-    background: var(--color-green-100);
-    border-color: var(--color-green-500);
+  background: var(--color-green-100);
+  border-color: var(--color-green-500);
 }
 
-.rst-content .hint .admonition-title, 
-.rst-content .hint .wy-alert-title, 
-.rst-content .important .admonition-title, 
-.rst-content .important .wy-alert-title, 
-.rst-content .tip .admonition-title, 
-.rst-content .tip .wy-alert-title, 
-.rst-content .wy-alert-success.admonition-todo .admonition-title, 
-.rst-content .wy-alert-success.admonition-todo .wy-alert-title, 
-.rst-content .wy-alert-success.admonition .admonition-title, 
-.rst-content .wy-alert-success.admonition .wy-alert-title, 
-.rst-content .wy-alert-success.attention .admonition-title, 
-.rst-content .wy-alert-success.attention .wy-alert-title, 
-.rst-content .wy-alert-success.caution .admonition-title, 
-.rst-content .wy-alert-success.caution .wy-alert-title, 
-.rst-content .wy-alert-success.danger .admonition-title, 
-.rst-content .wy-alert-success.danger .wy-alert-title, 
-.rst-content .wy-alert-success.error .admonition-title, 
-.rst-content .wy-alert-success.error .wy-alert-title, 
-.rst-content .wy-alert-success.note .admonition-title, 
-.rst-content .wy-alert-success.note .wy-alert-title, 
-.rst-content .wy-alert-success.seealso .admonition-title, 
-.rst-content .wy-alert-success.seealso .wy-alert-title, 
-.rst-content .wy-alert-success.warning .admonition-title, 
-.rst-content .wy-alert-success.warning .wy-alert-title, 
-.rst-content .wy-alert.wy-alert-success .admonition-title, 
-.wy-alert.wy-alert-success .rst-content .admonition-title, 
+.rst-content .hint .admonition-title,
+.rst-content .hint .wy-alert-title,
+.rst-content .important .admonition-title,
+.rst-content .important .wy-alert-title,
+.rst-content .tip .admonition-title,
+.rst-content .tip .wy-alert-title,
+.rst-content .wy-alert-success.admonition-todo .admonition-title,
+.rst-content .wy-alert-success.admonition-todo .wy-alert-title,
+.rst-content .wy-alert-success.admonition .admonition-title,
+.rst-content .wy-alert-success.admonition .wy-alert-title,
+.rst-content .wy-alert-success.attention .admonition-title,
+.rst-content .wy-alert-success.attention .wy-alert-title,
+.rst-content .wy-alert-success.caution .admonition-title,
+.rst-content .wy-alert-success.caution .wy-alert-title,
+.rst-content .wy-alert-success.danger .admonition-title,
+.rst-content .wy-alert-success.danger .wy-alert-title,
+.rst-content .wy-alert-success.error .admonition-title,
+.rst-content .wy-alert-success.error .wy-alert-title,
+.rst-content .wy-alert-success.note .admonition-title,
+.rst-content .wy-alert-success.note .wy-alert-title,
+.rst-content .wy-alert-success.seealso .admonition-title,
+.rst-content .wy-alert-success.seealso .wy-alert-title,
+.rst-content .wy-alert-success.warning .admonition-title,
+.rst-content .wy-alert-success.warning .wy-alert-title,
+.rst-content .wy-alert.wy-alert-success .admonition-title,
+.wy-alert.wy-alert-success .rst-content .admonition-title,
 .wy-alert.wy-alert-success .wy-alert-title {
-    background: transparent;
+  background: transparent;
 }
 
 /* Caution & warning */
@@ -470,185 +479,192 @@ a:focus .pre {
 .error.caution,
 .note.caution,
 .seealso.caution,
-.warning.caution  {
-    background: var(--color-yellow-100);
-    border-color: var(--color-yellow-400);
+.warning.caution {
+  background: var(--color-yellow-100);
+  border-color: var(--color-yellow-400);
 }
 
-.rst-content .admonition-todo .admonition-title, 
-.rst-content .admonition-todo .wy-alert-title, 
-.rst-content .attention .admonition-title, 
-.rst-content .attention .wy-alert-title, 
-.rst-content .caution .admonition-title, 
-.rst-content .caution .wy-alert-title, 
-.rst-content .warning .admonition-title, 
-.rst-content .warning .wy-alert-title, 
-.rst-content .wy-alert-warning.admonition .admonition-title, 
-.rst-content .wy-alert-warning.admonition .wy-alert-title, 
-.rst-content .wy-alert-warning.danger .admonition-title, 
-.rst-content .wy-alert-warning.danger .wy-alert-title, 
-.rst-content .wy-alert-warning.error .admonition-title, 
-.rst-content .wy-alert-warning.error .wy-alert-title, 
-.rst-content .wy-alert-warning.hint .admonition-title, 
-.rst-content .wy-alert-warning.hint .wy-alert-title, 
-.rst-content .wy-alert-warning.important .admonition-title, 
-.rst-content .wy-alert-warning.important .wy-alert-title, 
-.rst-content .wy-alert-warning.note .admonition-title, 
-.rst-content .wy-alert-warning.note .wy-alert-title, 
-.rst-content .wy-alert-warning.seealso .admonition-title, 
-.rst-content .wy-alert-warning.seealso .wy-alert-title, 
-.rst-content .wy-alert-warning.tip .admonition-title, 
-.rst-content .wy-alert-warning.tip .wy-alert-title, 
-.rst-content .wy-alert.wy-alert-warning .admonition-title, 
-.wy-alert.wy-alert-warning .rst-content .admonition-title, 
+.rst-content .admonition-todo .admonition-title,
+.rst-content .admonition-todo .wy-alert-title,
+.rst-content .attention .admonition-title,
+.rst-content .attention .wy-alert-title,
+.rst-content .caution .admonition-title,
+.rst-content .caution .wy-alert-title,
+.rst-content .warning .admonition-title,
+.rst-content .warning .wy-alert-title,
+.rst-content .wy-alert-warning.admonition .admonition-title,
+.rst-content .wy-alert-warning.admonition .wy-alert-title,
+.rst-content .wy-alert-warning.danger .admonition-title,
+.rst-content .wy-alert-warning.danger .wy-alert-title,
+.rst-content .wy-alert-warning.error .admonition-title,
+.rst-content .wy-alert-warning.error .wy-alert-title,
+.rst-content .wy-alert-warning.hint .admonition-title,
+.rst-content .wy-alert-warning.hint .wy-alert-title,
+.rst-content .wy-alert-warning.important .admonition-title,
+.rst-content .wy-alert-warning.important .wy-alert-title,
+.rst-content .wy-alert-warning.note .admonition-title,
+.rst-content .wy-alert-warning.note .wy-alert-title,
+.rst-content .wy-alert-warning.seealso .admonition-title,
+.rst-content .wy-alert-warning.seealso .wy-alert-title,
+.rst-content .wy-alert-warning.tip .admonition-title,
+.rst-content .wy-alert-warning.tip .wy-alert-title,
+.rst-content .wy-alert.wy-alert-warning .admonition-title,
+.wy-alert.wy-alert-warning .rst-content .admonition-title,
 .wy-alert.wy-alert-warning .wy-alert-title {
-    background: transparent;
+  background: transparent;
 }
 
-.rst-content .admonition-todo, 
-.rst-content .attention, 
-.rst-content .caution, 
-.rst-content .warning, 
-.rst-content .wy-alert-warning.admonition, 
-.rst-content .wy-alert-warning.danger, 
-.rst-content .wy-alert-warning.error, 
-.rst-content .wy-alert-warning.hint, 
-.rst-content .wy-alert-warning.important, 
-.rst-content .wy-alert-warning.note, 
-.rst-content .wy-alert-warning.seealso, 
-.rst-content .wy-alert-warning.tip, 
+.rst-content .admonition-todo,
+.rst-content .attention,
+.rst-content .caution,
+.rst-content .warning,
+.rst-content .wy-alert-warning.admonition,
+.rst-content .wy-alert-warning.danger,
+.rst-content .wy-alert-warning.error,
+.rst-content .wy-alert-warning.hint,
+.rst-content .wy-alert-warning.important,
+.rst-content .wy-alert-warning.note,
+.rst-content .wy-alert-warning.seealso,
+.rst-content .wy-alert-warning.tip,
 .wy-alert.wy-alert-warning {
-    background: var(--color-yellow-100);
-    border-color: var(--color-yellow-400);
+  background: var(--color-yellow-100);
+  border-color: var(--color-yellow-400);
 }
 
 /* Danger */
 
-.rst-content .danger .admonition-title, 
-.rst-content .danger .wy-alert-title, 
-.rst-content .error .admonition-title, 
-.rst-content .error .wy-alert-title, 
-.rst-content .wy-alert-danger.admonition-todo .admonition-title, 
-.rst-content .wy-alert-danger.admonition-todo .wy-alert-title, 
-.rst-content .wy-alert-danger.admonition .admonition-title, 
-.rst-content .wy-alert-danger.admonition .wy-alert-title, 
-.rst-content .wy-alert-danger.attention .admonition-title, 
-.rst-content .wy-alert-danger.attention .wy-alert-title, 
-.rst-content .wy-alert-danger.caution .admonition-title, 
-.rst-content .wy-alert-danger.caution .wy-alert-title, 
-.rst-content .wy-alert-danger.hint .admonition-title, 
-.rst-content .wy-alert-danger.hint .wy-alert-title, 
-.rst-content .wy-alert-danger.important .admonition-title, 
-.rst-content .wy-alert-danger.important .wy-alert-title, 
-.rst-content .wy-alert-danger.note .admonition-title, 
-.rst-content .wy-alert-danger.note .wy-alert-title, 
-.rst-content .wy-alert-danger.seealso .admonition-title, 
-.rst-content .wy-alert-danger.seealso .wy-alert-title, 
-.rst-content .wy-alert-danger.tip .admonition-title, 
-.rst-content .wy-alert-danger.tip .wy-alert-title, 
-.rst-content .wy-alert-danger.warning .admonition-title, 
-.rst-content .wy-alert-danger.warning .wy-alert-title, 
-.rst-content .wy-alert.wy-alert-danger .admonition-title, 
-.wy-alert.wy-alert-danger .rst-content .admonition-title, 
+.rst-content .danger .admonition-title,
+.rst-content .danger .wy-alert-title,
+.rst-content .error .admonition-title,
+.rst-content .error .wy-alert-title,
+.rst-content .wy-alert-danger.admonition-todo .admonition-title,
+.rst-content .wy-alert-danger.admonition-todo .wy-alert-title,
+.rst-content .wy-alert-danger.admonition .admonition-title,
+.rst-content .wy-alert-danger.admonition .wy-alert-title,
+.rst-content .wy-alert-danger.attention .admonition-title,
+.rst-content .wy-alert-danger.attention .wy-alert-title,
+.rst-content .wy-alert-danger.caution .admonition-title,
+.rst-content .wy-alert-danger.caution .wy-alert-title,
+.rst-content .wy-alert-danger.hint .admonition-title,
+.rst-content .wy-alert-danger.hint .wy-alert-title,
+.rst-content .wy-alert-danger.important .admonition-title,
+.rst-content .wy-alert-danger.important .wy-alert-title,
+.rst-content .wy-alert-danger.note .admonition-title,
+.rst-content .wy-alert-danger.note .wy-alert-title,
+.rst-content .wy-alert-danger.seealso .admonition-title,
+.rst-content .wy-alert-danger.seealso .wy-alert-title,
+.rst-content .wy-alert-danger.tip .admonition-title,
+.rst-content .wy-alert-danger.tip .wy-alert-title,
+.rst-content .wy-alert-danger.warning .admonition-title,
+.rst-content .wy-alert-danger.warning .wy-alert-title,
+.rst-content .wy-alert.wy-alert-danger .admonition-title,
+.wy-alert.wy-alert-danger .rst-content .admonition-title,
 .wy-alert.wy-alert-danger .wy-alert-title {
-    background: transparent;
+  background: transparent;
 }
 
-.rst-content .danger, 
-.rst-content .error, 
-.rst-content .wy-alert-danger.admonition, 
-.rst-content .wy-alert-danger.admonition-todo, 
-.rst-content .wy-alert-danger.attention, 
-.rst-content .wy-alert-danger.caution, 
-.rst-content .wy-alert-danger.hint, 
-.rst-content .wy-alert-danger.important, 
-.rst-content .wy-alert-danger.note, 
-.rst-content .wy-alert-danger.seealso, 
-.rst-content .wy-alert-danger.tip, 
-.rst-content .wy-alert-danger.warning, 
+.rst-content .danger,
+.rst-content .error,
+.rst-content .wy-alert-danger.admonition,
+.rst-content .wy-alert-danger.admonition-todo,
+.rst-content .wy-alert-danger.attention,
+.rst-content .wy-alert-danger.caution,
+.rst-content .wy-alert-danger.hint,
+.rst-content .wy-alert-danger.important,
+.rst-content .wy-alert-danger.note,
+.rst-content .wy-alert-danger.seealso,
+.rst-content .wy-alert-danger.tip,
+.rst-content .wy-alert-danger.warning,
 .wy-alert.wy-alert-danger {
-    background: var(--color-red-100);
-    border-color: var(--color-red-400);
+  background: var(--color-red-100);
+  border-color: var(--color-red-400);
 }
 
 /* CODE */
 
-.rst-content code, 
+.rst-content code,
 .rst-content tt {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
-.rst-content code.literal, 
+.rst-content code.literal,
 .rst-content tt.literal {
-    color: var(--color-red-500);
-    background-color: var(--color-gray-50);
+  color: var(--color-red-500);
+  background-color: var(--color-gray-50);
 }
 
 /* PYTHON */
 
-html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list)>dt, 
-html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list)>dt {
-    border: none;
-    border-radius: 5px;
-    border-left: 4px solid var(--color-gray-400);
-    background: var(--color-gray-100);
-    color: var(--color-font);
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list) > dt,
+html.writer-html5
+  .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)
+  dl:not(.field-list)
+  > dt {
+  border: none;
+  border-radius: 5px;
+  border-left: 4px solid var(--color-gray-400);
+  background: var(--color-gray-100);
+  color: var(--color-font);
 }
 
-html.writer-html4 .rst-content dl:not(.docutils)>dt, 
-html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt {
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--color-primary-700);
-    border: none;
-    border-radius: 5px;
-    border-left: 4px solid var(--color-primary-500);
-    background-color: var(--color-primary-100);
-    padding: 16px;
-    font-weight: var(--font-weight-default);
-    word-break: break-word;
+html.writer-html4 .rst-content dl:not(.docutils) > dt,
+html.writer-html5
+  .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)
+  > dt {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-primary-700);
+  border: none;
+  border-radius: 5px;
+  border-left: 4px solid var(--color-primary-500);
+  background-color: var(--color-primary-100);
+  padding: 16px;
+  font-weight: var(--font-weight-default);
+  word-break: break-word;
 }
 
 /* BUTTONS */
 .btn.btn-neutral {
-    background-color: var(--color-gray-500) !important;
-    color: white !important;
-    border: none;
-    border-radius: 999px;
-    box-shadow: none;
-    font-size: 20px;
-    font-family: var(--font-family);
+  background-color: var(--color-gray-500) !important;
+  color: white !important;
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+  font-size: 20px;
+  font-family: var(--font-family);
 }
 
 .btn.btn-neutral .fa {
-    display: none;
+  display: none;
 }
 
 /* GALLERY */
 
 div.sphx-glr-download a {
-    background-color: var(--color-primary-500);
-    background-image: none;
-    border: none;
-    border-radius: 0;
-    padding: 6px 24px;
-    color: white;
-    border-radius: 999px;
-    transition: background-color 0.2s ease;
+  background-color: var(--color-primary-500);
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  padding: 6px 24px;
+  color: white;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
 }
 
 div.sphx-glr-download a .pre {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 div.sphx-glr-download a:hover {
-    box-shadow: none;
-    background-color: var(--color-primary-600);
+  box-shadow: none;
+  background-color: var(--color-primary-600);
 }
 
 div.sphx-glr-download code.download {
-    padding: 0;
+  padding: 0;
 }
 
 /* ============== */
@@ -656,41 +672,40 @@ div.sphx-glr-download code.download {
 /* ============== */
 
 .rst-versions {
-    left: 10px;
-    width: 280px;
-    color: white;
-    background: var(--color-gray-800);
-    font-family: --var(--font-family);
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
+  left: 10px;
+  width: 280px;
+  color: white;
+  background: var(--color-gray-800);
+  font-family: --var(--font-family);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
 }
 
 .rst-versions .rst-current-version {
-    background-color: var(--color-gray-900);
-    color: white;
+  background-color: var(--color-gray-900);
+  color: white;
 }
 
 /* ========== */
 /* RESPONSIVE */
 /* ========== */
 
-@media screen and (max-width:768px) {
-    h1 {
-        font-size: 36px;
-    }
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
 
-    .rst-content .toctree-wrapper > p.caption,
-    h2 {
-        font-size: 30px;
-        
-    }
+  .rst-content .toctree-wrapper > p.caption,
+  h2 {
+    font-size: 30px;
+  }
 
-    h3 {
-        font-size: 26px;
-    }
+  h3 {
+    font-size: 26px;
+  }
 
-    html.writer-html5 .rst-content dl.field-list, 
-    html.writer-html5 .rst-content dl.footnote {
-        display: block;
-    }
+  html.writer-html5 .rst-content dl.field-list,
+  html.writer-html5 .rst-content dl.footnote {
+    display: block;
+  }
 }
