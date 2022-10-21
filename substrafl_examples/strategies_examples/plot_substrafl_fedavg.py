@@ -60,9 +60,8 @@ from torchvision.datasets import MNIST
 
 from substra import Client
 
+# Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 2
-
-# Create the substra clients
 clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients}
 

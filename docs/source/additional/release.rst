@@ -23,6 +23,16 @@ These sets of versions have been tested for compatibility:
      - substra-tests
      - substra-chaincode
 
+   * - 0.22.0
+     - `0.30.1 <https://github.com/Substra/substrafl/releases/tag/0.30.1>`__
+     - `0.38.2 <https://github.com/Substra/substra/releases/tag/0.38.2>`__
+     - `0.18.0 <https://github.com/Substra/substra-tools/releases/tag/0.18.0>`__
+     - `0.31.4 <https://github.com/Substra/substra-backend/releases/tag/0.31.4>`__ | `helm 22.1.2 <https://artifacthub.io/packages/helm/substra/substra-backend/22.1.2>`__
+     - `0.28.2 <https://github.com/Substra/orchestrator/releases/tag/0.28.2>`__ `helm 7.4.4 <https://artifacthub.io/packages/helm/substra/orchestrator/7.4.4>`__
+     - `0.35.1 <https://github.com/Substra/substra-frontend/releases/tag/0.35.1>`__ | `helm 1.0.7 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.7>`__
+     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
+     - `0.34.0 <https://github.com/Substra/substra-tests/releases/tag/0.34.0>`__
+     -
    * - 0.21.0
      - `0.28.0 <https://github.com/Substra/substrafl/releases/tag/0.28.0>`__
      - `0.36.0 <https://github.com/Substra/substra/releases/tag/0.36.0>`__
@@ -362,19 +372,174 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
+This is an overview of the main changes, please have a look at the changelog of every repos to have a full grasp on what has changed:
+
+- `substra changelog <https://github.com/Substra/substra/blob/main/CHANGELOG.md>`__
+- `substrafl changelog <https://github.com/Substra/substrafl/blob/main/CHANGELOG.md>`__
+- `frontend changelog <https://github.com/Substra/substra-frontend/blob/main/CHANGELOG.md>`__
+- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/main/CHANGELOG.md>`__
+- `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
+- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
+
+Substra 0.22.0 - 2022-10-20
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Main changes
+
+- **BREAKING CHANGE**: the backend type is now set in the ``Client``, the env variable ``DEBUG_SPAWNER`` is not used anymore. Default value is deployed.
+
+before:
+
+.. code-block:: python
+
+  export DEBUG_SPAWNER=subprocess
+  client = substra.Client(debug=True)
+
+after:
+
+.. code-block:: python
+
+  client = substra.Client(backend_type=substra.BackendType.LOCAL_SUBPROCESS)
+
+- **BREAKING CHANGE**: ``schemas.ComputePlanSpec.clean_models`` property is now removed, the ``transient`` property on tasks outputs should be used instead.
+- **BREAKING CHANGE**: ``Model.category`` field has been removed.
+- **BREAKING CHANGE**: ``train`` and ``predict`` methods of all substrafl algos now takes datasamples as argument instead of X and y. This is impacting the user code only if he or she overwrite those methods instead of using the ``_local_train`` and ``_local_predict`` methods.
+- **BREAKING CHANGE**: The result of the ``get_data`` method from the opener is automatically provided to the given dataset as ``__init__`` arg instead of x and y within the ``train`` and ``predict`` methods of all ``TorchAlgo`` classes. The user dataset should be adapted accordingly:
+
+.. code-block:: python
+
+  from torch.utils.data import Dataset
+
+  class MyDataset(Dataset):
+      def __init__(self, x, y, is_inference=False) -> None:
+          ...
+
+  class MyAlgo(TorchFedAvgAlgo):
+      def __init__(
+          self,
+      ):
+          torch.manual_seed(seed)
+          super().__init__(
+              model=my_model,
+              criterion=criterion,
+              optimizer=optimizer,
+              index_generator=index_generator,
+              dataset=MyDataset,
+          )
+
+should be replaced with
+
+.. code-block:: python
+
+  from torch.utils.data import Dataset
+
+  class MyDataset(Dataset):
+      def __init__(self, datasamples, is_inference=False) -> None:
+          ...
+
+  class MyAlgo(TorchFedAvgAlgo):
+      def __init__(
+          self,
+      ):
+          torch.manual_seed(seed)
+          super().__init__(
+              model=my_model,
+              criterion=criterion,
+              optimizer=optimizer,
+              index_generator=index_generator,
+              dataset=MyDataset,
+          )
+
+- **BREAKING CHANGE**: ``Algo.category``: do not rely on categories anymore, all algo categories will be returned as ``UNKNOWN``.
+- **BREAKING CHANGE**: Replaced ``algo`` by ``algo_key`` in ComputeTask.
+
+GUI
+
+- Improved user management: the last admin cannot be deleted anymore.
+
+Substra
+
+- Algo categories are not checked anymore in local mode. Validations based on inputs and outputs are sufficient.
+- Pass substra-tools arguments via a file instead of the command line. This fixes an issue where compute plan would not run if there was too many data samples.
+
+Substrafl
+
+- NOTABLE CHANGES due to breaking changes in substra-tools:
+
+  - The opener only exposes ``get_data`` and ``fake_data`` methods.
+  - The results of the above method is passed under the datasamples keys within the inputs dict arg of all tools methods (``train``, ``predict``, ``aggregate``, ``score``).
+  - All method (``train``, ``predict``, ``aggregate``, ``score``) now takes a task_properties argument (``dict``) in addition to inputs and outputs.
+  - The rank of a task previously passed under the rank key within the inputs is now given in the ``task_properties`` dict under the rank key.
+
+This means that all opener.py file should be changed from:
+
+.. code-block:: python
+
+  import substratools as tools
+
+  class TestOpener(tools.Opener):
+      def get_X(self, folders):
+        ...
+
+      def get_y(self, folders):
+        ...
+
+      def fake_X(self, n_samples=None):
+        ...
+
+      def fake_y(self, n_samples=None):
+        ...
+
+to:
+
+.. code-block:: python
+
+  import substratools as tools
+
+  class TestOpener(tools.Opener):
+      def get_data(self, folders):
+        ...
+
+      def fake_data(self, n_samples=None):
+        ...
+
+This also implies that metrics has now access to the results of ``get_data`` and not only ``get_y`` as previously. The user should adapt all of his metrics file accordingly e.g.:
+
+.. code-block:: python
+
+  class AUC(tools.Metrics):
+      def score(self, inputs, outputs):
+          """AUC"""
+          y_true = inputs["y"]
+          ...
+
+      def get_predictions(self, path):
+          return np.load(path)
+
+  if __name__ == "__main__":
+      tools.metrics.execute(AUC())
+
+could be replace with:
+
+.. code-block:: python
+
+  class AUC(tools.Metrics):
+      def score(self, inputs, outputs, task_properties):
+          """AUC"""
+          datasamples = inputs["datasamples"]
+          y_true = ... # getting target from the whole datasamples
+
+      def get_predictions(self, path):
+          return np.load(path)
+
+  if __name__ == "__main__":
+      tools.metrics.execute(AUC())
+
+
 Substra 0.21.0 (first OS release) - 2022-09-12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is our first open source release since 2021! When the product was closed source it used to be named Connect. It is now renamed Substra.
-This is an overview of the main changes, please have a look at the changelog of every
-repos to have a full grasp on what has changed:
-
-- `substra changelog <https://github.com/Substra/substra/blob/0.36.0/CHANGELOG.md>`__
-- `substrafl changelog <https://github.com/Substra/substrafl/blob/0.28.0/CHANGELOG.md>`__
-- `frontend changelog <https://github.com/Substra/substra-frontend/blob/0.34.0/CHANGELOG.md>`__
-- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/0.16.0/CHANGELOG.md>`__
-- `backend changelog <https://github.com/Substra/substra-backend/blob/0.29.0/CHANGELOG.md>`__
-- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/0.26.1/CHANGELOG.md>`__
 
 Main changes
 
