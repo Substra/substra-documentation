@@ -60,9 +60,8 @@ from torchvision.datasets import MNIST
 
 from substra import Client
 
+# Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 2
-
-# Create the substra clients
 clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients}
 
@@ -447,7 +446,7 @@ class MyAlgo(TorchFedAvgAlgo):
 # :ref:`substrafl_doc/api/dependency:Dependency` object, in order to install the right library in the Python
 # environment of each organization.
 
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.12.0"])
+algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 # %%
 # Federated Learning strategies
