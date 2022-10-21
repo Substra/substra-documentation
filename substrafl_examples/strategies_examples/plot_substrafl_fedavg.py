@@ -368,7 +368,6 @@ for ind, org_id in enumerate(ORGS_ID):
 from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
-my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
 test_data_nodes = list()
 
@@ -397,6 +396,8 @@ for ind, org_id in enumerate(ORGS_ID):
         metric_keys=[metric_key],
     )
     test_data_nodes.append(test_data_node)
+
+my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
 # %%
 # Running the experiment
