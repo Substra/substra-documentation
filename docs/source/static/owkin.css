@@ -6,24 +6,20 @@
 @font-face {
     font-family: "Gattica";
     src: url(Gattica-Light100.otf) format("opentype");
+    font-weight: 100;
+}
+
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Regular100.otf) format("opentype");
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Gattica";
-    src: url(Gattica-Regular100.otf) format("opentype");
-}
-
-@font-face {
-    font-family: "Gattica";
-    src: url(Gattica-Regular100.otf) format("opentype");
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: "Gattica";
     src: url(Gattica-Medium100.otf) format("opentype");
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @font-face {
@@ -90,7 +86,7 @@
     --color-font: var(--color-gray-900);
     --color-selection: #edbe1140;
     --font-family: "Gattica", serif;
-    --font-weight-default: 500;
+    --font-weight-default: 400;
     --font-weight-bold: 700;
 }
 
