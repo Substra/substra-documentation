@@ -372,8 +372,8 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
-20 October 2022 - Substra 0.22
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.22.0 - 2022-10-20
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Main changes
 
