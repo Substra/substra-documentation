@@ -450,11 +450,11 @@ Substra
 - Pass substra-tools arguments via a file instead of the command line. This fixes an issue where compute plan would not run if there was too many data samples.
 
 Substrafl
-- NOTABLE CHANGES due to breaking changes in substra-tools:
-  - the opener only exposes get_data and fake_data methods
-  - the results of the above method is passed under the datasamples keys within the inputs dict arg of all tools methods (train, predict, aggregate, score)
-  - all method (train, predict, aggregate, score) now takes a task_properties argument (dict) in addition to inputs and outputs
-  - The rank of a task previously passed under the rank key within the inputs is now given in the task_properties dict under the rank key
+NOTABLE CHANGES due to breaking changes in substra-tools:
+- the opener only exposes get_data and fake_data methods
+- the results of the above method is passed under the datasamples keys within the inputs dict arg of all tools methods (train, predict, aggregate, score)
+- all method (train, predict, aggregate, score) now takes a task_properties argument (dict) in addition to inputs and outputs
+- The rank of a task previously passed under the rank key within the inputs is now given in the task_properties dict under the rank key
 
 This means that all opener.py file should be changed from:
 
