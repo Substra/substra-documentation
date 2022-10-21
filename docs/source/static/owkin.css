@@ -102,6 +102,17 @@
 }
 
 
+
+.wy-menu-vertical a:visited, .wy-menu-vertical a.reference.internal:visited {
+    color: var(--color-font);
+    font-weight: 600;
+    font-family: 'Gattica';
+}
+
+
+
+
+
 /* TYPOGRAPHY */
 
 body {
