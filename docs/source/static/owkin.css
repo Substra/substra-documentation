@@ -88,6 +88,7 @@
     --color-red-50: #fff5f6;
     
     --color-font: var(--color-gray-900);
+    --color-selection: #edbe1140;
     --font-family: "Gattica", serif;
     --font-weight-default: 500;
     --font-weight-bold: 700;
@@ -107,6 +108,16 @@ body {
     font-size: 15px;
     color: var(--color-font);
 }
+
+::-moz-selection {
+    /* color: var(--color-font); */
+    background: var(--color-selection);
+  }
+  
+::selection {
+    /* color: var(--color-font); */
+    background: var(--color-selection);
+  }
 
 h1, h2, h3, h4, h5, H6,
 .rst-content .toctree-wrapper > p.caption {
