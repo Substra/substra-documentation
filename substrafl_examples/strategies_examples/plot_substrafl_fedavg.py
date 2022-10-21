@@ -477,7 +477,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 NUM_ROUNDS = 3
 
 compute_plan = execute_experiment(
-    client=clients[ALGO_ORG_ID],s
+    client=clients[ALGO_ORG_ID],
     algo=MyAlgo(),
     strategy=strategy,
     train_data_nodes=train_data_nodes,
