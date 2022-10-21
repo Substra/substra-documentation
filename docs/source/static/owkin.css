@@ -1,8 +1,38 @@
 
 /* VARIABLES */
 
-@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* Font face */
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Light100.otf) format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Regular100.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Regular100.otf) format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Medium100.otf) format("opentype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Gattica";
+    src: url(Gattica-Bold100.otf) format("opentype");
+    font-weight: 700;
+}
+
+/* Colors */
 
 :root {
     --color-primary-600: #4525ee;
@@ -56,17 +86,11 @@
     --color-red-200: #feb1b9;
     --color-red-100: #fed7da;
     --color-red-50: #fff5f6;
-
-
-    --color-teal: #32c6c6;
-    --color-blue: #37b3ff;
-    --color-gold: #ffc200;
-    --color-lightest-gray: #f5f5f5;
-    --color-light-gray: #d9d9d9;
-    --color-light-gold: #faf3eb;
     
     --color-font: var(--color-gray-900);
-    --font-family-heading: "Didact Gothic", sans-serif;
+    --font-family: "Gattica", serif;
+    --font-weight-default: 500;
+    --font-weight-bold: 700;
 }
 
 /* LAYOUT */
@@ -76,18 +100,30 @@
 }
 
 
+
+.wy-menu-vertical a:visited, .wy-menu-vertical a.reference.internal:visited {
+    color: var(--color-font);
+    font-weight: 600;
+    font-family: 'Gattica';
+}
+
+
+
+
+
 /* TYPOGRAPHY */
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-default);
     font-size: 15px;
     color: var(--color-font);
 }
 
 h1, h2, h3, h4, h5, H6,
 .rst-content .toctree-wrapper > p.caption {
-    font-family: var(--font-family-heading);
-    font-weight: normal;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-default);
 }
 
 h1 {
@@ -105,13 +141,13 @@ h3 {
 }
 
 .rst-content dl dt {
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
 }
 
 .rst-content .toc-backref {
     text-decoration: none;
     color: var(--color-font);
-    font-weight: normal;
+    font-weight: var(--font-weight-default);
 }
 
 .wy-nav-content,
@@ -148,8 +184,8 @@ h3 {
     align-items: center;
     padding: 0;
     margin-bottom: 0.5em; /* TODO: Uniformize units */
-    font-family: var(--font-family-heading);
-    font-weight: normal;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-default);
 }
 
 .wy-side-nav-search .wy-dropdown > a img.logo,
@@ -163,8 +199,8 @@ h3 {
 }
 
 .wy-side-nav-search > div.version {
-    font-family: var(--font-family-heading);
-    font-weight: normal;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-default);
     color: var(--color-font);
 }
 
@@ -203,7 +239,7 @@ h3 {
 .wy-menu-vertical a {
     text-decoration: none;
     color: var(--color-font);
-    font-weight: inherit;
+    font-weight: var(--font-weight-default);
     font-size: 14px;
     border-radius: 0 15px 15px 0;
     transition: background-color 0.15s ease;
@@ -217,38 +253,32 @@ h3 {
 }
 
 .wy-menu-vertical li.current,
-:is(
-    .wy-menu-vertical li.current,
-    .wy-menu-vertical li.toctree-l2.current > a,
-    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a,
-    .wy-menu-vertical li.toctree-l3.current > a,
-    .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a
-):not(:hover){
+.wy-menu-vertical li.current:not(:hover),
+.wy-menu-vertical li.toctree-l2.current > a:not(:hover),
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:not(:hover),
+.wy-menu-vertical li.toctree-l3.current > a:not(:hover),
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a:not(:hover) {
     background: transparent;
 }
 
-:is(
-    .wy-menu-vertical li.toctree-l1.current,
-    .wy-menu-vertical li.toctree-l1.current li.toctree-l2,
-    .wy-menu-vertical li.toctree-l2.current,
-    .wy-menu-vertical li.toctree-l2.current li.toctree-l3,
-    .wy-menu-vertical li.toctree-l3.current,
-    .wy-menu-vertical li.toctree-l3.current li.toctree-l4
-) > a.current {
+.wy-menu-vertical li.toctree-l1.current > a.current,
+.wy-menu-vertical li.toctree-l1.current li.toctree-l2 > a.current,
+.wy-menu-vertical li.toctree-l2.current > a.current,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a.current,
+.wy-menu-vertical li.toctree-l3.current > a.current,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a.current {
     background-color: var(--color-primary-100);
 }
 
 /* Hover */
 
 .wy-menu-vertical a:hover,
-:is(
-    .wy-menu-vertical li.toctree-l1.current,
-    .wy-menu-vertical li.toctree-l1.current li.toctree-l2,
-    .wy-menu-vertical li.toctree-l2.current,
-    .wy-menu-vertical li.toctree-l2.current li.toctree-l3,
-    .wy-menu-vertical li.toctree-l3.current,
-    .wy-menu-vertical li.toctree-l3.current li.toctree-l4
-) > a:hover {
+.wy-menu-vertical li.toctree-l1.current > a:hover,
+.wy-menu-vertical li.toctree-l1.current li.toctree-l2 > a:hover,
+.wy-menu-vertical li.toctree-l2.current > a:hover,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:hover,
+.wy-menu-vertical li.toctree-l3.current > a:hover,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a:hover {
     background-color: var(--color-primary-50);
 }
 
@@ -347,7 +377,7 @@ a:focus .pre {
 
 .rst-content .admonition-title, 
 .wy-alert-title {
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
     display: inline;
     color: inherit;
     background: transparent;
@@ -391,17 +421,16 @@ a:focus .pre {
 .rst-content .hint,
 .rst-content .important,
 .rst-content .tip,
-.rst-content .wy-alert-success:is(
-    .admonition,
-    .admonition-todo,
-    .attention,
-    .caution,
-    .danger,
-    .error,
-    .note,
-    .seealso,
-    .warning,
-) {
+.rst-content .wy-alert-success,
+.rst-content .wy-alert-success.admonition,
+.rst-content .wy-alert-success.admonition-todo,
+.rst-content .wy-alert-success.attention,
+.rst-content .wy-alert-success.caution,
+.rst-content .wy-alert-success.danger,
+.rst-content .wy-alert-success.error,
+.rst-content .wy-alert-success.note,
+.rst-content .wy-alert-success.seealso,
+.rst-content .wy-alert-success.warning {
     background: var(--color-green-100);
     border-color: var(--color-green-500);
 }
@@ -552,7 +581,7 @@ html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(
     border-left: 4px solid var(--color-primary-500);
     background-color: var(--color-primary-100);
     padding: 16px;
-    font-weight: 500;
+    font-weight: var(--font-weight-default);
 }
 
 /* BUTTONS */
@@ -563,6 +592,7 @@ html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(
     border-radius: 999px;
     box-shadow: none;
     font-size: 20px;
+    font-family: var(--font-family);
 }
 .btn.btn-neutral .fa {
     display: none;
@@ -575,11 +605,22 @@ div.sphx-glr-download a {
     background-image: none;
     border: none;
     border-radius: 0;
-    padding: 6px 12px;
+    padding: 6px 24px;
+    color: white;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
 }
+
+div.sphx-glr-download a .pre {
+    color: white;
+    text-decoration: none;
+}
+
 div.sphx-glr-download a:hover {
     box-shadow: none;
+    background-color: var(--color-primary-600);
 }
+
 div.sphx-glr-download code.download {
     padding: 0;
 }
