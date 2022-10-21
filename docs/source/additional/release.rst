@@ -377,7 +377,7 @@ Substra 0.22.0 - 2022-10-20
 
 Main changes
 
-- **BREAKING CHANGE**: the backend type is now set in the Client, the env variable DEBUG_SPAWNER is not used anymore. Default value is deployed (#287)
+- **BREAKING CHANGE**: the backend type is now set in the ``Client``, the env variable ``DEBUG_SPAWNER`` is not used anymore. Default value is deployed.
 
 before:
 
@@ -392,12 +392,14 @@ after:
 
   client = substra.Client(backend_type=substra.BackendType.LOCAL_SUBPROCESS)
 
-- **BREAKING CHANGE**: schemas.ComputePlanSpec clean_models property is now removed, the transient property on tasks outputs should be used instead.
-- **BREAKING CHANGE**: Model.category field has been removed
-- **BREAKING CHANGE**: train and predict method of all substrafl algos now takes datasamples as argument instead of X abd y. This is impacting the user code only if he or she overwrite those methods instead of using the _local_train and _local_predict methods.
-- **BREAKING CHANGE**: The result of the get_data method from the opener is automatically provided to the given dataset as __init__ arg instead of x and y within the train and predict methods of all Torch*Algo classes. The user dataset should be adapted accordingly e.g.: from torch.utils.data import Dataset
+- **BREAKING CHANGE**: ``schemas.ComputePlanSpec.clean_models`` property is now removed, the ``transient`` property on tasks outputs should be used instead.
+- **BREAKING CHANGE**: ``Model.category`` field has been removed.
+- **BREAKING CHANGE**: ``train`` and ``predict`` methods of all substrafl algos now takes datasamples as argument instead of X and y. This is impacting the user code only if he or she overwrite those methods instead of using the ``_local_train`` and ``_local_predict`` methods.
+- **BREAKING CHANGE**: The result of the ``get_data`` method from the opener is automatically provided to the given dataset as ``__init__`` arg instead of x and y within the ``train`` and ``predict`` methods of all ``TorchAlgo`` classes. The user dataset should be adapted accordingly:
 
 .. code-block:: python
+
+  from torch.utils.data import Dataset
 
   class MyDataset(Dataset):
       def __init__(self, x, y, is_inference=False) -> None:
