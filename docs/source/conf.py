@@ -1,3 +1,6 @@
+from errno import WSAEDQUOT
+
+
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
