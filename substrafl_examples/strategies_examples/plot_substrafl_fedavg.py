@@ -34,29 +34,17 @@ This example does not use the deployed platform of Substra and will run in local
 
 """
 # %%
-# Client and data preparation
-# ***************************
-#
-# Imports
-# =======
-import codecs
-import os
-import pathlib
-import sys
-import zipfile
-
-import numpy as np
-from torchvision.datasets import MNIST
-
-# %%
-# Creating the Substra Client
-# ===========================
+# Setup
+# *****
 #
 # We work with two different organizations, defined by their IDs. Both organizations provide a dataset. One of them will also provide the algorithm and # will register the machine learning tasks.
 #
 # Once these variables defined, we can create our Substra :ref:`documentation/references/sdk:Client`.
 #
 # This example runs in local mode, simulating a **federated learning** experiment.
+
+
+import pathlib
 
 from substra import Client
 
@@ -79,8 +67,12 @@ assets_directory = pathlib.Path.cwd() / "assets"
 
 
 # %%
-# Download and extract MNIST dataset
-# ==================================
+# Data and metrics
+# ****************
+
+# %%
+# Data preparation
+# ================
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
@@ -89,103 +81,26 @@ assets_directory = pathlib.Path.cwd() / "assets"
 # Each organization will have access to half the train data, and to half the test data (which correspond to **30,000**
 # images for training and **5,000** for testing each).
 
+from utils.mnist_data import setup_mnist
 
-def get_int(b: bytes) -> int:
-    return int(codecs.encode(b, "hex"), 16)
-
-
-def MNISTraw2numpy(path: str, strict: bool = True) -> np.array:
-    # read
-    with open(path, "rb") as f:
-        data = f.read()
-    # parse
-    magic = get_int(data[0:4])
-    nd = magic % 256
-    assert 1 <= nd <= 3
-    numpy_type = np.uint8
-    s = [get_int(data[4 * (i + 1) : 4 * (i + 2)]) for i in range(nd)]
-
-    num_bytes_per_value = np.iinfo(numpy_type).bits // 8
-    # The MNIST format uses the big endian byte order. If the system uses little endian byte order by default,
-    # we need to reverse the bytes before we can read them with np.frombuffer().
-    needs_byte_reversal = sys.byteorder == "little" and num_bytes_per_value > 1
-    parsed = np.frombuffer(bytearray(data), dtype=numpy_type, offset=(4 * (nd + 1)))
-    if needs_byte_reversal:
-        parsed = parsed.flip(0)
-
-    assert parsed.shape[0] == np.prod(s) or not strict
-    return parsed.reshape(*s)
-
-
-raw_path = pathlib.Path(data_path) / "MNIST" / "raw"
-
-# Download the dataset
-MNIST(data_path, download=True)
-
-# Extract numpy array from raw data
-train_images = MNISTraw2numpy(str(raw_path / "train-images-idx3-ubyte"))
-train_labels = MNISTraw2numpy(str(raw_path / "train-labels-idx1-ubyte"))
-test_images = MNISTraw2numpy(str(raw_path / "t10k-images-idx3-ubyte"))
-test_labels = MNISTraw2numpy(str(raw_path / "t10k-labels-idx1-ubyte"))
-
-# Split array into the number of organization
-train_images_folds = np.split(train_images, N_CLIENTS)
-train_labels_folds = np.split(train_labels, N_CLIENTS)
-test_images_folds = np.split(test_images, N_CLIENTS)
-test_labels_folds = np.split(test_labels, N_CLIENTS)
-
-# Save splits in different folders to simulate the different organization
-for i in range(N_CLIENTS):
-
-    # Save train dataset on each org
-    os.makedirs(str(data_path / f"org_{i+1}/train"), exist_ok=True)
-    filename = data_path / f"org_{i+1}/train/train_images.npy"
-    np.save(str(filename), train_images_folds[i])
-    filename = data_path / f"org_{i+1}/train/train_labels.npy"
-    np.save(str(filename), train_labels_folds[i])
-
-    # Save test dataset on each org
-    os.makedirs(str(data_path / f"org_{i+1}/test"), exist_ok=True)
-    filename = data_path / f"org_{i+1}/test/test_images.npy"
-    np.save(str(filename), test_images_folds[i])
-    filename = data_path / f"org_{i+1}/test/test_labels.npy"
-    np.save(str(filename), test_labels_folds[i])
+setup_mnist(data_path, N_CLIENTS)
 
 # %%
-# Registering assets
-# ******************
+# Dataset registration
+# ====================
 #
-# Substra and Substrafl imports
-# ==============================
-
-from substra.sdk.schemas import (
-    DatasetSpec,
-    AlgoInputSpec,
-    AlgoOutputSpec,
-    AssetKind,
-    Permissions,
-    DataSampleSpec,
-    AlgoSpec,
-)
-from substrafl.nodes import TestDataNode, TrainDataNode
-
-# %%
-# Permissions
-# ===========
+# A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script with the instruction
+# of *how to load the data* from the files in memory, and a **description markdown** file.
 #
 # As data can not be seen once it is registered on the platform, we set :ref:`documentation/concepts:Permissions` for
 # each :ref:`documentation/concepts:Assets` define their access rights to the different data.
 #
 # The metadata are visible by all the users of a :term:`Channel`.
 
-permissions = Permissions(public=False, authorized_ids=ORGS_ID)
+from substra.sdk.schemas import DatasetSpec
+from substra.sdk.schemas import Permissions
 
-# %%
-# Registering dataset
-# ===================
-#
-# A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script with the instruction
-# of *how to load the data* from the files in memory, and a **description markdown** file.
+permissions = Permissions(public=False, authorized_ids=ORGS_ID)
 
 dataset = DatasetSpec(
     name="MNIST",
@@ -196,10 +111,18 @@ dataset = DatasetSpec(
     logs_permission=permissions,
 )
 
+dataset_keys = {}
+
+for ind, org_id in enumerate(ORGS_ID):
+    client = clients[org_id]
+
+    # Add the dataset to the client to provide access to the opener in each organization.
+    dataset_keys[org_id] = client.add_dataset(dataset)
+    assert dataset_keys[org_id], "Missing data manager key"
 
 # %%
-# Adding Metrics
-# ==============
+# Metrics registration
+# ====================
 #
 # A metric corresponds to an algorithm used to compute the score of predictions on a
 # **datasample**.
@@ -210,6 +133,12 @@ dataset = DatasetSpec(
 # - a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__ to specify the required dependencies of the
 #   **Python scripts**
 
+import zipfile
+
+from substra.sdk.schemas import AlgoInputSpec
+from substra.sdk.schemas import AlgoOutputSpec
+from substra.sdk.schemas import AlgoSpec
+from substra.sdk.schemas import AssetKind
 
 inputs_metrics = [
     AlgoInputSpec(
@@ -245,86 +174,23 @@ with zipfile.ZipFile(archive_path, "w") as z:
 
 metric_key = clients[ALGO_ORG_ID].add_algo(objective)
 
-# %%
-# Train and test data nodes
-# =========================
-#
-# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset to access them
-# is the **datasample asset**.
-#
-# A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
-# it is based on, in order to have access to the proper `opener.py` file.
-#
-# Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
-# :ref:`substrafl_doc/api/nodes:TrainDataNode` and :ref:`substrafl_doc/api/nodes:TestDataNode` to gathered the
-# :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
-
-train_data_nodes = list()
-test_data_nodes = list()
-
-for ind, org_id in enumerate(ORGS_ID):
-    client = clients[org_id]
-
-    # Add the dataset to the client to provide access to the opener in each organization.
-    dataset_key = client.add_dataset(dataset)
-    assert dataset_key, "Missing data manager key"
-
-    # Add the training data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_key],
-        test_only=False,
-        path=data_path / f"org_{ind+1}" / "train",
-    )
-    train_datasample_key = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
-
-    # Create the Train Data Node (or training task) and save it in a list
-    train_data_node = TrainDataNode(
-        organization_id=org_id,
-        data_manager_key=dataset_key,
-        data_sample_keys=[train_datasample_key],
-    )
-    train_data_nodes.append(train_data_node)
-
-    # Add the testing data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_key],
-        test_only=True,
-        path=data_path / f"org_{ind+1}" / "test",
-    )
-    test_datasample_key = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
-
-    # Create the Test Data Node (or testing task) and save it in a list
-    test_data_node = TestDataNode(
-        organization_id=org_id,
-        data_manager_key=dataset_key,
-        test_data_sample_keys=[test_datasample_key],
-        metric_keys=[metric_key],
-    )
-    test_data_nodes.append(test_data_node)
 
 # %%
-# Machine Learning specification
-# ******************************
+# Specify the machine learning components
+# ***************************************
 #
-# Torch imports
-# =============
+# In this section, you will register an algorithm and its dependencies, and specify
+# the federated learning strategy as well as the nodes on which to train and to test.
+# %%
+# Model definition
+# ================
+#
+# We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
+# of Substrafl.
 
 import torch
 from torch import nn
 import torch.nn.functional as F
-
-# %%
-# CNN definition
-# ==============
-#
-# We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
-# of Substrafl.
 
 seed = 42
 torch.manual_seed(seed)
@@ -357,20 +223,6 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 criterion = torch.nn.CrossEntropyLoss()
 
 # %%
-# Substrafl imports
-# ==================
-
-from typing import Any
-
-from substrafl.algorithms.pytorch import TorchFedAvgAlgo
-from substrafl.dependency import Dependency
-from substrafl.strategies import FedAvg
-from substrafl.nodes import AggregationNode
-from substrafl.evaluation_strategy import EvaluationStrategy
-from substrafl.index_generator import NpIndexGenerator
-from substrafl.experiment import execute_experiment
-
-# %%
 # Substrafl algo definition
 # ==========================
 #
@@ -387,6 +239,9 @@ from substrafl.experiment import execute_experiment
 # The index generator will be used a the batch sampler of the dataset, in order to save the state of the seen samples
 # during the training, as Federated Algorithms have a notion of `num_updates`, which forced the batch sampler of the
 # dataset to be stateful.
+
+from substrafl.algorithms.pytorch import TorchFedAvgAlgo
+from substrafl.index_generator import NpIndexGenerator
 
 # Number of model update between each FL strategy aggregation.
 NUM_UPDATES = 100
@@ -427,7 +282,6 @@ class MyAlgo(TorchFedAvgAlgo):
             seed=seed,
         )
 
-
 # %%
 # Algo dependencies
 # =================
@@ -436,17 +290,113 @@ class MyAlgo(TorchFedAvgAlgo):
 # :ref:`substrafl_doc/api/dependency:Dependency` object, in order to install the right library in the Python
 # environment of each organization.
 
+from substrafl.dependency import Dependency
+
 algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 # %%
 # Federated Learning strategies
 # =============================
-#
-# For this example, we choose to use the **Federated averaging Strategy** (:ref:`substrafl_doc/api/strategies:Strategies`),
-# based on `the FedAvg paper by McMahan et al., 2017 <https://arxiv.org/abs/1602.05629>`__.
+
+from substrafl.strategies import FedAvg
 
 strategy = FedAvg()
 
+# %%
+# Where to train where to aggregate
+# =================================
+#
+# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset to access them
+# is the **datasample asset**.
+#
+# A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
+# it is based on, in order to have access to the proper `opener.py` file.
+#
+# Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
+# :ref:`substrafl_doc/api/nodes:TrainDataNode` to gathered the
+# :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
+#
+# The :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
+# computed
+
+from substra.sdk.schemas import DataSampleSpec
+
+from substrafl.nodes import TrainDataNode
+from substrafl.nodes import AggregationNode
+
+
+aggregation_node = AggregationNode(ALGO_ORG_ID)
+
+train_data_nodes = list()
+
+for ind, org_id in enumerate(ORGS_ID):
+    client = clients[org_id]
+
+    # Get the dataset to the client to provide access to the opener in each organization.
+    dataset_key = dataset_keys[org_id]
+
+    # Add the training data on each organization.
+    data_sample = DataSampleSpec(
+        data_manager_keys=[dataset_key],
+        test_only=False,
+        path=data_path / f"org_{ind+1}" / "train",
+    )
+    train_datasample_key = client.add_data_sample(
+        data_sample,
+        local=True,
+    )
+
+    # Create the Train Data Node (or training task) and save it in a list
+    train_data_node = TrainDataNode(
+        organization_id=org_id,
+        data_manager_key=dataset_key,
+        data_sample_keys=[train_datasample_key],
+    )
+    train_data_nodes.append(train_data_node)
+
+# %%
+# Where and when to test
+# ======================
+#
+# With the same logic as the train nodes, we can create :ref:`substrafl_doc/api/nodes:TestDataNode` to gathered the
+# :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
+#
+# The :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, defines where and at which frequency we
+# evaluate the model
+
+
+from substrafl.nodes import TestDataNode
+from substrafl.evaluation_strategy import EvaluationStrategy
+
+my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
+
+test_data_nodes = list()
+
+for ind, org_id in enumerate(ORGS_ID):
+    client = clients[org_id]
+
+    # Get the dataset to the client to provide access to the opener in each organization.
+    dataset_key = dataset_keys[org_id]
+
+    # Add the testing data on each organization.
+    data_sample = DataSampleSpec(
+        data_manager_keys=[dataset_key],
+        test_only=True,
+        path=data_path / f"org_{ind+1}" / "test",
+    )
+    test_datasample_key = client.add_data_sample(
+        data_sample,
+        local=True,
+    )
+
+    # Create the Test Data Node (or testing task) and save it in a list
+    test_data_node = TestDataNode(
+        organization_id=org_id,
+        data_manager_key=dataset_key,
+        test_data_sample_keys=[test_datasample_key],
+        metric_keys=[metric_key],
+    )
+    test_data_nodes.append(test_data_node)
 
 # %%
 # Running the experiment
@@ -469,9 +419,7 @@ strategy = FedAvg()
 # - An **experiment folder** to save a summary of the operation made
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
-aggregation_node = AggregationNode(ALGO_ORG_ID)
-
-my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
+from substrafl.experiment import execute_experiment
 
 # Number of time to apply the compute plan.
 NUM_ROUNDS = 3
@@ -487,9 +435,14 @@ compute_plan = execute_experiment(
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=algo_deps,
 )
+
 # %%
-# Listing results
-# ===============
+# Explore the results
+# *******************
+# %%
+# List results
+# ============
+
 
 import pandas as pd
 
