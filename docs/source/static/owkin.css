@@ -99,18 +99,6 @@
 	margin: 0 auto;
 }
 
-
-
-.wy-menu-vertical a:visited, .wy-menu-vertical a.reference.internal:visited {
-    color: var(--color-font);
-    font-weight: 600;
-    font-family: 'Gattica';
-}
-
-
-
-
-
 /* TYPOGRAPHY */
 
 body {
@@ -169,11 +157,13 @@ h3 {
 }
 
 /* SIDEBAR */
+
 .wy-nav-side {
     background-color: inherit;
 }
 
 /* SIDEBAR SEARCH */
+
 .wy-side-nav-search > a {
     font-size: 24px;
     color: var(--color-font);
@@ -290,11 +280,13 @@ h3 {
     background-color: var(--color-primary-100);
 }
 
-/* Focus */
+/* Visited */
 
 .wy-menu-vertical a:visited,
 .wy-menu-vertical a.reference.internal:visited {
     color: var(--color-font);
+    font-weight: 600;
+    font-family: 'Gattica';
 }
 
 /* ======= */
@@ -582,6 +574,7 @@ html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(
     background-color: var(--color-primary-100);
     padding: 16px;
     font-weight: var(--font-weight-default);
+    word-break: break-word;
 }
 
 /* BUTTONS */
@@ -623,4 +616,29 @@ div.sphx-glr-download a:hover {
 
 div.sphx-glr-download code.download {
     padding: 0;
+}
+
+/* ========== */
+/* RESPONSIVE */
+/* ========== */
+
+@media screen and (max-width:768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    .rst-content .toctree-wrapper > p.caption,
+    h2 {
+        font-size: 30px;
+        
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    html.writer-html5 .rst-content dl.field-list, 
+    html.writer-html5 .rst-content dl.footnote {
+        display: block;
+    }
 }
