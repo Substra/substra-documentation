@@ -1,8 +1,8 @@
+
 Overview
 ========
 
 .. _substrafl_concepts:
-
 
 Substrafl is a federated learning Python library that leverages the Substra framework to run federated learning experiments at scale on real distributed data.
 Its main usage is therefore a production usage. Yet Substrafl can also be used on a single machine on a virtually splitted dataset for two use cases:
