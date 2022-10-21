@@ -37,7 +37,8 @@ This example does not use the deployed platform of Substra and will run in local
 # Setup
 # *****
 #
-# We work with two different organizations, defined by their IDs. Both organizations provide a dataset. One of them will also provide the algorithm and # will register the machine learning tasks.
+# We work with two different organizations, defined by their IDs. Both organizations provide a dataset. One of them will also provide the algorithm and
+# will register the machine learning tasks.
 #
 # Once these variables defined, we can create our Substra :ref:`documentation/references/sdk:Client`.
 #
@@ -181,6 +182,7 @@ metric_key = clients[ALGO_ORG_ID].add_algo(objective)
 #
 # In this section, you will register an algorithm and its dependencies, and specify
 # the federated learning strategy as well as the nodes on which to train and to test.
+
 # %%
 # Model definition
 # ================
@@ -440,6 +442,7 @@ compute_plan = execute_experiment(
 # %%
 # Explore the results
 # *******************
+
 # %%
 # List results
 # ============
