@@ -372,6 +372,15 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
+This is an overview of the main changes, please have a look at the changelog of every repos to have a full grasp on what has changed:
+
+- `substra changelog <https://github.com/Substra/substra/blob/main/CHANGELOG.md>`__
+- `substrafl changelog <https://github.com/Substra/substrafl/blob/main/CHANGELOG.md>`__
+- `frontend changelog <https://github.com/Substra/substra-frontend/blob/main/CHANGELOG.md>`__
+- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/main/CHANGELOG.md>`__
+- `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
+- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
+
 Substra 0.22.0 - 2022-10-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -441,12 +450,12 @@ should be replaced with
               dataset=MyDataset,
           )
 
-- **BREAKING CHANGE**: Algo.category: do not rely on categories anymore, all algo categories will be returned as UNKNOWN
-- **BREAKING CHANGE**: Replaced algo by algo_key in ComputeTask
+- **BREAKING CHANGE**: ``Algo.category``: do not rely on categories anymore, all algo categories will be returned as ``UNKNOWN``.
+- **BREAKING CHANGE**: Replaced ``algo`` by ``algo_key`` in ComputeTask.
 
 GUI
 
-- Improved user management: the last admin cannot be deleted anymore
+- Improved user management: the last admin cannot be deleted anymore.
 
 Substra
 
@@ -457,10 +466,10 @@ Substrafl
 
 - NOTABLE CHANGES due to breaking changes in substra-tools:
 
-  - the opener only exposes get_data and fake_data methods
-  - the results of the above method is passed under the datasamples keys within the inputs dict arg of all tools methods (train, predict, aggregate, score)
-  - all method (train, predict, aggregate, score) now takes a task_properties argument (dict) in addition to inputs and outputs
-  - The rank of a task previously passed under the rank key within the inputs is now given in the task_properties dict under the rank key
+  - The opener only exposes ``get_data`` and ``fake_data`` methods.
+  - The results of the above method is passed under the datasamples keys within the inputs dict arg of all tools methods (``train``, ``predict``, ``aggregate``, ``score``).
+  - All method (``train``, ``predict``, ``aggregate``, ``score``) now takes a task_properties argument (``dict``) in addition to inputs and outputs.
+  - The rank of a task previously passed under the rank key within the inputs is now given in the ``task_properties`` dict under the rank key.
 
 This means that all opener.py file should be changed from:
 
@@ -494,7 +503,7 @@ to:
       def fake_data(self, n_samples=None):
         ...
 
-This also implies that metrics has now access to the results of get_data and not only get_y as previously. The user should adapt all of his metrics file accordingly e.g.:
+This also implies that metrics has now access to the results of ``get_data`` and not only ``get_y`` as previously. The user should adapt all of his metrics file accordingly e.g.:
 
 .. code-block:: python
 
@@ -531,15 +540,6 @@ Substra 0.21.0 (first OS release) - 2022-09-12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is our first open source release since 2021! When the product was closed source it used to be named Connect. It is now renamed Substra.
-This is an overview of the main changes, please have a look at the changelog of every
-repos to have a full grasp on what has changed:
-
-- `substra changelog <https://github.com/Substra/substra/blob/0.36.0/CHANGELOG.md>`__
-- `substrafl changelog <https://github.com/Substra/substrafl/blob/0.28.0/CHANGELOG.md>`__
-- `frontend changelog <https://github.com/Substra/substra-frontend/blob/0.34.0/CHANGELOG.md>`__
-- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/0.16.0/CHANGELOG.md>`__
-- `backend changelog <https://github.com/Substra/substra-backend/blob/0.29.0/CHANGELOG.md>`__
-- `orchestrator changelog <https://github.com/Substra/orchestrator/blob/0.26.1/CHANGELOG.md>`__
 
 Main changes
 
