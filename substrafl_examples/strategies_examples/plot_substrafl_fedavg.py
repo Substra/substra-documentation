@@ -103,7 +103,7 @@ setup_mnist(data_path, N_CLIENTS)
 #
 # A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
 # it is based on, in order to have access to the proper `opener.py` file.
-#
+
 from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
 from substra.sdk.schemas import DataSampleSpec
