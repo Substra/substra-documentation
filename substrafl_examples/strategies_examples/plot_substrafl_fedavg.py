@@ -97,9 +97,16 @@ setup_mnist(data_path, N_CLIENTS)
 # each :ref:`documentation/concepts:Assets` define their access rights to the different data.
 #
 # The metadata are visible by all the users of a :term:`Channel`.
-
+#
+# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset to access them
+# is the **datasample asset**.
+#
+# A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
+# it is based on, in order to have access to the proper `opener.py` file.
+#
 from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
+from substra.sdk.schemas import DataSampleSpec
 
 permissions = Permissions(public=False, authorized_ids=ORGS_ID)
 
@@ -113,6 +120,8 @@ dataset = DatasetSpec(
 )
 
 dataset_keys = {}
+train_datasample_keys = {}
+test_datasample_keys = {}
 
 for ind, org_id in enumerate(ORGS_ID):
     client = clients[org_id]
@@ -120,6 +129,30 @@ for ind, org_id in enumerate(ORGS_ID):
     # Add the dataset to the client to provide access to the opener in each organization.
     dataset_keys[org_id] = client.add_dataset(dataset)
     assert dataset_keys[org_id], "Missing data manager key"
+
+    client = clients[org_id]
+
+    # Add the training data on each organization.
+    data_sample = DataSampleSpec(
+        data_manager_keys=[dataset_keys[org_id]],
+        test_only=False,
+        path=data_path / f"org_{ind+1}" / "train",
+    )
+    train_datasample_keys[org_id] = client.add_data_sample(
+        data_sample,
+        local=True,
+    )
+
+    # Add the testing data on each organization.
+    data_sample = DataSampleSpec(
+        data_manager_keys=[dataset_keys[org_id]],
+        test_only=True,
+        path=data_path / f"org_{ind+1}" / "test",
+    )
+    test_datasample_keys[org_id] = client.add_data_sample(
+        data_sample,
+        local=True,
+    )
 
 # %%
 # Metrics registration
@@ -284,6 +317,7 @@ class MyAlgo(TorchFedAvgAlgo):
             seed=seed,
         )
 
+
 # %%
 # Algo dependencies
 # =================
@@ -308,20 +342,12 @@ strategy = FedAvg()
 # Where to train where to aggregate
 # =================================
 #
-# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset to access them
-# is the **datasample asset**.
-#
-# A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
-# it is based on, in order to have access to the proper `opener.py` file.
-#
 # Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
 # :ref:`substrafl_doc/api/nodes:TrainDataNode` to gathered the
 # :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
 #
 # The :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
 # computed
-
-from substra.sdk.schemas import DataSampleSpec
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -332,27 +358,12 @@ aggregation_node = AggregationNode(ALGO_ORG_ID)
 train_data_nodes = list()
 
 for ind, org_id in enumerate(ORGS_ID):
-    client = clients[org_id]
-
-    # Get the dataset to the client to provide access to the opener in each organization.
-    dataset_key = dataset_keys[org_id]
-
-    # Add the training data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_key],
-        test_only=False,
-        path=data_path / f"org_{ind+1}" / "train",
-    )
-    train_datasample_key = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
 
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
         organization_id=org_id,
-        data_manager_key=dataset_key,
-        data_sample_keys=[train_datasample_key],
+        data_manager_key=dataset_keys[org_id],
+        data_sample_keys=[train_datasample_keys[org_id]],
     )
     train_data_nodes.append(train_data_node)
 
@@ -374,27 +385,12 @@ from substrafl.evaluation_strategy import EvaluationStrategy
 test_data_nodes = list()
 
 for ind, org_id in enumerate(ORGS_ID):
-    client = clients[org_id]
-
-    # Get the dataset to the client to provide access to the opener in each organization.
-    dataset_key = dataset_keys[org_id]
-
-    # Add the testing data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_key],
-        test_only=True,
-        path=data_path / f"org_{ind+1}" / "test",
-    )
-    test_datasample_key = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
 
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
         organization_id=org_id,
-        data_manager_key=dataset_key,
-        test_data_sample_keys=[test_datasample_key],
+        data_manager_key=dataset_keys[org_id],
+        test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_keys=[metric_key],
     )
     test_data_nodes.append(test_data_node)
