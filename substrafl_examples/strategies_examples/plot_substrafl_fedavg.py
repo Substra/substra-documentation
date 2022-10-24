@@ -124,7 +124,7 @@ train_datasample_keys = {}
 test_datasample_keys = {}
 
 for ind, org_id in enumerate(ORGS_ID):
-    client = clients[org_id]d
+    client = clients[org_id]
 
     # Add the dataset to the client to provide access to the opener in each organization.
     dataset_keys[org_id] = client.add_dataset(dataset)
