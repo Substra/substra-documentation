@@ -98,8 +98,8 @@ setup_mnist(data_path, N_CLIENTS)
 #
 # The metadata are visible by all the users of a :term:`Channel`.
 #
-# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset to access them
-# is the **datasample asset**.
+# The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset that contains the
+# data is the **datasample asset**.
 #
 # A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
 # it is based on, in order to have access to the proper `opener.py` file.
@@ -135,7 +135,6 @@ for ind, org_id in enumerate(ORGS_ID):
     # Add the training data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
-        test_only=False,
         path=data_path / f"org_{ind+1}" / "train",
     )
     train_datasample_keys[org_id] = client.add_data_sample(
@@ -146,7 +145,6 @@ for ind, org_id in enumerate(ORGS_ID):
     # Add the testing data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
-        test_only=True,
         path=data_path / f"org_{ind+1}" / "test",
     )
     test_datasample_keys[org_id] = client.add_data_sample(
