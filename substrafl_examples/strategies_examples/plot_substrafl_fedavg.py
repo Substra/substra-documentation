@@ -82,7 +82,7 @@ assets_directory = pathlib.Path.cwd() / "assets"
 # Each organization will have access to half the train data, and to half the test data (which correspond to **30,000**
 # images for training and **5,000** for testing each).
 
-from utils.mnist_data import setup_mnist
+from assets.mnist_data import setup_mnist
 
 setup_mnist(data_path, N_CLIENTS)
 
