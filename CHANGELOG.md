@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Update the MNIST example to be easier to read (#208)
 * Add How to download a model on the substrafl example (#204)
+* Move utils folder content in assets folder (#210)
 
 ## [0.22.0]
 
