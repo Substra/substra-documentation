@@ -135,6 +135,10 @@ h3 {
   font-size: 30px;
 }
 
+.rst-content p + ul {
+  margin-top: -14px;
+}
+
 .rst-content dl dt {
   font-weight: var(--font-weight-bold);
 }
