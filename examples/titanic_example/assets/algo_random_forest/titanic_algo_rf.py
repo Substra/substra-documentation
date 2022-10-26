@@ -118,6 +118,7 @@ def _predict_pandas(model, X):
     return pd.DataFrame(columns=["Survived"], data=y_pred)
 
 
+@tools.register
 def train(inputs, outputs, task_properties):
 
     X = inputs["datasamples"].drop(columns="Survived")
@@ -148,6 +149,7 @@ def train(inputs, outputs, task_properties):
     save_model(random_forest, outputs["model"])
 
 
+@tools.register
 def predict(inputs, outputs, task_properties):
     X = inputs["datasamples"].drop(columns="Survived")
     model = load_model(inputs["models"])
@@ -173,4 +175,4 @@ def save_predictions(y_pred, path):
 
 
 if __name__ == "__main__":
-    tools.execute(train, predict)
+    tools.execute()
