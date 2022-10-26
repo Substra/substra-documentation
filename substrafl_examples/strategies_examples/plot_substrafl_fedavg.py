@@ -20,7 +20,7 @@ This example does not use the deployed platform of Substra and will run in local
 **Requirements:**
 
   - To run this example locally, please make sure to download and unzip in the same directory as this example the
-    assets needed to run it: blalba
+    assets needed to run it:
 
     .. only:: builder_html or readthedocs
 
