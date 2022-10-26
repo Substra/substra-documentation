@@ -20,7 +20,7 @@ This example does not use the deployed platform of Substra and will run in local
 **Requirements:**
 
   - To run this example locally, please make sure to download and unzip in the same directory as this example the
-    assets needed to run it:
+    assets needed to run it: blalba
 
     .. only:: builder_html or readthedocs
 
@@ -219,17 +219,11 @@ inputs_metrics = [
         optional=False,
         multiple=True,
     ),
-    AlgoInputSpec(
-        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
-    AlgoInputSpec(
-        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
-    ),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_metrics = [
-    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
-]
+outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
 objective = AlgoSpec(
     inputs=inputs_metrics,
@@ -410,9 +404,7 @@ index_generator = NpIndexGenerator(
 class TorchDataset(torch.utils.data.Dataset):
     def __init__(self, datasamples, is_inference: bool):
         self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
-        self.y = F.one_hot(
-            torch.from_numpy(datasamples["labels"]).type(torch.int64), 10
-        ).type(torch.float32)
+        self.y = F.one_hot(torch.from_numpy(datasamples["labels"]).type(torch.int64), 10).type(torch.float32)
         self.is_inference = is_inference
 
     def __getitem__(self, idx):
