@@ -65,12 +65,8 @@ Some quick links:
    :caption: Substra documentation
    :hidden:
 
-   documentation/concepts.rst
+   documentation/user_guide.rst
    auto_examples/index
-   documentation/debug.rst
-   documentation/get_performances.rst
-   documentation/gpu.rst
-   documentation/substra-tools.rst
    documentation/api_reference.rst
 
 
