@@ -47,7 +47,7 @@ This example does not use the deployed platform of Substra and will run in local
 
 import pathlib
 
-from substra import Client
+from substrafl import Client
 
 # Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 2
@@ -104,54 +104,35 @@ setup_mnist(data_path, N_CLIENTS)
 # A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
 # it is based on, in order to have access to the proper `opener.py` file.
 
-from substra.sdk.schemas import DatasetSpec
-from substra.sdk.schemas import Permissions
-from substra.sdk.schemas import DataSampleSpec
+from substrafl.dependency import Dependency
 
-permissions = Permissions(public=False, authorized_ids=ORGS_ID)
+opener_file = assets_directory / "dataset" / "opener.py"
 
-dataset = DatasetSpec(
-    name="MNIST",
-    type="npy",
-    data_opener=assets_directory / "dataset" / "opener.py",
-    description=assets_directory / "dataset" / "description.md",
-    permissions=permissions,
-    logs_permission=permissions,
-)
 
-dataset_keys = {}
 train_datasample_keys = {}
 test_datasample_keys = {}
 
 for ind, org_id in enumerate(ORGS_ID):
     client = clients[org_id]
 
-    # Add the dataset to the client to provide access to the opener in each organization.
-    dataset_keys[org_id] = client.add_dataset(dataset)
-    assert dataset_keys[org_id], "Missing data manager key"
-
-    client = clients[org_id]
-
     # Add the training data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_keys[org_id]],
-        test_only=False,
-        path=data_path / f"org_{ind+1}" / "train",
-    )
-    train_datasample_keys[org_id] = client.add_data_sample(
-        data_sample,
+    train_datasample_keys[org_id] = client.register_dataset(
+        path_to_data=data_path / f"org_{ind+1}" / "test",
+        opener_file=opener_file,
+        public=False,
+        authorized_ids=org_id,
+        dependencies=Dependency(pypi_dependencies=["numpy==1.23.1"]),
         local=True,
     )
 
     # Add the testing data on each organization.
-    data_sample = DataSampleSpec(
-        data_manager_keys=[dataset_keys[org_id]],
-        test_only=True,
-        path=data_path / f"org_{ind+1}" / "test",
-    )
-    test_datasample_keys[org_id] = client.add_data_sample(
-        data_sample,
-        local=True,
+    test_datasample_keys[org_id] = client.register_dataset(
+        path_to_data=data_path / f"org_{ind+1}" / "test",
+        opener_file=opener_file,
+        public=False,
+        authorized_ids=org_id,
+        dependencies=Dependency(pypi_dependencies=["numpy==1.23.1"]),
+        local=True,  # ?
     )
 
 # %%
@@ -169,44 +150,12 @@ for ind, org_id in enumerate(ORGS_ID):
 
 import zipfile
 
-from substra.sdk.schemas import AlgoInputSpec
-from substra.sdk.schemas import AlgoOutputSpec
-from substra.sdk.schemas import AlgoSpec
-from substra.sdk.schemas import AssetKind
-
-inputs_metrics = [
-    AlgoInputSpec(
-        identifier="datasamples",
-        kind=AssetKind.data_sample,
-        optional=False,
-        multiple=True,
-    ),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
-]
-
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
-
-objective = AlgoSpec(
-    inputs=inputs_metrics,
-    outputs=outputs_metrics,
-    name="Accuracy",
-    description=assets_directory / "metric" / "description.md",
-    file=assets_directory / "metric" / "metrics.zip",
-    permissions=permissions,
+metric_key = clients[ALGO_ORG_ID].register_metric(
+    metric_path=assets_directory / "metric" / "metrics.py",
+    public=False,
+    authorized_ids=org_id,
+    dependencies=Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1", "torch==1.11.0"]),
 )
-
-METRICS_DOCKERFILE_FILES = [
-    assets_directory / "metric" / "metrics.py",
-    assets_directory / "metric" / "Dockerfile",
-]
-
-archive_path = objective.file
-with zipfile.ZipFile(archive_path, "w") as z:
-    for filepath in METRICS_DOCKERFILE_FILES:
-        z.write(filepath, arcname=filepath.name)
-
-metric_key = clients[ALGO_ORG_ID].add_algo(objective)
 
 
 # %%
@@ -362,7 +311,6 @@ for ind, org_id in enumerate(ORGS_ID):
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
         organization_id=org_id,
-        data_manager_key=dataset_keys[org_id],
         data_sample_keys=[train_datasample_keys[org_id]],
     )
     train_data_nodes.append(train_data_node)
@@ -389,7 +337,6 @@ for ind, org_id in enumerate(ORGS_ID):
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
         organization_id=org_id,
-        data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_keys=[metric_key],
     )
