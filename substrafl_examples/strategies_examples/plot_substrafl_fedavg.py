@@ -308,14 +308,13 @@ class TorchDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
 
         if self.is_inference:
-            x = torch.FloatTensor(self.x[idx][:, None, ...]) / 255
+            x = torch.FloatTensor(self.x[idx][None, ...]) / 255
             return x
 
         else:
-            x = torch.FloatTensor(self.x[idx][:, None, ...]) / 255
+            x = torch.FloatTensor(self.x[idx][None, ...]) / 255
 
-            y = self.y[idx]
-            y = torch.from_numpy(y).type(torch.int64)
+            y = torch.tensor(self.y[idx]).type(torch.int64)
             y = F.one_hot(y, 10)
             y = y.type(torch.float32)
 
