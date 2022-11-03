@@ -9,7 +9,7 @@ In this example, we work on **the grayscale images** of size **28x28 pixels**. T
 classification problem aiming to recognize the number written on each image.
 
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has
-been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks. This example used the specific PyTorch interface.
+been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks. This example here used the specific PyTorch interface.
 
 This example does not use a deployed platform of Substra and run in local mode.
 
@@ -36,7 +36,7 @@ This example does not use a deployed platform of Substra and run in local mode.
 # We work with three different organizations, defined by their IDs. Two organizations provide a dataset, and a third one provides the algorithm and
 # register the machine learning tasks.
 #
-# This example runs in local mode, simulating a **federated learning** experiment.
+# This example runs in local mode, simulating a federated learning experiment.
 #
 # In the following code cell, we define the different organizations needed for our FL experiment.
 
@@ -45,10 +45,9 @@ This example does not use a deployed platform of Substra and run in local mode.
 
 from substra import Client
 
-# Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 3
 
-# Every computations will run in ``subprocess`` mode, where everything run locally in Python subprocesses.
+# Every computations will run in `subprocess` mode, where everything run locally in Python subprocesses.
 # Ohers backend_types are:
 # ``docker`` mode where computations run locally in docker containers
 # ``deployed`` where computations run remotely (you need to have deployed platform for that)
@@ -97,7 +96,7 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # ====================
 #
 # A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script with the instruction
-# of *how to load the data* from the files in memory, and a **description markdown** file. The :ref:`documentation/concepts:Dataset`
+# of *how to load the data* from the files in memory, and a description markdown file. The :ref:`documentation/concepts:Dataset`
 # object itself does not contain the data. The proper asset that contains the
 # data is the **datasample asset**.
 #
@@ -106,7 +105,7 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # Data privacy is a key concept for Federated Learning experiments. That is why we set :ref:`documentation/concepts:Permissions`
 # for each :ref:`documentation/concepts:Assets` to define which organization can use them.
 #
-# Note that metadata are visible by all the organizations of a network.
+# Note that metadata, for instance: assets' creation date, assets owner, are visible by all the organizations of a network.
 
 from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
@@ -160,10 +159,10 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 #
 # A metric is an algorithm used to compute the score of predictions on one or several
 # **datasamples**.
-# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically build
+# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically built
 # from:
 #
-# - a **Python scripts** that implement the metric computation
+# - a **Python script   ** that implement the metric computation
 # - a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__ to specify the required dependencies of the
 #   **Python scripts**
 
@@ -216,14 +215,14 @@ metric_key = clients[ALGO_ORG_ID].add_algo(metric)
 # ***************************************
 #
 # This section uses the PyTorch based SubstraFL API to simplify the machine learning components definition.
-# However, SubstraFL is compatible with any Machine Learning framework.
+# However, SubstraFL is compatible with any machine learning framework.
 #
 # In this section, you will:
 #
 # - register an algorithm and its dependencies
 # - specify the federated learning strategy
 # - specify the organizations where to train and where to aggregate
-# - specify the organization where to test the models
+# - specify the organizations where to test the models
 
 
 # %%
