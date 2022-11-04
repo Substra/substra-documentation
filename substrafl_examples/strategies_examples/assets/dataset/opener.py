@@ -22,6 +22,9 @@ class MnistOpener(tools.Opener):
         labels_data_path = p / list(p.glob("*_labels.npy"))[0]
 
         # load data
-        data = {"images": np.load(images_data_path), "labels": np.load(labels_data_path)}
+        data = {
+            "images": np.load(images_data_path),
+            "labels": np.load(labels_data_path),
+        }
 
         return data
