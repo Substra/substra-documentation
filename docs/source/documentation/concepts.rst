@@ -3,11 +3,6 @@ Main Substra concepts
 
 .. concepts:
 
-.. warning::
-    In the near future there will be only one type of task: a generic task, and one type of algorithm. This will reduce the number the substra concepts and will allow more flexible usages of the library.
-
-    This new paradigm implies a lot of heavy changes at every release. We strive to make this documentation as up to date as possible at every release but in case something is not clear please :ref:`reach out <community>`.
-
 .. contents::
     :depth: 3
 
@@ -33,14 +28,6 @@ An algorithm corresponds to an archive (tar or zip file) containing:
 
     * One or more Python scripts that implement the algorithm. Importantly, a train and a predict functions have to be defined.
     * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
-
-There are five types of algorithms:
-
-* Simple algorithm: this algorithm has to be used with train tasks and produces a single model.
-* Composite algorithm: this algorithm has to be used with composite train tasks and makes it possible to train a trunk and a head model. The trunk model can be shared among all organizations whereas the head model always remains private to the organization where it was trained.
-* Aggregate algorithm: this algorithm has to be used with aggregated task. It is used to aggregate models or model updates. An aggregate algorithm does not need data to be used.
-* Predict algorithm: this algorithm has to be used with a predict task. It is used to generate predictions with a model and a dataset.
-* Metric algorithm: this algorithm has to be used with a test task. It corresponds to a function to compute the score of predictions on a dataset_.
 
 .. _concept_model:
 
