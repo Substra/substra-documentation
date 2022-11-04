@@ -1,6 +1,6 @@
-***************
-Getting started
-***************
+*****************************
+Deploying locally - dev setup
+*****************************
 
 
 This page gives you directions to locally run the Substra stack. This deployment is made of:
