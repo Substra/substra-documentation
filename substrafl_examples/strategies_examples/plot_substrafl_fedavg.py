@@ -50,12 +50,12 @@ N_CLIENTS = 3
 # Every computation will run in `subprocess` mode, where everything run locally in Python
 # subprocesses.
 # Ohers backend_types are:
-# `docker` mode where computations run locally in docker containers
-# `deployed` where computations run remotely (you need to have deployed platform for that)
+# "docker" mode where computations run locally in docker containers
+# "remote" mode where computations run remotely (you need to have deployed platform for that)
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
-# To run in deployed mode you have to also use the function `Client.login(username, password)`
+# To run in remote mode you have to also use the function `Client.login(username, password)`
 
 clients = {
     client_0.organization_info().organization_id: client_0,
@@ -67,7 +67,7 @@ clients = {
 # Store organization IDs
 ORGS_ID = list(clients.keys())
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organization.
+DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
 
 # %%
