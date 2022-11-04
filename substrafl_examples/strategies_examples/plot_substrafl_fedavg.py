@@ -458,13 +458,13 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 #
 # We now have all the necessary objects to launch our experiment. Below a summary of all the objects we created so far:
 #
-# - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our project, using their keys to
+# - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
 # - An `Algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
 #   function, predict function, etc...)*.
-# - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train a model on
+# - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
 #   distributed data.
-# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train
+# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
@@ -475,7 +475,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
 from substrafl.experiment import execute_experiment
 
-# Number of time to apply the compute plan.
+# A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
 
 compute_plan = execute_experiment(
