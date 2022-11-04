@@ -3,7 +3,7 @@
 SubstraFL FedAvg on MNIST dataset
 ==================================
 
-This example illustrate the basic usage of SubstraFL, and propose a model training by Federated Learning
+This example illustrates the basic usage of SubstraFL, and proposes a model training by Federated Learning
 using Federated Averaging strategy on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__
 using PyTorch.
 In this example, we work on **the grayscale images** of size **28x28 pixels**. The problem considered is a
@@ -11,7 +11,7 @@ classification problem aiming to recognize the number written on each image.
 
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
 interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
-This example here used the specific PyTorch interface.
+This example here uses the specific PyTorch interface.
 
 This example does not use a deployed platform of Substra and run in local mode.
 
@@ -35,7 +35,7 @@ This example does not use a deployed platform of Substra and run in local mode.
 # Setup
 # *****
 #
-# We work with three different organizations, defined by their IDs. Two organizations provide a dataset, and a third
+# We work with three different organizations. Two organizations provide a dataset, and a third
 # one provides the algorithm and register the machine learning tasks.
 #
 # This example runs in local mode, simulating a federated learning experiment.
@@ -47,13 +47,15 @@ from substra import Client
 
 N_CLIENTS = 3
 
-# Every computations will run in `subprocess` mode, where everything run locally in Python subprocesses.
+# Every computation will run in `subprocess` mode, where everything run locally in Python
+# subprocesses.
 # Ohers backend_types are:
-# ``docker`` mode where computations run locally in docker containers
-# ``deployed`` where computations run remotely (you need to have deployed platform for that)
+# `docker` mode where computations run locally in docker containers
+# `deployed` where computations run remotely (you need to have deployed platform for that)
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
+# To run in deployed mode you have to also use the function `Client.login(username, password)`
 
 clients = {
     client_0.organization_info().organization_id: client_0,
@@ -78,9 +80,11 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last orga
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
-# It extracts the images from the raw files and locally create two folders: one for each organization.
+# It extracts the images from the raw files and locally create two folders: one for each
+# organization.
 #
-# Each organization will have access to half the train data, and to half the test data (which correspond to **30,000**
+# Each organization will have access to half the train data, and to half the test data (which
+# correspond to **30,000**
 # images for training and **5,000** for testing each).
 
 from assets.mnist_data import setup_mnist
@@ -139,7 +143,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
         logs_permission=permissions_dataset,
     )
     dataset_keys[org_id] = client.add_dataset(dataset)
-    assert dataset_keys[org_id], "Missing data manager key"
+    assert dataset_keys[org_id], "Missing dataset key"
 
     # Add the training data on each organization.
     data_sample = DataSampleSpec(
@@ -177,7 +181,9 @@ from substra.sdk.schemas import AlgoOutputSpec
 from substra.sdk.schemas import AlgoSpec
 from substra.sdk.schemas import AssetKind
 
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
+permissions_metric = Permissions(
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
 
 inputs_metrics = [
     AlgoInputSpec(
@@ -186,11 +192,17 @@ inputs_metrics = [
         optional=False,
         multiple=True,
     ),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 metric = AlgoSpec(
     inputs=inputs_metrics,
@@ -223,10 +235,11 @@ metric_key = clients[ALGO_ORG_ID].add_algo(metric)
 #
 # In this section, you will:
 #
-# - register an algorithm and its dependencies
+# - register a model and its dependencies
 # - specify the federated learning strategy
 # - specify the organizations where to train and where to aggregate
 # - specify the organizations where to test the models
+# - actually run thecomputations
 
 
 # %%
@@ -275,7 +288,7 @@ criterion = torch.nn.CrossEntropyLoss()
 # ====================================
 #
 # To specify on how much data to train at each round, we use the `index_generator` object.
-# We specify the batch size and the number of batches to consider for each round (called num_updates).
+# We specify the batch size and the number of batches to consider for each round (called `num_updates`).
 # See :ref:`substrafl_doc/substrafl_overview:Index Generator` for more details.
 
 
@@ -447,18 +460,17 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our project, using their keys to
 #   identify them.
-
 # - An `Algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
-#   function, predict function, etc...)*
+#   function, predict function, etc...)*.
 # - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train a model on
 #   distributed data.
 # - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
-#   evaluate the model
+#   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
-#   will be computed
-# - The **number of round**, a round being defined by a local training step followed by an aggregation operation
-# - An **experiment folder** to save a summary of the operation made
+#   will be computed.
+# - The **number of round**, a round being defined by a local training step followed by an aggregation operation.
+# - An **experiment folder** to save a summary of the operation made.
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
