@@ -72,18 +72,6 @@ Datasets, algorithms
 Permissions are defined at creation by their owner for datasets and algorithms.
 
 
-Models
-""""""
-The permissions of the train, aggregate and predict task outputs (models and predictions) are defined when creating the tasks.
-
-The performance output by test tasks is always public.
-
-For composite train tasks, the out model is split in a trunk model and a head model:
-
-* The trunk model permissions are specified by the user when registering the composite train task.
-* The head model permissions are set to be non-public, meaning that the head model can only be processed by the organization where the task is executed.
-
-
 Permissons for a user to download an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Users of a organization can export (aka download) from Substra to their local environment:
