@@ -162,7 +162,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically built
 # from:
 #
-# - a **Python script   ** that implement the metric computation
+# - a **Python script** that implements the metric computation
 # - a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__ to specify the required dependencies of the
 #   **Python scripts**
 
