@@ -46,7 +46,7 @@ There are five types of algorithms:
 
 Model
 ^^^^^
-A model or model updates is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task (`train tuple <train tuple_>`_ or `composite train tuple <composite train tuple_>`_); or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task (`aggregate tuple <aggregate tuple_>`_).
+A model is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task.
 
 
 Compute plan and tasks
@@ -56,30 +56,14 @@ Compute plan and tasks
 
 Compute plan
 """"""""""""
-A set of training (train tuple or composite train tuple), aggregation (aggregate tuple) and testing tasks (test tuple) gathered together towards building a final model.
+A set of tasks.
 Gathering tasks into a single compute plan will lead to a more optimized compute.
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
-Train tuple
-"""""""""""
-The specification of a training task of a simple algorithm_ on a dataset_. The task can use any existing model or model updates to train on. It leads to the creation of a new model or model updates.
-
-Composite train tuple
-"""""""""""""""""""""
-The specification of a training task of a composite algorithm_ on a dataset_ potentially using input trunk and head models or model updates. It leads to the creation of a trunk and head model or model update. Depending on associated permissions, a trunk model or model update can be shared with other organizations, whereas a head model remains in the organization where it was created.
-
-Aggregate tuple
-"""""""""""""""
-The specification of an aggregation task of several models or model updates using an aggregate algorithm_. It leads to the creation of one model or model update.
-
-Predict tuple
-"""""""""""""
-The specification of a prediction task. It generates prediction using a prediction algorithm_. with a dataset_ and an already trained model_.
-
-Test tuple
-""""""""""
-The specification of a testing task of predictions. It computes the score of the predictions using a metric algorithm_. with a dataset_.
+Task
+""""
+The specification of a task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
 
 Transient task outputs
 """"""""""""""""""""""
