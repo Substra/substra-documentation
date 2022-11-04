@@ -26,14 +26,14 @@ Algorithm
 
 An algorithm corresponds to an archive (tar or zip file) containing:
 
-    * One or more Python scripts that implement the algorithm. Importantly, a train and a predict functions have to be defined.
+    * One or more Python scripts that implement the algorithm.
     * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
 .. _concept_model:
 
 Model
 ^^^^^
-A model is a potentially large file containing the parameters or updates (gradients) of parameters of a trained model. In the case of a neural network, a model would contain the weights of the neurons. It is either the result of training an algorithm_ with a given dataset_, corresponding to a training task or the result of an aggregate algorithm aggregating models or model updates; corresponding to an aggregation task.
+A model is a potentially large file containing the parameters of an algorithm.
 
 
 Compute plan and tasks
@@ -63,7 +63,7 @@ Permissions
 Permissons for a organization to process an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An organization can execute a task if it has the permission to process the inputs of the task. For example, to execute a train task an organization must have the permission to process the algorithm, dataset and input models of the task.
+An organization can execute a task if it has the permission to process all the inputs of the task.
 The permission on an asset is defined when creating the asset or when creating the task that will create the asset. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset (or the task producing the asset) is created.
 
 
