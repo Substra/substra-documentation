@@ -7,6 +7,7 @@ import pathlib
 import numpy as np
 from torchvision.datasets import MNIST
 
+
 def get_int(b: bytes) -> int:
     return int(codecs.encode(b, "hex"), 16)
 

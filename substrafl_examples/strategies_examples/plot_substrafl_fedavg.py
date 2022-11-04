@@ -1,21 +1,19 @@
 """
 ==================================
-Substrafl FedAvg on MNIST dataset
+SubstraFL FedAvg on MNIST dataset
 ==================================
 
-This example illustrate the basic usage of Substrafl, and propose a model training by Federated Learning
-using de Federated Average strategy.
-
-It is based on `the MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__.
-
+This example illustrates the basic usage of SubstraFL, and proposes a model training by Federated Learning
+using Federated Averaging strategy on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__
+using PyTorch.
 In this example, we work on **the grayscale images** of size **28x28 pixels**. The problem considered is a
 classification problem aiming to recognize the number written on each image.
 
-The objective of this example is to launch a *federated learning* experiment on two organizations, using the **FedAvg strategy** on a
-**convolutional neural network** (CNN)
-torch model.
+Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
+interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
+This example here uses the specific PyTorch interface.
 
-This example does not use the deployed platform of Substra and will run in local mode.
+This example does not use a deployed platform of Substra and run in local mode.
 
 **Requirements:**
 
@@ -29,7 +27,7 @@ This example does not use the deployed platform of Substra and will run in local
     Please ensure to have all the libraries installed, a *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
 
-  - **Substra** and **Substrafl** should already be installed, if not follow the instructions described here:
+  - **Substra** and **SubstraFL** should already be installed, if not follow the instructions described here:
     :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
@@ -37,34 +35,39 @@ This example does not use the deployed platform of Substra and will run in local
 # Setup
 # *****
 #
-# We work with two different organizations, defined by their IDs. Both organizations provide a dataset. One of them will also provide the algorithm and
-# will register the machine learning tasks.
+# We work with three different organizations. Two organizations provide a dataset, and a third
+# one provides the algorithm and register the machine learning tasks.
 #
-# Once these variables defined, we can create our Substra :ref:`documentation/references/sdk:Client`.
+# This example runs in local mode, simulating a federated learning experiment.
 #
-# This example runs in local mode, simulating a **federated learning** experiment.
+# In the following code cell, we define the different organizations needed for our FL experiment.
 
-
-import pathlib
 
 from substra import Client
 
-# Choose the subprocess mode to locally simulate the FL process
-N_CLIENTS = 2
-clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
-clients = {client.organization_info().organization_id: client for client in clients}
+N_CLIENTS = 3
 
-# Store their IDs
+# Every computation will run in `subprocess` mode, where everything run locally in Python
+# subprocesses.
+# Ohers backend_types are:
+# "docker" mode where computations run locally in docker containers
+# "remote" mode where computations run remotely (you need to have deployed platform for that)
+client_0 = Client(backend_type="subprocess")
+client_1 = Client(backend_type="subprocess")
+client_2 = Client(backend_type="subprocess")
+# To run in remote mode you have to also use the function `Client.login(username, password)`
+
+clients = {
+    client_0.organization_info().organization_id: client_0,
+    client_1.organization_info().organization_id: client_1,
+    client_2.organization_info().organization_id: client_2,
+}
+
+
+# Store organization IDs
 ORGS_ID = list(clients.keys())
-
-# The org id on which your computation tasks are registered
-ALGO_ORG_ID = ORGS_ID[1]
-
-# Create the temporary directory for generated data
-(pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
-
-data_path = pathlib.Path.cwd() / "tmp" / "data"
-assets_directory = pathlib.Path.cwd() / "assets"
+ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
+DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
 
 # %%
@@ -77,60 +80,70 @@ assets_directory = pathlib.Path.cwd() / "assets"
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
-# It extracts the images from the raw files and locally create two folders: one for each organization.
+# It extracts the images from the raw files and locally create two folders: one for each
+# organization.
 #
-# Each organization will have access to half the train data, and to half the test data (which correspond to **30,000**
+# Each organization will have access to half the train data, and to half the test data (which
+# correspond to **30,000**
 # images for training and **5,000** for testing each).
 
 from assets.mnist_data import setup_mnist
+import pathlib
 
-setup_mnist(data_path, N_CLIENTS)
+# Create the temporary directory for generated data
+(pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
+data_path = pathlib.Path.cwd() / "tmp" / "data"
+
+setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 
 # %%
 # Dataset registration
 # ====================
 #
 # A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script with the instruction
-# of *how to load the data* from the files in memory, and a **description markdown** file.
-#
-# As data can not be seen once it is registered on the platform, we set :ref:`documentation/concepts:Permissions` for
-# each :ref:`documentation/concepts:Assets` define their access rights to the different data.
-#
-# The metadata are visible by all the users of a :term:`Channel`.
-#
+# of *how to load the data* from the files in memory, and a description markdown file.
 # The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset that contains the
 # data is the **datasample asset**.
 #
-# A **datasample** contains a local path to the data, and the key identifying the :ref:`documentation/concepts:Dataset`
-# it is based on, in order to have access to the proper `opener.py` file.
+# A **datasample** contains a local path to the data. A datasample can be linked to a dataset in order to add data to a
+# dataset.
+#
+# Data privacy is a key concept for Federated Learning experiments. That is why we set
+# :ref:`documentation/concepts:Permissions` for each :ref:`documentation/concepts:Assets` to define which organization
+# can use them.
+#
+# Note that metadata, for instance: assets' creation date, assets owner, are visible by all the organizations of a
+# network.
 
 from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
 from substra.sdk.schemas import DataSampleSpec
 
-permissions = Permissions(public=False, authorized_ids=ORGS_ID)
-
-dataset = DatasetSpec(
-    name="MNIST",
-    type="npy",
-    data_opener=assets_directory / "dataset" / "opener.py",
-    description=assets_directory / "dataset" / "description.md",
-    permissions=permissions,
-    logs_permission=permissions,
-)
-
+assets_directory = pathlib.Path.cwd() / "assets"
 dataset_keys = {}
 train_datasample_keys = {}
 test_datasample_keys = {}
 
-for ind, org_id in enumerate(ORGS_ID):
+for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+
     client = clients[org_id]
 
-    # Add the dataset to the client to provide access to the opener in each organization.
+    permissions_dataset = Permissions(public=False, authorized_ids=[ALGO_ORG_ID])
+
+    # DatasetSpec is the specification of a dataset. It makes sure every field
+    # is well defined, and that our dataset is ready to be registered.
+    # The real dataset object is created in the add_dataset method.
+
+    dataset = DatasetSpec(
+        name="MNIST",
+        type="npy",
+        data_opener=assets_directory / "dataset" / "opener.py",
+        description=assets_directory / "dataset" / "description.md",
+        permissions=permissions_dataset,
+        logs_permission=permissions_dataset,
+    )
     dataset_keys[org_id] = client.add_dataset(dataset)
-    assert dataset_keys[org_id], "Missing data manager key"
-
-    client = clients[org_id]
+    assert dataset_keys[org_id], "Missing dataset key"
 
     # Add the training data on each organization.
     data_sample = DataSampleSpec(
@@ -138,10 +151,7 @@ for ind, org_id in enumerate(ORGS_ID):
         test_only=False,
         path=data_path / f"org_{ind+1}" / "train",
     )
-    train_datasample_keys[org_id] = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
+    train_datasample_keys[org_id] = client.add_data_sample(data_sample)
 
     # Add the testing data on each organization.
     data_sample = DataSampleSpec(
@@ -149,21 +159,18 @@ for ind, org_id in enumerate(ORGS_ID):
         test_only=True,
         path=data_path / f"org_{ind+1}" / "test",
     )
-    test_datasample_keys[org_id] = client.add_data_sample(
-        data_sample,
-        local=True,
-    )
+    test_datasample_keys[org_id] = client.add_data_sample(data_sample)
 
 # %%
 # Metrics registration
 # ====================
 #
-# A metric corresponds to an algorithm used to compute the score of predictions on a
-# **datasample**.
-# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically build
+# A metric is an algorithm used to compute the score of predictions on one or several
+# **datasamples**.
+# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically built
 # from:
 #
-# - a **Python scripts** that implement the metric computation
+# - a **Python script** that implements the metric computation
 # - a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__ to specify the required dependencies of the
 #   **Python scripts**
 
@@ -174,6 +181,10 @@ from substra.sdk.schemas import AlgoOutputSpec
 from substra.sdk.schemas import AlgoSpec
 from substra.sdk.schemas import AssetKind
 
+permissions_metric = Permissions(
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
+
 inputs_metrics = [
     AlgoInputSpec(
         identifier="datasamples",
@@ -181,19 +192,25 @@ inputs_metrics = [
         optional=False,
         multiple=True,
     ),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
-objective = AlgoSpec(
+metric = AlgoSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
     name="Accuracy",
     description=assets_directory / "metric" / "description.md",
     file=assets_directory / "metric" / "metrics.zip",
-    permissions=permissions,
+    permissions=permissions_metric,
 )
 
 METRICS_DOCKERFILE_FILES = [
@@ -201,27 +218,36 @@ METRICS_DOCKERFILE_FILES = [
     assets_directory / "metric" / "Dockerfile",
 ]
 
-archive_path = objective.file
+archive_path = metric.file
 with zipfile.ZipFile(archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=filepath.name)
 
-metric_key = clients[ALGO_ORG_ID].add_algo(objective)
+metric_key = clients[ALGO_ORG_ID].add_algo(metric)
 
 
 # %%
 # Specify the machine learning components
 # ***************************************
 #
-# In this section, you will register an algorithm and its dependencies, and specify
-# the federated learning strategy as well as the nodes on which to train and to test.
+# This section uses the PyTorch based SubstraFL API to simplify the machine learning components definition.
+# However, SubstraFL is compatible with any machine learning framework.
+#
+# In this section, you will:
+#
+# - register a model and its dependencies
+# - specify the federated learning strategy
+# - specify the organizations where to train and where to aggregate
+# - specify the organizations where to test the models
+# - actually run thecomputations
+
 
 # %%
 # Model definition
 # ================
 #
 # We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
-# of Substrafl.
+# of SubstraFL.
 
 import torch
 from torch import nn
@@ -258,24 +284,14 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 criterion = torch.nn.CrossEntropyLoss()
 
 # %%
-# Substrafl algo definition
-# ==========================
+# Specifying on how much data to train
+# ====================================
 #
-# To instantiate a Substrafl :ref:`substrafl_doc/api/algorithms:Torch Algorithms`, you need to define a torch Dataset
-# with a specific `__init__` signature, that must contain (self, x, y, is_inference). This torch Dataset is useful to
-# preprocess your data on the `__getitem__` function.
-# The `__getitem__` function is expected to return x and y if is_inference is False, else x.
-# This behavior can be changed by re-writing the `_local_train` or `predict` methods.
-#
-# This dataset is passed **as a class** to the :ref:`substrafl_doc/api/algorithms:Torch Algorithms`.
-# Indeed, this torch Dataset will be instantiated within the algorithm, using the opener functions as x and y
-# parameters.
-#
-# The index generator will be used a the batch sampler of the dataset, in order to save the state of the seen samples
-# during the training, as Federated Algorithms have a notion of `num_updates`, which forced the batch sampler of the
-# dataset to be stateful.
+# To specify on how much data to train at each round, we use the `index_generator` object.
+# We specify the batch size and the number of batches to consider for each round (called `num_updates`).
+# See :ref:`substrafl_doc/substrafl_overview:Index Generator` for more details.
 
-from substrafl.algorithms.pytorch import TorchFedAvgAlgo
+
 from substrafl.index_generator import NpIndexGenerator
 
 # Number of model update between each FL strategy aggregation.
@@ -289,21 +305,55 @@ index_generator = NpIndexGenerator(
     num_updates=NUM_UPDATES,
 )
 
+# %%
+# Torch Dataset definition
+# ==========================
+#
+# This torch Dataset is useful for the algo organization to preprocess the data using the `__getitem__` function.
+#
+# This torch Dataset needs to have a specific `__init__` signature, that must contain (self, datasamples, is_inference).
+#
+# The `__getitem__` function is expected to return (inputs, outputs) if `is_inference` is `False`, else only the inputs.
+# This behavior can be changed by re-writing the `_local_train` or `predict` methods.
+
 
 class TorchDataset(torch.utils.data.Dataset):
     def __init__(self, datasamples, is_inference: bool):
-        self.x = torch.FloatTensor(datasamples["images"][:, None, ...])
-        self.y = F.one_hot(torch.from_numpy(datasamples["labels"]).type(torch.int64), 10).type(torch.float32)
+        self.x = datasamples["images"]
+        self.y = datasamples["labels"]
         self.is_inference = is_inference
 
     def __getitem__(self, idx):
-        if not self.is_inference:
-            return self.x[idx] / 255, self.y[idx]
+
+        if self.is_inference:
+            x = torch.FloatTensor(self.x[idx][None, ...]) / 255
+            return x
+
         else:
-            return self.x[idx] / 255
+            x = torch.FloatTensor(self.x[idx][None, ...]) / 255
+
+            y = torch.tensor(self.y[idx]).type(torch.int64)
+            y = F.one_hot(y, 10)
+            y = y.type(torch.float32)
+
+            return x, y
 
     def __len__(self):
         return len(self.x)
+
+
+# %%
+# SubstraFL algo definition
+# ==========================
+#
+# A SubstraFL Algo gathers all the machine learning functions that run locally in each organization.
+# This is the only SubstraFL object that is framework specific (here PyTorch specific).
+#
+# The `TorchDataset` is passed **as a class** to the :ref:`substrafl_doc/api/algorithms:Torch Algorithms`.
+# Indeed, this `TorchDataset` will be instantiated directly on the data provider organization.
+
+
+from substrafl.algorithms.pytorch import TorchFedAvgAlgo
 
 
 class MyAlgo(TorchFedAvgAlgo):
@@ -322,9 +372,8 @@ class MyAlgo(TorchFedAvgAlgo):
 # Algo dependencies
 # =================
 #
-# The **dependencies** needed for the :ref:`substrafl_doc/api/algorithms:Torch Algorithms` are specified by a
-# :ref:`substrafl_doc/api/dependency:Dependency` object, in order to install the right library in the Python
-# environment of each organization.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instanciated in order to install the right libraries in
+# the Python environment of each organization.
 
 from substrafl.dependency import Dependency
 
@@ -333,6 +382,12 @@ algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 # %%
 # Federated Learning strategies
 # =============================
+#
+# A FL strategy specifies how to train a model on distributed data.
+# The most well known strategy is the Federated Averaging strategy: train locally a model on every organization,
+# then aggregate the weight updates from every organization, and then apply locally at each organization the averaged
+# updates.
+
 
 from substrafl.strategies import FedAvg
 
@@ -342,12 +397,11 @@ strategy = FedAvg()
 # Where to train where to aggregate
 # =================================
 #
-# Now that all our :ref:`documentation/concepts:Assets` are well defined, we can create
-# :ref:`substrafl_doc/api/nodes:TrainDataNode` to gathered the
-# :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
+# We specify on which data we want to train our model, using the :ref:`substrafl_doc/api/nodes:TrainDataNode` objets.
+# Here we train on the two datasets that we have registered earlier.
 #
-# The :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
-# computed
+# The :ref:`substrafl_doc/api/nodes:AggregationNode` specifies the organization on which the aggregation operation
+# will be computed.
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -357,7 +411,7 @@ aggregation_node = AggregationNode(ALGO_ORG_ID)
 
 train_data_nodes = list()
 
-for ind, org_id in enumerate(ORGS_ID):
+for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
@@ -371,11 +425,11 @@ for ind, org_id in enumerate(ORGS_ID):
 # Where and when to test
 # ======================
 #
-# With the same logic as the train nodes, we can create :ref:`substrafl_doc/api/nodes:TestDataNode` to gathered the
-# :ref:`documentation/concepts:Dataset` and the **datasamples** on the specified nodes.
+# With the same logic as the train nodes, we create :ref:`substrafl_doc/api/nodes:TestDataNode` to specify on which
+# data we want to test our model.
 #
 # The :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, defines where and at which frequency we
-# evaluate the model
+# evaluate the model, using the given metric(s) that you registered in a previous section.
 
 
 from substrafl.nodes import TestDataNode
@@ -384,7 +438,7 @@ from substrafl.evaluation_strategy import EvaluationStrategy
 
 test_data_nodes = list()
 
-for ind, org_id in enumerate(ORGS_ID):
+for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
@@ -395,6 +449,7 @@ for ind, org_id in enumerate(ORGS_ID):
     )
     test_data_nodes.append(test_data_node)
 
+# Test at the end of every round
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 
 # %%
@@ -403,24 +458,24 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 #
 # We now have all the necessary objects to launch our experiment. Below a summary of all the objects we created so far:
 #
-# - A :ref:`documentation/references/sdk:Client` to orchestrate all the assets of our project, using their keys to
-#   identify them
-# - An :ref:`substrafl_doc/api/algorithms:Torch Algorithms`, to define the training parameters *(optimizer, train function,
-#   predict function, etc...)*
-# - A :ref:`substrafl_doc/api/strategies:Strategies`, to specify the federated learning aggregation operation
-# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate where we can process training task, on which data and using
-#   which *opener*
+# - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
+#   identify them.
+# - An `Algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
+#   function, predict function, etc...)*.
+# - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
+#   distributed data.
+# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
-#   evaluate the model
-# - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the node on which the aggregation operation will be
-#   computed
-# - The **number of round**, a round being defined by a local training step followed by an aggregation operation
-# - An **experiment folder** to save a summary of the operation made
+#   evaluate the model.
+# - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
+#   will be computed.
+# - The **number of round**, a round being defined by a local training step followed by an aggregation operation.
+# - An **experiment folder** to save a summary of the operation made.
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
 
-# Number of time to apply the compute plan.
+# A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
 
 compute_plan = execute_experiment(
@@ -460,7 +515,7 @@ plt.title("Test dataset results")
 plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
-for id in ORGS_ID:
+for id in DATA_PROVIDER_ORGS_ID:
     df = performances_df.query(f"worker == '{id}'")
     plt.plot(df["round_idx"], df["performance"], label=id)
 
@@ -471,7 +526,8 @@ plt.show()
 # Download a model
 # ================
 #
-# After the experiment, you might be interested in getting your trained model. To do so, you will need the source code in order to reload in memory your code architecture.
+# After the experiment, you might be interested in getting your trained model. To do so, you will need the source code
+# in order to reload in memory your code architecture.
 # You have the option to choose the client and the round you are interested in.
 #
 # If `round_idx` is set to `None`, the last round will be selected by default.
@@ -479,7 +535,7 @@ plt.show()
 from substrafl.model_loading import download_algo_files
 from substrafl.model_loading import load_algo
 
-client_to_dowload_from = ALGO_ORG_ID
+client_to_dowload_from = DATA_PROVIDER_ORGS_ID[0]
 round_idx = None
 
 algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
