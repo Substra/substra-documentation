@@ -26,8 +26,8 @@ Algorithm
 
 An algorithm corresponds to an archive (tar or zip file) containing:
 
-    * One or more Python scripts that implement the algorithm.
-    * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
+* One or more Python scripts that implement the algorithm.
+* A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
 .. _concept_model:
 
@@ -50,7 +50,7 @@ Note that you can register a task alone, i.e. not put the task in a compute plan
 
 Task
 """"
-The specification of a task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
+A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
 
 Transient task outputs
 """"""""""""""""""""""
@@ -66,14 +66,9 @@ Permissons for a organization to process an asset
 An organization can execute a task if it has the permission to process all the inputs of the task.
 The permission on an asset is defined when creating the asset or when creating the task that will create the asset. Permissions can be defined individually for every organization. Permissions cannot be modified once the asset (or the task producing the asset) is created.
 
-
-Datasets, algorithms
-""""""""""""""""""""
-Permissions are defined at creation by their owner for datasets and algorithms.
-
-
 Permissons for a user to download an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Users of a organization can export (aka download) from Substra to their local environment:
 
 * the opener of a dataset if the organization has process permissions on the dataset
