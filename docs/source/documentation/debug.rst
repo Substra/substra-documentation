@@ -48,7 +48,7 @@ Two local modes are available:
 * **Docker mode**: the execution of the tasks happens in Docker containers that are spawned on the fly and removed once the execution is done.
 * **Subprocess mode**: the execution of the tasks happens in subprocesses (terminal commands executed from the Python code).
 
-The subprocess mode is much faster than the Docker mode, but does not test that the Dockerfiles of the assets are valid, and may fail if advanced COPY or ADD commands are used in the Dockerfile. Therefore Docker mode is closer to remote mode than sub-process mode. It is recommended to run your experiment locally in subprocess mode and when it is ready, test it with the Docker mode.
+The subprocess mode is much faster than the Docker mode, but does not test that the Dockerfiles of the assets are valid, and may fail if advanced COPY or ADD commands are used in the Dockerfile. Therefore, the Docker mode is closer to the remote mode than the subprocess mode. It is recommended to run your experiment locally in subprocess mode and when it is ready, then test it with the Docker mode.
 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
 Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible.
