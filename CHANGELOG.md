@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update the Susbtra sdk doc to remove references to tuples (composite, aggregate...) or train and predict
+  concepts (#215)
 - Add How to download a model on the substrafl example (#204)
 - Update colors & ux (#209)
 - Update the MNIST example to be easier to read (#208)
