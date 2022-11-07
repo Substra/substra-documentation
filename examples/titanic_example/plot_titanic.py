@@ -291,7 +291,7 @@ print(f"Predict algo key {predict_algo_key}")
 # %%
 # Registering tasks
 # -----------------
-# The next step is to register the actual machine learning tasks (or "tuples").
+# The next step is to register the actual machine learning tasks.
 # First a training task is registered which will produce a machine learning model.
 # Then a testing task is registered, testing the model of the training task.
 
