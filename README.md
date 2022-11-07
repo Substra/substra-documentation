@@ -7,7 +7,7 @@
     - [Add a new example](#add-a-new-example)
   - [Releases](#releases)
 
-Welcome to Substra documentation. [Here](https://connect-docs.owkin.com/en/latest/index.html) you can find the latest version.
+Welcome to Substra documentation. [Here](https://docs.substra.org) you can find the published stable version.
 
 
 ## Contributing

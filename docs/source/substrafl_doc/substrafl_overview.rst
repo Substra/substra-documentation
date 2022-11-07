@@ -81,6 +81,7 @@ There are three types of node:
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
+Note that organizations can be of any node type, and can be multiple node types at the same time. For instance one organization can be for one experiment a TrainDataNode and an AggregationNode.
 
 Federated Learning Strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

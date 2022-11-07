@@ -9,7 +9,7 @@ However in the `local mode <debug.html#local-mode>`_, there is no GUI. This page
 Performance monitoring using MLFlow
 -----------------------------------
 
-During a `compute plan <concepts.html#compute-plan>`_ in `local mode <debug.html#local-mode>`_, the performances of your `testtuples <concepts.html#test-tuple>`_ are saved in a :code:`performance.json` file as soon as the task is done. This json file is stored in your :code:`.../local_worker/live_performances/compute_plan_key` folder.
+During a `compute plan <concepts.html#compute-plan>`_ in `local mode <debug.html#local-mode>`_, the performances of your testing tasks are saved in a :code:`performance.json` file as soon as the task is done. This json file is stored in your :code:`.../local_worker/live_performances/compute_plan_key` folder.
 
 The python script below reads the json file and plot the `metrics <concepts.html#metric>`_ results in live into a `mlflow <https://mlflow.org/>`_ server, creating a plot for each `metric <concepts.html#metric>`_ and `testtuple <concepts.html#test-tuple>`_ in your `compute plan <concepts.html#compute-plan>`_.
 
