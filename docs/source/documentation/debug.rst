@@ -86,7 +86,7 @@ Every task has an `error_type` property that can be read by any user of any orga
 The `error_type` can take three values:
 
 * **BUILD_ERROR**: the error happened when building the Docker image.
-* **EXECUTION_ERROR**: the error happened when executing the algo (training, prediction) or the metric.
+* **EXECUTION_ERROR**: the error happened when executing an algo..
 * **INTERNAL_ERROR**: Error in the Substra product. It is likely that the help of an administrator is required to solve this type of issue, in that case contact `support@owkin.com <support@owkin.com>`_.
 
 If the field is `None`, it means there was no error, and the task status is not FAILED.
@@ -94,8 +94,8 @@ If the field is `None`, it means there was no error, and the task status is not 
 Example:
 ::
 
-    train_task = client.get_task("089a87…")
-    print(train_task.error_type)
+    task = client.get_task("089a87…")
+    print(task.error_type)
         EXECUTION_ERROR
 
 
@@ -111,8 +111,8 @@ Logs of failed tasks can be accessed if the right permission is set on the datas
 
 More specifically:
 
-* for train, composite train and test tasks, the log permission is the one defined in the dataset used in the task.
-* for aggregate tasks, the log permission is the union of the log permissions of parent tasks.
+* if the task use a dataset, the log permission is the one defined in the dataset used.
+* if there is no dataset used in the task, the log permission is the union of the log permissions of parent tasks.
 
 Given the right permissions, one can then access the logs with the `get_logs()` function::
 
