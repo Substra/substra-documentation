@@ -6,7 +6,7 @@ SubstraFL FedAvg on MNIST dataset
 This example illustrates the basic usage of Substrafl, and proposes Federated Learning model training using the Federated Average strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. The problem considered is a classification problem
- aiming to recognize the number written on each image..
+aiming to recognize the number written on each image..
 
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
 interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
@@ -454,22 +454,22 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 # Running the experiment
 # **********************
 #
-# We now have all the necessary objects to launch our experiment. Below a summary of all the objects we created so far:
+# We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
-# - An `Algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
+# - An `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
 #   function, predict function, etc...)*.
 # - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
 #   distributed data.
-# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train.
+# - `Train data nodes <substrafl_doc/api/nodes:TrainDataNode>`_ to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
 #   will be computed.
-# - The **number of round**, a round being defined by a local training step followed by an aggregation operation.
+# - The **number of rounds**, a round being defined by a local training step followed by an aggregation operation.
 # - An **experiment folder** to save a summary of the operation made.
-# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
+# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
 
@@ -524,9 +524,9 @@ plt.show()
 # Download a model
 # ================
 #
-# After the experiment, you might be interested in getting your trained model. To do so, you will need the source code
-# in order to reload in memory your code architecture.
-# You have the option to choose the client and the round you are interested in.
+# After the experiment, you might be interested in downloading your trained model.
+# To do so, you will need the source code in order to reload your code architecture in memory.
+# You have the option to choose the client and the round you are interested in downloading.
 #
 # If `round_idx` is set to `None`, the last round will be selected by default.
 
