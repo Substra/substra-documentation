@@ -152,7 +152,8 @@ docs/source/substrafl_doc/examples
 **/experiment_summaries
 
 # Data folder when run locally
-**/data
+**/data_iris
+**/data_mnist
 
 # Algo files folder when run locally
 **/algo_files

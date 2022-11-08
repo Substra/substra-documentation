@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add a Sickit-learn example for SubstraFL to the documentation (#206)
 - Update the Susbtra sdk doc to remove references to tuples (composite, aggregate...) or train and predict
   concepts (#215)
 - Add How to download a model on the substrafl example (#204)
