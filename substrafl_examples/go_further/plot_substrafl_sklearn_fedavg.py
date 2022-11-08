@@ -383,7 +383,10 @@ class SklearnFedAvgAlgo(algorithms.Algo):
 
         if predictions_path is not None:
             np.save(predictions_path, predictions)
-            # We remove the npy extension to avoid type error when loading using np.load
+
+            # np.save() automatically adds a ".npy" to the end of the file.
+            # We rename the file produced by removing the ".npy" suffix, to make sure that
+            # predictions_path is the actual file name.
             shutil.move(str(predictions_path) + ".npy", predictions_path)
 
     def save(self, path):
