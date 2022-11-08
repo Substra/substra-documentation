@@ -43,7 +43,7 @@ Links
 
 Some quick links:
 
-* :ref:`MNIST federated learning example <substrafl_doc/examples/strategies_examples/plot_substrafl_fedavg:Substrafl FedAvg on MNIST dataset>`
+* :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`
 * :ref:`Substrafl overview <substrafl_doc/substrafl_overview:Overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
 * :ref:`How to deploy Substra for Site Reliability Engineers <operations/deploy:Deploying Substra>`

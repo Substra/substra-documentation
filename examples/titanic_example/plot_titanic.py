@@ -129,6 +129,7 @@ print(f"Dataset key {dataset_key}")
 # A data sample contains subfolders containing a single data file like a CSV and the key identifying
 # the dataset it is linked to.
 
+# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/titanic.jpg'
 
 train_data_sample_folder = assets_directory / "train_data_samples"
 train_data_sample_keys = client.add_data_samples(

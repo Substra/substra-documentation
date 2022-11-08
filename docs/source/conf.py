@@ -96,9 +96,15 @@ def zip_dir(source_dir, zip_file_name):
 assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_substrafl_fedavg = Path(__file__).parents[2] / "substrafl_examples" / "strategies_examples" / "assets"
-zip_dir(assets_dir_substrafl_fedavg, "substrafl_fedavg_assets.zip")
+assets_dir_substrafl_torch_fedavg = (
+    Path(__file__).parents[2] / "substrafl_examples" / "get_started" / "torch_fedavg_assets"
+)
+zip_dir(assets_dir_substrafl_torch_fedavg, "torch_fedavg_assets.zip")
 
+assets_dir_substrafl_sklearn_fedavg = (
+    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "sklearn_fedavg_assets"
+)
+zip_dir(assets_dir_substrafl_sklearn_fedavg, "sklearn_fedavg_assets.zip")
 
 # Copy the source documentation files from substra and substrafl to their right place
 # in the substra-documentation repository
@@ -371,13 +377,13 @@ sphinx_gallery_conf = {
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
     "download_all_examples": False,
-    'binder': {
-        'org': 'Substra',
-        'repo': 'substra-documentation',
-        'branch': current_commit, # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
-        'binderhub_url': 'https://mybinder.org', # public binderhub url
-        'dependencies': str(Path(__file__).parents[2]  / 'requirements.txt'), # this value is not used
-        'notebooks_dir': 'notebooks',
-        'use_jupyter_lab': True,
-    }
+    "binder": {
+        "org": "Substra",
+        "repo": "substra-documentation",
+        "branch": current_commit,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
+        "binderhub_url": "https://mybinder.org",  # public binderhub url
+        "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
+        "notebooks_dir": "notebooks",
+        "use_jupyter_lab": True,
+    },
 }

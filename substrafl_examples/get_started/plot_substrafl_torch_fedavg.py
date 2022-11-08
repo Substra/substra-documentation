@@ -1,7 +1,7 @@
 """
-==================================
-SubstraFL FedAvg on MNIST dataset
-==================================
+===================================
+Using Torch FedAvg on MNIST dataset
+===================================
 
 This example illustrates the basic usage of Substrafl, and proposes Federated Learning model training using the Federated Average strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
@@ -20,7 +20,7 @@ This example does not use a deployed platform of Substra and run in local mode.
 
     .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../../../../tmp/substrafl_fedavg_assets.zip>`
+        :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
 
     Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
@@ -67,7 +67,6 @@ ORGS_ID = list(clients.keys())
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
-
 # %%
 # Data and metrics
 # ****************
@@ -85,12 +84,12 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last orga
 # corresponds to **30,000**
 # images for training and **5,000** for testing each).
 
-from assets.mnist_data import setup_mnist
+from torch_fedavg_assets.dataset.mnist_dataset import setup_mnist
 import pathlib
 
 # Create the temporary directory for generated data
 (pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
-data_path = pathlib.Path.cwd() / "tmp" / "data"
+data_path = pathlib.Path.cwd() / "tmp" / "data_mnist"
 
 setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 
@@ -117,7 +116,7 @@ from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
 from substra.sdk.schemas import DataSampleSpec
 
-assets_directory = pathlib.Path.cwd() / "assets"
+assets_directory = pathlib.Path.cwd() / "torch_fedavg_assets"
 dataset_keys = {}
 train_datasample_keys = {}
 test_datasample_keys = {}
@@ -135,7 +134,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     dataset = DatasetSpec(
         name="MNIST",
         type="npy",
-        data_opener=assets_directory / "dataset" / "opener.py",
+        data_opener=assets_directory / "dataset" / "mnist_opener.py",
         description=assets_directory / "dataset" / "description.md",
         permissions=permissions_dataset,
         logs_permission=permissions_dataset,
@@ -179,9 +178,7 @@ from substra.sdk.schemas import AlgoOutputSpec
 from substra.sdk.schemas import AlgoSpec
 from substra.sdk.schemas import AssetKind
 
-permissions_metric = Permissions(
-    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
-)
+permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
 inputs_metrics = [
     AlgoInputSpec(
@@ -190,17 +187,11 @@ inputs_metrics = [
         optional=False,
         multiple=True,
     ),
-    AlgoInputSpec(
-        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
-    AlgoInputSpec(
-        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
-    ),
+    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_metrics = [
-    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
-]
+outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
 metric = AlgoSpec(
     inputs=inputs_metrics,
@@ -212,7 +203,7 @@ metric = AlgoSpec(
 )
 
 METRICS_DOCKERFILE_FILES = [
-    assets_directory / "metric" / "metrics.py",
+    assets_directory / "metric" / "mnist_metrics.py",
     assets_directory / "metric" / "Dockerfile",
 ]
 
@@ -237,7 +228,7 @@ metric_key = clients[ALGO_ORG_ID].add_algo(metric)
 # - specify the federated learning strategy
 # - specify the organizations where to train and where to aggregate
 # - specify the organizations where to test the models
-# - actually run thecomputations
+# - actually run the computations
 
 
 # %%
