@@ -4,18 +4,17 @@ Overview
 
 .. _substrafl_concepts:
 
-Substrafl is a federated learning Python library that leverages the Substra framework to run federated learning experiments at scale on real distributed data.
-Its main usage is therefore a production usage. Yet Substrafl can also be used on a single machine on a virtually splitted dataset for two use cases:
+Substrafl is a federated learning Python library that leverages  Substra software to run federated learning experiments at scale on real distributed data. Its main usage is therefore in production environments. Substrafl can also be used on a single machine on a virtually splitted dataset for two use cases:
 
 * to debug code before launching experiments on a real network
 * to perform FL simulations
 
-Substrafl uses the Substra library to handle tasks creation and orchestration. Note that Substrafl is planned to be merged with Substra into a single library.
+Substrafl uses the Substra library to handle creation and orchestration of tasks. Please note that Substrafl is planned to be merged with Substra into a single library.
 
-Substrafl strives to be as flexible and modular as possible. You can easily change one part of the federated learning experiment (let's say the local training algorithm for instance) without having to change everything else (the federated learning strategy, the metrics, the dataset, etc).
+Substrafl strives to be as flexible and modular as possible. You can easily change one part of the federated learning experiment (for instance, the local training algorithm) without having to change everything else (the federated learning strategy, the metrics, the dataset, etc)
 
 **ML framework compatibility**:
-Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
+Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However, a specific interface has been developed for using PyTorch with Substrafl, which makes writing PyTorch code simpler than using other frameworks.
 
 
 Installation
@@ -23,7 +22,7 @@ Installation
 
 .. _installation:
 
-Substrafl and Substra are compatible with Python version 3.8 and 3.9 on both MacOS and Linux. For Windows users you can use the
+Substrafl and Substra are compatible with Python versions 3.8 and 3.9 on both MacOS and Linux. For Windows users you can use the
 `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_.
 
 To install Substrafl run the following command:
@@ -40,7 +39,7 @@ Main concepts
 Experiment
 ^^^^^^^^^^
 
-An experiment is made up of all the different bricks needed to perform a federated learning training and testing: the training data, the algorithm used to do the local training, the federated learning strategy, the metric and the test data.
+An experiment is made up of all the different bricks needed to perform federated learning training and testing: the training data, the algorithm used to do the local training, the federated learning strategy, the metric and the test data.
 Launching an experiment creates a :ref:`concept_compute_plan`.
 
 
@@ -65,10 +64,10 @@ The evaluation strategy specifies how and when the model is tested. More specifi
 Index Generator
 ^^^^^^^^^^^^^^^
 
-The notion of epochs does not fully apply to the FL setting. Usually we don't want to train on a full epoch on each organization at every round but on a lesser amount of data to prevent models from different organizations from diverging too much.
-In a federated setting, at each round, in each organization, the model is trained for ``num_updates`` batches, each batch containing ``batch_size`` data points.
+The notion of epochs does not fully apply to the FL setting. Usually we don't want to train on a full epoch on each organization at every round, but on a reduced quantity of data to prevent models from different organizations from diverging too much.
+In a federated setting, at each round, in each organization, the model is trained for ``num_updates`` batches, with each batch containing ``batch_size`` data points.
 
-For instance you have a dataset of 1000 data points at every organization. You specify ``num_updates=10`` and ``batch_size=32``. At each round your model trains on 10x32=320 data points per organization.
+For instance if you have a dataset of 1000 data points at every organization, if you specify ``num_updates=10`` and ``batch_size=32``, at each round your model trains on 10x32=320 data points per organization.
 
 The index generator remembers which data has been used in the previous rounds and generates the new batches so that the model is trained on the full dataset (given enough number of rounds and updates). When the whole dataset has been used, the index generator shuffles the data and starts generating batches from the whole dataset again.
 
@@ -95,13 +94,13 @@ Strategies can be centralized or decentralized:
 
 Round
 ^^^^^
-Each round represents one iteration of the training loop in the federated setting. For example, in a centralized federated learning strategy, a round consist of:
+Each round represents one iteration of the training loop in the federated setting. For example, in a centralized federated learning strategy, a round consists of:
 
-* Initialize the same model (architecture and initial weights) on each training organization.
+* Initializing the same model (architecture and initial weights) on each training organization.
 * Each training organization locally trains the model on its own data and calculates the weight updates to send to the aggregator (and sometimes other statistics depending on the strategy).
 * The training organizations send the weight updates to the aggregator organization.
 * The weight updates are aggregated by the aggregator organization.
-* The aggregated organization send the aggregated updates to the training organizations.
+* The aggregated organization sends the aggregated updates to the training organizations.
 * The training organizations update their model with the aggregated updates.
 
 Centralized strategy - workflow

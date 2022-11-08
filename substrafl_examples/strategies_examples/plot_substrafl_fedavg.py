@@ -3,11 +3,10 @@
 SubstraFL FedAvg on MNIST dataset
 ==================================
 
-This example illustrates the basic usage of SubstraFL, and proposes a model training by Federated Learning
-using Federated Averaging strategy on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__
-using PyTorch.
-In this example, we work on **the grayscale images** of size **28x28 pixels**. The problem considered is a
-classification problem aiming to recognize the number written on each image.
+This example illustrates the basic usage of Substrafl, and proposes Federated Learning model training using the Federated Average strategy
+on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
+In this example, we work on 28x28 pixel sized grayscale images. The problem considered is a classification problem
+aiming to recognize the number written on each image..
 
 Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
 interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
@@ -17,17 +16,16 @@ This example does not use a deployed platform of Substra and run in local mode.
 
 **Requirements:**
 
-  - To run this example locally, please make sure to download and unzip in the same directory as this example the
-    assets needed to run it:
+  - To run this example locally, please make sure to download and unzip the assets needed to run it in the same directory as used this example:
 
     .. only:: builder_html or readthedocs
 
         :download:`assets required to run this example <../../../../../tmp/substrafl_fedavg_assets.zip>`
 
-    Please ensure to have all the libraries installed, a *requirements.txt* file is included in the zip file, where
+    Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
 
-  - **Substra** and **SubstraFL** should already be installed, if not follow the instructions described here:
+  - **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
     :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
@@ -80,11 +78,11 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last orga
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
-# It extracts the images from the raw files and locally create two folders: one for each
+# It extracts the images from the raw files and locally creates two folders: one for each
 # organization.
 #
 # Each organization will have access to half the train data, and to half the test data (which
-# correspond to **30,000**
+# corresponds to **30,000**
 # images for training and **5,000** for testing each).
 
 from assets.mnist_data import setup_mnist
@@ -100,8 +98,8 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # Dataset registration
 # ====================
 #
-# A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script with the instruction
-# of *how to load the data* from the files in memory, and a description markdown file.
+# A :ref:`documentation/concepts:Dataset` is composed of an **opener**, which is a Python script that can load
+# the data from the files in memory and a description markdown file.
 # The :ref:`documentation/concepts:Dataset` object itself does not contain the data. The proper asset that contains the
 # data is the **datasample asset**.
 #
@@ -349,7 +347,7 @@ class TorchDataset(torch.utils.data.Dataset):
 # A SubstraFL Algo gathers all the machine learning functions that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
-# The `TorchDataset` is passed **as a class** to the :ref:`substrafl_doc/api/algorithms:Torch Algorithms`.
+# The `TorchDataset` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
 # Indeed, this `TorchDataset` will be instantiated directly on the data provider organization.
 
 
@@ -428,7 +426,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # With the same logic as the train nodes, we create :ref:`substrafl_doc/api/nodes:TestDataNode` to specify on which
 # data we want to test our model.
 #
-# The :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, defines where and at which frequency we
+# The :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy` defines where and at which frequency we
 # evaluate the model, using the given metric(s) that you registered in a previous section.
 
 
@@ -456,22 +454,22 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
 # Running the experiment
 # **********************
 #
-# We now have all the necessary objects to launch our experiment. Below a summary of all the objects we created so far:
+# We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
-# - An `Algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
+# - An `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
 #   function, predict function, etc...)*.
 # - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
 #   distributed data.
-# - :ref:`substrafl_doc/api/nodes:TrainDataNode`, to indicate on which data to train.
+# - `Train data nodes <substrafl_doc/api/nodes:TrainDataNode>`_ to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
 #   will be computed.
-# - The **number of round**, a round being defined by a local training step followed by an aggregation operation.
+# - The **number of rounds**, a round being defined by a local training step followed by an aggregation operation.
 # - An **experiment folder** to save a summary of the operation made.
-# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries the experiment needs to run.
+# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
 
@@ -526,9 +524,9 @@ plt.show()
 # Download a model
 # ================
 #
-# After the experiment, you might be interested in getting your trained model. To do so, you will need the source code
-# in order to reload in memory your code architecture.
-# You have the option to choose the client and the round you are interested in.
+# After the experiment, you might be interested in downloading your trained model.
+# To do so, you will need the source code in order to reload your code architecture in memory.
+# You have the option to choose the client and the round you are interested in downloading.
 #
 # If `round_idx` is set to `None`, the last round will be selected by default.
 
