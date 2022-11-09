@@ -84,8 +84,10 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last orga
 # corresponds to **30,000**
 # images for training and **5,000** for testing each).
 
-from torch_fedavg_assets.dataset.mnist_dataset import setup_mnist
 import pathlib
+from torch_fedavg_assets.dataset.mnist_dataset import setup_mnist
+
+# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/mnist.png'
 
 # Create the temporary directory for generated data
 (pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
