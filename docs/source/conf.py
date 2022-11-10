@@ -20,6 +20,7 @@ from datetime import date
 import importlib
 
 import sphinx_rtd_theme
+import sphinx_gallery
 import git
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
@@ -369,7 +370,17 @@ html_context = {
 
 current_commit = git.Repo(search_parent_directories=True).head.object.hexsha
 
-sphinx_gallery_conf = {
+binder_conf = {
+    "org": "Substra",
+    "repo": "substra-documentation",
+    "branch": current_commit,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
+    "binderhub_url": "https://mybinder.org",  # public binderhub url
+    "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
+    "notebooks_dir": "notebooks",
+    "use_jupyter_lab": True,
+}
+
+gallery_conf = {
     "remove_config_comments": True,
     "doc_module": "substra",
     "reference_url": {"Substra": None},
@@ -377,13 +388,10 @@ sphinx_gallery_conf = {
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
     "download_all_examples": False,
-    "binder": {
-        "org": "Substra",
-        "repo": "substra-documentation",
-        "branch": current_commit,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
-        "binderhub_url": "https://mybinder.org",  # public binderhub url
-        "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
-        "notebooks_dir": "notebooks",
-        "use_jupyter_lab": True,
-    },
+    "binder": binder_conf,
 }
+
+sphinx_gallery_conf = gallery_conf
+sphinx_gallery_conf["first_notebook_cell"] = sphinx_gallery.binder.gen_binder_rst(
+    str(Path(__file__)), binder_conf, gallery_conf
+)
