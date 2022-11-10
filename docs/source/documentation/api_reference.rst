@@ -13,7 +13,7 @@ CLI Reference
 SDK Reference
 -------------
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     references/sdk.md
 
