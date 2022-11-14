@@ -20,7 +20,7 @@ from datetime import date
 import importlib
 
 import sphinx_rtd_theme
-import sphinx_gallery
+from sphinx_gallery import binder
 import git
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
@@ -389,9 +389,8 @@ gallery_conf = {
     "subsection_order": SubSectionTitleOrder("../../examples"),
     "download_all_examples": False,
     "binder": binder_conf,
+    "src_dir": str(Path(__file__).parent),
 }
 
 sphinx_gallery_conf = gallery_conf
-sphinx_gallery_conf["first_notebook_cell"] = sphinx_gallery.binder.gen_binder_rst(
-    str(Path(__file__)), binder_conf, gallery_conf
-)
+sphinx_gallery_conf["first_notebook_cell"] = binder.gen_binder_rst(str(Path(__file__)), binder_conf, gallery_conf)
