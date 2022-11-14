@@ -393,4 +393,6 @@ gallery_conf = {
 }
 
 sphinx_gallery_conf = gallery_conf
-sphinx_gallery_conf["first_notebook_cell"] = binder.gen_binder_rst(str(Path(__file__)), binder_conf, gallery_conf)
+sphinx_gallery_conf["first_notebook_cell"] = "# Launch this example with binder:\n" + str(
+    binder.gen_binder_rst(str(Path(__file__)), binder_conf, gallery_conf)
+)
