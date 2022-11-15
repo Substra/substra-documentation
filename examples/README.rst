@@ -1,4 +1,4 @@
 Substra examples
 ================
 
-The examples below are compatible with substra |substra_version|.
+The examples below are compatible with Substra |substra_version|.

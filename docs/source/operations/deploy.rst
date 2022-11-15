@@ -13,7 +13,7 @@ To that end, a certificate authority is required. We recommend `cert-manager`_.
 .. TODO: IIRC letsencrypt was not cutting it, but can't remember why
 
 Both the orchestrator and the backend are deployed as Helm charts.
-The charts are available in the substra repository:
+The charts are available in the Substra repository:
 
 .. code-block:: console
 

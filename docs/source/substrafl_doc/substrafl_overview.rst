@@ -4,17 +4,17 @@ Overview
 
 .. _substrafl_concepts:
 
-Substrafl is a federated learning Python library that leverages  Substra software to run federated learning experiments at scale on real distributed data. Its main usage is therefore in production environments. Substrafl can also be used on a single machine on a virtually splitted dataset for two use cases:
+SubstraFL is a federated learning Python library that leverages  Substra software to run federated learning experiments at scale on real distributed data. Its main usage is therefore in production environments. SubstraFL can also be used on a single machine on a virtually splitted dataset for two use cases:
 
 * to debug code before launching experiments on a real network
 * to perform FL simulations
 
-Substrafl uses the Substra library to handle creation and orchestration of tasks. Please note that Substrafl is planned to be merged with Substra into a single library.
+SubstraFL uses the Substra library to handle creation and orchestration of tasks. Please note that SubstraFL is planned to be merged with Substra into a single library.
 
-Substrafl strives to be as flexible and modular as possible. You can easily change one part of the federated learning experiment (for instance, the local training algorithm) without having to change everything else (the federated learning strategy, the metrics, the dataset, etc)
+SubstraFL strives to be as flexible and modular as possible. You can easily change one part of the federated learning experiment (for instance, the local training algorithm) without having to change everything else (the federated learning strategy, the metrics, the dataset, etc)
 
 **ML framework compatibility**:
-Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However, a specific interface has been developed for using PyTorch with Substrafl, which makes writing PyTorch code simpler than using other frameworks.
+SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However, a specific interface has been developed for using PyTorch with SubstraFL, which makes writing PyTorch code simpler than using other frameworks.
 
 
 Installation
@@ -22,16 +22,16 @@ Installation
 
 .. _installation:
 
-Substrafl and Substra are compatible with Python versions 3.8 and 3.9 on both MacOS and Linux. For Windows users you can use the
+SubstraFL and Substra are compatible with Python versions 3.8 and 3.9 on both MacOS and Linux. For Windows users you can use the
 `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_.
 
-To install Substrafl run the following command:
+To install SubstraFL run the following command:
 
 .. code-block:: console
 
     $ pip install substrafl
 
-Substra is a dependency of Substrafl, so it will be automatically installed.
+Substra is a dependency of SubstraFL, so it will be automatically installed.
 
 Main concepts
 -------------
@@ -47,9 +47,9 @@ Algorithm
 ^^^^^^^^^
 
 .. warning::
-    A Substrafl algorithm is not the same as a Substra :ref:`concept_algorithm`!
+    A SubstraFL algorithm is not the same as a Substra :ref:`concept_algorithm`!
 
-A Substrafl algorithm contains the local training and predict code and all the associated hyper parameters (batch size, loss, optimizer, etc).
+A SubstraFL algorithm contains the local training and predict code and all the associated hyper parameters (batch size, loss, optimizer, etc).
 
 
 Evaluation Strategy
@@ -76,7 +76,7 @@ Node
 ^^^^
 There are three types of node:
 
-* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an opener used for training.
+* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`opener <concept_opener>` (a script used to load the data from files into memory) used for training.
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
@@ -84,7 +84,7 @@ Note that organizations can be of any node type, and can be multiple node types 
 
 Federated Learning Strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged gradients. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in Substrafl.
+A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged weight updates. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in SubstraFL.
 
 Strategies can be centralized or decentralized:
 
@@ -103,8 +103,13 @@ Each round represents one iteration of the training loop in the federated settin
 * The aggregated organization sends the aggregated updates to the training organizations.
 * The training organizations update their model with the aggregated updates.
 
+Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`.
+
+
 Centralized strategy - workflow
 --------------------------------
+
+.. warning:: This section is for advanced users who wants to know more on what happens under the Substra hood.
 
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 

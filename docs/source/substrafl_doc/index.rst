@@ -1,14 +1,14 @@
 
 .. toctree::
    :glob:
-   :caption: Substrafl overview
+   :caption: SubstraFL overview
    :maxdepth: 2
 
    substrafl_overview
 
 .. toctree::
    :glob:
-   :caption: Substrafl Examples
+   :caption: SubstraFL Examples
    :maxdepth: 5
 
    examples/*

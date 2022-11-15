@@ -34,7 +34,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
 
    | Replace ``ORG2NAME`` by the name of the organization as defined with the value ``organizationName`` in the second organization values file. In our example it would be ``MyOrg2``.
    | Replace ``SECRET_ORG1_ORG2`` with the password that MyOrg2 will need to use to download assets from MyOrg1.
-   | Replace ``CHANNEL`` with the name of a :term:`Channel` MyOrg1 and MyOrg2 are part of. This needs to be one of the channels defined in the :ref:`Backend channel configuration <backend-channel-config>`. 
+   | Replace ``CHANNEL`` with the name of a :term:`Channel` MyOrg1 and MyOrg2 are part of. This needs to be one of the channels defined in the :ref:`Backend channel configuration <backend-channel-config>`.
 
 #. Create an account for MyOrg1 on MyOrg2.
    In the ``backend-2-values.yaml`` file add the following content:
@@ -49,13 +49,13 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
 
    | Replace ``ORG1NAME`` by the name of the organization as defined with the value ``organizationName`` in the first organization values file. In our example it would be ``MyOrg1``.
    | Replace ``SECRET_ORG2_ORG1`` with the password that MyOrg1 will need to use to download assets from MyOrg2.
-   | Replace ``CHANNEL`` with the name of a :term:`Channel` MyOrg1 and MyOrg2 are part of. This needs to be one of the channels defined in the :ref:`Backend channel configuration <backend-channel-config>`. 
+   | Replace ``CHANNEL`` with the name of a :term:`Channel` MyOrg1 and MyOrg2 are part of. This needs to be one of the channels defined in the :ref:`Backend channel configuration <backend-channel-config>`.
 
 #. Configure MyOrg1 to use the right password when connecting to MyOrg2.
    In the ``backend-1-values.yaml`` file add the following content under the ``addAccountOperator`` key:
 
    .. code-block:: yaml
- 
+
       outgoingOrganizations:
         - name: ORG2NAME
           secret: SECRET_ORG2_ORG1
@@ -67,7 +67,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
    In the ``backend-2-values.yaml`` file add the following content under the ``addAccountOperator`` key:
 
    .. code-block:: yaml
-  
+
       outgoingOrganizations:
         - name: ORG1NAME
           secret: SECRET_ORG1_ORG2
@@ -111,16 +111,16 @@ Deploy the updated chart
 ========================
 
 Now that you have updated your values you can either continue your deployment or update a deployed app.
-
+u
 To update a deployed Substra application run:
 
 .. code-block:: bash
 
    helm upgrade RELEASE-NAME substra/substra-backend --version VERSION --values VALUES-FILE
 
-| Replace ``RELEASE-NAME`` with the name of your substra backend release.
+| Replace ``RELEASE-NAME`` with the name of your Substra backend release.
   You can retrieve it with ``helm list``.
-| Replace ``VERSION`` with the version of the substra backend helm chart you want to deploy.
+| Replace ``VERSION`` with the version of the Substra backend helm chart you want to deploy.
 | Replace ``VALUES-FILE`` with the values file. In our example, ``backend-1-values.yaml`` for the first backend and ``backend-2-values.yaml`` for the second one.
 
 This will update the kubernetes resources to reflect your changes.
@@ -131,7 +131,7 @@ Validate that organizations are connected
 We provide a small utility on the Substra backend server to test which organizations are accessible from the current organization.
 To use this utility follow these steps:
 
-#. Connect to the substra backend pod:
+#. Connect to the Substra backend pod:
 
    .. code-block:: bash
 
@@ -142,7 +142,7 @@ To use this utility follow these steps:
 #. List all organizations defined in the outgoing list and their status:
 
    .. code-block:: bash
-    
+
        ./manage.py get_outgoing_organization
 
    The output should look like this:
