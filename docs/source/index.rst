@@ -6,9 +6,14 @@
 Substra documentation
 =====================
 
-.. image:: image.jpg
+.. image:: banner.jpg
   :width: 800
   :alt: Substra
+
+
+.. image:: substra_network.svg
+  :width: 800
+  :alt: Substra Network
 
 Substra is an open source federated learning (FL) software. It provides a flexible Python interface and a web app to run federated learning training at scale.
 
