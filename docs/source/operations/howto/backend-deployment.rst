@@ -47,7 +47,7 @@ To configure your values:
         ingress:
           enabled: true
           hostname: SUBDOMAIN.HOSTDOMAIN
-   
+
    | Replace ``HOSTDOMAIN`` with the domain of your server without the lowest subdomain (e.g. for a server exposed at ``api.substra.org`` ``HOSTDOMAIN`` would be ``substra.org``).
    | Replace ``SUBDOMAIN`` with the lowest subdomain (e.g. for a server exposed at ``api.substra.org`` ``SUBDOMAIN`` would be ``api``).
 
@@ -69,7 +69,7 @@ To configure your values:
 
 .. _backend-channel-config:
 
-#. Configure your :term:`Substra Channels <Channel>`. 
+#. Configure your :term:`Substra Channels <Channel>`.
    In the ``backend-values.yaml`` file, add the following content under the ``orchestrator`` key:
 
    .. code-block:: yaml
@@ -134,7 +134,7 @@ To deploy the Substra Backend chart in your Kubernetes cluster follow these step
 
       helm install RELEASE-NAME substra/substra-backend --version VERSION --values backend-values.yaml
 
-   | Replace ``RELEASE-NAME`` with the name of your substra backend release (it can be an arbitrary name).
-   | Replace ``VERSION`` with the version of the substra backend helm chart you want to deploy.
+   | Replace ``RELEASE-NAME`` with the name of your Substra backend release (it can be an arbitrary name).
+   | Replace ``VERSION`` with the version of the Substra backend helm chart you want to deploy.
 
-   This will create all the Kubernetes resources required for a functional substra backend in your Kubernetes cluster.
+   This will create all the Kubernetes resources required for a functional Substra backend in your Kubernetes cluster.

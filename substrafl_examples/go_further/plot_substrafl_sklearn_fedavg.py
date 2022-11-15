@@ -3,7 +3,7 @@
 Using scikit-learn FedAvg on IRIS dataset
 =========================================
 
-This example illustrate an advanced usage of Substrafl as it does not use the SubstraFL PyTorch interface, but showcases the general SubstraFL interface on which you can use any ML framework.
+This example illustrate an advanced usage of SubstraFL as it does not use the SubstraFL PyTorch interface, but showcases the general SubstraFL interface on which you can use any ML framework.
 
 
 This example is based on:
@@ -26,7 +26,7 @@ This example does not use the deployed platform of Substra, it runs in local mod
     Please ensure that all the libraries are installed, a *requirements.txt* file is included in the zip file.
     Run the command: `pip install -r requirements.txt` to install the requirements.
 
-  - To install **Substra** and **Substrafl** follow the instructions described here:
+  - To install **Substra** and **SubstraFL** follow the instructions described here:
     :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
@@ -247,7 +247,7 @@ cls = linear_model.LogisticRegression(random_state=SEED, warm_start=True, max_it
 os.environ["PYTHONWARNINGS"] = "ignore:lbfgs failed to converge (status=1):UserWarning"
 
 # %%
-# Substrafl algo definition
+# SubstraFL algo definition
 # ==========================
 #
 # This section is the most important one for this example. We will define here the function that will run locally on

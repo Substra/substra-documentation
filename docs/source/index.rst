@@ -31,7 +31,7 @@ Interfaces
 
 Substra has three user interfaces:
     * **Substra**: a low-level Python library (also called SDK). Substra is used to create datasets, algorithms and machine learning tasks on the platform.
-    * **Substrafl**: a high-level federated learning Python library based on Substra. Substrafl is used to run complex federated learning experiments at scale.
+    * **SubstraFL**: a high-level federated learning Python library based on Substra. SubstraFL is used to run complex federated learning experiments at scale.
     * A **web application** used to monitor experiments training and explore their results.
 
 
@@ -45,7 +45,7 @@ Install substra and substrafl with the following command:
 
     $ pip install substrafl
 
-Substra is a dependency of Substrafl, so it will be automatically installed.
+Substra is a dependency of SubstraFL, so it will be automatically installed.
 
 Links
 ^^^^^

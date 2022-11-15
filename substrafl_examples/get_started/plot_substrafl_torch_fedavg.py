@@ -3,12 +3,12 @@
 Using Torch FedAvg on MNIST dataset
 ===================================
 
-This example illustrates the basic usage of Substrafl, and proposes Federated Learning model training using the Federated Average strategy
+This example illustrates the basic usage of SubstraFL, and proposes Federated Learning model training using the Federated Average strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. The problem considered is a classification problem
 aiming to recognize the number written on each image..
 
-Substrafl can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
+SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
 interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
 This example here uses the specific PyTorch interface.
 

@@ -9,7 +9,7 @@ This page gives you directions to locally run the Substra stack. This deployment
 * 2 backends (running in two organisations, ``org-1`` and ``org-2``)
 * 1 frontend
 
-It allows you to run the examples and start using substra SDK (also known as substra).
+It allows you to run the examples and start using Substra SDK (also known as substra).
 
 Prerequisites
 =============
