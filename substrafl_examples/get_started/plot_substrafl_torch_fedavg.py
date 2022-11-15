@@ -300,7 +300,7 @@ index_generator = NpIndexGenerator(
 # Torch Dataset definition
 # ==========================
 #
-# This torch Dataset is useful for the algo organization to preprocess the data using the `__getitem__` function.
+# This torch Dataset is used to preprocess the data using the `__getitem__` function.
 #
 # This torch Dataset needs to have a specific `__init__` signature, that must contain (self, datasamples, is_inference).
 #
@@ -337,7 +337,7 @@ class TorchDataset(torch.utils.data.Dataset):
 # SubstraFL algo definition
 # ==========================
 #
-# A SubstraFL Algo gathers all the machine learning functions that run locally in each organization.
+# A SubstraFL Algo gathers all the elements that we defined that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
 # The `TorchDataset` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
