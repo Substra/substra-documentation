@@ -172,12 +172,20 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 inputs_metrics = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    AlgoInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 
 METRICS_DOCKERFILE_FILES = [
@@ -200,8 +208,7 @@ metric_algo = AlgoSpec(
     permissions=permissions,
 )
 
-metric_key = client.add_algo(metric_algo = AlgoSpec(
-)
+metric_key = client.add_algo(metric_algo)
 
 print(f"Metric key {metric_key}")
 
@@ -230,12 +237,18 @@ with zipfile.ZipFile(train_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_simple = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
     AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=True, multiple=True),
 ]
 
-outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
+outputs_algo_simple = [
+    AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)
+]
 
 train_algo = AlgoSpec(
     name="Titanic: Random Forest",
@@ -265,12 +278,18 @@ with zipfile.ZipFile(predict_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 inputs_algo_predict = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    AlgoInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    AlgoInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
     AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_algo_predict = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+outputs_algo_predict = [
+    AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)
+]
 
 predict_algo_spec = AlgoSpec(
     name="Titanic: Random Forest - predict",
@@ -297,8 +316,12 @@ print(f"Predict algo key {predict_algo_key}")
 # Then a testing task is registered, testing the model of the training task.
 
 data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
-train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
-test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
+train_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys
+]
+test_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys
+]
 
 train_task = TaskSpec(
     algo_key=train_algo_key,
@@ -319,7 +342,13 @@ print(f"Train task key {train_task_key}")
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
 # every n seconds until its status is done or failed.
 
-model_input = [InputRef(identifier="models", parent_task_key=train_task_key, parent_task_output_identifier="model")]
+model_input = [
+    InputRef(
+        identifier="models",
+        parent_task_key=train_task_key,
+        parent_task_output_identifier="model",
+    )
+]
 
 predict_task = TaskSpec(
     algo_key=predict_algo_key,
@@ -331,7 +360,11 @@ predict_task = TaskSpec(
 predict_task_key = client.add_task(predict_task)
 
 predictions_input = [
-    InputRef(identifier="predictions", parent_task_key=predict_task_key, parent_task_output_identifier="predictions")
+    InputRef(
+        identifier="predictions",
+        parent_task_key=predict_task_key,
+        parent_task_output_identifier="predictions",
+    )
 ]
 
 test_task = TaskSpec(

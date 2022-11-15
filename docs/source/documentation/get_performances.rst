@@ -11,7 +11,7 @@ Performance monitoring using MLFlow
 
 During a `compute plan <concepts.html#compute-plan>`_ in local mode, the performances of your testing tasks are saved in a :code:`performance.json` file as soon as the task is done. This json file is stored in your :code:`.../local_worker/live_performances/compute_plan_key` folder.
 
-The Python script below reads the json file and plots the live metrics results into a MLflow server, creating a plot for each metric in your compute plan.
+The Python script below reads the json file and plots the live metrics results into an MLflow server, creating a plot for each metric in your compute plan.
 
 To run it, update :code:`CP_KEY` on the script below, run the Python script, and launch the :code:`mlflow ui` command in a dedicated terminal.
 Your metric results appear and are updated live at the given url in your terminal.
