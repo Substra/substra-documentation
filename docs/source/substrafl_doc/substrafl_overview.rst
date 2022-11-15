@@ -76,7 +76,7 @@ Node
 ^^^^
 There are three types of node:
 
-* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an opener used for training.
+* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`concept_opener` (a script used to load the data from files into memory) used for training.
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
@@ -84,7 +84,7 @@ Note that organizations can be of any node type, and can be multiple node types 
 
 Federated Learning Strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged gradients. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in Substrafl.
+A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged weight updates. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in Substrafl.
 
 Strategies can be centralized or decentralized:
 
@@ -103,9 +103,13 @@ Each round represents one iteration of the training loop in the federated settin
 * The aggregated organization sends the aggregated updates to the training organizations.
 * The training organizations update their model with the aggregated updates.
 
+Now that you have a good overview of Substrafl, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`.
+
+
 Centralized strategy - workflow
 --------------------------------
 
+This section is for advanced users who wants to know more on what happens under the Substra hood.
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 
 - initialisation round: one train task on each train organization

@@ -11,6 +11,8 @@ Assets
 
 Assets are a set of files which are required to run a compute plan. In order to enable privacy-preserving machine learning, different types of assets live within the platform: datasets, algorithms, models, tasks and compute plans.
 
+.. _concept_opener:
+
 Dataset
 ^^^^^^^
 
