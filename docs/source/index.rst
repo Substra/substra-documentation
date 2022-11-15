@@ -7,19 +7,23 @@ Substra documentation
 =====================
 
 .. image:: banner.jpg
-  :width: 800
+  :width: 600
+  :align: center
   :alt: Substra
 
 
-.. image:: substra_network.svg
-  :width: 800
-  :alt: Substra Network
+
 
 Substra is an open source federated learning (FL) software. It provides a flexible Python interface and a web app to run federated learning training at scale.
 
 Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Substra can also be used on a single machine on a virtually splitted dataset to perform FL simulations and debug code before launching experiments on a real network.
 
 Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
+
+.. image:: substra_network.svg
+  :width: 800
+  :align: center
+  :alt: Substra Network
 
 Interfaces
 ^^^^^^^^^^
