@@ -19,8 +19,7 @@ There is no federated learning in this example, training and testing will happen
 
 Requirements:
 
-  - If you want to run this example locally please make sure to download and unzip in the same directory as this example
-    the assets needed to run it:
+  - If you want to run this example locally, please make sure to download and unzip the assets needed to run it in the same directory as this example:
 
     .. only:: builder_html or readthedocs
 
@@ -61,7 +60,7 @@ from substra.sdk.schemas import (
 # Instantiating the Substra Client
 # ================================
 #
-# The client allows us to interact with the Substra platform. Setting the debug argument to ``True`` allow us to work locally by emulating a platform.
+# The client allows us to interact with the Substra platform. Setting the debug argument to ``True`` allows us to work locally by emulating a platform.
 #
 # By setting the argument ``backend_type`` to:
 #
@@ -77,16 +76,16 @@ client = substra.Client(backend_type="subprocess")
 #
 # Every asset will be created respecting its respective predefined schemas (Spec) previously imported from
 # substra.sdk.schemas. To register assets, first assets :ref:`documentation/api_reference:Schemas`
-# are instantiated and then the specs are registered, which creates the real assets.
+# are instantiated and then the specs are registered, which generates the real assets.
 #
 # Permissions are defined when registering assets, in a nutshell:
 #
-# - data can not be seen once it's registered on the platform
-# - metadata are visible by all the users of a channel
+# - data cannot be seen once it's registered on the platform,
+# - metadata are visible by all the users of a channel,
 # - permissions are permissions to execute an algorithm on a certain dataset.
 #
-# On a remote deployment setting the parameter ``public`` to false means that the dataset can only be used by tasks in
-# the same organization or organizations that are in the ``authorized_ids``. However permissions are ignored in local mode.
+# In remote deployment setting, the parameter ``public`` to false means that the dataset can only be used by tasks in
+# the same organization or organizations that are in the ``authorized_ids``. However, these permissions are ignored in local mode.
 
 permissions = Permissions(public=True, authorized_ids=[])
 
@@ -105,8 +104,8 @@ expected in the same location as this py file"""
 # ====================================
 #
 # A dataset represents the data in Substra. It is made up of an opener, which is a script used to load the
-# data from files into memory. You can find more details about the Dataset
-# in the API reference.
+# data from files into memory. You can find more details about the dataset
+# in the `API reference <api_reference.html#sdk-reference>`_
 
 dataset = DatasetSpec(
     name="Titanic dataset - Org 1",
@@ -125,7 +124,7 @@ print(f"Dataset key {dataset_key}")
 # Adding train data samples
 # =========================
 #
-# The dataset object itself is an empty shell, to add actual data, data samples are needed.
+# The dataset object itself is an empty shell. Data samples are needed in order to add actual data.
 # A data sample contains subfolders containing a single data file like a CSV and the key identifying
 # the dataset it is linked to.
 
@@ -161,7 +160,7 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 
 
 # %%
-# The data has now been added as an asset through the datasamples both for the training and
+# The data has now been added as an asset through the data samples both for the training and
 # testing part of our experience.
 #
 # Adding Metrics
@@ -192,7 +191,7 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-METRICS = AlgoSpec(
+metric_algo = AlgoSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
     name="Accuracy",
@@ -201,7 +200,8 @@ METRICS = AlgoSpec(
     permissions=permissions,
 )
 
-metric_key = client.add_algo(METRICS)
+metric_key = client.add_algo(metric_algo = AlgoSpec(
+)
 
 print(f"Metric key {metric_key}")
 
@@ -237,7 +237,7 @@ inputs_algo_simple = [
 
 outputs_algo_simple = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
-TRAIN_ALGO = AlgoSpec(
+train_algo = AlgoSpec(
     name="Titanic: Random Forest",
     inputs=inputs_algo_simple,
     outputs=outputs_algo_simple,
@@ -248,12 +248,12 @@ TRAIN_ALGO = AlgoSpec(
 )
 
 
-train_algo_key = client.add_algo(TRAIN_ALGO)
+train_algo_key = client.add_algo(train_algo)
 
 print(f"Train algo key {train_algo_key}")
 
 # %%
-# The predict algo uses the python file as the algo used for training.
+# The predict algo uses the Python file as the algo used for training.
 ALGO_PREDICT_DOCKERFILE_FILES = [
     assets_directory / "algo_random_forest/titanic_algo_rf.py",
     assets_directory / "algo_random_forest/predict/Dockerfile",

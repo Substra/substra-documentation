@@ -2,21 +2,21 @@ Performance monitoring in local mode
 ====================================
 
 Performances of a compute plan can be retrieved
-- with the get_performances(CP_KEY) function of the `SDK <api_reference.html#sdk-reference>`_
+- with the get_performances(CP_KEY) function of the `Substra Python library <api_reference.html#sdk-reference>`_
 - on the Substra GUI when using the `deployed mode <debug.html#deployed-mode>`_.
-However in the `local mode <debug.html#local-mode>`_, there is no GUI. This page explains how to use `MLFlow <https://mlflow.org/>`_ to perform live monitoring of the compute plan performances in `local mode <debug.html#local-mode>`_.
+However, in the `local mode <debug.html#local-mode>`_, there is no GUI. This page explains how to use `MLFlow <https://mlflow.org/>`_ to perform live monitoring of the compute plan performances in local mode.
 
 Performance monitoring using MLFlow
 -----------------------------------
 
-During a `compute plan <concepts.html#compute-plan>`_ in `local mode <debug.html#local-mode>`_, the performances of your testing tasks are saved in a :code:`performance.json` file as soon as the task is done. This json file is stored in your :code:`.../local_worker/live_performances/compute_plan_key` folder.
+During a `compute plan <concepts.html#compute-plan>`_ in local mode, the performances of your testing tasks are saved in a :code:`performance.json` file as soon as the task is done. This json file is stored in your :code:`.../local_worker/live_performances/compute_plan_key` folder.
 
-The python script below reads the json file and plot the `metrics <concepts.html#metric>`_ results in live into a `mlflow <https://mlflow.org/>`_ server, creating a plot for each `metric <concepts.html#metric>`_ and `testtuple <concepts.html#test-tuple>`_ in your `compute plan <concepts.html#compute-plan>`_.
+The Python script below reads the json file and plots the live metrics results into a MLflow server, creating a plot for each metric in your compute plan.
 
-To run it, update :code:`CP_KEY` on the script below, run the python script, and launch the :code:`mlflow ui` command in a dedicated terminal.
-Your metric results appears and is updated in live at the given url in your terminal.
+To run it, update :code:`CP_KEY` on the script below, run the Python script, and launch the :code:`mlflow ui` command in a dedicated terminal.
+Your metric results appear and are updated live at the given url in your terminal.
 
-This script will automatically end if the :code:`performance.json` file as not been updated in the last minute. For some `compute plan <concepts.html#compute-plan>`_, this parameter should be changed regarding the necessary time to perform each round.
+This script will automatically end if the :code:`performance.json` file has not been updated in the last minute. For some compute plans, this parameter should be changed regarding the necessary time to perform each round.
 
 .. code-block:: python
     :caption: mlflow_live_performances.py
