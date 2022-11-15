@@ -76,7 +76,7 @@ Node
 ^^^^
 There are three types of node:
 
-* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`concept_opener` (a script used to load the data from files into memory) used for training.
+* TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`opener <concept_opener>` (a script used to load the data from files into memory) used for training.
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
@@ -109,7 +109,8 @@ Now that you have a good overview of Substrafl, have a look at the :ref:`MNIST e
 Centralized strategy - workflow
 --------------------------------
 
-This section is for advanced users who wants to know more on what happens under the Substra hood.
+.. warning:: This section is for advanced users who wants to know more on what happens under the Substra hood.
+
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 
 - initialisation round: one train task on each train organization
