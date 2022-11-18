@@ -3,7 +3,7 @@ Deploying locally - dev setup
 *****************************
 
 
-This page gives you directions to locally run the Substra stack. This deployment is made of:
+This page gives the directions to locally run the Substra stack. This deployment is made of:
 
 * 1 orchestrator (running in standalone mode, i.e. storing data in its own local database)
 * 2 backends (running in two organisations, ``org-1`` and ``org-2``)
@@ -111,6 +111,12 @@ First time configuration
      .. code-block:: bash
 
       git clone https://github.com/Substra/substra.git
+
+   * `substrafl <https://github.com/substra/substrafl>`_
+
+     .. code-block:: bash
+
+      git clone https://github.com/Substra/substrafl.git
 
    * `orchestrator <https://github.com/substra/orchestrator>`_
 
@@ -240,7 +246,7 @@ If this command fails and you still have pods up, you can use the following comm
 Next steps
 ==========
 
-Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl (low-level library) examples </substrafl_doc/examples/index>` (low-level library).
+Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
 
 If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/deploy` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
 
