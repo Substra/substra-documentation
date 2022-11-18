@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update the MNIST example to be easier to read (#208)
 - Move utils folder content in assets folder (#210)
 - Increase tocdepth in SDK API reference to display methods under Client (#219)
+- Update substratools Docker image name (#222)
 
 ## [0.22.0]
 
