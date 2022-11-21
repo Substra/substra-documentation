@@ -123,7 +123,7 @@ dataset_keys = {}
 train_datasample_keys = {}
 test_datasample_keys = {}
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 
     client = clients[org_id]
 
@@ -148,7 +148,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
         test_only=False,
-        path=data_path / f"org_{ind+1}" / "train",
+        path=data_path / f"org_{i+1}" / "train",
     )
     train_datasample_keys[org_id] = client.add_data_sample(data_sample)
 
@@ -156,65 +156,53 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
         test_only=True,
-        path=data_path / f"org_{ind+1}" / "test",
+        path=data_path / f"org_{i+1}" / "test",
     )
     test_datasample_keys[org_id] = client.add_data_sample(data_sample)
 
+
 # %%
-# Metrics registration
-# ====================
+# Metric registration
+# ===================
 #
-# A metric is an algorithm used to compute the score of predictions on one or several
+# A metric is a function used to compute the score of predictions on one or several
 # **datasamples**.
-# Concretely, a metric corresponds to an archive *(tar or zip file)*, automatically built
-# from:
 #
-# - a **Python script** that implements the metric computation
-# - a `Dockerfile <https://docs.docker.com/engine/reference/builder/>`__ to specify the required dependencies of the
-#   **Python scripts**
+# To add a metric, you need to define a function that computes and return a performance
+# from the datasamples (as returned by the opener) and the predictions_path (to be loaded within the function).
+#
+# When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function under the numpy format
+# so that you can simply load them using `np.load`.
+#
+# After defining the metrics dependencies and permissions, we use the `add_metric` function to register the metric.
+# This metric will be used on the test datasamples to evaluate the model performances.
 
-import zipfile
+from sklearn.metrics import accuracy_score
+import numpy as np
 
-from substra.sdk.schemas import AlgoInputSpec
-from substra.sdk.schemas import AlgoOutputSpec
-from substra.sdk.schemas import AlgoSpec
-from substra.sdk.schemas import AssetKind
+from substrafl.dependency import Dependency
+from substrafl.remote.register import add_metric
 
 permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
-inputs_metrics = [
-    AlgoInputSpec(
-        identifier="datasamples",
-        kind=AssetKind.data_sample,
-        optional=False,
-        multiple=True,
-    ),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
-]
+# The Dependency object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
-metric = AlgoSpec(
-    inputs=inputs_metrics,
-    outputs=outputs_metrics,
-    name="Accuracy",
-    description=assets_directory / "metric" / "description.md",
-    file=assets_directory / "metric" / "metrics.zip",
+def accuracy(datasamples, predictions_path):
+    y_true = datasamples["labels"]
+    y_pred = np.load(predictions_path)
+
+    return accuracy_score(y_true, np.argmax(y_pred, axis=1))
+
+
+metric_key = add_metric(
+    client=clients[ALGO_ORG_ID],
+    metric_function=accuracy,
     permissions=permissions_metric,
+    dependencies=metric_deps,
 )
-
-METRICS_DOCKERFILE_FILES = [
-    assets_directory / "metric" / "mnist_metrics.py",
-    assets_directory / "metric" / "Dockerfile",
-]
-
-archive_path = metric.file
-with zipfile.ZipFile(archive_path, "w") as z:
-    for filepath in METRICS_DOCKERFILE_FILES:
-        z.write(filepath, arcname=filepath.name)
-
-metric_key = clients[ALGO_ORG_ID].add_algo(metric)
 
 
 # %%
@@ -360,17 +348,6 @@ class MyAlgo(TorchFedAvgAlgo):
 
 
 # %%
-# Algo dependencies
-# =================
-#
-# The :ref:`substrafl_doc/api/dependency:Dependency` object is instanciated in order to install the right libraries in
-# the Python environment of each organization.
-
-from substrafl.dependency import Dependency
-
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
-
-# %%
 # Federated Learning strategies
 # =============================
 #
@@ -402,7 +379,7 @@ aggregation_node = AggregationNode(ALGO_ORG_ID)
 
 train_data_nodes = list()
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for org_id in DATA_PROVIDER_ORGS_ID:
 
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
@@ -429,7 +406,7 @@ from substrafl.evaluation_strategy import EvaluationStrategy
 
 test_data_nodes = list()
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for org_id in DATA_PROVIDER_ORGS_ID:
 
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
@@ -468,6 +445,10 @@ from substrafl.experiment import execute_experiment
 
 # A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
+
+# The Dependency object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],

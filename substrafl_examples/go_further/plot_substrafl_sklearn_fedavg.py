@@ -110,7 +110,7 @@ dataset_keys = {}
 train_datasample_keys = {}
 test_datasample_keys = {}
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     client = clients[org_id]
 
     # Add the dataset to the client to provide access to the opener in each organization.
@@ -123,7 +123,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
         test_only=False,
-        path=data_path / f"org_{ind+1}" / "train",
+        path=data_path / f"org_{i+1}" / "train",
     )
     train_datasample_keys[org_id] = client.add_data_sample(
         data_sample,
@@ -134,7 +134,7 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
         test_only=True,
-        path=data_path / f"org_{ind+1}" / "test",
+        path=data_path / f"org_{i+1}" / "test",
     )
     test_datasample_keys[org_id] = client.add_data_sample(
         data_sample,
@@ -145,67 +145,30 @@ for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # Metrics registration
 # ====================
 
-import zipfile
+from sklearn.metrics import accuracy_score
+import numpy as np
 
-from substra.sdk.schemas import AlgoInputSpec
-from substra.sdk.schemas import AlgoOutputSpec
-from substra.sdk.schemas import AlgoSpec
-from substra.sdk.schemas import AssetKind
+from substrafl.remote.register import add_metric
+from substrafl.dependency import Dependency
 
-permissions_metric = Permissions(
-    public=False,
-    authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID,
-)
+metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
-inputs_metrics = [
-    AlgoInputSpec(
-        identifier="datasamples",
-        kind=AssetKind.data_sample,
-        optional=False,
-        multiple=True,
-    ),
-    AlgoInputSpec(
-        identifier="opener",
-        kind=AssetKind.data_manager,
-        optional=False,
-        multiple=False,
-    ),
-    AlgoInputSpec(
-        identifier="predictions",
-        kind=AssetKind.model,
-        optional=False,
-        multiple=False,
-    ),
-]
+permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
-outputs_metrics = [
-    AlgoOutputSpec(
-        identifier="performance",
-        kind=AssetKind.performance,
-        multiple=False,
-    )
-]
 
-objective = AlgoSpec(
-    inputs=inputs_metrics,
-    outputs=outputs_metrics,
-    name="Accuracy",
-    description=assets_directory / "metric" / "description.md",
-    file=assets_directory / "metric" / "metrics.zip",
+def accuracy(datasamples, predictions_path):
+    y_true = datasamples["targets"]
+    y_pred = np.load(predictions_path)
+
+    return accuracy_score(y_true, y_pred)
+
+
+metric_key = add_metric(
+    client=clients[ALGO_ORG_ID],
+    metric_function=accuracy,
     permissions=permissions_metric,
+    dependencies=metric_deps,
 )
-
-METRICS_DOCKERFILE_FILES = [
-    assets_directory / "metric" / "iris_metrics.py",
-    assets_directory / "metric" / "Dockerfile",
-]
-
-archive_path = objective.file
-with zipfile.ZipFile(archive_path, "w") as z:
-    for filepath in METRICS_DOCKERFILE_FILES:
-        z.write(filepath, arcname=filepath.name)
-
-metric_key = clients[ALGO_ORG_ID].add_algo(objective)
 
 # %%
 # Specify the machine learning components
@@ -408,14 +371,6 @@ class SklearnFedAvgAlgo(algorithms.Algo):
 
 
 # %%
-# Algo dependencies
-# =================
-
-from substrafl.dependency import Dependency
-
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
-
-# %%
 # Federated Learning strategies
 # =============================
 
@@ -435,7 +390,7 @@ aggregation_node = AggregationNode(ALGO_ORG_ID)
 
 train_data_nodes = list()
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for org_id in DATA_PROVIDER_ORGS_ID:
 
     # Create the Train Data Node (or training task) and save it in a list
     train_data_node = TrainDataNode(
@@ -456,7 +411,7 @@ from substrafl.evaluation_strategy import EvaluationStrategy
 
 test_data_nodes = list()
 
-for ind, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
+for org_id in DATA_PROVIDER_ORGS_ID:
 
     # Create the Test Data Node (or testing task) and save it in a list
     test_data_node = TestDataNode(
@@ -477,6 +432,8 @@ from substrafl.experiment import execute_experiment
 
 # Number of time to apply the compute plan.
 NUM_ROUNDS = 6
+
+algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
