@@ -52,6 +52,7 @@ The subprocess mode is much faster than the Docker mode, but does not test that 
 
 .. note::
     For the **Docker mode on Windows**, follow these `instructions <https://docs.docker.com/desktop/install/windows-install/>`__ to install Docker desktop.
+
     Once installed:
 
         * In ``Settings`` --> ``General``, check the ``Expose daemon on tcp://localhost:2375 without TLS`` option.
