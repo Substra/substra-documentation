@@ -55,7 +55,7 @@ The subprocess mode is much faster than the Docker mode, but does not test that 
 
     Once installed:
 
-        * In ``Settings`` |larr| ``General``, check the ``Expose daemon on tcp://localhost:2375 without TLS`` option.
+        * In ``Settings`` -> ``General``, check the ``Expose daemon on tcp://localhost:2375 without TLS`` option.
         * Set the environment variable ``DOCKER_HOST`` to  ``tcp://localhost:2375``
 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
