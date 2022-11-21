@@ -22,8 +22,10 @@ Installation
 
 .. _installation:
 
-Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on both MacOS and Linux. For Windows users you can use the
-`Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/about>`_.
+Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on both Windows, MacOS and Linux.
+
+.. note::
+    On **Windows**, please refer to :ref:`local_mode` to use the Docker mode.
 
 To install SubstraFL run the following command:
 
