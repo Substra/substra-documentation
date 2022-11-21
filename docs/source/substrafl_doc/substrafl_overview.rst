@@ -51,6 +51,7 @@ Algorithm
 
 A SubstraFL algorithm contains the local training and predict code and all the associated hyper parameters (batch size, loss, optimizer, etc).
 
+.. _concept_evaluation_strategy:
 
 Evaluation Strategy
 ^^^^^^^^^^^^^^^^^^^
@@ -60,6 +61,11 @@ The evaluation strategy specifies how and when the model is tested. More specifi
 * on which test data the model is tested
 * at which rounds the model is tested
 
+Metric
+^^^^^^
+
+A metric is a function that computes a performance by comparing labels (ground truth) and model's predictions.
+One or several metrics can be added for an :ref:`concept_evaluation_strategy`.
 
 Index Generator
 ^^^^^^^^^^^^^^^
