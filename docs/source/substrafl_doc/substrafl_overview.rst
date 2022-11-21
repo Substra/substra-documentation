@@ -22,7 +22,7 @@ Installation
 
 .. _installation:
 
-Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on both Windows, MacOS and Linux.
+Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on Windows, MacOS and Linux.
 
 .. note::
     On **Windows**, please refer to :ref:`local_mode` to use the Docker mode.
