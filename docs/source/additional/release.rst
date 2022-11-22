@@ -23,6 +23,16 @@ These sets of versions have been tested for compatibility:
      - substra-tests
      - substra-chaincode
 
+   * - 0.23.0
+     - `0.32.0 <https://github.com/Substra/substrafl/releases/tag/0.32.0>`__
+     - `0.40.0 <https://github.com/Substra/substra/releases/tag/0.40.0>`__
+     - `0.19.0 <https://github.com/Substra/substra-tools/releases/tag/0.19.0>`__
+     - TODO`0.31.4 <https://github.com/Substra/substra-backend/releases/tag/0.31.4>`__ | `helm 22.1.2 <https://artifacthub.io/packages/helm/substra/substra-backend/22.1.2>`__
+     - `0.30.0 <https://github.com/Substra/orchestrator/releases/tag/0.30.0>`__ `helm 7.4.6 <https://artifacthub.io/packages/helm/substra/orchestrator/7.4.6>`__
+     - `0.37.0 <https://github.com/Substra/substra-frontend/releases/tag/0.37.0>`__ | `helm 1.0.9 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.9>`__
+     - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
+     - `0.36.0 <https://github.com/Substra/substra-tests/releases/tag/0.36.0>`__
+     -
    * - 0.22.0
      - `0.30.1 <https://github.com/Substra/substrafl/releases/tag/0.30.1>`__
      - `0.38.2 <https://github.com/Substra/substra/releases/tag/0.38.2>`__
