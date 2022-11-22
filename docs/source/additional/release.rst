@@ -391,6 +391,9 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.23.0 - 2022-11-22
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Substra 0.22.0 - 2022-10-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
