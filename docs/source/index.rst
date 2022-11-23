@@ -58,16 +58,8 @@ Some quick links:
 * :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`
 * :ref:`Substrafl overview <substrafl_doc/substrafl_overview:Overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
-* :ref:`How to deploy Substra for Site Reliability Engineers <operations/deploy:Deploying Substra>`
+* :ref:`How to deploy Substra for Site Reliability Engineers <operations/howto:How-To>`
 * :ref:`Community <additional/community:Community>`
-
-.. toctree::
-   :glob:
-   :maxdepth: 2
-   :caption: Contributing to Substra
-   :hidden:
-
-   contributing/getting-started.rst
 
 
 .. toctree::
@@ -93,12 +85,21 @@ Some quick links:
 
 .. toctree::
    :glob:
+   :maxdepth: 2
+   :caption: Contributing to Substra
+   :hidden:
+
+   contributing/components.rst
+   contributing/getting-started.rst
+
+
+.. toctree::
+   :glob:
    :maxdepth: 1
    :caption: Deploying Substra
    :hidden:
 
-   operations/index.rst
-   operations/deploy.rst
+   operations/overview.rst
    operations/howto.rst
    operations/upgrade_notes.rst
 

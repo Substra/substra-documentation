@@ -1,6 +1,6 @@
-*****************
-Deploying Substra
-*****************
+********
+Overview
+********
 
 Requirements
 ============
@@ -75,3 +75,6 @@ User access are created by a dedicated pod (``account-operator``), credentials a
 
 There are also shared credentials to allow direct backend to backend communication.
 They are listed under ``addAccountOperator.incomingOrganizations`` or ``addAccountOperator.outgoingOrganizations``.
+
+
+Now you understand some of the concepts, you can read :doc:`how to deploy Substra </operations/howto>`.

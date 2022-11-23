@@ -1,6 +1,6 @@
-*****************************
-Deploying locally - dev setup
-*****************************
+************************
+Test locally - dev setup
+************************
 
 
 This page gives the directions to locally run the Substra stack. This deployment is made of:
@@ -248,7 +248,7 @@ Next steps
 
 Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
 
-If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/deploy` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
+If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/overview` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
 
 Troubleshooting
 ===============
