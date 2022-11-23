@@ -113,4 +113,5 @@ Some quick links:
 
    additional/community.rst
    additional/release.rst
+   additional/faq.rst
    additional/glossary.rst
