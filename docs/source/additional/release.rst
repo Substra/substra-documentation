@@ -141,7 +141,7 @@ Main changes
 
 SubstraFL
 
-- The metric registration is simplified. The user can now directly write a score function within their script, and directly register it by specifying the right dependencies and permissions. The score function must have (datasamples, predictions_path) as signature.
+- The **metric registration** is simplified. The user can now directly write a **metric function** within their script, and directly register it by specifying the right **dependencies** and **permissions**. The **metric function** must have (``datasamples``, ``predictions_path``) as signature.
 
 Example of new metric registration:
 
@@ -163,22 +163,22 @@ Example of new metric registration:
       metric_function=mse,
   )
 
-- The round 0 is now exposed. Possibility to evaluate centralized strategies before any training (FedAvg, NR, Scaffold). The round 0 is skipped for single org strategy and cannot be evaluated before training.
-- Add support for python 3.10.
-- Local dependencies are installed in one pip command to optimize the installation and avoid incompatibilities error.
-- Fix error when installing current package as local dependency.
+- The round 0 is now **exposed**. Possibility to evaluate centralized strategies before any training (FedAvg, NR, Scaffold). The round 0 is **skipped** for single org strategy and cannot be evaluated before training.
+- Add support for **Python 3.10**.
+- **Local dependencies** are installed in one pip command to optimize the installation and avoid incompatibilities error.
+- Fix error when installing **current package** as **local dependency**.
 
 Substra:
 
-- Add Windows compatibility for Docker mode.
+- Add **Windows compatibility** for Docker mode.
 
 Web application:
 
-- Add documentation link in user menu.
-- Removed task categories from the frontend.
+- Add **documentation link** in user menu.
+- Removed **task categories** from the frontend.
 - Renamed any tuple thing into a task thing.
-- Check for "last admin" when editing a user.
-- Build error logs are now accessible given the right permissions.
+- Check for *last admin* when editing a user.
+- **Build error logs** are now accessible given the right permissions.
 
 Substra 0.22.0 - 2022-10-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
