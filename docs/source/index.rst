@@ -60,6 +60,7 @@ Some quick links:
 * :ref:`Compatibility table <additional/release:Compatibility table>`
 * :ref:`How to deploy Substra for Site Reliability Engineers <operations/howto:How-To>`
 * :ref:`Community <additional/community:Community>`
+* `Subscribe to our newsletter <https://lists.lfaidata.foundation/g/substra-announce/join>`_
 
 
 .. toctree::
