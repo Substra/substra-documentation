@@ -7,7 +7,7 @@ What is Substra?
 ^^^^^^^^^^^^^^^^
 Substra is an open source federated learning (FL) software. It enables the training and validation of machine learning models on distributed datasets. It provides a flexible Python interface and a web app to run federated learning training at scale.
 
-Substra is the most proven software for federated learning on healthcare data in real production environments. It has already been deployed and used by hospitals and biotech companies (see the MELLODDY project for instance). Substra can also be used on a single machine on a virtually splitted dataset to perform FL simulations and debug code before launching experiments on a real network.
+Substra is the most proven software for federated learning on healthcare data in real production environments. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Substra can also be used on a single machine on a virtually splitted dataset to perform FL simulations and debug code before launching experiments on a real network.
 
 
 Who owns Substra?
