@@ -17,11 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move utils folder content in assets folder (#210)
 - Increase tocdepth in SDK API reference to display methods under Client (#219)
 - Update substratools Docker image name (#222)
-<<<<<<< HEAD
 - Use the new `add_metric` SubstraFL function in examples (#214)
-=======
 - Add documentation on mTLS setup (#200)
->>>>>>> 82146c7 (docs: update changelog)
 
 ## [0.22.0]
 
