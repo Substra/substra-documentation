@@ -108,7 +108,7 @@ These sets of versions have been tested for compatibility:
      - `0.23.0 <https://github.com/Substra/substra-tests/releases/tag/0.23.0>`__
      -
    * - 0.15.0
-     - `0.17.0 <https://github.com/Substra/substrafl/releases/tag/0.17.0>`__sdf
+     - `0.17.0 <https://github.com/Substra/substrafl/releases/tag/0.17.0>`__
      - `0.25.0 <https://github.com/Substra/substra/releases/tag/0.25.0>`__
      - `0.13.0 <https://github.com/Substra/substra-tools/releases/tag/0.13.0>`__
      - `0.18.0 <https://github.com/Substra/substra-backend/releases/tag/0.18.0>`__ | `helm 18.1.0 <https://core.harbor.tooling.owkin.com/harbor/projects/3/helm-charts/substra-backend/versions/18.1.0>`__
