@@ -102,7 +102,6 @@ Some quick links:
 
    operations/overview.rst
    operations/howto.rst
-   operations/upgrade_notes.rst
 
 
 
