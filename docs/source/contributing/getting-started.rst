@@ -1,9 +1,9 @@
-*****************************
-Deploying locally - dev setup
-*****************************
+************************
+Test locally - dev setup
+************************
 
 
-This page gives you directions to locally run the Substra stack. This deployment is made of:
+This page gives the directions to locally run the Substra stack. This deployment is made of:
 
 * 1 orchestrator (running in standalone mode, i.e. storing data in its own local database)
 * 2 backends (running in two organisations, ``org-1`` and ``org-2``)
@@ -72,7 +72,7 @@ First, install `Homebrew <https://brew.sh/>`_, then run the following commands:
 First time configuration
 ========================
 
-1. Execute the script :download:`k3-create.sh<./getting-started/k3-create.sh>`. This script deletes the existing cluster, recreates a new one and applies a patch for SSL.
+1. Create a Kubernetes cluster, create and patch the Nginx ingress to enable SSL passthrough:
 
    1. Download :download:`k3-create.sh<./getting-started/k3-create.sh>`.
    2. Make the script executable.
@@ -90,7 +90,7 @@ First time configuration
    .. tip::
       This script can be used to reset your development environment.
 
-2. Add the following line to ``/etc/hosts`` to allow the communication between your local cluster and the host (your machine):
+2. Add the following line to the ``/etc/hosts`` file to allow the communication between your local cluster and the host (your machine):
 
    .. code-block:: text
 
@@ -101,7 +101,6 @@ First time configuration
    .. code-block:: bash
 
       helm repo add bitnami https://charts.bitnami.com/bitnami
-      helm repo add stable https://charts.helm.sh/stable
       helm repo add twuni https://helm.twun.io
       helm repo add jetstack https://charts.jetstack.io
 
@@ -112,6 +111,12 @@ First time configuration
      .. code-block:: bash
 
       git clone https://github.com/Substra/substra.git
+
+   * `substrafl <https://github.com/substra/substrafl>`_
+
+     .. code-block:: bash
+
+      git clone https://github.com/Substra/substrafl.git
 
    * `orchestrator <https://github.com/substra/orchestrator>`_
 
@@ -166,7 +171,7 @@ Launching
    skaffold run
 
   .. caution::
-     On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev``and ``arm64``.
+     On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev`` and ``arm64``.
 
      .. code-block:: bash
 
@@ -181,7 +186,7 @@ Launching
 
 * Deploy the frontend. You can use two methods (described below)
 
-  a. local server: Execute the following command:
+  a. Local server: Execute the following command:
 
     .. code-block:: bash
 
@@ -210,27 +215,27 @@ To stop the Substra stack, you need to stop the 3 components (backend, orchestra
 
 * Stop the frontend: This action depends on which option you chose during the launch:
 
-  a. local server: Stop the process running the local server (usually using CONTROL + C)
+  a. Local server: Stop the process running the local server (usually using *Control+C* or *Command+C* on macOS)
   b. Docker:
 
      .. code-block:: bash
 
-      docker stop DOCKER_FRONTEND_CONTAINER_NAME
+        docker stop DOCKER_FRONTEND_CONTAINER_NAME
 
      | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container you chose during the launch
 * Stop the orchestrator:
 
   .. code-block:: bash
 
-   cd orchestrator
-   skaffold delete
+     cd orchestrator
+     skaffold delete
 
 * Stop the backend:
 
   .. code-block:: bash
 
-   cd substra-backend
-   skaffold delete
+     cd substra-backend
+     skaffold delete
 
 If this command fails and you still have pods up, you can use the following command to remove the ``org-1`` and ``org-2`` namespaces entirely.
 
@@ -241,9 +246,9 @@ If this command fails and you still have pods up, you can use the following comm
 Next steps
 ==========
 
-Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl (low-level library) examples </substrafl_doc/examples/index>` (low-level library).
+Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
 
-If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/deploy` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
+If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/overview` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
 
 Troubleshooting
 ===============
@@ -256,7 +261,7 @@ Troubleshooting
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
 
-   You can also go through :doc:`the instructions one more time </operations/getting-started>`, maybe they changed since you last saw them.
+   You can also go through :doc:`the instructions one more time </contributing/getting-started>`, maybe they changed since you last saw them.
 
 Troubleshooting prerequisites
 -----------------------------
@@ -266,27 +271,30 @@ This section summarize errors happening when you are not meeting the hardware re
 .. note::
    The instructions are targeted to some specific platforms (Docker for Windows in certain cases and Docker for Mac), where you can set the resources allowed to Docker in the configuration panel (information available `here for Mac <https://docs.docker.com/desktop/settings/mac/>`__ and `here for Windows <https://docs.docker.com/desktop/settings/windows/>`__).
 
+
+The following list describes errors that have already occurred, and their resolutions.
+
 * .. code-block:: pycon
 
-   <ERROR:substra.sdk.backends.remote.rest_client:Requests error status 502: <html>
-   <head><title>502 Bad Gateway</title></head>
-   <body>
-   <center><h1>502 Bad Gateway</h1></center>
-   <hr><center>nginx</center>
-   </body>
-   </html>
+     <ERROR:substra.sdk.backends.remote.rest_client:Requests error status 502: <html>
+     <head><title>502 Bad Gateway</title></head>
+     <body>
+     <center><h1>502 Bad Gateway</h1></center>
+     <hr><center>nginx</center>
+     </body>
+     </html>
 
-   WARNING:root:Function _request failed: retrying in 1s>
+     WARNING:root:Function _request failed: retrying in 1s>
 
-   You may have to increase the number of CPU available in the settings panel.
+  You may have to increase the number of CPU available in the settings panel.
 
 * .. code-block:: go
 
-   Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)
+     Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)
 
   .. code-block:: go
 
-   Unable to connect to the server: net/http: TLS handshake timeout
+     Unable to connect to the server: net/http: TLS handshake timeout
 
   You may have to increase the RAM available in the settings panel.
 
@@ -294,7 +302,7 @@ This section summarize errors happening when you are not meeting the hardware re
 
   .. code-block:: py3
 
-   substrapp.exceptions.PodReadinessTimeoutError: Pod substra.ai/pod-name=substra-***-compute-*** failed to reach the \"Running\" phase after 300 seconds."
+     substrapp.exceptions.PodReadinessTimeoutError: Pod substra.ai/pod-name=substra-***-compute-*** failed to reach the \"Running\" phase after 300 seconds."
 
   Your Docker disk image might be full, increase it or clean it with ``docker system prune -a``
 
@@ -304,33 +312,11 @@ Troubleshooting deployment
 Skaffold version 1.31.0
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Status check is broken in version 1.31.0 and kubectl secret manifests are not applied until helm deploy is done, but helm deploy depends on kubectl secret manifests.
-It has been fixed in `Skaffold 1.32.0 (PR #6574) <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__.
-
-The solution for the version 1.31.0 is to add ``--status-check=false`` when running Skaffold:
+Due to a change in the deployment sequence in Skaffold 1.31.x our components cannot be deployed with this version using only ``skaffold run``. Either upgrade to `Skaffold 1.32.0 <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__ or add the ``--status-check=false`` flag.
 
 .. code-block:: bash
 
    skaffold dev/run/deploy --status-check=false
-
-Failed calling webhook ``validate.nginx.ingress.kubernetes.io``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you encounter the following error message when deploying the backend(s):
-
-
-.. code-block:: bash
-
-   Error: UPGRADE FAILED: failed to create resource: Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": an error on the server ("") has prevented the request from succeeding
-   failed to deploy: install: exit status 1
-
-As a workaround, you can delete the failing webhook by launching the following command:
-
-.. code-block:: bash
-
-   kubectl delete Validatingwebhookconfigurations ingress-nginx-admission
-
-You should now be able to :ref:`deploy the backend(s) again<Deploy the backend>`.
 
 Other errors during backend deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,11 +333,3 @@ If you encounter one of the following errors while deploying the backend:
    Error from server (InternalError): error when creating "STDIN": Internal error occurred: failed calling webhook "webhook.cert-manager.io": Post "https://cert-manager-webhook.cert-manager.svc:443/mutate?timeout=10s": x509: certificate signed by unknown authority
 
 Check that the orchestrator is deployed and relaunch the command ``skaffold run``.
-
-Troubleshooting monitoring
---------------------------
-
-k9s limits on log lines
-^^^^^^^^^^^^^^^^^^^^^^^
-
-By default, k9s limits the log to the last 200 lines. To increase this value, set ``logger.tail`` and ``logger.buffer`` to the desired number (e.g. 5000) in the `k9s config file <https://github.com/derailed/k9s#k9s-configuration>`_.
