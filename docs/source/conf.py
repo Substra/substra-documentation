@@ -25,7 +25,7 @@ import git
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-    SUBSTRA_VERSION = "0.40."
+    SUBSTRA_VERSION = "0.40.0"
     TOOLS_VERSION = "0.19.0"
     SUBSTRAFL_VERSION = "0.32.0"
 
