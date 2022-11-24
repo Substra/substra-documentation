@@ -22,7 +22,7 @@ These sets of versions have been tested for compatibility:
      - substra-hlf-k8s
      - substra-tests
 
-   * - 0.23.0
+   * - 0.23.1
      - `0.32.0 <https://github.com/Substra/substrafl/releases/tag/0.32.0>`__
      - `0.40.0 <https://github.com/Substra/substra/releases/tag/0.40.0>`__
      - `0.19.0 <https://github.com/Substra/substra-tools/releases/tag/0.19.0>`__
@@ -62,7 +62,7 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
-Substra 0.23.0 - 2022-11-22
+Substra 0.23.1 - 2022-11-24
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Main changes
