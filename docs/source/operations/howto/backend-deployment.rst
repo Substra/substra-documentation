@@ -106,6 +106,8 @@ To configure your values:
              enabled: true
              cacert: orchestrator-cacert
 
+#. Optional: If the orchestrator requires your backend to be authenticated by using mTLS follow :doc:`mtls-setup`.
+
 #. Add users to your backend. In the ``backend-values.yaml`` file add the following content:
 
    .. code-block:: yaml

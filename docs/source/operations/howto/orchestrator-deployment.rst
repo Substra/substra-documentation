@@ -154,6 +154,8 @@ To setup TLS, follow these steps:
       
       kubectl create secret tls orchestrator-tls-server-pair --cert=orchestrator-tls.crt --key=orchestrator-tls.key
 
+#. Optional: If you also want to setup mTLS to authenticate your client follow the guide :doc:`mtls-setup`.
+
 .. _deploy-orchestrator:
 
 Deploy the Chart
