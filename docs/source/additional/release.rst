@@ -9,7 +9,7 @@ Compatibility table
 These sets of versions have been tested for compatibility:
 
 .. list-table::
-   :widths: 5 5 5 5 5 5 5 5 5 5
+   :widths: 5 5 5 5 5 5 5 5 5
    :header-rows: 1
 
    * - substra
