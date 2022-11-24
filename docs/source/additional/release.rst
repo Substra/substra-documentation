@@ -21,7 +21,6 @@ These sets of versions have been tested for compatibility:
      - substra-frontend
      - substra-hlf-k8s
      - substra-tests
-     - substra-chaincode
 
    * - 0.23.0
      - `0.32.0 <https://github.com/Substra/substrafl/releases/tag/0.32.0>`__
@@ -32,7 +31,6 @@ These sets of versions have been tested for compatibility:
      - `0.37.0 <https://github.com/Substra/substra-frontend/releases/tag/0.37.0>`__ | `helm 1.0.9 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.9>`__
      - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
      - `0.36.0 <https://github.com/Substra/substra-tests/releases/tag/0.36.0>`__
-     -
    * - 0.22.0
      - `0.30.1 <https://github.com/Substra/substrafl/releases/tag/0.30.1>`__
      - `0.38.2 <https://github.com/Substra/substra/releases/tag/0.38.2>`__
@@ -42,7 +40,6 @@ These sets of versions have been tested for compatibility:
      - `0.35.1 <https://github.com/Substra/substra-frontend/releases/tag/0.35.1>`__ | `helm 1.0.7 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.7>`__
      - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
      - `0.34.0 <https://github.com/Substra/substra-tests/releases/tag/0.34.0>`__
-     -
    * - 0.21.0
      - `0.28.0 <https://github.com/Substra/substrafl/releases/tag/0.28.0>`__
      - `0.36.0 <https://github.com/Substra/substra/releases/tag/0.36.0>`__
@@ -52,7 +49,6 @@ These sets of versions have been tested for compatibility:
      - `0.34.0 <https://github.com/Substra/substra-frontend/releases/tag/0.34.0>`__ | `helm 1.0.6 <https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.6>`__
      - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
      - `0.32.0 <https://github.com/Substra/substra-tests/releases/tag/0.32.0>`__
-     -
 
 Changelog
 ---------
