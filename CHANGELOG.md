@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Fix order of build in yaml file (#241)
-
+- Add upgrade note for 0.23.0 (#228)
 ## [0.23.1]
 
 - Add Mnist example image (#218)
