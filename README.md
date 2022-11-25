@@ -1,14 +1,30 @@
 # Substra documentation
 
-- [Substra documentation](#substra-documentation)
-  - [Contributing](#contributing)
-    - [Install substra, substratools and substrafl in editable mode](#install-substra-substratools-and-substrafl-in-editable-mode)
-    - [Build the documentation locally](#build-the-documentation-locally)
-    - [Add a new example](#add-a-new-example)
-  - [Releases](#releases)
+<div align="left">
+<a href="https://join.slack.com/t/substra-workspace/shared_invite/zt-1fqnk0nw6-xoPwuLJ8dAPXThfyldX8yA"><img src="https://img.shields.io/badge/chat-on%20slack-blue?logo=slack" /></a> <a href="https://docs.substra.org/"><img src="https://img.shields.io/badge/read-docs-purple?logo=mdbook" /></a>
+<br /><br /></div>
 
-Welcome to Substra documentation. [Here](https://docs.substra.org) you can find the published stable version.
+<div align="center">
+<picture>
+  <object-position: center>
+  <source media="(prefers-color-scheme: dark)" srcset="Substra-logo-white.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Substra-logo-colour.svg">
+  <img alt="Substra" src="Substra-logo-colour.svg" width="500">
+</picture>
+</div>
+<br>
+<br>
 
+Substra is an open source federated learning (FL) software. This specific reposity is the documentation of Substra.
+
+This documentation is hosted on Read The Docs and can be found [here](https://docs.substra.org/).
+
+## Support
+
+If you need support, please either raise an issue on Github or ask on [Slack](https://join.slack.com/t/substra-workspace/shared_invite/zt-1fqnk0nw6-xoPwuLJ8dAPXThfyldX8yA).
+
+
+# Setup
 
 ## Contributing
 
