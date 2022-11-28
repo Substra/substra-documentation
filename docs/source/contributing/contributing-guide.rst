@@ -2,7 +2,7 @@
 Contributing Guide
 ************************
 
-Thanks for checking out the contributing guide. Substra warmly welcomes contributions !
+Thanks for checking out the contributing guide. Substra warmly welcomes contributions!
 
 Ground rules & expectations
 ===========================
