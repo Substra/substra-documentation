@@ -90,6 +90,8 @@ Some quick links:
    :caption: Contributing to Substra
    :hidden:
 
+   contributing/contributing-guide.rst
+   contributing/code-of-conduct.rst
    contributing/components.rst
    contributing/getting-started.rst
 
