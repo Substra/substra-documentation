@@ -22,8 +22,8 @@ A pull request doesn't have to represent finished work. You can open a pull requ
 
 Here's how to submit a pull request:
 
-* **`Fork the repository <https://guides.github.com/activities/forking/>`_** and clone it locally. Connect your local to the original "upstream" repository by adding it as a remote. Pull in changes from "upstream" often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions `here <https://help.github.com/articles/syncing-a-fork/>`_.)
-* **`Create a branch <https://guides.github.com/introduction/flow/>`_** for your edits.
+* `**Fork the repository** <https://guides.github.com/activities/forking/>`_ and clone it locally. Connect your local to the original "upstream" repository by adding it as a remote. Pull in changes from "upstream" often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions `here <https://help.github.com/articles/syncing-a-fork/>`_.)
+* `**Create a branch** <https://guides.github.com/introduction/flow/>`_ for your edits.
 * **Sign off** your commits.
 * **Test your changes.** Please ensure that your contribution passes all tests if you open a pull request. If there are test failures, you will need to address them before we can merge your contribution.
 * **Contribute in the style of the project** to the best of your abilities. This may mean using indents, semi-colons or comments differently than you would in your own repository, but makes it easier for us to merge, others to understand and maintain in the future.
@@ -33,13 +33,13 @@ Sign Off
 
 For compliance purposes, `Developer Certificate of Origin (DCO) on Pull Requests <https://github.com/apps/dco>`_ is activated on the repo.
 
+In practice, you must add a ``Signed-off-by:`` message at the end of every commit:
+
 .. code-block:: bash
 
-    In practice, you must add a ``Signed-off-by:`` message at the end of every commit:
-
     This is my commit message
+    Signed-off-by: Random J Developer <random@developer.example.org>
 
-Signed-off-by: Random J Developer <random@developer.example.org>
 Add ``-s`` flag to add it automatically: ``git commit -s -m 'This is my commit message'``.
 
 Community
