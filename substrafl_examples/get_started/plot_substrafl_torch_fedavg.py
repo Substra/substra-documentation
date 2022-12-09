@@ -43,7 +43,7 @@ This example does not use a deployed platform of Substra and run in local mode.
 
 from substra import Client
 
-N_CLIENTS = 3
+N_CLIENTS = 1
 
 # Every computation will run in `subprocess` mode, where everything run locally in Python
 # subprocesses.
@@ -51,21 +51,21 @@ N_CLIENTS = 3
 # "docker" mode where computations run locally in docker containers
 # "remote" mode where computations run remotely (you need to have deployed platform for that)
 client_0 = Client(backend_type="subprocess")
-client_1 = Client(backend_type="subprocess")
-client_2 = Client(backend_type="subprocess")
+# client_1 = Client(backend_type="subprocess")
+# client_2 = Client(backend_type="subprocess")
 # To run in remote mode you have to also use the function `Client.login(username, password)`
 
 clients = {
     client_0.organization_info().organization_id: client_0,
-    client_1.organization_info().organization_id: client_1,
-    client_2.organization_info().organization_id: client_2,
+    # client_1.organization_info().organization_id: client_1,
+    # client_2.organization_info().organization_id: client_2,
 }
 
 
 # Store organization IDs
 ORGS_ID = list(clients.keys())
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
+DATA_PROVIDER_ORGS_ID = [ORGS_ID[0]]  # Data providers orgs are the two last organizations.
 
 # %%
 # Data and metrics
@@ -332,10 +332,10 @@ class TorchDataset(torch.utils.data.Dataset):
 # Indeed, this `TorchDataset` will be instantiated directly on the data provider organization.
 
 
-from substrafl.algorithms.pytorch import TorchFedAvgAlgo
+from substrafl.algorithms.pytorch import TorchSingleOrganizationAlgo
 
 
-class MyAlgo(TorchFedAvgAlgo):
+class MyAlgo(TorchSingleOrganizationAlgo):
     def __init__(self):
         super().__init__(
             model=model,
@@ -357,9 +357,9 @@ class MyAlgo(TorchFedAvgAlgo):
 # updates.
 
 
-from substrafl.strategies import FedAvg
+from substrafl.strategies import SingleOrganization
 
-strategy = FedAvg()
+strategy = SingleOrganization()
 
 # %%
 # Where to train where to aggregate

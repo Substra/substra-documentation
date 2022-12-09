@@ -48,10 +48,10 @@ def setup_mnist(data_path, N_CLIENTS):
     test_labels = MNISTraw2numpy(str(raw_path / "t10k-labels-idx1-ubyte"))
 
     # Split array into the number of organization
-    train_images_folds = np.split(train_images, N_CLIENTS)
-    train_labels_folds = np.split(train_labels, N_CLIENTS)
-    test_images_folds = np.split(test_images, N_CLIENTS)
-    test_labels_folds = np.split(test_labels, N_CLIENTS)
+    train_images_folds = np.array([train_images])
+    train_labels_folds = np.array([train_labels])
+    test_images_folds = np.array([test_images])
+    test_labels_folds = np.array([test_labels])
 
     # Save splits in different folders to simulate the different organization
     for i in range(N_CLIENTS):
