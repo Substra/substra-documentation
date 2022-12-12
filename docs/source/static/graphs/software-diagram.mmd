@@ -1,0 +1,44 @@
+flowchart LR
+    subgraph Data provider 2
+    sb2
+    sf2[Substra-frontend]
+    db1[(fa:fa-lock Data)]
+    end
+
+    subgraph Algo provider
+    sf1[Substra-frontend]
+    sb1
+    end
+
+    subgraph Data provider 1
+    sf3[Substra-frontend]
+    sb3
+    db2[(fa:fa-lock Data)]
+    end
+
+    sb2[Substra-backend]<-->O(Orchestrator)
+    sb1[Substra-backend]<-->O(Orchestrator)
+    sb3[Substra-backend]<-->O(Orchestrator)
+
+    sb1 <--> sb2
+    sb1 <--> sb3
+
+    substra1[Substra Python lib] <--> sb1
+    substrafl1[SubstraFL Python lib] <--> substra1
+
+    substra2[Substra Python lib] <--> sb2
+    substrafl2[SubstraFL Python lib] <--> substra2
+
+    substra3[Substra Python lib] <--> sb3
+    substrafl3[SubstraFL Python lib] <--> substra3
+
+
+    U1[fa:fa-user] <--> substrafl1
+    U1 <--> sf1
+
+    U2[fa:fa-user] <--> substrafl2
+    U2 <--> sf2
+
+    U3[fa:fa-user] <--> substrafl3
+    U3 <--> sf3
+

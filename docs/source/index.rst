@@ -37,7 +37,7 @@ Substra has three user interfaces:
     * **SubstraFL**: a high-level federated learning Python library based on Substra. SubstraFL is used to run complex federated learning experiments at scale.
     * A **web application** used to monitor experiments training and explore their results.
 
-
+.. mermaid:: static/graphs/software-diagram.mmd
 
 Installation
 ^^^^^^^^^^^^
