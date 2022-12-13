@@ -10,7 +10,7 @@ Kubernetes pods
 ===============
 
 docker-registry
-    We use this service to store images built from user-provided :ref:`Algorithms<concept_algorithm>`.
+    to store images built from user-provided :ref:`Algorithms<concept_algorithm>`.
     Make sure to assign a large enough volume to avoid rebuilding images over and over due to eviction.
 registry-prepopulate
     This Pod is managed by a Job running on chart installation or update.
