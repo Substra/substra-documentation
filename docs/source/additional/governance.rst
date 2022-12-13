@@ -6,12 +6,12 @@ This document briefly describes "how we make decisions" in the Substra Project.
 Overall
 -------
 
-This project is a Linux Foundation AI & Data ([LFAI](https://lfaidata.foundation/)) project.
+This project is a Linux Foundation AI & Data (`LFAI <https://lfaidata.foundation/>`_) project.
 
 
-In terms of ["Governance models" (Gardler and Hanganu)](http://oss-watch.ac.uk/resources/governancemodels) the Substra project is a bazaar -
+In terms of ["Governance models" `Gardler and Hanganu <http://oss-watch.ac.uk/resources/governancemodels>`_ the Substra project is a bazaar -
 contributions are gladly welcomed from anyone.
-The project is led by a single technical lead designated by [Owkin](https://owkin.com/).
+The project is led by a single technical lead designated by `Owkin <https://owkin.com/>`_.
 The technical lead has final say on decisions, but the technical lead is subject to being overruled or replaced by [Owkin](https://owkin.com/).
 Also, since the project is FLOSS, the project can be forked; this ability to fork also provides a check against despotism.
 The technical lead's job is focus on doing what's best for this project, and the project's goal is to help the FLOSS community overall.
