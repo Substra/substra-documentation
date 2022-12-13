@@ -20,11 +20,11 @@ minio
     You should back up the data of this Pod.
 postgresql
     This is the database supporting the Backend.
-    You should back up the data of this Pod.
+    You should backcvds up the data of this Pod.
 redis
     This is an organization-specific message broker to support `Celery`_ tasks.
 backend-events
-    This component will consume events from the Orchestrator.
+    This component will consu events from the Orchestrator.
     It should be able to access the Orchestrator over gRPC.
     It handles events and triggers appropriate responses such as starting compute tasks.
     On startup, it will also register the Organization on the Orchestrator.
