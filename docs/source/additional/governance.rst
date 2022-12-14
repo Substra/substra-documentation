@@ -46,3 +46,8 @@ Others with Code Owner rights includes:
 - Olivier Leobal (@oleobal)
 - Romain Goussault (@RomainGoussault)
 - Thibault Fouqueray (@ThibaultFy)
+
+Others with administrative right on the Substra project:
+
+- Ibrahim Haddad (@ibrahimhaddad)
+- Matthieu Blottière (@mblottiere)
