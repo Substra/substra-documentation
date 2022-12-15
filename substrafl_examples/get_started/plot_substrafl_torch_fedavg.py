@@ -3,16 +3,12 @@
 Using Torch FedAvg on MNIST dataset
 ===================================
 
-This example illustrates the basic usage of SubstraFL, and proposes Federated Learning model training using the Federated Average strategy
+This example illustrates the basic usage of SubstraFL and proposes Federated Learning using the Federated Averaging strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
-In this example, we work on 28x28 pixel sized grayscale images. The problem considered is a classification problem
-aiming to recognize the number written on each image..
+In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
+aiming to recognize the number written on each image.
 
-SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
-interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
-This example here uses the specific PyTorch interface.
-
-This example does not use a deployed platform of Substra and run in local mode.
+This example does not use a deployed platform of Substra and runs in local mode.
 
 **Requirements:**
 
@@ -22,10 +18,10 @@ This example does not use a deployed platform of Substra and run in local mode.
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
 
-    Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
+    Please ensure you have all the libraries installed. A *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
 
-  - **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
+  - **Substra** and **SubstraFL** should already be installed. If not, follow the instructions described here:
     :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
@@ -33,10 +29,8 @@ This example does not use a deployed platform of Substra and run in local mode.
 # Setup
 # *****
 #
-# We work with three different organizations. Two organizations provide a dataset, and a third
-# one provides the algorithm and register the machine learning tasks.
-#
-# This example runs in local mode, simulating a federated learning experiment.
+# This examples runs with three organizations. Two organizations provide datasets, while a third
+# one provides the algorithm.
 #
 # In the following code cell, we define the different organizations needed for our FL experiment.
 
@@ -77,10 +71,10 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last orga
 #
 # This section downloads (if needed) the **MNIST dataset** using the `torchvision library
 # <https://pytorch.org/vision/stable/index.html>`__.
-# It extracts the images from the raw files and locally creates two folders: one for each
+# It extracts the images from the raw files and locally creates a folder for each
 # organization.
 #
-# Each organization will have access to half the train data, and to half the test data (which
+# Each organization will have access to half the training data and half the test data (which
 # corresponds to **30,000**
 # images for training and **5,000** for testing each).
 
@@ -108,10 +102,10 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # dataset.
 #
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
-# :ref:`documentation/concepts:Permissions` for each :ref:`documentation/concepts:Assets` to define which organization
+# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to define which organization
 # can use them.
 #
-# Note that metadata, for instance: assets' creation date, assets owner, are visible by all the organizations of a
+# Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
 
 from substra.sdk.schemas import DatasetSpec
@@ -165,16 +159,16 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # Metric registration
 # ===================
 #
-# A metric is a function used to compute the score of predictions on one or several
+# A metric is a function used to evaluate the performance of your model on one or several
 # **datasamples**.
 #
-# To add a metric, you need to define a function that computes and return a performance
+# To add a metric, you need to define a function that computes and returns a performance
 # from the datasamples (as returned by the opener) and the predictions_path (to be loaded within the function).
 #
-# When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function under the numpy format
+# When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function in numpy format
 # so that you can simply load them using `np.load`.
 #
-# After defining the metrics dependencies and permissions, we use the `add_metric` function to register the metric.
+# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
 # This metric will be used on the test datasamples to evaluate the model performances.
 
 from sklearn.metrics import accuracy_score
@@ -209,16 +203,16 @@ metric_key = add_metric(
 # Specify the machine learning components
 # ***************************************
 #
-# This section uses the PyTorch based SubstraFL API to simplify the machine learning components definition.
+# This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
 # However, SubstraFL is compatible with any machine learning framework.
 #
 # In this section, you will:
 #
-# - register a model and its dependencies
-# - specify the federated learning strategy
-# - specify the organizations where to train and where to aggregate
-# - specify the organizations where to test the models
-# - actually run the computations
+# - Register a model and its dependencies
+# - Specify the federated learning strategy
+# - Specify the training and aggregation nodes
+# - Specify the test nodes
+# - Actually run the computations
 
 
 # %%
@@ -365,7 +359,7 @@ strategy = FedAvg()
 # Where to train where to aggregate
 # =================================
 #
-# We specify on which data we want to train our model, using the :ref:`substrafl_doc/api/nodes:TrainDataNode` objets.
+# We specify on which data we want to train our model, using the :ref:`substrafl_doc/api/nodes:TrainDataNode` object.
 # Here we train on the two datasets that we have registered earlier.
 #
 # The :ref:`substrafl_doc/api/nodes:AggregationNode` specifies the organization on which the aggregation operation

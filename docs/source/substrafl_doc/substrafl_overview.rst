@@ -4,7 +4,7 @@ Overview
 
 .. _substrafl_concepts:
 
-SubstraFL is a federated learning Python library that leverages  Substra software to run federated learning experiments at scale on real distributed data. Its main usage is therefore in production environments. SubstraFL can also be used on a single machine on a virtually splitted dataset for two use cases:
+SubstraFL is a federated learning Python library that leverages Substra to run federated learning experiments at scale on real distributed data. Its main usage is therefore in production environments. SubstraFL can also be used on a single machine on a virtually splitted dataset for two use cases:
 
 * to debug code before launching experiments on a real network
 * to perform FL simulations
@@ -41,7 +41,7 @@ Main concepts
 Experiment
 ^^^^^^^^^^
 
-An experiment is made up of all the different bricks needed to perform federated learning training and testing: the training data, the algorithm used to do the local training, the federated learning strategy, the metric and the test data.
+An experiment is made up of all the different pieces required to perform federated learning: the training data, the algorithm used to do the local training, the federated learning strategy, the metric and the test data.
 Launching an experiment creates a :ref:`concept_compute_plan`.
 
 
@@ -51,7 +51,7 @@ Algorithm
 .. warning::
     A SubstraFL algorithm is not the same as a Substra :ref:`concept_algorithm`!
 
-A SubstraFL algorithm contains the local training and predict code and all the associated hyper parameters (batch size, loss, optimizer, etc).
+A SubstraFL algorithm contains the local training and predict code along with all associated hyper parameters (batch size, loss, optimizer, etc).
 
 .. _concept_evaluation_strategy:
 
@@ -60,22 +60,23 @@ Evaluation Strategy
 
 The evaluation strategy specifies how and when the model is tested. More specifically it defines:
 
-* on which test data the model is tested
-* at which rounds the model is tested
+* The data the model is tested on
+* On which rounds the model is tested
 
 Metric
 ^^^^^^
 
-A metric is a function that computes a performance by comparing labels (ground truth) and model's predictions.
+A metric is a function that computes performance by comparing the model's predictions against labelled data.
 One or several metrics can be added for an :ref:`concept_evaluation_strategy`.
 
 Index Generator
 ^^^^^^^^^^^^^^^
 
-The notion of epochs does not fully apply to the FL setting. Usually we don't want to train on a full epoch on each organization at every round, but on a reduced quantity of data to prevent models from different organizations from diverging too much.
-In a federated setting, at each round, in each organization, the model is trained for ``num_updates`` batches, with each batch containing ``batch_size`` data points.
+The notion of epochs does not fully apply to the FL setting. Training on a full epoch on each organization at every round can often result in divergence, which means a model may miss out on the potential advantages of having different datasets. To best utilize these datasets, we propose training your models on a subset of data within each dataset. This is further explained below (See diagram).
 
-For instance if you have a dataset of 1000 data points at every organization, if you specify ``num_updates=10`` and ``batch_size=32``, at each round your model trains on 10x32=320 data points per organization.
+At each round, in each organization, the model is trained for ``num_updates`` batches, with each batch containing ``batch_size`` data points.
+
+For instance if you have a dataset of 1000 data points at every organization, if you specify ``num_updates=10`` and ``batch_size=32``, at each round your model trains on 10 x 32 = 320 data points per organization.
 
 The index generator remembers which data has been used in the previous rounds and generates the new batches so that the model is trained on the full dataset (given enough number of rounds and updates). When the whole dataset has been used, the index generator shuffles the data and starts generating batches from the whole dataset again.
 
@@ -90,21 +91,13 @@ Node
 ^^^^
 There are three types of node:
 
+.. warning:: The term 'node' is used interchangeably with 'organization' in Substra. Both terms represent different points in a federated data network.
+
 * TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`opener <concept_opener>` (a script used to load the data from files into memory) used for training.
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
 Note that organizations can be of any node type, and can be multiple node types at the same time. For instance one organization can be for one experiment a TrainDataNode and an AggregationNode.
-
-Federated Learning Strategies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A FL strategy describes how to train a model on distributed data. The most well known strategy is the Federated Averaging strategy: train locally a model on every organization, then aggregate the weight updates from every organization, and then apply locally at each organization the averaged weight updates. A strategy imposes some constraints on the model that can be used. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in SubstraFL.
-
-Strategies can be centralized or decentralized:
-
-* A centralized FL strategy: during the training, the organization containing train data communicates exclusively with a central organization.
-* A decentralized FL strategy: during the training, the organizations communicate between themselves, there is no central organization.
-
 
 Round
 ^^^^^
@@ -118,6 +111,21 @@ Each round represents one iteration of the training loop in the federated settin
 * The training organizations update their model with the aggregated updates.
 
 Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`.
+
+Federated Learning Strategies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A FL strategy describes the journey the model will take on distributed data. The most popular strategy is the Federated Averaging, which is explained below:
+
+* The model trains locally on each organization
+* The model aggregates the weight updates from each of these training sessions on an aggregation node 
+* The averaged weight updates are applied locally at each organization. 
+
+Your choice of strategy will likely depend on the model you use. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in SubstraFL.
+
+Strategies can be centralized or decentralized:
+
+* **Centralized:** During the training, the organizations containing train data communicate exclusively with a central organization.
+* **Decentralized:** During the training, the organizations communicate between themselves, there is no central organization.
 
 
 Centralized strategy - workflow

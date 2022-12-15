@@ -53,7 +53,7 @@ These sets of versions have been tested for compatibility:
 Changelog
 ---------
 
-This is an overview of the main changes, please have a look at the changelog of every repos to have a full grasp on what has changed:
+This is an overview of the main changes, please have a look at the changelog of every repository to have a full grasp on what has changed:
 
 - `substra changelog <https://github.com/Substra/substra/blob/main/CHANGELOG.md>`__
 - `substrafl changelog <https://github.com/Substra/substrafl/blob/main/CHANGELOG.md>`__
