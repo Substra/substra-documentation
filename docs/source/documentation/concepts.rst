@@ -18,7 +18,7 @@ Dataset
 
 A dataset represents the data in Substra. It is made up of:
 
-* An opener, which is a script used to load the data from files into memory.
+* An opener, which is a script used to load data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
 
 .. _concept_algorithm:
