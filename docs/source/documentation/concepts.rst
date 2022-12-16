@@ -43,16 +43,17 @@ Compute plan and tasks
 
 .. _concept_compute_plan:
 
-**Task**
-
-A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
-
 **Compute plan**
+^^^^^^^^^^^^^^^^
 
 A set of tasks.
 Gathering tasks into a single compute plan will lead to a more optimized compute.
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
+
+**Task**
+
+A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
 
 **Transient task outputs**
 
