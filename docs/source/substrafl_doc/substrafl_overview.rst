@@ -72,7 +72,8 @@ One or several metrics can be added for an :ref:`concept_evaluation_strategy`.
 Index Generator
 ^^^^^^^^^^^^^^^
 
-The notion of epochs does not fully apply to the FL setting. Training on a full epoch on each organization at every round can often result in divergence, which means a model may miss out on the potential advantages of having different datasets. To best utilize these datasets, we propose training your models on a subset of data within each dataset. This is further explained below (See diagram).
+The notion of epochs does not fully apply to the FL setting. Usually we don't want to train on a full epoch on each organization at every round, but on a reduced quantity of data to prevent models from different organizations from diverging too much.
+In a federated setting, at each round, in each organization, the model is trained for ``num_updates`` batches, with each batch containing ``batch_size`` data points. This is further explained below (See diagram).
 
 At each round, in each organization, the model is trained for ``num_updates`` batches, with each batch containing ``batch_size`` data points.
 
@@ -91,26 +92,11 @@ Node
 ^^^^
 There are three types of node:
 
-.. warning:: The term 'node' is used interchangeably with 'organization' in Substra. Both terms represent different points in a federated data network.
-
 * TrainDataNode: one of the organizations the local training takes place on, with a set of data samples and an :ref:`opener <concept_opener>` (a script used to load the data from files into memory) used for training.
 * TestDataNode: one of the organizations the model evaluation takes place on, with a set of data samples and an opener used for testing.
 * AggregationNode: the organization on which the aggregation, if there is one, takes place.
 
 Note that organizations can be of any node type, and can be multiple node types at the same time. For instance one organization can be for one experiment a TrainDataNode and an AggregationNode.
-
-Round
-^^^^^
-Each round represents one iteration of the training loop in the federated setting. For example, in a centralized federated learning strategy, a round consists of:
-
-* Initializing the same model (architecture and initial weights) on each training organization.
-* Each training organization locally trains the model on its own data and calculates the weight updates to send to the aggregator (and sometimes other statistics depending on the strategy).
-* The training organizations send the weight updates to the aggregator organization.
-* The weight updates are aggregated by the aggregator organization.
-* The aggregated organization sends the aggregated updates to the training organizations.
-* The training organizations update their model with the aggregated updates.
-
-Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`.
 
 Federated Learning Strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,6 +113,18 @@ Strategies can be centralized or decentralized:
 * **Centralized:** During the training, the organizations containing train data communicate exclusively with a central organization.
 * **Decentralized:** During the training, the organizations communicate between themselves, there is no central organization.
 
+Round
+^^^^^
+Each round represents one iteration of the training loop in the federated setting. For example, in a centralized federated learning strategy, a round consists of:
+
+* Initializing the same model (architecture and initial weights) on each training organization.
+* Each training organization locally trains the model on its own data and calculates the weight updates to send to the aggregator (and sometimes other statistics depending on the strategy).
+* The training organizations send the weight updates to the aggregator organization.
+* The weight updates are aggregated by the aggregator organization.
+* The aggregated organization sends the aggregated updates to the training organizations.
+* The training organizations update their model with the aggregated updates.
+
+Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/plot_substrafl_torch_fedavg:Using Torch FedAvg on MNIST dataset>`.
 
 Centralized strategy - workflow
 --------------------------------

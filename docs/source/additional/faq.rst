@@ -11,7 +11,7 @@ Substra is the most proven software for federated learning in healthcare and has
 
 Who owns Substra?
 ^^^^^^^^^^^^^^^^^
-Substra is open source tool operated under an Apache 2.0 License. Substra is hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_. Substra was initially developed by engineers at `Owkin <https://owkin.com/>`_, a BioTech company that continues to play a big role in its development.
+Substra is open source software operated under an Apache 2.0 License. Substra is hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_. Substra was initially developed by engineers at `Owkin <https://owkin.com/>`_, a BioTech company that continues to play a big role in its development.
 
 What kinds of data does Substra support?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,7 +23,7 @@ Substra is fully compatible with machine learning models written in any Python l
 
 Is Substra limited to medical and biotech applications?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Although substra has been designed to work especially well in healthcare settings, it can work on any kind of data with any Python library to perform computation or analysis using distributed data. 
+Although Substra has been designed to work especially well in healthcare settings, it can work on any kind of data with any Python library to perform computation or analysis using distributed data. 
 
 How can I be sure Substra is secure enough to be used with my private data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
