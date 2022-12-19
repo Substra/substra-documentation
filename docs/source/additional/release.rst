@@ -32,7 +32,7 @@ These sets of versions have been tested for compatibility:
      - `0.2.2 <https://github.com/Substra/hlf-k8s/releases/tag/0.2.2>`__ | `helm 10.2.2 <https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.2>`__
      - `0.36.0 <https://github.com/Substra/substra-tests/releases/tag/0.36.0>`__
    * - 0.22.0
-     - `0.30.1 <https://github.com/Substra/substrafl/releases/tag/0.30.1>`__
+     - `0.30.2 <https://github.com/Substra/substrafl/releases/tag/0.30.2>`__
      - `0.38.2 <https://github.com/Substra/substra/releases/tag/0.38.2>`__
      - `0.18.0 <https://github.com/Substra/substra-tools/releases/tag/0.18.0>`__
      - `0.31.4 <https://github.com/Substra/substra-backend/releases/tag/0.31.4>`__ | `helm 22.1.2 <https://artifacthub.io/packages/helm/substra/substra-backend/22.1.2>`__
