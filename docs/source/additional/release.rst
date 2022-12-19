@@ -16,7 +16,7 @@ These sets of versions have been tested for compatibility:
      - substrafl
      - substra
      - substra-tools
-     - substra-backend
+     - substra-backen
      - orchestrator
      - substra-frontend
      - substra-hlf-k8s
