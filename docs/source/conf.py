@@ -130,10 +130,12 @@ class Repo:
 
 SUBSTRA_REPOS = [
     Repo(
-        pkg_name="substratools",
-        repo_name="substra-tools",
-        installation_cmd="#egg=substratools",
-        version=TOOLS_VERSION,
+        pkg_name="substrafl",
+        repo_name="substrafl",
+        installation_cmd="#egg=substrafl[dev]",
+        version=SUBSTRAFL_VERSION,
+        doc_dir="docs/api",
+        dest_doc_dir="substrafl_doc/api",
     ),
     Repo(
         pkg_name="substra",
@@ -144,12 +146,10 @@ SUBSTRA_REPOS = [
         dest_doc_dir="documentation/references",
     ),
     Repo(
-        pkg_name="substrafl",
-        repo_name="substrafl",
-        installation_cmd="#egg=substrafl[dev]",
-        version=SUBSTRAFL_VERSION,
-        doc_dir="docs/api",
-        dest_doc_dir="substrafl_doc/api",
+        pkg_name="substratools",
+        repo_name="substra-tools",
+        installation_cmd="#egg=substratools",
+        version=TOOLS_VERSION,
     ),
 ]
 
