@@ -8,6 +8,9 @@ on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`
 In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
 aiming to recognize the number written on each image.
 
+SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks. 
+This example here uses the specific PyTorch interface.
+
 This example does not use a deployed platform of Substra and runs in local mode.
 
 **Requirements:**
