@@ -138,16 +138,16 @@ SUBSTRA_REPOS = [
         dest_doc_dir="substrafl_doc/api",
     ),
     Repo(
-        pkg_name="substra",
-        repo_name="substra",
-        installation_cmd="#egg=substra",
-        version=SUBSTRA_VERSION,
-    ),
-    Repo(
         pkg_name="substratools",
         repo_name="substra-tools",
         installation_cmd="#egg=substratools",
         version=TOOLS_VERSION,
+    ),
+    Repo(
+        pkg_name="substra",
+        repo_name="substra",
+        installation_cmd="#egg=substra",
+        version=SUBSTRA_VERSION,
         doc_dir="references",
         dest_doc_dir="documentation/references",
     ),
