@@ -142,14 +142,14 @@ SUBSTRA_REPOS = [
         repo_name="substra",
         installation_cmd="#egg=substra",
         version=SUBSTRA_VERSION,
-        doc_dir="references",
-        dest_doc_dir="documentation/references",
     ),
     Repo(
         pkg_name="substratools",
         repo_name="substra-tools",
         installation_cmd="#egg=substratools",
         version=TOOLS_VERSION,
+        doc_dir="references",
+        dest_doc_dir="documentation/references",
     ),
 ]
 
