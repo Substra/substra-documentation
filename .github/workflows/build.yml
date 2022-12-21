@@ -37,9 +37,9 @@ jobs:
 
       - name: Install substra, substra-tools and substrafl
         run: |
+          pip install -e './substrafl[dev]'
           pip install -e ./substra
           pip install -e ./substra-tools
-          pip install -e './substrafl[dev]'
 
       - name: Copy substra and substrafl api doc in the doc
         run: |
