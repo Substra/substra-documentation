@@ -25,12 +25,11 @@ To run this example, you have two options:
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
 
-Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
-you can run the command `pip install -r requirements.txt` to install them.
+    Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
+    you can run the command `pip install -r requirements.txt` to install them.
 
-
-**Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
-:ref:`substrafl_doc/substrafl_overview:Installation`
+    **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
+    :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
 # %%
