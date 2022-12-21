@@ -17,17 +17,20 @@ Here you will learn how to interact with Substra including:
 
 There is no federated learning in this example, training and testing will happen on only one :term:`Organization`.
 
-Requirements:
 
-  - If you want to run this example locally, please make sure to download and unzip the assets needed to run it in the same directory as this example:
+To run this example, you have two options:
 
-    .. only:: builder_html or readthedocs
+- **Recommended option**: use a hosted Jupyter notebook. With this option you don't have to install anything, just run the notebook.
+  To access the hosted notebook, scroll down at the bottom of this page and click on the **Launch Binder** button.
+- **Run the example locally**. To do that you need to download and unzip the assets needed to run it in the same
+  directory as used this example.
+
+   .. only:: builder_html or readthedocs
 
         :download:`assets required to run this example <../../../../tmp/titanic_assets.zip>`
 
-    Please ensure you have all the libraries in this file installed, the requirements.txt file is included in this zip, you can pip install it with a command: `pip install -r requirements.txt`.
-
-  - Substra should already be installed, if not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`
+  * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
+  * **Substra** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
 
 
 """

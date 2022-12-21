@@ -16,20 +16,18 @@ This example does not use a deployed platform of Substra and run in local mode.
 
 To run this example, you have two options:
 
-- Recommended option: use a hosted Jupyter Notebook. With this option you don't have to install anything, just run the notebook.
-  To access the hosted notebook, scroll at the bottom of this page and click on the Launch Binder button.
-- Run the example locally. To do that you need to download and unzip the assets needed to run it in the same
+- **Recommended option**: use a hosted Jupyter notebook. With this option you don't have to install anything, just run the notebook.
+  To access the hosted notebook, scroll down at the bottom of this page and click on the **Launch Binder** button.
+- **Run the example locally**. To do that you need to download and unzip the assets needed to run it in the same
   directory as used this example.
 
    .. only:: builder_html or readthedocs
 
       :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
 
-   Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
-   you can run the command `pip install -r requirements.txt` to install them.
+  * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
+  * **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
 
-   **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
-   :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
 # %%
@@ -186,7 +184,9 @@ import numpy as np
 from substrafl.dependency import Dependency
 from substrafl.remote.register import add_metric
 
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
+permissions_metric = Permissions(
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
 
 # The Dependency object is instantiated in order to install the right libraries in
 # the Python environment of each organization.
