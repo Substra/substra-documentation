@@ -15,10 +15,10 @@ This example here uses the specific PyTorch interface.
 This example does not use a deployed platform of Substra and run in local mode.
 
 To run this example, you have two options:
-* Recommended option: use a hosted jupyter notebook. With this option you don't have to install anything, just run the notebook. To acess the hosted notebook, scroll at the botton of this page and click on the Launch Binder button.
-* Run the example locally. To do that you need:
 
-    * Download and unzip the assets needed to run it in the same directory as used this example:
+    * Recommended option: use a hosted jupyter notebook. With this option you don't have to install anything, just run the notebook.
+    To acess the hosted notebook, scroll at the botton of this page and click on the Launch Binder button.
+    * Run the example locally. To do that you need to download and unzip the assets needed to run it in the same directory as used this example:
     .. only:: builder_html or readthedocs
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
