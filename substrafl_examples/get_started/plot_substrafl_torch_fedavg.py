@@ -13,6 +13,13 @@ interface has been developed for PyTorch which makes writing PyTorch code simple
 This example here uses the specific PyTorch interface.
 
 This example does not use a deployed platform of Substra and run in local mode.
+To run
+
+To run this example, you have two options:
+* Recommended option: use a hosted Jupyter Notebook. With this option you don't have to install anything, just run the notebook.
+To access the hosted notebook, scroll at the bottom of this page and click on the Launch Binder button.
+* Run the example locally. To do that follow the requirements below.
+
 
 **Requirements:**
 
