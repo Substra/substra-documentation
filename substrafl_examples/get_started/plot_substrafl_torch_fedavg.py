@@ -323,7 +323,7 @@ class TorchDataset(torch.utils.data.Dataset):
 # SubstraFL algo definition
 # ==========================
 #
-# A SubstraFL Algo gathers all the elements that we defined that run locally in each organization.
+# A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
 # The `TorchDataset` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
