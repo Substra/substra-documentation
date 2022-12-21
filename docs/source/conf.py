@@ -188,7 +188,7 @@ def copy_source_files(src, dest):
 
 for repo in SUBSTRA_REPOS:
     source_path = None
-    if importlib.util.find_spec(repo.pkg_name) is None or (
+    if (
         repo.doc_dir is not None
         and not (Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1] / repo.doc_dir).exists()
     ):
