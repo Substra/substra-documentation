@@ -25,6 +25,7 @@ To run this example, you have two options:
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
 
+
 Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
 you can run the command `pip install -r requirements.txt` to install them.
 
