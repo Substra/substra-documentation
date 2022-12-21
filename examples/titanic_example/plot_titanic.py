@@ -5,13 +5,13 @@ Titanic
 
 This example is based on `the similarly named Kaggle challenge <https://www.kaggle.com/c/titanic/overview>`__.
 
-In this example, we work on the Titanic tabular dataset. The problem considered is a classification problem
-and the model used is a random forest model.
+In this example, we work on the Titanic tabular dataset. This is a classification problem
+that uses a random forest model.
 
-Here you will learn how to interact with Substra including:
+Here you will learn how to interact with Substra, more specifically:
 
 - instantiating Substra Client
-- creating and registering of the assets
+- creating and registering assets
 - launching an experiment
 
 
@@ -77,18 +77,18 @@ client = substra.Client(backend_type="subprocess")
 # Creation and Registration of the assets
 # ---------------------------------------
 #
-# Every asset will be created respecting its respective predefined schemas (Spec) previously imported from
-# substra.sdk.schemas. To register assets, first assets :ref:`documentation/api_reference:Schemas`
+# Every asset will be created in respect to predefined schemas (Spec) previously imported from
+# substra.sdk.schemas. To register assets, first asset :ref:`documentation/api_reference:Schemas`
 # are instantiated and then the specs are registered, which generates the real assets.
 #
-# Permissions are defined when registering assets, in a nutshell:
+# Permissions are defined when registering assets. In a nutshell:
 #
-# - data cannot be seen once it's registered on the platform,
-# - metadata are visible by all the users of a channel,
-# - permissions are permissions to execute an algorithm on a certain dataset.
+# - Data cannot be seen once it's registered on the platform.
+# - Metadata are visible by all the users of a channel.
+# - Permissions allow you to execute an algorithm on a certain dataset.
 #
-# In remote deployment setting, the parameter ``public`` to false means that the dataset can only be used by tasks in
-# the same organization or organizations that are in the ``authorized_ids``. However, these permissions are ignored in local mode.
+# In a remote deployment, setting the parameter ``public`` to false means that the dataset can only be used by tasks in
+# the same organization or by organizations that are in the ``authorized_ids``. However, these permissions are ignored in local mode.
 
 permissions = Permissions(public=True, authorized_ids=[])
 
@@ -107,7 +107,7 @@ expected in the same location as this py file"""
 # ====================================
 #
 # A dataset represents the data in Substra. It is made up of an opener, which is a script used to load the
-# data from files into memory. You can find more details about the dataset
+# data from files into memory. You can find more details about datasets
 # in the `API reference <api_reference.html#sdk-reference>`_
 
 dataset = DatasetSpec(
@@ -223,9 +223,9 @@ print(f"Metric key {metric_key}")
 # Concretely, an algorithm corresponds to an archive (tar or zip file) containing:
 #
 # - One or more Python scripts that implement the algorithm. Importantly, a train and a
-#   predict functions have to be defined.
+#   predict function have to be defined.
 # - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
-#   this dockerfile also specifies the method name to execute (either train or predict here)
+#   This dockerfile also specifies the method name to execute (either train or predict here).
 
 ALGO_KEYS_JSON_FILENAME = "algo_random_forest_keys.json"
 
@@ -316,7 +316,7 @@ print(f"Predict algo key {predict_algo_key}")
 # -----------------
 # The next step is to register the actual machine learning tasks.
 # First a training task is registered which will produce a machine learning model.
-# Then a testing task is registered, testing the model of the training task.
+# Then a testing task is registered to test the trained model.
 
 data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
 train_data_sample_inputs = [

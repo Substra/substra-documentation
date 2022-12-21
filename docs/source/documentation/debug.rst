@@ -1,9 +1,9 @@
 How to test code and understand errors
 ======================================
 
-Doing machine learning on remote data is hard and it might not work on the first try. That is why debugging is important. Substra offers several ways to debug and iterate on code, from local simulation to accessing logs of failed tasks executed on remote data.
+Doing machine learning on remote data is hard and may not work on the first attempt. This is why debugging is so important. Substra offers several ways to debug and iterate on code, from local simulation to accessing logs of failed tasks executed on remote data.
 
-Here three modes will be distinguished:
+**Substra can run in 3 unique modes:**
 
 * Substra `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine.
 * Substra `deployed mode <deployed_mode_>`_  mode where all the tasks run on the deployed Substra platform.
@@ -67,12 +67,12 @@ Test remote assets locally with the hybrid mode
 -----------------------------------------------
 
 A hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets, for example using an algorithm from the deployed platform on a local dataset produces a local model.
-To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"`:
+To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"` and use remote assets when creating tasks.
 ::
 
     client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
 
-and use remote assets when creating tasks.  Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other asset, models on the platform cannot be used in local tasks. Moreover, functions that create a new asset will only create local assets.
+Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other asset, models on the platform cannot be used in local tasks. Moreover, functions that create a new asset will only create local assets.
 
 Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the `fake_data()` methods in the dataset opener.
 
@@ -81,7 +81,7 @@ Something specific about working locally with remote datasets: since data never 
 Debug on a deployed platform
 ----------------------------
 
-To facilitate debugging where the task(s) has failed on a deployed platform it is useful to know:
+To facilitate debugging where a task has failed on a deployed platform, it is useful to know:
 
 1. Error types which correspond to the phase at which the error happened
 2. How to access the logs of failed tasks

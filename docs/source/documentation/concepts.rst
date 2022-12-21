@@ -18,7 +18,7 @@ Dataset
 
 A dataset represents the data in Substra. It is made up of:
 
-* An opener, which is a script used to load the data from files into memory.
+* An opener, which is a script used to load data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
 
 .. _concept_algorithm:
@@ -39,23 +39,26 @@ A model is a potentially large file containing the parameters of an algorithm.
 
 
 Compute plan and tasks
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. _concept_compute_plan:
 
 Compute plan
-""""""""""""
+^^^^^^^^^^^^
+
 A set of tasks.
 Gathering tasks into a single compute plan will lead to a more optimized compute.
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
 Task
-""""
+^^^^
+
 A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
 
 Transient task outputs
-""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^
+
 Task outputs flagged as ``transient`` are deleted from the storage when all the tasks depending on this output are complete.
 This prevents filling up your server with outputs that you will not use in the future.
 
@@ -164,9 +167,9 @@ Since this step can be quite long, there is a cache system: on a given organizat
 Docker image build
 ^^^^^^^^^^^^^^^^^^^
 
-For the first task of the compute plan that uses a given algorithm, Substra needs to build the image, transfer it to the local image registry then use it to spawn the container. This takes a few minutes for a small image, it may take a lot of time for larger images.
+For the first task of the compute plan that uses a given algorithm, Substra needs to build the image, transfer it to the local image registry, and then use it to spawn the container. This takes a few minutes for a small image and can take longer for larger images.
 
-For the tasks in the same compute plan that use either the same algorithm, or a different algorithm with the same Docker image, Substra does not need to rebuild the image, so the task execution is faster.
+For the tasks in the same compute plan that use either the same algorithm or a different algorithm with the same Docker image, Substra does not need to rebuild the image, making the task execution much faster.
 
 To check how large the image is and how long it takes to build, you can build it locally with ``docker build .``.
 For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
