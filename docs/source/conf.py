@@ -187,17 +187,12 @@ def copy_source_files(src, dest):
 
 
 for repo in SUBSTRA_REPOS:
-    source_path = None
-    if (
-        repo.doc_dir is not None
-        and not (Path((importlib.import_module(repo.pkg_name)).__file__).resolve().parents[1] / repo.doc_dir).exists()
-    ):
-        install_dependency(
-            library_name=repo.pkg_name,
-            repo_name=repo.repo_name,
-            repo_args=repo.installation_cmd,
-            version=repo.version,
-        )
+    install_dependency(
+        library_name=repo.pkg_name,
+        repo_name=repo.repo_name,
+        repo_args=repo.installation_cmd,
+        version=repo.version,
+    )
 
     if repo.doc_dir is not None:
         imported_module = importlib.import_module(repo.pkg_name)
