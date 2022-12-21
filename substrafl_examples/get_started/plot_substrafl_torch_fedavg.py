@@ -20,11 +20,9 @@ To run this example, you have two options:
     To access the hosted notebook, scroll at the bottom of this page and click on the Launch Binder button.
     - Run the example locally. To do that you need to download and unzip the assets needed to run it in the same
     directory as used this example.
-
     .. only:: builder_html or readthedocs
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
-
 
 Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
 you can run the command `pip install -r requirements.txt` to install them.
