@@ -6,7 +6,7 @@ Using Torch FedAvg on MNIST dataset
 This example illustrates the basic usage of SubstraFL, and proposes Federated Learning model training using the Federated Average strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. The problem considered is a classification problem
-aiming to recognize the number written on each image..
+aiming to recognize the number written on each image.
 
 SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). However a specific
 interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks.
@@ -14,10 +14,11 @@ This example here uses the specific PyTorch interface.
 
 This example does not use a deployed platform of Substra and run in local mode.
 
-**Requirements:**
+To run this example, you have two options:
+* Recommended option: use a hosted jupyter notebook. With this option you don't have to install anything, just run the notebook. To acess the hosted notebook, scroll at the botton of this page and click on the Launch Binder button.
+* Run the example locally. To do that you need:
 
-  - To run this example locally, please make sure to download and unzip the assets needed to run it in the same directory as used this example:
-
+    * Download and unzip the assets needed to run it in the same directory as used this example:
     .. only:: builder_html or readthedocs
 
         :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
@@ -25,7 +26,7 @@ This example does not use a deployed platform of Substra and run in local mode.
     Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where
     you can run the command: `pip install -r requirements.txt` to install them.
 
-  - **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
+    * **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here:
     :ref:`substrafl_doc/substrafl_overview:Installation`
 
 """
