@@ -81,7 +81,7 @@ For instance if you have a dataset of 1000 data points at every organization, if
 
 The index generator remembers which data has been used in the previous rounds and generates the new batches so that the model is trained on the full dataset (given enough number of rounds and updates). When the whole dataset has been used, the index generator shuffles the data and starts generating batches from the whole dataset again.
 
-.. figure:: index_generator_concepts.png
+.. figure:: ../static/schemes/index_generator_scheme.svg
   :width: 800
   :align: center
   :alt: Index generator concepts
@@ -103,8 +103,8 @@ Federated Learning Strategies
 A FL strategy describes the journey the model will take on distributed data. The most popular strategy is the Federated Averaging, which is explained below:
 
 * The model trains locally on each organization
-* The model aggregates the weight updates from each of these training sessions on an aggregation node 
-* The averaged weight updates are applied locally at each organization. 
+* The model aggregates the weight updates from each of these training sessions on an aggregation node
+* The averaged weight updates are applied locally at each organization.
 
 Your choice of strategy will likely depend on the model you use. For instance, you can use the Federated Averaging strategy with a deep neural network or with a logistic regression but not with a random forest. Several FL :ref:`substrafl_doc/api/strategies:Strategies` are already implemented in SubstraFL.
 
