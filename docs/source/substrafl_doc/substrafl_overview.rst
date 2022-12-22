@@ -82,7 +82,7 @@ For instance if you have a dataset of 1000 data points at every organization, if
 The index generator remembers which data has been used in the previous rounds and generates the new batches so that the model is trained on the full dataset (given enough number of rounds and updates). When the whole dataset has been used, the index generator shuffles the data and starts generating batches from the whole dataset again.
 
 .. figure:: ../static/schemes/index-generator-scheme.svg
-  :width: 900
+  :width: 1200
   :align: center
   :alt: Index generator concepts
 

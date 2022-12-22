@@ -24,7 +24,7 @@ How does it work?
 ^^^^^^^^^^^^^^^^^
 
 .. image:: static/schemes/introductory-scheme.svg
-  :width: 900
+  :width: 1200
   :align: center
   :alt: Substra Network
 
