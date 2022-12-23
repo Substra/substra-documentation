@@ -137,7 +137,6 @@ train_data_sample_folder = assets_directory / "train_data_samples"
 train_data_sample_keys = client.add_data_samples(
     DataSampleSpec(
         paths=list(train_data_sample_folder.glob("*")),
-        test_only=False,
         data_manager_keys=[dataset_key],
     )
 )
@@ -153,7 +152,6 @@ test_data_sample_folder = assets_directory / "test_data_samples"
 test_data_sample_keys = client.add_data_samples(
     DataSampleSpec(
         paths=list(test_data_sample_folder.glob("*")),
-        test_only=True,
         data_manager_keys=[dataset_key],
     )
 )

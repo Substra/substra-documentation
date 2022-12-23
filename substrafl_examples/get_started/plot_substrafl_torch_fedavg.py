@@ -8,7 +8,7 @@ on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`
 In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
 aiming to recognize the number written on each image.
 
-SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc). 
+SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc).
 
 However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks. This example here uses the specific PyTorch interface.
 
@@ -145,7 +145,6 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     # Add the training data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
-        test_only=False,
         path=data_path / f"org_{i+1}" / "train",
     )
     train_datasample_keys[org_id] = client.add_data_sample(data_sample)
@@ -153,7 +152,6 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     # Add the testing data on each organization.
     data_sample = DataSampleSpec(
         data_manager_keys=[dataset_keys[org_id]],
-        test_only=True,
         path=data_path / f"org_{i+1}" / "test",
     )
     test_datasample_keys[org_id] = client.add_data_sample(data_sample)
@@ -181,9 +179,7 @@ import numpy as np
 from substrafl.dependency import Dependency
 from substrafl.remote.register import add_metric
 
-permissions_metric = Permissions(
-    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
-)
+permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
 # The Dependency object is instantiated in order to install the right libraries in
 # the Python environment of each organization.
