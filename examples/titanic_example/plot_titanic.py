@@ -78,8 +78,8 @@ client = substra.Client(backend_type="subprocess")
 # ---------------------------------------
 #
 # Every asset will be created in respect to predefined schemas (Spec) previously imported from
-# substra.sdk.schemas. To register assets, first asset :ref:`documentation/api_reference:Schemas`
-# are instantiated and then the specs are registered, which generates the real assets.
+# substra.sdk.schemas. To register assets, asset :ref:`documentation/api_reference:Schemas`
+# are first instantiated and the specs are then registered, which generates the real assets.
 #
 # Permissions are defined when registering assets. In a nutshell:
 #

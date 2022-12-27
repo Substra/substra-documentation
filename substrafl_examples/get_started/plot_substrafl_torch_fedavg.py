@@ -44,11 +44,11 @@ from substra import Client
 
 N_CLIENTS = 3
 
-# Every computation will run in `subprocess` mode, where everything run locally in Python
+# Every computation will run in `subprocess` mode, where everything runs locally in Python
 # subprocesses.
 # Ohers backend_types are:
 # "docker" mode where computations run locally in docker containers
-# "remote" mode where computations run remotely (you need to have deployed platform for that)
+# "remote" mode where computations run remotely (you need to have a deployed platform for that)
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
@@ -107,8 +107,7 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # dataset.
 #
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
-# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to define which organization
-# can use them.
+# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization can access a specific asset
 #
 # Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
@@ -210,9 +209,6 @@ metric_key = add_metric(
 # Specify the machine learning components
 # ***************************************
 #
-# This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
-# However, SubstraFL is compatible with any machine learning framework.
-#
 # In this section, you will:
 #
 # - Register a model and its dependencies
@@ -274,7 +270,7 @@ criterion = torch.nn.CrossEntropyLoss()
 
 from substrafl.index_generator import NpIndexGenerator
 
-# Number of model update between each FL strategy aggregation.
+# Number of model updates between each FL strategy aggregation.
 NUM_UPDATES = 100
 
 # Number of samples per update.
