@@ -151,6 +151,17 @@ First time configuration
       cd substra-frontend
       npm install --dev
 
+7. Update Helm charts
+
+   .. code-block:: bash
+
+      pushd orchestrator/charts/orchestrator/
+      helm dependency update
+      popd
+      pushd substra-backend/charts/substra-backend/
+      helm dependency update
+      popd
+
 Launching
 =========
 
