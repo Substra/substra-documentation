@@ -208,6 +208,9 @@ metric_key = add_metric(
 # %%
 # Specify the machine learning components
 # ***************************************
+# This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
+# However, SubstraFL is compatible with any machine learning framework.
+#
 #
 # In this section, you will:
 #
