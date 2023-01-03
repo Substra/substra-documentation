@@ -9,11 +9,6 @@ Although they are independent, their versions must match a tested release as ref
   :align: center
   :alt: Substra Components Scheme
 
-You can deploy them in `Kubernetes`_ clusters using `Helm charts`_.
-
-.. _Helm charts: https://helm.sh/docs/topics/charts/
-.. _Kubernetes: https://kubernetes.io/
-
 .. toctree::
    :glob:
    :titlesonly:
