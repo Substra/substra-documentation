@@ -107,7 +107,7 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # dataset.
 #
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
-# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization can access a specific asset
+# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization can access a specific asset.
 #
 # Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
