@@ -1,7 +1,7 @@
 Upgrade notes
 =============
 
-Substra 0.23.0
+Substra 0.23.1
 --------------
 
 This version ships Redis *with persistence (AOF) activated*. As this component is used as a message broker and not as a cache, the previous redis deployment can be removed before lauching the upgrade.
