@@ -13,8 +13,8 @@ Thank you for your contribution, your work is greatly appreciated !
 
 ---
 
-Copyright (c) Owkin. All rights reserved.
+Copyright (c) 2018-present Owkin Inc. All rights reserved.
 
 All other contributions:
-Copyright (c) to the respective contributors.
+Copyright (c) 2023 to the respective contributors.
 All rights reserved.
