@@ -49,8 +49,8 @@ In practice, you must add a ``Signed-off-by:`` message at the end of every commi
 
 Add ``-s`` flag to add it automatically: ``git commit -s -m 'This is my commit message'``.
 
-`Community </additional/community>`
-=========
+:doc:`Community </additional/community>`
+========================================
 
 Discussions about Substra take place on the repositories' Issues and Pull Requests sections and on Slack. Anybody is welcome to join these conversations.
 
