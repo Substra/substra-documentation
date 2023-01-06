@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add components scheme (#245)
 - Fix order of build in yaml file (#241)
 - Add upgrade note for 0.23.1 (#228)
+- Add contributing guide & code of conduct pages to Substra doc (#230)
+
 ## [0.23.1]
 
 - Add Mnist example image (#218)
