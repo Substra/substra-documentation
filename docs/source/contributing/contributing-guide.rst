@@ -32,7 +32,7 @@ Here's how to submit a pull request:
 * `Create a branch <https://guides.github.com/introduction/flow/>`_ for your edits.
 * **Sign off** your commits.
 * **Test your changes.** Please ensure that your contribution passes all tests if you open a pull request. If there are test failures, you will need to address them before we can merge your contribution. When adding or changing functionality, please include new tests for them as part of your contribution.
-* **Contribute in the style of the project** to the best of your abilities. This may mean using indents, semi-colons or comments differently than you would in your own repository, but makes it easier for us to merge, others to understand and maintain in the future. Most of repositories have a :code:`.pre-commit-config.yaml` file. Run :code:`pre-commit install` to automatically match some of the style rules of the project.
+* **Contribute in the style of the project** to the best of your abilities. This may mean using indents, semi-colons or comments differently than you would in your own repository, but makes it easier for us to merge, others to understand and maintain in the future. Most of repositories have a :code:`.pre-commit-config.yaml` file. Run :code:`pre-commit install` to automatically match some of the style rules of the project when committing your changes.
 * **Add yourself to the contributors**. If you made a significant contribution, don't forget to add yourself to the CONTRIBUTORS.md file of the repo by putting your name and a small description of your work.
 
 Sign Off
