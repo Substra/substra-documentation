@@ -28,7 +28,7 @@ A pull request doesn't have to represent finished work. You can open a pull requ
 
 Here's how to submit a pull request:
 
-* `Fork the repository <https://guides.github.com/activities/forking/>`_ and clone it locally. Connect your local to the original "upstream" repository by adding it as a remote. Pull in changes from "upstream" often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions `here <https://help.github.com/articles/syncing-a-fork/>`_.
+* `Fork the repository <https://guides.github.com/activities/forking/>`_ and clone it locally. Connect your local to the original "upstream" repository by adding it as a remote. Pull in changes from "upstream" often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions `here <https://help.github.com/articles/syncing-a-fork/>`_).
 * `Create a branch <https://guides.github.com/introduction/flow/>`_ for your edits.
 * **Sign off** your commits.
 * **Test your changes.** Please ensure that your contribution passes all tests if you open a pull request. If there are test failures, you will need to address them before we can merge your contribution. When adding or changing functionality, please include new tests for them as part of your contribution.
