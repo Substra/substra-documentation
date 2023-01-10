@@ -239,28 +239,24 @@ with zipfile.ZipFile(train_archive_path, "w") as z:
     for filepath in ALGO_TRAIN_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-inputs_algo_simple = [
+train_algo_inputs = [
     AlgoInputSpec(
         identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
     ),
     AlgoInputSpec(
         identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
-    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=True, multiple=True),
+    )
 ]
 
-outputs_algo_simple = [
-    AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)
-]
+train_algo_outputs = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
 train_algo = AlgoSpec(
     name="Titanic: Random Forest",
-    inputs=inputs_algo_simple,
-    outputs=outputs_algo_simple,
+    inputs=train_algo_inputs,
+    outputs=train_algo_outputs,
     description=assets_directory / "algo_random_forest" / "description.md",
     file=train_archive_path,
     permissions=permissions,
-    category="ALGO_SIMPLE",
 )
 
 
@@ -280,7 +276,7 @@ with zipfile.ZipFile(predict_archive_path, "w") as z:
     for filepath in ALGO_PREDICT_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-inputs_algo_predict = [
+predict_algo_inputs = [
     AlgoInputSpec(
         identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
     ),
@@ -290,18 +286,17 @@ inputs_algo_predict = [
     AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_algo_predict = [
+predict_algo_outputs = [
     AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)
 ]
 
 predict_algo_spec = AlgoSpec(
     name="Titanic: Random Forest - predict",
-    inputs=inputs_algo_predict,
-    outputs=outputs_algo_predict,
+    inputs=predict_algo_inputs,
+    outputs=predict_algo_outputs,
     description=assets_directory / "algo_random_forest" / "description.md",
     file=predict_archive_path,
     permissions=permissions,
-    category="ALGO_PREDICT",
 )
 
 predict_algo_key = client.add_algo(predict_algo_spec)
