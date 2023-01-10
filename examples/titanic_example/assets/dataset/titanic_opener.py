@@ -8,6 +8,20 @@ import substratools as tools
 
 
 class TitanicOpener(tools.Opener):
+
+    def get_data(self, folders):
+        # find csv files
+        paths = []
+        for folder in folders:
+            paths += [os.path.join(folder, f) for f in os.listdir(folder) if f.endswith(".csv")]
+
+        # load data
+        data = pd.DataFrame()
+        for path in paths:
+            data = pd.concat([data, pd.read_csv(path)])
+
+        return data
+
     def fake_data(self, n_samples=None):
         N_SAMPLES = n_samples if n_samples and n_samples <= 100 else 100
 
@@ -26,16 +40,3 @@ class TitanicOpener(tools.Opener):
             "Embarked": [random.choice(["C", "S", "Q"]) for k in range(N_SAMPLES)],
         }
         return pd.DataFrame(data)
-
-    def get_data(self, folders):
-        # find csv files
-        paths = []
-        for folder in folders:
-            paths += [os.path.join(folder, f) for f in os.listdir(folder) if f.endswith(".csv")]
-
-        # load data
-        data = pd.DataFrame()
-        for path in paths:
-            data = pd.concat([data, pd.read_csv(path)])
-
-        return data
