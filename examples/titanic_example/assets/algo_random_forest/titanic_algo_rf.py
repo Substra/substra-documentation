@@ -7,6 +7,67 @@ import substratools as tools
 from sklearn.ensemble import RandomForestClassifier
 
 
+@tools.register
+def train(inputs, outputs, task_properties):
+
+    X = inputs["datasamples"].drop(columns="Survived")
+    y = inputs["datasamples"].Survived
+    X = _normalize_X(X)
+
+    # the following RFC hyperparameters were determined using:
+    # >>> param_grid = {"criterion": ["gini", "entropy"],
+    #                   "min_samples_leaf": [1, 5, 10, 25, 50, 70],
+    #                   "min_samples_split": [2, 4, 10, 12, 16, 18, 25, 35],
+    #                   "n_estimators": [100, 400, 700, 1000, 1500]}
+    # >>> rf = RandomForestClassifier(n_estimators=100, max_features='auto', oob_score=True,
+    #                                 random_state=1, n_jobs=-1)
+    # >>>,clf = GridSearchCV(estimator=rf, param_grid=param_grid, n_jobs=-1)
+
+    # Random Forest
+    random_forest = RandomForestClassifier(
+        criterion="gini",
+        min_samples_leaf=1,
+        min_samples_split=10,
+        n_estimators=100,
+        oob_score=True,
+        random_state=1,
+        n_jobs=-1,
+    )
+    random_forest.fit(X, y.values.ravel())
+
+    save_model(random_forest, outputs["model"])
+
+
+@tools.register
+def predict(inputs, outputs, task_properties):
+    X = inputs["datasamples"].drop(columns="Survived")
+    model = load_model(inputs["models"])
+    X = _normalize_X(X)
+    pred = _predict_pandas(model, X)
+
+    save_predictions(pred, outputs["predictions"])
+
+
+def _predict_pandas(model, X):
+    y_pred = model.predict(X)
+    return pd.DataFrame(columns=["Survived"], data=y_pred)
+
+
+def load_model(path):
+    with open(path, "rb") as f:
+        return pickle.load(f)
+
+
+def save_model(model, path):
+    with open(path, "wb") as f:
+        pickle.dump(model, f)
+
+
+def save_predictions(y_pred, path):
+    with open(path, "w") as f:
+        y_pred.to_csv(f, index=False)
+
+
 def _normalize_X(X):
     # Relatives
     X["relatives"] = X["SibSp"] + X["Parch"]
@@ -111,67 +172,6 @@ def _normalize_X(X):
     X = X.drop("Parch", axis=1)
 
     return X
-
-
-def _predict_pandas(model, X):
-    y_pred = model.predict(X)
-    return pd.DataFrame(columns=["Survived"], data=y_pred)
-
-
-@tools.register
-def train(inputs, outputs, task_properties):
-
-    X = inputs["datasamples"].drop(columns="Survived")
-    y = inputs["datasamples"].Survived
-    X = _normalize_X(X)
-
-    # the following RFC hyperparameters were determined using:
-    # >>> param_grid = {"criterion": ["gini", "entropy"],
-    #                   "min_samples_leaf": [1, 5, 10, 25, 50, 70],
-    #                   "min_samples_split": [2, 4, 10, 12, 16, 18, 25, 35],
-    #                   "n_estimators": [100, 400, 700, 1000, 1500]}
-    # >>> rf = RandomForestClassifier(n_estimators=100, max_features='auto', oob_score=True,
-    #                                 random_state=1, n_jobs=-1)
-    # >>>,clf = GridSearchCV(estimator=rf, param_grid=param_grid, n_jobs=-1)
-
-    # Random Forest
-    random_forest = RandomForestClassifier(
-        criterion="gini",
-        min_samples_leaf=1,
-        min_samples_split=10,
-        n_estimators=100,
-        oob_score=True,
-        random_state=1,
-        n_jobs=-1,
-    )
-    random_forest.fit(X, y.values.ravel())
-
-    save_model(random_forest, outputs["model"])
-
-
-@tools.register
-def predict(inputs, outputs, task_properties):
-    X = inputs["datasamples"].drop(columns="Survived")
-    model = load_model(inputs["models"])
-    X = _normalize_X(X)
-    pred = _predict_pandas(model, X)
-
-    save_predictions(pred, outputs["predictions"])
-
-
-def load_model(path):
-    with open(path, "rb") as f:
-        return pickle.load(f)
-
-
-def save_model(model, path):
-    with open(path, "wb") as f:
-        pickle.dump(model, f)
-
-
-def save_predictions(y_pred, path):
-    with open(path, "w") as f:
-        y_pred.to_csv(f, index=False)
 
 
 if __name__ == "__main__":
