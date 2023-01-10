@@ -297,7 +297,6 @@ predict_algo_spec = AlgoSpec(
     description=assets_directory / "algo_random_forest" / "description.md",
     file=predict_archive_path,
     permissions=permissions,
-    category="ALGO_PREDICT",
 )
 
 predict_algo_key = client.add_algo(predict_algo_spec)
