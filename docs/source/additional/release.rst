@@ -71,8 +71,14 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.24.0 - 2023-01-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fix issue where launching a large compute sometimes fails with: ``ERROR: could not serialize access due to read/write dependencies among transactions (SQLSTATE 40001)``
+- Documentation: add **contributing guide** and **code of conduct**
+
 Substra 0.23.1 - 2022-11-24
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Main changes
 
