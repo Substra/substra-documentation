@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add contributing guide & code of conduct md files (#253)
+
 ## [0.24.0]
 
 - Update intro scheme and index generator scheme (#245)
