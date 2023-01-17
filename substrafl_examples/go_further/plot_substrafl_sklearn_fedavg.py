@@ -60,7 +60,7 @@ ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
 # %%
-# Data and metricsbla
+# Data and metrics
 # ****************
 
 # %%
