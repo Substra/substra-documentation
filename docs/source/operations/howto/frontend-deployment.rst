@@ -32,7 +32,6 @@ You'll need to specify the backend API url:
 Expose the service with the included ingress:
 
 .. code-block:: yaml
-   :caption: This assumes you have an ingress controller and ``connect-frontend-tls`` contains a certificate.
 
    ingress:
      hosts:
@@ -41,7 +40,10 @@ Expose the service with the included ingress:
      tls:
        - hosts:
          - your.frontend.url
-         secretName: connect-frontend-tls
+         secretName: substra-frontend-tls
+
+.. note::
+   This assumes you have an ingress controller and ``substra-frontend-tls`` contains a certificate.
 
 Deploy the Chart
 ================
