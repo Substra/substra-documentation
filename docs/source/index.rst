@@ -93,7 +93,7 @@ Some quick links:
    contributing/contributing-guide.rst
    contributing/code-of-conduct.rst
    contributing/components.rst
-   contributing/getting-started.rst
+   contributing/local-deployment.rst
 
 
 .. toctree::
