@@ -155,12 +155,12 @@ First time configuration
 
    .. code-block:: bash
 
-      pushd orchestrator/charts/orchestrator/
+      cd orchestrator/charts/orchestrator/
       helm dependency update
-      popd
-      pushd substra-backend/charts/substra-backend/
+      cd ../../../
+      cd substra-backend/charts/substra-backend/
       helm dependency update
-      popd
+      cd ../../../
 
 Launching
 =========
