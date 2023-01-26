@@ -239,7 +239,7 @@ If this command fails and you still have pods up, you can use the following comm
 Next steps
 ==========
 
-Now you are ready to go, you can either run the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
+Now you are ready to go, you can either run the :doc:`Substra examples </auto_examples/index>` or the :doc:`SubstraFL examples </substrafl_doc/examples/index>`.
 
 This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :ref:`deployment section <operations/overview:Overview>`.
 
