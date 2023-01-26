@@ -76,6 +76,7 @@ Substra 0.24.0 - 2023-01-13
 
 - Fix issue where launching a large compute sometimes fails with: ``ERROR: could not serialize access due to read/write dependencies among transactions (SQLSTATE 40001)``
 - Documentation: add **contributing guide** and **code of conduct**
+- Update **Substra Tools** base docker image to ``substra-tools:0.20.0-nvidiacuda11.6.0-base-ubuntu20.04-python3.*``
 
 Substra 0.23.1 - 2022-11-24
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,6 +183,7 @@ Example of new metric registration:
 Substra:
 
 - Add **Windows compatibility** for Docker mode.
+- **BREAKING CHANGE** remove category from ``substra.schema.AlgoSpec`` and ``substra.models.Algo``
 
 Web application:
 
@@ -190,6 +192,42 @@ Web application:
 - Renamed any tuple thing into a task thing.
 - Check for *last admin* when editing a user.
 - **Build error logs** are now accessible given the right permissions.
+
+Substra-Tools:
+
+- Update **Substra Tools** base docker image to ``substra-tools:0.19.0-nvidiacuda11.6.0-base-ubuntu20.04-python3.*``
+- **BREAKING CHANGE**: register functions to substratools is done with a decorator.
+
+.. code-block:: python
+
+  class MyAlgo:
+    def my_function1:
+        pass
+
+    def my_function2:
+        pass
+
+  if __name__ == '__main__':
+    tools.algo.execute(MyAlgo())
+
+become
+
+.. code-block:: python
+
+  @tools.register
+  def my_function1:
+    pass
+
+  @tools.register
+  def my_function2:
+    pass
+
+  if __name__ == '__main__':
+    tools.execute()
+
+Substra Backend:
+
+- Prevent use of ``__`` in asset metadata keys
 
 Substra 0.22.0 - 2022-10-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
