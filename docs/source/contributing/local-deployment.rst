@@ -1,6 +1,6 @@
-************************
-Test locally - dev setup
-************************
+****************
+Local deployment
+****************
 
 
 This page gives the directions to locally run the Substra stack. This deployment is made of:
@@ -74,7 +74,7 @@ First time configuration
 
 1. Create a Kubernetes cluster, create and patch the Nginx ingress to enable SSL passthrough:
 
-   1. Download :download:`k3-create.sh<./getting-started/k3-create.sh>`.
+   1. Download :download:`k3-create.sh<./local-deployment/k3-create.sh>`.
    2. Make the script executable.
 
       .. code-block:: bash
@@ -106,18 +106,6 @@ First time configuration
 
 4. Clone the Substra components repositories
 
-   * `substra <https://github.com/substra/substra>`_
-
-     .. code-block:: bash
-
-      git clone https://github.com/Substra/substra.git
-
-   * `substrafl <https://github.com/substra/substrafl>`_
-
-     .. code-block:: bash
-
-      git clone https://github.com/Substra/substrafl.git
-
    * `orchestrator <https://github.com/substra/orchestrator>`_
 
      .. code-block:: bash
@@ -137,21 +125,14 @@ First time configuration
       git clone https://github.com/Substra/substra-frontend.git
 
 
-5. Install substra in editable mode
-
-   .. code-block:: bash
-
-      cd substra
-      pip install -e .
-
-6. Install frontend dependencies
+5. Install frontend dependencies
 
    .. code-block:: bash
 
       cd substra-frontend
       npm install --dev
 
-7. Update Helm charts
+6. Update Helm charts
 
    .. code-block:: bash
 
@@ -181,12 +162,12 @@ Launching
    cd substra-backend
    skaffold run
 
-  .. caution::
-     On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev`` and ``arm64``.
+.. caution::
+   On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev`` and ``arm64``.
 
-     .. code-block:: bash
+   .. code-block:: bash
 
-      skaffold run -p dev,arm64
+   skaffold run -p dev,arm64
 
 .. tip::
    When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
@@ -201,6 +182,7 @@ Launching
 
     .. code-block:: bash
 
+      cd substra-frontend
       API_URL=http://substra-backend.org-1.com npm run dev
 
   b. Docker:
@@ -257,9 +239,11 @@ If this command fails and you still have pods up, you can use the following comm
 Next steps
 ==========
 
-Now you are ready to go, you are ready to run either the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
+Now you are ready to go, you can either run the :doc:`/auto_examples/index` or the :doc:`Substrafl examples </substrafl_doc/examples/index>`.
 
-If you are interested in more deployment options or more customised set-up, you can have a look at :doc:`/operations/overview` or at the documentation included in the repo of substra_, substra-backend_, orchestrator_ or substra-frontend_.
+This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :ref:`deployment section <operations/overview:Overview>`.
+
+Documentation on running tests on any of the Substra components is available on the component repositories, see `substra <https://github.com/substra/substra>`_, `substrafl <https://github.com/substra/substrafl>`_, substra-backend_, orchestrator_, substra-frontend_ and `substra-tests <https://github.com/substra/substra-tests>`_ repositories.
 
 Troubleshooting
 ===============
@@ -272,7 +256,7 @@ Troubleshooting
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
 
-   You can also go through :doc:`the instructions one more time </contributing/getting-started>`, maybe they changed since you last saw them.
+   You can also go through :doc:`the instructions one more time </contributing/local-deployment>`, maybe they changed since you last saw them.
 
 Troubleshooting prerequisites
 -----------------------------
