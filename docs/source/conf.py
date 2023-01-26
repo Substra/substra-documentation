@@ -18,9 +18,11 @@ import zipfile
 from pathlib import Path
 from datetime import date
 import importlib
+import json
 
 import sphinx_rtd_theme
 import git
+import yaml
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
@@ -251,6 +253,7 @@ extensions.extend(
         "sphinx_fontawesome",
         "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
         "sphinx_copybutton",
+        "sphinxcontrib.datatemplates",
     ]
 )
 
@@ -324,6 +327,7 @@ templates_path = ["templates/"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+html_extra_path = []
 
 # Generate the plot for the gallery
 # plot_gallery = True
@@ -332,6 +336,15 @@ rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
 .. |substrafl_version| replace:: {importlib.import_module('substrafl').__version__}
 """
+
+# Generate a JSON compatibility table
+
+with open("additional/compatibility-table.yaml") as f:
+    table = yaml.safe_load(f)
+    dest = Path(TMP_FOLDER, "compatibility-table.json")
+    with open(dest, "w") as f:
+        json.dump(table, f)
+        html_extra_path.append(str(dest))
 
 # -- Options for HTML output -------------------------------------------------
 
