@@ -167,7 +167,7 @@ Launching
 
    .. code-block:: bash
 
-   skaffold run -p dev,arm64
+      skaffold run -p dev,arm64
 
 .. tip::
    When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
