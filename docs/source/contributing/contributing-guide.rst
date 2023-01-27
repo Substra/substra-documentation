@@ -35,6 +35,15 @@ Here's how to submit a pull request:
 * **Contribute in the style of the project** to the best of your abilities. This may mean using indents, semi-colons or comments differently than you would in your own repository, but makes it easier for us to merge, others to understand and maintain in the future. Most of project repositories have a :code:`.pre-commit-config.yaml` file. Run :code:`pre-commit install` to automatically match some of the style rules of the project when committing your changes.
 * **Add yourself to the contributors**. If you made a significant contribution, don't forget to add yourself to the CONTRIBUTORS.md file of the repo by putting your name and a small description of your work.
 
+Vulnerabilities 
+===============
+
+Please reach out to support@substra.com immediately if you believe you have found a vulnerability.
+
+Due to the privacy preserving nature of Substra, we take vulnerabilities very seriously. The core of Federated Learning is security and therefore we take various steps such as auditing and automated testing to ensure that our code base remains secure. All code merge requests go through multiple levels of review. 
+
+If a vulnerability is located however, a triage process is begun within one working day and a fix is immediately moved to priority (although this may depend on the specific case). 
+
 Sign Off
 ========
 
