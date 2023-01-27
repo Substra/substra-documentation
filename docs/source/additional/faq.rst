@@ -38,4 +38,4 @@ The roadmap for Substra is primarily decided by product managers and engineers a
 * **Introduce more FL Strategies:** Substra aims to be a complete FL framework and one way we hope to facilitate FL projects is by adding more strategies. We hope that by implementing these strategies within the library, we can encourage more experimentation by data scientists. We would also be interested in allowing users to define their own FL strategies.
 * **Usability Improvements:** We intend to make Substra more easy to deploy and use. This will come in improving the deployment documentation, simplifying the data concepts and merging Substra and Substrafl into one unified library.
 
-These are some of the main features to be developed in Substra for the coming months. We want to actively make an effort to help our users, so please do not hesitate to reach out if you have a feature request or an idea. Feedback is always welcome!
+These are some of the main features to be developed in Substra for the coming months. We want to actively make an effort to help users, so please do not hesitate to reach out if you have a feature request or an idea. Feedback is always welcome!
