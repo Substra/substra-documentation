@@ -39,4 +39,3 @@ The roadmap for Substra is primarily decided by engineers at Owkin. These decisi
 * **Usability Improvements:** We intend to make Substra more easy to deploy and use. This will come in the form of merging Substra and Substrafl into one unified library that has more simplified data concepts.
 
 These are some of the main features to be developed in Substra for the coming months. We want to actively make an effort to help our users, so please do not hesitate to reach out if you have a feature request or an idea. Feedback is always welcome!
-Substra is regularly audited with rigorous security standards (both code source audit and penetration tests). On top of that, by design, private data is never shared between different organizations. The software also provides full traceability on which algorithms were used on each dataset.
