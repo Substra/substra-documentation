@@ -34,7 +34,7 @@ What is the roadmap for Substra?
 
 The roadmap for Substra is primarily decided by product managers and engineers at Owkin. These decisions are based on needs from active and potential FL projects and users that may or may not involve Owkin. You will find below a list of needs that we plan to address in the near future. Please know however that this is not a very strict roadmap and the direction of the product can alter at any moment.
 
-* **Better support for Federated Analytics:** The Substra library does support FA currently but one of our goals is make this more user friendly and easily accessible.
+* **Better support for Federated Analytics:** The Substra library does support Federated Analytics currently but one of our goals is make this more user friendly and accessible.
 * **Introduce more FL Strategies:** Substra aims to be a complete FL framework and one way we hope to facilitate FL projects is by adding more strategies. We hope that by implementing these strategies within the library, we can encourage more experimentation by data scientists. We would also be interested in allowing users to define their own FL strategies.
 * **Usability Improvements:** We intend to make Substra more easy to deploy and use. This will come in the form of merging Substra and Substrafl into one unified library that has more simplified data concepts.
 
