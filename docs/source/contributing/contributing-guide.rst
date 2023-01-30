@@ -40,7 +40,7 @@ Vulnerabilities
 
 Please reach out to support@substra.org immediately if you believe you have found a vulnerability.
 
-Due to the privacy preserving nature of Substra, we take vulnerabilities very seriously. The core of Federated Learning is security and therefore we take various steps such as auditing and automated testing to ensure that our code base remains secure. All code merge requests go through multiple levels of review. 
+Due to the privacy preserving nature of Substra, we take vulnerabilities very seriously. The core of Federated Learning is security and therefore we take various steps such as auditing and automated testing to ensure that our code base remains secure. All pull requests go through a thorough review. 
 
 If a vulnerability is located however, a triage process is begun within one working day and a fix is immediately moved to priority (although this may depend on the specific case). 
 
