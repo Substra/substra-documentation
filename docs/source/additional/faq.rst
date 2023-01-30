@@ -28,3 +28,14 @@ Although Substra has been designed to work especially well in healthcare setting
 How can I be sure Substra is secure enough to be used with my private data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Substra is regularly audited with rigorous security standards (both code source audit and penetration tests). On top of that, by design, private data is never shared between different organizations. The software also provides full traceability on which algorithms were used on each dataset.
+
+What is the roadmap for Substra?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The roadmap for Substra is primarily decided by product managers and engineers at Owkin. These decisions are based on needs from active and potential FL projects and users that may or may not involve Owkin. You will find below a list of needs that we plan to address in the near future. Please know however that this is not a very strict roadmap and the direction of the product can alter at any moment.
+
+* **Better support for Federated Analytics:** The Substra library does support Federated Analytics currently but one of our goals is make this more user friendly and accessible.
+* **Introduce more FL Strategies:** Substra aims to be a complete FL framework and one way we hope to facilitate FL projects is by adding more strategies. We hope that by implementing these strategies within the library, we can encourage more experimentation by data scientists. We would also be interested in allowing users to define their own FL strategies.
+* **Usability Improvements:** We intend to make Substra more easy to deploy and use. This will come in improving the deployment documentation, simplifying the data concepts and merging Substra and Substrafl into one unified library.
+
+These are some of the main features to be developed in Substra for the coming months. We want to actively make an effort to help our users, so please do not hesitate to reach out if you have a feature request or an idea. Feedback is always welcome!
