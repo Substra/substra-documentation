@@ -56,7 +56,6 @@ Software
 * `kubectl <https://kubernetes.io/>`_
 * `Skaffold <https://skaffold.dev/>`_
 * `Helm 3 <https://helm.sh/>`_ (>= 3.7.0)
-*  `nodeJS <https://nodejs.org/>`_ (== 16.13.0)
 
 Instructions for Mac
 ^^^^^^^^^^^^^^^^^^^^
@@ -127,15 +126,7 @@ First time configuration
 
       git clone https://github.com/Substra/substra-frontend.git
 
-
-5. Install frontend dependencies
-
-   .. code-block:: bash
-
-      cd substra-frontend
-      npm install --dev
-
-6. Update Helm charts
+5. Update Helm charts
 
    .. code-block:: bash
 
@@ -182,25 +173,15 @@ Launching
 
       skaffold run -p nodeps
 
-* Deploy the frontend. You can use two methods (described below)
+* Deploy the frontend
 
-  a. Local server: Execute the following command:
+   .. code-block:: bash
 
-    .. code-block:: bash
+        cd substra-frontend
+        docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
+        docker run -it --rm -p 3000:3000 -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
 
-      cd substra-frontend
-      API_URL=http://substra-backend.org-1.com npm run dev
-
-  b. Docker:
-
-     .. code-block:: bash
-
-      docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
-      docker run -it --rm -p 3000:3000 --name DOCKER_FRONTEND_CONTAINER_NAME -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
-
-     | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container that will be used for the rest of the operations.
-
-  * In both case, you can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
+  You can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
 
     * login: org-1
     * password: p@sswr0d44
@@ -215,16 +196,8 @@ Stopping
 
 To stop the Substra stack, you need to stop the 3 components (backend, orchestrator and frontend) individually.
 
-* Stop the frontend: This action depends on which option you chose during the launch:
+* Stop the frontend: Stop the process running the local server in Docker (usually using *Control+C* or *Command+C* on macOS)
 
-  a. Local server: Stop the process running the local server (usually using *Control+C* or *Command+C* on macOS)
-  b. Docker:
-
-     .. code-block:: bash
-
-        docker stop DOCKER_FRONTEND_CONTAINER_NAME
-
-     | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container you chose during the launch
 * Stop the orchestrator:
 
   .. code-block:: bash
