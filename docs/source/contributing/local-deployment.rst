@@ -29,15 +29,18 @@ The following table indicates the resources needed to run the Substra stack loca
      - RAM
    * - Minimal
      - 2 cores
-     - 35 GB
-     - 4 GB
+     - 70 GB
+     - 10 GB
    * - Recommended
      - 4-8 cores
-     - 50 GB
+     - 100 GB
      - 16 GB
 
 .. caution::
    Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
+
+.. caution::
+   Check that enough available disk space is allocated to Docker, else you might run into errors.
 
 Software
 --------
@@ -170,6 +173,9 @@ Launching
       skaffold run -p dev,arm64
 
 .. tip::
+   If you need to re-run `skaffold run` for whatever reason, don't forget to use `skaffold delete` to reset the state beforehand (or reset your environment by running the `k3-create.sh` script again).
+
+.. tip::
    When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
 
    .. code-block:: bash
@@ -194,7 +200,10 @@ Launching
 
      | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container that will be used for the rest of the operations.
 
-  * In both case, you can access the frontend at http://substra-frontend.org-1.com:3000/.
+  * In both case, you can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
+
+    * login: org-1
+    * password: p@sswr0d44
 
 Monitoring
 ==========
@@ -234,7 +243,7 @@ If this command fails and you still have pods up, you can use the following comm
 
 .. code-block:: bash
 
-   kubectl rm ns org-1 org-2
+   kubectl delete ns org-1 org-2
 
 Next steps
 ==========
