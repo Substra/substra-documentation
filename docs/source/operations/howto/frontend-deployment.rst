@@ -22,6 +22,8 @@ You'll need to tell the backend to set the proper headers for cross-origin resou
 Preparing your Helm values
 ==========================
 
+Like with the backend, create a file for your values, say ``frontend-values.yaml``.
+
 You'll need to specify the backend API url:
 
 .. code-block:: yaml
@@ -48,4 +50,10 @@ Expose the service with the included ingress:
 Deploy the Chart
 ================
 
-Deploy with ``helm install`` as normal. Validate with a web browser.
+Deploy with Helm, like the backend:
+
+   .. code-block:: bash
+
+      helm install RELEASE-NAME substra/substra-frontend --version VERSION --values frontend-values.yaml
+
+Validate with a web browser (the initial users to log in as are set up in the backend values).
