@@ -54,7 +54,7 @@ Software
 
 * k3d/k3s (>= 5.0.0)
 * `kubectl <https://kubernetes.io/>`_
-* `Skaffold <https://skaffold.dev/>`_
+* `Skaffold <https://skaffold.dev/>`_ (>= 2.1.0)
 * `Helm 3 <https://helm.sh/>`_ (>= 3.7.0)
 
 Instructions for Mac
@@ -286,14 +286,15 @@ The following list describes errors that have already occurred, and their resolu
 Troubleshooting deployment
 --------------------------
 
-Skaffold version 1.31.0
-^^^^^^^^^^^^^^^^^^^^^^^
+Skaffold version
+^^^^^^^^^^^^^^^^
 
-Due to a change in the deployment sequence in Skaffold 1.31.x our components cannot be deployed with this version using only ``skaffold run``. Either upgrade to `Skaffold 1.32.0 <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__ or add the ``--status-check=false`` flag.
+Skaffold schemas have some incompatibilities between version `1.x` and version `2.0`. Check your version number and upgrade to Skaffold v2 (2.1.0 recommended) if necessary.
 
 .. code-block:: bash
 
-   skaffold dev/run/deploy --status-check=false
+   skaffold version
+   brew upgrade skaffold
 
 Other errors during backend deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
