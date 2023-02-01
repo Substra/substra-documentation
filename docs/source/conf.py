@@ -253,9 +253,11 @@ extensions.extend(
         "sphinx_fontawesome",
         "myst_parser",  # we need it for links between md files. Recommanded by sphinx : https://www.sphinx-doc.org/en/master/usage/markdown.html
         "sphinx_copybutton",
-        "sphinxcontrib.datatemplates",
     ]
 )
+
+sys.path.append(os.path.abspath("./_ext"))
+extensions.append("compatibilitytable")
 
 todo_include_todos = False
 
@@ -339,7 +341,7 @@ rst_epilog = f"""
 
 # Generate a JSON compatibility table
 
-with open("additional/compatibility-table.yaml") as f:
+with open("compatibility-table.yaml") as f:
     table = yaml.safe_load(f)
     dest = Path(TMP_FOLDER, "compatibility-table.json")
     with open(dest, "w") as f:

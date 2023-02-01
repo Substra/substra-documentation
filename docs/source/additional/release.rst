@@ -8,8 +8,8 @@ Compatibility table
 
 These sets of versions have been tested for compatibility:
 
-.. datatemplate:yaml:: compatibility-table.yaml
-   :template: compatibility-table.tmpl
+.. compatibilitytable:: source/compatibility-table.yaml
+
 
 .. only:: html
 
