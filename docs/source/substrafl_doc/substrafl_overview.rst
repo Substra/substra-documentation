@@ -110,7 +110,7 @@ Your choice of strategy will likely depend on the model you use. For instance, y
 
 Strategies can be centralized or decentralized:
 
-* **Centralized:** During the training, the organizations containing train data communicate exclusively with a central organization.
+* **Centralized:** During the training, data provider organizations communicate exclusively with one central organization that does the aggregation. Note that one of the data provider organization can also play the role of the central aggregator.
 * **Decentralized:** During the training, the organizations communicate between themselves, there is no central organization.
 
 Round
