@@ -5,10 +5,10 @@ from docutils import nodes
 from docutils.parsers.rst import Directive
 
 
-def has_helm_chart(table: dict, component: str) -> bool:
+def has_helm_chart(table: dict, component_name: str) -> bool:
     for release in table["releases"]:
-        if component in release["components"]:
-            if "helm" in release["components"][component]:
+        if component_name in release["components"]:
+            if "helm" in release["components"][component_name]:
                 return True
     return False
 
@@ -27,8 +27,6 @@ class CompatibilityTable(Directive):
         # but it doesn't
         # this leads to needing to first create the node and then attach children to it
 
-        releases = None
-
         source_file, _ = self.state_machine.get_source_and_line()
         with open(os.path.join(os.path.dirname(source_file), self.arguments[0])) as f:
             releases = yaml.safe_load(f)
@@ -45,8 +43,8 @@ class CompatibilityTable(Directive):
         component_row = nodes.row()
         helm_row = nodes.row()
 
-        for component in ["release"] + releases["components"]:
-            if not has_helm_chart(releases, component):
+        for component_name in ["release"] + releases["components"]:
+            if not has_helm_chart(releases, component_name):
                 name_entry = nodes.entry(morerows=1, morecols=1)
             else:
                 name_entry = nodes.entry(morecols=1)
@@ -54,7 +52,7 @@ class CompatibilityTable(Directive):
                 helm_row[-2] += nodes.paragraph(text="app")
                 helm_row[-1] += nodes.emphasis(text="helm")
 
-            name_entry += nodes.paragraph(text=component)
+            name_entry += nodes.paragraph(text=component_name)
             component_row += name_entry
 
         thead.append(component_row)

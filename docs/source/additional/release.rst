@@ -14,7 +14,7 @@ These sets of versions have been tested for compatibility:
 .. only:: html
 
    .. note::
-      `JSON version of this table </releases.json>`_
+      `JSON version of the release table </releases.json>`_
 
 Changelog
 ---------
