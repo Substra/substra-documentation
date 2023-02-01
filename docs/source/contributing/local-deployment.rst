@@ -29,15 +29,18 @@ The following table indicates the resources needed to run the Substra stack loca
      - RAM
    * - Minimal
      - 2 cores
-     - 35 GB
-     - 4 GB
+     - 70 GB
+     - 10 GB
    * - Recommended
      - 4-8 cores
-     - 50 GB
+     - 100 GB
      - 16 GB
 
 .. caution::
    Choose wisely the parameters passed to Kubernetes as it might try to use all the allocated resources without regards for your system.
+
+.. caution::
+   Check that enough available disk space is allocated to Docker, else you might run into errors.
 
 Software
 --------
@@ -51,9 +54,8 @@ Software
 
 * k3d/k3s (>= 5.0.0)
 * `kubectl <https://kubernetes.io/>`_
-* `Skaffold <https://skaffold.dev/>`_
+* `Skaffold <https://skaffold.dev/>`_ (>= 2.1.0)
 * `Helm 3 <https://helm.sh/>`_ (>= 3.7.0)
-*  `nodeJS <https://nodejs.org/>`_ (== 16.13.0)
 
 Instructions for Mac
 ^^^^^^^^^^^^^^^^^^^^
@@ -124,15 +126,7 @@ First time configuration
 
       git clone https://github.com/Substra/substra-frontend.git
 
-
-5. Install frontend dependencies
-
-   .. code-block:: bash
-
-      cd substra-frontend
-      npm install --dev
-
-6. Update Helm charts
+5. Update Helm charts
 
    .. code-block:: bash
 
@@ -170,31 +164,27 @@ Launching
       skaffold run -p dev,arm64
 
 .. tip::
+   If you need to re-run `skaffold run` for whatever reason, don't forget to use `skaffold delete` to reset the state beforehand (or reset your environment by running the `k3-create.sh` script again).
+
+.. tip::
    When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
 
    .. code-block:: bash
 
       skaffold run -p nodeps
 
-* Deploy the frontend. You can use two methods (described below)
+* Deploy the frontend
 
-  a. Local server: Execute the following command:
+   .. code-block:: bash
 
-    .. code-block:: bash
+        cd substra-frontend
+        docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
+        docker run -it --rm -p 3000:3000 -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
 
-      cd substra-frontend
-      API_URL=http://substra-backend.org-1.com npm run dev
+  You can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
 
-  b. Docker:
-
-     .. code-block:: bash
-
-      docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
-      docker run -it --rm -p 3000:3000 --name DOCKER_FRONTEND_CONTAINER_NAME -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
-
-     | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container that will be used for the rest of the operations.
-
-  * In both case, you can access the frontend at http://substra-frontend.org-1.com:3000/.
+    * login: ``org-1``
+    * password: ``p@sswr0d44``
 
 Monitoring
 ==========
@@ -206,16 +196,8 @@ Stopping
 
 To stop the Substra stack, you need to stop the 3 components (backend, orchestrator and frontend) individually.
 
-* Stop the frontend: This action depends on which option you chose during the launch:
+* Stop the frontend: Stop the process running the local server in Docker (using *Control+C*)
 
-  a. Local server: Stop the process running the local server (usually using *Control+C* or *Command+C* on macOS)
-  b. Docker:
-
-     .. code-block:: bash
-
-        docker stop DOCKER_FRONTEND_CONTAINER_NAME
-
-     | with ``DOCKER_FRONTEND_CONTAINER_NAME`` the name of the frontend container you chose during the launch
 * Stop the orchestrator:
 
   .. code-block:: bash
@@ -234,7 +216,7 @@ If this command fails and you still have pods up, you can use the following comm
 
 .. code-block:: bash
 
-   kubectl rm ns org-1 org-2
+   kubectl delete ns org-1 org-2
 
 Next steps
 ==========
@@ -304,14 +286,15 @@ The following list describes errors that have already occurred, and their resolu
 Troubleshooting deployment
 --------------------------
 
-Skaffold version 1.31.0
-^^^^^^^^^^^^^^^^^^^^^^^
+Skaffold version
+^^^^^^^^^^^^^^^^
 
-Due to a change in the deployment sequence in Skaffold 1.31.x our components cannot be deployed with this version using only ``skaffold run``. Either upgrade to `Skaffold 1.32.0 <https://github.com/GoogleContainerTools/skaffold/releases/tag/v1.32.0>`__ or add the ``--status-check=false`` flag.
+Skaffold schemas have some incompatibilities between version `1.x` and version `2.0`. Check your version number and upgrade to Skaffold v2 (2.1.0 recommended) if necessary.
 
 .. code-block:: bash
 
-   skaffold dev/run/deploy --status-check=false
+   skaffold version
+   brew upgrade skaffold
 
 Other errors during backend deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
