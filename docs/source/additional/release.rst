@@ -8,13 +8,13 @@ Compatibility table
 
 These sets of versions have been tested for compatibility:
 
-.. compatibilitytable:: source/compatibility-table.yaml
+.. compatibilitytable:: releases.yaml
 
 
 .. only:: html
 
    .. note::
-      `JSON version of this table </compatibility-table.json>`_
+      `JSON version of this table </releases.json>`_
 
 Changelog
 ---------

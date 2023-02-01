@@ -341,9 +341,9 @@ rst_epilog = f"""
 
 # Generate a JSON compatibility table
 
-with open("compatibility-table.yaml") as f:
+with open("additional/releases.yaml") as f:
     table = yaml.safe_load(f)
-    dest = Path(TMP_FOLDER, "compatibility-table.json")
+    dest = Path(TMP_FOLDER, "releases.json")
     with open(dest, "w") as f:
         json.dump(table, f)
         html_extra_path.append(str(dest))

@@ -9,7 +9,7 @@ components: # for table headers
   - substra-tests
 
 releases:
-  - name: 0.24.0
+  - version: 0.24.0
     components:
       substrafl:
         version: 0.33.0
@@ -47,7 +47,7 @@ releases:
       substra-tests:
         version: 0.37.0
         link: https://github.com/Substra/substra-tests/releases/tag/0.37.0
-  - name: 0.23.1
+  - version: 0.23.1
     components:
       substrafl:
         version: 0.32.0
@@ -85,7 +85,7 @@ releases:
       substra-tests:
         version: 0.36.0
         link: https://github.com/Substra/substra-tests/releases/tag/0.36.0
-  - name: 0.22.0
+  - version: 0.22.0
     components:
       substrafl:
         version: 0.30.2
@@ -123,7 +123,7 @@ releases:
       substra-tests:
         version: 0.34.0
         link: https://github.com/Substra/substra-tests/releases/tag/0.34.0
-  - name: 0.21.0
+  - version: 0.21.0
     components:
       substrafl:
         version: 0.28.0

@@ -1,3 +1,5 @@
+import os.path
+
 import yaml
 from docutils import nodes
 from docutils.parsers.rst import Directive
@@ -26,7 +28,9 @@ class CompatibilityTable(Directive):
         # this leads to needing to first create the node and then attach children to it
 
         releases = None
-        with open(self.arguments[0]) as f:
+
+        source_file, _ = self.state_machine.get_source_and_line()
+        with open(os.path.join(os.path.dirname(source_file), self.arguments[0])) as f:
             releases = yaml.safe_load(f)
 
         table = nodes.table()
@@ -60,7 +64,7 @@ class CompatibilityTable(Directive):
         for release in releases["releases"]:
             row = nodes.row()
             row += nodes.entry(morecols=1)
-            row[0] += nodes.strong(text=release["name"])
+            row[0] += nodes.strong(text=release["version"])
             for component_name in releases["components"]:
                 component = release["components"][component_name]
                 app_para = nodes.paragraph()
