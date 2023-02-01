@@ -183,8 +183,8 @@ Launching
 
   You can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
 
-    * login: org-1
-    * password: p@sswr0d44
+    * login: ``org-1``
+    * password: ``p@sswr0d44``
 
 Monitoring
 ==========
@@ -196,7 +196,7 @@ Stopping
 
 To stop the Substra stack, you need to stop the 3 components (backend, orchestrator and frontend) individually.
 
-* Stop the frontend: Stop the process running the local server in Docker (usually using *Control+C* or *Command+C* on macOS)
+* Stop the frontend: Stop the process running the local server in Docker (using *Control+C*)
 
 * Stop the orchestrator:
 
