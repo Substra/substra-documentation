@@ -39,8 +39,6 @@ To run this example, you have two options:
 # Import all the dependencies
 # ---------------------------
 
-# sphinx_gallery_thumbnail_path = 'auto_examples/titanic_example/images/thumb/sphx_glr_plot_titanic_thumb.jpg'
-
 import os
 import zipfile
 from pathlib import Path

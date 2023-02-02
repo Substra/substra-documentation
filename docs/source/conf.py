@@ -86,7 +86,9 @@ TMP_FOLDER.mkdir(exist_ok=True)
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
-    with zipfile.ZipFile(file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED) as ziph:
+    with zipfile.ZipFile(
+        file=TMP_FOLDER / zip_file_name, mode="w", compression=zipfile.ZIP_DEFLATED
+    ) as ziph:
         for root, _, files in os.walk(source_dir):
             for file in files:
                 ziph.write(
@@ -331,9 +333,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_extra_path = []
 
-# Generate the plot for the gallery
-# plot_gallery = True
-
 rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
 .. |substrafl_version| replace:: {importlib.import_module('substrafl').__version__}
@@ -387,12 +386,15 @@ sphinx_gallery_conf = {
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
     "subsection_order": SubSectionTitleOrder("../../examples"),
     "download_all_examples": False,
+    "filename_pattern": "/run_",
     "binder": {
         "org": "Substra",
         "repo": "substra-documentation",
         "branch": current_commit,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
         "binderhub_url": "https://mybinder.org",  # public binderhub url
-        "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
+        "dependencies": str(
+            Path(__file__).parents[2] / "requirements.txt"
+        ),  # this value is not used
         "notebooks_dir": "notebooks",
         "use_jupyter_lab": True,
     },
