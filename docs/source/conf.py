@@ -333,9 +333,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_extra_path = []
 
-# Generate the plot for the gallery
-# plot_gallery = True
-
 rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
 .. |substrafl_version| replace:: {importlib.import_module('substrafl').__version__}
