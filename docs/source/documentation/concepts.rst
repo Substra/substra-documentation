@@ -108,7 +108,7 @@ In the following tables, the asset is registered by orgA with the permissions:
      - Nothing
      - No
 
-.. list-table:: Algo permissions
+.. list-table:: Function permissions
    :widths: 5 50 50
    :header-rows: 1
 
@@ -146,17 +146,17 @@ In local mode, these steps are either skipped or simplified.
 
 Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organization.
 
-On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the algorithm and creates a container with the relevant assets. The task executes and Substra saves its outputs.
-Afterwards, every task **from the same compute plan** that uses the same algorithm is executed in the same container.
+On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the function and creates a container with the relevant assets. The task executes and Substra saves its outputs.
+Afterwards, every task **from the same compute plan** that uses the same function is executed in the same container.
 
 Asset preparation
 ^^^^^^^^^^^^^^^^^^
 
 The first step of the task execution is to fetch the necessary assets.
-These include the inputs (e.g. the algorithm or opener files), the output of other tasks (input artifacts of the task) and data samples.
+These include the inputs (e.g. the function or opener files), the output of other tasks (input artifacts of the task) and data samples.
 
 The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
-(for examples, an algorithm submitted on another organization).
+(for examples, a function submitted on another organization).
 
 All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded from the organization storage solution to the organization filesystem which may take a long time if the dataset is large.
 Note that data samples never leave the organization.
@@ -167,9 +167,9 @@ Since this step can be quite long, there is a cache system: on a given organizat
 Docker image build
 ^^^^^^^^^^^^^^^^^^^
 
-For the first task of the compute plan that uses a given algorithm, Substra needs to build the image, transfer it to the local image registry, and then use it to spawn the container. This takes a few minutes for a small image and can take longer for larger images.
+For the first task of the compute plan that uses a given function, Substra needs to build the image, transfer it to the local image registry, and then use it to spawn the container. This takes a few minutes for a small image and can take longer for larger images.
 
-For the tasks in the same compute plan that use either the same algorithm or a different algorithm with the same Docker image, Substra does not need to rebuild the image, making the task execution much faster.
+For the tasks in the same compute plan that use either the same function or a different function with the same Docker image, Substra does not need to rebuild the image, making the task execution much faster.
 
 To check how large the image is and how long it takes to build, you can build it locally with ``docker build .``.
 For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.

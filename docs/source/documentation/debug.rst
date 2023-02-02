@@ -13,7 +13,7 @@ Doing machine learning on remote data is hard and may not work on the first atte
 Test your assets locally without Substra
 ----------------------------------------
 
-The first step is to make sure your assets are working outside Substra. For instance to test an opener and an algorithm the following code can be used:
+The first step is to make sure your assets are working outside Substra. For instance to test an opener and a function the following code can be used:
 ::
 
     # Opener test:
@@ -24,9 +24,9 @@ The first step is to make sure your assets are working outside Substra. For inst
 
 ::
 
-    # Algo test:
-    import algo  # Assuming the opener is implemented in the algo.py file
-    linear_regression = algo.LinearRegression()
+    # Function test:
+    import function  # Assuming the opener is implemented in the function.py file
+    linear_regression = function.LinearRegression()
     model = linear_regression.train(datasamples)
     # test the model
 
@@ -66,7 +66,7 @@ Whenever a task fails, an error will be raised and logs of the tasks will be inc
 Test remote assets locally with the hybrid mode
 -----------------------------------------------
 
-A hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets, for example using an algorithm from the deployed platform on a local dataset produces a local model.
+A hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets, for example using a function from the deployed platform on a local dataset produces a local model.
 To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"` and use remote assets when creating tasks.
 ::
 
@@ -94,7 +94,7 @@ Every task has an `error_type` property that can be read by any user of any orga
 The `error_type` can take three values:
 
 * **BUILD_ERROR**: The error happened when building the Docker image.
-* **EXECUTION_ERROR**: The error happened when executing an algo.
+* **EXECUTION_ERROR**: The error happened when executing a function.
 * **INTERNAL_ERROR**: Error in the Substra product. In this case, please, raise an issue on Github or reach out on Slack.
 
 If the field is `None`, it means there was no error, and the task status is not FAILED.

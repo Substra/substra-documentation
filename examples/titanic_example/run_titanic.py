@@ -45,9 +45,9 @@ from pathlib import Path
 
 import substra
 from substra.sdk.schemas import (
-    AlgoSpec,
-    AlgoInputSpec,
-    AlgoOutputSpec,
+    FunctionSpec,
+    FunctionInputSpec,
+    FunctionOutputSpec,
     AssetKind,
     DataSampleSpec,
     DatasetSpec,
@@ -171,12 +171,12 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 inputs_metrics = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    FunctionInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-outputs_metrics = [AlgoOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [FunctionOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
 
 
 METRICS_DOCKERFILE_FILES = [
@@ -190,7 +190,7 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-metric_function = AlgoSpec(
+metric_function = FunctionSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
     name="Accuracy",
@@ -205,7 +205,7 @@ print(f"Metric key {metric_key}")
 
 
 # %%
-# Adding Algo
+# Adding Function
 # ===========
 # An functionrithm specifies the method to train a model on a dataset or the method to aggregate models.
 # Concretely, an functionrithm corresponds to an archive (tar or zip file) containing:
@@ -228,13 +228,13 @@ with zipfile.ZipFile(train_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 train_function_inputs = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
 ]
 
-train_function_outputs = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
+train_function_outputs = [FunctionOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
-train_function = AlgoSpec(
+train_function = FunctionSpec(
     name="Titanic: Random Forest",
     inputs=train_function_inputs,
     outputs=train_function_outputs,
@@ -261,14 +261,14 @@ with zipfile.ZipFile(predict_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 predict_function_inputs = [
-    AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
+    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
+    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    FunctionInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-predict_function_outputs = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+predict_function_outputs = [FunctionOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
 
-predict_function_spec = AlgoSpec(
+predict_function_spec = FunctionSpec(
     name="Titanic: Random Forest - predict",
     inputs=predict_function_inputs,
     outputs=predict_function_outputs,
