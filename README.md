@@ -75,7 +75,7 @@ Thank you for helping us improving!
 
 - Put the example folder in `substra-documentation/examples` if it is a Substra example, `substra-documentation/substrafl_examples` if it is a Substrafl example.
 - create a `README.rst` file at the root of the example
-- The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))
+- The main file that is executed must match the regex `run_*.py`, e.g. `run_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))
 - The main file must start by a docstring like described in the [Sphinx gallery documentation](- The main file that is executed must match the regex `plot_*.py`, e.g. `plot_titanic.py` ([source](https://sphinx-gallery.github.io/stable/configuration.html?highlight=examples_dirs#parsing-and-executing-examples-via-matching-patterns))). It must also be structured as described in the Sphinx gallery documentation.
 - Add the assets:
   - use the `zip_dir` function in the `conf.py` file to zip the assets
