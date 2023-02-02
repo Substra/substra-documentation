@@ -60,7 +60,7 @@ Algorithm
 ^^^^^^^^^
 
 .. warning::
-    A SubstraFL algorithm is not the same as a Substra :ref:`concept_algorithm`!
+    A SubstraFL algorithm is not the same as a Substra :ref:`concept_function`!
 
 A SubstraFL algorithm contains the local training and predict code along with all associated hyper parameters (batch size, loss, optimizer, etc).
 

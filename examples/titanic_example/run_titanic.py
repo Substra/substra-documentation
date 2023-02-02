@@ -83,7 +83,7 @@ client = substra.Client(backend_type="subprocess")
 #
 # - Data cannot be seen once it's registered on the platform.
 # - Metadata are visible by all the users of a channel.
-# - Permissions allow you to execute an algorithm on a certain dataset.
+# - Permissions allow you to execute an functionrithm on a certain dataset.
 #
 # In a remote deployment, setting the parameter ``public`` to false means that the dataset can only be used by tasks in
 # the same organization or by organizations that are in the ``authorized_ids``. However, these permissions are ignored in local mode.
@@ -190,7 +190,7 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
     for filepath in METRICS_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-metric_algo = AlgoSpec(
+metric_function = AlgoSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
     name="Accuracy",
@@ -199,7 +199,7 @@ metric_algo = AlgoSpec(
     permissions=permissions,
 )
 
-metric_key = client.add_algo(metric_algo)
+metric_key = client.add_function(metric_function)
 
 print(f"Metric key {metric_key}")
 
@@ -207,82 +207,82 @@ print(f"Metric key {metric_key}")
 # %%
 # Adding Algo
 # ===========
-# An algorithm specifies the method to train a model on a dataset or the method to aggregate models.
-# Concretely, an algorithm corresponds to an archive (tar or zip file) containing:
+# An functionrithm specifies the method to train a model on a dataset or the method to aggregate models.
+# Concretely, an functionrithm corresponds to an archive (tar or zip file) containing:
 #
-# - One or more Python scripts that implement the algorithm. Importantly, a train and a
+# - One or more Python scripts that implement the functionrithm. Importantly, a train and a
 #   predict function have to be defined.
 # - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 #   This dockerfile also specifies the method name to execute (either train or predict here).
 
-ALGO_KEYS_JSON_FILENAME = "algo_random_forest_keys.json"
+ALGO_KEYS_JSON_FILENAME = "function_random_forest_keys.json"
 
 ALGO_TRAIN_DOCKERFILE_FILES = [
-    assets_directory / "algo_random_forest/titanic_algo_rf.py",
-    assets_directory / "algo_random_forest/train/Dockerfile",
+    assets_directory / "function_random_forest/titanic_function_rf.py",
+    assets_directory / "function_random_forest/train/Dockerfile",
 ]
 
-train_archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+train_archive_path = assets_directory / "function_random_forest" / "function_random_forest.zip"
 with zipfile.ZipFile(train_archive_path, "w") as z:
     for filepath in ALGO_TRAIN_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-train_algo_inputs = [
+train_function_inputs = [
     AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
     AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
 ]
 
-train_algo_outputs = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
+train_function_outputs = [AlgoOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
-train_algo = AlgoSpec(
+train_function = AlgoSpec(
     name="Titanic: Random Forest",
-    inputs=train_algo_inputs,
-    outputs=train_algo_outputs,
-    description=assets_directory / "algo_random_forest" / "description.md",
+    inputs=train_function_inputs,
+    outputs=train_function_outputs,
+    description=assets_directory / "function_random_forest" / "description.md",
     file=train_archive_path,
     permissions=permissions,
 )
 
 
-train_algo_key = client.add_algo(train_algo)
+train_function_key = client.add_function(train_function)
 
-print(f"Train algo key {train_algo_key}")
+print(f"Train function key {train_function_key}")
 
 # %%
-# The predict algo uses the Python file as the algo used for training.
+# The predict function uses the Python file as the function used for training.
 ALGO_PREDICT_DOCKERFILE_FILES = [
-    assets_directory / "algo_random_forest/titanic_algo_rf.py",
-    assets_directory / "algo_random_forest/predict/Dockerfile",
+    assets_directory / "function_random_forest/titanic_function_rf.py",
+    assets_directory / "function_random_forest/predict/Dockerfile",
 ]
 
-predict_archive_path = assets_directory / "algo_random_forest" / "algo_random_forest.zip"
+predict_archive_path = assets_directory / "function_random_forest" / "function_random_forest.zip"
 with zipfile.ZipFile(predict_archive_path, "w") as z:
     for filepath in ALGO_PREDICT_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-predict_algo_inputs = [
+predict_function_inputs = [
     AlgoInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
     AlgoInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
     AlgoInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
-predict_algo_outputs = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+predict_function_outputs = [AlgoOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
 
-predict_algo_spec = AlgoSpec(
+predict_function_spec = AlgoSpec(
     name="Titanic: Random Forest - predict",
-    inputs=predict_algo_inputs,
-    outputs=predict_algo_outputs,
-    description=assets_directory / "algo_random_forest" / "description.md",
+    inputs=predict_function_inputs,
+    outputs=predict_function_outputs,
+    description=assets_directory / "function_random_forest" / "description.md",
     file=predict_archive_path,
     permissions=permissions,
 )
 
-predict_algo_key = client.add_algo(predict_algo_spec)
+predict_function_key = client.add_function(predict_function_spec)
 
-print(f"Predict algo key {predict_algo_key}")
+print(f"Predict function key {predict_function_key}")
 
 # %%
-# The data, the algorithm and the metric are now registered.
+# The data, the functionrithm and the metric are now registered.
 
 # %%
 # Registering tasks
@@ -296,7 +296,7 @@ train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) fo
 test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
 
 train_task = TaskSpec(
-    algo_key=train_algo_key,
+    function_key=train_function_key,
     inputs=data_manager_input + train_data_sample_inputs,
     outputs={"model": ComputeTaskOutputSpec(permissions=permissions)},
     worker=client.organization_info().organization_id,
@@ -323,7 +323,7 @@ model_input = [
 ]
 
 predict_task = TaskSpec(
-    algo_key=predict_algo_key,
+    function_key=predict_function_key,
     inputs=data_manager_input + test_data_sample_inputs + model_input,
     outputs={"predictions": ComputeTaskOutputSpec(permissions=permissions)},
     worker=client.organization_info().organization_id,
@@ -340,7 +340,7 @@ predictions_input = [
 ]
 
 test_task = TaskSpec(
-    algo_key=metric_key,
+    function_key=metric_key,
     inputs=data_manager_input + test_data_sample_inputs + predictions_input,
     outputs={"performance": ComputeTaskOutputSpec(permissions=permissions)},
     worker=client.organization_info().organization_id,
@@ -358,5 +358,5 @@ print(f"Test task key {test_task_key}")
 
 test_task = client.get_task(test_task_key)
 print(test_task.status)
-print("Metric: ", test_task.algo.name)
+print("Metric: ", test_task.function.name)
 print("Performance on the metric: ", test_task.outputs["performance"].value)

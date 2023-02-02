@@ -9,7 +9,7 @@ Main Substra concepts
 Assets
 ------
 
-Assets are a set of files which are required to run a compute plan. In order to enable privacy-preserving machine learning, different types of assets live within the platform: datasets, algorithms, models, tasks and compute plans.
+Assets are a set of files which are required to run a compute plan. In order to enable privacy-preserving machine learning, different types of assets live within the platform: datasets, functions, models, tasks and compute plans.
 
 .. _concept_opener:
 
@@ -21,21 +21,21 @@ A dataset represents the data in Substra. It is made up of:
 * An opener, which is a script used to load data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
 
-.. _concept_algorithm:
+.. _concept_function:
 
-Algorithm
-^^^^^^^^^
+Function
+^^^^^^^^
 
-An algorithm corresponds to an archive (tar or zip file) containing:
+A function corresponds to an archive (tar or zip file) containing:
 
-* One or more Python scripts that implement the algorithm.
+* One or more Python scripts that implement the function.
 * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
 .. _concept_model:
 
 Model
 ^^^^^
-A model is a potentially large file containing the parameters of an algorithm.
+A model is a potentially large file containing the parameters of a function.
 
 
 Compute plan and tasks
@@ -54,7 +54,7 @@ Note that you can register a task alone, i.e. not put the task in a compute plan
 Task
 ^^^^
 
-A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
+A task correspond to a computation task. The task can use any inputs (data, functions or output from other tasks). The function is expected to write the outputs in files, on paths given as outputs dictionary.
 
 Transient task outputs
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ Permissions for a user to download an asset
 Users of a organization can export (aka download) the following elements from Substra to their local environment:
 
 * the opener of a dataset if the organization has process permissions on the dataset
-* the archive of an algorithm if the organization has process permissions on the algorithm
+* the archive of a function if the organization has process permissions on the function
 * the model outputted by a task if the organization has process permissions on the model and if this type of export has been enabled at deployment for the organization (environment variable model_export_enabled should be set to True)
 
 
@@ -116,11 +116,11 @@ In the following tables, the asset is registered by orgA with the permissions:
      - What can the organization do?
      - Can the user of the organization export the asset?
    * - orgA
-     - orgA can use the algo in a task on any organization
-     - Yes - the algo archive
+     - orgA can use the function in a task on any organization
+     - Yes - the function archive
    * - orgB
-     - orgB can use the algo in a task on any organization
-     - Yes - the algo archive
+     - orgB can use the function in a task on any organization
+     - Yes - the function archive
    * - orgC
      - Nothing
      - No

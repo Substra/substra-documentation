@@ -2,7 +2,7 @@
 How to link multiple Substra backends
 *************************************
 
-This guide shows you how to enable communication between two Substra backends to allow them to exchange :ref:`Algorithms <concept_algorithm>` and :ref:`Models <concept_model>`.
+This guide shows you how to enable communication between two Substra backends to allow them to exchange :ref:`Functions <concept_function>` and :ref:`Models <concept_model>`.
 This can be achieved either at deployment time or when the backend is already deployed.
 
 Prerequisites
