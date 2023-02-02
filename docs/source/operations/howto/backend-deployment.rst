@@ -1,6 +1,6 @@
-*****************************
-How to deploy Substra Backend
-*****************************
+*********************************
+How to deploy the Substra backend
+*********************************
 
 This guide shows you how to deploy the backend component of Substra.
 
