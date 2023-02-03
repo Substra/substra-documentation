@@ -186,6 +186,19 @@ Launching
     * login: ``org-1``
     * password: ``p@sswr0d44``
 
+Lauching computations
+=====================
+
+You can launch computation, for example using the :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`. To use your local deployment:
+   .. code-block:: python
+
+      client_org_1 = substra.Client(url="http://substra-backend.org-1.com")
+      client_org_1.login(username="org-1", password="p@sswr0d44")
+
+      client_org_2 = substra.Client(url="http://substra-backend.org-2.com")
+      client_org_2.login(username="org-2", password="p@sswr0d45")
+
+
 Monitoring
 ==========
 
