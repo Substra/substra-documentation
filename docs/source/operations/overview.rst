@@ -31,7 +31,7 @@ For each component section below, configuration options relates to the component
 
     Limited support on Windows:
         - ``subprocess`` mode is supported on **Windows Server 2022**
-        - ``docker`` and ``remote`` mode are not supported for now
+        - ``docker`` and ``remote`` modes are not supported for now
 
 Shared secrets
 --------------
