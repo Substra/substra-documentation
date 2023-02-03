@@ -123,7 +123,6 @@ train_datasample_keys = {}
 test_datasample_keys = {}
 
 for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
-
     client = clients[org_id]
 
     permissions_dataset = Permissions(public=False, authorized_ids=[ALGO_ORG_ID])
@@ -300,7 +299,6 @@ class TorchDataset(torch.utils.data.Dataset):
         self.is_inference = is_inference
 
     def __getitem__(self, idx):
-
         if self.is_inference:
             x = torch.FloatTensor(self.x[idx][None, ...]) / 255
             return x
@@ -374,17 +372,16 @@ from substrafl.nodes import AggregationNode
 
 aggregation_node = AggregationNode(ALGO_ORG_ID)
 
-train_data_nodes = []
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Train Data Node (or training task) and save it in a list
-    train_data_node = TrainDataNode(
+# Create the Train Data Nodes (or training tasks) and save them in a list
+train_data_nodes = [
+    TrainDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         data_sample_keys=[train_datasample_keys[org_id]],
     )
-    train_data_nodes.append(train_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
+
 
 # %%
 # Where and when to test
@@ -400,19 +397,17 @@ for org_id in DATA_PROVIDER_ORGS_ID:
 from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
-
-test_data_nodes = []
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Test Data Node (or testing task) and save it in a list
-    test_data_node = TestDataNode(
+# Create the Test Data Nodes (or testing tasks) and save them in a list
+test_data_nodes = [
+    TestDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_keys=[metric_key],
     )
-    test_data_nodes.append(test_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
+
 
 # Test at the end of every round
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_frequency=1)
