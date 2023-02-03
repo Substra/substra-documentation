@@ -34,7 +34,7 @@ To run this example, you have two options:
 # Setup
 # *****
 #
-# This examples runs with three organizations. Two organizations provide datasets, while a third
+# This example runs with three organizations. Two organizations provide datasets, while a third
 # one provides the algorithm.
 #
 # In the following code cell, we define the different organizations needed for our FL experiment.
@@ -46,14 +46,15 @@ N_CLIENTS = 3
 
 # Every computation will run in `subprocess` mode, where everything runs locally in Python
 # subprocesses.
-# Ohers backend_types are:
+# Other backend_types are:
 # "docker" mode where computations run locally in docker containers
 # "remote" mode where computations run remotely (you need to have a deployed platform for that)
+# To run in remote mode you have to also use the function `Client.login(username, password)`
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
-# To run in remote mode you have to also use the function `Client.login(username, password)`
 
+# Create a dictionary to easily access each client from its human-friendly id
 clients = {
     client_0.organization_info().organization_id: client_0,
     client_1.organization_info().organization_id: client_1,
@@ -62,7 +63,7 @@ clients = {
 
 
 # Store organization IDs
-ORGS_ID = list(clients.keys())
+ORGS_ID = list(clients)
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
@@ -128,7 +129,7 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
     permissions_dataset = Permissions(public=False, authorized_ids=[ALGO_ORG_ID])
 
     # DatasetSpec is the specification of a dataset. It makes sure every field
-    # is well defined, and that our dataset is ready to be registered.
+    # is well-defined, and that our dataset is ready to be registered.
     # The real dataset object is created in the add_dataset method.
 
     dataset = DatasetSpec(
