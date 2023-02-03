@@ -374,7 +374,7 @@ from substrafl.nodes import AggregationNode
 
 aggregation_node = AggregationNode(ALGO_ORG_ID)
 
-train_data_nodes = list()
+train_data_nodes = []
 
 for org_id in DATA_PROVIDER_ORGS_ID:
 
@@ -401,7 +401,7 @@ from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
 
-test_data_nodes = list()
+test_data_nodes = []
 
 for org_id in DATA_PROVIDER_ORGS_ID:
 
