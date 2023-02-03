@@ -186,10 +186,11 @@ Launching
     * login: ``org-1``
     * password: ``p@sswr0d44``
 
-Lauching computations
-=====================
+Launching computations
+======================
 
-You can launch computation, for example using the :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`. To use your local deployment:
+One way to test that everything is working fine is to launch computations on your local deployment. To do that you can use the :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>` and setup the clients with the following values:
+
    .. code-block:: python
 
       client_org_1 = substra.Client(url="http://substra-backend.org-1.com")
