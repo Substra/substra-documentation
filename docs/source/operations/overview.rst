@@ -23,15 +23,6 @@ For each component section below, configuration options relates to the component
 
 .. _cert-manager: https://cert-manager.io
 
-.. note::
-
-    We provide full support on the following OS:
-        - **Ubuntu 22.06**
-        - **MacOS** (*Intel* or *M1* chip)
-
-    Limited support on Windows:
-        - ``subprocess`` mode is supported on **Windows Server 2022**
-        - ``docker`` and ``remote`` modes are not supported for now
 
 Shared secrets
 --------------
