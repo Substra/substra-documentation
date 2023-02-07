@@ -23,7 +23,6 @@ For each component section below, configuration options relates to the component
 
 .. _cert-manager: https://cert-manager.io
 
-
 Shared secrets
 --------------
 
