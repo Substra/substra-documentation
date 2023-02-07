@@ -32,8 +32,9 @@ Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on W
 
     Support on Windows:
         - ``subprocess`` mode is tested on **Windows Server 2022**.
-        - ``docker`` mode is not tested in the daily process. Please refer to :ref:`local_mode` to use it.
+        - ``docker`` mode is not tested for now. Please refer to :ref:`local_mode` to use it.
         - ``remote`` mode is not tested for now.
+    Despite Windows not being deeply tested, fell free to :ref:`reach out <additional/community:Community>` if you encounter any issue.
 
 
 To install SubstraFL run the following command:
