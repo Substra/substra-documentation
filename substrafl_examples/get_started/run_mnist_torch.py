@@ -420,11 +420,11 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
-# - An `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
+# - An :ref:`Torch algorithm<substrafl_doc/api/algorithms:Torch Algorithms>` to define the training parameters *(optimizer, train
 #   function, predict function, etc...)*.
-# - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
+# - A :ref:`Federated Strategy<substrafl_doc/api/strategies:Strategies>`, to specify how to train the model on
 #   distributed data.
-# - `Train data nodes <substrafl_doc/api/nodes:TrainDataNode>`_ to indicate on which data to train.
+# - :ref:`Train data nodes<substrafl_doc/api/nodes:TrainDataNode>` to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
