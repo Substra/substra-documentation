@@ -108,7 +108,9 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # dataset.
 #
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
-# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization can access a specific asset.
+# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization
+# can access a specific asset.
+# You can read more about permissions in the :ref:`User Guide<documentation/concepts:Permissions>`.
 #
 # Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
@@ -169,28 +171,37 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 #
 # When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function in numpy format
 # so that you can simply load them using `np.load`.
-#
-# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
-# This metric will be used on the test datasamples to evaluate the model performances.
 
 from sklearn.metrics import accuracy_score
 import numpy as np
-
-from substrafl.dependency import Dependency
-from substrafl.remote.register import add_metric
-
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
-
-# The Dependency object is instantiated in order to install the right libraries in
-# the Python environment of each organization.
-metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
-
 
 def accuracy(datasamples, predictions_path):
     y_true = datasamples["labels"]
     y_pred = np.load(predictions_path)
 
     return accuracy_score(y_true, np.argmax(y_pred, axis=1))
+
+# %%
+# We also need to specify the third parties dependencies required to compute the metrics.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+#
+# As for the dataset, we also define :ref:`documentation/concepts:Permissions`.
+
+from substrafl.dependency import Dependency
+
+metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
+
+permissions_metric = Permissions(
+    public=False,
+    authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
+
+# %%
+# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
+# This metric will be used on the test datasamples to evaluate the model performances.
+
+from substrafl.remote.register import add_metric
 
 
 metric_key = add_metric(
