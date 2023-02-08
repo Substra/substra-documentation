@@ -479,9 +479,9 @@ plt.title("Test dataset results")
 plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
-for id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df.query(f"worker == '{id}'")
-    plt.plot(df["round_idx"], df["performance"], label=id)
+for org_id in DATA_PROVIDER_ORGS_ID:
+    df = performances_df.query(f"worker == '{org_id}'")
+    plt.plot(df["round_idx"], df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
 plt.show()
