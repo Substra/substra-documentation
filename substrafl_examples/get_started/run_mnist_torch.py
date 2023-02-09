@@ -499,7 +499,7 @@ plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
 for org_id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df.query(f"worker == '{org_id}'")
+    df = performances_df[performances_df["worker"] == org_id]
     plt.plot(df["round_idx"], df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
