@@ -32,9 +32,9 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     SUBSTRAFL_VERSION = "0.33.0"
 
 else:
-    SUBSTRA_VERSION = "main"
+    SUBSTRA_VERSION = "rename-algo-to-function"
     TOOLS_VERSION = "main"
-    SUBSTRAFL_VERSION = "main"
+    SUBSTRAFL_VERSION = "rename-algo-to-function"
 
 print(
     f"Versions of the components used:"
