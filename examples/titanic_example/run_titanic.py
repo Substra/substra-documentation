@@ -83,7 +83,7 @@ client = substra.Client(backend_type="subprocess")
 #
 # - Data cannot be seen once it's registered on the platform.
 # - Metadata are visible by all the users of a channel.
-# - Permissions allow you to execute an functionrithm on a certain dataset.
+# - Permissions allow you to execute a function on a certain dataset.
 #
 # In a remote deployment, setting the parameter ``public`` to false means that the dataset can only be used by tasks in
 # the same organization or by organizations that are in the ``authorized_ids``. However, these permissions are ignored in local mode.
@@ -207,8 +207,8 @@ print(f"Metric key {metric_key}")
 # %%
 # Adding Function
 # ===========
-# An functionrithm specifies the method to train a model on a dataset or the method to aggregate models.
-# Concretely, an functionrithm corresponds to an archive (tar or zip file) containing:
+# A function specifies the method to train a model on a dataset or the method to aggregate models.
+# Concretely, a function corresponds to an archive (tar or zip file) containing:
 #
 # - One or more Python scripts that implement the functionrithm. Importantly, a train and a
 #   predict function have to be defined.
