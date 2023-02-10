@@ -419,7 +419,7 @@ for org_id in DATA_PROVIDER_ORGS_ID:
     )
     test_data_nodes.append(test_data_node)
 
-my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, rounds=1)
+my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_frequency=1)
 
 # %%
 # Running the experiment
