@@ -59,9 +59,6 @@ Launching an experiment creates a :ref:`concept_compute_plan`.
 Algorithm
 ^^^^^^^^^
 
-.. warning::
-    A SubstraFL algorithm is not the same as a Substra :ref:`concept_algorithm`!
-
 A SubstraFL algorithm contains the local training and predict code along with all associated hyper parameters (batch size, loss, optimizer, etc).
 
 .. _concept_evaluation_strategy:
@@ -165,6 +162,6 @@ This means that to test the output model of round 1, we can add a test task afte
 This also means that for the final round of the strategy, we do a useless step of training the model on the local data. This is for 2 reasons:
 
 - Be able to implement checkpointing more easily (ie resume the experiment where we left it, feature not yet available)
-- Reuse the same algo as the other train tasks, which speeds up the execution
+- Reuse the same function as the other train tasks, which speeds up the execution
 
 For a more detailed example, see the :ref:`Federated Averaging <substrafl_doc/api/algorithms:TorchFedAvgAlgo>` implementation.

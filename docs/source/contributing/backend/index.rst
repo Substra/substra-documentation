@@ -10,11 +10,11 @@ Kubernetes pods
 ===============
 
 docker-registry
-    We use this service to store images built from user-provided :ref:`Algorithms<concept_algorithm>`.
+    We use this service to store images built from user-provided :ref:`Functions<concept_function>`.
     Make sure to assign a large enough volume to avoid rebuilding images over and over due to eviction.
 registry-prepopulate
     This Pod is managed by a Job running on chart installation or update.
-    It uploads container Images to the docker-registry to make them available for future use in :ref:`Algorithms<concept_algorithm>`.
+    It uploads container Images to the docker-registry to make them available for future use in :ref:`Functions<concept_function>`.
 minio
     `MinIO`_ is an object storage service and stores all assets registered on the :term:`Organization`.
     You should back up the data of this Pod.
@@ -37,7 +37,7 @@ server
     This is a Django application exposing the REST API through which users interact with Substra.
 worker
     This is the service processing `Celery`_ tasks.
-    It handles :ref:`Algorithm<concept_algorithm>` images builds and running compute tasks.
+    It handles :ref:`Function<concept_function>` images builds and running compute tasks.
     This is where you will find logs related to task processing.
 
 .. _Celery: https://docs.celeryq.dev/en/latest/index.html

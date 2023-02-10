@@ -9,7 +9,7 @@ Main Substra concepts
 Assets
 ------
 
-Assets are a set of files which are required to run a compute plan. In order to enable privacy-preserving machine learning, different types of assets live within the platform: datasets, algorithms, models, tasks and compute plans.
+Assets are a set of files which are required to run a compute plan. In order to enable privacy-preserving machine learning, different types of assets live within the platform: datasets, functions, models, tasks and compute plans.
 
 .. _concept_opener:
 
@@ -21,21 +21,21 @@ A dataset represents the data in Substra. It is made up of:
 * An opener, which is a script used to load data from files into memory.
 * At least one data sample - a data sample being a folder containing the data files.
 
-.. _concept_algorithm:
+.. _concept_function:
 
-Algorithm
-^^^^^^^^^
+Function
+^^^^^^^^
 
-An algorithm corresponds to an archive (tar or zip file) containing:
+A function corresponds to an archive (tar or zip file) containing:
 
-* One or more Python scripts that implement the algorithm.
+* One or more Python scripts that implement the function.
 * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
 .. _concept_model:
 
 Model
 ^^^^^
-A model is a potentially large file containing the parameters of an algorithm.
+A model is a potentially large file containing the parameters of a function.
 
 
 Compute plan and tasks
@@ -54,7 +54,7 @@ Note that you can register a task alone, i.e. not put the task in a compute plan
 Task
 ^^^^
 
-A task correspond to a computation task. The task can use any inputs (data, algorithms or output from other tasks). The algorithm is expected to write the outputs in files, on paths given as outputs dictionary.
+A task correspond to a computation task. The task can use any inputs (data, functions or output from other tasks). The function is expected to write the outputs in files, on paths given as outputs dictionary.
 
 Transient task outputs
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ Permissions for a user to download an asset
 Users of a organization can export (aka download) the following elements from Substra to their local environment:
 
 * the opener of a dataset if the organization has process permissions on the dataset
-* the archive of an algorithm if the organization has process permissions on the algorithm
+* the archive of a function if the organization has process permissions on the function
 * the model outputted by a task if the organization has process permissions on the model and if this type of export has been enabled at deployment for the organization (environment variable model_export_enabled should be set to True)
 
 
@@ -108,7 +108,7 @@ In the following tables, the asset is registered by orgA with the permissions:
      - Nothing
      - No
 
-.. list-table:: Algo permissions
+.. list-table:: Function permissions
    :widths: 5 50 50
    :header-rows: 1
 
@@ -116,11 +116,11 @@ In the following tables, the asset is registered by orgA with the permissions:
      - What can the organization do?
      - Can the user of the organization export the asset?
    * - orgA
-     - orgA can use the algo in a task on any organization
-     - Yes - the algo archive
+     - orgA can use the function in a task on any organization
+     - Yes - the function archive
    * - orgB
-     - orgB can use the algo in a task on any organization
-     - Yes - the algo archive
+     - orgB can use the function in a task on any organization
+     - Yes - the function archive
    * - orgC
      - Nothing
      - No
@@ -146,17 +146,17 @@ In local mode, these steps are either skipped or simplified.
 
 Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organization.
 
-On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the algorithm and creates a container with the relevant assets. The task executes and Substra saves its outputs.
-Afterwards, every task **from the same compute plan** that uses the same algorithm is executed in the same container.
+On each organization, Substra fetches the assets needed for the first task, builds the Docker image of the function and creates a container with the relevant assets. The task executes and Substra saves its outputs.
+Afterwards, every task **from the same compute plan** that uses the same function is executed in the same container.
 
 Asset preparation
 ^^^^^^^^^^^^^^^^^^
 
 The first step of the task execution is to fetch the necessary assets.
-These include the inputs (e.g. the algorithm or opener files), the output of other tasks (input artifacts of the task) and data samples.
+These include the inputs (e.g. the function or opener files), the output of other tasks (input artifacts of the task) and data samples.
 
 The assets, data samples excluded, come from the file systems of the organizations. If they are stored on other organizations, they are downloaded over HTTPS connections.
-(for examples, an algorithm submitted on another organization).
+(for examples, a function submitted on another organization).
 
 All the organization data is stored on the organization storage solution (MiniO). The task data samples are downloaded from the organization storage solution to the organization filesystem which may take a long time if the dataset is large.
 Note that data samples never leave the organization.
@@ -167,9 +167,9 @@ Since this step can be quite long, there is a cache system: on a given organizat
 Docker image build
 ^^^^^^^^^^^^^^^^^^^
 
-For the first task of the compute plan that uses a given algorithm, Substra needs to build the image, transfer it to the local image registry, and then use it to spawn the container. This takes a few minutes for a small image and can take longer for larger images.
+For the first task of the compute plan that uses a given function, Substra needs to build the image, transfer it to the local image registry, and then use it to spawn the container. This takes a few minutes for a small image and can take longer for larger images.
 
-For the tasks in the same compute plan that use either the same algorithm or a different algorithm with the same Docker image, Substra does not need to rebuild the image, making the task execution much faster.
+For the tasks in the same compute plan that use either the same function or a different function with the same Docker image, Substra does not need to rebuild the image, making the task execution much faster.
 
 To check how large the image is and how long it takes to build, you can build it locally with ``docker build .``.
 For hints on how to make the Docker image smaller and faster to build, see the `Docker documentation <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.

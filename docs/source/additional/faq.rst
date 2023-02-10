@@ -23,11 +23,11 @@ Substra is fully compatible with machine learning models written in any Python l
 
 Is Substra limited to medical and biotech applications?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Although Substra has been designed to work especially well in healthcare settings, it can work on any kind of data with any Python library to perform computation or analysis using distributed data. 
+Although Substra has been designed to work especially well in healthcare settings, it can work on any kind of data with any Python library to perform computation or analysis using distributed data.
 
 How can I be sure Substra is secure enough to be used with my private data?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Substra is regularly audited with rigorous security standards (both code source audit and penetration tests). On top of that, by design, private data is never shared between different organizations. The software also provides full traceability on which algorithms were used on each dataset.
+Substra is regularly audited with rigorous security standards (both code source audit and penetration tests). On top of that, by design, private data is never shared between different organizations. The software also provides full traceability on which functions were used on each dataset.
 
 What is the roadmap for Substra?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
