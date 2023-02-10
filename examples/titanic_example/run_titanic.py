@@ -206,11 +206,11 @@ print(f"Metric key {metric_key}")
 
 # %%
 # Adding Function
-# ===========
+# ===============
 # A function specifies the method to train a model on a dataset or the method to aggregate models.
 # Concretely, a function corresponds to an archive (tar or zip file) containing:
 #
-# - One or more Python scripts that implement the functionrithm. Importantly, a train and a
+# - One or more Python scripts that implement the function. Importantly, a train and a
 #   predict function have to be defined.
 # - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 #   This dockerfile also specifies the method name to execute (either train or predict here).
@@ -282,7 +282,7 @@ predict_function_key = client.add_function(predict_function_spec)
 print(f"Predict function key {predict_function_key}")
 
 # %%
-# The data, the functionrithm and the metric are now registered.
+# The data, the function and the metric are now registered.
 
 # %%
 # Registering tasks
