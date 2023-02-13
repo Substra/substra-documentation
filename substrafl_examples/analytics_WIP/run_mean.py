@@ -7,6 +7,10 @@ from substrafl.experiment import execute_experiment
 
 
 class Mean:
+    """This class is the first one of a new kind of strategies, AnalyticsStrategy,
+    vs OptimizationStrategy which are the current strategies.
+    """
+
     def __init__(self, *args, **kwargs):
         self.statistics_result = None
         self.args = args
