@@ -34,7 +34,7 @@ To run this example, you have two options:
 # Setup
 # *****
 #
-# This examples runs with three organizations. Two organizations provide datasets, while a third
+# This example runs with three organizations. Two organizations provide datasets, while a third
 # one provides the algorithm.
 #
 # In the following code cell, we define the different organizations needed for our FL experiment.
@@ -46,14 +46,15 @@ N_CLIENTS = 3
 
 # Every computation will run in `subprocess` mode, where everything runs locally in Python
 # subprocesses.
-# Ohers backend_types are:
+# Other backend_types are:
 # "docker" mode where computations run locally in docker containers
 # "remote" mode where computations run remotely (you need to have a deployed platform for that)
+# To run in remote mode you have to also use the function `Client.login(username, password)`
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
-# To run in remote mode you have to also use the function `Client.login(username, password)`
 
+# Create a dictionary to easily access each client from its human-friendly id
 clients = {
     client_0.organization_info().organization_id: client_0,
     client_1.organization_info().organization_id: client_1,
@@ -62,7 +63,7 @@ clients = {
 
 
 # Store organization IDs
-ORGS_ID = list(clients.keys())
+ORGS_ID = list(clients)
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
 
@@ -107,7 +108,9 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # dataset.
 #
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
-# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization can access a specific asset.
+# :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization
+# can access a specific asset.
+# You can read more about permissions in the :ref:`User Guide<documentation/concepts:Permissions>`.
 #
 # Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
@@ -122,13 +125,12 @@ train_datasample_keys = {}
 test_datasample_keys = {}
 
 for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
-
     client = clients[org_id]
 
     permissions_dataset = Permissions(public=False, authorized_ids=[ALGO_ORG_ID])
 
     # DatasetSpec is the specification of a dataset. It makes sure every field
-    # is well defined, and that our dataset is ready to be registered.
+    # is well-defined, and that our dataset is ready to be registered.
     # The real dataset object is created in the add_dataset method.
 
     dataset = DatasetSpec(
@@ -169,28 +171,37 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 #
 # When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function in numpy format
 # so that you can simply load them using `np.load`.
-#
-# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
-# This metric will be used on the test datasamples to evaluate the model performances.
 
 from sklearn.metrics import accuracy_score
 import numpy as np
-
-from substrafl.dependency import Dependency
-from substrafl.remote.register import add_metric
-
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
-
-# The Dependency object is instantiated in order to install the right libraries in
-# the Python environment of each organization.
-metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
-
 
 def accuracy(datasamples, predictions_path):
     y_true = datasamples["labels"]
     y_pred = np.load(predictions_path)
 
     return accuracy_score(y_true, np.argmax(y_pred, axis=1))
+
+# %%
+# We also need to specify the third parties dependencies required to compute the metrics.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+#
+# As for the dataset, we also define :ref:`documentation/concepts:Permissions`.
+
+from substrafl.dependency import Dependency
+
+metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
+
+permissions_metric = Permissions(
+    public=False,
+    authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
+
+# %%
+# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
+# This metric will be used on the test datasamples to evaluate the model performances.
+
+from substrafl.remote.register import add_metric
 
 
 metric_key = add_metric(
@@ -299,7 +310,6 @@ class TorchDataset(torch.utils.data.Dataset):
         self.is_inference = is_inference
 
     def __getitem__(self, idx):
-
         if self.is_inference:
             x = torch.FloatTensor(self.x[idx][None, ...]) / 255
             return x
@@ -373,17 +383,16 @@ from substrafl.nodes import AggregationNode
 
 aggregation_node = AggregationNode(ALGO_ORG_ID)
 
-train_data_nodes = list()
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Train Data Node (or training task) and save it in a list
-    train_data_node = TrainDataNode(
+# Create the Train Data Nodes (or training tasks) and save them in a list
+train_data_nodes = [
+    TrainDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         data_sample_keys=[train_datasample_keys[org_id]],
     )
-    train_data_nodes.append(train_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
+
 
 # %%
 # Where and when to test
@@ -399,19 +408,17 @@ for org_id in DATA_PROVIDER_ORGS_ID:
 from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
-
-test_data_nodes = list()
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Test Data Node (or testing task) and save it in a list
-    test_data_node = TestDataNode(
+# Create the Test Data Nodes (or testing tasks) and save them in a list
+test_data_nodes = [
+    TestDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_keys=[metric_key],
     )
-    test_data_nodes.append(test_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
+
 
 # Test at the end of every round
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_frequency=1)
@@ -424,11 +431,11 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
-# - An `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_ to define the training parameters *(optimizer, train
+# - An :ref:`Torch algorithm<substrafl_doc/api/algorithms:Torch Algorithms>` to define the training parameters *(optimizer, train
 #   function, predict function, etc...)*.
-# - A `Federated Strategy <substrafl_doc/api/strategies:Strategies>`_, to specify how to train the model on
+# - A :ref:`Federated Strategy<substrafl_doc/api/strategies:Strategies>`, to specify how to train the model on
 #   distributed data.
-# - `Train data nodes <substrafl_doc/api/nodes:TrainDataNode>`_ to indicate on which data to train.
+# - :ref:`Train data nodes<substrafl_doc/api/nodes:TrainDataNode>` to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
@@ -459,6 +466,14 @@ compute_plan = execute_experiment(
 )
 
 # %%
+# The compute plan created is composed of 27 tasks:
+#
+# * For each local training step, we create 3 tasks per organisation: training + prediction + evaluation -> 3 tasks.
+# * We are training on 2 data organizations; for each round, we have 3 * 2 local taks + 1 aggregation task -> 7 tasks.
+# * We are training for 3 rounds: 3 * 7 -> 21 tasks.
+# * After the last aggregation step, there are three more tasks: applying the last updates from the aggregator + prediction + evaluation, on both organizations: 21 + 2 * 3 -> 27 tasks
+
+# %%
 # Explore the results
 # *******************
 
@@ -483,9 +498,9 @@ plt.title("Test dataset results")
 plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
-for id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df.query(f"worker == '{id}'")
-    plt.plot(df["round_idx"], df["performance"], label=id)
+for org_id in DATA_PROVIDER_ORGS_ID:
+    df = performances_df[performances_df["worker"] == org_id]
+    plt.plot(df["round_idx"], df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
 plt.show()

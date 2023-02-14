@@ -1,7 +1,6 @@
 import codecs
 import os
 import sys
-import zipfile
 import pathlib
 
 import numpy as np
@@ -41,19 +40,19 @@ def setup_mnist(data_path, N_CLIENTS):
     # Download the dataset
     MNIST(data_path, download=True)
 
-    # Extract numpy array from raw data
+    # Extract numpy arrays from raw data
     train_images = MNISTraw2numpy(str(raw_path / "train-images-idx3-ubyte"))
     train_labels = MNISTraw2numpy(str(raw_path / "train-labels-idx1-ubyte"))
     test_images = MNISTraw2numpy(str(raw_path / "t10k-images-idx3-ubyte"))
     test_labels = MNISTraw2numpy(str(raw_path / "t10k-labels-idx1-ubyte"))
 
-    # Split array into the number of organization
+    # Split arrays into the number of organizations
     train_images_folds = np.split(train_images, N_CLIENTS)
     train_labels_folds = np.split(train_labels, N_CLIENTS)
     test_images_folds = np.split(test_images, N_CLIENTS)
     test_labels_folds = np.split(test_labels, N_CLIENTS)
 
-    # Save splits in different folders to simulate the different organization
+    # Save splits in different folders to simulate the different organizations
     for i in range(N_CLIENTS):
 
         # Save train dataset on each org
