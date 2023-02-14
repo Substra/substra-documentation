@@ -3,7 +3,7 @@
 Using scikit-learn FedAvg on IRIS dataset
 =========================================
 
-This example illustrate an advanced usage of SubstraFL as it does not use the SubstraFL PyTorch interface, but showcases the general SubstraFL interface on which you can use any ML framework.
+This example illustrate an advanced usage of SubstraFL as it does not use the SubstraFL PyTorch interface, but showcases the general SubstraFL interface that you can use with any ML framework.
 
 
 This example is based on:
@@ -34,14 +34,13 @@ To run this example, you have two options:
 # *****
 #
 # We work with three different organizations. Two organizations provide a dataset, and a third
-# one provides the algorithm and register the machine learning tasks.
+# one provides the algorithm and registers the machine learning tasks.
 #
 # This example runs in local mode, simulating a federated learning experiment.
 #
 # In the following code cell, we define the different organizations needed for our FL experiment.
 
 
-import pathlib
 import numpy as np
 
 from substra import Client
@@ -51,13 +50,13 @@ np.random.seed(SEED)
 
 # Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 3
-clients = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
-clients = {client.organization_info().organization_id: client for client in clients}
+clients_list = [Client(backend_type="subprocess") for _ in range(N_CLIENTS)]
+clients = {client.organization_info().organization_id: client for client in clients_list}
 
 # Store organization IDs
-ORGS_ID = list(clients.keys())
+ORGS_ID = list(clients)
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data providers orgs are the two last organizations.
+DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data provider orgs are the last two organizations.
 
 # %%
 # Data and metrics
@@ -172,7 +171,7 @@ metric_key = add_metric(
 # ***************************************
 #
 # SubstraFL can be used with any machine learning framework. The framework
-# dependent functions are written in the `Algorithm <substrafl_doc/api/algorithms:Base Class>`_ object.
+# dependent functions are written in the :ref:`Algorithm<substrafl_doc/api/algorithms:Base Class>` object.
 #
 # In this section, you will:
 #
@@ -191,7 +190,7 @@ metric_key = add_metric(
 # The `warm_start` argument is essential in this example as it indicates to use the current state of the model
 # as initialization for the future training.
 # By default scikit-learn uses `max_iter=100`, which means the model trains on up to 100 epochs.
-# When doing FL, we don't want to train too much locally at every round
+# When doing federated learning, we don't want to train too much locally at every round
 # otherwise the local training will erase what was learned from the other centers. That is why we set `max_iter=3`.
 
 
@@ -217,18 +216,18 @@ os.environ["PYTHONWARNINGS"] = "ignore:lbfgs failed to converge (status=1):UserW
 # :ref:`substrafl_doc/api/algorithms:Base Class`.
 #
 # To define a custom algorithm, we will need to inherit from the base class Algo, and to define two properties and four
-# functions:
+# methods:
 #
 # - **strategies** (property): the list of strategies our algorithm is compatible with.
 # - **model** (property): a property that returns the model from the defined algo.
-# - **train** (function): a function to describe the training process to
+# - **train** (method): a function to describe the training process to
 #   apply to train our model in a federated way.
-#   The train method signature must contains the `datasamples` and `shared_state` parameters.
-# - **predict** (function): a function to describe how to compute the
+#   The train method must accept as parameters `datasamples` and `shared_state`.
+# - **predict** (method): a function to describe how to compute the
 #   predictions from the algo model.
-#   The predict method signature must contains the `datasamples`, `shared_state` and `predictions_path` parameters.
-# - **save** (function): specify how to save the important states of our algo.
-# - **load** (function): specify how to load the important states of our algo from a previously saved filed
+#   The predict method must accept as parameters `datasamples`, `shared_state` and `predictions_path`.
+# - **save** (method): specify how to save the important states of our algo.
+# - **load** (method): specify how to load the important states of our algo from a previously saved filed
 #   by the `save` function describe above.
 
 from substrafl import algorithms
@@ -314,7 +313,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
         self._model.coef_ = old_coef
         self._model.intercept_ = old_intercept
 
-        # We output the len of the dataset to apply a pondered average between
+        # We output the length of the dataset to apply a weighted average between
         # the organizations regarding their number of samples, and the local
         # parameters updates.
         # These updates are sent to the aggregator to compute the average
@@ -385,17 +384,15 @@ from substrafl.nodes import AggregationNode
 
 aggregation_node = AggregationNode(ALGO_ORG_ID)
 
-train_data_nodes = list()
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Train Data Node (or training task) and save it in a list
-    train_data_node = TrainDataNode(
+# Create the Train Data Nodes (or training tasks) and save them in a list
+train_data_nodes = [
+    TrainDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         data_sample_keys=[train_datasample_keys[org_id]],
     )
-    train_data_nodes.append(train_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
 
 # %%
 # Where and when to test
@@ -405,19 +402,16 @@ for org_id in DATA_PROVIDER_ORGS_ID:
 from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
-
-test_data_nodes = list()
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-
-    # Create the Test Data Node (or testing task) and save it in a list
-    test_data_node = TestDataNode(
+# Create the Test Data Nodes (or testing tasks) and save them in a list
+test_data_nodes = [
+    TestDataNode(
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_keys=[metric_key],
     )
-    test_data_nodes.append(test_data_node)
+    for org_id in DATA_PROVIDER_ORGS_ID
+]
 
 my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_frequency=1)
 
@@ -427,7 +421,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 
 from substrafl.experiment import execute_experiment
 
-# Number of time to apply the compute plan.
+# Number of times to apply the compute plan.
 NUM_ROUNDS = 6
 
 algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
@@ -468,9 +462,9 @@ plt.title("Test dataset results")
 plt.xlabel("Rounds")
 plt.ylabel("Accuracy")
 
-for id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df.query(f"worker == '{id}'")
-    plt.plot(df["round_idx"], df["performance"], label=id)
+for org_id in DATA_PROVIDER_ORGS_ID:
+    df = performances_df[performances_df["worker"] == org_id]
+    plt.plot(df["round_idx"], df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
 plt.show()
