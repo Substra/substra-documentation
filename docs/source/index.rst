@@ -44,9 +44,9 @@ Installation
 
 **Client side**: Install Substra and SubstraFL python libraries with the following command: ``pip install substrafl``. Substra python library is a dependency of SubstraFL, so it will be automatically installed. More information on the installation :ref:`can be found here <substrafl_doc/substrafl_overview:Installation>`.
 
-**Server side**: There are two options to deploy the server side of Substra: backend, frontend and orchestrator:
+**Server side**: There are two options to deploy the server side of Substra (backend, frontend and orchestrator):
 
-* :ref:`Local deployment <contributing/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick test and for development.
+* :ref:`Local deployment <contributing/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
 * :ref:`Production deployment <operations/Overview:Overview>`: for real deployments.
 
 
@@ -56,7 +56,7 @@ Links
 Some quick links:
 
 * :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`
-* :ref:`Substrafl overview <substrafl_doc/substrafl_overview:Overview>`
+* :ref:`SubstraFL overview <substrafl_doc/substrafl_overview:Overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
 * :ref:`How to deploy Substra for Site Reliability Engineers <operations/Overview:Overview>`
 * :ref:`Community <additional/community:Community>`
