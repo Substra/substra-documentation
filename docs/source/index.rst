@@ -16,7 +16,7 @@ Substra documentation
 
 Substra is an open source federated learning (FL) software. It provides a flexible Python interface and a web app to run federated learning training at scale.
 
-Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Substra can also be used on a single machine on a virtually splitted dataset to perform FL simulations and debug code before launching experiments on a real network.
+Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Substra can also be used on a single machine on a virtually split dataset to perform FL simulations and debug code before launching experiments on a real network.
 
 Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
 
@@ -42,13 +42,15 @@ Substra has three user interfaces:
 Installation
 ^^^^^^^^^^^^
 
-Install substra and substrafl with the following command:
+**Client side**: Install Substra and SubstraFL python libraries with the following command: ``pip install substrafl``. Substra python library is a dependency of SubstraFL, so it will be automatically installed. More information on the installation :ref:`can be found here <substrafl_doc/substrafl_overview:Installation>`.
 
-.. code-block:: console
+**Server side**: There are two options to deploy the server side of Substra (backend, frontend and orchestrator):
 
-    $ pip install substrafl
+* :ref:`Local deployment <contributing/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
+* :ref:`Production deployment <operations/Overview:Overview>`: for real deployments.
 
-Substra is a dependency of SubstraFL, so it will be automatically installed.
+.. note::
+   You can start doing local FL experiments with Substra by installing only the **client side**.
 
 Links
 ^^^^^
@@ -56,9 +58,9 @@ Links
 Some quick links:
 
 * :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`
-* :ref:`Substrafl overview <substrafl_doc/substrafl_overview:Overview>`
+* :ref:`SubstraFL overview <substrafl_doc/substrafl_overview:Overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
-* :ref:`How to deploy Substra for Site Reliability Engineers <operations/howto:How-To>`
+* :ref:`How to deploy Substra for Site Reliability Engineers <operations/Overview:Overview>`
 * :ref:`Community <additional/community:Community>`
 * `Subscribe to our newsletter <https://lists.lfaidata.foundation/g/substra-announce/join>`_
 
