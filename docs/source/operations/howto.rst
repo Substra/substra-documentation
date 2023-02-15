@@ -1,5 +1,5 @@
 ******
-How-To
+How-to
 ******
 
 Here you will find guides related to different operational tasks.
@@ -7,7 +7,6 @@ Here you will find guides related to different operational tasks.
 .. toctree::
    :glob:
    :titlesonly:
-   :caption: Components documentation
 
    howto/*
 
