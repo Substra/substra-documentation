@@ -61,7 +61,7 @@ from substra.sdk.schemas import (
 # Instantiating the Substra Client
 # ================================
 #
-# The client allows us to interact with the Substra platform. Setting the debug argument to ``True`` allows us to work locally by emulating a platform.
+# The client allows us to interact with the Substra platform.
 #
 # By setting the argument ``backend_type`` to:
 #
