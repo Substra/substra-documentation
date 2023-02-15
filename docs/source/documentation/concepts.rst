@@ -76,9 +76,9 @@ Permissions for a user to download an asset
 
 Users of a organization can export (aka download) the following elements from Substra to their local environment:
 
-* the opener of a dataset if the organization has process permissions on the dataset
-* the archive of a function if the organization has process permissions on the function
-* the model outputted by a task if the organization has process permissions on the model and if this type of export has been enabled at deployment for the organization (environment variable model_export_enabled should be set to True)
+* The opener of a dataset if the organization has process permissions on the dataset.
+* The archive of a function if the organization has process permissions on the function.
+* The model outputted by a task if the organization has process permissions on the model **AND** if this type of export has been enabled at deployment for the organization. This means the environment variable ``model_export_enabled`` should be set to ``True`` in the organization's backend.
 
 
 Permissions summary table
@@ -130,7 +130,7 @@ In the following tables, the asset is registered by orgA with the permissions:
 Parallelization
 ---------------
 
-There are two ways to run several tasks in parallel on a same organization. The first one, named vertical scaling, is when several tasks are run in parallel on the same machine. The second one, horizontal scaling, is when several tasks are run in parallel on several machines belonging to the same organization.
+There are two ways to run several tasks in parallel on a same organization with Substra. The first one, named vertical scaling, is when several tasks are run in parallel on the same machine. The second one, horizontal scaling, is when several tasks are run in parallel on several machines belonging to the same organization.
 
 
 .. TODO:: Detail vertical and horizontal scaling
