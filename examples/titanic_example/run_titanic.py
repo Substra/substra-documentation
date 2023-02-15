@@ -45,12 +45,12 @@ from pathlib import Path
 
 import substra
 from substra.sdk.schemas import (
-    FunctionSpec,
-    FunctionInputSpec,
-    FunctionOutputSpec,
     AssetKind,
     DataSampleSpec,
     DatasetSpec,
+    FunctionSpec,
+    FunctionInputSpec,
+    FunctionOutputSpec,
     Permissions,
     TaskSpec,
     ComputeTaskOutputSpec,

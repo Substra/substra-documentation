@@ -9,7 +9,6 @@ from sklearn.ensemble import RandomForestClassifier
 
 @tools.register
 def train(inputs, outputs, task_properties):
-
     X = inputs["datasamples"].drop(columns="Survived")
     y = inputs["datasamples"].Survived
     X = _normalize_X(X)
@@ -64,8 +63,7 @@ def save_model(model, path):
 
 
 def save_predictions(y_pred, path):
-    with open(path, "w") as f:
-        y_pred.to_csv(f, index=False)
+    y_pred.to_csv(path, index=False)
 
 
 def _normalize_X(X):
