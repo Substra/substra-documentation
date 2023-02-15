@@ -78,7 +78,7 @@ Users of a organization can export (aka download) the following elements from Su
 
 * The opener of a dataset if the organization has process permissions on the dataset.
 * The archive of a function if the organization has process permissions on the function.
-* The model outputted by a task if the organization has process permissions on the model **AND** if this type of export has been enabled at deployment for the organization. This means the environment variable ``model_export_enabled`` should be set to ``True`` in the organization's backend.
+* The model outputted by a task if the organization has process permissions on the model **AND** if this type of export has been enabled at deployment for the organization. This means the value ``model_export_enabled`` should be set to ``True`` in the organization's backend.
 
 
 Permissions summary table
