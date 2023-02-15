@@ -106,7 +106,7 @@ expected in the same location as this py file"""
 #
 # A dataset represents the data in Substra. It is made up of an opener, which is a script used to load the
 # data from files into memory. You can find more details about datasets
-# in the `API reference <api_reference.html#sdk-reference>`_
+# in the :ref:`API reference<documentation/api_reference:SDK Reference>`
 
 dataset = DatasetSpec(
     name="Titanic dataset - Org 1",
@@ -154,7 +154,6 @@ test_data_sample_keys = client.add_data_samples(
     )
 )
 
-# %%
 print(f"{len(test_data_sample_keys)} data samples were registered")
 
 
@@ -207,15 +206,13 @@ print(f"Metric key {metric_key}")
 # %%
 # Adding Function
 # ===============
-# A function specifies the method to train a model on a dataset or the method to aggregate models.
+# A :ref:`documentation/concepts:Function` specifies the method to train a model on a dataset or the method to aggregate models.
 # Concretely, a function corresponds to an archive (tar or zip file) containing:
 #
-# - One or more Python scripts that implement the function. Importantly, a train and a
-#   predict function have to be defined.
-# - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
-#   This dockerfile also specifies the method name to execute (either train or predict here).
+# - One or more Python scripts that implement the function. It is required to define ``train`` and ``predict`` functions.
+# - A Dockerfile in which the user can specify the required dependencies of the Python scripts.
+#   This Dockerfile also specifies the method name to execute (either ``train`` or ``predict`` here).
 
-ALGO_KEYS_JSON_FILENAME = "function_random_forest_keys.json"
 
 ALGO_TRAIN_DOCKERFILE_FILES = [
     assets_directory / "function_random_forest/titanic_function_rf.py",
@@ -249,7 +246,7 @@ train_function_key = client.add_function(train_function)
 print(f"Train function key {train_function_key}")
 
 # %%
-# The predict function uses the Python file as the function used for training.
+# The predict function uses the same Python file as the function used for training.
 ALGO_PREDICT_DOCKERFILE_FILES = [
     assets_directory / "function_random_forest/titanic_function_rf.py",
     assets_directory / "function_random_forest/predict/Dockerfile",
@@ -282,7 +279,7 @@ predict_function_key = client.add_function(predict_function_spec)
 print(f"Predict function key {predict_function_key}")
 
 # %%
-# The data, the function and the metric are now registered.
+# The data, the functions and the metric are now registered.
 
 # %%
 # Registering tasks
@@ -312,7 +309,7 @@ print(f"Train task key {train_task_key}")
 #
 # In deployed mode, the registered task is added to a queue and treated asynchronously: this means that the
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
-# every n seconds until its status is done or failed.
+# every ``n`` seconds until its status is done or failed.
 
 model_input = [
     InputRef(
