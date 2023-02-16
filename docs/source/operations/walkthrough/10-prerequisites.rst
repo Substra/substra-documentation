@@ -14,11 +14,14 @@ Local tools
 
 You'll need:
  - kubectl & Helm installed
- .. Leaving those purposefully unlinked because if you need a link you're definitively not ready for the rest of this
  - to add the Substra helm repository:
+   
    .. code-block:: shell
-     helm repo add substra https://substra.github.io/charts/
-     helm repo update
+   
+      helm repo add substra https://substra.github.io/charts/
+      helm repo update
+
+.. Leaving kubectl and helm purposefully unlinked because if you need a link you're definitively not ready for the rest of this
 
 And also:
  - ``curl`` or similar for making sure the HTTP endpoints work 
@@ -32,7 +35,7 @@ Substra is a federated learning tool and as such it makes little sense to have o
 
 Therefore our production deployment will run on two separate Kubernetes clusters. They will of course need to be connected somehow -- we will use the internet.
 
-You will need to be able to give hostnames to endpoints. On the internet, this means owning a domain name and setting up DNS -- **everytime you see ``DOMAIN``, it means your own domain** you are setting this up under.
+You will need to be able to give hostnames to endpoints. On the internet, this means owning a domain name and setting up DNS -- **everytime you see** ``DOMAIN``, **it means your own domain** you are setting this up under.
 
 Exposing on the internet also means dealing with a certificate authority -- we will use `Let's Encrypt <https://letsencrypt.org/>`__.
 
@@ -48,13 +51,15 @@ Clusters
 
 Set up two clusters -- they have to support allocating PVCs on the fly and opening ingresses to the Internet. You'll probably want to use a managed Kubernetes service such as `Google GKE <https://cloud.google.com/kubernetes-engine>`__, `Azure AKS <https://azure.microsoft.com/en-us/products/kubernetes-service>`__, or `Amazon EKS <https://aws.amazon.com/eks/>`__. 
 
-**We'll henceforth refer to ``cluster-1`` and ``cluster-2`` for the clusters you'll have set up.**
+**We'll henceforth refer to** ``cluster-1`` **and** ``cluster-2`` **for the clusters you'll have set up.**
 
 We will also need some software for routing (ingress-nginx) and certificate management (cert-manager). 
 
 Install both on each cluster (insert your email address in place of ``YOUR_EMAIL_HERE``):
 
-.. code-block::shell
+.. code-block:: shell
+   :emphasize-lines: 20,35
+
    helm upgrade --install ingress-nginx ingress-nginx \
      --repo https://kubernetes.github.io/ingress-nginx \
      --namespace ingress-nginx --create-namespace
@@ -107,6 +112,7 @@ Probably the most convenient way to handle DNS is to set a wildcard record for e
 
 .. code-block::
    :caption: DNS zone file for ``DOMAIN``
+
    *.cluster-1 300 IN A NGINX_1_IP
    *.cluster-2 300 IN A NGINX_2_IP
 

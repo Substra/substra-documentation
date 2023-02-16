@@ -7,7 +7,6 @@ The orchestrator is a standalone service that exposes a gRPC (over HTTP) API.
 It can be deployed anywhere as long as the backends can connect to it. Putting it on the same cluster as one of the backends is safe, as it does not use much resources. Therefore **we will deploy it on cluster 1**
 
 .. warning::
-   
    The orchestrator is the ultimate source of truth and traceability in Substra.
    
    This means in a "real" scenario it should be hosted by whichever organization is most trusted by all others, because it is where a bad actor could cause the most issues.
@@ -15,7 +14,8 @@ It can be deployed anywhere as long as the backends can connect to it. Putting i
 Prepare your Helm values
 ==========================
 
-Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.
+.. seealso::
+   Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.
 
 #. Create a Helm values file named ``orchestrator-values.yaml`` with the following content:
 
@@ -43,6 +43,8 @@ Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/or
 Here you have created the configuration required to have a running orchestrator that can support a Substra network.
 If you want you can jump directly to the section :ref:`deploy-orchestrator`.
 You can also follow along the next sections to enhance the security of your orchestrator.
+
+.. _ops set up TLS:
 
 Setup TLS
 =========
@@ -138,7 +140,7 @@ To setup TLS, follow these steps:
       
       kubectl create secret tls orchestrator-tls-server-pair --cert=orchestrator-tls.crt --key=orchestrator-tls.key
 
-#. Optional: If you also want to setup mTLS to authenticate your client follow the guide :doc:`mtls-setup`.
+#. Optional: If you also want to setup mTLS to authenticate your client follow the guide :ref:`ops set up mutual TLS`.
 
 .. _deploy-orchestrator:
 

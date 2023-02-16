@@ -1,3 +1,5 @@
+.. _ops set up mutual TLS:
+
 *****************
 Set up mutual TLS
 *****************
@@ -7,7 +9,7 @@ This page describes how to set up mTLS communication between the backends and th
 In this scenario, the orchestrator will act as the certificate authority checking the certificates.
 These instructions have to be repeated for each backend.
 
-This guide assumes that you already have followed the instructions to :ref:`set up TLS<operations/walkthrough/orchestrator-deployment:Setup TLS>`.
+This guide assumes that you already have followed the instructions to :ref:`ops set up TLS`.
 
 Generate backend Certificate Signing Request and signing key
 ============================================================
@@ -28,7 +30,7 @@ Signing the Substra backend certificate
 =======================================
 
 Now that you have the Certificate Signing Request from your backend in your orchestrator, you can sign it with the orchestrator certificate authority.
-You need to navigate to the directory where the files ``orchestrator-ca.crt`` and ``orchestrator-ca.key`` are located (created during :ref:`TLS setup<operations/walkthrough/orchestrator-deployment:Setup TLS>`).
+You need to navigate to the directory where the files ``orchestrator-ca.crt`` and ``orchestrator-ca.key`` are located (created during :ref:`ops set up TLS`).
 
 You can sign the certificate with the following command:
 

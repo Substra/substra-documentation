@@ -11,7 +11,8 @@ The backend depends on the orchestrator and will fail to run if the orchestrator
 Prepare your Helm values
 ==========================
 
-Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/substra-backend>`_.
+.. seealso::
+   Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/substra-backend>`_.
 
 To configure your values:
 
@@ -118,9 +119,11 @@ Deploy the Chart
 #. Validate:
    
    .. code-block:: shell
-      curl -L api.cluster-1.DOMAIN
+
+      curl -kL api.cluster-1.DOMAIN
    
    Should return a ``401`` with the message:
    
    .. code-block:: javascript
+
       {"detail":"Authentication credentials were not provided."}

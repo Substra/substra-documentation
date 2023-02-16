@@ -4,10 +4,10 @@ Overview
 
 This section is of concern if you are **Deploying Substra in production**.
 
-:ref:`walkthrough` guides you through deploying a production environment
-:ref:`howto` are guides on some tasks of interest.
-:ref:`upgrade-notes` should be read when upgrading from one version to the next.
-:ref:`compatibility table` holds a reference of Substra versions.
+- :ref:`ops walkthrough` guides you through deploying a production environment
+- :ref:`ops howto` are guides on some tasks of interest.
+- :ref:`ops upgrade notes` should be read when upgrading from one version to the next.
+- :ref:`compatibility table` holds a reference of Substra versions.
 
 How Substra is deployed
 =======================
