@@ -44,15 +44,24 @@ from substra import Client
 
 N_CLIENTS = 3
 
-# Every computation will run in `subprocess` mode, where everything runs locally in Python
-# subprocesses.
-# Other backend_types are:
-# "docker" mode where computations run locally in docker containers
-# "remote" mode where computations run remotely (you need to have a deployed platform for that)
-# To run in remote mode you have to also use the function `Client.login(username, password)`
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
+
+# %%
+# Every computation will run in `subprocess` mode, where everything runs locally in Python
+# subprocesses.
+# Other backend_types are:
+#
+# - `docker` mode where computations run locally in docker containers
+# - `remote` mode where computations run remotely (you need to have a deployed platform for that)
+#
+# To run in remote mode, use the following syntax:
+#
+# `client_remote = Client(url="MY_BACKEND_URL")`
+#
+# `client_remote.login(username="my-username", password="my-password")`
+
 
 # Create a dictionary to easily access each client from its human-friendly id
 clients = {
@@ -60,7 +69,6 @@ clients = {
     client_1.organization_info().organization_id: client_1,
     client_2.organization_info().organization_id: client_2,
 }
-
 
 # Store organization IDs
 ORGS_ID = list(clients)
@@ -181,6 +189,7 @@ def accuracy(datasamples, predictions_path):
 
     return accuracy_score(y_true, np.argmax(y_pred, axis=1))
 
+
 # %%
 # We also need to specify the third parties dependencies required to compute the metrics.
 # The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
@@ -193,8 +202,7 @@ from substrafl.dependency import Dependency
 metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
 permissions_metric = Permissions(
-    public=False,
-    authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
 )
 
 # %%

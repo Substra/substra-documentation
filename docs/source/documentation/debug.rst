@@ -52,11 +52,10 @@ The subprocess mode is much faster than the Docker mode, but does not test that 
 
 .. note::
     For the **Docker mode on Windows**, follow these `instructions <https://docs.docker.com/desktop/install/windows-install/>`__ to install Docker desktop.
-
     Once installed:
 
-        * In ``Settings`` -> ``General``, check the ``Expose daemon on tcp://localhost:2375 without TLS`` option.
-        * Set the environment variable ``DOCKER_HOST`` to  ``tcp://localhost:2375``
+    * In ``Settings`` -> ``General``, check the ``Expose daemon on tcp://localhost:2375 without TLS`` option.
+    * Set the environment variable ``DOCKER_HOST`` to  ``tcp://localhost:2375``
 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
 Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible.
