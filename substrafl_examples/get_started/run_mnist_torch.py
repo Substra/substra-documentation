@@ -281,7 +281,7 @@ criterion = torch.nn.CrossEntropyLoss()
 # ====================================
 #
 # To specify on how much data to train at each round, we use the ``index_generator`` object.
-# We specify the batch size and the number of batches to consider for each round (called ``num_updates``).
+# We specify the batch size and the number of batches (named ``num_updates``) to consider for each round.
 # See :ref:`substrafl_doc/substrafl_overview:Index Generator` for more details.
 
 
@@ -446,8 +446,8 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 #   evaluate the model.
 # - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
 #   will be computed.
-# - The ``number of rounds``, a round being defined by a local training step followed by an aggregation operation.
-# - An ``experiment folder`` to save a summary of the operation made.
+# - The **number of rounds**, a round being defined by a local training step followed by an aggregation operation.
+# - An **experiment folder** to save a summary of the operation made.
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
