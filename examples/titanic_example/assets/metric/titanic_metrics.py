@@ -5,7 +5,6 @@ import pandas as pd
 
 @tools.register
 def score(inputs, outputs, task_properties):
-
     y_true = inputs["datasamples"].Survived.values
     y_pred = load_predictions(inputs["predictions"])
 
