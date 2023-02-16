@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Improve permission page (#279)
 - Improve installation paragraph in landing page (#276)
 - Rename substra SDK Algo to Function (#264)
 - Add contributing guide & code of conduct md files (#253)
