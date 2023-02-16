@@ -98,6 +98,9 @@ def zip_dir(source_dir, zip_file_name):
 assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
+assets_dir_diabetes = Path(__file__).parents[2] / "examples" / "diabetes_example" / "assets"
+zip_dir(assets_dir_diabetes, "diabetes_assets.zip")
+
 assets_dir_substrafl_torch_fedavg = (
     Path(__file__).parents[2] / "substrafl_examples" / "get_started" / "torch_fedavg_assets"
 )
