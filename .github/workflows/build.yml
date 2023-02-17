@@ -28,13 +28,13 @@ jobs:
         with:
           repository: substra/substra
           path: substra
-          ref: 0.42.0
+          ref: release/0.42.0
 
       - name: Clone substrafl
         uses: actions/checkout@v2
         with:
           repository: substra/substrafl
-          ref: 0.43.0
+          ref: release/0.34.0
           path: substrafl
 
       - name: Install substra, substra-tools and substrafl
