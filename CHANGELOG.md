@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Clarify how to login in the remote mode (#281)
 - Improve permission page (#279)
 - Improve installation paragraph in landing page (#276)
 - Rename substra SDK Algo to Function (#264)
