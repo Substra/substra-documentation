@@ -44,15 +44,23 @@ from substra import Client
 
 N_CLIENTS = 3
 
-# Every computation will run in `subprocess` mode, where everything runs locally in Python
-# subprocesses.
-# Other backend_types are:
-# "docker" mode where computations run locally in docker containers
-# "remote" mode where computations run remotely (you need to have a deployed platform for that)
-# To run in remote mode you have to also use the function `Client.login(username, password)`
 client_0 = Client(backend_type="subprocess")
 client_1 = Client(backend_type="subprocess")
 client_2 = Client(backend_type="subprocess")
+
+# %%
+# Every computation will run in ``subprocess`` mode, where everything runs locally in Python
+# subprocesses.
+# Other backend_types are:
+#
+# - ``docker`` mode where computations run locally in docker containers
+# - ``remote`` mode where computations run remotely (you need to have a deployed platform for that)
+#
+# To run in remote mode, use the following syntax:
+#
+# ``client_remote = Client(url="MY_BACKEND_URL")``
+# ``client_remote.login(username="my-username", password="my-password")``
+
 
 # Create a dictionary to easily access each client from its human-friendly id
 clients = {
@@ -60,7 +68,6 @@ clients = {
     client_1.organization_info().organization_id: client_1,
     client_2.organization_info().organization_id: client_2,
 }
-
 
 # Store organization IDs
 ORGS_ID = list(clients)
@@ -169,8 +176,8 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # To add a metric, you need to define a function that computes and returns a performance
 # from the datasamples (as returned by the opener) and the predictions_path (to be loaded within the function).
 #
-# When using a Torch SubstraFL algorithm, the predictions are saved in the `predict` function in numpy format
-# so that you can simply load them using `np.load`.
+# When using a Torch SubstraFL algorithm, the predictions are saved in the ``predict`` function in numpy format
+# so that you can simply load them using ``np.load``.
 
 from sklearn.metrics import accuracy_score
 import numpy as np
@@ -180,6 +187,7 @@ def accuracy(datasamples, predictions_path):
     y_pred = np.load(predictions_path)
 
     return accuracy_score(y_true, np.argmax(y_pred, axis=1))
+
 
 # %%
 # We also need to specify the third parties dependencies required to compute the metrics.
@@ -193,12 +201,11 @@ from substrafl.dependency import Dependency
 metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
 permissions_metric = Permissions(
-    public=False,
-    authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
 )
 
 # %%
-# After defining the metrics, dependencies, and permissions, we use the `add_metric` function to register the metric.
+# After defining the metrics, dependencies, and permissions, we use the ``add_metric`` function to register the metric.
 # This metric will be used on the test datasamples to evaluate the model performances.
 
 from substrafl.remote.register import add_metric
@@ -273,8 +280,8 @@ criterion = torch.nn.CrossEntropyLoss()
 # Specifying on how much data to train
 # ====================================
 #
-# To specify on how much data to train at each round, we use the `index_generator` object.
-# We specify the batch size and the number of batches to consider for each round (called `num_updates`).
+# To specify on how much data to train at each round, we use the ``index_generator`` object.
+# We specify the batch size and the number of batches (named ``num_updates``) to consider for each round.
 # See :ref:`substrafl_doc/substrafl_overview:Index Generator` for more details.
 
 
@@ -295,12 +302,12 @@ index_generator = NpIndexGenerator(
 # Torch Dataset definition
 # ==========================
 #
-# This torch Dataset is used to preprocess the data using the `__getitem__` function.
+# This torch Dataset is used to preprocess the data using the ``__getitem__`` function.
 #
-# This torch Dataset needs to have a specific `__init__` signature, that must contain (self, datasamples, is_inference).
+# This torch Dataset needs to have a specific ``__init__`` signature, that must contain (self, datasamples, is_inference).
 #
-# The `__getitem__` function is expected to return (inputs, outputs) if `is_inference` is `False`, else only the inputs.
-# This behavior can be changed by re-writing the `_local_train` or `predict` methods.
+# The ``__getitem__`` function is expected to return (inputs, outputs) if ``is_inference`` is ``False``, else only the inputs.
+# This behavior can be changed by re-writing the ``_local_train`` or ``predict`` methods.
 
 
 class TorchDataset(torch.utils.data.Dataset):
@@ -334,12 +341,11 @@ class TorchDataset(torch.utils.data.Dataset):
 # A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
-# The `TorchDataset` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
-# Indeed, this `TorchDataset` will be instantiated directly on the data provider organization.
+# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
+# Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 
 
 from substrafl.algorithms.pytorch import TorchFedAvgAlgo
-
 
 class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
@@ -513,7 +519,7 @@ plt.show()
 # To do so, you will need the source code in order to reload your code architecture in memory.
 # You have the option to choose the client and the round you are interested in downloading.
 #
-# If `round_idx` is set to `None`, the last round will be selected by default.
+# If ``round_idx`` is set to ``None``, the last round will be selected by default.
 
 from substrafl.model_loading import download_algo_files
 from substrafl.model_loading import load_algo
