@@ -11,11 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve permission page (#279)
 - Improve installation paragraph in landing page (#276)
 - Rename substra SDK Algo to Function (#264)
+- Apply EvaluationStrategy modifications of [SubstraFL #85](https://github.com/Substra/substrafl/pull/85) (#273)
+
+## [0.25.0]
+
 - Add contributing guide & code of conduct md files (#253)
 - Remove test only for datasamples in examples (#246)
 - Rename examples from `plot_*.py` to `run_*.py` (#268)
 - Add note on supported OS (#270)
-- Apply EvaluationStrategy modifications of [SubstraFL #85](https://github.com/Substra/substrafl/pull/85) (#273)
+
 
 ## [0.24.0]
 
