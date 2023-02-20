@@ -36,7 +36,7 @@ jobs:
         with:
           repository: substra/substrafl
           ref: 0.34.0
-          path: main
+          path: substrafl
 
       - name: Install substra, substra-tools and substrafl
         run: |
