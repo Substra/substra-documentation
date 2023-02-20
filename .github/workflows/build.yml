@@ -22,7 +22,7 @@ jobs:
         with:
           repository: substra/substra-tools
           path: substra-tools
-          ref: 0.20
+          ref: 0.20.0
 
       - name: Clone substra
         uses: actions/checkout@v2
