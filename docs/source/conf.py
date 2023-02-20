@@ -32,9 +32,9 @@ if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
     SUBSTRAFL_VERSION = "0.34.0"
 
 else:
-    SUBSTRA_VERSION = "0.42.0"
-    TOOLS_VERSION = "0.20.0"
-    SUBSTRAFL_VERSION = "0.34.0"
+    SUBSTRA_VERSION = "main"
+    TOOLS_VERSION = "main"
+    SUBSTRAFL_VERSION = "main"
 
 print(
     f"Versions of the components used:"
