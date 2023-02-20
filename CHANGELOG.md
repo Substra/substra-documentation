@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.25.0]
+
 - Add contributing guide & code of conduct md files (#253)
 - Remove test only for datasamples in examples (#246)
 - Rename examples from `plot_*.py` to `run_*.py` (#268)
