@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up python
         uses: actions/setup-python@v2
         with:
@@ -21,19 +22,21 @@ jobs:
         with:
           repository: substra/substra-tools
           path: substra-tools
+          ref: main
 
       - name: Clone substra
         uses: actions/checkout@v2
         with:
           repository: substra/substra
           path: substra
+          ref: main
 
       - name: Clone substrafl
         uses: actions/checkout@v2
         with:
           repository: substra/substrafl
-          ref: main
           path: substrafl
+          ref: main
 
       - name: Install substra, substra-tools and substrafl
         run: |

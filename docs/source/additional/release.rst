@@ -28,6 +28,15 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.25.0 - 2023-02-17
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- **BREAKING CHANGE**: ``DataSampleSpec`` does not have a ``test_only`` field anymore.
+- SubstraFL: It is now possible to test on an organization where no training have been performed.
+- New ``creator`` field in Compute Plan.
+- Fix an issue where Skaffold spawned too many backends.
+- Add contributing guide & code of conduct to all repos.
+
 Substra 0.24.0 - 2023-01-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
