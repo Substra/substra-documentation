@@ -372,7 +372,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
 
 from substrafl.strategies import FedAvg
 
-strategy = FedAvg()
+strategy = FedAvg(algo=SklearnFedAvgAlgo(model=cls, seed=SEED))
 
 # %%
 # Where to train where to aggregate
@@ -428,7 +428,6 @@ algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
-    algo=SklearnFedAvgAlgo(model=cls, seed=SEED),
     strategy=strategy,
     train_data_nodes=train_data_nodes,
     evaluation_strategy=my_eval_strategy,
