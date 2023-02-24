@@ -182,6 +182,7 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 from sklearn.metrics import accuracy_score
 import numpy as np
 
+
 def accuracy(datasamples, predictions_path):
     y_true = datasamples["labels"]
     y_pred = np.load(predictions_path)
@@ -200,9 +201,7 @@ from substrafl.dependency import Dependency
 
 metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
-permissions_metric = Permissions(
-    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
-)
+permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
 # %%
 # After defining the metrics, dependencies, and permissions, we use the ``add_metric`` function to register the metric.
@@ -347,6 +346,7 @@ class TorchDataset(torch.utils.data.Dataset):
 
 from substrafl.algorithms.pytorch import TorchFedAvgAlgo
 
+
 class MyAlgo(TorchFedAvgAlgo):
     def __init__(self):
         super().__init__(
@@ -371,7 +371,7 @@ class MyAlgo(TorchFedAvgAlgo):
 
 from substrafl.strategies import FedAvg
 
-strategy = FedAvg()
+strategy = FedAvg(algo=MyAlgo())
 
 # %%
 # Where to train where to aggregate
@@ -461,7 +461,6 @@ algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
-    algo=MyAlgo(),
     strategy=strategy,
     train_data_nodes=train_data_nodes,
     evaluation_strategy=my_eval_strategy,
