@@ -10,7 +10,8 @@ This dataset contains medical information such as Age, Sex or Blood pressure.
 The goal of this example is to compute some analytics such as Age mean, Blood pressure standard deviation or Sex percentage.
 
 We simulate having two different data organisations, and a third organisation which wants to access aggregated analytics
-without having access to the raw data. For simplicity reasons, all the computations run locally in different subprocesses.
+without having access to the raw data. The example here runs everything locally; however there is only one parameter to
+change to run it on a real network.
 
 **Caution:**
  This example is provided as an illustrative example only. In real life, you should be carefully not to
@@ -31,7 +32,6 @@ To run this example, you have two options:
         :download:`assets required to run this example <../../../../tmp/diabetes_assets.zip>`
 
   * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
-  * **Substra** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
 
 """
 
@@ -80,10 +80,11 @@ clients = {client.organization_info().organization_id: client for client in clie
 
 # Store organization IDs
 ORGS_ID = list(clients)
-ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID[
-    1:
-]  # Data providers orgs are the two last organizations.
+
+# Algo provider is defined as the first organization.
+ALGO_ORG_ID = ORGS_ID[0]
+# Data providers orgs are the two last organizations.
+DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 
 # %%
 # Creation and Registration of the assets
@@ -143,7 +144,7 @@ dataset_keys = {
 }
 
 for client_id, key in dataset_keys.items():
-    print(f"Dataset key {client_id} {key}")
+    print(f"Dataset key for {client_id}: {key}")
 
 
 # %%
@@ -172,12 +173,12 @@ datasample_keys = {
 # Adding Functions
 # ================
 # A :ref:`Substra function<documentation/references/sdk_schemas:FunctionSpec>`
-# specifies the method to apply to a dataset or the method to aggregate models (artifacts).
+# specifies the function to apply to a dataset or the function to aggregate models (artifacts).
 # Concretely, a function corresponds to an archive (tar or zip file) containing:
 #
-# - One or more Python scripts that implement the algorithm.
+# - One or more Python scripts that implement the function.
 # - A Dockerfile on which the user can specify the required dependencies of the Python scripts.
-#   This Dockerfile also specifies the method name to execute.
+#   This Dockerfile also specifies the function name to execute.
 #
 # In this example, we will:
 # 1. compute prerequisites for first-moment statistics on each data node;
@@ -190,11 +191,11 @@ datasample_keys = {
 # %%
 # First local step
 # ----------------
-# First, we will compute on each data node some aggregated values: number of samples, sum of each  numerical column
+# First, we will compute on each data node some aggregated values: number of samples, sum of each numerical column
 # (it will be used to compute the mean), and count of each category for the categorical column (*Sex*).
 #
 # The computation is implemented in a *Python function* in the `federated_analytics_functions.py` file.
-# We also write a `Dockerfile` to define the entrypoint, and we wrap everything in a Substra `FunctionSpec` object.
+# We also write a `Dockerfile` to define the entrypoint, and we wrap everything in a Substra ``FunctionSpec`` object.
 #
 # If you're running this example in a Notebook, you can uncomment and execute the next cell to see what code is executed
 # on each data node.
@@ -306,7 +307,7 @@ print(f"Aggregation function key {aggregate_function_key}")
 # Idem for the second round of computations happening locally on the data nodes.
 #
 # Both aggregation steps will use the same function, so we don't need to register it again.
-#
+
 # %%
 
 # %load -s local_step2 assets/functions/federated_analytics_functions.py
@@ -369,7 +370,7 @@ print(f"Local function key for step 2 {local_function_2_keys}")
 
 # %%
 # Registering tasks
-# -----------------
+# =================
 # The next step is to register the actual machine learning tasks.
 #
 
@@ -493,8 +494,10 @@ with open(task2.outputs["shared_states"].value.address.storage_address, "rb") as
     out2 = pickle.load(f)
 
 print(
-    f"""Age mean: {out1['means']['age']}
-Sex percentage: {out1['counts']['sex']}
-Blood pressure std: {out2["std"]["bp"]}
+    f"""Age mean: {out1['means']['age']:.2f} years
+Sex percentage:
+    Male: {out1['counts']['sex']['M']:.2f}%
+    Female: {out1['counts']['sex']['F']:.2f}%
+Blood pressure std: {out2["std"]["bp"]:.2f} mm Hg
 """
 )
