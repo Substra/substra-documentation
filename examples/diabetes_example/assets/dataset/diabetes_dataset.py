@@ -17,7 +17,7 @@ def setup_diabetes(data_path: pathlib.Path):
     (data_path / "org_1").mkdir(exist_ok=True)
     (data_path / "org_2").mkdir(exist_ok=True)
 
-    # Split the dataset in two
+    # Split the dataset in two uneven parts
     split_index = int(len(dataset) * 2/3)
     dataset.iloc[:split_index].to_csv(data_path/ "org_1" /"data.csv", index=False)
     dataset.iloc[split_index:].to_csv(data_path/ "org_2"  /"data.csv", index=False)

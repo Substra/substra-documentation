@@ -9,7 +9,7 @@ import substratools as tools
 
 
 @tools.register
-def local_step1(inputs, outputs, task_properties):
+def local_first_order_computation(inputs, outputs, task_properties):
     df = inputs["datasamples"]
     states = {
         "n_samples": len(df),
@@ -20,7 +20,7 @@ def local_step1(inputs, outputs, task_properties):
 
 
 @tools.register
-def local_step2(inputs, outputs, task_properties):
+def local_second_order_computation(inputs, outputs, task_properties):
     df = inputs["datasamples"]
     shared_states = load_states(inputs["shared_states"])
     means = pd.Series(shared_states["means"])
@@ -32,7 +32,7 @@ def local_step2(inputs, outputs, task_properties):
 
 
 @tools.register
-def aggregate(inputs, outputs, task_properties):
+def aggregation(inputs, outputs, task_properties):
     shared_states = [load_states(path) for path in inputs["local_analytics_list"]]
 
     total_len = 0

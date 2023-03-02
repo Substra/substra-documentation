@@ -8,4 +8,4 @@ RUN pip3 install pandas numpy
 ADD federated_analytics_functions.py .
 
 # define how script is run
-ENTRYPOINT ["python3", "federated_analytics_functions.py", "--function-name", "local_step2"]
+ENTRYPOINT ["python3", "federated_analytics_functions.py", "--function-name", "local_second_order_computation"]

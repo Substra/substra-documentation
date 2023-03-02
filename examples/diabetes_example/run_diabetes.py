@@ -191,8 +191,8 @@ datasample_keys = {
 
 
 # %%
-# First local step
-# ----------------
+# Local step: computing first order statistic moments
+# ---------------------------------------------------
 # First, we will compute on each data node some aggregated values: number of samples, sum of each numerical column
 # (it will be used to compute the mean), and count of each category for the categorical column (*Sex*).
 #
@@ -204,21 +204,21 @@ datasample_keys = {
 
 # %%
 
-# %load -s local_step1 assets/functions/federated_analytics_functions.py
+# %load -s local_first_order_computation assets/functions/federated_analytics_functions.py
 
 # %%
 
-local_function_1_docker_files = [
+local_first_order_computation_docker_files = [
     assets_directory / "functions" / "federated_analytics_functions.py",
-    assets_directory / "functions" / "local_compute_1" / "Dockerfile",
+    assets_directory / "functions" / "local_first_order_computation" / "Dockerfile",
 ]
 
-local_archive_1_path = assets_directory / "functions" / "local_function_analytics.zip"
-with zipfile.ZipFile(local_archive_1_path, "w") as z:
-    for filepath in local_function_1_docker_files:
+local_archive_first_order_computation_path = assets_directory / "functions" / "local_first_order_analytics.zip"
+with zipfile.ZipFile(local_archive_first_order_computation_path, "w") as z:
+    for filepath in local_first_order_computation_docker_files:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-local_function_1_inputs = [
+local_first_order_function_inputs = [
     FunctionInputSpec(
         identifier="datasamples",
         kind=AssetKind.data_sample,
@@ -230,28 +230,28 @@ local_function_1_inputs = [
     ),
 ]
 
-local_function_1_outputs = [
+local_first_order_function_outputs = [
     FunctionOutputSpec(
         identifier="local_analytics_first_moments", kind=AssetKind.model, multiple=False
     )
 ]
 
-local_function_1 = FunctionSpec(
+local_first_order_function = FunctionSpec(
     name="Local Federated Analytics - step 1",
-    inputs=local_function_1_inputs,
-    outputs=local_function_1_outputs,
+    inputs=local_first_order_function_inputs,
+    outputs=local_first_order_function_outputs,
     description=assets_directory / "functions" / "description.md",
-    file=local_archive_1_path,
+    file=local_archive_first_order_computation_path,
     permissions=permissions,
 )
 
 
-local_function_1_keys = {
-    client_id: clients[client_id].add_function(local_function_1)
+local_first_order_function_keys = {
+    client_id: clients[client_id].add_function(local_first_order_function)
     for client_id in DATA_PROVIDER_ORGS_ID
 }
 
-print(f"Local function key for step 1 {local_function_1_keys}")
+print(f"Local function key for step 1: computing first order moments {local_first_order_function_keys}")
 
 # %%
 # First aggregation step
@@ -260,13 +260,13 @@ print(f"Local function key for step 1 {local_function_1_keys}")
 
 # %%
 
-# %load -s aggregate assets/functions/federated_analytics_functions.py
+# %load -s aggregation assets/functions/federated_analytics_functions.py
 
 # %%
 
 aggregate_function_docker_files = [
     assets_directory / "functions" / "federated_analytics_functions.py",
-    assets_directory / "functions" / "aggregate" / "Dockerfile",
+    assets_directory / "functions" / "aggregation" / "Dockerfile",
 ]
 
 aggregate_archive_path = (
@@ -304,29 +304,29 @@ aggregate_function_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_function(aggrega
 print(f"Aggregation function key {aggregate_function_key}")
 
 # %%
-# Second local step
-# -----------------
+# Local step: computing second order statistic moments
+# ----------------------------------------------------
 # Idem for the second round of computations happening locally on the data nodes.
 #
 # Both aggregation steps will use the same function, so we don't need to register it again.
 
 # %%
 
-# %load -s local_step2 assets/functions/federated_analytics_functions.py
+# %load -s local_second_order_computation assets/functions/federated_analytics_functions.py
 
 # %%
 
-local_function_2_docker_files = [
+local_second_order_computation_docker_files = [
     assets_directory / "functions" / "federated_analytics_functions.py",
-    assets_directory / "functions" / "local_compute_2" / "Dockerfile",
+    assets_directory / "functions" / "local_second_order_computation" / "Dockerfile",
 ]
 
-local_archive_2_path = assets_directory / "functions" / "local_function_analytics.zip"
-with zipfile.ZipFile(local_archive_2_path, "w") as z:
-    for filepath in local_function_2_docker_files:
+local_archive_second_order_computation_path = assets_directory / "functions" / "local_function_analytics.zip"
+with zipfile.ZipFile(local_archive_second_order_computation_path, "w") as z:
+    for filepath in local_second_order_computation_docker_files:
         z.write(filepath, arcname=os.path.basename(filepath))
 
-local_function_2_inputs = [
+local_second_order_function_inputs = [
     FunctionInputSpec(
         identifier="datasamples",
         kind=AssetKind.data_sample,
@@ -341,7 +341,7 @@ local_function_2_inputs = [
     ),
 ]
 
-local_function_2_outputs = [
+local_second_order_function_outputs = [
     FunctionOutputSpec(
         identifier="local_analytics_second_moments",
         kind=AssetKind.model,
@@ -349,22 +349,22 @@ local_function_2_outputs = [
     )
 ]
 
-local_function_2 = FunctionSpec(
-    name="Local Federated Analytics - step 1",
-    inputs=local_function_2_inputs,
-    outputs=local_function_2_outputs,
+local_second_order_function = FunctionSpec(
+    name="Local Federated Analytics - step 2",
+    inputs=local_second_order_function_inputs,
+    outputs=local_second_order_function_outputs,
     description=assets_directory / "functions" / "description.md",
-    file=local_archive_2_path,
+    file=local_archive_second_order_computation_path,
     permissions=permissions,
 )
 
 
-local_function_2_keys = {
-    client_id: clients[client_id].add_function(local_function_2)
+local_second_order_function_keys = {
+    client_id: clients[client_id].add_function(local_second_order_function)
     for client_id in DATA_PROVIDER_ORGS_ID
 }
 
-print(f"Local function key for step 2 {local_function_2_keys}")
+print(f"Local function key for step 2: computing second order moments {local_second_order_function_keys}")
 
 # %%
 # The data and the functions are now registered.
@@ -389,7 +389,7 @@ datasample_inputs = {
 local_task_1_keys = {
     client_id: clients[client_id].add_task(
         TaskSpec(
-            function_key=local_function_1_keys[client_id],
+            function_key=local_first_order_function_keys[client_id],
             inputs=data_manager_input[client_id] + datasample_inputs[client_id],
             outputs={
                 "local_analytics_first_moments": ComputeTaskOutputSpec(
@@ -444,7 +444,7 @@ shared_inputs = [
 local_task_2_keys = {
     client_id: clients[client_id].add_task(
         TaskSpec(
-            function_key=local_function_2_keys[client_id],
+            function_key=local_second_order_function_keys[client_id],
             inputs=data_manager_input[client_id]
             + datasample_inputs[client_id]
             + shared_inputs,
