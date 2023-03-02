@@ -14,7 +14,10 @@ def local_first_order_computation(inputs, outputs, task_properties):
     states = {
         "n_samples": len(df),
         "means": df.select_dtypes(include=np.number).sum().to_dict(),
-        "counts": {name: series.value_counts().to_dict() for name, series in df.select_dtypes(include='category').items()}
+        "counts": {
+            name: series.value_counts().to_dict()
+            for name, series in df.select_dtypes(include="category").items()
+        },
     }
     save_states(states, outputs["local_analytics_first_moments"])
 
@@ -42,7 +45,7 @@ def aggregation(inputs, outputs, task_properties):
     aggregated_values = defaultdict(lambda: defaultdict(float))
     for state in shared_states:
         for analytics_name, value in state.items():
-            if analytics_name != 'n_samples':
+            if analytics_name != "n_samples":
                 for k, v in value.items():
                     try:
                         aggregated_values[analytics_name][k] += v / total_len
