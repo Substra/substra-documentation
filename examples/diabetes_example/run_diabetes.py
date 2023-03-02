@@ -18,7 +18,8 @@ change to run it on a real network.
  accidentally leak private information when doing Federated Analytics. For example if a column contains very similar values,
  sharing its mean and its standard deviation is functionally equivalent to sharing the content of the column.
  It is **strongly recommended** to consider what are the potential security risks in your use case, and to act accordingly.
- It is possible to use other privacy-preserving techniques, such as *Differential Privacy*, in addition to Substra.
+ It is possible to use other privacy-preserving techniques, such as
+ `Differential Privacy <https://en.wikipedia.org/wiki/Differential_privacy>`_, in addition to Substra.
  Because the focus of this example is Substra capabilities and for the sake of simplicity, such safeguards are not implemented here.
 
 
@@ -184,7 +185,7 @@ datasample_keys = {
 #
 # In this example, we will:
 # 1. compute prerequisites for first-moment statistics on each data node;
-# 2. aggregate these values on the algo node to get aggregated statistics;
+# 2. aggregate these values on the analytics computation node to get aggregated statistics;
 # 3. send these aggregated values to the data nodes, in order to compute second-moment prerequisite values;
 # 4. finally, aggregate these values to get second-moment aggregated statistics.
 #
