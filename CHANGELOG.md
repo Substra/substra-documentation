@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update Iris example to init model parameter in the new initialisation task ()
 - Clarify how to login in the remote mode (#281)
 - Improve permission page (#279)
 - Improve installation paragraph in landing page (#276)
@@ -19,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove test only for datasamples in examples (#246)
 - Rename examples from `plot_*.py` to `run_*.py` (#268)
 - Add note on supported OS (#270)
-
 
 ## [0.24.0]
 
