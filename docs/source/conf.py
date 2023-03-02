@@ -24,6 +24,8 @@ import sphinx_rtd_theme
 import git
 import yaml
 
+from sphinx_gallery.sorting import ExplicitOrder
+
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
@@ -386,7 +388,12 @@ sphinx_gallery_conf = {
     "reference_url": {"Substra": None},
     "examples_dirs": ["../../examples", "../../substrafl_examples"],
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
-    "subsection_order": SubSectionTitleOrder("../../examples"),
+    "subsection_order": ExplicitOrder([
+        "../../examples/titanic_example",
+        "../../examples/diabetes_example",
+        "../../substrafl_examples/get_started",
+        "../../substrafl_examples/go_further",
+    ]),
     "download_all_examples": False,
     "filename_pattern": "/run_",
     "binder": {
