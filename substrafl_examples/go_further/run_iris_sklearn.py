@@ -253,7 +253,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
         # initialization.
         self._model.coef_ = np.ones((OUTPUT_SIZE, INPUT_SIZE))
         self._model.intercept_ = np.zeros(3)
-        self._model.classes_ = ["init"]
+        self._model.classes_ = np.array([-1])
 
         if seed is not None:
             np.random.seed(seed)
