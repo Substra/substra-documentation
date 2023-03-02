@@ -249,6 +249,12 @@ class SklearnFedAvgAlgo(algorithms.Algo):
 
         self._model = model
 
+        # We need all different instances of the algorithm to have the same
+        # initialization.
+        self._model.coef_ = np.ones((OUTPUT_SIZE, INPUT_SIZE))
+        self._model.intercept_ = np.zeros(3)
+        self._model.classes_ = np.array([-1])
+
         if seed is not None:
             np.random.seed(seed)
 
@@ -272,7 +278,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
         to allow this function to be sent and executed on the right organization.
 
         Args:
-            datasamples (_type_): datasamples extracted from the organizations data using
+            datasamples: datasamples extracted from the organizations data using
                 the given opener.
             shared_state (Optional[fl_schemas.FedAvgAveragedState], optional):
                 shared_state provided by the aggregator. Defaults to None.
@@ -281,13 +287,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
             fl_schemas.FedAvgSharedState: State to be sent to the aggregator.
         """
 
-        if shared_state is None:
-            # If shared state is None, we are at the init state of the algorithm.
-            # We need all different instances of the algorithm to have the same
-            # initialization.
-            self._model.coef_ = np.ones((OUTPUT_SIZE, INPUT_SIZE))
-            self._model.intercept_ = np.zeros(3)
-        else:
+        if shared_state is not None:
             # If we have a shared state, we update the model parameters with
             # the average parameters updates.
             self._model.coef_ += np.reshape(
@@ -331,10 +331,10 @@ class SklearnFedAvgAlgo(algorithms.Algo):
         to allow this function to be sent and executed on the right organization.
 
         Args:
-            datasamples (_type_): datasamples extracted from the organizations data using
+            datasamples: datasamples extracted from the organizations data using
                 the given opener.
-            shared_state (_type_): shared_state provided by the aggregator.
-            predictions_path (_type_, optional): Path where to save the predictions.
+            shared_state: shared_state provided by the aggregator.
+            predictions_path: Path where to save the predictions.
                 This path is provided by Substra and the metric will automatically
                 get access to this path to load the predictions.
         """
