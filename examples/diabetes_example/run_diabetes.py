@@ -65,7 +65,7 @@ from substra.sdk.schemas import (
 from assets.dataset.diabetes_dataset import setup_diabetes
 
 # %%
-# Instantiating the Substra Clients
+# Instantiating the Substra clients
 # =================================
 #
 # We work with three different organizations.
@@ -173,8 +173,8 @@ datasample_keys = {
 #
 
 # %%
-# Adding Functions
-# ================
+# Adding functions to execute with Substra
+# ========================================
 # A :ref:`Substra function<documentation/references/sdk_schemas:FunctionSpec>`
 # specifies the function to apply to a dataset or the function to aggregate models (artifacts).
 # Concretely, a function corresponds to an archive (tar or zip file) containing:
@@ -373,8 +373,8 @@ print(f"Local function key for step 2: computing second order moments {local_sec
 #
 
 # %%
-# Registering tasks
-# =================
+# Registering tasks in Substra
+# ============================
 # The next step is to register the actual machine learning tasks.
 #
 
