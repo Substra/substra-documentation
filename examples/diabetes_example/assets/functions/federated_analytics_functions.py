@@ -8,6 +8,11 @@ import pandas as pd
 import substratools as tools
 
 
+# We are using helper decorators from the substratools library to avoid rewriting boilerplate code.
+# The function to be registered takes an `inputs` parameter, which will be matched to the list of
+# `FunctionInputSpec` provided in the `FunctionSpec` definition.
+# In a similar way, the parameter `outputs` will be matched to the `FunctionOutputSpec`.
+# The parameter `task_properties` contains if needed additional values that can be used by the function without being persisted.
 @tools.register
 def local_first_order_computation(inputs, outputs, task_properties):
     df = inputs["datasamples"]
@@ -71,6 +76,7 @@ def save_states(states, path):
         pickle.dump(states, f)
 
 
-
+# The Dockerfile uses this entrypoint at run time to execute the function whose name is passed as parameters,
+# providing it with the proper arguments as defined at registration time by Substra Specs.
 if __name__ == "__main__":
     tools.execute()
