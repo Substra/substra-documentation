@@ -15,8 +15,10 @@ change to run it on a real network.
 
 **Caution:**
  This example is provided as an illustrative example only. In real life, you should be carefully not to
- accidentally leak private information when doing Federated Analytics. It is **strongly recommended** to use privacy-preserving
- techniques such as *Differential Privacy*.
+ accidentally leak private information when doing Federated Analytics. For example if a column contains very similar values,
+ sharing its mean and its standard deviation is functionally equivalent to sharing the content of the column.
+ It is **strongly recommended** to consider what are the potential security risks in your use case, and to act accordingly.
+ It is possible to use other privacy-preserving techniques, such as *Differential Privacy*, in addition to Substra.
  Because the focus of this example is Substra capabilities and for the sake of simplicity, such safeguards are not implemented here.
 
 
@@ -81,8 +83,8 @@ clients = {client.organization_info().organization_id: client for client in clie
 # Store organization IDs
 ORGS_ID = list(clients)
 
-# Algo provider is defined as the first organization.
-ALGO_ORG_ID = ORGS_ID[0]
+# The provider of the functions for computing analytics is defined as the first organization.
+ANALYTICS_PROVIDER_ORG_ID = ORGS_ID[0]
 # Data providers orgs are the two last organizations.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 
@@ -101,7 +103,7 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 # - Permissions allow you to execute a function on a certain dataset.
 #
 
-permissions = Permissions(public=False, authorized_ids=[ALGO_ORG_ID])
+permissions = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_ID])
 # %%
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
 #
@@ -297,7 +299,7 @@ aggregate_function = FunctionSpec(
 )
 
 
-aggregate_function_key = clients[ALGO_ORG_ID].add_function(aggregate_function)
+aggregate_function_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_function(aggregate_function)
 
 print(f"Aggregation function key {aggregate_function_key}")
 
@@ -423,10 +425,10 @@ aggregation_task_1 = TaskSpec(
     function_key=aggregate_function_key,
     inputs=aggregation_1_inputs,
     outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions)},
-    worker=ALGO_ORG_ID,
+    worker=ANALYTICS_PROVIDER_ORG_ID,
 )
 
-aggregation_task_1_key = clients[ALGO_ORG_ID].add_task(aggregation_task_1)
+aggregation_task_1_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation_task_1)
 
 
 # %%
@@ -471,10 +473,10 @@ aggregation_task_2 = TaskSpec(
     function_key=aggregate_function_key,
     inputs=aggregation_2_inputs,
     outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions)},
-    worker=ALGO_ORG_ID,
+    worker=ANALYTICS_PROVIDER_ORG_ID,
 )
 
-aggregation_task_2_key = clients[ALGO_ORG_ID].add_task(aggregation_task_2)
+aggregation_task_2_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation_task_2)
 
 
 # %%
@@ -485,8 +487,8 @@ aggregation_task_2_key = clients[ALGO_ORG_ID].add_task(aggregation_task_2)
 
 import pickle
 
-task1 = clients[ALGO_ORG_ID].get_task(aggregation_task_1_key)
-task2 = clients[ALGO_ORG_ID].get_task(aggregation_task_2_key)
+task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key)
+task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key)
 
 with open(task1.outputs["shared_states"].value.address.storage_address, "rb") as f:
     out1 = pickle.load(f)

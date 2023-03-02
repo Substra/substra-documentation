@@ -41,16 +41,16 @@ def aggregate(inputs, outputs, task_properties):
 
     aggregated_values = defaultdict(lambda: defaultdict(float))
     for state in shared_states:
-        for moment, value in state.items():
-            if moment != 'n_samples':
+        for analytics_name, value in state.items():
+            if analytics_name != 'n_samples':
                 for k, v in value.items():
                     try:
-                        aggregated_values[moment][k] += v / total_len
+                        aggregated_values[analytics_name][k] += v / total_len
                     except TypeError:  # v is not a numeric value, but a dict
-                        if not aggregated_values[moment][k]:
-                            aggregated_values[moment][k] = defaultdict(float)
+                        if not aggregated_values[analytics_name][k]:
+                            aggregated_values[analytics_name][k] = defaultdict(float)
                         for kk, vv in v.items():
-                            aggregated_values[moment][k][kk] += vv / total_len
+                            aggregated_values[analytics_name][k][kk] += vv / total_len
 
     # transform default_dict to regular dict
     aggregated_values = json.loads(json.dumps(aggregated_values))
