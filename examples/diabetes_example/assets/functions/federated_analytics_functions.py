@@ -49,16 +49,20 @@ def aggregation(inputs, outputs, task_properties):
 
     aggregated_values = defaultdict(lambda: defaultdict(float))
     for state in shared_states:
-        for analytics_name, value in state.items():
-            if analytics_name != "n_samples":
-                for k, v in value.items():
-                    try:
-                        aggregated_values[analytics_name][k] += v / total_len
-                    except TypeError:  # v is not a numeric value, but a dict
-                        if not aggregated_values[analytics_name][k]:
-                            aggregated_values[analytics_name][k] = defaultdict(float)
-                        for kk, vv in v.items():
-                            aggregated_values[analytics_name][k][kk] += vv / total_len
+        for analytics_name, col_dict in state.items():
+            if analytics_name == "n_samples":
+                # already aggregated in total_len
+                continue
+            for col_name, v in col_dict.items():
+                if isinstance(v, dict):
+                    # this column is categorical and v is a dict over the different modalities
+                    if not aggregated_values[analytics_name][col_name]:
+                        aggregated_values[analytics_name][col_name] = defaultdict(float)
+                    for modality, vv in v.items():
+                        aggregated_values[analytics_name][col_name][modality] += vv / total_len
+                else:
+                    # this is a numerical column and v is numerical
+                    aggregated_values[analytics_name][col_name] += v / total_len
 
     # transform default_dict to regular dict
     aggregated_values = json.loads(json.dumps(aggregated_values))
