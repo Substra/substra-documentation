@@ -34,13 +34,13 @@ To run this example, you have two options:
 
         :download:`assets required to run this example <../../../../tmp/diabetes_assets.zip>`
 
-  * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
+  Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
 
 """
 
 # %%
-# Import all the dependencies
-# ===========================
+# Importing all the dependencies
+# ==============================
 
 import os
 import zipfile
@@ -90,8 +90,8 @@ ANALYTICS_PROVIDER_ORG_ID = ORGS_ID[0]
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 
 # %%
-# Creation and Registration of the assets
-# ---------------------------------------
+# Creating and registering the assets
+# -----------------------------------
 #
 # Every asset will be created in respect to predefined schemas (Spec) previously imported from
 # ``substra.sdk.schemas``. To register assets, :ref:`documentation/api_reference:Schemas`
@@ -124,11 +124,11 @@ setup_diabetes(data_path=data_path)
 
 # %%
 # Registering data samples and dataset
-# ************************************
+# ------------------------------------
 #
 # A dataset represents the data in Substra. It contains some metadata and an *opener*, a script used to load the
 # data from files into memory. You can find more details about datasets
-# in the :ref:`API reference<documentation/api_reference:SDK Reference>` .
+# in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>` .
 #
 
 dataset = DatasetSpec(
@@ -184,6 +184,7 @@ datasample_keys = {
 #   This Dockerfile also specifies the function name to execute.
 #
 # In this example, we will:
+#
 # 1. compute prerequisites for first-moment statistics on each data node;
 # 2. aggregate these values on the analytics computation node to get aggregated statistics;
 # 3. send these aggregated values to the data nodes, in order to compute second-moment prerequisite values;
@@ -195,7 +196,7 @@ datasample_keys = {
 # Local step: computing first order statistic moments
 # ---------------------------------------------------
 # First, we will compute on each data node some aggregated values: number of samples, sum of each numerical column
-# (it will be used to compute the mean), and count of each category for the categorical column (*Sex*).
+# (it will be used to compute the mean), and counts for each category for the categorical column (*Sex*).
 #
 # The computation is implemented in a *Python function* in the `federated_analytics_functions.py` file.
 # We also write a `Dockerfile` to define the entrypoint, and we wrap everything in a Substra ``FunctionSpec`` object.
@@ -307,7 +308,7 @@ print(f"Aggregation function key {aggregate_function_key}")
 # %%
 # Local step: computing second order statistic moments
 # ----------------------------------------------------
-# Idem for the second round of computations happening locally on the data nodes.
+# We also register the function for the second round of computations happening locally on the data nodes.
 #
 # Both aggregation steps will use the same function, so we don't need to register it again.
 
@@ -403,13 +404,16 @@ local_task_1_keys = {
     for client_id in DATA_PROVIDER_ORGS_ID
 }
 
+for client_id, key in local_task_1_keys.items():
+    print(f"Status of task {key} on client {client_id}: {clients[client_id].get_task(key).status}")
+
 # %%
 # In local_compute mode, the registered task is executed at once:
 # the registration function returns a value once the task has been executed.
 #
 # In deployed mode, the registered task is added to a queue and treated asynchronously: this means that the
 # code that registers the tasks keeps executing. To wait for a task to be done, create a loop and get the task
-# every n seconds until its status is done or failed.
+# every `n` seconds until its status is done or failed.
 #
 
 aggregation_1_inputs = [
