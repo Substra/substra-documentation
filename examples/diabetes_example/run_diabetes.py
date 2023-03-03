@@ -503,8 +503,8 @@ with open(task2.outputs["shared_states"].value.address.storage_address, "rb") as
 print(
     f"""Age mean: {out1['means']['age']:.2f} years
 Sex percentage:
-    Male: {out1['counts']['sex']['M']:.2f}%
-    Female: {out1['counts']['sex']['F']:.2f}%
+    Male: {100*out1['counts']['sex']['M']:.2f}%
+    Female: {100*out1['counts']['sex']['F']:.2f}%
 Blood pressure std: {out2["std"]["bp"]:.2f} mm Hg
 """
 )
