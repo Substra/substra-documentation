@@ -9,12 +9,12 @@ We use the **Diabetes dataset** available from the `Scikit-Learn dataset module 
 This dataset contains medical information such as Age, Sex or Blood pressure.
 The goal of this example is to compute some analytics such as Age mean, Blood pressure standard deviation or Sex percentage.
 
-We simulate having two different data organisations, and a third organisation which wants to access aggregated analytics
+We simulate having two different data organisations, and a third organisation which wants to compute aggregated analytics
 without having access to the raw data. The example here runs everything locally; however there is only one parameter to
 change to run it on a real network.
 
 **Caution:**
- This example is provided as an illustrative example only. In real life, you should be carefully not to
+ This example is provided as an illustrative example only. In real life, you should be careful not to
  accidentally leak private information when doing Federated Analytics. For example if a column contains very similar values,
  sharing its mean and its standard deviation is functionally equivalent to sharing the content of the column.
  It is **strongly recommended** to consider what are the potential security risks in your use case, and to act accordingly.
@@ -113,8 +113,8 @@ permissions = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_I
 
 root_dir = pathlib.Path.cwd()
 assets_directory = root_dir / "assets"
-assert assets_directory.is_dir(), """Did not find the asset directory, a directory called 'assets' is
-expected in the same location as this file"""
+assert assets_directory.is_dir(), """Did not find the asset directory,
+a directory called 'assets' is expected in the same location as this file"""
 
 data_path = assets_directory / "data"
 data_path.mkdir(exist_ok=True)
@@ -128,7 +128,7 @@ setup_diabetes(data_path=data_path)
 #
 # A dataset represents the data in Substra. It contains some metadata and an *opener*, a script used to load the
 # data from files into memory. You can find more details about datasets
-# in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>` .
+# in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>`.
 #
 
 dataset = DatasetSpec(
@@ -185,9 +185,9 @@ datasample_keys = {
 #
 # In this example, we will:
 #
-# 1. compute prerequisites for first-moment statistics on each data node;
-# 2. aggregate these values on the analytics computation node to get aggregated statistics;
-# 3. send these aggregated values to the data nodes, in order to compute second-moment prerequisite values;
+# 1. compute prerequisites for first-moment statistics on each data organization;
+# 2. aggregate these values on the analytics computation organization to get aggregated statistics;
+# 3. send these aggregated values to the data organizations, in order to compute second-moment prerequisite values;
 # 4. finally, aggregate these values to get second-moment aggregated statistics.
 #
 
@@ -408,7 +408,7 @@ for client_id, key in local_task_1_keys.items():
     print(f"Status of task {key} on client {client_id}: {clients[client_id].get_task(key).status}")
 
 # %%
-# In local_compute mode, the registered task is executed at once:
+# In local mode, the registered task is executed at once:
 # the registration function returns a value once the task has been executed.
 #
 # In deployed mode, the registered task is added to a queue and treated asynchronously: this means that the
