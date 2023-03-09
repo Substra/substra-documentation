@@ -1,7 +1,7 @@
 """
-=======
-Titanic
-=======
+=================================================================
+Running Substra with a single organisation on the Titanic dataset
+=================================================================
 
 This example is based on `the similarly named Kaggle challenge <https://www.kaggle.com/c/titanic/overview>`__.
 
@@ -29,9 +29,7 @@ To run this example, you have two options:
 
         :download:`assets required to run this example <../../../../tmp/titanic_assets.zip>`
 
-  * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
-  * **Substra** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
-
+  Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
 
 """
 

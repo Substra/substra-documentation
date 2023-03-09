@@ -24,6 +24,8 @@ import sphinx_rtd_theme
 import git
 import yaml
 
+from sphinx_gallery.sorting import ExplicitOrder
+
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
@@ -97,6 +99,9 @@ def zip_dir(source_dir, zip_file_name):
 
 assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
+
+assets_dir_diabetes = Path(__file__).parents[2] / "examples" / "diabetes_example" / "assets"
+zip_dir(assets_dir_diabetes, "diabetes_assets.zip")
 
 assets_dir_substrafl_torch_fedavg = (
     Path(__file__).parents[2] / "substrafl_examples" / "get_started" / "torch_fedavg_assets"
@@ -383,7 +388,12 @@ sphinx_gallery_conf = {
     "reference_url": {"Substra": None},
     "examples_dirs": ["../../examples", "../../substrafl_examples"],
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
-    "subsection_order": SubSectionTitleOrder("../../examples"),
+    "subsection_order": ExplicitOrder([
+        "../../examples/titanic_example",
+        "../../examples/diabetes_example",
+        "../../substrafl_examples/get_started",
+        "../../substrafl_examples/go_further",
+    ]),
     "download_all_examples": False,
     "filename_pattern": "/run_",
     "binder": {
