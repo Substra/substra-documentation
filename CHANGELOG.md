@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Update Iris example to init model parameter in the new initialisation task ([#289](https://github.com/Substra/substra-documentation/pull/289))
+- `Algo`as `Strategy` parameter in SubstraFL examples (#287)
 - Clarify how to login in the remote mode (#281)
 - Improve permission page (#279)
 - Improve installation paragraph in landing page (#276)
