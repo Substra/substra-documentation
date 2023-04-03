@@ -28,6 +28,32 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.26 - 2023-04-03
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Improve backend performance when handling large amounts of compute plans and tasks. This will result in faster front-end pages.
+- Rename Algo to Function.
+- SSO Login
+- Add a task duration breakdown for every task in the front-end:
+
+.. figure:: ../static/images/substra-0.26-task-duration.png
+  :align: center
+  :alt: Screenshot of task duration
+
+Front-end:
+
+- Fix issue where a performance of `0` was displayed as `-`.
+
+SubstraFL:
+
+- BREAKING: `algo` are now passed as a parameter to the `strategy` and not to `execute_experiement` anymore.
+- BREAKING A `strategy` need to implement a new method `build_graph` to build the graph of tasks to be execute in `execute_experiment`.
+- BREAKING: `predict` method of `strategy` has been renamed to `perform_predict` .
+- BREAKING: clarify `EvaluationStrategy` arguments: change `rounds` to `eval_frequency` and `eval_rounds`.
+- Fix issue when `aggregation_lr` could not be changed in the Scaffold Strategy.
+- Add Initialization task to each strategy in SubstraFL
+
+
 Substra 0.25.0 - 2023-02-17
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
