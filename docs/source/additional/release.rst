@@ -47,10 +47,10 @@ Front-end:
 SubstraFL:
 
 - **BREAKING CHANGE**: ``algo`` are now passed as a parameter to the ``strategy`` and not to ``execute_experiement`` anymore.
-- **BREAKING CHANGE**: A ``strategy`` need to implement a new method ``build_graph`` to build the graph of tasks to be execute in ``execute_experiment``.
-- **BREAKING CHANGE**: ``predict`` method of ``strategy`` has been renamed to ``perform_predict`` .
+- **BREAKING CHANGE**: a ``strategy`` needs to implement a new method ``build_graph`` to build the graph of tasks to be executed in ``execute_experiment``.
+- **BREAKING CHANGE**: ``predict`` method of ``strategy`` has been renamed to ``perform_predict``.
 - **BREAKING CHANGE**: clarify ``EvaluationStrategy`` arguments: change ``rounds`` to ``eval_frequency`` and ``eval_rounds``.
-- Fix issue when ``aggregation_lr`` could not be changed in the Scaffold Strategy.
+- Fix an issue where ``aggregation_lr`` could not be changed in the Scaffold strategy.
 - Add Initialization task to each strategy in SubstraFL
 
 
