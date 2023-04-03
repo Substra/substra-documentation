@@ -10,3 +10,4 @@ User guide
     gpu.rst
     substra_tools.rst
     get_performances.rst
+    r_scripts.rst
