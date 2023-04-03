@@ -28,8 +28,8 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
-Substra 0.26 - 2023-04-03
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.26.0 --- 2023-04-03
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Improve backend performance when handling large amounts of compute plans and tasks. This will result in faster front-end pages.
 - Rename Algo to Function.
@@ -42,20 +42,20 @@ Substra 0.26 - 2023-04-03
 
 Front-end:
 
-- Fix issue where a performance of `0` was displayed as `-`.
+- Fix issue where a performance of ``0`` was displayed as ``-``.
 
 SubstraFL:
 
-- BREAKING: `algo` are now passed as a parameter to the `strategy` and not to `execute_experiement` anymore.
-- BREAKING A `strategy` need to implement a new method `build_graph` to build the graph of tasks to be execute in `execute_experiment`.
-- BREAKING: `predict` method of `strategy` has been renamed to `perform_predict` .
-- BREAKING: clarify `EvaluationStrategy` arguments: change `rounds` to `eval_frequency` and `eval_rounds`.
-- Fix issue when `aggregation_lr` could not be changed in the Scaffold Strategy.
+- **BREAKING CHANGE**: ``algo`` are now passed as a parameter to the ``strategy`` and not to ``execute_experiement`` anymore.
+- **BREAKING CHANGE**: A ``strategy`` need to implement a new method ``build_graph`` to build the graph of tasks to be execute in ``execute_experiment``.
+- **BREAKING CHANGE**: ``predict`` method of ``strategy`` has been renamed to ``perform_predict`` .
+- **BREAKING CHANGE**: clarify ``EvaluationStrategy`` arguments: change ``rounds`` to ``eval_frequency`` and ``eval_rounds``.
+- Fix issue when ``aggregation_lr`` could not be changed in the Scaffold Strategy.
 - Add Initialization task to each strategy in SubstraFL
 
 
-Substra 0.25.0 - 2023-02-17
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.25.0 --- 2023-02-17
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **BREAKING CHANGE**: ``DataSampleSpec`` does not have a ``test_only`` field anymore.
 - SubstraFL: It is now possible to test on an organization where no training have been performed.
@@ -63,15 +63,15 @@ Substra 0.25.0 - 2023-02-17
 - Fix an issue where Skaffold spawned too many backends.
 - Add contributing guide & code of conduct to all repos.
 
-Substra 0.24.0 - 2023-01-13
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.24.0 --- 2023-01-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Fix issue where launching a large compute sometimes fails with: ``ERROR: could not serialize access due to read/write dependencies among transactions (SQLSTATE 40001)``
 - Documentation: add **contributing guide** and **code of conduct**
 - Update **Substra Tools** base docker image to ``substra-tools:0.20.0-nvidiacuda11.6.0-base-ubuntu20.04-python3.*``
 
-Substra 0.23.1 - 2022-11-24
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.23.1 --- 2022-11-24
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Main changes
 
@@ -221,8 +221,8 @@ Substra Backend:
 
 - Prevent use of ``__`` in asset metadata keys
 
-Substra 0.22.0 - 2022-10-20
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.22.0 --- 2022-10-20
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Main changes
 
@@ -376,8 +376,8 @@ could be replace with:
       tools.metrics.execute(AUC())
 
 
-Substra 0.21.0 - 2022-09-12
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Substra 0.21.0 --- 2022-09-12
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is our first open source release since 2021! When the product was closed source it used to be named Connect. It is now renamed Substra.
 
