@@ -1,13 +1,16 @@
 How-to use R scripts with Substra
 =================================
 
-SubstraFL is a library made for working in Python, but Substra is flexible enough to accommodate running tasks in other programming languages.
+The high-level SubstraFL library is made for working in Python, but the lower-level library Substra is flexible enough
+to accommodate running tasks in other programming languages.
 This how-to guide explains how to run scripts written in R with Substra.
 This uses the low-level interface of Substra and requires writing more boilerplate code than using the high-level interface of SubstraFL.
 If you are not familiar with the Substra low-level library, you should read the
-:ref:`Substra introductory example <Titanic example>` first.
+:doc:`Substra introductory example </auto_examples/titanic_example/run_titanic>` first.
 
-.. caution:: This guide provides an easy to run some scripts in another language. The scripts are wrapped up in a Python process, so performances might be limited.
+.. caution:: This guide provides an easy to run some scripts in another language.
+    The scripts are wrapped up in a Python process, so performances might be limited.
+    In particular, multithreading is not supported.
 
 Preparing the R script
 ----------------------
@@ -15,7 +18,6 @@ The inputs of your script are passed as arguments in the command line. This incl
 (relative) file paths to data.
 
 The outputs of the scripts are written to stdout, and will be parsed later by the Python script.
-
 Below is an example of what your file should look like:
 
 .. code-block:: R
@@ -32,11 +34,11 @@ Calling the R script from Python
 --------------------------------
 The Python script passed to Substra wraps the R script, so that it can be executed as a Python subprocess.
 The Python script reads the inputs defined as Substra ``FunctionInputSpec``, converts everything to string,
-appends all parameters in a command (``subprocess.run`` expects a list of str) and launched the subprocess.
+appends all parameters in a command (``subprocess.run`` expects a list of str) and launches the subprocess.
 After the subprocess has finished, the output is cleaned.
-Everything printed to stdout in the R script is in the string ``raw_output.stdout``, depending on the type of output,
-additional cleaning steps might be required.
-Finally, the output is saved as a pickle file, to be shared with other nodes in the organisation.
+Everything printed to stdout in the R script is available in the Python code through the ``str`` variable ``raw_output.stdout``.
+Depending on the type of output, additional cleaning steps might be required.
+Finally, the output is saved as a pickle file, to be shared with other organisations.
 
 .. code-block:: Python
     :caption: python_wrapper.py
@@ -101,8 +103,8 @@ We modify the Dockerfile to install R in the container, and copy both R and Pyth
      && apt-get -y install r-base
 
     # add your algorithm scripts to docker image
-    ADD my_script.R .
     ADD python_wrapper.py .
+    ADD my_script.R .
 
     # define how script is run
     ENTRYPOINT ["python3", "python_wrapper.py", "--function-name", "run_script"]
