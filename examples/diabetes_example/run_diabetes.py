@@ -104,7 +104,9 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 # - Permissions allow you to execute a function on a certain dataset.
 #
 
-permissions = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_ID])
+permissions_local = Permissions(public=False, authorized_ids=DATA_PROVIDER_ORGS_ID)
+permissions_aggregation = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_ID])
+
 # %%
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
 #
@@ -136,15 +138,12 @@ dataset = DatasetSpec(
     type="csv",
     data_opener=assets_directory / "dataset" / "diabetes_opener.py",
     description=data_path / "description.md",
-    permissions=permissions,
-    logs_permission=permissions,
+    permissions=permissions_local,
+    logs_permission=permissions_local,
 )
 
 # We register the dataset for each of the organisations
-dataset_keys = {
-    client_id: clients[client_id].add_dataset(dataset)
-    for client_id in DATA_PROVIDER_ORGS_ID
-}
+dataset_keys = {client_id: clients[client_id].add_dataset(dataset) for client_id in DATA_PROVIDER_ORGS_ID}
 
 for client_id, key in dataset_keys.items():
     print(f"Dataset key for {client_id}: {key}")
@@ -210,6 +209,7 @@ datasample_keys = {
 
 # %%
 
+
 local_first_order_computation_docker_files = [
     assets_directory / "functions" / "federated_analytics_functions.py",
     assets_directory / "functions" / "local_first_order_computation" / "Dockerfile",
@@ -227,15 +227,11 @@ local_first_order_function_inputs = [
         optional=False,
         multiple=True,
     ),
-    FunctionInputSpec(
-        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
+    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
 ]
 
 local_first_order_function_outputs = [
-    FunctionOutputSpec(
-        identifier="local_analytics_first_moments", kind=AssetKind.model, multiple=False
-    )
+    FunctionOutputSpec(identifier="local_analytics_first_moments", kind=AssetKind.model, multiple=False)
 ]
 
 local_first_order_function = FunctionSpec(
@@ -244,13 +240,12 @@ local_first_order_function = FunctionSpec(
     outputs=local_first_order_function_outputs,
     description=assets_directory / "functions" / "description.md",
     file=local_archive_first_order_computation_path,
-    permissions=permissions,
+    permissions=permissions_local,
 )
 
 
 local_first_order_function_keys = {
-    client_id: clients[client_id].add_function(local_first_order_function)
-    for client_id in DATA_PROVIDER_ORGS_ID
+    client_id: clients[client_id].add_function(local_first_order_function) for client_id in DATA_PROVIDER_ORGS_ID
 }
 
 print(f"Local function key for step 1: computing first order moments {local_first_order_function_keys}")
@@ -271,9 +266,7 @@ aggregate_function_docker_files = [
     assets_directory / "functions" / "aggregation" / "Dockerfile",
 ]
 
-aggregate_archive_path = (
-    assets_directory / "functions" / "aggregate_function_analytics.zip"
-)
+aggregate_archive_path = assets_directory / "functions" / "aggregate_function_analytics.zip"
 with zipfile.ZipFile(aggregate_archive_path, "w") as z:
     for filepath in aggregate_function_docker_files:
         z.write(filepath, arcname=os.path.basename(filepath))
@@ -287,9 +280,7 @@ aggregate_function_inputs = [
     ),
 ]
 
-aggregate_function_outputs = [
-    FunctionOutputSpec(identifier="shared_states", kind=AssetKind.model, multiple=False)
-]
+aggregate_function_outputs = [FunctionOutputSpec(identifier="shared_states", kind=AssetKind.model, multiple=False)]
 
 aggregate_function = FunctionSpec(
     name="Aggregate Federated Analytics",
@@ -297,7 +288,7 @@ aggregate_function = FunctionSpec(
     outputs=aggregate_function_outputs,
     description=assets_directory / "functions" / "description.md",
     file=aggregate_archive_path,
-    permissions=permissions,
+    permissions=permissions_aggregation,
 )
 
 
@@ -335,12 +326,8 @@ local_second_order_function_inputs = [
         optional=False,
         multiple=True,
     ),
-    FunctionInputSpec(
-        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
-    ),
-    FunctionInputSpec(
-        identifier="shared_states", kind=AssetKind.model, optional=False, multiple=False
-    ),
+    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    FunctionInputSpec(identifier="shared_states", kind=AssetKind.model, optional=False, multiple=False),
 ]
 
 local_second_order_function_outputs = [
@@ -357,13 +344,12 @@ local_second_order_function = FunctionSpec(
     outputs=local_second_order_function_outputs,
     description=assets_directory / "functions" / "description.md",
     file=local_archive_second_order_computation_path,
-    permissions=permissions,
+    permissions=permissions_local,
 )
 
 
 local_second_order_function_keys = {
-    client_id: clients[client_id].add_function(local_second_order_function)
-    for client_id in DATA_PROVIDER_ORGS_ID
+    client_id: clients[client_id].add_function(local_second_order_function) for client_id in DATA_PROVIDER_ORGS_ID
 }
 
 print(f"Local function key for step 2: computing second order moments {local_second_order_function_keys}")
@@ -379,13 +365,11 @@ print(f"Local function key for step 2: computing second order moments {local_sec
 #
 
 data_manager_input = {
-    client_id: [InputRef(identifier="opener", asset_key=key)]
-    for client_id, key in dataset_keys.items()
+    client_id: [InputRef(identifier="opener", asset_key=key)] for client_id, key in dataset_keys.items()
 }
 
 datasample_inputs = {
-    client_id: [InputRef(identifier="datasamples", asset_key=key)]
-    for client_id, key in datasample_keys.items()
+    client_id: [InputRef(identifier="datasamples", asset_key=key)] for client_id, key in datasample_keys.items()
 }
 
 local_task_1_keys = {
@@ -393,11 +377,7 @@ local_task_1_keys = {
         TaskSpec(
             function_key=local_first_order_function_keys[client_id],
             inputs=data_manager_input[client_id] + datasample_inputs[client_id],
-            outputs={
-                "local_analytics_first_moments": ComputeTaskOutputSpec(
-                    permissions=permissions
-                )
-            },
+            outputs={"local_analytics_first_moments": ComputeTaskOutputSpec(permissions=permissions_aggregation)},
             worker=client_id,
         )
     )
@@ -429,7 +409,7 @@ aggregation_1_inputs = [
 aggregation_task_1 = TaskSpec(
     function_key=aggregate_function_key,
     inputs=aggregation_1_inputs,
-    outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions)},
+    outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions_local)},
     worker=ANALYTICS_PROVIDER_ORG_ID,
 )
 
@@ -450,14 +430,8 @@ local_task_2_keys = {
     client_id: clients[client_id].add_task(
         TaskSpec(
             function_key=local_second_order_function_keys[client_id],
-            inputs=data_manager_input[client_id]
-            + datasample_inputs[client_id]
-            + shared_inputs,
-            outputs={
-                "local_analytics_second_moments": ComputeTaskOutputSpec(
-                    permissions=permissions
-                )
-            },
+            inputs=data_manager_input[client_id] + datasample_inputs[client_id] + shared_inputs,
+            outputs={"local_analytics_second_moments": ComputeTaskOutputSpec(permissions=permissions_aggregation)},
             worker=client_id,
         )
     )
@@ -477,7 +451,7 @@ aggregation_2_inputs = [
 aggregation_task_2 = TaskSpec(
     function_key=aggregate_function_key,
     inputs=aggregation_2_inputs,
-    outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions)},
+    outputs={"shared_states": ComputeTaskOutputSpec(permissions=permissions_local)},
     worker=ANALYTICS_PROVIDER_ORG_ID,
 )
 

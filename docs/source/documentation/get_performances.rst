@@ -59,11 +59,11 @@ This script will automatically end if the :code:`performance.json` file has not 
         df = pd.DataFrame(dict_perf)
 
         for _, row in df.iterrows():
-            if row["testtuple_key"] in logged_rows:
+            if row["task_key"] in logged_rows:
                 continue
 
-            logged_rows.append(row["testtuple_key"])
+            logged_rows.append(row["task_key"])
 
-            step = int(row["round_idx"]) if row["round_idx"] is not None else int(row["testtuple_rank"])
+            step = int(row["round_idx"]) if row["round_idx"] is not None else int(row["task_rank"])
 
-            log_metric(f"{row['metric_name']}_{row['worker']}", row["performance"], step)
+            log_metric(f"{row['function_name']}_{row['worker']}", row["performance"], step)

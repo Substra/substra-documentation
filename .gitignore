@@ -151,6 +151,7 @@ docs/source/substrafl_doc/examples
 # Data folder when run locally
 **/data_iris
 **/data_mnist
+**/data
 
 # Algo files folder when run locally
 **/algo_files
