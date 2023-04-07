@@ -34,7 +34,7 @@ Substra 0.26.0 --- 2023-04-03
 - Improve backend performance when handling large amounts of compute plans and tasks. This will result in faster front-end pages.
 - Rename Algo to Function.
 - SSO Login
-- Add a task duration breakdown for every task in the front-end:
+- Experimental: Add a task duration breakdown for every task in the front-end. Note that this is an experimental feature and only works on the current backend you are logged into.
 
 .. figure:: ../static/images/substra-0.26-task-duration.png
   :align: center
