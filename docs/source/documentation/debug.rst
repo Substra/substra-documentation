@@ -35,7 +35,7 @@ The first step is to make sure your assets are working outside Substra. For inst
 Run tasks locally with the local mode
 -------------------------------------
 
-All the tasks that can be run on a deployed network can also be run locally in your Python environment. The only change needed is to set the backend_type parameter either to `subprocess` or `docker` when instantiating the client:
+All the tasks that can be run on a deployed network can also be run locally in your Python environment. The only change needed is to set the backend_type parameter either to ``subprocess`` or ``docker`` when instantiating the client:
 ::
 
     client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
@@ -60,20 +60,28 @@ The subprocess mode is much faster than the Docker mode, but does not test that 
 Local assets are saved in-memory, they have the same lifetime as the Client object (deleted at the end of the script).
 Whenever a task fails, an error will be raised and logs of the tasks will be included in the error message. The logs of tasks that did not fail are not accessible.
 
+Debug tasks running in subprocess mode with ``pdb``
+---------------------------------------------------
+
+While running your tasks in ``subprocess`` mode, you can use the `Python debugger <https://docs.python.org/3/library/pdb.html>`__ to set breakpoints inside your code.
+
+If you are running some Substra code inside a Pytest test, setting breakpoints the usual way won't work though, due to the way Pytest is handling subprocesses.
+You can use `remote pdb <https://python-remote-pdb.readthedocs.io/en/stable/readme.html#usage>`__ instead.
+
 .. _hybrid_mode:
 
 Test remote assets locally with the hybrid mode
 -----------------------------------------------
 
 A hybrid step between testing everything locally and launching tasks on a deployed platform is to test locally remote assets. In this setting, the platform is accessed in `read-only` mode and any asset created is created locally. Experiments can be launched with a mix of remote and local assets, for example using a function from the deployed platform on a local dataset produces a local model.
-To do so, instantiate a Client with the parameter `backend_type="subprocess"` or `backend_type="docker"` and use remote assets when creating tasks.
+To do so, instantiate a Client with the parameter ``backend_type="subprocess"`` or ``backend_type="docker"`` and use remote assets when creating tasks.
 ::
 
     client = substra.Client.from_config_file(profile_name="org-1", backend_type="subprocess")
 
 Any function to get, describe or download an asset works with assets from the deployed platform as well as with local assets. Functions to list assets list the assets from the platform and the local ones. However, unlike every other asset, models on the platform cannot be used in local tasks. Moreover, functions that create a new asset will only create local assets.
 
-Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the `fake_data()` methods in the dataset opener.
+Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the ``fake_data()`` methods in the dataset opener.
 
 .. _deployed_mode:
 
@@ -88,15 +96,15 @@ To facilitate debugging where a task has failed on a deployed platform, it is us
 Error types
 ^^^^^^^^^^^
 
-Every task has an `error_type` property that can be read by any user of any organization.
+Every task has an ``error_type`` property that can be read by any user of any organization.
 
-The `error_type` can take three values:
+The ``error_type`` can take three values:
 
 * **BUILD_ERROR**: The error happened when building the Docker image.
 * **EXECUTION_ERROR**: The error happened when executing a function.
 * **INTERNAL_ERROR**: Error in the Substra product. In this case, please, raise an issue on Github or reach out on Slack.
 
-If the field is `None`, it means there was no error, and the task status is not FAILED.
+If the field is ``None``, it means there was no error, and the task status is not FAILED.
 
 Example:
 ::
@@ -111,17 +119,17 @@ Accessing failed tasks logs
 
 Logs of tasks that were run on the deployed platform can be accessed under two conditions:
 
-* The task has failed and the `error_type` is an `EXECUTION_ERROR` or a `BUILD_ERROR`.
+* The task has failed and the ``error_type`` is an ``EXECUTION_ERROR`` or a ``BUILD_ERROR``.
 * The user belongs to an organization that has permissions to access the logs of this task.
 
-Logs of failed tasks can be accessed if the right permission is set on the dataset used in the task. Permissions are set when the dataset is created using the `logs_permission` field of the `DatasetSpec`. Permissions cannot be changed once the dataset is created.
+Logs of failed tasks can be accessed if the right permission is set on the dataset used in the task. Permissions are set when the dataset is created using the ``logs_permission`` field of the ``DatasetSpec``. Permissions cannot be changed once the dataset is created.
 
 More specifically:
 
 * if the task use a dataset, the log permission is the one defined in the dataset used.
 * if there is no dataset used in the task, the log permission is the union of the log permissions of parent tasks.
 
-Given the right permissions, one can then access the logs with the `get_logs()` function::
+Given the right permissions, one can then access the logs with the ``get_logs()`` function::
 
     logs = client.get_logs(task_key)
     print(logs)
