@@ -471,12 +471,13 @@ compute_plan = execute_experiment(
 )
 
 # %%
-# The compute plan created is composed of 27 tasks:
+# The compute plan created is composed of 29 tasks:
 #
 # * For each local training step, we create 3 tasks per organisation: training + prediction + evaluation -> 3 tasks.
-# * We are training on 2 data organizations; for each round, we have 3 * 2 local taks + 1 aggregation task -> 7 tasks.
+# * We are training on 2 data organizations; for each round, we have 3 * 2 local tasks + 1 aggregation task -> 7 tasks.
 # * We are training for 3 rounds: 3 * 7 -> 21 tasks.
-# * After the last aggregation step, there are three more tasks: applying the last updates from the aggregator + prediction + evaluation, on both organizations: 21 + 2 * 3 -> 27 tasks
+# * Before the first local training step, there is an initialization step on each data organization: 21 + 2 -> 23 tasks.
+# * After the last aggregation step, there are three more tasks: applying the last updates from the aggregator + prediction + evaluation, on both organizations: 23 + 2 * 3 -> 29 tasks
 
 # %%
 # Explore the results
