@@ -270,7 +270,6 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
     "pandas": ("https://pandas.pydata.org/docs/", None),
-    "torch": ("https://pytorch.org/docs/master/", None),
 }
 
 
@@ -303,6 +302,8 @@ copybutton_prompt_text = ">>> "
 # As we defined the type of our args, auto doc is trying to find a link to a
 # documentation for each type specified
 # The following elements are the link that auto doc were not able to do
+autodoc_mock_imports = ["torch"]
+
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
     ("py:class", "torch.nn.modules.module.Module"),
