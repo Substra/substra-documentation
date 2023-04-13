@@ -245,7 +245,6 @@ release = _doc_version
 # ones.
 extensions = ["sphinx_gallery.gen_gallery"]
 
-
 extensions.extend(
     [
         "sphinx.ext.intersphinx",
@@ -300,6 +299,8 @@ napoleon_numpy_docstring = False
 
 # Remove the prompt when copying examples
 copybutton_prompt_text = ">>> "
+
+autodoc_mock_imports = ["torch"]
 
 # As we defined the type of our args, auto doc is trying to find a link to a
 # documentation for each type specified
@@ -388,12 +389,14 @@ sphinx_gallery_conf = {
     "reference_url": {"Substra": None},
     "examples_dirs": ["../../examples", "../../substrafl_examples"],
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
-    "subsection_order": ExplicitOrder([
-        "../../examples/titanic_example",
-        "../../examples/diabetes_example",
-        "../../substrafl_examples/get_started",
-        "../../substrafl_examples/go_further",
-    ]),
+    "subsection_order": ExplicitOrder(
+        [
+            "../../examples/titanic_example",
+            "../../examples/diabetes_example",
+            "../../substrafl_examples/get_started",
+            "../../substrafl_examples/go_further",
+        ]
+    ),
     "download_all_examples": False,
     "filename_pattern": "/run_",
     "binder": {
