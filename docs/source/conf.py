@@ -265,16 +265,9 @@ sys.path.append(os.path.abspath("./_ext"))
 extensions.append("compatibilitytable")
 
 todo_include_todos = False
+
 autodoc_mock_imports = ["torch"]
 
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", None),
-    "numpy": ("https://numpy.org/doc/stable/", None),
-    "pandas": ("https://pandas.pydata.org/docs/", None),
-    "torch": ("https://pytorch.org/docs/stable/", None),
-}
-
-autodoc_typehints = "both"
 
 ################
 # Substrafl API
