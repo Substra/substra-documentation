@@ -245,7 +245,6 @@ release = _doc_version
 # ones.
 extensions = ["sphinx_gallery.gen_gallery"]
 
-
 extensions.extend(
     [
         "sphinx.ext.intersphinx",
@@ -274,7 +273,6 @@ intersphinx_mapping = {
     "torch": ("https://pytorch.org/docs/stable/", None),
 }
 
-autodoc_typehints = "both"
 
 ################
 # Substrafl API
@@ -301,9 +299,11 @@ napoleon_numpy_docstring = False
 # Remove the prompt when copying examples
 copybutton_prompt_text = ">>> "
 
+
 # As we defined the type of our args, auto doc is trying to find a link to a
 # documentation for each type specified
 # The following elements are the link that auto doc were not able to do
+
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
     ("py:class", "torch.nn.modules.module.Module"),
@@ -311,7 +311,26 @@ nitpick_ignore = [
     ("py:class", "torch.optim.optimizer.Optimizer"),
     ("py:class", "torch.optim.lr_scheduler._LRScheduler"),
     ("py:class", "torch.utils.data.dataset.Dataset"),
-    ("py:class", "torch.device"),
+    ("py:class", "torch.nn.modules.module.T"),
+    ("py:class", "string"),
+    ("py:class", "Module"),
+    ("py:class", "optional"),
+    ("py:class", "Dropout"),
+    ("py:class", "BatchNorm"),
+    ("py:class", "torch.utils.hooks.RemovableHandle"),
+    ("py:class", "torch.nn.Parameter"),
+    ("py:class", "Parameter"),
+    ("py:class", "Tensor"),
+    ("py:attr", "persistent"),
+    ("py:attr", "grad_input"),
+    ("py:attr", "strict"),
+    ("py:attr", "grad_output"),
+    ("py:attr", "requires_grad"),
+    ("py:attr", "device"),
+    ("py:attr", "non_blocking"),
+    ("py:attr", "dst_type"),
+    ("py:attr", "dtype"),
+    ("py:attr", "device"),
     ("py:class", "substra.sdk.schemas.Permissions"),
     ("py:class", "substra.Client"),
     ("py:class", "substra.sdk.client.Client"),
@@ -388,12 +407,14 @@ sphinx_gallery_conf = {
     "reference_url": {"Substra": None},
     "examples_dirs": ["../../examples", "../../substrafl_examples"],
     "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
-    "subsection_order": ExplicitOrder([
-        "../../examples/titanic_example",
-        "../../examples/diabetes_example",
-        "../../substrafl_examples/get_started",
-        "../../substrafl_examples/go_further",
-    ]),
+    "subsection_order": ExplicitOrder(
+        [
+            "../../examples/titanic_example",
+            "../../examples/diabetes_example",
+            "../../substrafl_examples/get_started",
+            "../../substrafl_examples/go_further",
+        ]
+    ),
     "download_all_examples": False,
     "filename_pattern": "/run_",
     "binder": {
