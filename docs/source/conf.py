@@ -303,7 +303,6 @@ copybutton_prompt_text = ">>> "
 # As we defined the type of our args, auto doc is trying to find a link to a
 # documentation for each type specified
 # The following elements are the link that auto doc were not able to do
-autodoc_mock_imports = ["torch"]
 
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
@@ -312,7 +311,26 @@ nitpick_ignore = [
     ("py:class", "torch.optim.optimizer.Optimizer"),
     ("py:class", "torch.optim.lr_scheduler._LRScheduler"),
     ("py:class", "torch.utils.data.dataset.Dataset"),
-    ("py:class", "torch.device"),
+    ("py:class", "torch.nn.modules.module.T"),
+    ("py:class", "string"),
+    ("py:class", "Module"),
+    ("py:class", "optional"),
+    ("py:class", "Dropout"),
+    ("py:class", "BatchNorm"),
+    ("py:class", "torch.utils.hooks.RemovableHandle"),
+    ("py:class", "torch.nn.Parameter"),
+    ("py:class", "Parameter"),
+    ("py:class", "Tensor"),
+    ("py:attr", "persistent"),
+    ("py:attr", "grad_input"),
+    ("py:attr", "strict"),
+    ("py:attr", "grad_output"),
+    ("py:attr", "requires_grad"),
+    ("py:attr", "device"),
+    ("py:attr", "non_blocking"),
+    ("py:attr", "dst_type"),
+    ("py:attr", "dtype"),
+    ("py:attr", "device"),
     ("py:class", "substra.sdk.schemas.Permissions"),
     ("py:class", "substra.Client"),
     ("py:class", "substra.sdk.client.Client"),
