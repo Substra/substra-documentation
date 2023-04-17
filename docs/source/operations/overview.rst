@@ -19,7 +19,7 @@ The charts are available in the Substra repository:
 
     helm repo add substra https://substra.github.io/charts
 
-For each component in the section below, configuration options relates to the component's chart unless specified otherwise.
+For each component in the section below, configuration options relate to the component's chart unless specified otherwise.
 
 .. _cert-manager: https://cert-manager.io
 
