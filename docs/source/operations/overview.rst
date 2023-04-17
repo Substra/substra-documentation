@@ -19,9 +19,26 @@ The charts are available in the Substra repository:
 
     helm repo add substra https://substra.github.io/charts
 
-For each component section below, configuration options relates to the component's chart unless specified otherwise.
+For each component in the section below, configuration options relate to the component's chart unless specified otherwise.
 
 .. _cert-manager: https://cert-manager.io
+
+Hardware requirements
+---------------------
+
+Each backend needs the following resources to run Substra:
+
+* 8 CPU
+* 30 GB of RAM
+* 300 GB of storage
+
+In addition, you need to consider the resources required by the compute tasks. For example, if each task needs 10 GB of RAM and you have two tasks running in parallel for a single backend, you will need a total of 50 GB of RAM (30 GB + 2*10 GB). The same applies to CPU usage and storage requirements (datasets and models).
+
+The orchestrator needs the following resources:
+
+* 4 CPU
+* 16 GB of RAM
+* 100 GB of storage
 
 Shared secrets
 --------------

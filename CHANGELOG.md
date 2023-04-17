@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add hardware requirements (#300)
+
 ## [0.26.0]
 
 - Update Iris example to init model parameter in the new initialisation task ([#289](https://github.com/Substra/substra-documentation/pull/289))
