@@ -62,8 +62,6 @@ print(
     f"\n - substrafl: {SUBSTRAFL_VERSION}"
 )
 
-breakpoint()
-
 
 class SubSectionTitleOrder:
     """Sort example gallery by title of subsection.
