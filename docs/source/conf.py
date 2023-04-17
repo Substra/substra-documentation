@@ -27,11 +27,28 @@ import yaml
 from sphinx_gallery.sorting import ExplicitOrder
 
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
+TMP_FOLDER.mkdir(exist_ok=True)
 
-if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag":
-    SUBSTRA_VERSION = "0.43.0"
-    TOOLS_VERSION = "0.20.0"
-    SUBSTRAFL_VERSION = "0.35.1"
+# Generate a JSON compatibility table
+
+html_extra_path = []
+
+with open("additional/releases.yaml") as f:
+    table = yaml.safe_load(f)
+    dest = Path(TMP_FOLDER, "releases.json")
+    with open(dest, "w") as f:
+        json.dump(table, f)
+        html_extra_path.append(str(dest))
+
+repo = git.Repo(search_parent_directories=True)
+current_commit = repo.head.commit.hexsha
+tags_commit = [tag.commit.hexsha for tag in repo.tags]
+
+if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit in tags_commit:
+    # Index 0 means latest release
+    SUBSTRA_VERSION = table["releases"][0]["components"]["substra"]["version"]
+    TOOLS_VERSION = table["releases"][0]["components"]["substra-tools"]["version"]
+    SUBSTRAFL_VERSION = table["releases"][0]["components"]["substrafl"]["version"]
 
 else:
     SUBSTRA_VERSION = "main"
@@ -44,6 +61,8 @@ print(
     f"\n - substra-tools: {TOOLS_VERSION}"
     f"\n - substrafl: {SUBSTRAFL_VERSION}"
 )
+
+breakpoint()
 
 
 class SubSectionTitleOrder:
@@ -80,9 +99,6 @@ class SubSectionTitleOrder:
         if title_match is not None:
             return title_match.group(1)
         return directory
-
-
-TMP_FOLDER.mkdir(exist_ok=True)
 
 
 # zip the assets directory found in the examples directory and place it in the current dir
@@ -354,21 +370,10 @@ templates_path = ["templates/"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-html_extra_path = []
-
 rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
 .. |substrafl_version| replace:: {importlib.import_module('substrafl').__version__}
 """
-
-# Generate a JSON compatibility table
-
-with open("additional/releases.yaml") as f:
-    table = yaml.safe_load(f)
-    dest = Path(TMP_FOLDER, "releases.json")
-    with open(dest, "w") as f:
-        json.dump(table, f)
-        html_extra_path.append(str(dest))
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -398,8 +403,6 @@ html_show_sphinx = False
 html_context = {
     "display_github": False,
 }
-
-current_commit = git.Repo(search_parent_directories=True).head.object.hexsha
 
 sphinx_gallery_conf = {
     "remove_config_comments": True,
