@@ -34,10 +34,10 @@ TMP_FOLDER.mkdir(exist_ok=True)
 html_extra_path = []
 
 with open("additional/releases.yaml") as f:
-    table = yaml.safe_load(f)
+    release_table = yaml.safe_load(f)
     dest = Path(TMP_FOLDER, "releases.json")
     with open(dest, "w") as f:
-        json.dump(table, f)
+        json.dump(release_table, f)
         html_extra_path.append(str(dest))
 
 repo = git.Repo(search_parent_directories=True)
@@ -46,9 +46,9 @@ tags_commit = [tag.commit.hexsha for tag in repo.tags]
 
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit in tags_commit:
     # Index 0 means latest release
-    SUBSTRA_VERSION = table["releases"][0]["components"]["substra"]["version"]
-    TOOLS_VERSION = table["releases"][0]["components"]["substra-tools"]["version"]
-    SUBSTRAFL_VERSION = table["releases"][0]["components"]["substrafl"]["version"]
+    SUBSTRA_VERSION = release_table["releases"][0]["components"]["substra"]["version"]
+    TOOLS_VERSION = release_table["releases"][0]["components"]["substra-tools"]["version"]
+    SUBSTRAFL_VERSION = release_table["releases"][0]["components"]["substrafl"]["version"]
 
 else:
     SUBSTRA_VERSION = "main"
