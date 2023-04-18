@@ -20,8 +20,8 @@ You'll need to tell the backend to set the proper headers for cross-origin resou
      CORS_ALLOW_CREDENTIALS: True
      # you should already have ALLOWED_HOSTS under "config"
 
-Preparing your Helm values
-==========================
+Prepare your Helm values
+========================
 
 .. seealso::
    Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/substra-frontend>`_.

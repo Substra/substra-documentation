@@ -9,10 +9,10 @@ It can be deployed anywhere as long as the backends can connect to it. Putting i
 .. warning::
    The orchestrator is the ultimate source of truth and traceability in Substra.
    
-   This means in a "real" scenario it should be hosted by whichever organization is most trusted by all others, because it is where a bad actor could cause the most issues.
+   This means that, in a "real" scenario, it should be hosted by an organization trusted by all others, because it is where a bad actor could cause the most issues.
 
 Prepare your Helm values
-==========================
+========================
 
 .. seealso::
    Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.

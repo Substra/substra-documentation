@@ -7,7 +7,7 @@ By default, Substra instanciates PersistentVolumeClaims (PVCs) on the fly, which
 For example, you could make a copy of each volume from a Substra deployment and then create a new one configured to use the copies -- thus making a clone of the original instance.
 
 .. note::
-   Substra will still instanciate PVCs on the fly because it uses them as working storage for the compute jobs. But they won't contain data relevant to anything beyond the running tasks.
+   Substra will still instanciate PVCs on the fly! But this is only for moving data around during jobs, so the instanciated PVCs can generally be ignored and should not be backed up.
 
 Backend values:
 

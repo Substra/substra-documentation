@@ -8,7 +8,7 @@ This can be achieved either at deployment time or when the backend is already de
 Update your Helm values
 =======================
 
-This guide assume that you have two organization in your network, one named ``ingen`` and the other ``ingen``.
+This guide assume that you have two organization in your network, one named ``ingen`` and the other ``biotechnica``.
 The process would be the same if you have more organizations as we have to pair them. For example with three orgs you would repeat it for (org1, org2), (org1, org3) and (org2, org3).
 
 In this setup we want ``ingen`` to exchange assets with ``biotechnica``.

@@ -4,12 +4,12 @@ Deploy the backend
 
 Here we will deploy a node for the ``ingen`` organization onto ``cluster-1``.
 
-Obviously this will need to be repeated for ``biotechnica`` onto ``cluster-2``, with the appropriate values changed.
+This will need to be repeated for ``biotechnica`` onto ``cluster-2``, with the appropriate values changed.
 
 The backend depends on the orchestrator and will fail to run if the orchestrator is not available and operational.
 
 Prepare your Helm values
-==========================
+========================
 
 .. seealso::
    Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/substra-backend>`_.

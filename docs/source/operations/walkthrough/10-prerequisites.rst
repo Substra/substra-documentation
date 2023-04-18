@@ -21,7 +21,7 @@ You'll need:
       helm repo add substra https://substra.github.io/charts/
       helm repo update
 
-.. Leaving kubectl and helm purposefully unlinked because if you need a link you're definitively not ready for the rest of this
+.. Leaving kubectl and helm purposefully unlinked since they are part of the basics for this kind of work
 
 And also:
  - ``curl`` or similar for making sure the HTTP endpoints work 
