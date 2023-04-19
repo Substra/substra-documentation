@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Rename function names in examples (#302)
 - Add hardware requirements (#300)
 
 ## [0.26.0]
