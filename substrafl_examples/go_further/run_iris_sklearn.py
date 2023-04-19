@@ -149,9 +149,7 @@ from substrafl.dependency import Dependency
 
 metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
-permissions_metric = Permissions(
-    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
-)
+permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
 
 
 def accuracy(datasamples, predictions_path):
