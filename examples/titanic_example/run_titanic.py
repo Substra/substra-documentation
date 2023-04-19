@@ -190,7 +190,7 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
 metric_function = FunctionSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
-    name="Accuracy",
+    name="Testing with Accuracy metric",
     description=assets_directory / "metric" / "description.md",
     file=metric_archive_path,
     permissions=permissions,
@@ -230,7 +230,7 @@ train_function_inputs = [
 train_function_outputs = [FunctionOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
 
 train_function = FunctionSpec(
-    name="Titanic: Random Forest",
+    name="Training with Random Forest",
     inputs=train_function_inputs,
     outputs=train_function_outputs,
     description=assets_directory / "function_random_forest" / "description.md",
@@ -264,7 +264,7 @@ predict_function_inputs = [
 predict_function_outputs = [FunctionOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
 
 predict_function_spec = FunctionSpec(
-    name="Titanic: Random Forest - predict",
+    name="Predicting with Random Forest",
     inputs=predict_function_inputs,
     outputs=predict_function_outputs,
     description=assets_directory / "function_random_forest" / "description.md",

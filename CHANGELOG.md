@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Rename function names in examples ([#302](https://github.com/Substra/substra-documentation/pull/302))
+
 ## [0.26.2]
 
 - Fix Binder build on tags ([#301](https://github.com/Substra/substra-documentation/pull/301))
