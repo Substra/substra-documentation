@@ -42,10 +42,9 @@ with open("additional/releases.yaml") as f:
 
 repo = git.Repo(search_parent_directories=True)
 current_commit = repo.head.commit
+tagged_commits = [tag.commit for tag in repo.tags]
 
-if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit == repo.commit(
-    compat_table["releases"][0]["version"]
-):
+if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit in tagged_commits:
     # Index 0 means latest release
     SUBSTRA_VERSION = compat_table["releases"][0]["components"]["substra"]["version"]
     TOOLS_VERSION = compat_table["releases"][0]["components"]["substra-tools"]["version"]
