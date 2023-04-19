@@ -347,7 +347,7 @@ class TorchDataset(torch.utils.data.Dataset):
 from substrafl.algorithms.pytorch import TorchFedAvgAlgo
 
 
-class MyAlgo(TorchFedAvgAlgo):
+class TorchCNN(TorchFedAvgAlgo):
     def __init__(self):
         super().__init__(
             model=model,
@@ -371,7 +371,7 @@ class MyAlgo(TorchFedAvgAlgo):
 
 from substrafl.strategies import FedAvg
 
-strategy = FedAvg(algo=MyAlgo())
+strategy = FedAvg(algo=TorchCNN())
 
 # %%
 # Where to train where to aggregate

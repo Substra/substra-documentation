@@ -149,7 +149,9 @@ from substrafl.dependency import Dependency
 
 metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
+permissions_metric = Permissions(
+    public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID
+)
 
 
 def accuracy(datasamples, predictions_path):
@@ -212,7 +214,7 @@ os.environ["PYTHONWARNINGS"] = "ignore:lbfgs failed to converge (status=1):UserW
 # This section is the most important one for this example. We will define here the function that will run locally on
 # each node to train the model.
 #
-# As SubstraFL does not provide an SklearnFedAvgAlgo, we need to define one using the provided documentation on
+# As SubstraFL does not provide an algorithm comptatible with Sklearn, we need to define one using the provided documentation on
 # :ref:`substrafl_doc/api/algorithms:Base Class`.
 #
 # To define a custom algorithm, we will need to inherit from the base class Algo, and to define two properties and four
@@ -243,7 +245,7 @@ INPUT_SIZE = 4
 OUTPUT_SIZE = 3
 
 
-class SklearnFedAvgAlgo(algorithms.Algo):
+class SklearnLogisticRegression(algorithms.Algo):
     def __init__(self, model, seed=None):
         super().__init__(model=model, seed=seed)
 
@@ -372,7 +374,7 @@ class SklearnFedAvgAlgo(algorithms.Algo):
 
 from substrafl.strategies import FedAvg
 
-strategy = FedAvg(algo=SklearnFedAvgAlgo(model=cls, seed=SEED))
+strategy = FedAvg(algo=SklearnLogisticRegression(model=cls, seed=SEED))
 
 # %%
 # Where to train where to aggregate

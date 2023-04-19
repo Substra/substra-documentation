@@ -168,12 +168,20 @@ print(f"{len(test_data_sample_keys)} data samples were registered")
 # - a Dockerfile on which the user can specify the required dependencies of the Python scripts
 
 inputs_metrics = [
-    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    FunctionInputSpec(identifier="predictions", kind=AssetKind.model, optional=False, multiple=False),
+    FunctionInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    FunctionInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    FunctionInputSpec(
+        identifier="predictions", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-outputs_metrics = [FunctionOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)]
+outputs_metrics = [
+    FunctionOutputSpec(identifier="performance", kind=AssetKind.performance, multiple=False)
+]
 
 
 METRICS_DOCKERFILE_FILES = [
@@ -190,7 +198,7 @@ with zipfile.ZipFile(metric_archive_path, "w") as z:
 metric_function = FunctionSpec(
     inputs=inputs_metrics,
     outputs=outputs_metrics,
-    name="Accuracy",
+    name="Testing with Accuracy metric",
     description=assets_directory / "metric" / "description.md",
     file=metric_archive_path,
     permissions=permissions,
@@ -223,14 +231,20 @@ with zipfile.ZipFile(train_archive_path, "w") as z:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 train_function_inputs = [
-    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
+    FunctionInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    FunctionInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
 ]
 
-train_function_outputs = [FunctionOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)]
+train_function_outputs = [
+    FunctionOutputSpec(identifier="model", kind=AssetKind.model, multiple=False)
+]
 
 train_function = FunctionSpec(
-    name="Titanic: Random Forest",
+    name="Training with Random Forest",
     inputs=train_function_inputs,
     outputs=train_function_outputs,
     description=assets_directory / "function_random_forest" / "description.md",
@@ -250,21 +264,31 @@ ALGO_PREDICT_DOCKERFILE_FILES = [
     assets_directory / "function_random_forest/predict/Dockerfile",
 ]
 
-predict_archive_path = assets_directory / "function_random_forest" / "function_random_forest.zip"
+predict_archive_path = (
+    assets_directory / "function_random_forest" / "function_random_forest.zip"
+)
 with zipfile.ZipFile(predict_archive_path, "w") as z:
     for filepath in ALGO_PREDICT_DOCKERFILE_FILES:
         z.write(filepath, arcname=os.path.basename(filepath))
 
 predict_function_inputs = [
-    FunctionInputSpec(identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True),
-    FunctionInputSpec(identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False),
-    FunctionInputSpec(identifier="models", kind=AssetKind.model, optional=False, multiple=False),
+    FunctionInputSpec(
+        identifier="datasamples", kind=AssetKind.data_sample, optional=False, multiple=True
+    ),
+    FunctionInputSpec(
+        identifier="opener", kind=AssetKind.data_manager, optional=False, multiple=False
+    ),
+    FunctionInputSpec(
+        identifier="models", kind=AssetKind.model, optional=False, multiple=False
+    ),
 ]
 
-predict_function_outputs = [FunctionOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)]
+predict_function_outputs = [
+    FunctionOutputSpec(identifier="predictions", kind=AssetKind.model, multiple=False)
+]
 
 predict_function_spec = FunctionSpec(
-    name="Titanic: Random Forest - predict",
+    name="Predicting with Random Forest",
     inputs=predict_function_inputs,
     outputs=predict_function_outputs,
     description=assets_directory / "function_random_forest" / "description.md",
@@ -287,8 +311,12 @@ print(f"Predict function key {predict_function_key}")
 # Then a testing task is registered to test the trained model.
 
 data_manager_input = [InputRef(identifier="opener", asset_key=dataset_key)]
-train_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys]
-test_data_sample_inputs = [InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys]
+train_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in train_data_sample_keys
+]
+test_data_sample_inputs = [
+    InputRef(identifier="datasamples", asset_key=key) for key in test_data_sample_keys
+]
 
 train_task = TaskSpec(
     function_key=train_function_key,
