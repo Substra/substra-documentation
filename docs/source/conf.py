@@ -41,10 +41,11 @@ with open("additional/releases.yaml") as f:
         html_extra_path.append(str(dest))
 
 repo = git.Repo(search_parent_directories=True)
-current_commit = repo.head.commit.hexsha
-tags_commit = [tag.commit.hexsha for tag in repo.tags]
+current_commit = repo.head.commit
 
-if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit in tags_commit:
+if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit == repo.commit(
+    compat_table["releases"][0]["version"]
+):
     # Index 0 means latest release
     SUBSTRA_VERSION = compat_table["releases"][0]["components"]["substra"]["version"]
     TOOLS_VERSION = compat_table["releases"][0]["components"]["substra-tools"]["version"]
@@ -421,7 +422,7 @@ sphinx_gallery_conf = {
     "binder": {
         "org": "Substra",
         "repo": "substra-documentation",
-        "branch": current_commit,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
+        "branch": current_commit.hexsha,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
         "binderhub_url": "https://mybinder.org",  # public binderhub url
         "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
         "notebooks_dir": "notebooks",
