@@ -12,9 +12,8 @@ Check the :ref:`compatibility table` for the Helm chart version needed for the o
 Local tools
 ===========
 
-You'll need:
- - kubectl & Helm installed
- - to add the Substra helm repository:
+ - install kubectl and helm
+ - add the Substra helm repository:
    
    .. code-block:: shell
    
@@ -23,7 +22,7 @@ You'll need:
 
 .. Leaving kubectl and helm purposefully unlinked since they are part of the basics for this kind of work
 
-And also:
+Also install:
  - ``curl`` or similar for making sure the HTTP endpoints work 
  - `gRPCurl <https://github.com/fullstorydev/grpcurl>`_ for making sure the gRPC endpoint works
 
@@ -33,7 +32,7 @@ Infrastructure
 
 Substra is a federated learning tool and as such it makes little sense to have only one node running, or nodes running on the same cluster merely separated by a namespace.
 
-Therefore our production deployment will run on two separate Kubernetes clusters. They will of course need to be connected somehow -- we will use the internet.
+Therefore our production deployment will run on two separate Kubernetes clusters. They will need to be connected somehow -- we will use the internet.
 
 You will need to be able to give hostnames to endpoints. On the internet, this means owning a domain name and setting up DNS -- **everytime you see** ``DOMAIN``, **it means your own domain** you are setting this up under.
 
