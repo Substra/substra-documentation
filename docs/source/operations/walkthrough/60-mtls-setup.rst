@@ -27,7 +27,7 @@ The first step is to generate the Certificate Signing Request and a signing key 
 Then send the file named ``ORGNAME.csr`` to the organization managing the orchestrator for them to sign your certificate.
 
 Sign the Substra backend certificate
-===================================
+====================================
 
 Now that you have the Certificate Signing Request from your backend in your orchestrator, you can sign it with the orchestrator certificate authority.
 
@@ -45,7 +45,7 @@ Navigate to the directory where the files ``orchestrator-ca.crt`` and ``orchestr
 Then send the file named ``ORGNAME.crt`` back to the organization managing the Substra backend. You don't need to keep a copy of this certificate.
 
 Update backend configuration
-===========================
+============================
 
 Once you received the certificate (named ``ORGNAME.crt``), you can create a secret in the Kubernetes cluster containing this file and the file ``ORGNAME.key``:
 
