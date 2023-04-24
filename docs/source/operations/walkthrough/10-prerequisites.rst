@@ -12,18 +12,20 @@ Check the :ref:`compatibility table` for the Helm chart version needed for the o
 Local tools
 ===========
 
- - install kubectl and helm
- - add the Substra helm repository:
-   
-   .. code-block:: shell
-   
-      helm repo add substra https://substra.github.io/charts/
-      helm repo update
+Install:
+ - kubectl
+ - helm
+
+Add the Substra helm repository:
+.. code-block:: shell
+
+   helm repo add substra https://substra.github.io/charts/
+   helm repo update
 
 .. Leaving kubectl and helm purposefully unlinked since they are part of the basics for this kind of work
 
 Also install:
- - ``curl`` or similar for making sure the HTTP endpoints work 
+ - ``curl`` for making sure the HTTP endpoints work 
  - `gRPCurl <https://github.com/fullstorydev/grpcurl>`_ for making sure the gRPC endpoint works
 
 

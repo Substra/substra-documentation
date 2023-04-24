@@ -11,7 +11,7 @@ Naturally this could be repeated for ``biotechnica`` onto ``cluster-2``, with th
 Update the backend values
 =========================
 
-You'll need to tell the backend to set the proper headers for cross-origin resources, by adding new values in ``backend-ingen-values.yaml``:
+Tell the backend to set the proper headers for cross-origin resources, by adding new values in ``backend-ingen-values.yaml``:
 
 .. code-block:: yaml
 
@@ -28,7 +28,7 @@ Prepare your Helm values
 
 Create a file for your values, say ``frontend-ingen-values.yaml``.
 
-You'll need to specify the backend API url:
+Tell the frontend the backend API url:
 
 .. code-block:: yaml
 
