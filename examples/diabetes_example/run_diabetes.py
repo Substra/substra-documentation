@@ -78,7 +78,7 @@ from assets.dataset.diabetes_dataset import setup_diabetes
 
 # Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 3
-clients_list = [substra.Client(configuration_name=f"org-{i+1}") for i in range(N_CLIENTS)]
+clients_list = [substra.Client(client_name=f"org-{i+1}") for i in range(N_CLIENTS)]
 clients = {client.organization_info().organization_id: client for client in clients_list}
 
 # Store organization IDs
