@@ -44,9 +44,9 @@ from substra import Client
 
 N_CLIENTS = 3
 
-client_0 = Client(backend_type="subprocess")
-client_1 = Client(backend_type="subprocess")
-client_2 = Client(backend_type="subprocess")
+client_0 = Client(configuration_name="org-1")
+client_1 = Client(configuration_name="org-2")
+client_2 = Client(configuration_name="org-3")
 
 # %%
 # Every computation will run in ``subprocess`` mode, where everything runs locally in Python
@@ -451,6 +451,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
+import time
 
 # A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
@@ -468,7 +469,9 @@ compute_plan = execute_experiment(
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=algo_deps,
+    clean_models=False,
 )
+
 
 # %%
 # The compute plan created is composed of 29 tasks:
@@ -483,6 +486,12 @@ compute_plan = execute_experiment(
 # Explore the results
 # *******************
 
+# if we are using remote clients, we have to wait until the compute plan is done before getting the results
+while (
+        client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_DOING"
+        or client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_TODO"
+):
+    time.sleep(2)
 # %%
 # List results
 # ============
