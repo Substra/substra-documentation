@@ -66,7 +66,7 @@ from substra.sdk.schemas import (
 #  - ``docker`` all tasks will be executed from docker containers (default)
 #  - ``subprocess`` all tasks will be executed from Python subprocesses (faster)
 
-client = substra.Client(backend_type="subprocess")
+client = substra.Client(client_name="org-1")
 
 # %%
 #

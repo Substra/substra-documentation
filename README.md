@@ -15,7 +15,7 @@
 <br>
 <br>
 
-Substra is an open source federated learning (FL) software. This specific reposity is the documentation of Substra.
+Substra is an open source federated learning (FL) software. This specific repository is the documentation of Substra.
 
 This documentation is hosted on Read The Docs and can be found [here](https://docs.substra.org/).
 

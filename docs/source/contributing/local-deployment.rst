@@ -193,12 +193,13 @@ One way to test that everything is working fine is to launch computations on you
 
    .. code-block:: python
 
-      client_org_1 = substra.Client(url="http://substra-backend.org-1.com")
-      client_org_1.login(username="org-1", password="p@sswr0d44")
+    client_org_1 = substra.Client(
+        backend_type="remote", url="http://substra-backend.org-1.com", username="org-1", password="p@sswr0d44"
+    )
 
-      client_org_2 = substra.Client(url="http://substra-backend.org-2.com")
-      client_org_2.login(username="org-2", password="p@sswr0d45")
-
+    client_org_2 = substra.Client(
+        backend_type="remote", url="http://substra-backend.org-2.com", username="org-2", password="p@sswr0d45"
+    )
 
 Monitoring
 ==========
