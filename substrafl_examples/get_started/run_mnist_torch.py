@@ -404,7 +404,7 @@ test_data_nodes = [
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
-        metric_functions=[accuracy, roc_auc],
+        metric_functions={"Accuracy": accuracy, "ROC AUC": roc_auc},
     )
     for org_id in DATA_PROVIDER_ORGS_ID
 ]
@@ -495,8 +495,9 @@ print(performances_df[["worker", "round_idx", "identifier", "performance"]])
 
 import matplotlib.pyplot as plt
 
-plt.title("Test dataset results")
-fig, axs = plt.subplots(1, 2)
+fig, axs = plt.subplots(1, 2, figsize=(12, 6))
+fig.suptitle("Test dataset results")
+
 axs[0].set_title("Accuracy")
 axs[1].set_title("ROC AUC")
 
@@ -506,10 +507,10 @@ for ax in axs.flat:
 
 for org_id in DATA_PROVIDER_ORGS_ID:
     org_df = performances_df[performances_df["worker"] == org_id]
-    acc_df = org_df[org_df["identifier"] == "accuracy"]
+    acc_df = org_df[org_df["identifier"] == "Accuracy"]
     axs[0].plot(acc_df["round_idx"], acc_df["performance"], label=org_id)
 
-    auc_df = org_df[org_df["identifier"] == "roc_auc"]
+    auc_df = org_df[org_df["identifier"] == "ROC AUC"]
     axs[1].plot(auc_df["round_idx"], auc_df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
