@@ -186,6 +186,9 @@ Launching
     * login: ``org-1``
     * password: ``p@sswr0d44``
 
+.. caution::
+   If you are making tests where you are switching between different backends in local dev, you will need to delete cookies of your frontend instance before connecting to a new backend. That is because backends have the same url domain, so the frontend will try to access the new backend with the token registered for the previous backend. 
+
 Launching computations
 ======================
 
