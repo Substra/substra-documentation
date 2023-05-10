@@ -411,7 +411,7 @@ from substrafl.dependency import Dependency
 # Number of times to apply the compute plan.
 NUM_ROUNDS = 6
 
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
@@ -421,7 +421,7 @@ compute_plan = execute_experiment(
     aggregation_node=aggregation_node,
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
-    dependencies=algo_deps,
+    dependencies=dependencies,
 )
 
 # %%
