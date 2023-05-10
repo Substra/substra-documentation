@@ -193,11 +193,10 @@ def accuracy(datasamples, predictions_path):
 
 def roc_auc(datasamples, predictions_path):
     y_true = datasamples["labels"]
+    y_pred = np.load(predictions_path)
 
     n_class = np.max(y_true) + 1
     y_true_one_hot = np.eye(n_class)[y_true]
-
-    y_pred = np.load(predictions_path)
 
     return roc_auc_score(y_true_one_hot, y_pred)
 
@@ -417,6 +416,15 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # Running the experiment
 # **********************
 #
+# As a last step before launching our experiment, we need to specify the third parties dependencies required to run it.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+
+from substrafl.dependency import Dependency
+
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
+
+# %%
 # We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
@@ -435,14 +443,9 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
-from substrafl.dependency import Dependency
 
 # A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
-
-# The Dependency object is instantiated in order to install the right libraries in
-# the Python environment of each organization.
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
@@ -452,7 +455,7 @@ compute_plan = execute_experiment(
     aggregation_node=aggregation_node,
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
-    dependencies=algo_deps,
+    dependencies=dependencies,
     clean_models=False,
 )
 
