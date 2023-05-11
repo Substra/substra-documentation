@@ -246,7 +246,9 @@ copyright = f"{date.today().year}, OWKIN"
 author = "Owkin"
 
 # parse the current doc version to display it in the menu
-_doc_version = re.sub("^v", "", os.popen("git describe --tags").read().strip())
+_doc_version = compat_table["releases"][0][
+    "version"
+]  # re.sub("^v", "", os.popen("git describe --tags").read().strip())
 # The full version, including alpha/beta/rc tags
 version = _doc_version
 release = _doc_version
