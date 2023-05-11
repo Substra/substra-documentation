@@ -144,13 +144,6 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 from sklearn.metrics import accuracy_score
 import numpy as np
 
-from substrafl.remote.register import add_metric
-from substrafl.dependency import Dependency
-
-metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
-
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
-
 
 def accuracy(datasamples, predictions_path):
     y_true = datasamples["targets"]
@@ -158,13 +151,6 @@ def accuracy(datasamples, predictions_path):
 
     return accuracy_score(y_true, y_pred)
 
-
-metric_key = add_metric(
-    client=clients[ALGO_ORG_ID],
-    metric_function=accuracy,
-    permissions=permissions_metric,
-    dependencies=metric_deps,
-)
 
 # %%
 # Specify the machine learning components
@@ -408,7 +394,7 @@ test_data_nodes = [
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
-        metric_keys=[metric_key],
+        metric_functions=accuracy,
     )
     for org_id in DATA_PROVIDER_ORGS_ID
 ]
@@ -420,11 +406,12 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # **********************
 
 from substrafl.experiment import execute_experiment
+from substrafl.dependency import Dependency
 
 # Number of times to apply the compute plan.
 NUM_ROUNDS = 6
 
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
@@ -434,7 +421,7 @@ compute_plan = execute_experiment(
     aggregation_node=aggregation_node,
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
-    dependencies=algo_deps,
+    dependencies=dependencies,
 )
 
 # %%

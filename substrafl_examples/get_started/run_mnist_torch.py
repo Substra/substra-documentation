@@ -180,6 +180,7 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 # so that you can simply load them using ``np.load``.
 
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import roc_auc_score
 import numpy as np
 
 
@@ -190,32 +191,14 @@ def accuracy(datasamples, predictions_path):
     return accuracy_score(y_true, np.argmax(y_pred, axis=1))
 
 
-# %%
-# We also need to specify the third parties dependencies required to compute the metrics.
-# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
-# the Python environment of each organization.
-#
-# As for the dataset, we also define :ref:`documentation/concepts:Permissions`.
+def roc_auc(datasamples, predictions_path):
+    y_true = datasamples["labels"]
+    y_pred = np.load(predictions_path)
 
-from substrafl.dependency import Dependency
+    n_class = np.max(y_true) + 1
+    y_true_one_hot = np.eye(n_class)[y_true]
 
-metric_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
-
-permissions_metric = Permissions(public=False, authorized_ids=[ALGO_ORG_ID] + DATA_PROVIDER_ORGS_ID)
-
-# %%
-# After defining the metrics, dependencies, and permissions, we use the ``add_metric`` function to register the metric.
-# This metric will be used on the test datasamples to evaluate the model performances.
-
-from substrafl.remote.register import add_metric
-
-
-metric_key = add_metric(
-    client=clients[ALGO_ORG_ID],
-    metric_function=accuracy,
-    permissions=permissions_metric,
-    dependencies=metric_deps,
-)
+    return roc_auc_score(y_true_one_hot, y_pred)
 
 
 # %%
@@ -420,7 +403,7 @@ test_data_nodes = [
         organization_id=org_id,
         data_manager_key=dataset_keys[org_id],
         test_data_sample_keys=[test_datasample_keys[org_id]],
-        metric_keys=[metric_key],
+        metric_functions={"Accuracy": accuracy, "ROC AUC": roc_auc},
     )
     for org_id in DATA_PROVIDER_ORGS_ID
 ]
@@ -433,6 +416,15 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # Running the experiment
 # **********************
 #
+# As a last step before launching our experiment, we need to specify the third parties dependencies required to run it.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+
+from substrafl.dependency import Dependency
+
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
+
+# %%
 # We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
@@ -451,14 +443,9 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 # - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.experiment import execute_experiment
-import time
 
 # A round is defined by a local training step followed by an aggregation operation
 NUM_ROUNDS = 3
-
-# The Dependency object is instantiated in order to install the right libraries in
-# the Python environment of each organization.
-algo_deps = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
@@ -468,7 +455,7 @@ compute_plan = execute_experiment(
     aggregation_node=aggregation_node,
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
-    dependencies=algo_deps,
+    dependencies=dependencies,
     clean_models=False,
 )
 
@@ -486,10 +473,12 @@ compute_plan = execute_experiment(
 # Explore the results
 # *******************
 
+import time
+
 # if we are using remote clients, we have to wait until the compute plan is done before getting the results
 while (
-        client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_DOING"
-        or client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_TODO"
+    client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_DOING"
+    or client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_TODO"
 ):
     time.sleep(2)
 # %%
@@ -501,7 +490,7 @@ import pandas as pd
 
 performances_df = pd.DataFrame(client.get_performances(compute_plan.key).dict())
 print("\nPerformance Table: \n")
-print(performances_df[["worker", "round_idx", "performance"]])
+print(performances_df[["worker", "round_idx", "identifier", "performance"]])
 
 # %%
 # Plot results
@@ -509,13 +498,23 @@ print(performances_df[["worker", "round_idx", "performance"]])
 
 import matplotlib.pyplot as plt
 
-plt.title("Test dataset results")
-plt.xlabel("Rounds")
-plt.ylabel("Accuracy")
+fig, axs = plt.subplots(1, 2, figsize=(12, 6))
+fig.suptitle("Test dataset results")
+
+axs[0].set_title("Accuracy")
+axs[1].set_title("ROC AUC")
+
+for ax in axs.flat:
+    ax.set(xlabel="Rounds", ylabel="Score")
+
 
 for org_id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df[performances_df["worker"] == org_id]
-    plt.plot(df["round_idx"], df["performance"], label=org_id)
+    org_df = performances_df[performances_df["worker"] == org_id]
+    acc_df = org_df[org_df["identifier"] == "Accuracy"]
+    axs[0].plot(acc_df["round_idx"], acc_df["performance"], label=org_id)
+
+    auc_df = org_df[org_df["identifier"] == "ROC AUC"]
+    axs[1].plot(auc_df["round_idx"], auc_df["performance"], label=org_id)
 
 plt.legend(loc="lower right")
 plt.show()
