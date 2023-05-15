@@ -105,8 +105,9 @@ Some quick links:
    :hidden:
 
    operations/overview.rst
+   operations/walkthrough.rst
    operations/howto.rst
-   operations/upgrade_notes.rst
+   operations/upgrade-notes.rst
 
 
 

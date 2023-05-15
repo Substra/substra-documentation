@@ -1,29 +1,21 @@
-******************************
-How to deploy the Orchestrator
-******************************
+***********************
+Deploy the orchestrator
+***********************
 
-This guide shows you how to deploy the Orchestrator component of Substra.
+The orchestrator is a standalone service that exposes a gRPC (over HTTP) API.
 
-Prerequisites
-=============
+It can be deployed anywhere as long as the backends can connect to it. Putting it on the same cluster as one of the backends is safe, as it does not use much resources. Therefore **are deploying it on cluster 1**
 
-To deploy the Orchestrator you will need a fully configured Kubernetes cluster.
-You will also need some tools: 
+.. warning::
+   The orchestrator is the ultimate source of truth and traceability in Substra.
+   
+   This means that, in a "real" scenario, it should be hosted by an organization trusted by all others, because it is where a bad actor could cause the most issues.
 
-* `Helm <https://helm.sh/>`_
-* `gRPCurl <https://github.com/fullstorydev/grpcurl>`_
+Prepare your Helm values
+========================
 
-Preparing your Helm values
-==========================
-
-The orchestrator deployment is packaged using Helm.
-You can find the complete description of values that can be used to configure the chart on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.
-
-#. Add the Helm repository for Substra:
-
-   .. code-block:: bash
-
-      helm repo add substra https://substra.github.io/charts/
+.. seealso::
+   Full reference on `Artifact Hub <https://artifacthub.io/packages/helm/substra/orchestrator>`_.
 
 #. Create a Helm values file named ``orchestrator-values.yaml`` with the following content:
 
@@ -31,10 +23,9 @@ You can find the complete description of values that can be used to configure th
 
       ingress:
         enabled: true
-        hostname: HOSTNAME
+        hostname: orchestrator.cluster-1.DOMAIN
 
-   | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
-   | This will setup the ingress to make your Orchestrator accessible at the defined hostname.
+   | This sets up the ingress to make your Orchestrator accessible at the defined hostname.
 
 .. _orchestrator-channel-config:
 
@@ -44,16 +35,14 @@ You can find the complete description of values that can be used to configure th
    .. code-block:: yaml
 
       channels:
-        - name: CHANNEL-NAME
-          organizations: [ORG-NAME, ...]
+        - name: our-channel
+          organizations: [ingen, biotechnica]
 
-   | Replace ``CHANNEL-NAME`` with the name you want to give to your channel.
-   | Replace ``ORG-NAME, ...`` with the names of the :term:`Organizations<Organization>` that you want to include in this channel.
-   | If you want more than one channel you can add more items in the list.
+   | This creates one channel with two organizations, named ``ingen`` and ``biotechnica``.
 
-Here you have created the configuration required to have a running orchestrator that can support a Substra network.
-If you want you can jump directly to the section :ref:`deploy-orchestrator`.
-You can also follow along the next sections to enhance the security of your orchestrator.
+The next section improves security and is mandatory for true production deployments that communicate over unsecured networks. But, for test deployments or secured networks, you can skip to :ref:`deploy-orchestrator`.
+
+.. _ops set up TLS:
 
 Setup TLS
 =========
@@ -117,10 +106,7 @@ To setup TLS, follow these steps:
 
       .. code-block:: bash
 
-         openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/CN=HOSTNAME" -out orchestrator-cert.csr
-
-      | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
-        This should be the same ``HOSTNAME`` as in the ingress configuration.
+         openssl req -newkey rsa:2048 -nodes -keyout orchestrator-tls.key -subj "/CN=orchestrator.cluster-1.DOMAIN" -out orchestrator-cert.csr
       
       This will generate a private key for the orchestrator and a certificate signing request.
       You should have two new files in your current directory ``orchestrator-tls.key`` and ``orchestrator-cert.csr``.
@@ -129,9 +115,7 @@ To setup TLS, follow these steps:
 
       .. code-block:: bash
 
-         openssl x509 -req -days 365 -in orchestrator-cert.csr -CA orchestrator-ca.crt -CAkey orchestrator-ca.key -CAcreateserial -out orchestrator-tls.crt -sha256 -extfile <(printf "subjectAltName=DNS:HOSTNAME")
-
-      | Replace ``HOSTNAME`` with the hostname of your Orchestrator.
+         openssl x509 -req -days 365 -in orchestrator-cert.csr -CA orchestrator-ca.crt -CAkey orchestrator-ca.key -CAcreateserial -out orchestrator-tls.crt -sha256 -extfile <(printf "subjectAltName=DNS:orchestrator.cluster-1.DOMAIN")
 
       .. caution:: 
          We don't recommend having your certificate valid for a year, you should change this value based on your company policy.
@@ -154,7 +138,7 @@ To setup TLS, follow these steps:
       
       kubectl create secret tls orchestrator-tls-server-pair --cert=orchestrator-tls.crt --key=orchestrator-tls.key
 
-#. Optional: If you also want to setup mTLS to authenticate your client follow the guide :doc:`mtls-setup`.
+#. Optional: If you also want to setup mTLS to authenticate your client follow the guide :ref:`ops set up mutual TLS`.
 
 .. _deploy-orchestrator:
 
@@ -167,21 +151,18 @@ To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
    .. code-block:: bash
 
-      helm install RELEASE-NAME substra/orchestrator --version VERSION --values orchestrator-values.yaml
+      helm install orchestrator substra/orchestrator --values orchestrator-values.yaml --namespace orchestrator --create-namespace
 
-   | Replace ``RELEASE-NAME`` with the name of your orchestrator release (it can be any arbitrary name).
    | Replace ``VERSION`` with the version of the orchestrator helm chart you want to deploy.
-   
-   This will create all the Kubernetes resources required for a functional Orchestrator in your Kubernetes cluster.
 
 #. Validate that the deployment was successful:
 
    .. code-block:: bash
 
-      grpcurl [--cacert orchestrator-ca.crt] HOSTNAME:443 list
+      grpcurl [--cacert orchestrator-ca.crt] orchestrator.cluster-1.DOMAIN:PORT list
 
-   | Replace ``HOSTNAME`` with the hostname of your orchestrator.
    | Add the ``--cacert`` argument if you deployed your orchestrator with TLS.
+   | ``PORT`` should be ``443`` if TLS is enabled, else ``80``.
         
    The output of this command should be the following:
 
