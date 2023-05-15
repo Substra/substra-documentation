@@ -31,7 +31,6 @@ This is an overview of the main changes, please have a look at the changelog of 
 Substra 0.27.0 --- 2023-05-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 SubstraFL:
 
 - **BREAKING CHANGE**: SubstraFL used to create one task per metric. Now all metrics are executed into a single task. This will lead to less tasks for a given CP and will improve compute time.
