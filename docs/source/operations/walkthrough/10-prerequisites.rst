@@ -34,14 +34,14 @@ Infrastructure
 
 Substra is a federated learning tool and as such it makes little sense to have only one node running, or nodes running on the same cluster merely separated by a namespace.
 
-Therefore our production deployment will run on two separate Kubernetes clusters. They will need to be connected somehow -- we will use the internet.
+Therefore, in this guide we are deploying on two separate Kubernetes clusters, connecting them through the internet.
 
-You will need to be able to give hostnames to endpoints. On the internet, this means owning a domain name and setting up DNS -- **everytime you see** ``DOMAIN``, **it means your own domain** you are setting this up under.
+Throughout the guide we are giving hostnames to endpoints. On the internet, this means owning a domain name and setting up DNS -- **everytime you see** ``DOMAIN``, **it means your own domain** you are setting this up under.
 
-Exposing on the internet also means dealing with a certificate authority -- we will use `Let's Encrypt <https://letsencrypt.org/>`__.
+Exposing on the internet also means dealing with a certificate authority -- here we're using `Let's Encrypt <https://letsencrypt.org/>`__.
 
 .. note::
-   It is entirely possible to host multiple Substra nodes on the same cluster, and/or to have them communicate on a private network with a private CA, and/or to attribute hostnames differently. But we will focus on a deployment through the internet.
+   It is entirely possible to host multiple Substra nodes on the same cluster, and/or to have them communicate on a private network with a private CA, and/or to attribute hostnames differently.
 
 
 In practice
@@ -50,13 +50,11 @@ In practice
 Clusters
 ^^^^^^^^
 
-Set up two clusters -- they have to support allocating PVCs on the fly and opening ingresses to the Internet. You'll probably want to use a managed Kubernetes service such as `Google GKE <https://cloud.google.com/kubernetes-engine>`__, `Azure AKS <https://azure.microsoft.com/en-us/products/kubernetes-service>`__, or `Amazon EKS <https://aws.amazon.com/eks/>`__. 
+Set up two clusters -- they have to support allocating PVCs on the fly and opening ingresses to the Internet. For this, we'd recommend using a managed Kubernetes service such as `Google GKE <https://cloud.google.com/kubernetes-engine>`__, `Azure AKS <https://azure.microsoft.com/en-us/products/kubernetes-service>`__, or `Amazon EKS <https://aws.amazon.com/eks/>`__. 
 
-**We'll henceforth refer to** ``cluster-1`` **and** ``cluster-2`` **for the clusters you'll have set up.**
+**We'll henceforth refer to the clusters we have set up as** ``cluster-1`` **and** ``cluster-2`` **.**
 
-We will also need some software for routing (ingress-nginx) and certificate management (cert-manager). 
-
-Install both on each cluster (insert your email address in place of ``YOUR_EMAIL_HERE``):
+We also need some software for routing (ingress-nginx) and certificate management (cert-manager); install both on each cluster (insert your email address in place of ``YOUR_EMAIL_HERE``):
 
 .. code-block:: shell
    :emphasize-lines: 20,35
@@ -117,5 +115,5 @@ Probably the most convenient way to handle DNS is to set a wildcard record for e
    *.cluster-1 300 IN A NGINX_1_IP
    *.cluster-2 300 IN A NGINX_2_IP
 
-This way, any hostname such as ``whatever.cluster-1.DOMAIN`` will direct to the same endpoint, which will then direct the traffic to the correct service based on hostname (this is what the Ingress objects are for).
+This way, any hostname such as ``whatever.cluster-1.DOMAIN`` directs to the same endpoint, which itself directs the traffic to the correct service based on hostname (this is what the Ingress objects are for).
 

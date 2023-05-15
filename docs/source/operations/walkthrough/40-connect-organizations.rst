@@ -2,7 +2,7 @@
 Link multiple backends
 **********************
 
-Here we'll enable communication between two Substra backends to allow them to exchange :ref:`Functions <concept_function>` and :ref:`Models <concept_model>`.
+This section details enabling communication between two Substra backends to allow them to exchange :ref:`Functions <concept_function>` and :ref:`Models <concept_model>`.
 
 This can be achieved either at deployment time or when the backend is already deployed.
 
@@ -13,7 +13,7 @@ This guide assume that you have two organization in your network, one named ``in
 The process would be the same if you have more organizations as we have to pair them. For example with three orgs you would repeat it for (org1, org2), (org1, org3) and (org2, org3).
 
 In this setup we want ``ingen`` to exchange assets with ``biotechnica``.
-We will assume that you have two values files with the configuration for your existing deployment, one for each organization named: ``backend-ingen-values.yaml``, ``backend-biotechnica-values.yaml``.
+We are assuming that you have two values files with the configuration for your existing deployment, one for each organization named: ``backend-ingen-values.yaml``, ``backend-biotechnica-values.yaml``.
 
 Configure matching values for your 2 :term:`Organizations <Organization>`:
 
@@ -28,7 +28,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
             secret: SECRET_ORG1_ORG2
             channel: our-channel
 
-   | ``SECRET_ORG1_ORG2`` is a password ``biotechnica`` will need to use to download assets from ``ingen``.
+   | ``SECRET_ORG1_ORG2`` is a password ``biotechnica`` needs to download assets from ``ingen``.
    | ``our-channel`` was defined in the :ref:`Backend channel configuration <backend-channel-config>` -- both ``ingen`` and ``biotechnica`` are members of it.
 
 #. Create an account for ``ingen`` on ``biotechnica``.
@@ -105,7 +105,7 @@ Let's upgrade our previous deployments with the new values. We'll run this twice
 | ``RELEASE-NAME`` and ``NAMESPACE`` must be the same as earlier, depending on the cluster.
   You can retrieve them with ``helm list -A``.
 | ``VERSION`` should be the same as earlier.
-| ``VALUES-FILE`` will be either ``backend-ingen-values.yaml`` or ``backend-biotechnica-values.yaml``.
+| ``VALUES-FILE`` should be either ``backend-ingen-values.yaml`` or ``backend-biotechnica-values.yaml``.
 
 
 Validate that organizations are connected
@@ -120,7 +120,7 @@ Follow these steps:
 
       kubectl exec -it $(kubectl get pod -l "app.kubernetes.io/name=substra-backend-server" -o name) -- /bin/bash
 
-   This will open a shell on the backend server pod.
+   This opens a shell on the backend server pod.
 
 #. List all organizations defined in the outgoing list and their status:
 

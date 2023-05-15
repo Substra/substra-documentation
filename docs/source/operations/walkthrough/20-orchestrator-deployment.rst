@@ -4,7 +4,7 @@ Deploy the orchestrator
 
 The orchestrator is a standalone service that exposes a gRPC (over HTTP) API.
 
-It can be deployed anywhere as long as the backends can connect to it. Putting it on the same cluster as one of the backends is safe, as it does not use much resources. Therefore **we will deploy it on cluster 1**
+It can be deployed anywhere as long as the backends can connect to it. Putting it on the same cluster as one of the backends is safe, as it does not use much resources. Therefore **are deploying it on cluster 1**
 
 .. warning::
    The orchestrator is the ultimate source of truth and traceability in Substra.
@@ -25,7 +25,7 @@ Prepare your Helm values
         enabled: true
         hostname: orchestrator.cluster-1.DOMAIN
 
-   | This will setup the ingress to make your Orchestrator accessible at the defined hostname.
+   | This sets up the ingress to make your Orchestrator accessible at the defined hostname.
 
 .. _orchestrator-channel-config:
 
@@ -38,11 +38,9 @@ Prepare your Helm values
         - name: our-channel
           organizations: [ingen, biotechnica]
 
-   | We have created one channel with two organizations, named ``ingen`` and ``biotechnica``.
+   | This creates one channel with two organizations, named ``ingen`` and ``biotechnica``.
 
-Here you have created the configuration required to have a running orchestrator that can support a Substra network.
-If you want you can jump directly to the section :ref:`deploy-orchestrator`.
-You can also follow along the next sections to enhance the security of your orchestrator.
+The next section improves security and is mandatory for true production deployments that communicate over unsecured networks. But, for test deployments or secured networks, you can skip to :ref:`deploy-orchestrator`.
 
 .. _ops set up TLS:
 
@@ -156,8 +154,6 @@ To deploy the orchestrator in your Kubernetes cluster follow these steps:
       helm install orchestrator substra/orchestrator --values orchestrator-values.yaml --namespace orchestrator --create-namespace
 
    | Replace ``VERSION`` with the version of the orchestrator helm chart you want to deploy.
-
-   This will create all the Kubernetes resources required for a functional Orchestrator in your Kubernetes cluster.
 
 #. Validate that the deployment was successful:
 

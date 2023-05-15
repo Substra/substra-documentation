@@ -2,9 +2,9 @@
 Deploy the backend
 ******************
 
-Here we will deploy a node for the ``ingen`` organization onto ``cluster-1``.
+This section details deploying a node for the ``ingen`` organization onto ``cluster-1``.
 
-This will need to be repeated for ``biotechnica`` onto ``cluster-2``, with the appropriate values changed.
+You will need to repeat this for ``biotechnica`` onto ``cluster-2``, with the appropriate values changed.
 
 The backend depends on the orchestrator and will fail to run if the orchestrator is not available and operational.
 
@@ -76,7 +76,7 @@ To configure your values:
    #. Retrieve the CA certificate from your orchestrator:
 
       The CA certificate is the ``orchestrator-ca.crt`` file generated at the :ref:`Generate your Certificate Authority certificate <orchestrator-cacert-generation>` step of the Orchestrator deployment.
-      If a public Certificate Authority was used to generate the orchestrator certificate you will need to fetch the certificate of the Certificate Authority.
+      If a public Certificate Authority was used to generate the orchestrator certificate, you need to fetch the certificate of the Certificate Authority.
 
    #. Create a ConfigMap containing the CA certificate:
 

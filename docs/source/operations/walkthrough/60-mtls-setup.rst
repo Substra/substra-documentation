@@ -4,9 +4,9 @@
 Set up mutual TLS
 *****************
 
-Here we will set up mTLS communication between the backends and the orchestrator.
+This section details setting up mTLS communication between the backends and the orchestrator.
 
-In this scenario, the orchestrator will act as the certificate authority checking the certificates.
+In this scenario, the orchestrator acts as the certificate authority checking the certificates.
 These instructions have to be repeated for each backend.
 
 This guide assumes that you already have followed the instructions to :ref:`ops set up TLS`.

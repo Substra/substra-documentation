@@ -4,7 +4,7 @@ Deploy the frontend
 
 The Substra frontend is a standalone Helm chart that only needs to be told under what URL the backend API is to be contacted.
 
-We will set up the ``ingen`` frontend on ``cluster-1``. We'll make it available at ``substra.cluster-1.DOMAIN``.
+This section details setting up the ``ingen`` frontend on ``cluster-1``, making it available at ``substra.cluster-1.DOMAIN``.
 
 Naturally this could be repeated for ``biotechnica`` onto ``cluster-2``, with the appropriate values changed.
 
