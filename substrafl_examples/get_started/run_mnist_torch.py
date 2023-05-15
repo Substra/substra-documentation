@@ -422,7 +422,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 
 from substrafl.dependency import Dependency
 
-dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0"])
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "scikit-learn==1.1.1"])
 
 # %%
 # We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
