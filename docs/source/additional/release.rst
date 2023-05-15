@@ -91,9 +91,8 @@ to:
       for org_id in DATA_PROVIDER_ORGS_ID
   ]
 
-- Enforce kwargs for user facing function with more than 3 parameters
-- Remove references to ``composite``. Replace by ``train_task``
-- Add the **Federated Principal Component Analysis strategy**
+- Enforce **kwargs** for functions with more than 3 parameters.
+- Add the **Federated Principal Component Analysis strategy**.
 
 Substra
 
