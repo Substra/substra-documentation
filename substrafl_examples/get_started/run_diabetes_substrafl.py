@@ -251,10 +251,11 @@ class Analytics(ComputePlanBuilder):
         self, train_data_nodes, aggregation_node, num_rounds=None, evaluation_strategy=None, clean_models=None
     ):
         first_order_shared_states = []
+        local_states = {}
 
         for node in train_data_nodes:
             # Call local_mean on each train node
-            _, next_shared_state = node.update_states(
+            next_local_state, next_shared_state = node.update_states(
                 self.local_first_order_computation(
                     node.data_sample_keys,
                     shared_state=None,
@@ -270,6 +271,7 @@ class Analytics(ComputePlanBuilder):
             # All local means are stored in shared_states, to be
             # sent to the aggregator
             first_order_shared_states.append(next_shared_state)
+            local_states[node.organization_id] = next_local_state
 
         # Call the aggregation of mean on the aggregation node
         self.first_order_aggregated_state = aggregation_node.update_states(
@@ -292,7 +294,7 @@ class Analytics(ComputePlanBuilder):
                     shared_state=self.first_order_aggregated_state,
                     _algo_name=f"Computing second order analytics with {self.__class__.__name__}",
                 ),
-                local_state=None,
+                local_state=local_states[node.organization_id],
                 round_idx=1,
                 authorized_ids=set([node.organization_id]),
                 aggregation_id=aggregation_node.organization_id,
@@ -360,6 +362,26 @@ compute_plan = execute_experiment(
 # Now we can view the results.
 #
 
+from substrafl.model_loading import download_algo_files
+from substrafl.model_loading import load_algo
+
+client_to_dowload_from = DATA_PROVIDER_ORGS_ID[0]
+round_idx = None
+
+algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
+
+download_algo_files(
+    client=clients[client_to_dowload_from],
+    compute_plan_key=compute_plan.key,
+    round_idx=round_idx,
+    dest_folder=algo_files_folder,
+)
+
+algo = load_algo(input_folder=algo_files_folder)
+
+import ipdb
+
+ipdb.set_trace()
 # import pickle
 
 # task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key)
