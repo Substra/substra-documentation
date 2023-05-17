@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update the metric registration applying the new [SubstraFL #117](https://github.com/Substra/substrafl/pull/117) feature ([#306](https://github.com/Substra/substra-documentation/pull/306/))
 - Use the new way of configuring Substra clients in tutorials ([#305](https://github.com/Substra/substra-documentation/pull/305))
+- Add a how-to guide on Substra clients configuration ([#307](https://github.com/Substra/substra-documentation/pull/307))
 
 ## [0.26.3]
 
