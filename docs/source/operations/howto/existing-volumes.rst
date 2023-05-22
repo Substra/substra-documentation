@@ -17,7 +17,7 @@ Backend values:
      persistence:
        servermedias:
          existingClaim: "serverPVC"
-   postgresql:
+   integrated-postgresql:
      primary:
        persistence:
          existingClaim: "psqlPVC"
@@ -36,7 +36,7 @@ Orchestrator values (in standalone mode, which is the default):
 
 .. code-block:: yaml
 
-   postgresql:
+   integrated-postgresql:
      primary:
        persistence:
          existingClaim: "orcpsqlPVC"
