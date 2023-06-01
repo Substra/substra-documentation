@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update Iris example with the changes implied by [SubstraFL #120](https://github.com/Substra/substrafl/pull/120) compute plan builder ([#313](https://github.com/Substra/substra-documentation/pull/313))
+
 ## [0.27.0]
 
 - Update the metric registration applying the new [SubstraFL #117](https://github.com/Substra/substrafl/pull/117) feature ([#306](https://github.com/Substra/substra-documentation/pull/306/))
