@@ -461,12 +461,12 @@ plt.show()
 
 from substrafl.model_loading import download_algo_state
 
-client_to_dowload_from = DATA_PROVIDER_ORGS_ID[0]
+client_to_download_from = DATA_PROVIDER_ORGS_ID[0]
 round_idx = None
 
 
 algo = download_algo_state(
-    client=clients[client_to_dowload_from],
+    client=clients[client_to_download_from],
     compute_plan_key=compute_plan.key,
     round_idx=round_idx,
 )
