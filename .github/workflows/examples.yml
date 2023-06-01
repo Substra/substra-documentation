@@ -44,18 +44,6 @@ jobs:
           pip install -e ./substra
           pip install -e ./substra-tools
 
-      - name: SubstraFL - Iris example
-        working-directory: ./substrafl_examples/go_further
-        run: |
-          pip install -r sklearn_fedavg_assets/requirements.txt
-          python run_iris_sklearn.py
-
-      - name: SubstraFL - MNIST example
-        working-directory: ./substrafl_examples/get_started
-        run: |
-          pip install -r torch_fedavg_assets/requirements.txt
-          python run_mnist_torch.py
-
       - name: Substra - Titanic example
         working-directory: ./examples/titanic_example
         run: |
@@ -67,3 +55,15 @@ jobs:
         run: |
           pip install -r assets/requirements.txt
           python run_diabetes.py
+
+      - name: SubstraFL - Iris example
+        working-directory: ./substrafl_examples/go_further
+        run: |
+          pip install -r sklearn_fedavg_assets/requirements.txt
+          python run_iris_sklearn.py
+
+      - name: SubstraFL - MNIST example
+        working-directory: ./substrafl_examples/get_started
+        run: |
+          pip install -r torch_fedavg_assets/requirements.txt
+          python run_mnist_torch.py
