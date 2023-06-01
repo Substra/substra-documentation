@@ -1,4 +1,4 @@
-name: Documentation examples subprocess mode
+name: Documentation examples docker mode
 
 on:
   push:
@@ -77,12 +77,15 @@ jobs:
         working-directory: ./substrafl_examples/get_started
         run: |
           pip install -r torch_fedavg_assets/requirements.txt
+          export SUBSTRA_ORG_1_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_2_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_3_BACKEND_TYPE="docker"
           python run_mnist_torch.py
 
       - if: always() && github.event_name == 'schedule'
         name: Send Slack report
         run: |
           ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
-          --title 'Documentation examples subprocess mode' \
+          --title 'Documentation examples docker mode' \
           --status '${{ job.status }}' \
           --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \
