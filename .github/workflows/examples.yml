@@ -1,0 +1,6 @@
+name: Documentation examples
+
+on:
+  pull_request:
+    branches:
+      - "main"
