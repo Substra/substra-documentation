@@ -529,21 +529,17 @@ plt.show()
 #
 # If ``round_idx`` is set to ``None``, the last round will be selected by default.
 
-from substrafl.model_loading import download_algo_files
-from substrafl.model_loading import load_algo
+from substrafl.model_loading import download_algo_state
 
 client_to_dowload_from = DATA_PROVIDER_ORGS_ID[0]
 round_idx = None
 
-algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
-
-download_algo_files(
+algo = download_algo_state(
     client=clients[client_to_dowload_from],
     compute_plan_key=compute_plan.key,
     round_idx=round_idx,
-    dest_folder=algo_files_folder,
 )
 
-model = load_algo(input_folder=algo_files_folder).model
+model = algo.model
 
 print(model)
