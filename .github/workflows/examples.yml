@@ -4,3 +4,48 @@ on:
   pull_request:
     branches:
       - "main"
+
+jobs:
+  run-substrafl-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set up python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10
+
+      - name: Clone substra-tools
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substra-tools
+          path: substra-tools
+          ref: main
+
+      - name: Clone substra
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substra
+          path: substra
+          ref: main
+
+      - name: Clone substrafl
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substrafl
+          path: substrafl
+          ref: main
+
+      - name: Install substra, substra-tools and substrafl
+        run: |
+          pip install -e './substrafl[dev]'
+          pip install -e ./substra
+          pip install -e ./substra-tools
+
+      - name: Iris example
+        working-directory: ./substrafl_examples/go_further
+        run: |
+          pip install -r sklearn_fedavg_assets/requirements.txt
+          python run_iris_sklearn.py
