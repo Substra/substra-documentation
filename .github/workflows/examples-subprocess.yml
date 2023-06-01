@@ -1,10 +1,14 @@
 name: Documentation examples subprocess mode
 
 on:
+  push:
+    branches:
+      - "main"
   pull_request:
     branches:
       - "main"
-
+  schedule:
+    - cron: "12 3 * * 2-6" # every Tuesday to Saturday at 3:12 AM
 jobs:
   run-substrafl-examples:
     runs-on: ubuntu-latest
@@ -67,3 +71,11 @@ jobs:
         run: |
           pip install -r torch_fedavg_assets/requirements.txt
           python run_mnist_torch.py
+
+      - if: always() && github.event_name == 'schedule'
+        name: Send Slack report
+        run: |
+          ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
+          --title 'Documentation examples subprocess mode' \
+          --status '${{ job.status }}' \
+          --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \

@@ -1,0 +1,88 @@
+name: Documentation examples subprocess mode
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+  schedule:
+    - cron: "12 3 * * 2-6" # every Tuesday to Saturday at 3:12 AM
+jobs:
+  run-substrafl-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set up python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Clone substra-tools
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substra-tools
+          path: substra-tools
+          ref: main
+
+      - name: Clone substra
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substra
+          path: substra
+          ref: main
+
+      - name: Clone substrafl
+        uses: actions/checkout@v3
+        with:
+          repository: substra/substrafl
+          path: substrafl
+          ref: main
+
+      - name: Install substra, substra-tools and substrafl
+        run: |
+          pip install -e './substrafl'
+          pip install -e ./substra
+          pip install -e ./substra-tools
+
+      - name: Substra - Titanic example
+        working-directory: ./examples/titanic_example
+        run: |
+          pip install -r assets/requirements.txt
+          export SUBSTRA_ORG_1_BACKEND_TYPE="docker"
+          python run_titanic.py
+
+      - name: Substra - Diabetes example
+        working-directory: ./examples/diabetes_example
+        run: |
+          pip install -r assets/requirements.txt
+          export SUBSTRA_ORG_1_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_2_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_3_BACKEND_TYPE="docker"
+          python run_diabetes.py
+
+      - name: SubstraFL - Iris example
+        working-directory: ./substrafl_examples/go_further
+        run: |
+          pip install -r sklearn_fedavg_assets/requirements.txt
+          export SUBSTRA_ORG_1_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_2_BACKEND_TYPE="docker"
+          export SUBSTRA_ORG_3_BACKEND_TYPE="docker"
+          python run_iris_sklearn.py
+
+      - name: SubstraFL - MNIST example
+        working-directory: ./substrafl_examples/get_started
+        run: |
+          pip install -r torch_fedavg_assets/requirements.txt
+          python run_mnist_torch.py
+
+      - if: always() && github.event_name == 'schedule'
+        name: Send Slack report
+        run: |
+          ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
+          --title 'Documentation examples subprocess mode' \
+          --status '${{ job.status }}' \
+          --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \
