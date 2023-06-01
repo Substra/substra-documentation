@@ -218,7 +218,7 @@ os.environ["PYTHONWARNINGS"] = "ignore:lbfgs failed to converge (status=1):UserW
 
 from substrafl import algorithms
 from substrafl import remote
-from substrafl import schemas as fl_schemas
+from substrafl.strategies import schemas as fl_schemas
 
 import joblib
 from typing import Optional
@@ -334,7 +334,7 @@ class SklearnLogisticRegression(algorithms.Algo):
             # predictions_path is the actual file name.
             shutil.move(str(predictions_path) + ".npy", predictions_path)
 
-    def save(self, path):
+    def save_local_state(self, path):
         joblib.dump(
             {
                 "model": self._model,
@@ -344,7 +344,7 @@ class SklearnLogisticRegression(algorithms.Algo):
             path,
         )
 
-    def load(self, path):
+    def load_local_state(self, path):
         loaded_dict = joblib.load(path)
         self._model = loaded_dict["model"]
         self._model.coef_ = loaded_dict["coef"]
