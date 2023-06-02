@@ -83,7 +83,7 @@ def run_diabetes(summary_file: str, docker_mode=False):
 
 
 def run_mnist(summary_file: str, docker_mode=False):
-    test_name = "MNIST example"
+    test_name = "SubstraFL MNIST example"
     example_path = "substrafl_examples/get_started"
     cmd = ""
     try:
