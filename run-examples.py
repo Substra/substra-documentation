@@ -34,14 +34,14 @@ def write_summary_file(test_passed: bool, test_name: str, path: Path):
 def run_titanic(summary_file: str, docker_mode=False):
     test_name = "Substra titanic example"
     example_path = "examples/titanic_example"
-    cmd = ""
+    cmd = f"cd {example_path}; "
     try:
         if docker_mode:
             cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
             cmd += "export SUBSTRA_ORG_1_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/assets/requirements.txt; "
-        cmd += f"python {example_path}/run_titanic.py;"
+        cmd += "pip install -r assets/requirements.txt; "
+        cmd += "python run_titanic.py;"
         subprocess.check_call([cmd], shell=True)
         test_passed = True
         return test_passed
@@ -59,7 +59,7 @@ def run_titanic(summary_file: str, docker_mode=False):
 def run_diabetes(summary_file: str, docker_mode=False):
     test_name = "Substra diabetes example"
     example_path = "examples/diabetes_example"
-    cmd = ""
+    cmd = f"cd {example_path}; "
     try:
         if docker_mode:
             cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
@@ -67,8 +67,8 @@ def run_diabetes(summary_file: str, docker_mode=False):
             cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
             cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/assets/requirements.txt; "
-        cmd += f"python {example_path}/run_diabetes.py;"
+        cmd += "pip install -r assets/requirements.txt; "
+        cmd += "python run_diabetes.py;"
         subprocess.check_call([cmd], shell=True)
         test_passed = True
         return test_passed
@@ -94,8 +94,8 @@ def run_mnist(summary_file: str, docker_mode=False):
             cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
             cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/assets/requirements.txt; "
-        cmd += f"python {example_path}/run_titanic.py;"
+        cmd += f"pip install -r {example_path}/torch_fedavg_assets/requirements.txt; "
+        cmd += f"python {example_path}/run_mnist_torch.py;"
         subprocess.check_call([cmd], shell=True)
         test_passed = True
         return test_passed
@@ -121,8 +121,8 @@ def run_iris(summary_file: str, docker_mode=False):
             cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
             cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/assets/requirements.txt; "
-        cmd += f"python {example_path}/run_titanic.py;"
+        cmd += f"pip install -r {example_path}/sklearn_fedavg_assets/requirements.txt; "
+        cmd += f"python {example_path}/run_iris_sklearn.py;"
         subprocess.check_call([cmd], shell=True)
         test_passed = True
         return test_passed
