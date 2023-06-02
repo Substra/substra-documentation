@@ -1,4 +1,4 @@
-name: Documentation examples subprocess mode
+name: Documentation examples docker mode
 
 on:
   push:
