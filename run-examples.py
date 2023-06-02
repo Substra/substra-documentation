@@ -142,18 +142,10 @@ def main():
 
     success = True
 
-    success = (
-        run_titanic(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode, success=success) and success
-    )
-    success = (
-        run_diabetes(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode, success=success) and success
-    )
-    success = (
-        run_mnist(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode, success=success) and success
-    )
-    success = (
-        run_iris(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode, success=success) and success
-    )
+    success = run_titanic(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
+    success = run_diabetes(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
+    success = run_mnist(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
+    success = run_iris(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
 
     sys.exit(0 if success else 1)
 
