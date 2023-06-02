@@ -67,7 +67,7 @@ from substra.sdk.schemas import (
 #  - ``subprocess`` all tasks will be executed from Python subprocesses (faster)
 
 client = substra.Client(client_name="org-1")
-
+a = b
 # %%
 #
 # Creation and Registration of the assets
