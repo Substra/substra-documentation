@@ -14,8 +14,7 @@ def arg_parse():
     )
     parser.add_argument(
         "--docker-mode",
-        type=bool,
-        default=False,
+        action="store_true",
         help="Run the examples in docker mode",
     )
     args = parser.parse_args()
@@ -23,7 +22,7 @@ def arg_parse():
 
 
 def write_summary_file(test_passed: bool, test_name: str, path: Path):
-    with path.open("w") as fp:
+    with path.open("a") as fp:
         if test_passed is not None:
             res = "✅" if test_passed else "❌"
         else:
