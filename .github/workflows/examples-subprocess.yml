@@ -53,7 +53,7 @@ jobs:
           python -u ./run-examples.py \
             --write-summary-to-file ./.slack_message
 
-      - if: always() #&& github.event_name == 'schedule'
+      - if: always() && github.event_name == 'schedule'
         name: Send Slack report
         run: |
           ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
