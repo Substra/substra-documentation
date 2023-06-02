@@ -89,4 +89,3 @@ jobs:
           --title 'Documentation examples docker mode' \
           --status '${{ job.status }}' \
           --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \
-          --duration-seconds "${LOCAL_TESTS_DURATION_SECONDS}"
