@@ -94,8 +94,8 @@ def run_mnist(summary_file: str, docker_mode=False):
             cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
             cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/torch_fedavg_assets/requirements.txt; "
-        cmd += f"python {example_path}/run_mnist_torch.py;"
+        cmd += "pip install -r torch_fedavg_assets/requirements.txt; "
+        cmd += "python run_mnist_torch.py;"
         subprocess.check_call([cmd], cwd=example_path, shell=True)
         test_passed = True
         return test_passed
@@ -121,8 +121,8 @@ def run_iris(summary_file: str, docker_mode=False):
             cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
             cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
 
-        cmd += f"pip install -r {example_path}/sklearn_fedavg_assets/requirements.txt; "
-        cmd += f"python {example_path}/run_iris_sklearn.py;"
+        cmd += "pip install -r sklearn_fedavg_assets/requirements.txt; "
+        cmd += "python run_iris_sklearn.py;"
         subprocess.check_call([cmd], cwd=example_path, shell=True)
         test_passed = True
         return test_passed
