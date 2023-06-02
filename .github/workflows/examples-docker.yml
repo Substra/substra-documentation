@@ -10,7 +10,7 @@ on:
   schedule:
     - cron: "12 3 * * 2-6" # every Tuesday to Saturday at 3:12 AM
 jobs:
-  run-substrafl-examples:
+  run-examples:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -89,3 +89,4 @@ jobs:
           --title 'Documentation examples docker mode' \
           --status '${{ job.status }}' \
           --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \
+          --duration-seconds "${LOCAL_TESTS_DURATION_SECONDS}"
