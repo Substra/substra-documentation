@@ -34,7 +34,7 @@ def write_summary_file(test_passed: bool, test_name: str, path: Path):
 def run_titanic(summary_file: str, docker_mode=False):
     test_name = "Substra titanic example"
     example_path = "examples/titanic_example"
-    cmd = f"cd {example_path}; "
+    cmd = ""
     try:
         if docker_mode:
             cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
@@ -42,7 +42,7 @@ def run_titanic(summary_file: str, docker_mode=False):
 
         cmd += "pip install -r assets/requirements.txt; "
         cmd += "python run_titanic.py;"
-        subprocess.check_call([cmd], shell=True)
+        subprocess.check_call([cmd], cwd=example_path, shell=True)
         test_passed = True
         return test_passed
 
@@ -59,7 +59,7 @@ def run_titanic(summary_file: str, docker_mode=False):
 def run_diabetes(summary_file: str, docker_mode=False):
     test_name = "Substra diabetes example"
     example_path = "examples/diabetes_example"
-    cmd = f"cd {example_path}; "
+    cmd = ""
     try:
         if docker_mode:
             cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
@@ -69,7 +69,7 @@ def run_diabetes(summary_file: str, docker_mode=False):
 
         cmd += "pip install -r assets/requirements.txt; "
         cmd += "python run_diabetes.py;"
-        subprocess.check_call([cmd], shell=True)
+        subprocess.check_call([cmd], cwd=example_path, shell=True)
         test_passed = True
         return test_passed
 
