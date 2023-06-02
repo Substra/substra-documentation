@@ -50,7 +50,7 @@ jobs:
 
       - name: Run examples
         run: |
-          python -u ./run-examples.py \
+          python -u ./test-examples.py \
             --write-summary-to-file ./.slack_message \
             --docker-mode
 
@@ -58,6 +58,6 @@ jobs:
         name: Send Slack report
         run: |
           ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
-          --title 'Documentation examples subprocess mode' \
+          --title 'Documentation examples docker mode' \
           --status '${{ job.status }}' \
           --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \
