@@ -48,14 +48,12 @@ jobs:
           pip install -e ./substra
           pip install -e ./substra-tools
 
-      - name: Config Docker mode
-        run: |
-          export SUBSTRA_FORCE_EDITABLE_MODE=True
-          export SUBSTRA_ORG_1_BACKEND_TYPE=docker
-          export SUBSTRA_ORG_2_BACKEND_TYPE=docker
-          export SUBSTRA_ORG_3_BACKEND_TYPE=docker
-
       - name: Run examples
+        env:
+          SUBSTRA_FORCE_EDITABLE_MODE: True
+          SUBSTRA_ORG_1_BACKEND_TYPE: docker
+          SUBSTRA_ORG_2_BACKEND_TYPE: docker
+          SUBSTRA_ORG_3_BACKEND_TYPE: docker
         run: |
           python -u ./test-examples.py \
             --write-summary-to-file ./.slack_message \
