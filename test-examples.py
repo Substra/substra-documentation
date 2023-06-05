@@ -2,6 +2,7 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
+import os
 
 
 def arg_parse():
@@ -35,7 +36,7 @@ def run_example(
     try:
         cmd += f"pip install -r {requirements_relative_path}; "
         cmd += f"python {example_file.name};"
-        subprocess.check_call([cmd], cwd=example_file.parent, shell=True)
+        subprocess.check_call([cmd], cwd=example_file.parent, shell=True, env=dict(os.environ))
         test_passed = True
         return test_passed
 
