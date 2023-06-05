@@ -12,11 +12,6 @@ def arg_parse():
         default=None,
         help="Write a summary of the results to the given filename",
     )
-    parser.add_argument(
-        "--docker-mode",
-        action="store_true",
-        help="Run the examples in docker mode",
-    )
     args = parser.parse_args()
     return args
 
@@ -30,110 +25,28 @@ def write_summary_file(test_passed: bool, test_name: str, path: Path):
         fp.write(f"{res} {test_name} - python version {sys.version_info.major}.{sys.version_info.minor} \n")
 
 
-def run_titanic(summary_file: str, docker_mode=False):
-    test_name = "Substra titanic example"
-    example_path = "examples/titanic_example"
+def run_example(
+    name: str,
+    example_file: Path,
+    requirements_relative_path: Path,
+    summary_file: Path,
+):
     cmd = ""
     try:
-        if docker_mode:
-            cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
-            cmd += "export SUBSTRA_ORG_1_BACKEND_TYPE=docker; "
-
-        cmd += "pip install -r assets/requirements.txt; "
-        cmd += "python run_titanic.py;"
-        subprocess.check_call([cmd], cwd=example_path, shell=True)
+        cmd += f"pip install -r {requirements_relative_path}; "
+        cmd += f"python {example_file.name};"
+        subprocess.check_call([cmd], cwd=example_file.parent, shell=True)
         test_passed = True
         return test_passed
 
     except subprocess.CalledProcessError:
-        print(f"FATAL: {test_name} completed with a non-zero exit code.")
+        print(f"FATAL: {name} completed with a non-zero exit code.")
         test_passed = False
         return test_passed
 
     finally:
         if summary_file:
-            write_summary_file(test_passed=test_passed, test_name=test_name, path=Path(summary_file))
-
-
-def run_diabetes(summary_file: str, docker_mode=False):
-    test_name = "Substra diabetes example"
-    example_path = "examples/diabetes_example"
-    cmd = ""
-    try:
-        if docker_mode:
-            cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
-            cmd += "export SUBSTRA_ORG_1_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
-
-        cmd += "pip install -r assets/requirements.txt; "
-        cmd += "python run_diabetes.py;"
-        subprocess.check_call([cmd], cwd=example_path, shell=True)
-        test_passed = True
-        return test_passed
-
-    except subprocess.CalledProcessError:
-        print(f"FATAL: {test_name} completed with a non-zero exit code.")
-        test_passed = False
-        return test_passed
-
-    finally:
-        if summary_file:
-            write_summary_file(test_passed=test_passed, test_name=test_name, path=Path(summary_file))
-
-
-def run_mnist(summary_file: str, docker_mode=False):
-    test_name = "SubstraFL MNIST example"
-    example_path = "substrafl_examples/get_started"
-    cmd = ""
-    try:
-        if docker_mode:
-            cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
-            cmd += "export SUBSTRA_ORG_1_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
-
-        cmd += "pip install -r torch_fedavg_assets/requirements.txt; "
-        cmd += "python run_mnist_torch.py;"
-        subprocess.check_call([cmd], cwd=example_path, shell=True)
-        test_passed = True
-        return test_passed
-
-    except subprocess.CalledProcessError:
-        print("FATAL: `Titanic example` completed with a non-zero exit code.")
-        test_passed = False
-        return test_passed
-
-    finally:
-        if summary_file:
-            write_summary_file(test_passed=test_passed, test_name=test_name, path=Path(summary_file))
-
-
-def run_iris(summary_file: str, docker_mode=False):
-    test_name = "SubstraFL IRIS example"
-    example_path = "substrafl_examples/go_further"
-    cmd = ""
-    try:
-        if docker_mode:
-            cmd += "export SUBSTRA_FORCE_EDITABLE_MODE=True; "
-            cmd += "export SUBSTRA_ORG_1_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_2_BACKEND_TYPE=docker; "
-            cmd += "export SUBSTRA_ORG_3_BACKEND_TYPE=docker; "
-
-        cmd += "pip install -r sklearn_fedavg_assets/requirements.txt; "
-        cmd += "python run_iris_sklearn.py;"
-        subprocess.check_call([cmd], cwd=example_path, shell=True)
-        test_passed = True
-        return test_passed
-
-    except subprocess.CalledProcessError:
-        print(f"FATAL: {test_name} completed with a non-zero exit code.")
-        test_passed = False
-        return test_passed
-
-    finally:
-        if summary_file:
-            write_summary_file(test_passed=test_passed, test_name=test_name, path=Path(summary_file))
+            write_summary_file(test_passed=test_passed, test_name=name, path=summary_file)
 
 
 def main():
@@ -141,10 +54,42 @@ def main():
 
     success = True
 
-    success = run_titanic(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
-    success = run_diabetes(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
-    success = run_mnist(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
-    success = run_iris(summary_file=args.write_summary_to_file, docker_mode=args.docker_mode) and success
+    success = (
+        run_example(
+            name="Substra Titanic Example",
+            example_file=Path("examples") / "titanic_example" / "run_titanic.py",
+            requirements_relative_path=Path("assets") / "requirements.txt",
+            summary_file=args.write_summary_to_file,
+        )
+        and success
+    )
+    success = (
+        run_example(
+            name="Substra Diabetes Example",
+            example_file=Path("examples") / "diabetes_example" / "run_diabetes.py",
+            requirements_relative_path=Path("assets") / "requirements.txt",
+            summary_file=args.write_summary_to_file,
+        )
+        and success
+    )
+    success = (
+        run_example(
+            name="SubstraFL MNIST Example",
+            example_file=Path("substrafl_examples") / "get_started" / "run_mnist_torch.py",
+            requirements_relative_path=Path("torch_fedavg_assets") / "requirements.txt",
+            summary_file=args.write_summary_to_file,
+        )
+        and success
+    )
+    success = (
+        run_example(
+            name="Substra IRIS Example",
+            example_file=Path("substrafl_examples") / "go_further" / "run_iris_sklearn.py",
+            requirements_relative_path=Path("sklearn_fedavg_assets") / "requirements.txt",
+            summary_file=args.write_summary_to_file,
+        )
+        and success
+    )
 
     sys.exit(0 if success else 1)
 
