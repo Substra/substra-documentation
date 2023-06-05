@@ -59,7 +59,7 @@ def main():
             name="Substra Titanic Example",
             example_file=Path("examples") / "titanic_example" / "run_titanic.py",
             requirements_relative_path=Path("assets") / "requirements.txt",
-            summary_file=args.write_summary_to_file,
+            summary_file=Path(args.write_summary_to_file),
         )
         and success
     )
@@ -68,7 +68,7 @@ def main():
             name="Substra Diabetes Example",
             example_file=Path("examples") / "diabetes_example" / "run_diabetes.py",
             requirements_relative_path=Path("assets") / "requirements.txt",
-            summary_file=args.write_summary_to_file,
+            summary_file=Path(args.write_summary_to_file),
         )
         and success
     )
@@ -77,7 +77,7 @@ def main():
             name="SubstraFL MNIST Example",
             example_file=Path("substrafl_examples") / "get_started" / "run_mnist_torch.py",
             requirements_relative_path=Path("torch_fedavg_assets") / "requirements.txt",
-            summary_file=args.write_summary_to_file,
+            summary_file=Path(args.write_summary_to_file),
         )
         and success
     )
@@ -86,7 +86,7 @@ def main():
             name="Substra IRIS Example",
             example_file=Path("substrafl_examples") / "go_further" / "run_iris_sklearn.py",
             requirements_relative_path=Path("sklearn_fedavg_assets") / "requirements.txt",
-            summary_file=args.write_summary_to_file,
+            summary_file=Path(args.write_summary_to_file),
         )
         and success
     )
