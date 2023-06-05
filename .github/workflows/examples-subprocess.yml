@@ -50,13 +50,13 @@ jobs:
 
       - name: Run examples
         run: |
-          python -u ./test-examples.py \
+          python -u ./ci/test-examples.py \
             --write-summary-to-file ./.slack_message
 
       - if: always() && github.event_name == 'schedule'
         name: Send Slack report
         run: |
-          ./send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
+          ./ci/send-slack-report.py '${{ secrets.SLACK_WEBHOOK }}' .slack_message \
           --title 'Documentation examples subprocess mode' \
           --status '${{ job.status }}' \
           --link 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}' \

@@ -53,12 +53,14 @@ def run_example(
 def main():
     args = arg_parse()
 
+    cwd = Path.cwd()
+
     success = True
 
     success = (
         run_example(
             name="Substra Titanic example",
-            example_file=Path("examples") / "titanic_example" / "run_titanic.py",
+            example_file=cwd.parent / "examples" / "titanic_example" / "run_titanic.py",
             requirements_relative_path=Path("assets") / "requirements.txt",
             summary_file=Path(args.write_summary_to_file),
         )
@@ -67,7 +69,7 @@ def main():
     success = (
         run_example(
             name="Substra Diabetes example",
-            example_file=Path("examples") / "diabetes_example" / "run_diabetes.py",
+            example_file=cwd.parent / "examples" / "diabetes_example" / "run_diabetes.py",
             requirements_relative_path=Path("assets") / "requirements.txt",
             summary_file=Path(args.write_summary_to_file),
         )
@@ -76,7 +78,7 @@ def main():
     success = (
         run_example(
             name="SubstraFL MNIST example",
-            example_file=Path("substrafl_examples") / "get_started" / "run_mnist_torch.py",
+            example_file=cwd.parent / "substrafl_examples" / "get_started" / "run_mnist_torch.py",
             requirements_relative_path=Path("torch_fedavg_assets") / "requirements.txt",
             summary_file=Path(args.write_summary_to_file),
         )
@@ -85,7 +87,7 @@ def main():
     success = (
         run_example(
             name="SubstraFL IRIS example",
-            example_file=Path("substrafl_examples") / "go_further" / "run_iris_sklearn.py",
+            example_file=cwd.parent / "substrafl_examples" / "go_further" / "run_iris_sklearn.py",
             requirements_relative_path=Path("sklearn_fedavg_assets") / "requirements.txt",
             summary_file=Path(args.write_summary_to_file),
         )

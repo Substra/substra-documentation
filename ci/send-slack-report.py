@@ -2,7 +2,7 @@
 
 import argparse
 
-from ci import slack
+import slack
 
 
 def main():
