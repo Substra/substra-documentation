@@ -469,9 +469,9 @@ import pickle
 task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key)
 task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key)
 
-with open(task1.outputs["shared_states"].value.address.storage_address, "rb") as f:
+with open(task1.outputs["shared_states"].asset.address.storage_address, "rb") as f:
     out1 = pickle.load(f)
-with open(task2.outputs["shared_states"].value.address.storage_address, "rb") as f:
+with open(task2.outputs["shared_states"].asset.address.storage_address, "rb") as f:
     out2 = pickle.load(f)
 
 print(
