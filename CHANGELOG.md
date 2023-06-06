@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Iris example with the changes implied by [SubstraFL #120](https://github.com/Substra/substrafl/pull/120) compute plan builder ([#313](https://github.com/Substra/substra-documentation/pull/313))
 - Add caution for frontend cookies when several backends in local ([#308](https://github.com/Substra/substra-documentation/pull/308))
 - Update Substra examples to use new `get_task_output_asset` Substra function ([#317](https://github.com/Substra/substra-documentation/pull/317))
+- Add Github actions to run examples in subprocess and docker mode every night ([#315](https://github.com/Substra/substra-documentation/pull/315))
 
 ## [0.27.0]
 
