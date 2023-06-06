@@ -466,12 +466,16 @@ aggregation_task_2_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation
 
 import pickle
 
-task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key)
-task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key)
+asset_task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
+    aggregation_task_1_key, identifier="shared_states"
+)
+asset_task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
+    aggregation_task_2_key, identifier="shared_states"
+)
 
-with open(task1.outputs["shared_states"].value.address.storage_address, "rb") as f:
+with open(asset_task1.asset.address.storage_address, "rb") as f:
     out1 = pickle.load(f)
-with open(task2.outputs["shared_states"].value.address.storage_address, "rb") as f:
+with open(asset_task2.asset.address.storage_address, "rb") as f:
     out2 = pickle.load(f)
 
 print(
