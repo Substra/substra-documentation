@@ -3,13 +3,6 @@ API reference
 
 `substra` version: |substra_version|
 
-CLI Reference
--------------
-.. toctree::
-    :maxdepth: 2
-
-    references/cli.md
-
 SDK Reference
 -------------
 .. toctree::
