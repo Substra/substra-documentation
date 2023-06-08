@@ -113,5 +113,3 @@ such as passwords or tokens in environment variables.
         client_name="org-2",
         configuration_file="config.yaml",
     )
-
-
