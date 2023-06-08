@@ -12,3 +12,4 @@ User guide
     get_performances.rst
     client_configuration.rst
     r_scripts.rst
+    api_tokens_generation.rst
