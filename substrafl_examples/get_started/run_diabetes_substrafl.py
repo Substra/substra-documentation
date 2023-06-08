@@ -48,7 +48,7 @@ import substra
 
 # sphinx_gallery_thumbnail_path = 'static/example_thumbnail/diabetes.png'
 
-from diabetes_substrafl_assets.dataset.diabetes_dataset import setup_diabetes
+from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
 
 # %%
 # Instantiating the Substra clients
@@ -125,7 +125,7 @@ setup_diabetes(data_path=data_path)
 dataset = DatasetSpec(
     name=f"Diabetes dataset",
     type="csv",
-    data_opener=assets_directory / "dataset" / "diabetes_opener.py",
+    data_opener=assets_directory / "dataset" / "diabetes_substrafl_opener.py",
     description=data_path / "description.md",
     permissions=permissions_local,
     logs_permission=permissions_local,
