@@ -42,8 +42,6 @@ To run this example, you have two options:
 # Importing all the dependencies
 # ==============================
 
-import os
-import zipfile
 import pathlib
 
 import substra
@@ -101,8 +99,8 @@ permissions_aggregation = Permissions(public=False, authorized_ids=[ANALYTICS_PR
 # %%
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
 #
-# The function ``setup_diabetes`` downloads if needed the *diabetes* dataset, and split it in two. Each data organisation
-# has access to a chunk of the dataset.
+# The function ``setup_diabetes`` downloads if needed the *diabetes* dataset, and split it in two. Each data
+# organization has access to a chunk of the dataset.
 
 root_dir = pathlib.Path.cwd()
 assets_directory = root_dir / "diabetes_substrafl_assets"
@@ -133,7 +131,7 @@ dataset = DatasetSpec(
     logs_permission=permissions_local,
 )
 
-# We register the dataset for each of the organisations
+# We register the dataset for each of the organizations
 dataset_keys = {client_id: clients[client_id].add_dataset(dataset) for client_id in DATA_PROVIDER_ORGS_ID}
 
 for client_id, key in dataset_keys.items():
@@ -362,41 +360,27 @@ compute_plan = execute_experiment(
 # Now we can view the results.
 #
 
-from substrafl.model_loading import download_algo_files
-from substrafl.model_loading import load_algo
+from substrafl.model_loading import download_aggregated_state
 
-client_to_dowload_from = DATA_PROVIDER_ORGS_ID[0]
-round_idx = None
+client_to_dowload_from = ANALYTICS_PROVIDER_ORG_ID
 
-algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
-
-download_algo_files(
+first_rank_analytics = download_aggregated_state(
     client=clients[client_to_dowload_from],
     compute_plan_key=compute_plan.key,
-    round_idx=round_idx,
-    dest_folder=algo_files_folder,
+    round_idx=0,
 )
 
-algo = load_algo(input_folder=algo_files_folder)
+second_rank_analytics = download_aggregated_state(
+    client=clients[client_to_dowload_from],
+    compute_plan_key=compute_plan.key,
+    round_idx=1,
+)
 
-import ipdb
-
-ipdb.set_trace()
-# import pickle
-
-# task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key)
-# task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key)
-
-# with open(task1.outputs["shared_states"].value.address.storage_address, "rb") as f:
-#     out1 = pickle.load(f)
-# with open(task2.outputs["shared_states"].value.address.storage_address, "rb") as f:
-#     out2 = pickle.load(f)
-
-# print(
-#     f"""Age mean: {out1['means']['age']:.2f} years
-# Sex percentage:
-#     Male: {100*out1['counts']['sex']['M']:.2f}%
-#     Female: {100*out1['counts']['sex']['F']:.2f}%
-# Blood pressure std: {out2["std"]["bp"]:.2f} mm Hg
-# """
-# )
+print(
+    f"""Age mean: {first_rank_analytics['means']['age']:.2f} years
+Sex percentage:
+    Male: {100*first_rank_analytics['counts']['sex']['M']:.2f}%
+    Female: {100*first_rank_analytics['counts']['sex']['F']:.2f}%
+Blood pressure std: {second_rank_analytics["std"]["bp"]:.2f} mm Hg
+"""
+)
