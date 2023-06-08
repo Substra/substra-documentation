@@ -32,7 +32,7 @@ To run this example, you have two options:
 
    .. only:: builder_html or readthedocs
 
-        :download:`assets required to run this example <../../../../tmp/diabetes_substrafl_assets.zip>`
+        :download:`assets required to run this example <../../../../../tmp/diabetes_substrafl_assets.zip>`
 
   Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
 
@@ -107,7 +107,7 @@ assets_directory = root_dir / "diabetes_substrafl_assets"
 assert assets_directory.is_dir(), """Did not find the asset directory,
 a directory called 'assets' is expected in the same location as this file"""
 
-data_path = assets_directory / "data"
+data_path = pathlib.Path.cwd() / "tmp" / "data_diabetes"
 data_path.mkdir(exist_ok=True)
 
 setup_diabetes(data_path=data_path)
