@@ -3,13 +3,14 @@
 Federated Analytics on the diabetes dataset
 ===========================================
 
-This example demonstrates how to use the flexibility of the Substra library to do Federated Analytics.
+This example demonstrates how to use the flexibility of the SubstraFL library and the base class
+ComputePlanBuilder to do Federated Analytics.
 
 We use the **Diabetes dataset** available from the `Scikit-Learn dataset module <https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset>`__.
 This dataset contains medical information such as Age, Sex or Blood pressure.
 The goal of this example is to compute some analytics such as Age mean, Blood pressure standard deviation or Sex percentage.
 
-We simulate having two different data organisations, and a third organisation which wants to compute aggregated analytics
+We simulate having two different data organizations, and a third organization which wants to compute aggregated analytics
 without having access to the raw data. The example here runs everything locally; however there is only one parameter to
 change to run it on a real network.
 
@@ -38,17 +39,6 @@ To run this example, you have two options:
 
 """
 
-# %%
-# Importing all the dependencies
-# ==============================
-
-import pathlib
-
-import substra
-
-# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/diabetes.png'
-
-from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
 
 # %%
 # Instantiating the Substra clients
@@ -61,6 +51,9 @@ from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_d
 # This example runs in local mode, simulating a federated learning experiment.
 #
 
+# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/diabetes.png'
+
+import substra
 
 # Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 3
@@ -88,19 +81,14 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 # - Metadata are visible by all the users of a network.
 # - Permissions allow you to execute a function on a certain dataset.
 #
-
-from substra.sdk.schemas import DatasetSpec
-from substra.sdk.schemas import Permissions
-from substra.sdk.schemas import DataSampleSpec
-
-permissions_local = Permissions(public=False, authorized_ids=DATA_PROVIDER_ORGS_ID)
-permissions_aggregation = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_ID])
-
-# %%
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
 #
 # The function ``setup_diabetes`` downloads if needed the *diabetes* dataset, and split it in two. Each data
 # organization has access to a chunk of the dataset.
+
+import pathlib
+
+from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
 
 root_dir = pathlib.Path.cwd()
 assets_directory = root_dir / "diabetes_substrafl_assets"
@@ -122,13 +110,19 @@ setup_diabetes(data_path=data_path)
 # in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>`.
 #
 
+from substra.sdk.schemas import DataSampleSpec
+from substra.sdk.schemas import DatasetSpec
+from substra.sdk.schemas import Permissions
+
+permissions_dataset = Permissions(public=False, authorized_ids=DATA_PROVIDER_ORGS_ID)
+
 dataset = DatasetSpec(
     name=f"Diabetes dataset",
     type="csv",
     data_opener=assets_directory / "dataset" / "diabetes_substrafl_opener.py",
     description=data_path / "description.md",
-    permissions=permissions_local,
-    logs_permission=permissions_local,
+    permissions=permissions_dataset,
+    logs_permission=permissions_dataset,
 )
 
 # We register the dataset for each of the organizations
@@ -178,8 +172,9 @@ train_data_nodes = [
 
 
 # %%
-# Adding functions to execute with Substra
-# ========================================
+# The ComputePlanBuilder class
+# ============================
+
 import numpy as np
 import pandas as pd
 import json
