@@ -108,7 +108,6 @@ setup_diabetes(data_path=data_path)
 # A dataset represents the data in Substra. It contains some metadata and an *opener*, a script used to load the
 # data from files into memory. You can find more details about datasets
 # in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>`.
-#
 
 from substra.sdk.schemas import DataSampleSpec
 from substra.sdk.schemas import DatasetSpec
@@ -136,7 +135,6 @@ for client_id, key in dataset_keys.items():
 # The dataset object itself is an empty shell. Data samples are needed in order to add actual data.
 # A data sample contains subfolders containing a single data file like a CSV and the key identifying
 # the dataset it is linked to.
-#
 
 datasample_keys = {
     org_id: clients[org_id].add_data_sample(
@@ -164,7 +162,6 @@ datasample_keys = {
 #
 # A third type of node exists in SubstraFL: the TestDataNode. We will not need it in the current example. See the MNIST example
 # to learn how to use the last type of Node.
-#
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -293,10 +290,11 @@ class Analytics(ComputePlanBuilder):
         The aggregation will be a weighted average using "n_samples" as weighted coefficient.
 
         Args:
-            shared_states (list[dict]): _description_
+            shared_states (list[dict]): list of dictionaries containing a field "n_samples", and the analytics
+            to aggregate in separated fields.
 
         Returns:
-            _type_: _description_
+            dict: dictionary containing the aggregated analytics.
         """
         total_len = 0
         for state in shared_states:
@@ -332,11 +330,25 @@ class Analytics(ComputePlanBuilder):
         evaluation_strategy=None,
         clean_models=False,
     ):
+        """Method to build and link the different operation to execute with each other.
+        We will use the ``update_state``method of the nodes given as input to choose which
+        method to apply.
+        For our example, we will only use TrainDataNodes and AggregationNodes.
+
+        Args:
+            train_data_nodes (TrainDataNode): _description_
+            aggregation_node (AggregationNode): _description_
+            num_rounds (int): Num rounds to be used to iterate on recurrent part of the compute plan.
+                Defaults to None.
+            evaluation_strategy (substrafl.EvaluationStrategy): Object storing the TestDataNode. Unused in
+                this example. Defaults to None.
+            clean_models (bool): Clean the intermediary models of this round on the Substra platform. Default to False.
+        """
         first_order_shared_states = []
         local_states = {}
 
         for node in train_data_nodes:
-            # Call local_mean on each train node
+            # Call local_first_order_computation on each train data node
             next_local_state, next_shared_state = node.update_states(
                 self.local_first_order_computation(
                     node.data_sample_keys,
@@ -350,17 +362,17 @@ class Analytics(ComputePlanBuilder):
                 clean_models=False,
             )
 
-            # All local means are stored in shared_states, to be
-            # sent to the aggregator
+            # All local analytics are stored in the first_order_shared_states,
+            # given as input the the aggregation method.
             first_order_shared_states.append(next_shared_state)
             local_states[node.organization_id] = next_local_state
 
-        # Call the aggregation of mean on the aggregation node
+        # Call the aggregation method on the first_order_shared_states
         self.first_order_aggregated_state = aggregation_node.update_states(
             self.aggregation(
                 shared_states=first_order_shared_states,
                 _algo_name="Aggregating first order",
-            ),  # type: ignore
+            ),
             round_idx=0,
             authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
             clean_models=False,
@@ -369,7 +381,7 @@ class Analytics(ComputePlanBuilder):
         second_order_shared_states = []
 
         for node in train_data_nodes:
-            # Call local_mean on each train node
+            # Call local_second_order_computation on each train data node
             _, next_shared_state = node.update_states(
                 self.local_second_order_computation(
                     node.data_sample_keys,
@@ -382,22 +394,29 @@ class Analytics(ComputePlanBuilder):
                 aggregation_id=aggregation_node.organization_id,
                 clean_models=False,
             )
+
+            # All local analytics are stored in the second_order_shared_states,
+            # given as input the the aggregation method.
             second_order_shared_states.append(next_shared_state)
 
-        # Call the aggregation of mean on the aggregation node
+        # Call the aggregation method on the second_order_shared_states
         self.second_order_aggregated_state = aggregation_node.update_states(
             self.aggregation(
                 shared_states=second_order_shared_states,
                 _algo_name="Aggregating second order",
-            ),  # type: ignore
+            ),
             round_idx=1,
             authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
             clean_models=False,
         )
 
-    def save_local_state(self, path):
-        # If we want to use the computed global mean in a following task,
-        # we save it in order to restore it on the following task
+    def save_local_state(self, path: pathlib.Path):
+        """This function will save the important local state to retrieve after each new
+        call to a train or test task.
+
+        Args:
+            path (pathlib.Path): Path where to save the local_state. Provided internally by Substra.
+        """
         state_to_save = {
             "first_order": self.first_order_aggregated_state,
             "second_order": self.second_order_aggregated_state,
@@ -406,6 +425,14 @@ class Analytics(ComputePlanBuilder):
             json.dump(state_to_save, f)
 
     def load_local_state(self, path):
+        """Mirror function to load the local_state from a file saved using ``save_local_state``.
+
+        Args:
+            path (pathlib.Path): Path where to load the local_state. Provided internally by Substra.
+
+        Returns:
+            ComputePlanBuilder: return self with the updated local state.
+        """
         with open(path, "r") as f:
             state_to_load = json.load(f)
 
@@ -457,21 +484,26 @@ compute_plan = execute_experiment(
 # %%
 # Results
 # -------
-# Now we can view the results.
 #
+# The output of a task can be downloaded using some utils function provided by SubstraFL, such as
+# ``download_algo_state``, ``download_shared_state``or ``download_aggregated_state``.
+#
+# These function download from a given client and a given compute_plan key the output of a given round
+# or rank.
 
 from substrafl.model_loading import download_aggregated_state
 
-client_to_dowload_from = ANALYTICS_PROVIDER_ORG_ID
+# The aggregated analytics are computed in the ANALYTICS_PROVIDER_ORG_ID client.
+client_to_dowload_from = clients[ANALYTICS_PROVIDER_ORG_ID]
 
 first_rank_analytics = download_aggregated_state(
-    client=clients[client_to_dowload_from],
+    client=client_to_dowload_from,
     compute_plan_key=compute_plan.key,
     round_idx=0,
 )
 
 second_rank_analytics = download_aggregated_state(
-    client=clients[client_to_dowload_from],
+    client=client_to_dowload_from,
     compute_plan_key=compute_plan.key,
     round_idx=1,
 )
