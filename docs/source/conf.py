@@ -335,6 +335,8 @@ nitpick_ignore = [
     ("py:class", "torch.nn.Parameter"),
     ("py:class", "Parameter"),
     ("py:class", "Tensor"),
+    ("py:class", "Path"),
+    ("py:class", "module"),
     ("py:attr", "persistent"),
     ("py:attr", "grad_input"),
     ("py:attr", "strict"),
