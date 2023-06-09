@@ -153,6 +153,18 @@ datasample_keys = {
 # %%
 # The data has now been added as an asset through the data samples.
 #
+# SubstraFL provides different type of Nodes, a Node being an object that will create an link the different tasks with
+# each other to process and compute the different function needed.
+#
+# An aggregation node is attached to an organization and will be a node where we can compute function that does not
+# need data samples as input. For instance, we will use the AggregationNode object to compute the aggregated analytics.
+#
+# A TrainDataNode is a Node attached to a Client and that will have access to the data samples given to it. These data samples
+# must be instantiated with the right permissions to be processed by the given Client.
+#
+# A third type of node exists in SubstraFL: the TestDataNode. We will not need it in the current example. See the MNIST example
+# to learn how to use the last type of Node.
+#
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -174,6 +186,37 @@ train_data_nodes = [
 # %%
 # The ComputePlanBuilder class
 # ============================
+#
+# This example aims at explaining how to use the ComputePlanBuilder class, and how to use the full power of the
+# flexibility it provides.
+#
+# The ComputePlanBuilder is an abstract class that asks the user to implement only three methods:
+#   - ``build_compute_plan(...)``
+#   - ``load_local_state(...)``
+#   - ``save_local_state(...)``
+#
+# The ``build_compute_plan`` method is essential to create the graph of the compute plan that will be executed on
+# Substra. Using the different nodes we have created, we will update their states by applying custom methods,
+# called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply
+# decorators, such as @remote or @remote_data.
+#
+# These methods are pass as argument to the node using their ``update_states`` method.
+#
+# The update_states methods outputs the new state of the node, that can be passed as an argument to a following node.
+# This succession of next_state pass to new node.update_state is how Substra create the graph of the ComputePlan.
+#
+# The load_local_state and save_local_state are two methods used at each new iteration on a Node, in order to retrieve
+# a the previous local state that have not been shared with the other nodes.
+# For instance, after updating a TrainDataNode using its update_state method, we will have access to its next local
+# state, that we will pass as argument to the next update_state we will call on this TrainDataNode.
+#
+# To summarize, a ComputePlanBuilder is composed of several decorated custom function, that can need some data (decorated
+# with @remote_data) or not (decorated with @remote). This custom function will be used to create the graph of the
+# compute plan through the ``build_compute_plan``method and the ``update_state`` of the different Nodes. The local state
+# obtain after updating a TrainDataNode need the methods ``save_local_state`` and ``load_local_state` to retrieve the state
+# the Node was after the last update.
+#
+
 
 import numpy as np
 import pandas as pd
@@ -192,6 +235,24 @@ class Analytics(ComputePlanBuilder):
 
     @remote_data
     def local_first_order_computation(self, datasamples, shared_state=None):
+        """Compute from the data samples, expected to be pandas dataframe, the means and counts of each column of the
+        data frame.
+        These datasamples or the output of the ``get_data`` function define in the ``diabetes_substrafl_opener.py`` file
+        available in the asset folder downloaded at the beginning of the example.
+
+        The signature of a function decorated by @remote_data must contain the datasamples
+        and the shared_state arguments.
+
+        Args:
+            datasamples (pandas.DataFrame): Pandas dataframe provided by the opener.
+            shared_state (None, optional): Unused here as this function only use local information already
+            present in the datasamples. Defaults to None.
+
+        Returns:
+            dict: Returns a dictionary containing the compute information on means, counts and number of sample.
+                This dict will be used as a state to be shared to an AggregationNode in order to compute the
+                aggregation of the different analytics.
+        """
         df = datasamples
         states = {
             "n_samples": len(df),
@@ -327,10 +388,27 @@ class Analytics(ComputePlanBuilder):
 
 
 # %%
-# Registering tasks in Substra
-# ============================
-# The next step is to register the actual machine learning tasks.
+# Running the experiment
+# ======================
 #
+# As a last step before launching our experiment, we need to specify the third parties dependencies required to run it.
+# The :ref:`substrafl_doc/api/dependency:Dependency` object is instantiated in order to install the right libraries in
+# the Python environment of each organization.
+#
+# We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
+#
+# - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
+#   identify them.
+# - An :ref:`Torch algorithm<substrafl_doc/api/algorithms:Torch Algorithms>` to define the training parameters *(optimizer, train
+#   function, predict function, etc...)*.
+# - A :ref:`Federated Strategy<substrafl_doc/api/strategies:Strategies>`, to specify what compute plan we want to execute.
+# - :ref:`Train data nodes<substrafl_doc/api/nodes:TrainDataNode>` to indicate on which data to train.
+# - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we
+#   evaluate the model. Here this does not apply to our experiment. We set it to None.
+# - An :ref:`substrafl_doc/api/nodes:AggregationNode`, to specify the organization on which the aggregation operation
+#   will be computed.
+# - An **experiment folder** to save a summary of the operation made.
+# - The :ref:`substrafl_doc/api/dependency:Dependency` to define the libraries on which the experiment needs to run.
 
 from substrafl.dependency import Dependency
 from substrafl.experiment import execute_experiment
@@ -343,7 +421,6 @@ compute_plan = execute_experiment(
     train_data_nodes=train_data_nodes,
     evaluation_strategy=None,
     aggregation_node=aggregation_node,
-    num_rounds=1,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=dependencies,
     clean_models=False,
