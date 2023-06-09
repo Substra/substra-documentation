@@ -209,8 +209,8 @@ train_data_nodes = [
 #
 # To summarize, a ComputePlanBuilder is composed of several decorated custom function, that can need some data
 # (decorated with @remote_data) or not (decorated with @remote). This custom function will be used to create the graph
-# of the  compute plan through the ``build_compute_plan``method and the ``update_state`` of the different Nodes.
-# The local state obtain after updating a TrainDataNode need the methods ``save_local_state`` and ``load_local_state``
+# of the  compute plan through the ``build_compute_plan`` method and the ``update_state`` of the different Nodes.
+# The local state obtain after updating a ``TrainDataNode`` need the methods ``save_local_state`` and ``load_local_state``
 # to retrieve the state where the Node was after the last update.
 #
 
