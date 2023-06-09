@@ -207,11 +207,11 @@ train_data_nodes = [
 # For instance, after updating a TrainDataNode using its update_state method, we will have access to its next local
 # state, that we will pass as argument to the next update_state we will call on this TrainDataNode.
 #
-# To summarize, a ComputePlanBuilder is composed of several decorated custom function, that can need some data (decorated
-# with @remote_data) or not (decorated with @remote). This custom function will be used to create the graph of the
-# compute plan through the ``build_compute_plan``method and the ``update_state`` of the different Nodes. The local state
-# obtain after updating a TrainDataNode need the methods ``save_local_state`` and ``load_local_state` to retrieve the state
-# the Node was after the last update.
+# To summarize, a ComputePlanBuilder is composed of several decorated custom function, that can need some data
+# (decorated with @remote_data) or not (decorated with @remote). This custom function will be used to create the graph
+# of the  compute plan through the ``build_compute_plan``method and the ``update_state`` of the different Nodes.
+# The local state obtain after updating a TrainDataNode need the methods ``save_local_state`` and ``load_local_state``
+# to retrieve the state where the Node was after the last update.
 #
 
 
@@ -269,8 +269,7 @@ class Analytics(ComputePlanBuilder):
 
         Args:
             datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
-            shared_state (Dict): Output of a first order analytics computation, that must contain
-                the mean.
+            shared_state (Dict): Output of a first order analytics computation, that must contain the mean.
 
         Returns:
             Dict: dictionary containing the local information on standard deviation and number of sample.
