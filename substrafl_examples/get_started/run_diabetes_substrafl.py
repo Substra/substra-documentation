@@ -222,6 +222,7 @@ import numpy as np
 import pandas as pd
 import json
 from collections import defaultdict
+import pandas as pd
 
 from substrafl import ComputePlanBuilder
 from substrafl.remote import remote_data, remote
@@ -234,7 +235,7 @@ class Analytics(ComputePlanBuilder):
         self.second_order_aggregated_state = {}
 
     @remote_data
-    def local_first_order_computation(self, datasamples, shared_state=None):
+    def local_first_order_computation(self, datasamples: pd.DataFrame, shared_state=None):
         """Compute from the data samples, expected to be pandas dataframe, the means and counts of each column of the
         data frame.
         These datasamples or the output of the ``get_data`` function define in the ``diabetes_substrafl_opener.py`` file
@@ -244,12 +245,12 @@ class Analytics(ComputePlanBuilder):
         and the shared_state arguments.
 
         Args:
-            datasamples (pandas.DataFrame): Pandas dataframe provided by the opener.
+            datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
             shared_state (None, optional): Unused here as this function only use local information already
             present in the datasamples. Defaults to None.
 
         Returns:
-            dict: Returns a dictionary containing the compute information on means, counts and number of sample.
+            dict: dictionary containing the local information on means, counts and number of sample.
                 This dict will be used as a state to be shared to an AggregationNode in order to compute the
                 aggregation of the different analytics.
         """
@@ -264,7 +265,20 @@ class Analytics(ComputePlanBuilder):
         return states
 
     @remote_data
-    def local_second_order_computation(self, datasamples, shared_state):
+    def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: dict):
+        """This function will use the output of the ``aggregation`` function to compute
+        locally the standard deviation of the different columns.
+
+        Args:
+            datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
+            shared_state (dict): Output of a first order analytics computation, that must contain
+                the mean.
+
+        Returns:
+            dict: dictionary containing the local information on standard deviation and number of sample.
+                This dict will be used as a state to be shared to an AggregationNode in order to compute the
+                aggregation of the different analytics.
+        """
         df = datasamples
         means = pd.Series(shared_state["means"])
         states = {
@@ -274,7 +288,16 @@ class Analytics(ComputePlanBuilder):
         return states
 
     @remote
-    def aggregation(self, shared_states):
+    def aggregation(self, shared_states: list(dict)):
+        """Aggregation functions that receive a list on locally computed analytics in order to aggregate them.
+        The aggregation will be a weighted average using "n_samples" as weighted coefficient.
+
+        Args:
+            shared_states (list[dict]): _description_
+
+        Returns:
+            _type_: _description_
+        """
         total_len = 0
         for state in shared_states:
             total_len += state["n_samples"]
@@ -302,7 +325,12 @@ class Analytics(ComputePlanBuilder):
         return aggregated_values
 
     def build_compute_plan(
-        self, train_data_nodes, aggregation_node, num_rounds=None, evaluation_strategy=None, clean_models=None
+        self,
+        train_data_nodes: TrainDataNode,
+        aggregation_node: AggregationNode,
+        num_rounds=None,
+        evaluation_strategy=None,
+        clean_models=False,
     ):
         first_order_shared_states = []
         local_states = {}
@@ -413,7 +441,7 @@ class Analytics(ComputePlanBuilder):
 from substrafl.dependency import Dependency
 from substrafl.experiment import execute_experiment
 
-dependencies = Dependency(pypi_dependencies=["numpy", "pandas"])
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "pandas==1.5.3"])
 
 compute_plan = execute_experiment(
     client=clients[ANALYTICS_PROVIDER_ORG_ID],
