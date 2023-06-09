@@ -220,6 +220,7 @@ import pandas as pd
 import json
 from collections import defaultdict
 import pandas as pd
+from typing import List, Dict
 
 from substrafl import ComputePlanBuilder
 from substrafl.remote import remote_data, remote
@@ -262,17 +263,17 @@ class Analytics(ComputePlanBuilder):
         return states
 
     @remote_data
-    def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: dict):
+    def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: Dict):
         """This function will use the output of the ``aggregation`` function to compute
         locally the standard deviation of the different columns.
 
         Args:
             datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
-            shared_state (dict): Output of a first order analytics computation, that must contain
+            shared_state (Dict): Output of a first order analytics computation, that must contain
                 the mean.
 
         Returns:
-            dict: dictionary containing the local information on standard deviation and number of sample.
+            Dict: dictionary containing the local information on standard deviation and number of sample.
                 This dict will be used as a state to be shared to an AggregationNode in order to compute the
                 aggregation of the different analytics.
         """
@@ -285,16 +286,16 @@ class Analytics(ComputePlanBuilder):
         return states
 
     @remote
-    def aggregation(self, shared_states: list(dict)):
+    def aggregation(self, shared_states: List[Dict]):
         """Aggregation functions that receive a list on locally computed analytics in order to aggregate them.
         The aggregation will be a weighted average using "n_samples" as weighted coefficient.
 
         Args:
-            shared_states (list[dict]): list of dictionaries containing a field "n_samples", and the analytics
+            shared_states (List[Dict]): list of dictionaries containing a field "n_samples", and the analytics
             to aggregate in separated fields.
 
         Returns:
-            dict: dictionary containing the aggregated analytics.
+            Dict: dictionary containing the aggregated analytics.
         """
         total_len = 0
         for state in shared_states:
@@ -424,7 +425,7 @@ class Analytics(ComputePlanBuilder):
         with open(path, "w") as f:
             json.dump(state_to_save, f)
 
-    def load_local_state(self, path):
+    def load_local_state(self, path: pathlib.Path):
         """Mirror function to load the local_state from a file saved using ``save_local_state``.
 
         Args:
