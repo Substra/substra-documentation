@@ -79,6 +79,10 @@ SubstraFL:
 - Python dependencies are resolved using pip compile during function registration.
 - **BREAKING CHANGE**: ``local_dependencies`` is renamed ``local_installable_dependencies``.
 
+Substra:
+
+- Utils to get ``input / output assets`` for a specific task (``get_task_output_asset``, ``list_task_output_assets``, ``list_task_input_assets``)
+
 Substra 0.27.0 --- 2023-05-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
