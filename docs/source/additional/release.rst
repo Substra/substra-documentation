@@ -28,6 +28,57 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.28.0 --- 2023-06-12
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Add token management page guide ([#312](https://github.com/Substra/substra-documentation/pull/312))
+
+SubstraFL:
+
+- New ComputePlanBuilder base class to define which method are needed to implement a custom strategy in SubstraFL.
+  These methods are ``build_compute_plan``, ``load_local_states`` and ``save_local_states``.
+- **BREAKING CHANGE**: depreciate the usage of ``model_loading.download_algo_files`` and ``model_loading.load_algo`` functions. New utils functions are now available.
+  ``model_loading.download_algo_state`` to download a SubstraFL algo of a given round or rank.
+  ``model_loading.download_shared_state``` to download a SubstraFL shared object of a given round or rank.
+  ``model_loading.download_aggregated_state`` to download a SubstraFL aggregated of a given round or rank.
+  The API change goes from:
+
+.. code-block:: python
+  algo_files_folder = str(pathlib.Path.cwd() / "tmp" / "algo_files")
+
+  download_algo_files(
+    client=client_to_download_from,
+    compute_plan_key=compute_plan.key,
+    round_idx=round_idx,
+    dest_folder=algo_files_folder,
+  )
+
+  model = load_algo(input_folder=algo_files_folder).model
+
+  to
+
+.. code-block:: python
+
+  algo = download_algo_state(
+    client=client_to_download_from  ,
+    compute_plan_key=compute_plan.key,
+    round_idx=round_idx,
+  )
+
+  model = algo.model
+
+- **BREAKING CHANGE**: rename `build_graph` to `build_compute_plan`.
+- **BREAKING CHANGE**: move `schema.py` into the `strategy` module.
+
+.. code-block:: python
+
+  from substrafl.schemas import FedAvgSharedState
+  # Become
+  from substrafl.strategies.schemas import FedAvgSharedState
+
+- Python dependencies are resolved using pip compile during function registration.
+- **BREAKING CHANGE**: ``local_dependencies`` is renamed ``local_installable_dependencies``.
+
 Substra 0.27.0 --- 2023-05-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -93,7 +144,7 @@ to:
 - Enforce **kwargs** for functions with more than 3 parameters.
 - Add the **Federated Principal Component Analysis strategy**.
 
-Substra
+Substra:
 
 - Substra Clients can now be configured using environment variables or a configuration Yaml file.
 - **BREAKING CHANGE**: default backend type for Client is now ``subprocess``.
