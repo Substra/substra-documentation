@@ -71,6 +71,24 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 # %%
 # Prepare the data
 # ----------------
+#
+# The function ``setup_diabetes`` downloads if needed the *diabetes* dataset, and split it in two to simulate a
+# federated setup. Each data organization has access to a chunk of the dataset.
+
+import pathlib
+
+from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
+
+data_path = pathlib.Path.cwd() / "tmp" / "data_diabetes"
+data_path.mkdir(exist_ok=True)
+
+setup_diabetes(data_path=data_path)
+
+
+# %%
+# Registering data samples and dataset
+# ------------------------------------
+#
 # Every asset will be created in respect to predefined schemas (Spec) previously imported from
 # ``substra.sdk.schemas``. To register assets, :ref:`documentation/api_reference:Schemas`
 # are first instantiated and the specs are then registered, which generate the real assets.
@@ -83,28 +101,6 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]
 #
 # Next, we need to define the asset directory. You should have already downloaded the assets folder as stated above.
 #
-# The function ``setup_diabetes`` downloads if needed the *diabetes* dataset, and split it in two. Each data
-# organization has access to a chunk of the dataset.
-
-import pathlib
-
-from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
-
-root_dir = pathlib.Path.cwd()
-assets_directory = root_dir / "diabetes_substrafl_assets"
-assert assets_directory.is_dir(), """Did not find the asset directory,
-a directory called 'assets' is expected in the same location as this file"""
-
-data_path = pathlib.Path.cwd() / "tmp" / "data_diabetes"
-data_path.mkdir(exist_ok=True)
-
-setup_diabetes(data_path=data_path)
-
-
-# %%
-# Registering data samples and dataset
-# ------------------------------------
-#
 # A dataset represents the data in Substra. It contains some metadata and an *opener*, a script used to load the
 # data from files into memory. You can find more details about datasets
 # in the :ref:`API reference<documentation/references/sdk_schemas:DatasetSpec>`.
@@ -112,6 +108,11 @@ setup_diabetes(data_path=data_path)
 from substra.sdk.schemas import DataSampleSpec
 from substra.sdk.schemas import DatasetSpec
 from substra.sdk.schemas import Permissions
+
+
+assets_directory = pathlib.Path.cwd() / "diabetes_substrafl_assets"
+assert assets_directory.is_dir(), """Did not find the asset directory,
+a directory called 'assets' is expected in the same location as this file"""
 
 permissions_dataset = Permissions(public=False, authorized_ids=DATA_PROVIDER_ORGS_ID)
 
@@ -151,16 +152,20 @@ datasample_keys = {
 # %%
 # The data has now been added as an asset through the data samples.
 #
-# SubstraFL provides different type of Nodes, a Node being an object that will create an link the different tasks with
-# each other to process and compute the different function needed.
+# SubstraFL provides different type of Nodes to ingest these data, a Node being an object that will create an link
+# the different tasks with each other.
 #
-# An aggregation node is attached to an organization and will be a node where we can compute function that does not
-# need data samples as input. For instance, we will use the AggregationNode object to compute the aggregated analytics.
+# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode> is attached to an organization and will be a node
+# where we can compute function that does not need data samples as input. We will use the
+# :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode> object to compute the aggregated analytics.
 #
-# A TrainDataNode is a Node attached to a Client and that will have access to the data samples given to it. These data samples
-# must be instantiated with the right permissions to be processed by the given Client.
+# A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to a Client and will have access
+# to the data samples. These data samples must be instantiated with the right permissions to be processed by the given
+# Client.
 #
-# A third type of node exists in SubstraFL: the TestDataNode. We will not need it in the current example. See the MNIST example
+# A third type of node exists in SubstraFL: the :ref:`Test data node<substrafl_doc/api/nodes:TestDataNode>`.
+# We will not need it in the current example. See the `MNIST Example
+# <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
 # to learn how to use the last type of Node.
 
 from substrafl.nodes import TrainDataNode
@@ -184,10 +189,12 @@ train_data_nodes = [
 # The ComputePlanBuilder class
 # ============================
 #
-# This example aims at explaining how to use the ComputePlanBuilder class, and how to use the full power of the
+# This example aims at explaining how to use the :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` class,
+# and how to use the full power of the
 # flexibility it provides.
 #
-# The ComputePlanBuilder is an abstract class that asks the user to implement only three methods:
+# The :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` is an abstract class that asks the user to
+# implement only three methods:
 #   - ``build_compute_plan(...)``
 #   - ``load_local_state(...)``
 #   - ``save_local_state(...)``
@@ -197,21 +204,23 @@ train_data_nodes = [
 # called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply
 # decorators, such as @remote or @remote_data.
 #
-# These methods are pass as argument to the node using their ``update_states`` method.
+# These methods are pass as argument to the node using there ``update_state`` method.
 #
-# The update_states methods outputs the new state of the node, that can be passed as an argument to a following node.
-# This succession of next_state pass to new node.update_state is how Substra create the graph of the ComputePlan.
+# The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following node.
+# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra create the graph of the
+# ``ComputePlan``.
 #
-# The load_local_state and save_local_state are two methods used at each new iteration on a Node, in order to retrieve
-# a the previous local state that have not been shared with the other nodes.
+# The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
+# retrieve a the previous local state that have not been shared with the other nodes.
 # For instance, after updating a TrainDataNode using its update_state method, we will have access to its next local
 # state, that we will pass as argument to the next update_state we will call on this TrainDataNode.
 #
-# To summarize, a ComputePlanBuilder is composed of several decorated custom function, that can need some data
-# (decorated with @remote_data) or not (decorated with @remote). This custom function will be used to create the graph
-# of the  compute plan through the ``build_compute_plan`` method and the ``update_state`` of the different Nodes.
-# The local state obtain after updating a ``TrainDataNode`` need the methods ``save_local_state`` and ``load_local_state``
-# to retrieve the state where the Node was after the last update.
+# To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` is composed of several decorated
+# custom function, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
+# This custom function will be used to create the graph  of the  compute plan through the ``build_compute_plan``
+# method and the ``update_state`` of the different Nodes.
+# The local state obtain after updating a ``TrainDataNode`` need the methods ``save_local_state`` and
+# ``load_local_state``  to retrieve the state where the Node was after the last update.
 #
 
 
