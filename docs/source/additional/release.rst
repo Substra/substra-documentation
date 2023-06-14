@@ -31,8 +31,6 @@ This is an overview of the main changes, please have a look at the changelog of 
 Substra 0.28.0 --- 2023-06-12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Add token management page guide ([#312](https://github.com/Substra/substra-documentation/pull/312))
-
 SubstraFL:
 
 - On how to **decrease** Docker image size to accelerate the compute plan speed:
