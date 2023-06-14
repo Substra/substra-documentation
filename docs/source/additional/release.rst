@@ -36,8 +36,6 @@ Substra 0.28.0 --- 2023-06-14
 - On how to **decrease** Docker image size to accelerate the compute plan speed:
 
   - Add ``excluded_paths`` and ``excluded_regex`` parameters to the ``Dependency`` object to exclude file when building the ``Dependency`` object. Defaults are provided to avoid creating large Docker images.
-  - All third-party dependencies (including indirect dependencies) are compiled using ``pip-compile`` at generation time, so before launching the compute plan. This allows for early warning in case of incompatibilities.
-  - The Python version is now checked at registration time if it’s compatible with Substra.
 
 - **BREAKING CHANGE**: ``local_dependencies`` is renamed ``local_installable_dependencies``.
 - On **Federated Analytics** and creating **custom FL strategies**:
