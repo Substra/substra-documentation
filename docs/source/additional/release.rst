@@ -28,17 +28,20 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
-Substra 0.28.0 --- 2023-06-12
+Substra 0.28.0 --- 2023-06-14
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SubstraFL:
+**SubstraFL**:
 
 - On how to **decrease** Docker image size to accelerate the compute plan speed:
+
   - Add ``excluded_paths`` and ``excluded_regex`` parameters to the ``Dependency`` object to exclude file when building the ``Dependency`` object. Defaults are provided to avoid creating large Docker images.
   - All third-party dependencies (including indirect dependencies) are compiled using ``pip-compile`` at generation time, so before launching the compute plan. This allows for early warning in case of incompatibilities.
   - The Python version is now checked at registration time if it’s compatible with Substra.
+
 - **BREAKING CHANGE**: ``local_dependencies`` is renamed ``local_installable_dependencies``.
 - On **Federated Analytics** and creating **custom FL strategies**:
+
   - Add ``ComputePlanBuilder`` base class to define which method are needed to implement a custom strategy in SubstraFL. These methods are ``build_compute_plan``, ``load_local_states``and ``save_local_states``.
   - **BREAKING CHANGE**: rename ``build_graph`` to ``build_compute_plan``.
   - **BREAKING CHANGE**: move ``schema.py`` to ``strategy/schema.py``.
@@ -56,12 +59,12 @@ SubstraFL:
 **Web application**:
 
 - Fix issue where hyper-parameters were not nicely shown when their names was too big.
-- The API tokens management has now a **new page** supporting multiple token per user - see - `documentation <https://docs.substra.org/en/latest/documentation/api_tokens_generation.html>`__
+- The API tokens management has now a **new page** supporting multiple token per user - see - `documentation <https://docs.substra.org/en/latest/documentation/api_tokens_generation.html>`__.
 - Reset the selected Compute Plan after a logout.
 
 **Operations**:
 
-- Substra backend and orchestrator can now use **external database** rather having to use the one packaged as a subchart
+- Substra backend and orchestrator can now use **external database** rather having to use the one packaged as a subchart.
 
 Substra 0.27.0 --- 2023-05-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -128,12 +131,12 @@ to:
 - Enforce **kwargs** for functions with more than 3 parameters.
 - Add the **Federated Principal Component Analysis strategy**.
 
-Substra:
+**Substra**:
 
 - Substra Clients can now be configured using environment variables or a configuration Yaml file.
 - **BREAKING CHANGE**: default backend type for Client is now ``subprocess``.
 
-Front-end:
+**Web application**:
 
 - Display function name for each task in workflow & tasks table.
 - Better performances for workflow.
