@@ -4,7 +4,9 @@ Federated Analytics on the diabetes dataset
 ===========================================
 
 This example demonstrates how to use the flexibility of the SubstraFL library and the base class
-ComputePlanBuilder to do Federated Analytics.
+ComputePlanBuilder to do Federated Analytics. If you are new to SubstraFL, we recommend to start
+by the `MNIST Example <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
+to learn how to use the library in the simplest configuration first.
 
 We use the **Diabetes dataset** available from the `Scikit-Learn dataset module <https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset>`__.
 This dataset contains medical information such as Age, Sex or Blood pressure.
@@ -45,11 +47,12 @@ To run this example, you have two options:
 # =================================
 #
 # We work with three different organizations.
-# Two organizations provide data, and a third one performs Federate Analytics to compute aggregated statistics without
+# Two organizations provide data, and a third one performs Federated Analytics to compute aggregated statistics without
 # having access to the raw datasets.
 #
 # This example runs in local mode, simulating a federated learning experiment.
 #
+# In the following code cell, we define the different organizations needed for our FL experiment.
 
 # sphinx_gallery_thumbnail_path = 'static/example_thumbnail/diabetes.png'
 
@@ -165,18 +168,18 @@ datasample_keys = {
 # SubstraFL provides different type of Nodes to ingest these data, a Node being an object that will create an link
 # the different tasks with each other.
 #
-# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization and will be a node
-# where we can compute function that does not need data samples as input. We will use the
+# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization (aka a Client)
+# and will be a node  where we can compute function that does not need data samples as input. We will use the
 # :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
 #
-# A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to a Client and will have access
-# to the data samples. These data samples must be instantiated with the right permissions to be processed by the given
-# Client.
+# A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to an organization (aka a Client)
+# and will have access to the data samples. These data samples must be instantiated with the right permissions to
+# be processed by the given Client.
 #
-# A third type of node exists in SubstraFL: the :ref:`Test data node<substrafl_doc/api/nodes:TestDataNode>`.
+# A third type of node exists in SubstraFL, called :ref:`Test data node<substrafl_doc/api/nodes:TestDataNode>`.
 # We will not need it in the current example. See the `MNIST Example
 # <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
-# to learn how to use the last type of Node.
+# to learn how to use this type of Nodes.
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -210,12 +213,12 @@ train_data_nodes = [
 # - ``save_local_state(...)``
 #
 # The ``build_compute_plan`` method is essential to create the graph of the compute plan that will be executed on
-# Substra. Using the different nodes we have created, we will update their states by applying custom methods,
+# Substra. Using the different nodes we created, we will update there states by applying user defined methods,
 # called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply decorators, such as ``@remote`` or ``@remote_data``.
 #
 # These methods are pass as argument to the node using there ``update_state`` method.
 #
-# The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following node.
+# The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
 # This succession of ``next_state`` pass to new ``node.update_state`` is how Substra create the graph of the
 # ``ComputePlan``.
 #
@@ -223,14 +226,15 @@ train_data_nodes = [
 # retrieve a the previous local state that have not been shared with the other nodes.
 # For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
 # ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
-# next ``update_state`` we will call on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
+# next ``update_state`` we will apply on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
 #
 # To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
-# custom function, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
-# This custom function will be used to create the graph  of the  compute plan through the ``build_compute_plan``
-# method and the ``update_state`` of the different Nodes.
+# user defined functions, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
+# This custom function will be used to create the graph of the compute plan through the ``build_compute_plan``
+# method and the ``update_state`` method of the different Nodes.
 # The local state obtain after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` need the
-# methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was after the last update.
+# methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was at the end of
+# the last update.
 #
 
 
@@ -536,10 +540,10 @@ compute_plan = execute_experiment(
 # -------
 #
 # The output of a task can be downloaded using some utils function provided by SubstraFL, such as
-# ``download_algo_state``, ``download_shared_state``or ``download_aggregated_state``.
+# ``download_algo_state``, ``download_shared_state`` or ``download_aggregated_state``.
 #
-# These functions download from a given client and a given compute_plan key the output of a given round
-# or rank.
+# These functions download from a given ``Client`` and a given ``compute_plan_key`` the output of a
+# given ``round_idx`` or ``rank_idx``.
 
 from substrafl.model_loading import download_aggregated_state
 
