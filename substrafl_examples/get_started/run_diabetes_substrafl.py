@@ -280,7 +280,7 @@ class Analytics(ComputePlanBuilder):
 
     @remote_data
     def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: Dict):
-        """This function will use the output of the ``aggregation`` function to compute
+        """This function will use the output of the self.aggregation function to compute
         locally the standard deviation of the different columns.
 
         Args:
