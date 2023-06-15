@@ -162,7 +162,7 @@ datasample_keys = {
 # SubstraFL provides different type of Nodes to ingest these data, a Node being an object that will create an link
 # the different tasks with each other.
 #
-# An :ref:`Aggregation` node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization and will be a node
+# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization and will be a node
 # where we can compute function that does not need data samples as input. We will use the
 # :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
 #
@@ -280,7 +280,7 @@ class Analytics(ComputePlanBuilder):
 
     @remote_data
     def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: Dict):
-        """This function will use the output of the self.aggregation function to compute
+        """This function will use the output of the ``aggregation`` function to compute
         locally the standard deviation of the different columns.
 
         Args:
