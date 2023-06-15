@@ -66,4 +66,4 @@ This script will automatically end if the :code:`performance.json` file has not 
 
             step = int(row["round_idx"]) if row["round_idx"] is not None else int(row["task_rank"])
 
-            log_metric(f"{row['function_name']}_{row['worker']}", row["performance"], step)
+            log_metric(f"{row['identifier']}_{row['worker']}", row["performance"], step)
