@@ -162,9 +162,9 @@ datasample_keys = {
 # SubstraFL provides different type of Nodes to ingest these data, a Node being an object that will create an link
 # the different tasks with each other.
 #
-# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode> is attached to an organization and will be a node
+# An :ref:`Aggregation` node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization and will be a node
 # where we can compute function that does not need data samples as input. We will use the
-# :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode> object to compute the aggregated analytics.
+# :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
 #
 # A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to a Client and will have access
 # to the data samples. These data samples must be instantiated with the right permissions to be processed by the given
@@ -201,14 +201,14 @@ train_data_nodes = [
 #
 # The :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is an abstract class that asks the user to
 # implement only three methods:
-#   - ``build_compute_plan(...)``
-#   - ``load_local_state(...)``
-#   - ``save_local_state(...)``
+#
+# - ``build_compute_plan(...)``
+# - ``load_local_state(...)``
+# - ``save_local_state(...)``
 #
 # The ``build_compute_plan`` method is essential to create the graph of the compute plan that will be executed on
 # Substra. Using the different nodes we have created, we will update their states by applying custom methods,
-# called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply
-# decorators, such as @remote or @remote_data.
+# called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply decorators, such as ``@remote`` or ``@remote_data``.
 #
 # These methods are pass as argument to the node using there ``update_state`` method.
 #
@@ -218,15 +218,16 @@ train_data_nodes = [
 #
 # The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
 # retrieve a the previous local state that have not been shared with the other nodes.
-# For instance, after updating a TrainDataNode using its update_state method, we will have access to its next local
-# state, that we will pass as argument to the next update_state we will call on this TrainDataNode.
+# For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
+# ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
+# next ``update_state`` we will call on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
 #
 # To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
 # custom function, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
 # This custom function will be used to create the graph  of the  compute plan through the ``build_compute_plan``
 # method and the ``update_state`` of the different Nodes.
-# The local state obtain after updating a ``TrainDataNode`` need the methods ``save_local_state`` and
-# ``load_local_state``  to retrieve the state where the Node was after the last update.
+# The local state obtain after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` need the
+# methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was after the last update.
 #
 
 
@@ -351,8 +352,9 @@ class Analytics(ComputePlanBuilder):
         For our example, we will only use TrainDataNodes and AggregationNodes.
 
         Args:
-            train_data_nodes (TrainDataNode): _description_
-            aggregation_node (AggregationNode): _description_
+            train_data_nodes (TrainDataNode): Nodes linked to the data samples on which to compute analytics.
+            aggregation_node (AggregationNode): Node on which to compute the aggregation of the analytics extracted
+                from the train_data_nodes.
             num_rounds (int): Num rounds to be used to iterate on recurrent part of the compute plan.
                 Defaults to None.
             evaluation_strategy (substrafl.EvaluationStrategy): Object storing the TestDataNode. Unused in
