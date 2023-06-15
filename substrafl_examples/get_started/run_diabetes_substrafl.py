@@ -133,7 +133,10 @@ dataset = DatasetSpec(
 )
 
 # We register the dataset for each of the organizations
-dataset_keys = {client_id: clients[client_id].add_dataset(dataset) for client_id in DATA_PROVIDER_ORGS_ID}
+dataset_keys = {
+    client_id: clients[client_id].add_dataset(dataset)
+    for client_id in DATA_PROVIDER_ORGS_ID
+}
 
 for client_id, key in dataset_keys.items():
     print(f"Dataset key for {client_id}: {key}")
@@ -249,48 +252,58 @@ class Analytics(ComputePlanBuilder):
         self.second_order_aggregated_state = {}
 
     @remote_data
-    def local_first_order_computation(self, datasamples: pd.DataFrame, shared_state=None):
-        """Compute from the data samples, expected to be pandas dataframe, the means and counts of each column of the
-        data frame.
-        These datasamples or the output of the ``get_data`` function define in the ``diabetes_substrafl_opener.py`` file
-        available in the asset folder downloaded at the beginning of the example.
+    def local_first_order_computation(
+        self, datasamples: pd.DataFrame, shared_state=None
+    ):
+        """Compute from the data samples, expected to be pandas dataframe,
+        the means and counts of each column of the data frame.
+        These datasamples or the output of the ``get_data`` function define
+        in the ``diabetes_substrafl_opener.py`` file available in the asset
+        folder downloaded at the beginning of the example.
 
-        The signature of a function decorated by @remote_data must contain the datasamples
-        and the shared_state arguments.
+        The signature of a function decorated by @remote_data must contain
+        the datasamples and the shared_state arguments.
 
         Args:
             datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
-            shared_state (None, optional): Unused here as this function only use local information already
-            present in the datasamples. Defaults to None.
+            shared_state (None, optional): Unused here as this function only
+                use local information already present in the datasamples.
+                Defaults to None.
 
         Returns:
-            dict: dictionary containing the local information on means, counts and number of sample.
-                This dict will be used as a state to be shared to an AggregationNode in order to compute the
-                aggregation of the different analytics.
+            dict: dictionary containing the local information on means, counts
+                and number of sample. This dict will be used as a state to be
+                shared to an AggregationNode in order to compute the aggregation
+                of the different analytics.
         """
         df = datasamples
         states = {
             "n_samples": len(df),
             "means": df.select_dtypes(include=np.number).sum().to_dict(),
             "counts": {
-                name: series.value_counts().to_dict() for name, series in df.select_dtypes(include="category").items()
+                name: series.value_counts().to_dict()
+                for name, series in df.select_dtypes(include="category").items()
             },
         }
         return states
 
     @remote_data
-    def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: Dict):
+    def local_second_order_computation(
+        self, datasamples: pd.DataFrame, shared_state: Dict
+    ):
         """This function will use the output of the ``aggregation`` function to compute
         locally the standard deviation of the different columns.
 
         Args:
             datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
-            shared_state (Dict): Output of a first order analytics computation, that must contain the mean.
+            shared_state (Dict): Output of a first order analytics computation,
+                that must contain the mean.
 
         Returns:
-            Dict: dictionary containing the local information on standard deviation and number of sample.
-                This dict will be used as a state to be shared to an AggregationNode in order to compute the
-                aggregation of the different analytics.
+            Dict: dictionary containing the local information on standard deviation
+                and number of sample. This dict will be used as a state to be shared
+                to an AggregationNode in order to compute the aggregation of the
+                different analytics.
         """
         df = datasamples
         means = pd.Series(shared_state["means"])
@@ -302,12 +315,13 @@ class Analytics(ComputePlanBuilder):
 
     @remote
     def aggregation(self, shared_states: List[Dict]):
-        """Aggregation function that receive a list on locally computed analytics in order to aggregate them.
+        """Aggregation function that receive a list on locally computed analytics in order to
+        aggregate them.
         The aggregation will be a weighted average using "n_samples" as weighted coefficient.
 
         Args:
-            shared_states (List[Dict]): list of dictionaries containing a field "n_samples", and the analytics
-            to aggregate in separated fields.
+            shared_states (List[Dict]): list of dictionaries containing a field "n_samples",
+            and the analytics to aggregate in separated fields.
 
         Returns:
             Dict: dictionary containing the aggregated analytics.
@@ -326,9 +340,13 @@ class Analytics(ComputePlanBuilder):
                     if isinstance(v, dict):
                         # this column is categorical and v is a dict over the different modalities
                         if not aggregated_values[analytics_name][col_name]:
-                            aggregated_values[analytics_name][col_name] = defaultdict(float)
+                            aggregated_values[analytics_name][col_name] = defaultdict(
+                                float
+                            )
                         for modality, vv in v.items():
-                            aggregated_values[analytics_name][col_name][modality] += vv / total_len
+                            aggregated_values[analytics_name][col_name][modality] += (
+                                vv / total_len
+                            )
                     else:
                         # this is a numerical column and v is numerical
                         aggregated_values[analytics_name][col_name] += v / total_len
@@ -352,14 +370,16 @@ class Analytics(ComputePlanBuilder):
         For our example, we will only use TrainDataNodes and AggregationNodes.
 
         Args:
-            train_data_nodes (TrainDataNode): Nodes linked to the data samples on which to compute analytics.
-            aggregation_node (AggregationNode): Node on which to compute the aggregation of the analytics extracted
-                from the train_data_nodes.
-            num_rounds (int): Num rounds to be used to iterate on recurrent part of the compute plan.
-                Defaults to None.
-            evaluation_strategy (substrafl.EvaluationStrategy): Object storing the TestDataNode. Unused in
-                this example. Defaults to None.
-            clean_models (bool): Clean the intermediary models of this round on the Substra platform. Default to False.
+            train_data_nodes (TrainDataNode): Nodes linked to the data samples on which
+                to compute analytics.
+            aggregation_node (AggregationNode): Node on which to compute the aggregation
+                of the analytics extracted from the train_data_nodes.
+            num_rounds (int): Num rounds to be used to iterate on recurrent part of
+                the compute plan. Defaults to None.
+            evaluation_strategy (substrafl.EvaluationStrategy): Object storing the
+                TestDataNode. Unused in this example. Defaults to None.
+            clean_models (bool): Clean the intermediary models of this round on the
+                Substra platform. Default to False.
         """
         first_order_shared_states = []
         local_states = {}
@@ -391,7 +411,12 @@ class Analytics(ComputePlanBuilder):
                 _algo_name="Aggregating first order",
             ),
             round_idx=0,
-            authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
+            authorized_ids=set(
+                [
+                    train_data_node.organization_id
+                    for train_data_node in train_data_nodes
+                ]
+            ),
             clean_models=False,
         )
 
@@ -423,7 +448,12 @@ class Analytics(ComputePlanBuilder):
                 _algo_name="Aggregating second order",
             ),
             round_idx=1,
-            authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
+            authorized_ids=set(
+                [
+                    train_data_node.organization_id
+                    for train_data_node in train_data_nodes
+                ]
+            ),
             clean_models=False,
         )
 
@@ -432,7 +462,8 @@ class Analytics(ComputePlanBuilder):
         call to a train or test task.
 
         Args:
-            path (pathlib.Path): Path where to save the local_state. Provided internally by Substra.
+            path (pathlib.Path): Path where to save the local_state. Provided internally by
+                Substra.
         """
         state_to_save = {
             "first_order": self.first_order_aggregated_state,
@@ -442,10 +473,12 @@ class Analytics(ComputePlanBuilder):
             json.dump(state_to_save, f)
 
     def load_local_state(self, path: pathlib.Path):
-        """Mirror function to load the local_state from a file saved using ``save_local_state``.
+        """Mirror function to load the local_state from a file saved using
+        ``save_local_state``.
 
         Args:
-            path (pathlib.Path): Path where to load the local_state. Provided internally by Substra.
+            path (pathlib.Path): Path where to load the local_state. Provided internally by
+                Substra.
 
         Returns:
             ComputePlanBuilder: return self with the updated local state.
