@@ -53,13 +53,20 @@ To run this example, you have two options:
 
 # sphinx_gallery_thumbnail_path = 'static/example_thumbnail/diabetes.png'
 
-import substra
+from substra import Client
 
 # Choose the subprocess mode to locally simulate the FL process
 N_CLIENTS = 3
-clients_list = [substra.Client(client_name=f"org-{i+1}") for i in range(N_CLIENTS)]
-clients = {client.organization_info().organization_id: client for client in clients_list}
+client_0 = Client(client_name="org-1")
+client_1 = Client(client_name="org-2")
+client_2 = Client(client_name="org-3")
 
+# Create a dictionary to easily access each client from its human-friendly id
+clients = {
+    client_0.organization_info().organization_id: client_0,
+    client_1.organization_info().organization_id: client_1,
+    client_2.organization_info().organization_id: client_2,
+}
 # Store organization IDs
 ORGS_ID = list(clients)
 
@@ -295,7 +302,7 @@ class Analytics(ComputePlanBuilder):
 
     @remote
     def aggregation(self, shared_states: List[Dict]):
-        """Aggregation functions that receive a list on locally computed analytics in order to aggregate them.
+        """Aggregation function that receive a list on locally computed analytics in order to aggregate them.
         The aggregation will be a weighted average using "n_samples" as weighted coefficient.
 
         Args:
@@ -497,7 +504,7 @@ compute_plan = execute_experiment(
 # The output of a task can be downloaded using some utils function provided by SubstraFL, such as
 # ``download_algo_state``, ``download_shared_state``or ``download_aggregated_state``.
 #
-# These function download from a given client and a given compute_plan key the output of a given round
+# These functions download from a given client and a given compute_plan key the output of a given round
 # or rank.
 
 from substrafl.model_loading import download_aggregated_state
