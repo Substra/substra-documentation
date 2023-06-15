@@ -136,7 +136,10 @@ dataset = DatasetSpec(
 )
 
 # We register the dataset for each of the organizations
-dataset_keys = {client_id: clients[client_id].add_dataset(dataset) for client_id in DATA_PROVIDER_ORGS_ID}
+dataset_keys = {
+    client_id: clients[client_id].add_dataset(dataset)
+    for client_id in DATA_PROVIDER_ORGS_ID
+}
 
 for client_id, key in dataset_keys.items():
     print(f"Dataset key for {client_id}: {key}")
@@ -253,7 +256,9 @@ class Analytics(ComputePlanBuilder):
         self.second_order_aggregated_state = {}
 
     @remote_data
-    def local_first_order_computation(self, datasamples: pd.DataFrame, shared_state=None):
+    def local_first_order_computation(
+        self, datasamples: pd.DataFrame, shared_state=None
+    ):
         """Compute from the data samples, expected to be pandas dataframe,
         the means and counts of each column of the data frame.
         These datasamples or the output of the ``get_data`` function define
@@ -280,13 +285,16 @@ class Analytics(ComputePlanBuilder):
             "n_samples": len(df),
             "means": df.select_dtypes(include=np.number).sum().to_dict(),
             "counts": {
-                name: series.value_counts().to_dict() for name, series in df.select_dtypes(include="category").items()
+                name: series.value_counts().to_dict()
+                for name, series in df.select_dtypes(include="category").items()
             },
         }
         return states
 
     @remote_data
-    def local_second_order_computation(self, datasamples: pd.DataFrame, shared_state: Dict):
+    def local_second_order_computation(
+        self, datasamples: pd.DataFrame, shared_state: Dict
+    ):
         """This function will use the output of the ``aggregation`` function to compute
         locally the standard deviation of the different columns.
 
@@ -337,9 +345,13 @@ class Analytics(ComputePlanBuilder):
                         # this column is categorical and v is a dict over
                         # the different modalities
                         if not aggregated_values[analytics_name][col_name]:
-                            aggregated_values[analytics_name][col_name] = defaultdict(float)
+                            aggregated_values[analytics_name][col_name] = defaultdict(
+                                float
+                            )
                         for modality, vv in v.items():
-                            aggregated_values[analytics_name][col_name][modality] += vv / total_len
+                            aggregated_values[analytics_name][col_name][modality] += (
+                                vv / total_len
+                            )
                     else:
                         # this is a numerical column and v is numerical
                         aggregated_values[analytics_name][col_name] += v / total_len
@@ -404,7 +416,12 @@ class Analytics(ComputePlanBuilder):
                 _algo_name="Aggregating first order",
             ),
             round_idx=0,
-            authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
+            authorized_ids=set(
+                [
+                    train_data_node.organization_id
+                    for train_data_node in train_data_nodes
+                ]
+            ),
             clean_models=False,
         )
 
@@ -436,7 +453,12 @@ class Analytics(ComputePlanBuilder):
                 _algo_name="Aggregating second order",
             ),
             round_idx=1,
-            authorized_ids=set([train_data_node.organization_id for train_data_node in train_data_nodes]),
+            authorized_ids=set(
+                [
+                    train_data_node.organization_id
+                    for train_data_node in train_data_nodes
+                ]
+            ),
             clean_models=False,
         )
 
