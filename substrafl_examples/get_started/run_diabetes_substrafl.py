@@ -196,11 +196,10 @@ train_data_nodes = [
 # The ComputePlanBuilder class
 # ============================
 #
-# This example aims at explaining how to use the :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` class,
-# and how to use the full power of the
-# flexibility it provides.
+# This example aims at explaining how to use the :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder`
+# class, and how to use the full power of the flexibility it provides.
 #
-# The :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` is an abstract class that asks the user to
+# The :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is an abstract class that asks the user to
 # implement only three methods:
 #   - ``build_compute_plan(...)``
 #   - ``load_local_state(...)``
@@ -222,7 +221,7 @@ train_data_nodes = [
 # For instance, after updating a TrainDataNode using its update_state method, we will have access to its next local
 # state, that we will pass as argument to the next update_state we will call on this TrainDataNode.
 #
-# To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:ComputePlanBuilder` is composed of several decorated
+# To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
 # custom function, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
 # This custom function will be used to create the graph  of the  compute plan through the ``build_compute_plan``
 # method and the ``update_state`` of the different Nodes.
