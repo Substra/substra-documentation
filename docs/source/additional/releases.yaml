@@ -33,11 +33,11 @@ releases:
           version: 7.5.1
           link: https://artifacthub.io/packages/helm/substra/orchestrator/7.5.1
       substra-frontend:
-        version: 0.42.0
-        link: https://github.com/Substra/substra-frontend/releases/tag/0.42.0
+        version: 0.42.1
+        link: https://github.com/Substra/substra-frontend/releases/tag/0.42.1
         helm:
-          version: 1.0.18
-          link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.18
+          version: 1.0.19
+          link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.19
       hlf-k8s:
         version: 0.2.4
         link: https://github.com/Substra/hlf-k8s/releases/tag/0.2.4
