@@ -37,7 +37,6 @@ Substra 0.28.0 --- 2023-06-14
 
   - Add ``excluded_paths`` and ``excluded_regex`` parameters to the ``Dependency`` object to exclude file when building the ``Dependency`` object. Defaults are provided to avoid creating large Docker images.
 
-- **BREAKING CHANGE**: ``local_dependencies`` is renamed ``local_installable_dependencies``.
 - On **Federated Analytics** and creating **custom FL strategies**:
 
   - Add ``ComputePlanBuilder`` base class to define which method are needed to implement a custom strategy in SubstraFL. These methods are ``build_compute_plan``, ``load_local_states``and ``save_local_states``.
