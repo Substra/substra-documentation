@@ -173,6 +173,7 @@ datasample_keys = {
 # Before starting, we need to have in mind that a federated computation can be represented as a graph of tasks.
 # Some of these tasks needs data to be executed (training tasks) and others are here to aggregate local results
 # (aggregation tasks).
+#
 # Substra does not store an explicit definition of this graph; instead, it gives the user full flexibility to define
 # the compute plan (or computation graph) they need, by linking a task to its parents.
 #
@@ -487,15 +488,19 @@ class Analytics(ComputePlanBuilder):
 #
 # The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
 # retrieve a the previous local state that have not been shared with the other ``Nodes``.
+#
 # For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
 # ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
 # next ``update_state`` we will apply on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
 #
 # To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
 # user defined functions, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
+#
 # See :ref:`substrafl_doc/api/remote:Decorator` for more information on these decorators.
+#
 # These user defined functions will be used to create the graph of the compute plan through the ``build_compute_plan``
 # method and the ``update_state`` method of the different ``Nodes``.
+#
 # The local state obtained after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` needs the
 # methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was at the end of
 # the last update.
