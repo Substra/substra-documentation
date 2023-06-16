@@ -164,11 +164,19 @@ datasample_keys = {
 }
 
 # %%
-# The data has now been added as an asset through the data samples specification.
+# The flexibility of the ComputePlanBuilder class
+# ===============================================
 #
-# Now that these data are registered to Substra, we want to apply user defined functions to them, and use the output
-# of these functions to compute aggregated values across the organizations.
-# To be able to create this graph of computation, SubstraFL provides the ``Node`` abstractions. A ``Node`` is used to
+# This example aims at explaining how to use the :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder`
+# class, and how to use the full power of the flexibility it provides.
+#
+# Before starting, we need to have in mind that a federated computation can be represented as a graph of tasks.
+# Some of these tasks needs data to be executed (training tasks) and others are here to aggregate local results
+# (aggregation tasks).
+# Substra does not store an explicit definition of this graph; instead, it gives the user full flexibility to define
+# the compute plan (or computation graph) they need, by linking a task to its parents.
+#
+# To be able to create this graph of computation, SubstraFL provides the ``Node`` abstraction. A ``Node`` is used to
 # attached an organization (aka a Client) to a certain type of task depending on the computation we expect to happen on
 # this organization.
 #
@@ -196,14 +204,7 @@ train_data_nodes = [
     for org_id in DATA_PROVIDER_ORGS_ID
 ]
 
-
 # %%
-# The ComputePlanBuilder class
-# ============================
-#
-# This example aims at explaining how to use the :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder`
-# class, and how to use the full power of the flexibility it provides.
-#
 # The :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is an abstract class that asks the user to
 # implement only three methods:
 #
@@ -212,28 +213,9 @@ train_data_nodes = [
 # - ``save_local_state(...)``
 #
 # The ``build_compute_plan`` method is essential to create the graph of the compute plan that will be executed on
-# Substra. Using the different nodes we created, we will update there states by applying user defined methods,
-# called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply decorators, such as ``@remote`` or ``@remote_data``.
+# Substra. Using the different ``Nodes`` we created, we will update there states by applying user defined methods.
 #
-# These methods are passed as argument to the node using there ``update_state`` method.
-#
-# The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
-# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra build the graph of the
-# compute plan.
-#
-# The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
-# retrieve a the previous local state that have not been shared with the other nodes.
-# For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
-# ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
-# next ``update_state`` we will apply on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
-#
-# To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
-# user defined functions, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
-# This custom function will be used to create the graph of the compute plan through the ``build_compute_plan``
-# method and the ``update_state`` method of the different Nodes.
-# The local state obtained after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` needs the
-# methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was at the end of
-# the last update.
+# These methods are passed as argument to the ``Node`` using its ``update_state`` method.
 #
 
 
@@ -495,6 +477,29 @@ class Analytics(ComputePlanBuilder):
 
         return self
 
+
+# %%
+# Now that we saw the implementation of the `Ànalytics``class, we can add detailed to some of the previously introduced
+# concept.
+# The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
+# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra build the graph of the
+# compute plan.
+#
+# The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
+# retrieve a the previous local state that have not been shared with the other ``Nodes``.
+# For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
+# ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
+# next ``update_state`` we will apply on this :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
+#
+# To summarize, a :ref:`substrafl_doc/api/compute_plan_builder:Compute Plan Builder` is composed of several decorated
+# user defined functions, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
+# See :ref:`substrafl_doc/api/remote:Decorator` for more information on these decorators.
+# These user defined functions will be used to create the graph of the compute plan through the ``build_compute_plan``
+# method and the ``update_state`` method of the different ``Nodes``.
+# The local state obtained after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` needs the
+# methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was at the end of
+# the last update.
+#
 
 # %%
 # Running the experiment
