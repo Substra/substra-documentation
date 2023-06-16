@@ -165,7 +165,7 @@ datasample_keys = {
 # %%
 # The data has now been added as an asset through the data samples.
 #
-# SubstraFL provides different type of Nodes to ingest these data, a Node being an object that will create an link
+# SubstraFL provides different types of Nodes to ingest these data, a Node being an object that will create an link
 # the different tasks with each other.
 #
 # An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization (aka a Client)
@@ -216,7 +216,7 @@ train_data_nodes = [
 # Substra. Using the different nodes we created, we will update there states by applying user defined methods,
 # called ``RemoteMethod`` or ``RemoteDataMethod``, created using simply decorators, such as ``@remote`` or ``@remote_data``.
 #
-# These methods are pass as argument to the node using there ``update_state`` method.
+# These methods are passed as argument to the node using there ``update_state`` method.
 #
 # The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
 # This succession of ``next_state`` pass to new ``node.update_state`` is how Substra create the graph of the
@@ -232,7 +232,7 @@ train_data_nodes = [
 # user defined functions, that can need some data (decorated with ``@remote_data``) or not (decorated with ``@remote``).
 # This custom function will be used to create the graph of the compute plan through the ``build_compute_plan``
 # method and the ``update_state`` method of the different Nodes.
-# The local state obtain after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` need the
+# The local state obtained after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` needs the
 # methods ``save_local_state`` and ``load_local_state``  to retrieve the state where the Node was at the end of
 # the last update.
 #
@@ -261,8 +261,8 @@ class Analytics(ComputePlanBuilder):
     ):
         """Compute from the data samples, expected to be pandas dataframe,
         the means and counts of each column of the data frame.
-        These datasamples or the output of the ``get_data`` function define
-        in the ``diabetes_substrafl_opener.py`` file available in the asset
+        These datasamples or the output of the ``get_data`` function defined
+        in the ``diabetes_substrafl_opener.py`` file are available in the asset
         folder downloaded at the beginning of the example.
 
         The signature of a function decorated by @remote_data must contain
@@ -363,7 +363,7 @@ class Analytics(ComputePlanBuilder):
 
     def build_compute_plan(
         self,
-        train_data_nodes: TrainDataNode,
+        train_data_nodes: List[TrainDataNode],
         aggregation_node: AggregationNode,
         num_rounds=None,
         evaluation_strategy=None,
