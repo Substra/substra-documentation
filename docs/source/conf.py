@@ -123,7 +123,7 @@ assets_dir_substrafl_torch_fedavg = (
 zip_dir(assets_dir_substrafl_torch_fedavg, "torch_fedavg_assets.zip")
 
 assets_dir_substrafl_diabetes = (
-    Path(__file__).parents[2] / "substrafl_examples" / "get_started" / "diabetes_substrafl_assets"
+    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "diabetes_substrafl_assets"
 )
 zip_dir(assets_dir_substrafl_diabetes, "diabetes_substrafl_assets.zip")
 
