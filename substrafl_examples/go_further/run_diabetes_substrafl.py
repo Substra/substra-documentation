@@ -4,8 +4,9 @@ Federated Analytics on the diabetes dataset
 ===========================================
 
 This example demonstrates how to use the flexibility of the SubstraFL library and the base class
-ComputePlanBuilder to do Federated Analytics. If you are new to SubstraFL, we recommend to start
-by the `MNIST Example <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
+ComputePlanBuilder to do Federated Analytics. It reproduces the `diabetes example <https://docs.substra.org/en/stable/auto_examples/diabetes_example/run_diabetes.html#sphx-glr-auto-examples-diabetes-example-run-diabetes-py>`__
+of the Substra SDK example section using SubstraFL.
+If you are new to SubstraFL, we recommend to start by the `MNIST Example <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
 to learn how to use the library in the simplest configuration first.
 
 We use the **Diabetes dataset** available from the `Scikit-Learn dataset module <https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset>`__.
@@ -99,7 +100,7 @@ setup_diabetes(data_path=data_path)
 # Registering data samples and dataset
 # ------------------------------------
 #
-# Every asset will be created in respect to predefined schemas (Spec) previously imported from
+# Every asset will be created in respect to predefined specifications previously imported from
 # ``substra.sdk.schemas``. To register assets, :ref:`documentation/api_reference:Schemas`
 # are first instantiated and the specs are then registered, which generate the real assets.
 #
@@ -163,23 +164,21 @@ datasample_keys = {
 }
 
 # %%
-# The data has now been added as an asset through the data samples.
+# The data has now been added as an asset through the data samples specification.
 #
-# SubstraFL provides different types of Nodes to ingest these data, a Node being an object that will create an link
-# the different tasks with each other.
+# Now that these data are registered to Substra, we want to apply user defined functions to them, and use the output
+# of these functions to compute aggregated values across the organizations.
+# To be able to create this graph of computation, SubstraFL provides the ``Node`` abstractions. A ``Node`` is used to
+# attached an organization (aka a Client) to a certain type of task depending on the computation we expect to happen on
+# this organization.
 #
 # An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization (aka a Client)
-# and will be a node  where we can compute function that does not need data samples as input. We will use the
+# and will be a ``Node`` where we will compute functions that does not need data samples as input. We will use the
 # :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
 #
 # A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to an organization (aka a Client)
 # and will have access to the data samples. These data samples must be instantiated with the right permissions to
 # be processed by the given Client.
-#
-# A third type of node exists in SubstraFL, called :ref:`Test data node<substrafl_doc/api/nodes:TestDataNode>`.
-# We will not need it in the current example. See the `MNIST Example
-# <https://docs.substra.org/en/stable/substrafl_doc/examples/get_started/run_mnist_torch.html#sphx-glr-substrafl-doc-examples-get-started-run-mnist-torch-py>`__
-# to learn how to use this type of Nodes.
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -219,8 +218,8 @@ train_data_nodes = [
 # These methods are passed as argument to the node using there ``update_state`` method.
 #
 # The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
-# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra create the graph of the
-# ``ComputePlan``.
+# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra build the graph of the
+# compute plan.
 #
 # The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
 # retrieve a the previous local state that have not been shared with the other nodes.
