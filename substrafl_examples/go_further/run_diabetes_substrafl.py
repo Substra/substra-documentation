@@ -480,8 +480,9 @@ class Analytics(ComputePlanBuilder):
 
 
 # %%
-# Now that we saw the implementation of the `Ànalytics``class, we can add detailed to some of the previously introduced
-# concept.
+# Now that we saw the implementation of the custom ``Analytics`` class, we can add detailed to some of the previously
+# introduced concept.
+#
 # The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
 # This succession of ``next_state`` pass to new ``node.update_state`` is how Substra build the graph of the
 # compute plan.
