@@ -51,24 +51,17 @@ Gathering tasks into a single compute plan will lead to a more optimized compute
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
+.. _concept_task:
+
 Task
 ^^^^
 
 A task correspond to a computation task. The task can use any inputs (data, functions or output from other tasks). The function is expected to write the outputs in files, on paths given as outputs dictionary.
 
-SubstraFL creates tasks for the user in order to ease the implementation of Federated Compute Plans. For these tasks, SubstraFL introduces certain concepts and keywords defined below.
+Rank
+^^^^
 
-Local state
-***********
-
-A local state is a task output or input that goes from a task within an organization to the next task that will be executed on that organization. A local state
-is useful to keep internal states along a Federated Compute Plan within an organization. A local state may be, for instance, a dictionary to be loaded in order to
-re-initialize objects and variable to their previous values.
-
-Shared state
-************
-
-A shared state is a task output or input that is intended to be shared between organizations. A shared state may be, for instance, a dictionary for sending locally computed values to other organizations.
+A rank is the order of a task within a compute plan. A task of rank n will depend on the output of tasks of rank n-1.
 
 Transient task outputs
 ^^^^^^^^^^^^^^^^^^^^^^

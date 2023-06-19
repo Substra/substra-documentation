@@ -134,10 +134,13 @@ Each round represents one iteration of the training loop in the federated settin
 
 Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`.
 
-Centralized strategy - workflow
---------------------------------
+Advanced concepts
+-----------------
 
 .. warning:: This section is for advanced users who wants to know more on what happens under the Substra hood.
+
+Centralized strategy - workflow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The workflow of a centralised strategy, unless specified otherwise, is as follows:
 
@@ -165,3 +168,23 @@ This also means that for the final round of the strategy, we do a useless step o
 - Reuse the same function as the other train tasks, which speeds up the execution
 
 For a more detailed example, see the :ref:`Federated Averaging <substrafl_doc/api/algorithms:TorchFedAvgAlgo>` implementation.
+
+Local and shared state
+^^^^^^^^^^^^^^^^^^^^^^
+
+SubstraFL creates `tasks <_concept_task>`__ for the user in order to ease the implementation of Federated `Compute Plans <_concept_compute_plan>`__.
+
+The concept of local and shared state is used in SubstraFL in order to differentiate which information we want to keep locally on an organization, and which information
+we want to share with the other organization.
+
+Local state
+***********
+
+A local state is a task output or input that goes from a task within an organization to the next task that will be executed on that organization. A local state
+is useful to keep internal states along a Federated Compute Plan within an organization. A local state may be, for instance, a dictionary to be loaded in order to
+re-initialize objects and variable to their previous values.
+
+Shared state
+************
+
+A shared state is a task output or input that is intended to be shared between organizations. A shared state may be, for instance, a dictionary for sending locally computed values to other organizations.
