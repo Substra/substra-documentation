@@ -172,7 +172,7 @@ For a more detailed example, see the :ref:`Federated Averaging <substrafl_doc/ap
 Local and shared state
 ^^^^^^^^^^^^^^^^^^^^^^
 
-SubstraFL creates `tasks <_concept_task>`__ for the user in order to ease the implementation of Federated `Compute Plans <_concept_compute_plan>`__.
+SubstraFL creates :ref:`tasks <concept_task>` for the user in order to ease the implementation of Federated :ref:`Compute Plans <concept_compute_plan>`.
 
 The concept of local and shared state is used in SubstraFL in order to differentiate which information we want to keep locally on an organization, and which information
 we want to share with the other organization.
