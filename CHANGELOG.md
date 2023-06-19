@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- add `shared state` and `local state` definition in SubstraFL overview ([#321](https://github.com/Substra/substra-documentation/pull/321))
+- add `rank` definition in the Substra concepts ([#321](https://github.com/Substra/substra-documentation/pull/321))
+
 ## [0.28.0]
 
 - add token management page guide ([#312](https://github.com/Substra/substra-documentation/pull/312))
