@@ -51,10 +51,19 @@ Gathering tasks into a single compute plan will lead to a more optimized compute
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
+.. _concept_task:
+
 Task
 ^^^^
 
 A task correspond to a computation task. The task can use any inputs (data, functions or output from other tasks). The function is expected to write the outputs in files, on paths given as outputs dictionary.
+
+Rank
+^^^^
+
+A task's rank is the mathematical order (or *graph depth*) of this task within a compute plan. A task of rank ``n`` will depend on the output of tasks of rank ``n-1``.
+
+Note that a task of rank ``n`` will not necessarily depend on all the tasks with rank ``n-1``. This means that tasks of rank ``n`` can start before tasks of rank ``n-1`` if they have no direct link with each other.
 
 Transient task outputs
 ^^^^^^^^^^^^^^^^^^^^^^
