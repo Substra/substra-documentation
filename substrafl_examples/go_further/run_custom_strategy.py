@@ -132,7 +132,8 @@ def accuracy(datasamples, predictions_path):
 # ***************************************
 #
 
-class CustomStrategi(ComputePlanBuilder):
+
+class CustomStrategy(ComputePlanBuilder):
     def __init__(self, model, seed=None):
         super().__init__(model=model, seed=seed)
 
