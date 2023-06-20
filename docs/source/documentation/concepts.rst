@@ -65,6 +65,14 @@ This prevents filling up your server with outputs that you will not use in the f
 Permissions
 -----------
 
+All assets metadata are visible by all the users of a channel. So if a user registers a new function or a new dataset, every user of this channel will be able to see the asset medatata (name, creation date, etc). However processing the asset will need specific permissions.
+
+In particular for datasets:
+
+* Data can *not* be seen once it's registered on a Substra platform.
+* Like other assets, all dataset metadata are visible by all the users of a channel.
+* Having process permissions for a dataset means having permissions to execute a function on this dataset.
+
 Permissions for an organization to process an asset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
