@@ -422,6 +422,7 @@ compute_plan = execute_experiment(
     num_rounds=NUM_ROUNDS,
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=dependencies,
+    name="IRIS documentation example",
 )
 
 # %%

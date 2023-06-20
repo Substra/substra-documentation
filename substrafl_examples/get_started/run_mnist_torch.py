@@ -457,6 +457,7 @@ compute_plan = execute_experiment(
     experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
     dependencies=dependencies,
     clean_models=False,
+    name="MNIST documentation example",
 )
 
 
