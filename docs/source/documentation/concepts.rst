@@ -61,7 +61,8 @@ A task correspond to a computation task. The task can use any inputs (data, func
 Rank
 ^^^^
 
-A rank is the order of a task within a compute plan. A task of rank ``n`` will depend on the output of tasks of rank ``n-1``.
+A rank is the mathematical order (or the *graph depth*) of a task within a compute plan. A task of rank ``n`` will depend on the output of tasks of rank ``n-1``, but not necessarily all
+the tasks of rank ``n-1``. This means that tasks of rank ``n`` can start before tasks of rank ``n-1`` if they have no direct link with each other.
 
 Transient task outputs
 ^^^^^^^^^^^^^^^^^^^^^^
