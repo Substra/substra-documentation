@@ -1,7 +1,7 @@
 """
-==============================================
-Create your custom Federated Learning strategy
-==============================================
+===========================================
+Create your own Federated Learning strategy
+===========================================
 
 """
 # %%
@@ -23,7 +23,7 @@ ORGS_ID = list(clients)
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
 DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data provider orgs are the last two organizations.
 
-# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/iris.jpg'
+# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/custom.jpg'
 
 
 # %%
