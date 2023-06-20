@@ -128,254 +128,76 @@ def accuracy(datasamples, predictions_path):
 
 
 # %%
-# Specify the machine learning components
-# ***************************************
+# Custom Strat
+# ************
 #
+from typing import List
+from typing import Optional
+
+from substrafl import strategy
+from substrafl.algorithms.algo import Algo
+from substrafl.nodes.aggregation_node import AggregationNode
+from substrafl.nodes.test_data_node import TestDataNode
+from substrafl.nodes.train_data_node import TrainDataNode
 
 
-class CustomStrategy(ComputePlanBuilder):
-    def __init__(self, model, seed=None):
-        super().__init__(model=model, seed=seed)
-
-        self._model = model
-
-        # We need all different instances of the algorithm to have the same
-        # initialization.
-        self._model.coef_ = np.ones((OUTPUT_SIZE, INPUT_SIZE))
-        self._model.intercept_ = np.zeros(3)
-        self._model.classes_ = np.array([-1])
-
-        if seed is not None:
-            np.random.seed(seed)
+class CustomStrategy(strategy.Strategy):
+    def __init__(self, algo: Algo, *args, **kwargs):
+        super().__init__(algo=algo, *args, **kwargs)
 
     @property
-    def strategies(self):
-        """List of compatible strategies"""
-        return [fl_schemas.StrategyName.FEDERATED_AVERAGING]
-
-    @property
-    def model(self):
-        return self._model
-
-    @remote.remote_data
-    def train(
-        self,
-        datasamples,
-        shared_state: Optional[fl_schemas.FedAvgAveragedState] = None,
-    ) -> fl_schemas.FedAvgSharedState:
-        """The train function to be executed on organizations containing
-        data we want to train our model on. The @remote_data decorator is mandatory
-        to allow this function to be sent and executed on the right organization.
-
-        Args:
-            datasamples: datasamples extracted from the organizations data using
-                the given opener.
-            shared_state (Optional[fl_schemas.FedAvgAveragedState], optional):
-                shared_state provided by the aggregator. Defaults to None.
+    def name(self) -> str:
+        """The name of the strategy
 
         Returns:
-            fl_schemas.FedAvgSharedState: State to be sent to the aggregator.
+            str: Name of the strategy
         """
+        return "Custom Strategy"
 
-        if shared_state is not None:
-            # If we have a shared state, we update the model parameters with
-            # the average parameters updates.
-            self._model.coef_ += np.reshape(
-                shared_state.avg_parameters_update[:-1],
-                (OUTPUT_SIZE, INPUT_SIZE),
-            )
-            self._model.intercept_ += shared_state.avg_parameters_update[-1]
-
-        # To be able to compute the delta between the parameters before and after training,
-        # we need to save them in a temporary variable.
-        old_coef = self._model.coef_
-        old_intercept = self._model.intercept_
-
-        # Model training.
-        self._model.fit(datasamples["data"], datasamples["targets"])
-
-        # We compute de delta.
-        delta_coef = self._model.coef_ - old_coef
-        delta_bias = self._model.intercept_ - old_intercept
-
-        # We reset the model parameters to their state before training in order to remove
-        # the local updates from it.
-        self._model.coef_ = old_coef
-        self._model.intercept_ = old_intercept
-
-        # We output the length of the dataset to apply a weighted average between
-        # the organizations regarding their number of samples, and the local
-        # parameters updates.
-        # These updates are sent to the aggregator to compute the average
-        # parameters updates, that we will receive in the next round in the
-        # `shared_state`.
-        return fl_schemas.FedAvgSharedState(
-            n_samples=len(datasamples["targets"]),
-            parameters_update=[p for p in delta_coef] + [delta_bias],
-        )
-
-    @remote.remote_data
-    def predict(self, datasamples, shared_state, predictions_path):
-        """The predict function to be executed on organizations containing
-        data we want to test our model on. The @remote_data decorator is mandatory
-        to allow this function to be sent and executed on the right organization.
+    def perform_round(
+        self,
+        *,
+        train_data_nodes: List[TrainDataNode],
+        aggregation_node: Optional[AggregationNode],
+        round_idx: int,
+        clean_models: bool,
+        additional_orgs_permissions: Optional[set] = None,
+    ):
+        """Perform one round of the strategy
 
         Args:
-            datasamples: datasamples extracted from the organizations data using
-                the given opener.
-            shared_state: shared_state provided by the aggregator.
-            predictions_path: Path where to save the predictions.
-                This path is provided by Substra and the metric will automatically
-                get access to this path to load the predictions.
+            train_data_nodes (typing.List[TrainDataNode]): list of the train organizations
+            aggregation_node (typing.Optional[AggregationNode]): aggregation node, necessary for
+                centralized strategy, unused otherwise
+            round_idx (int): index of the round
+            clean_models (bool): Clean the intermediary models of this round on the Substra platform.
+                Set it to False if you want to download or re-use intermediary models. This causes the disk
+                space to fill quickly so should be set to True unless needed.
+            additional_orgs_permissions (typing.Optional[set]): Additional permissions to give to the model outputs
+                after training, in order to test the model on an other organization.
         """
-        predictions = self._model.predict(datasamples["data"])
+        return
 
-        if predictions_path is not None:
-            np.save(predictions_path, predictions)
+    def perform_predict(
+        self,
+        test_data_nodes: List[TestDataNode],
+        train_data_nodes: List[TrainDataNode],
+        round_idx: int,
+    ):
+        """Perform the prediction of the algo on each test nodes.
+        Gets the model for a train organization and compute the prediction on the
+        test nodes.
 
-            # np.save() automatically adds a ".npy" to the end of the file.
-            # We rename the file produced by removing the ".npy" suffix, to make sure that
-            # predictions_path is the actual file name.
-            shutil.move(str(predictions_path) + ".npy", predictions_path)
-
-    def save_local_state(self, path):
-        joblib.dump(
-            {
-                "model": self._model,
-                "coef": self._model.coef_,
-                "bias": self._model.intercept_,
-            },
-            path,
-        )
-
-    def load_local_state(self, path):
-        loaded_dict = joblib.load(path)
-        self._model = loaded_dict["model"]
-        self._model.coef_ = loaded_dict["coef"]
-        self._model.intercept_ = loaded_dict["bias"]
-        return self
+        Args:
+            test_data_nodes (typing.List[TestDataNode]): list of nodes on which to evaluate
+            train_data_nodes (typing.List[TrainDataNode]): list of nodes on which the model has
+                been trained
+            round_idx (int): index of the round
+        """
+        return
 
 
 # %%
-# Federated Learning strategies
-# =============================
-
-from substrafl.strategies import FedAvg
-
-strategy = FedAvg(algo=SklearnLogisticRegression(model=cls, seed=SEED))
-
-# %%
-# Where to train where to aggregate
-# =================================
-
-from substrafl.nodes import TrainDataNode
-from substrafl.nodes import AggregationNode
-
-
-aggregation_node = AggregationNode(ALGO_ORG_ID)
-
-# Create the Train Data Nodes (or training tasks) and save them in a list
-train_data_nodes = [
-    TrainDataNode(
-        organization_id=org_id,
-        data_manager_key=dataset_keys[org_id],
-        data_sample_keys=[train_datasample_keys[org_id]],
-    )
-    for org_id in DATA_PROVIDER_ORGS_ID
-]
-
-# %%
-# Where and when to test
-# ======================
-
-
-from substrafl.nodes import TestDataNode
-from substrafl.evaluation_strategy import EvaluationStrategy
-
-# Create the Test Data Nodes (or testing tasks) and save them in a list
-test_data_nodes = [
-    TestDataNode(
-        organization_id=org_id,
-        data_manager_key=dataset_keys[org_id],
-        test_data_sample_keys=[test_datasample_keys[org_id]],
-        metric_functions=accuracy,
-    )
-    for org_id in DATA_PROVIDER_ORGS_ID
-]
-
-my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_frequency=1)
-
-# %%
-# Running the experiment
-# **********************
-
-from substrafl.experiment import execute_experiment
-from substrafl.dependency import Dependency
-
-# Number of times to apply the compute plan.
-NUM_ROUNDS = 6
-
-dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "scikit-learn==1.1.1"])
-
-compute_plan = execute_experiment(
-    client=clients[ALGO_ORG_ID],
-    strategy=strategy,
-    train_data_nodes=train_data_nodes,
-    evaluation_strategy=my_eval_strategy,
-    aggregation_node=aggregation_node,
-    num_rounds=NUM_ROUNDS,
-    experiment_folder=str(pathlib.Path.cwd() / "tmp" / "experiment_summaries"),
-    dependencies=dependencies,
-)
-
-# %%
-# Explore the results
-# *******************
-
-# %%
-# Listing results
-# ===============
-
-import pandas as pd
-
-performances_df = pd.DataFrame(client.get_performances(compute_plan.key).dict())
-print("\nPerformance Table: \n")
-print(performances_df[["worker", "round_idx", "performance"]])
-
-# %%
-# Plot results
-# ============
-
-import matplotlib.pyplot as plt
-
-plt.title("Test dataset results")
-plt.xlabel("Rounds")
-plt.ylabel("Accuracy")
-
-for org_id in DATA_PROVIDER_ORGS_ID:
-    df = performances_df[performances_df["worker"] == org_id]
-    plt.plot(df["round_idx"], df["performance"], label=org_id)
-
-plt.legend(loc="lower right")
-plt.show()
-
-# %%
-# Download a model
-# ================
-
-from substrafl.model_loading import download_algo_state
-
-client_to_download_from = DATA_PROVIDER_ORGS_ID[0]
-round_idx = None
-
-
-algo = download_algo_state(
-    client=clients[client_to_download_from],
-    compute_plan_key=compute_plan.key,
-    round_idx=round_idx,
-)
-
-cls = algo.model
-
-print("Coefs: ", cls.coef_)
-print("Intercepts: ", cls.intercept_)
+# Custom Strat
+# ************
+#
