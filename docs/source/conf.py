@@ -127,6 +127,9 @@ assets_dir_substrafl_sklearn_fedavg = (
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "sklearn_fedavg_assets.zip")
 
+assets_dir_custom_strategy = Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "custom_strategy_assets"
+zip_dir(assets_dir_custom_strategy, "custom_strategy_assets.zip")
+
 # Copy the source documentation files from substra and substrafl to their right place
 # in the substra-documentation repository
 from dataclasses import dataclass
