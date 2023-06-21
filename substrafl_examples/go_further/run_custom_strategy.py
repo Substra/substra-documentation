@@ -114,18 +114,8 @@ class CustomStrategy(strategies.Strategy):
         train_data_nodes: List[TrainDataNode],
         round_idx: int,
     ):
-        for test_data_node in test_data_nodes:
-            matching_train_nodes = [
-                train_data_node
-                for train_data_node in train_data_nodes
-                if train_data_node.organization_id == test_data_node.organization_id
-            ]
-            if len(matching_train_nodes) == 0:
-                node_index = 0
-            else:
-                node_index = train_data_nodes.index(matching_train_nodes[0])
-
-            local_state = self._local_states[node_index]
+        for i, test_data_node in enumerate(test_data_nodes):
+            local_state = self._local_states[i]
 
             test_data_node.update_states(
                 traintask_id=local_state.key,
