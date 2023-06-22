@@ -21,7 +21,7 @@ clients = {client.organization_info().organization_id: client for client in clie
 # Store organization IDs
 ORGS_ID = list(clients)
 ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID[1:]  # Data provider orgs are the last two organizations.
+DATA_PROVIDER_ORGS_ID = ORGS_ID  # Data provider orgs are the last two organizations.
 
 # sphinx_gallery_thumbnail_path = 'static/example_thumbnail/custom.jpg'
 
@@ -41,6 +41,17 @@ from substrafl.nodes.aggregation_node import AggregationNode
 from substrafl.nodes.test_data_node import TestDataNode
 from substrafl.nodes.train_data_node import TrainDataNode
 from substrafl.remote import remote
+
+
+import random
+
+
+def compute_secure_aggregation_coefficients(n_center: int):
+    coefficients = []
+    for _ in range(n_center - 1):
+        coefficients.append(random.randint(-100, 100))
+    coefficients.append(-sum(coefficients))
+    return coefficients
 
 
 class CustomStrategy(strategies.Strategy):
@@ -80,6 +91,8 @@ class CustomStrategy(strategies.Strategy):
         next_local_states = []
         shared_states = []
 
+        secure_aggregation_coefficients = compute_secure_aggregation_coefficients(len(train_data_nodes))
+
         for i, node in enumerate(train_data_nodes):
             # define train tasks (do not submit yet)
             # for each train task give description of Algo instead of a key for an algo
@@ -87,6 +100,7 @@ class CustomStrategy(strategies.Strategy):
                 operation=self.algo.train(
                     node.data_sample_keys,
                     shared_state=self.aggregated_state,
+                    secure_agg=secure_aggregation_coefficients[i],
                     _algo_name=f"Training with {self.algo.__class__.__name__}",
                 ),
                 local_state=self._local_states[i] if self._local_states is not None else None,
@@ -144,7 +158,8 @@ class CustomAlgo(Algo):
     def __init__(self, seed, *args, **kwargs):
         super().__init__(seed, *args, **kwargs)
 
-        np.random.seed(seed)
+        if seed is not None:
+            np.random.seed(seed)
         self.incremented_rng = 0
 
     @property
@@ -154,7 +169,7 @@ class CustomAlgo(Algo):
         Returns:
             typing.Any: model
         """
-        return 2 * self.incremented_rng
+        return self.incremented_rng
 
     @property
     def strategies(self) -> List[str]:
@@ -166,13 +181,13 @@ class CustomAlgo(Algo):
         return ["Custom Strategy"]
 
     @remote_data
-    def train(self, datasamples, shared_state: Any) -> Any:
+    def train(self, datasamples, shared_state: Any, secure_agg: float) -> Any:
         if shared_state is not None:
-            agg_rng = shared_state["aggregation"]
+            aggregation = shared_state["aggregation"]
         else:
-            agg_rng = 0
+            aggregation = 0
 
-        self.incremented_rng = agg_rng / 2 + np.random.random()
+        self.incremented_rng = aggregation + secure_agg
 
         return {
             "incremented_rng": self.incremented_rng,
@@ -180,7 +195,7 @@ class CustomAlgo(Algo):
 
     @remote_data
     def predict(self, datasamples: Any, shared_state: Any = None, predictions_path: Path = None) -> Any:
-        predictions = round(self.model)
+        predictions = self.model
 
         if predictions_path is not None:
             np.save(predictions_path, predictions)
@@ -240,7 +255,7 @@ dependencies = Dependency(pypi_dependencies=["numpy"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
-    strategy=CustomStrategy(CustomAlgo(seed=10)),
+    strategy=CustomStrategy(CustomAlgo(seed=None)),
     train_data_nodes=train_data_nodes,
     evaluation_strategy=my_eval_strategy,
     aggregation_node=aggregation_node,
@@ -263,11 +278,15 @@ plt.title("Round estimation results")
 plt.xlabel("Rounds")
 plt.ylabel("Estimated rounds")
 
-width = 0.2
+interval = -0.05
 for org_id in DATA_PROVIDER_ORGS_ID:
     df = performances_df[performances_df["worker"] == org_id]
-    plt.bar(df["round_idx"], df["performance"], width=width, align="edge", label=org_id)
-    width = -width
+    markerline, stemlines, baseline = plt.stem(
+        df["round_idx"].astype(int) + interval, df["performance"], markerfmt="o", label=org_id
+    )
+    plt.setp(stemlines, "color", plt.getp(markerline, "color"))
+    plt.setp(stemlines, "linestyle", "dotted")
+    interval = interval + 0.05
 
 plt.legend(loc="lower right")
 plt.show()
