@@ -3,14 +3,18 @@
 Creating Torch Cyclic strategy on MNIST dataset
 ===============================================
 
-This example illustrates the basic usage of SubstraFL and proposes Federated Learning using the Federated Averaging strategy
-on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
+This example illustrates an advance usage of SubstraFL and proposes to implement a new Federated Learning strategy,
+called cyclic strategy, using the SubstraFL base classes.
+This example runs on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
 aiming to recognize the number written on each image.
 
-SubstraFL can be used with any machine learning framework (PyTorch, Tensorflow, Scikit-Learn, etc).
+The **cyclic strategy** consists in training locally a model on different organization (or center) sequentially (one after the other). We
+consider a round of this strategy to be a full cycle of local trainings.
 
-However a specific interface has been developed for PyTorch which makes writing PyTorch code simpler than with other frameworks. This example here uses the specific PyTorch interface.
+This example shows an implementation of the CyclicTorchAlgo using
+`TorchAlgo <substrafl_doc/api/algorithms:Torch Algorithms>` as base class, and the CyclicStrategy implementation using
+`Strategy <substrafl_doc/api/strategies:Strategies>` as base class.
 
 This example does not use a deployed platform of Substra and runs in local mode.
 
@@ -316,14 +320,19 @@ class TorchDataset(torch.utils.data.Dataset):
 
 
 # %%
-# SubstraFL algo definition
-# ==========================
+# Torch Cyclic Algo implementation
+# ============================
 #
 # A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
-# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
-# Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
+# In the case of a cyclic strategy, we need to start from the TorchAlgo base class, and
+# overwrite the ``strategies`` property and the ``train`` function to ensure that we output
+# the shared state we need for our federated learning compute plan.
+#
+# For the cyclic strategy, the shared state will be directly the model parameters. We will
+# initialize the model from the shared state we receive and send the new one updated by
+# the local training.
 
 
 from typing import Any
@@ -336,7 +345,7 @@ from substrafl.algorithms.pytorch import weight_manager
 
 
 class TorchCyclicAlgo(TorchAlgo):
-    """The base class to be inherited for substrafl algorithms."""
+    """The base class to be inherited for SubstraFL algorithms."""
 
     def __init__(
         self,
@@ -365,9 +374,10 @@ class TorchCyclicAlgo(TorchAlgo):
 
     @property
     def strategies(self) -> List[str]:
-        """List of compatible strategies
+        """List of compatible strategies.
+
         Returns:
-            typing.List: typing.List[StrategyName]
+            List[str]: list of compatible strategy name.
         """
         return ["Cyclic Strategy"]
 
@@ -382,12 +392,16 @@ class TorchCyclicAlgo(TorchAlgo):
         train_dataset = self._dataset(datasamples, is_inference=False)
 
         if self._index_generator.n_samples is None:
+            # We need to initiate the index generator number of sample the first time we have access to
+            # the information.
             self._index_generator.n_samples = len(train_dataset)
 
+        # If the shared state is None, it means that this is the first training of the compute plan,
+        # and that we don't have a shared state to take into account yet.
         if shared_state is not None:
             assert self._index_generator.n_samples is not None
-            # The shared states is the average of the model parameter updates for all organizations
-            # Hence we need to add it to the previous local state parameters
+            # The shared state is the average of the model parameters for all organizations. We set
+            # the model to these updated values.
             model_parameters = [torch.from_numpy(x).to(self._device) for x in shared_state["model_parameters"]]
             weight_manager.set_parameters(
                 model=self._model,
@@ -395,21 +409,34 @@ class TorchCyclicAlgo(TorchAlgo):
                 with_batch_norm_parameters=False,
             )
 
+        # We set the counter of updates to zero.
         self._index_generator.reset_counter()
 
-        # Train mode for torch model
+        # Train mode for torch model.
         self._model.train()
 
-        # Train the model
+        # Train the model.
         self._local_train(train_dataset)
 
+        # We verify the we trained the model on the right amount of updates.
         self._index_generator.check_num_updates()
 
+        # Eval mode for torch model.
         self._model.eval()
 
+        # We get the new model parameters values in order to send them in the shared states.
         model_parameters = weight_manager.get_parameters(model=self._model, with_batch_norm_parameters=False)
+        new_shared_state = {"model_parameters": [p.cpu().detach().numpy() for p in model_parameters]}
 
-        return {"model_parameters": [p.cpu().detach().numpy() for p in model_parameters]}
+        return new_shared_state
+
+
+# %%
+# To instantiate your algo, you need to instantiate it in a class with no argument. This is only valid when you are
+# inherit from TorchAlgo class.
+#
+# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
+# Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 
 
 class MyAlgo(TorchCyclicAlgo):
@@ -425,13 +452,25 @@ class MyAlgo(TorchCyclicAlgo):
 
 
 # %%
-# Federated Learning strategies
-# =============================
+# Cyclic Strategy implementation
+# ==============================
 #
 # A FL strategy specifies how to train a model on distributed data.
-# The most well known strategy is the Federated Averaging strategy: train locally a model on every organization,
-# then aggregate the weight updates from every organization, and then apply locally at each organization the averaged
-# updates.
+#
+# The Cyclic Strategy passes the current state of the training to the following
+# organization to sequentially present all the data to the model. This is not the most efficient strategy
+# as the model will overfit a bit the last dataset it sees, and as the order of training will impact the
+# performances of the model. But we will use it as an example to explain and show how to implement your
+# own strategies using SubstraFL.
+#
+# To instantiate this new strategy, we need to overwrite three functions:
+#
+# - ``initialization_round``, to indicate what tasks to execute at round 0, in order to setup the variable
+#   and be able to compute the performances before any training.
+# - ``perform_round``, to indicate what task and in which order we need to compute to execute a round of the strategy.
+# - ``perform_predict``, to indicate on which task to perform the predictions to compute the performances.
+#
+
 
 from substrafl import strategies
 from substrafl.algorithms.algo import Algo
@@ -449,7 +488,8 @@ class CyclicStrategy(strategies.Strategy):
 
     @property
     def name(self) -> str:
-        """The name of the strategy
+        """The name of the strategy. Useful to indicate which Algo
+        are compatible or aren't with this strategy.
         Returns:
             str: Name of the strategy
         """
