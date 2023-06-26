@@ -1,7 +1,7 @@
 """
-===================================
-Using Torch FedAvg on MNIST dataset
-===================================
+===============================================
+Creating Torch Cyclic strategy on MNIST dataset
+===============================================
 
 This example illustrates the basic usage of SubstraFL and proposes Federated Learning using the Federated Averaging strategy
 on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
@@ -23,7 +23,7 @@ To run this example, you have two options:
 
    .. only:: builder_html or readthedocs
 
-      :download:`assets required to run this example <../../../../../tmp/torch_fedavg_assets.zip>`
+      :download:`assets required to run this example <../../../../../tmp/torch_cyclic_assets.zip>`
 
   * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
   * **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
@@ -58,8 +58,7 @@ client_2 = Client(client_name="org-3")
 #
 # To run in remote mode, use the following syntax:
 #
-# ``client_remote = Client(url="MY_BACKEND_URL")``
-# ``client_remote.login(username="my-username", password="my-password")``
+# ``client_remote = Client(backend_type="remote", url="MY_BACKEND_URL", username="my-username", password="my-password")``
 
 
 # Create a dictionary to easily access each client from its human-friendly id
@@ -327,163 +326,9 @@ class TorchDataset(torch.utils.data.Dataset):
 # Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 
 
-from substrafl.algorithms.pytorch import TorchFedAvgAlgo
-
-
-class TorchCNN(TorchFedAvgAlgo):
-    def __init__(self):
-        super().__init__(
-            model=model,
-            criterion=criterion,
-            optimizer=optimizer,
-            index_generator=index_generator,
-            dataset=TorchDataset,
-            seed=seed,
-        )
-
-
-# %%
-# Federated Learning strategies
-# =============================
-#
-# A FL strategy specifies how to train a model on distributed data.
-# The most well known strategy is the Federated Averaging strategy: train locally a model on every organization,
-# then aggregate the weight updates from every organization, and then apply locally at each organization the averaged
-# updates.
-
-
+from typing import Any
 from typing import List
 from typing import Optional
-
-from substrafl import strategies
-from substrafl.algorithms.algo import Algo
-from substrafl.nodes.aggregation_node import AggregationNode
-from substrafl.nodes.test_data_node import TestDataNode
-from substrafl.nodes.train_data_node import TrainDataNode
-from substrafl.remote import remote
-
-
-class CyclicStrategy(strategies.Strategy):
-    def __init__(self, algo: Algo, *args, **kwargs):
-        super().__init__(algo=algo, *args, **kwargs)
-
-        self._cyclic_shared_state = None
-        self._node_to_train = 0
-
-    @property
-    def name(self) -> str:
-        """The name of the strategy
-        Returns:
-            str: Name of the strategy
-        """
-        return "Cyclic Strategy"
-
-    def initialization_round(
-        self,
-        *,
-        train_data_nodes: List[TrainDataNode],
-        clean_models: bool,
-        round_idx: Optional[int] = 0,
-        additional_orgs_permissions: Optional[set] = None,
-    ):
-        self._local_states = [None] * len(train_data_nodes)
-
-        first_train_data_node = train_data_nodes[0]
-
-        # define train tasks (do not submit yet)
-        # for each train task give description of Algo instead of a key for an algo
-        _local_state = first_train_data_node.init_states(
-            operation=self.algo.initialize(
-                _algo_name=f"Initializing with {self.algo.__class__.__name__}",
-            ),
-            round_idx=round_idx,
-            authorized_ids=set([first_train_data_node.organization_id]) | additional_orgs_permissions,
-            clean_models=clean_models,
-        )
-        self._local_states[0] = _local_state
-
-    def perform_round(
-        self,
-        *,
-        train_data_nodes: List[TrainDataNode],
-        aggregation_node: Optional[AggregationNode],
-        round_idx: int,
-        clean_models: bool,
-        additional_orgs_permissions: Optional[set] = None,
-    ):
-        node = train_data_nodes[self._node_to_train]
-
-        _local_state, self._cyclic_shared_state = node.update_states(
-            operation=self.algo.train(
-                node.data_sample_keys,
-                shared_state=self._cyclic_shared_state,
-                _algo_name=f"Training with {self.algo.__class__.__name__}",
-            ),
-            local_state=self._local_states[self._node_to_train],
-            round_idx=round_idx,
-            authorized_ids=set([n.organization_id for n in train_data_nodes]) | additional_orgs_permissions,
-            aggregation_id=None,
-            clean_models=clean_models,
-        )
-
-        self._local_states[self._node_to_train] = _local_state
-
-    def perform_predict(
-        self,
-        test_data_nodes: List[TestDataNode],
-        train_data_nodes: List[TrainDataNode],
-        round_idx: int,
-    ):
-        # if round_idx == 0:
-        #     for i, test_node in enumerate(test_data_nodes):
-        #         test_node.update_states(
-        #             traintask_id=self._local_states[i].key,
-        #             operation=self.algo.predict(
-        #                 data_samples=test_node.test_data_sample_keys,
-        #                 _algo_name=f"Predicting with {self.algo.__class__.__name__}",
-        #             ),
-        #             round_idx=round_idx,
-        #         )
-        # else:
-        #     test_node = test_data_nodes[self._node_to_train]
-
-        #     test_node.update_states(
-        #         traintask_id=self._local_states[self._node_to_train].key,
-        #         operation=self.algo.predict(
-        #             data_samples=test_node.test_data_sample_keys,
-        #             _algo_name=f"Predicting with {self.algo.__class__.__name__}",
-        #         ),
-        #         round_idx=round_idx,
-        #     )
-
-        # self._node_to_train = (self._node_to_train + 1) % len(train_data_nodes)
-        test_node = test_data_nodes[0]
-
-        if round_idx == 0:
-            test_node.update_states(
-                traintask_id=self._local_states[0].key,
-                operation=self.algo.predict(
-                    data_samples=test_node.test_data_sample_keys,
-                    _algo_name=f"Predicting with {self.algo.__class__.__name__}",
-                ),
-                round_idx=round_idx,
-            )
-        else:
-            test_node.update_states(
-                traintask_id=self._local_states[self._node_to_train].key,
-                operation=self.algo.predict(
-                    data_samples=test_node.test_data_sample_keys,
-                    _algo_name=f"Predicting with {self.algo.__class__.__name__}",
-                ),
-                round_idx=round_idx,
-            )
-            self._node_to_train = (self._node_to_train + 1) % len(train_data_nodes)
-
-
-# %%
-# Custom Algo
-
-from typing import Any
 
 from substrafl.algorithms.pytorch.torch_base_algo import TorchAlgo
 from substrafl.remote import remote_data
@@ -579,6 +424,101 @@ class MyAlgo(TorchCyclicAlgo):
         )
 
 
+# %%
+# Federated Learning strategies
+# =============================
+#
+# A FL strategy specifies how to train a model on distributed data.
+# The most well known strategy is the Federated Averaging strategy: train locally a model on every organization,
+# then aggregate the weight updates from every organization, and then apply locally at each organization the averaged
+# updates.
+
+from substrafl import strategies
+from substrafl.algorithms.algo import Algo
+from substrafl.nodes.aggregation_node import AggregationNode
+from substrafl.nodes.test_data_node import TestDataNode
+from substrafl.nodes.train_data_node import TrainDataNode
+
+
+class CyclicStrategy(strategies.Strategy):
+    def __init__(self, algo: Algo, *args, **kwargs):
+        super().__init__(algo=algo, *args, **kwargs)
+
+        self._cyclic_local_state = None
+        self._cyclic_shared_state = None
+
+    @property
+    def name(self) -> str:
+        """The name of the strategy
+        Returns:
+            str: Name of the strategy
+        """
+        return "Cyclic Strategy"
+
+    def initialization_round(
+        self,
+        *,
+        train_data_nodes: List[TrainDataNode],
+        clean_models: bool,
+        round_idx: Optional[int] = 0,
+        additional_orgs_permissions: Optional[set] = None,
+    ):
+        first_train_data_node = train_data_nodes[0]
+
+        # define train tasks (do not submit yet)
+        # for each train task give description of Algo instead of a key for an algo
+        self._cyclic_local_state = first_train_data_node.init_states(
+            operation=self.algo.initialize(
+                _algo_name=f"Initializing with {self.algo.__class__.__name__}",
+            ),
+            round_idx=round_idx,
+            authorized_ids=set([first_train_data_node.organization_id]) | additional_orgs_permissions,
+            clean_models=clean_models,
+        )
+
+    def perform_round(
+        self,
+        *,
+        train_data_nodes: List[TrainDataNode],
+        aggregation_node: Optional[AggregationNode],
+        round_idx: int,
+        clean_models: bool,
+        additional_orgs_permissions: Optional[set] = None,
+    ):
+        for node in train_data_nodes:
+            self._cyclic_local_state, self._cyclic_shared_state = node.update_states(
+                operation=self.algo.train(
+                    node.data_sample_keys,
+                    shared_state=self._cyclic_shared_state,
+                    _algo_name=f"Training with {self.algo.__class__.__name__}",
+                ),
+                local_state=self._cyclic_local_state,
+                round_idx=round_idx,
+                authorized_ids=set([n.organization_id for n in train_data_nodes]) | additional_orgs_permissions,
+                aggregation_id=None,
+                clean_models=clean_models,
+            )
+
+    def perform_predict(
+        self,
+        test_data_nodes: List[TestDataNode],
+        train_data_nodes: List[TrainDataNode],
+        round_idx: int,
+    ):
+        for test_node in test_data_nodes:
+            test_node.update_states(
+                traintask_id=self._cyclic_local_state.key,
+                operation=self.algo.predict(
+                    data_samples=test_node.test_data_sample_keys,
+                    _algo_name=f"Predicting with {self.algo.__class__.__name__}",
+                ),
+                round_idx=round_idx,
+            )
+
+
+# %%
+# Custom Algo
+
 strategy = CyclicStrategy(algo=MyAlgo())
 
 # %%
@@ -619,7 +559,6 @@ from substrafl.nodes import TestDataNode
 from substrafl.evaluation_strategy import EvaluationStrategy
 
 # Create the Test Data Nodes (or testing tasks) and save them in a list
-org_id = DATA_PROVIDER_ORGS_ID[0]
 test_data_nodes = [
     TestDataNode(
         organization_id=org_id,
@@ -627,7 +566,7 @@ test_data_nodes = [
         test_data_sample_keys=[test_datasample_keys[org_id]],
         metric_functions={"Accuracy": accuracy, "ROC AUC": roc_auc},
     )
-    # for org_id in DATA_PROVIDER_ORGS_ID
+    for org_id in DATA_PROVIDER_ORGS_ID
 ]
 
 
@@ -667,7 +606,7 @@ dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "
 from substrafl.experiment import execute_experiment
 
 # A round is defined by a local training step followed by an aggregation operation
-NUM_ROUNDS = 9
+NUM_ROUNDS = 3
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
@@ -686,7 +625,7 @@ compute_plan = execute_experiment(
 # %%
 # The compute plan created is composed of 29 tasks:
 #
-# * For each local training step, we create 3 tasks per organisation: training + prediction + evaluation -> 3 tasks.
+# * For each local training step, we create 3 tasks per organization: training + prediction + evaluation -> 3 tasks.
 # * We are training on 2 data organizations; for each round, we have 3 * 2 local tasks + 1 aggregation task -> 7 tasks.
 # * We are training for 3 rounds: 3 * 7 -> 21 tasks.
 # * Before the first local training step, there is an initialization step on each data organization: 21 + 2 -> 23 tasks.

@@ -58,8 +58,7 @@ client_2 = Client(client_name="org-3")
 #
 # To run in remote mode, use the following syntax:
 #
-# ``client_remote = Client(url="MY_BACKEND_URL")``
-# ``client_remote.login(username="my-username", password="my-password")``
+# ``client_remote = Client(backend_type="remote", url="MY_BACKEND_URL", username="my-username", password="my-password")``
 
 
 # Create a dictionary to easily access each client from its human-friendly id
