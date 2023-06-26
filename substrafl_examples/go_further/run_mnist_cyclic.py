@@ -481,6 +481,17 @@ from substrafl.nodes.train_data_node import TrainDataNode
 
 class CyclicStrategy(strategies.Strategy):
     def __init__(self, algo: Algo, *args, **kwargs):
+        """The base class Strategy proposes compute plan structure in its ``build_compute_plan``
+        implementation dedicated to federate learning compute plan.
+        This structure will call the function ``initialization_round`` at round 0, and
+        repeat the ``perform_round`` function the giver number of round. The default
+        ``build_compute_plan`` implementation also take into account the given evaluation
+        strategy to trigger the tests tasks when needed.
+
+        Args:
+            algo (Algo): A Strategy takes an Algo as argument, in order to deal with framework
+                specific function in a dedicated object.
+        """
         super().__init__(algo=algo, *args, **kwargs)
 
         self._cyclic_local_state = None
@@ -490,6 +501,7 @@ class CyclicStrategy(strategies.Strategy):
     def name(self) -> str:
         """The name of the strategy. Useful to indicate which Algo
         are compatible or aren't with this strategy.
+
         Returns:
             str: Name of the strategy
         """
@@ -503,6 +515,17 @@ class CyclicStrategy(strategies.Strategy):
         round_idx: Optional[int] = 0,
         additional_orgs_permissions: Optional[set] = None,
     ):
+        """The ``initialization_round`` function is called at round 0 on the
+        ``build_compute_plan`` function. In our strategy, we want to initialize the
+        _cyclic_local_state in order to be able to perform a metric computation before
+        any training.
+
+        Args:
+            train_data_nodes (List[TrainDataNode]): _description_
+            clean_models (bool): _description_
+            round_idx (Optional[int], optional): _description_. Defaults to 0.
+            additional_orgs_permissions (Optional[set], optional): _description_. Defaults to None.
+        """
         first_train_data_node = train_data_nodes[0]
 
         # define train tasks (do not submit yet)
