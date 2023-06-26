@@ -183,8 +183,8 @@ datasample_keys = {
 # :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
 #
 # A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to an organization (aka a Client)
-# and will have access to the data samples. These data samples must be instantiated with the right permissions to
-# be processed by the given Client.
+# containing data, and will have access to the data samples. These data samples must be instantiated with the right
+# permissions to be processed by the given Client.
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -192,7 +192,6 @@ from substrafl.nodes import AggregationNode
 
 aggregation_node = AggregationNode(ANALYTICS_PROVIDER_ORG_ID)
 
-# Create the Train Data Nodes (or training tasks) and save them in a list
 train_data_nodes = [
     TrainDataNode(
         organization_id=org_id,
@@ -339,7 +338,7 @@ class Analytics(ComputePlanBuilder):
         evaluation_strategy=None,
         clean_models=False,
     ):
-        """Method to build and link the different operation to execute with each other.
+        """Method to build and link the different computations to execute with each other.
         We will use the ``update_state``method of the nodes given as input to choose which
         method to apply.
         For our example, we will only use TrainDataNodes and AggregationNodes.
@@ -530,23 +529,23 @@ compute_plan = execute_experiment(
 # -------
 #
 # The output of a task can be downloaded using some utils function provided by SubstraFL, such as
-# ``download_algo_state``, ``download_shared_state`` or ``download_aggregated_state``.
+# ``download_algo_state``, ``download_train_shared_state`` or ``download_aggregate_shared_state``.
 #
 # These functions download from a given ``Client`` and a given ``compute_plan_key`` the output of a
 # given ``round_idx`` or ``rank_idx``.
 
-from substrafl.model_loading import download_aggregated_state
+from substrafl.model_loading import download_aggregate_shared_state
 
 # The aggregated analytics are computed in the ANALYTICS_PROVIDER_ORG_ID client.
 client_to_dowload_from = clients[ANALYTICS_PROVIDER_ORG_ID]
 
-first_rank_analytics = download_aggregated_state(
+first_rank_analytics = download_aggregate_shared_state(
     client=client_to_dowload_from,
     compute_plan_key=compute_plan.key,
     round_idx=0,
 )
 
-second_rank_analytics = download_aggregated_state(
+second_rank_analytics = download_aggregate_shared_state(
     client=client_to_dowload_from,
     compute_plan_key=compute_plan.key,
     round_idx=1,
