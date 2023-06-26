@@ -14,6 +14,7 @@ This version now allows :ref:`external database connections <ops howto external 
 If you changed some database settings such as credentials in the orchestrator or backend values, like this:
 
 .. code:: yaml
+
    postgresql:
      auth:
       username: my-username
@@ -23,6 +24,7 @@ If you changed some database settings such as credentials in the orchestrator or
 Then you'll need to copy them over to a new ``database`` key:
 
 .. code-block:: yaml
+
    postgresql:
      auth:
       username: my-username
