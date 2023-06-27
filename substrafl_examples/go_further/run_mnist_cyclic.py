@@ -3,13 +3,13 @@
 Creating Torch Cyclic strategy on MNIST dataset
 ===============================================
 
-This example illustrates an advance usage of SubstraFL and proposes to implement a new Federated Learning strategy,
-called cyclic strategy, using the SubstraFL base classes.
+This example illustrates an advanced usage of SubstraFL and proposes to implement a new Federated Learning strategy,
+called Cyclic Strategy, using the SubstraFL base classes.
 This example runs on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
 aiming to recognize the number written on each image.
 
-The **cyclic strategy** consists in training locally a model on different organization (or center) sequentially (one after the other). We
+The **Cyclic Strategy** consists in training locally a model on different organizations (or centers) sequentially (one after the other). We
 consider a round of this strategy to be a full cycle of local trainings.
 
 This example shows an implementation of the CyclicTorchAlgo using
@@ -31,7 +31,6 @@ To run this example, you have two options:
 
   * Please ensure to have all the libraries installed. A *requirements.txt* file is included in the zip file, where you can run the command ``pip install -r requirements.txt`` to install them.
   * **Substra** and **SubstraFL** should already be installed. If not follow the instructions described here: :ref:`substrafl_doc/substrafl_overview:Installation`.
-
 
 """
 # %%
@@ -345,7 +344,9 @@ from substrafl.algorithms.pytorch import weight_manager
 
 
 class TorchCyclicAlgo(TorchAlgo):
-    """The base class to be inherited for SubstraFL algorithms."""
+    """The base class to be inherited for SubstraFL algorithms.
+    An Algo is a SubstraFL object that contains all framework specific functions.
+    """
 
     def __init__(
         self,
@@ -359,6 +360,22 @@ class TorchCyclicAlgo(TorchAlgo):
         *args,
         **kwargs,
     ):
+        """It is possible to add any argument to an Algo. But what important is to pass these argument as
+        args or kwargs to the parent, using the super().__init__(...) method.
+        Indeed, SubstraFL does not use the instance of the object, but will re-instantiate them at each new task
+        using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
+        right state.
+
+        Args:
+            model (torch.nn.modules.module.Module): A torch model.
+            criterion (torch.nn.modules.loss._Loss): A torch criterion (loss).
+            optimizer (torch.optim.Optimizer): A torch optimizer linked to the model.
+            index_generator (BaseIndexGenerator): a stateful index generator.
+            dataset (torch.utils.data.Dataset): an instantiable dataset class whose ``__init__`` arguments are
+                ``x``, ``y`` and ``is_inference``.
+            seed (typing.Optional[int]): Seed set at the algo initialization on each organization. Defaults to None.
+            use_gpu (bool): Whether to use the GPUs if they are available. Defaults to True.
+        """
         super().__init__(
             model=model,
             criterion=criterion,
@@ -385,9 +402,26 @@ class TorchCyclicAlgo(TorchAlgo):
     def train(
         self,
         datasamples: Any,
-        shared_state: Optional[dict] = None,  # Set to None per default for clarity reason as
-        # the decorator will do it if the arg shared_state is not passed.
+        shared_state: Optional[dict] = None,
     ) -> dict:
+        """The train method decorated with ``@remote_data`` is a method that will be executed inside
+        train tasks of our strategy.
+        The decorator is used to save the entire Algo object to be able to access all values useful for the training
+        (such as the model, the optimizer, etc...).
+        The method objective is to set up a local training on given data samples.
+
+        Args:
+            datasamples (Any): datasamples are the output of the ``get_data`` method of an opener. This opener
+                access the data of a train data nodes, and transform them to feed methods decorated with
+                ``@remote_data``.
+            shared_state (Optional[dict], optional): a shared state is a dictionary containing the necessary values
+                to use from the previous trainings of the strategy and continue it. In our case, the shared state
+                is the model parameters obtained after the local train on the previous organization. Defaults to None.
+
+        Returns:
+            dict: returns a dict corresponding to the shared state that will be use by the next train function, on
+                a different organization.
+        """
         # Create torch dataset
         train_dataset = self._dataset(datasamples, is_inference=False)
 
@@ -480,13 +514,21 @@ from substrafl.nodes.train_data_node import TrainDataNode
 
 
 class CyclicStrategy(strategies.Strategy):
+    """The base class Strategy proposes compute plan structure in its ``build_compute_plan``
+    implementation dedicated to federate learning compute plan.
+    This structure will call the function ``initialization_round`` at round 0, and
+    repeat the ``perform_round`` function the giver number of round. The default
+    ``build_compute_plan`` implementation also take into account the given evaluation
+    strategy to trigger the tests tasks when needed.
+    """
+
     def __init__(self, algo: Algo, *args, **kwargs):
-        """The base class Strategy proposes compute plan structure in its ``build_compute_plan``
-        implementation dedicated to federate learning compute plan.
-        This structure will call the function ``initialization_round`` at round 0, and
-        repeat the ``perform_round`` function the giver number of round. The default
-        ``build_compute_plan`` implementation also take into account the given evaluation
-        strategy to trigger the tests tasks when needed.
+        """
+        It is possible to add any argument to a Strategy. But what important is to pass these argument as
+        args or kwargs to the parent, using the super().__init__(...) method.
+        Indeed, SubstraFL does not use the instance of the object, but will re-instantiate them at each new task
+        using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
+        right state.
 
         Args:
             algo (Algo): A Strategy takes an Algo as argument, in order to deal with framework
@@ -517,25 +559,30 @@ class CyclicStrategy(strategies.Strategy):
     ):
         """The ``initialization_round`` function is called at round 0 on the
         ``build_compute_plan`` function. In our strategy, we want to initialize the
-        _cyclic_local_state in order to be able to perform a metric computation before
+        ``_cyclic_local_state`` in order to be able to perform a metric computation before
         any training.
 
+        We only initialize the model on the first train data nodes
+
         Args:
-            train_data_nodes (List[TrainDataNode]): _description_
-            clean_models (bool): _description_
-            round_idx (Optional[int], optional): _description_. Defaults to 0.
-            additional_orgs_permissions (Optional[set], optional): _description_. Defaults to None.
+            train_data_nodes (List[TrainDataNode]): Train data nodes representing the different
+                organizations containing data we want to train on.
+            clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
+                Only take into account in ``remote`` mode.
+            round_idx (Optional[int], optional): Current round index. The initialization round is zero by default,
+                but you are free to change it in the ``build_compute_plan`` method. Defaults to 0.
+            additional_orgs_permissions (Optional[set], optional): additional organization id that could
+                have access to the outputs the task. Defaults to None.
         """
         first_train_data_node = train_data_nodes[0]
 
-        # define train tasks (do not submit yet)
-        # for each train task give description of Algo instead of a key for an algo
+        # The algo.initialize method is an empty method useful to load all python object to the platform.
         self._cyclic_local_state = first_train_data_node.init_states(
             operation=self.algo.initialize(
                 _algo_name=f"Initializing with {self.algo.__class__.__name__}",
             ),
             round_idx=round_idx,
-            authorized_ids=set([first_train_data_node.organization_id]) | additional_orgs_permissions,
+            authorized_ids=set([n.organization_id for n in train_data_nodes]) | additional_orgs_permissions,
             clean_models=clean_models,
         )
 
@@ -548,6 +595,20 @@ class CyclicStrategy(strategies.Strategy):
         clean_models: bool,
         additional_orgs_permissions: Optional[set] = None,
     ):
+        """This method will be call at each round to perform a series of task. For the cyclic
+        strategy we want to design, a round is a full cycle over the different train data
+        nodes.
+        We link the output of a computed task directly to the next one.
+
+        Args:
+            train_data_nodes (List[TrainDataNode]): Train data nodes representing the different
+                organizations containing data we want to train on.
+            clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
+                Only take into account in ``remote`` mode.
+            round_idx (Optional[int], optional): Current round index.
+            additional_orgs_permissions (Optional[set], optional): additional organization id that could
+                have access to the outputs the task. Defaults to None.
+        """
         for node in train_data_nodes:
             self._cyclic_local_state, self._cyclic_shared_state = node.update_states(
                 operation=self.algo.train(
@@ -568,6 +629,18 @@ class CyclicStrategy(strategies.Strategy):
         train_data_nodes: List[TrainDataNode],
         round_idx: int,
     ):
+        """This method is called regarding the given evaluation strategy. If the round is included
+        in the evaluation strategy, the perform predict will be called on the different concerned nodes.
+
+        We are using the last computed ``_cyclic_local_state`` to feed the test task, which mean that we will
+        always test on the model after its training on the last train data nodes of the list.
+
+        Args:
+            test_data_nodes (List[TestDataNode]): List of all the register test data nodes containing data
+                we want to test on.
+            train_data_nodes (List[TrainDataNode]): List of all the register train data nodes.
+            round_idx (int): Current round index.
+        """
         for test_node in test_data_nodes:
             test_node.update_states(
                 traintask_id=self._cyclic_local_state.key,
@@ -580,7 +653,7 @@ class CyclicStrategy(strategies.Strategy):
 
 
 # %%
-# Custom Algo
+# Instantiating your strategy.
 
 strategy = CyclicStrategy(algo=MyAlgo())
 
@@ -686,15 +759,6 @@ compute_plan = execute_experiment(
 
 
 # %%
-# The compute plan created is composed of 29 tasks:
-#
-# * For each local training step, we create 3 tasks per organization: training + prediction + evaluation -> 3 tasks.
-# * We are training on 2 data organizations; for each round, we have 3 * 2 local tasks + 1 aggregation task -> 7 tasks.
-# * We are training for 3 rounds: 3 * 7 -> 21 tasks.
-# * Before the first local training step, there is an initialization step on each data organization: 21 + 2 -> 23 tasks.
-# * After the last aggregation step, there are three more tasks: applying the last updates from the aggregator + prediction + evaluation, on both organizations: 23 + 2 * 3 -> 29 tasks
-
-# %%
 # Explore the results
 # *******************
 
@@ -756,7 +820,7 @@ plt.show()
 
 from substrafl.model_loading import download_algo_state
 
-client_to_download_from = DATA_PROVIDER_ORGS_ID[0]
+client_to_download_from = DATA_PROVIDER_ORGS_ID[-1]
 round_idx = None
 
 algo = download_algo_state(
