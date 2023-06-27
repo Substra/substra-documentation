@@ -502,7 +502,7 @@ class CyclicStrategy(strategies.Strategy):
 
 # %%
 # Torch Cyclic Algo implementation
-# ============================
+# ================================
 #
 # A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
