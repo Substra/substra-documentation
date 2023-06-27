@@ -214,7 +214,7 @@ def roc_auc(datasamples, predictions_path):
 # In this section, you will:
 #
 # - Register a model and its dependencies
-# - Specify the federated learning strategy
+# - Create a federated learning strategy
 # - Specify the training and aggregation nodes
 # - Specify the test nodes
 # - Actually run the computations
@@ -320,193 +320,29 @@ class TorchDataset(torch.utils.data.Dataset):
 
 
 # %%
-# Torch Cyclic Algo implementation
-# ============================
-#
-# A SubstraFL Algo gathers all the defined elements that run locally in each organization.
-# This is the only SubstraFL object that is framework specific (here PyTorch specific).
-#
-# In the case of our Cyclic Strategy, we need to start from the TorchAlgo base class, and
-# overwrite the ``strategies`` property and the ``train`` function to ensure that we output
-# the shared state we need for our federated learning compute plan.
-#
-# For the cyclic strategy, the shared state will be directly the model parameters. We will
-# initialize the model from the shared state we receive and send the new one updated by
-# the local training.
-
-
-from typing import Any
-from typing import List
-from typing import Optional
-
-from substrafl.algorithms.pytorch.torch_base_algo import TorchAlgo
-from substrafl.remote import remote_data
-from substrafl.algorithms.pytorch import weight_manager
-
-
-class TorchCyclicAlgo(TorchAlgo):
-    """The base class to be inherited for SubstraFL algorithms.
-    An Algo is a SubstraFL object that contains all framework specific functions.
-    """
-
-    def __init__(
-        self,
-        model: torch.nn.Module,
-        criterion: torch.nn.modules.loss._Loss,
-        optimizer: torch.optim.Optimizer,
-        index_generator: NpIndexGenerator,
-        dataset: torch.utils.data.Dataset,
-        seed: Optional[int] = None,
-        use_gpu: bool = True,
-        *args,
-        **kwargs,
-    ):
-        """It is possible to add any argument to an Algo. It is important to pass these arguments as
-        args or kwargs to the parent, using the super().__init__(...) method.
-        Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
-        using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
-        right state.
-
-        Args:
-            model (torch.nn.modules.module.Module): A torch model.
-            criterion (torch.nn.modules.loss._Loss): A torch criterion (loss).
-            optimizer (torch.optim.Optimizer): A torch optimizer linked to the model.
-            index_generator (BaseIndexGenerator): a stateful index generator.
-            dataset (torch.utils.data.Dataset): an instantiable dataset class whose ``__init__`` arguments are
-                ``x``, ``y`` and ``is_inference``.
-            seed (typing.Optional[int]): Seed set at the algo initialization on each organization. Defaults to None.
-            use_gpu (bool): Whether to use the GPUs if they are available. Defaults to True.
-        """
-        super().__init__(
-            model=model,
-            criterion=criterion,
-            optimizer=optimizer,
-            index_generator=index_generator,
-            dataset=dataset,
-            scheduler=None,
-            seed=seed,
-            use_gpu=use_gpu,
-            *args,
-            **kwargs,
-        )
-
-    @property
-    def strategies(self) -> List[str]:
-        """List of compatible strategies.
-
-        Returns:
-            List[str]: list of compatible strategy name.
-        """
-        return ["Cyclic Strategy"]
-
-    @remote_data
-    def train(
-        self,
-        datasamples: Any,
-        shared_state: Optional[dict] = None,
-    ) -> dict:
-        """The train method decorated with ``@remote_data`` is a method that will be executed inside
-        train tasks of our strategy.
-        The decorator is used to save the entire Algo object to be able to access all values useful for the training
-        (such as the model, the optimizer, etc...).
-        The method objective is to realize the local training on given data samples, and send the right shared state
-        to the next task.
-
-        Args:
-            datasamples (Any): datasamples are the output of the ``get_data`` method of an opener. This opener
-                access the data of a train data nodes, and transform them to feed methods decorated with
-                ``@remote_data``.
-            shared_state (Optional[dict], optional): a shared state is a dictionary containing the necessary values
-                to use from the previous trainings of the strategy and continue it. In our case, the shared state
-                is the model parameters obtained after the local train on the previous organization. Defaults to None.
-
-        Returns:
-            dict: returns a dict corresponding to the shared state that will be use by the next train function, on
-                a different organization.
-        """
-        # Create torch dataset
-        train_dataset = self._dataset(datasamples, is_inference=False)
-
-        if self._index_generator.n_samples is None:
-            # We need to initiate the index generator number of sample the first time we have access to
-            # the information.
-            self._index_generator.n_samples = len(train_dataset)
-
-        # If the shared state is None, it means that this is the first training of the compute plan,
-        # and that we don't have a shared state to take into account yet.
-        if shared_state is not None:
-            assert self._index_generator.n_samples is not None
-            # The shared state is the average of the model parameters for all organizations. We set
-            # the model to these updated values.
-            model_parameters = [torch.from_numpy(x).to(self._device) for x in shared_state["model_parameters"]]
-            weight_manager.set_parameters(
-                model=self._model,
-                parameters=model_parameters,
-                with_batch_norm_parameters=False,
-            )
-
-        # We set the counter of updates to zero.
-        self._index_generator.reset_counter()
-
-        # Train mode for torch model.
-        self._model.train()
-
-        # Train the model.
-        self._local_train(train_dataset)
-
-        # We verify the we trained the model on the right amount of updates.
-        self._index_generator.check_num_updates()
-
-        # Eval mode for torch model.
-        self._model.eval()
-
-        # We get the new model parameters values in order to send them in the shared states.
-        model_parameters = weight_manager.get_parameters(model=self._model, with_batch_norm_parameters=False)
-        new_shared_state = {"model_parameters": [p.cpu().detach().numpy() for p in model_parameters]}
-
-        return new_shared_state
-
-
-# %%
-# To instantiate your algo, you need to instantiate it in a class with no argument. This is only valid when you are
-# inherit from TorchAlgo class.
-#
-# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
-# Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
-
-
-class MyAlgo(TorchCyclicAlgo):
-    def __init__(self):
-        super().__init__(
-            model=model,
-            criterion=criterion,
-            optimizer=optimizer,
-            index_generator=index_generator,
-            dataset=TorchDataset,
-            seed=seed,
-        )
-
-
-# %%
 # Cyclic Strategy implementation
 # ==============================
 #
 # A FL strategy specifies how to train a model on distributed data.
 #
-# The Cyclic Strategy passes the current state of the training to the following
-# organization to sequentially present all the data to the model. This is not the most efficient strategy
-# as the model will overfit a bit the last dataset it sees, and as the order of training will impact the
-# performances of the model. But we will use it as an example to explain and show how to implement your
-# own strategies using SubstraFL.
+# The Cyclic Strategy passes the model from an organization to the next one to sequentially present all
+# the data available in Substra to the model.
 #
-# To instantiate this new strategy, we need to overwrite three functions:
+# This is not the most efficient strategy. The model will overfit the last dataset it sees,
+# and the order of training will impact the performances of the model. But we will use this implementation
+# as an example to explain and show how to implement your own strategies using SubstraFL.
+#
+# To instantiate this new strategy, we need to overwrite three methods:
 #
 # - ``initialization_round``, to indicate what tasks to execute at round 0, in order to setup the variable
-#   and be able to compute the performances before any training.
-# - ``perform_round``, to indicate what task and in which order we need to compute to execute a round of the strategy.
-# - ``perform_predict``, to indicate on which task to perform the predictions to compute the performances.
+#   and be able to compute the performances of the model before any training.
+# - ``perform_round``, to indicate what tasks and in which order we need to compute to execute a round of the strategy.
+# - ``perform_predict``, to indicate how to compute the predictions and performances .
 #
 
+from typing import Any
+from typing import List
+from typing import Optional
 
 from substrafl import strategies
 from substrafl.algorithms.algo import Algo
@@ -516,10 +352,9 @@ from substrafl.nodes.train_data_node import TrainDataNode
 
 
 class CyclicStrategy(strategies.Strategy):
-    """The base class Strategy proposes compute plan structure in its ``build_compute_plan``
-    implementation dedicated to federate learning compute plan.
-    This structure will call ``initialization_round`` at round 0, and
-    repeat ``perform_round`` for ``num_rounds``.
+    """The base class Strategy proposes a default compute plan structure
+    in its ``build_compute_plan``method implementation, dedicated to Federated Learning compute plan.
+    This methods will call ``initialization_round`` at round 0, and repeat ``perform_round`` for ``num_rounds``.
 
     The default ``build_compute_plan`` implementation also take into account the given evaluation
     strategy to trigger the tests tasks when needed.
@@ -527,11 +362,11 @@ class CyclicStrategy(strategies.Strategy):
 
     def __init__(self, algo: Algo, *args, **kwargs):
         """
-        It is possible to add any argument to a Strategy. It is important to pass these arguments as
-        args or kwargs to the parent, using the super().__init__(...) method.
+        It is possible to add any arguments to a Strategy. It is important to pass these arguments as
+        args or kwargs to the parent class, using the super().__init__(...) method.
         Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
-        using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
-        right state.
+        using the args and kwargs passed to the parent class, and uses the save and load local state method to retrieve
+        its state.
 
         Args:
             algo (Algo): A Strategy takes an Algo as argument, in order to deal with framework
@@ -562,7 +397,7 @@ class CyclicStrategy(strategies.Strategy):
     ):
         """The ``initialization_round`` function is called at round 0 on the
         ``build_compute_plan`` method. In our strategy, we want to initialize
-        ``_cyclic_local_state`` in order to be able to perform a metric computation before
+        ``_cyclic_local_state`` in order to be able to test the model before
         any training.
 
         We only initialize the model on the first train data node.
@@ -608,6 +443,8 @@ class CyclicStrategy(strategies.Strategy):
         Args:
             train_data_nodes (List[TrainDataNode]): Train data nodes representing the different
                 organizations containing data we want to train on.
+            aggregation_node (List[AggregationNode]): In the case of the Cyclic Strategy, there is no
+                aggregation tasks so no need for AggregationNode.
             clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
                 Only take into account in ``remote`` mode.
             round_idx (Optional[int], optional): Current round index.
@@ -641,10 +478,10 @@ class CyclicStrategy(strategies.Strategy):
         round_idx: int,
     ):
         """This method is called regarding the given evaluation strategy. If the round is included
-        in the evaluation strategy, the perform predict will be called on the different concerned nodes.
+        in the evaluation strategy, the ``perform_predict`` method will be called on the different concerned nodes.
 
         We are using the last computed ``_cyclic_local_state`` to feed the test task, which mean that we will
-        always test on the model after its training on the last train data nodes of the list.
+        always test the model after its training on the last train data nodes of the list.
 
         Args:
             test_data_nodes (List[TestDataNode]): List of all the register test data nodes containing data
@@ -664,7 +501,168 @@ class CyclicStrategy(strategies.Strategy):
 
 
 # %%
-# Instantiating your strategy.
+# Torch Cyclic Algo implementation
+# ============================
+#
+# A SubstraFL Algo gathers all the defined elements that run locally in each organization.
+# This is the only SubstraFL object that is framework specific (here PyTorch specific).
+#
+# In the case of our **Cyclic Strategy**, we need to use the TorchAlgo base class, and
+# overwrite the ``strategies`` property and the ``train`` method to ensure that we output
+# the shared state we need for our Federated Learning compute plan.
+#
+# For the Cyclic Strategy, the **shared state** will be directly the **model parameters**. We will
+# retrieve the model from the shared state we receive and send the new parameters updated after
+# the local training.
+
+from substrafl.algorithms.pytorch.torch_base_algo import TorchAlgo
+from substrafl.remote import remote_data
+from substrafl.algorithms.pytorch import weight_manager
+
+
+class TorchCyclicAlgo(TorchAlgo):
+    """We create here the base class to be inherited for SubstraFL algorithms.
+    An Algo is a SubstraFL object that contains all framework specific functions.
+    """
+
+    def __init__(
+        self,
+        model: torch.nn.Module,
+        criterion: torch.nn.modules.loss._Loss,
+        optimizer: torch.optim.Optimizer,
+        index_generator: NpIndexGenerator,
+        dataset: torch.utils.data.Dataset,
+        seed: Optional[int] = None,
+        use_gpu: bool = True,
+        *args,
+        **kwargs,
+    ):
+        """It is possible to add any arguments to an Algo. It is important to pass these arguments as
+        args or kwargs to the parent class, using the super().__init__(...) method.
+        Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
+        using the args and kwargs passed to the parent class, and the save and load local state method to retrieve the
+        right state.
+
+        Args:
+            model (torch.nn.modules.module.Module): A torch model.
+            criterion (torch.nn.modules.loss._Loss): A torch criterion (loss).
+            optimizer (torch.optim.Optimizer): A torch optimizer linked to the model.
+            index_generator (BaseIndexGenerator): a stateful index generator.
+            dataset (torch.utils.data.Dataset): an instantiable dataset class whose ``__init__`` arguments are
+                ``x``, ``y`` and ``is_inference``.
+            seed (typing.Optional[int]): Seed set at the algo initialization on each organization. Defaults to None.
+            use_gpu (bool): Whether to use the GPUs if they are available. Defaults to True.
+        """
+        super().__init__(
+            model=model,
+            criterion=criterion,
+            optimizer=optimizer,
+            index_generator=index_generator,
+            dataset=dataset,
+            scheduler=None,
+            seed=seed,
+            use_gpu=use_gpu,
+            *args,
+            **kwargs,
+        )
+
+    @property
+    def strategies(self) -> List[str]:
+        """List of compatible strategies.
+
+        Returns:
+            List[str]: list of compatible strategy name.
+        """
+        return ["Cyclic Strategy"]
+
+    @remote_data
+    def train(
+        self,
+        datasamples: Any,
+        shared_state: Optional[dict] = None,
+    ) -> dict:
+        """This method decorated with ``@remote_data`` is a method that will be executed inside
+        the train tasks of our strategy.
+        The decorator is used to retrieve the entire Algo object inside the task, to be able to access all values
+        useful for the training (such as the model, the optimizer, etc...).
+        The objective is to realize the local training on given data samples, and send the right shared state
+        to the next task.
+
+        Args:
+            datasamples (Any): datasamples are the output of the ``get_data`` method of an opener. This opener
+                access the data of a train data nodes, and transforms them to feed methods decorated with
+                ``@remote_data``.
+            shared_state (Optional[dict], optional): a shared state is a dictionary containing the necessary values
+                to use from the previous trainings of the compute plan and initialize the model with it. In our case,
+                the shared state is the model parameters obtained after the local train on the previous organization.
+                The shared state is equal to None it is the first training of the compute plan.
+
+        Returns:
+            dict: returns a dict corresponding to the shared state that will be used by the next train function on
+                a different organization.
+        """
+        # Create torch dataset
+        train_dataset = self._dataset(datasamples, is_inference=False)
+
+        if self._index_generator.n_samples is None:
+            # We need to initiate the index generator number of sample the first time we have access to
+            # the information.
+            self._index_generator.n_samples = len(train_dataset)
+
+        # If the shared state is None, it means that this is the first training of the compute plan,
+        # and that we don't have a shared state to take into account yet.
+        if shared_state is not None:
+            assert self._index_generator.n_samples is not None
+            # The shared state is the average of the model parameters for all organizations. We set
+            # the model to these updated values.
+            model_parameters = [torch.from_numpy(x).to(self._device) for x in shared_state["model_parameters"]]
+            weight_manager.set_parameters(
+                model=self._model,
+                parameters=model_parameters,
+                with_batch_norm_parameters=False,
+            )
+
+        # We set the counter of updates to zero.
+        self._index_generator.reset_counter()
+
+        # Train mode for torch model.
+        self._model.train()
+
+        # Train the model.
+        self._local_train(train_dataset)
+
+        # We verify that we trained the model on the right amount of updates.
+        self._index_generator.check_num_updates()
+
+        # Eval mode for torch model.
+        self._model.eval()
+
+        # We get the new model parameters values in order to send them in the shared states.
+        model_parameters = weight_manager.get_parameters(model=self._model, with_batch_norm_parameters=False)
+        new_shared_state = {"model_parameters": [p.cpu().detach().numpy() for p in model_parameters]}
+
+        return new_shared_state
+
+
+# %%
+# To instantiate your algo, you need to instantiate it in a class with no argument. This comment is only valid when you
+# inherit from the TorchAlgo base class.
+#
+# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
+# Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
+
+
+class MyAlgo(TorchCyclicAlgo):
+    def __init__(self):
+        super().__init__(
+            model=model,
+            criterion=criterion,
+            optimizer=optimizer,
+            index_generator=index_generator,
+            dataset=TorchDataset,
+            seed=seed,
+        )
+
 
 strategy = CyclicStrategy(algo=MyAlgo())
 
@@ -730,7 +728,7 @@ my_eval_strategy = EvaluationStrategy(test_data_nodes=test_data_nodes, eval_freq
 
 from substrafl.dependency import Dependency
 
-dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "scikit-learn==1.1.1"], editable=True)
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "scikit-learn==1.1.1"])
 
 # %%
 # We now have all the necessary objects to launch our experiment. Please see a summary below of all the objects we created so far:
