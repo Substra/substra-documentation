@@ -96,7 +96,7 @@ DATA_PROVIDER_ORGS_ID = ORGS_ID  # Data providers orgs are the two last organiza
 import pathlib
 from torch_cyclic_assets.dataset.cyclic_mnist_dataset import setup_mnist
 
-# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/mnist.png'
+# sphinx_gallery_thumbnail_path = 'static/example_thumbnail/cyclic-mnist.png'
 
 # Create the temporary directory for generated data
 (pathlib.Path.cwd() / "tmp").mkdir(exist_ok=True)
@@ -206,6 +206,7 @@ def roc_auc(datasamples, predictions_path):
 # %%
 # Specify the machine learning components
 # ***************************************
+#
 # This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
 # However, SubstraFL is compatible with any machine learning framework.
 #
@@ -325,7 +326,7 @@ class TorchDataset(torch.utils.data.Dataset):
 # A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
-# In the case of a cyclic strategy, we need to start from the TorchAlgo base class, and
+# In the case of our Cyclic Strategy, we need to start from the TorchAlgo base class, and
 # overwrite the ``strategies`` property and the ``train`` function to ensure that we output
 # the shared state we need for our federated learning compute plan.
 #
@@ -360,9 +361,9 @@ class TorchCyclicAlgo(TorchAlgo):
         *args,
         **kwargs,
     ):
-        """It is possible to add any argument to an Algo. But what important is to pass these argument as
+        """It is possible to add any argument to an Algo. It is important to pass these arguments as
         args or kwargs to the parent, using the super().__init__(...) method.
-        Indeed, SubstraFL does not use the instance of the object, but will re-instantiate them at each new task
+        Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
         using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
         right state.
 
@@ -408,7 +409,8 @@ class TorchCyclicAlgo(TorchAlgo):
         train tasks of our strategy.
         The decorator is used to save the entire Algo object to be able to access all values useful for the training
         (such as the model, the optimizer, etc...).
-        The method objective is to set up a local training on given data samples.
+        The method objective is to realize the local training on given data samples, and send the right shared state
+        to the next task.
 
         Args:
             datasamples (Any): datasamples are the output of the ``get_data`` method of an opener. This opener
@@ -516,17 +518,18 @@ from substrafl.nodes.train_data_node import TrainDataNode
 class CyclicStrategy(strategies.Strategy):
     """The base class Strategy proposes compute plan structure in its ``build_compute_plan``
     implementation dedicated to federate learning compute plan.
-    This structure will call the function ``initialization_round`` at round 0, and
-    repeat the ``perform_round`` function the giver number of round. The default
-    ``build_compute_plan`` implementation also take into account the given evaluation
+    This structure will call ``initialization_round`` at round 0, and
+    repeat ``perform_round`` for ``num_rounds``.
+
+    The default ``build_compute_plan`` implementation also take into account the given evaluation
     strategy to trigger the tests tasks when needed.
     """
 
     def __init__(self, algo: Algo, *args, **kwargs):
         """
-        It is possible to add any argument to a Strategy. But what important is to pass these argument as
+        It is possible to add any argument to a Strategy. It is important to pass these arguments as
         args or kwargs to the parent, using the super().__init__(...) method.
-        Indeed, SubstraFL does not use the instance of the object, but will re-instantiate them at each new task
+        Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
         using the args and kwargs passed to the parent, and the save and load local state method to retrieve the
         right state.
 
@@ -558,11 +561,11 @@ class CyclicStrategy(strategies.Strategy):
         additional_orgs_permissions: Optional[set] = None,
     ):
         """The ``initialization_round`` function is called at round 0 on the
-        ``build_compute_plan`` function. In our strategy, we want to initialize the
+        ``build_compute_plan`` method. In our strategy, we want to initialize
         ``_cyclic_local_state`` in order to be able to perform a metric computation before
         any training.
 
-        We only initialize the model on the first train data nodes
+        We only initialize the model on the first train data node.
 
         Args:
             train_data_nodes (List[TrainDataNode]): Train data nodes representing the different
@@ -571,8 +574,10 @@ class CyclicStrategy(strategies.Strategy):
                 Only take into account in ``remote`` mode.
             round_idx (Optional[int], optional): Current round index. The initialization round is zero by default,
                 but you are free to change it in the ``build_compute_plan`` method. Defaults to 0.
-            additional_orgs_permissions (Optional[set], optional): additional organization id that could
-                have access to the outputs the task. Defaults to None.
+            additional_orgs_permissions (Optional[set], optional): additional organization ids that could
+                have access to the outputs the task. In our case, this will correspond to the organization
+                containing test data nodes, in order to provide access to the model and to allow to
+                use it on the test data.
         """
         first_train_data_node = train_data_nodes[0]
 
@@ -582,7 +587,7 @@ class CyclicStrategy(strategies.Strategy):
                 _algo_name=f"Initializing with {self.algo.__class__.__name__}",
             ),
             round_idx=round_idx,
-            authorized_ids=set([n.organization_id for n in train_data_nodes]) | additional_orgs_permissions,
+            authorized_ids=set([first_train_data_node.organization_id]) | additional_orgs_permissions,
             clean_models=clean_models,
         )
 
@@ -606,10 +611,16 @@ class CyclicStrategy(strategies.Strategy):
             clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
                 Only take into account in ``remote`` mode.
             round_idx (Optional[int], optional): Current round index.
-            additional_orgs_permissions (Optional[set], optional): additional organization id that could
-                have access to the outputs the task. Defaults to None.
+            additional_orgs_permissions (Optional[set], optional): additional organization ids that could
+                have access to the outputs the task. In our case, this will correspond to the organization
+                containing test data nodes, in order to provide access to the model and to allow to
+                use it on the test data.
         """
-        for node in train_data_nodes:
+        for i, node in enumerate(train_data_nodes):
+            # We get the next train_data_node in order to add the organization of the node
+            # to the authorized_ids
+            next_train_data_node = train_data_nodes[(i + 1) % len(train_data_nodes)]
+
             self._cyclic_local_state, self._cyclic_shared_state = node.update_states(
                 operation=self.algo.train(
                     node.data_sample_keys,
@@ -618,7 +629,7 @@ class CyclicStrategy(strategies.Strategy):
                 ),
                 local_state=self._cyclic_local_state,
                 round_idx=round_idx,
-                authorized_ids=set([n.organization_id for n in train_data_nodes]) | additional_orgs_permissions,
+                authorized_ids=set([next_train_data_node.organization_id]) | additional_orgs_permissions,
                 aggregation_id=None,
                 clean_models=clean_models,
             )
