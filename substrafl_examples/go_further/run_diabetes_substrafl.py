@@ -465,7 +465,7 @@ class Analytics(ComputePlanBuilder):
 # compute plan.
 #
 # The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
-# retrieve a the previous local state that have not been shared with the other ``Nodes``.
+# retrieve the previous local state that have not been shared with the other ``Nodes``.
 #
 # For instance, after updating a :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` using its
 # ``update_state`` method, we will have access to its next local state, that we will pass as argument to the
