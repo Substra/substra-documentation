@@ -476,12 +476,7 @@ compute_plan = execute_experiment(
 
 import time
 
-# if we are using remote clients, we have to wait until the compute plan is done before getting the results
-while (
-    client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_DOING"
-    or client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_TODO"
-):
-    time.sleep(2)
+client_0.wait_compute_plan(compute_plan.key)
 # %%
 # List results
 # ============
