@@ -136,7 +136,7 @@ dataset = DatasetSpec(
     logs_permission=permissions_dataset,
 )
 
-# We register the dataset for each of the organizations
+# We register the dataset for each organization
 dataset_keys = {client_id: clients[client_id].add_dataset(dataset) for client_id in DATA_PROVIDER_ORGS_ID}
 
 for client_id, key in dataset_keys.items():
@@ -168,23 +168,25 @@ datasample_keys = {
 # class, and how to use the full power of the flexibility it provides.
 #
 # Before starting, we need to have in mind that a federated computation can be represented as a graph of tasks.
-# Some of these tasks needs data to be executed (training tasks) and others are here to aggregate local results
+# Some of these tasks need data to be executed (training tasks) and others are here to aggregate local results
 # (aggregation tasks).
 #
 # Substra does not store an explicit definition of this graph; instead, it gives the user full flexibility to define
 # the compute plan (or computation graph) they need, by linking a task to its parents.
 #
-# To be able to create this graph of computation, SubstraFL provides the ``Node`` abstraction. A ``Node`` is used to
-# attached an organization (aka a Client) to a certain type of task depending on the computation we expect to happen on
-# this organization.
+# To create this graph of computations, SubstraFL provides the ``Node`` abstraction. A ``Node``
+# assigns to an organization (aka a Client) tasks of a given type. The type of the ``Node`` depends on the type of tasks
+# we want to run on this organization (training or aggregation tasks).
 #
-# An :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` is attached to an organization (aka a Client)
-# and will be a ``Node`` where we will compute functions that does not need data samples as input. We will use the
-# :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated analytics.
+# An organization (aka Client) without data can host an
+# :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>`.
+# We will use the :ref:`Aggregation node<substrafl_doc/api/nodes:AggregationNode>` object to compute the aggregated
+# analytics.
 #
-# A :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>` is a Node attached to an organization (aka a Client)
-# containing data, and will have access to the data samples. These data samples must be instantiated with the right
-# permissions to be processed by the given Client.
+# An organization (aka a Client) containing the data samples can host a
+# :ref:`Train data node<substrafl_doc/api/nodes:TrainDataNode>`.
+# Each node will only have access data from the organization hosting it.
+# These data samples must be instantiated with the right permissions to be processed by the given Client.
 
 from substrafl.nodes import TrainDataNode
 from substrafl.nodes import AggregationNode
@@ -210,7 +212,7 @@ train_data_nodes = [
 # - ``save_local_state(...)``
 #
 # The ``build_compute_plan`` method is essential to create the graph of the compute plan that will be executed on
-# Substra. Using the different ``Nodes`` we created, we will update there states by applying user defined methods.
+# Substra. Using the different ``Nodes`` we created, we will update their states by applying user defined methods.
 #
 # These methods are passed as argument to the ``Node`` using its ``update_state`` method.
 #
@@ -235,9 +237,9 @@ class Analytics(ComputePlanBuilder):
 
     @remote_data
     def local_first_order_computation(self, datasamples: pd.DataFrame, shared_state=None):
-        """Compute from the data samples, expected to be pandas dataframe,
+        """Compute from the data samples, expected to be a pandas dataframe,
         the means and counts of each column of the data frame.
-        These datasamples or the output of the ``get_data`` function defined
+        These datasamples are the output of the ``get_data`` function defined
         in the ``diabetes_substrafl_opener.py`` file are available in the asset
         folder downloaded at the beginning of the example.
 
@@ -274,7 +276,7 @@ class Analytics(ComputePlanBuilder):
         Args:
             datasamples (pd.DataFrame): Pandas dataframe provided by the opener.
             shared_state (Dict): Output of a first order analytics computation,
-                that must contain the mean.
+                that must contain the means.
 
         Returns:
             Dict: dictionary containing the local information on standard deviation
@@ -294,7 +296,7 @@ class Analytics(ComputePlanBuilder):
     def aggregation(self, shared_states: List[Dict]):
         """Aggregation function that receive a list on locally computed analytics in order to
         aggregate them.
-        The aggregation will be a weighted average using "n_samples" as weighted coefficient.
+        The aggregation will be a weighted average using "n_samples" as weight coefficient.
 
         Args:
             shared_states (List[Dict]): list of dictionaries containing a field "n_samples",
@@ -344,13 +346,13 @@ class Analytics(ComputePlanBuilder):
         For our example, we will only use TrainDataNodes and AggregationNodes.
 
         Args:
-            train_data_nodes (TrainDataNode): Nodes linked to the data samples on which
+            train_data_nodes (List[TrainDataNode]): Nodes linked to the data samples on which
                 to compute analytics.
             aggregation_node (AggregationNode): Node on which to compute the aggregation
                 of the analytics extracted from the train_data_nodes.
-            num_rounds (int): Num rounds to be used to iterate on recurrent part of
+            num_rounds Optional[int]: Num rounds to be used to iterate on recurrent part of
                 the compute plan. Defaults to None.
-            evaluation_strategy (substrafl.EvaluationStrategy): Object storing the
+            evaluation_strategy Optional[substrafl.EvaluationStrategy]: Object storing the
                 TestDataNode. Unused in this example. Defaults to None.
             clean_models (bool): Clean the intermediary models of this round on the
                 Substra platform. Default to False.
@@ -457,11 +459,11 @@ class Analytics(ComputePlanBuilder):
 
 
 # %%
-# Now that we saw the implementation of the custom ``Analytics`` class, we can add detailed to some of the previously
-# introduced concept.
+# Now that we saw the implementation of the custom ``Analytics`` class, we can add details to some of the previously
+# introduced concepts.
 #
 # The ``update_state`` method outputs the new state of the node, that can be passed as an argument to a following one.
-# This succession of ``next_state`` pass to new ``node.update_state`` is how Substra build the graph of the
+# This succession of ``next_state`` passed to a new ``node.update_state`` is how Substra build the graph of the
 # compute plan.
 #
 # The ``load_local_state`` and ``save_local_state`` are two methods used at each new iteration on a Node, in order to
