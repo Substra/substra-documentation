@@ -405,8 +405,8 @@ class CyclicStrategy(strategies.Strategy):
         Args:
             train_data_nodes (List[TrainDataNode]): Train data nodes representing the different
                 organizations containing data we want to train on.
-            clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
-                Only take into account in ``remote`` mode.
+            clean_models (bool): Boolean to indicate if we want to keep intermediate shared states.
+                Only taken into account in ``remote`` mode.
             round_idx (Optional[int], optional): Current round index. The initialization round is zero by default,
                 but you are free to change it in the ``build_compute_plan`` method. Defaults to 0.
             additional_orgs_permissions (Optional[set], optional): additional organization ids that could
@@ -435,7 +435,7 @@ class CyclicStrategy(strategies.Strategy):
         clean_models: bool,
         additional_orgs_permissions: Optional[set] = None,
     ):
-        """This method will be call at each round to perform a series of task. For the cyclic
+        """This method is called at each round to perform a series of task. For the cyclic
         strategy we want to design, a round is a full cycle over the different train data
         nodes.
         We link the output of a computed task directly to the next one.
@@ -445,8 +445,8 @@ class CyclicStrategy(strategies.Strategy):
                 organizations containing data we want to train on.
             aggregation_node (List[AggregationNode]): In the case of the Cyclic Strategy, there is no
                 aggregation tasks so no need for AggregationNode.
-            clean_models (bool): Boolean to indicate if we want to keep intermediate shared state.
-                Only take into account in ``remote`` mode.
+            clean_models (bool): Boolean to indicate if we want to keep intermediate shared states.
+                Only taken into account in ``remote`` mode.
             round_idx (Optional[int], optional): Current round index.
             additional_orgs_permissions (Optional[set], optional): additional organization ids that could
                 have access to the outputs the task. In our case, this will correspond to the organization
@@ -581,7 +581,7 @@ class TorchCyclicAlgo(TorchAlgo):
         datasamples: Any,
         shared_state: Optional[dict] = None,
     ) -> dict:
-        """This method decorated with ``@remote_data`` is a method that will be executed inside
+        """This method decorated with ``@remote_data`` is a method that is executed inside
         the train tasks of our strategy.
         The decorator is used to retrieve the entire Algo object inside the task, to be able to access all values
         useful for the training (such as the model, the optimizer, etc...).
@@ -659,6 +659,12 @@ class TorchCyclicAlgo(TorchAlgo):
 #   using the args and kwargs passed to the parent class, and the save and load local state method to retrieve the
 #   right state.
 #
+# To summarize the Algo is the place to put all framework specific code we want to apply in tasks. It is often
+# the tasks that needs the data to be executed, and that are decorated with ``@remote_data``.
+#
+# The Strategy contains the non-framework specific code, such as the ``build_compute_plan``method, that creates the
+# graph of tasks, the initialization round, perform round and perform predict methods that links tasks to each other
+# and links the functions to the nodes.
 
 
 class MyAlgo(TorchCyclicAlgo):
