@@ -169,8 +169,8 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 
 
 # %%
-# Metric registration
-# ===================
+# Metrics definition
+# ==================
 #
 # A metric is a function used to evaluate the performance of your model on one or several
 # **datasamples**.
@@ -204,8 +204,8 @@ def roc_auc(datasamples, predictions_path):
 
 
 # %%
-# Specify the machine learning components
-# ***************************************
+# Machine learning components definition
+# **************************************
 #
 # This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
 # However, SubstraFL is compatible with any machine learning framework.
@@ -224,8 +224,8 @@ def roc_auc(datasamples, predictions_path):
 # Model definition
 # ================
 #
-# We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
-# of SubstraFL.
+# We choose to use a classic torch CNN as the model to train. The model architecture is defined by the user
+# independently of SubstraFL.
 
 import torch
 from torch import nn
@@ -325,8 +325,8 @@ class TorchDataset(torch.utils.data.Dataset):
 #
 # A FL strategy specifies how to train a model on distributed data.
 #
-# The Cyclic Strategy passes the model from an organization to the next one to sequentially present all
-# the data available in Substra to the model.
+# The Cyclic Strategy passes the model from an organization to the next one, until all
+# the data available in Substra has been sequentially presented to the model.
 #
 # This is not the most efficient strategy. The model will overfit the last dataset it sees,
 # and the order of training will impact the performances of the model. But we will use this implementation
@@ -354,9 +354,9 @@ from substrafl.nodes.train_data_node import TrainDataNode
 class CyclicStrategy(strategies.Strategy):
     """The base class Strategy proposes a default compute plan structure
     in its ``build_compute_plan``method implementation, dedicated to Federated Learning compute plan.
-    This methods will call ``initialization_round`` at round 0, and repeat ``perform_round`` for ``num_rounds``.
+    This method calls ``initialization_round`` at round 0, and then repeats ``perform_round`` for ``num_rounds``.
 
-    The default ``build_compute_plan`` implementation also take into account the given evaluation
+    The default ``build_compute_plan`` implementation also takes into account the given evaluation
     strategy to trigger the tests tasks when needed.
     """
 
@@ -410,7 +410,7 @@ class CyclicStrategy(strategies.Strategy):
             round_idx (Optional[int], optional): Current round index. The initialization round is zero by default,
                 but you are free to change it in the ``build_compute_plan`` method. Defaults to 0.
             additional_orgs_permissions (Optional[set], optional): additional organization ids that could
-                have access to the outputs the task. In our case, this will correspond to the organization
+                have access to the outputs the task. In our case, this corresponds to the organization
                 containing test data nodes, in order to provide access to the model and to allow to
                 use it on the test data.
         """
@@ -650,6 +650,15 @@ class TorchCyclicAlgo(TorchAlgo):
 #
 # The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
 # Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
+#
+# .. warning::
+#   It is possible to add any arguments to an Algo or a Strategy. It is important to pass these arguments as
+#   args or kwargs to the parent class, using the super().__init__(...) method.
+#
+#   Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
+#   using the args and kwargs passed to the parent class, and the save and load local state method to retrieve the
+#   right state.
+#
 
 
 class MyAlgo(TorchCyclicAlgo):
