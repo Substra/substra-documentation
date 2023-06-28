@@ -4,6 +4,40 @@
 Upgrade notes
 *************
 
+.. _ops upgrade notes 0.28:
+
+Substra 0.28.0
+--------------
+
+This version now allows :ref:`external database connections <ops howto external database>`, and database setup info and connection info are no longer the same setting.
+
+If you changed some database settings such as credentials in the orchestrator or backend values, like this:
+
+.. code:: yaml
+
+   postgresql:
+     auth:
+      username: my-username
+      password: my-password
+      database: my-substra-db
+
+Then you'll need to copy them over to a new ``database`` key:
+
+.. code-block:: yaml
+
+   postgresql:
+     auth:
+      username: my-username
+      password: my-password
+      database: my-substra-db
+   
+   database:
+     auth:
+      username: my-username
+      password: my-password
+      database: my-substra-db
+      # you could also use YAML anchors for this
+
 Substra 0.23.1
 --------------
 

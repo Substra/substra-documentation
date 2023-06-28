@@ -61,7 +61,7 @@ Substra 0.28.0 --- 2023-06-14
 
 **Operations**:
 
-- Substra backend and orchestrator can now use **external database** rather having to use the one packaged as a subchart.
+- **BREAKING CHANGE**: Substra backend and orchestrator can now use **external database** rather having to use the one packaged as a subchart. See :ref:`upgrade notes <ops upgrade notes 0.28>`.
 
 Substra 0.27.0 --- 2023-05-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,3 +1,5 @@
+.. _ops howto external database:
+
 ************************
 Use an external database
 ************************
