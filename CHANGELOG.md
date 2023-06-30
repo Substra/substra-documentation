@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - New example on how to use the ComputePlanBuilder SubstraFL to compute Federated Analytics on the Sklearn diabetes dataset. ([#311](https://github.com/Substra/substra-documentation/pull/311))
+- New example on how to use implement a custom cyclic strategy SubstraFL with torch. ([#326](https://github.com/Substra/substra-documentation/pull/326))
 
 ## [0.29.0]
 
