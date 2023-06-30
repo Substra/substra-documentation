@@ -28,6 +28,29 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.29.0 --- 2023-06-30
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL**:
+
+- **BREAKING CHANGE**: In ``substrafl.model_loading`` the following methods have been renamed:
+
+  - ``download_shared_state`` is now ``download_train_shared_state``
+  - ``download_aggregated_state`` is now ``download_aggregate_shared_state``
+
+- Update **numpy** dependency to ``numpy<1.24`` in order to keep pickle compatibility with substra-tools' **numpy** version
+
+**Web application**:
+
+- In performance view, ``Rounds`` is now the default for X-axis
+- In task duration, fix issue were `Task execution` and `Outputs saving` durations were inverted 
+
+**Documentation**:
+
+- Improve permissions page
+- Add ``shared_state`` and ``local_state`` definition in `SubstraFL Overview <https://docs.substra.org/en/stable/substrafl_doc/substrafl_overview.html#local-and-shared-states>`__
+- Add ``rank`` definition in `Substra Concepts <https://docs.substra.org/en/stable/documentation/concepts.html#rank>`__
+
 Substra 0.28.0 --- 2023-06-14
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
