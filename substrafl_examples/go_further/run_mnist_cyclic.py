@@ -4,7 +4,7 @@ Creating Torch Cyclic strategy on MNIST dataset
 ===============================================
 
 This example illustrates an advanced usage of SubstraFL and proposes to implement a new Federated Learning strategy,
-called Cyclic Strategy, using the SubstraFL base classes.
+called **Cyclic Strategy**, using the SubstraFL base classes.
 This example runs on the `MNIST Dataset of handwritten digits <http://yann.lecun.com/exdb/mnist/>`__ using PyTorch.
 In this example, we work on 28x28 pixel sized grayscale images. This is a classification problem
 aiming to recognize the number written on each image.
@@ -325,7 +325,7 @@ class TorchDataset(torch.utils.data.Dataset):
 #
 # A FL strategy specifies how to train a model on distributed data.
 #
-# The Cyclic Strategy passes the model from an organization to the next one, until all
+# The **Cyclic Strategy** passes the model from an organization to the next one, until all
 # the data available in Substra has been sequentially presented to the model.
 #
 # This is not the most efficient strategy. The model will overfit the last dataset it sees,
@@ -511,7 +511,7 @@ class CyclicStrategy(strategies.Strategy):
 # overwrite the ``strategies`` property and the ``train`` method to ensure that we output
 # the shared state we need for our Federated Learning compute plan.
 #
-# For the Cyclic Strategy, the **shared state** will be directly the **model parameters**. We will
+# For the **Cyclic Strategy**, the **shared state** will be directly the **model parameters**. We will
 # retrieve the model from the shared state we receive and send the new parameters updated after
 # the local training.
 
@@ -654,18 +654,18 @@ class TorchCyclicAlgo(TorchAlgo):
 # .. warning::
 #
 #   It is possible to add any arguments to an Algo or a Strategy. It is important to pass these arguments as
-#   args or kwargs to the parent class, using the super().__init__(...) method.
+#   args or kwargs to the parent class, using the ``super().__init__(...)`` method.
 #
-#   Indeed, SubstraFL does not use the instance of the object. It re-instantiates them at each new task
+#   Indeed, SubstraFL does not use the instance of the object. It **re-instantiates** them at each new task
 #   using the args and kwargs passed to the parent class, and the save and load local state method to retrieve the
 #   right state.
 #
-# To summarize the Algo is the place to put all framework specific code we want to apply in tasks. It is often
+# To summarize the ``Algo`` is the place to put all framework specific code we want to apply in tasks. It is often
 # the tasks that needs the data to be executed, and that are decorated with ``@remote_data``.
 #
-# The Strategy contains the non-framework specific code, such as the ``build_compute_plan`` method, that creates the
-# graph of tasks, the initialization round, perform round and perform predict methods that links tasks to each other
-# and links the functions to the nodes.
+# The ``Strategy`` contains the non-framework specific code, such as the ``build_compute_plan`` method, that creates the
+# graph of tasks, the **initialization round**, **perform round** and **perform predict** methods that links tasks to
+# each other and links the functions to the nodes.
 
 
 class MyAlgo(TorchCyclicAlgo):
