@@ -35,14 +35,14 @@ Substra 0.29.0 --- 2023-06-30
 
 - **BREAKING CHANGE**: rename:
 
-  - `model_loading.download_shared_state` to `model_loading.download_train_shared_state`
-  - `model_loading.download_aggregated_state` to `model_loading.download_aggregate_shared_state`
+  - ``model_loading.download_shared_state`` to ``model_loading.download_train_shared_state``
+  - ``model_loading.download_aggregated_state`` to ``model_loading.download_aggregate_shared_state``
 
-- Update **numpy** dependency to `numpy<1.24` in order to keep pickle compatibility with substra-tools' **numpy** version
+- Update **numpy** dependency to ``numpy<1.24`` in order to keep pickle compatibility with substra-tools' **numpy** version
 
 **Web application**:
 
-- In performance view, `Rounds` is now the default for X-axis
+- In performance view, ``Rounds`` is now the default for X-axis
 - Fix issue on task duration feature
 
 Substra 0.28.0 --- 2023-06-14
