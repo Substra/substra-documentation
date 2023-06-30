@@ -663,7 +663,7 @@ class TorchCyclicAlgo(TorchAlgo):
 # To summarize the Algo is the place to put all framework specific code we want to apply in tasks. It is often
 # the tasks that needs the data to be executed, and that are decorated with ``@remote_data``.
 #
-# The Strategy contains the non-framework specific code, such as the ``build_compute_plan``method, that creates the
+# The Strategy contains the non-framework specific code, such as the ``build_compute_plan`` method, that creates the
 # graph of tasks, the initialization round, perform round and perform predict methods that links tasks to each other
 # and links the functions to the nodes.
 
