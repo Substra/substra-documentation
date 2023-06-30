@@ -43,7 +43,7 @@ Substra 0.29.0 --- 2023-06-30
 **Web application**:
 
 - In performance view, ``Rounds`` is now the default for X-axis
-- Fix issue on task duration feature
+- In task duration, fix issue were `Task execution` and `Outputs saving` durations were inverted 
 
 **Documentation**:
 
