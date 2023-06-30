@@ -652,6 +652,7 @@ class TorchCyclicAlgo(TorchAlgo):
 # Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 #
 # .. warning::
+#
 #   It is possible to add any arguments to an Algo or a Strategy. It is important to pass these arguments as
 #   args or kwargs to the parent class, using the super().__init__(...) method.
 #
@@ -786,14 +787,9 @@ compute_plan = execute_experiment(
 # Explore the results
 # *******************
 
-import time
+# The results will be available once the compute plan is completed
+client_0.wait_compute_plan(compute_plan.key)
 
-# if we are using remote clients, we have to wait until the compute plan is done before getting the results
-while (
-    client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_DOING"
-    or client_0.get_compute_plan(compute_plan.key).status == "PLAN_STATUS_TODO"
-):
-    time.sleep(2)
 # %%
 # List results
 # ============
