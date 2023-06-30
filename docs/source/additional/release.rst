@@ -33,10 +33,10 @@ Substra 0.29.0 --- 2023-06-30
 
 **SubstraFL**:
 
-- **BREAKING CHANGE**: rename:
+- **BREAKING CHANGE**: In ``substrafl.model_loading`` the following methods have been renamed:
 
-  - ``model_loading.download_shared_state`` to ``model_loading.download_train_shared_state``
-  - ``model_loading.download_aggregated_state`` to ``model_loading.download_aggregate_shared_state``
+  - ``download_shared_state`` is now ``download_train_shared_state``
+  - ``download_aggregated_state`` is now ``download_aggregate_shared_state``
 
 - Update **numpy** dependency to ``numpy<1.24`` in order to keep pickle compatibility with substra-tools' **numpy** version
 
@@ -44,6 +44,12 @@ Substra 0.29.0 --- 2023-06-30
 
 - In performance view, ``Rounds`` is now the default for X-axis
 - Fix issue on task duration feature
+
+**Documentation**:
+
+- Improve permissions page
+- Add ``shared_state`` and ``local_state`` definition in `SubstraFL Overview <https://docs.substra.org/en/stable/substrafl_doc/substrafl_overview.html#local-and-shared-states>`
+- Add ``rank`` definition in `Substra Concepts <https://docs.substra.org/en/stable/documentation/concepts.html#rank>` 
 
 Substra 0.28.0 --- 2023-06-14
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
