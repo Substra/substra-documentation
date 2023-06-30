@@ -541,6 +541,9 @@ from substrafl.model_loading import download_aggregate_shared_state
 # The aggregated analytics are computed in the ANALYTICS_PROVIDER_ORG_ID client.
 client_to_dowload_from = clients[ANALYTICS_PROVIDER_ORG_ID]
 
+# The results will be available once the compute plan is completed
+client_to_dowload_from.wait_compute_plan(compute_plan.key)
+
 first_rank_analytics = download_aggregate_shared_state(
     client=client_to_dowload_from,
     compute_plan_key=compute_plan.key,

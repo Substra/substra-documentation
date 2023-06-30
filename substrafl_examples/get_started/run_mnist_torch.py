@@ -58,8 +58,7 @@ client_2 = Client(client_name="org-3")
 #
 # To run in remote mode, use the following syntax:
 #
-# ``client_remote = Client(url="MY_BACKEND_URL")``
-# ``client_remote.login(username="my-username", password="my-password")``
+# ``client_remote = Client(backend_type="remote", url="MY_BACKEND_URL", username="my-username", password="my-password")``
 
 
 # Create a dictionary to easily access each client from its human-friendly id
@@ -167,8 +166,8 @@ for i, org_id in enumerate(DATA_PROVIDER_ORGS_ID):
 
 
 # %%
-# Metric registration
-# ===================
+# Metrics definition
+# ==================
 #
 # A metric is a function used to evaluate the performance of your model on one or several
 # **datasamples**.
@@ -202,8 +201,8 @@ def roc_auc(datasamples, predictions_path):
 
 
 # %%
-# Specify the machine learning components
-# ***************************************
+# Machine learning components definition
+# **************************************
 # This section uses the PyTorch based SubstraFL API to simplify the definition of machine learning components.
 # However, SubstraFL is compatible with any machine learning framework.
 #
@@ -221,8 +220,8 @@ def roc_auc(datasamples, predictions_path):
 # Model definition
 # ================
 #
-# We choose to use a classic torch CNN as the model to train. The model structure is defined by the user independently
-# of SubstraFL.
+# We choose to use a classic torch CNN as the model to train. The model architecture is defined by the user
+# independently of SubstraFL.
 
 import torch
 from torch import nn

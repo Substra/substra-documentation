@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - New example on how to use the ComputePlanBuilder SubstraFL to compute Federated Analytics on the Sklearn diabetes dataset. ([#311](https://github.com/Substra/substra-documentation/pull/311))
+- New example on how to implement a custom cyclic `Strategy` with a `TorchBaseAlgo` with SubstraFL. ([#326](https://github.com/Substra/substra-documentation/pull/326))
+- Use `Client.wait_compute_plan` in `substrafl_examples/get_started/run_mnist_torch.py` ([#327](https://github.com/Substra/substra-documentation/pull/327))
 
 ## [0.29.0]
 
@@ -15,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `shared state` and `local state` definition in SubstraFL overview ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - add `rank` definition in the Substra concepts ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - Add experiment name for SubstraFL example ([#323](https://github.com/Substra/substra-documentation/pull/323))
-- Use `Client.wait_compute_plan` in `substrafl_examples/get_started/run_mnist_torch.py` ([#327](https://github.com/Substra/substra-documentation/pull/327))
 
 ## [0.28.0]
 

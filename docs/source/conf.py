@@ -132,6 +132,11 @@ assets_dir_substrafl_sklearn_fedavg = (
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "sklearn_fedavg_assets.zip")
 
+assets_dir_substrafl_sklearn_fedavg = (
+    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "torch_cyclic_assets"
+)
+zip_dir(assets_dir_substrafl_sklearn_fedavg, "torch_cyclic_assets.zip")
+
 # Copy the source documentation files from substra and substrafl to their right place
 # in the substra-documentation repository
 from dataclasses import dataclass
