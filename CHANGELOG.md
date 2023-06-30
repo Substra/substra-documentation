@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `shared state` and `local state` definition in SubstraFL overview ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - add `rank` definition in the Substra concepts ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - Add experiment name for SubstraFL example ([#323](https://github.com/Substra/substra-documentation/pull/323))
+- Use `Client.wait_compute_plan` in `substrafl_examples/get_started/run_mnist_torch.py` ([#327](https://github.com/Substra/substra-documentation/pull/327))
 
 ## [0.28.0]
 
