@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- New example on how to use the ComputePlanBuilder SubstraFL to compute Federated Analytics on the Sklearn diabetes dataset. ([#311](https://github.com/Substra/substra-documentation/pull/311))
+
 ## [0.29.0]
 
 - Improve permissions page ([#322](https://github.com/Substra/substra-documentation/pull/322))
 - add `shared state` and `local state` definition in SubstraFL overview ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - add `rank` definition in the Substra concepts ([#321](https://github.com/Substra/substra-documentation/pull/321))
 - Add experiment name for SubstraFL example ([#323](https://github.com/Substra/substra-documentation/pull/323))
-
 
 ## [0.28.0]
 

@@ -70,6 +70,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/src
 
 # PyBuilder
 target/
@@ -151,6 +152,7 @@ docs/source/substrafl_doc/examples
 # Data folder when run locally
 **/data_iris
 **/data_mnist
+**/data_diabetes
 **/data
 
 # Algo files folder when run locally
