@@ -32,11 +32,13 @@ The provider will give you a **client id** and a **client secret**. Deploy them 
 Set up user creation
 ====================
 
-When a user first logs in through OIDC, they are assigned a username and a channel. 
+When a user first logs in through OIDC, they are assigned a username.
+The username is based on user email. the ``oidc.users.appendDomain`` flag controls whether email domain is included.
 
-You must select a channel to which the OIDC users will be assigned with ``oidc.users.channel``.
+You have two options when it comes to user creation:
 
-The username is based on user email; the ``oidc.users.appendDomain`` flag controls whether email domain is included.
+* You can set up a default channel by setting ``oidc.users.channel`` to the name of an existing channel.
+* Alternatively, you can set ``oidc.users.requireApproval`` to ``true``. Users created using the OIDC provider of your choice will be visible on the front end waiting approval from an admin.
 
 Note on user validity
 ---------------------
