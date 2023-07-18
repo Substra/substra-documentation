@@ -68,48 +68,64 @@ Some quick links:
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: Substrafl documentation
+   :caption: What is Substra
    :hidden:
 
+   documentation/concepts
+   substrafl_doc/substrafl_overview
+   contributing/components
+   documentation/substra_tools
 
-   substrafl_doc/index.rst
 
 
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: Substra documentation
+   :caption: Tutorials
    :hidden:
 
-   documentation/user_guide.rst
+   substrafl_doc/examples/index.rst
    auto_examples/index
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: API Reference
+   :hidden:
+
+   substrafl_doc/api/index.rst
    documentation/api_reference.rst
 
 
 .. toctree::
    :glob:
-   :maxdepth: 2
-   :caption: Contributing to Substra
+   :maxdepth: 1
+   :caption: How-to guides
    :hidden:
 
-   contributing/contributing-guide.rst
-   contributing/code-of-conduct.rst
+   documentation/debug.rst
+   documentation/gpu.rst
+   documentation/substra_tools.rst
+   documentation/get_performances.rst
+   documentation/client_configuration.rst
+   documentation/r_scripts.rst
+   documentation/api_tokens_generation.rst
    contributing/components.rst
    contributing/local-deployment.rst
-
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-   :caption: Deploying Substra
-   :hidden:
-
    operations/overview.rst
    operations/walkthrough.rst
    operations/howto.rst
    operations/upgrade-notes.rst
 
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :caption: Contributing guide
+   :hidden:
 
+   contributing/contributing-guide.rst
+   contributing/code-of-conduct.rst
 
 .. toctree::
    :glob:
