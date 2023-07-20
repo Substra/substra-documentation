@@ -6,7 +6,7 @@ to accommodate running tasks in other programming languages.
 This how-to guide explains how to run scripts written in R with Substra.
 This uses the low-level interface of Substra and requires writing more boilerplate code than using the high-level interface of SubstraFL.
 If you are not familiar with the Substra low-level library, you should read the
-:doc:`Substra introductory example </auto_examples/titanic_example/run_titanic>` first.
+:doc:`Substra introductory example </examples/substra_core/titanic_example/run_titanic>` first.
 
 .. caution:: This guide provides an easy to run some scripts in another language.
     The scripts are wrapped up in a Python process, so performances might be limited.

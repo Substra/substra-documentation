@@ -7,9 +7,9 @@ SPHINXOPTS    ?= -W --keep-going -n
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-SUBSTRAEXAMPLEDIR 		= source/auto_examples
+SUBSTRAEXAMPLEDIR 		= source/examples/substra_core
 SUBSTRADOCDIR 		= source/documentation/references
-SUBSTRAFLEXAMPLEDIR	= source/substrafl_doc/examples
+SUBSTRAFLEXAMPLEDIR	= source/examples/substrafl
 SUBSTRAFLDOCDIR	= source/substrafl_doc/api
 
 # Put it first so that "make" without argument is like "make help".

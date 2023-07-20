@@ -192,7 +192,7 @@ Launching
 Launching computations
 ======================
 
-One way to test that everything is working fine is to launch computations on your local deployment. To do that you can use the :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>` and setup the clients with the following values:
+One way to test that everything is working fine is to launch computations on your local deployment. To do that you can use the :ref:`MNIST federated learning example <examples/substrafl/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>` and setup the clients with the following values:
 
    .. code-block:: python
 
@@ -239,7 +239,7 @@ If this command fails and you still have pods up, you can use the following comm
 Next steps
 ==========
 
-Now you are ready to go, you can either run the :doc:`Substra examples </auto_examples/index>` or the :doc:`SubstraFL examples </substrafl_doc/examples/index>`.
+Now you are ready to go, you can either run the :doc:`Substra examples </examples/substra_core/index>` or the :doc:`SubstraFL examples </examples/substrafl/index>`.
 
 This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :ref:`deployment section <operations/overview:Overview>`.
 
