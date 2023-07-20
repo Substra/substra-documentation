@@ -32,26 +32,23 @@ The provider will give you a **client id** and a **client secret**. Deploy them 
 Set up user creation
 ====================
 
-When a user first logs in through OIDC, they are assigned a username.
-The username is based on user email. the ``oidc.users.appendDomain`` flag controls whether email domain is included.
+When a user first logs in through OIDC, they are assigned a username based on their email address. The ``oidc.users.appendDomain`` flag controls whether email domain is included.
 
-You have two options when it comes to user creation:
+You must choose one user creation process:
+* Set up a default channel by setting ``oidc.users.channel`` to the name of an existing channel (see the value of ``orchestrator.channels``). OIDC users will be able to use the platform right away.
+* Alternatively, set ``oidc.users.requireApproval`` to ``true``: after their first login, OIDC users will have to wait for manual approval from an administrator (on the web frontend).
 
-* You can set up a default channel by setting ``oidc.users.channel`` to the name of an existing channel.
-* Alternatively, you can set ``oidc.users.requireApproval`` to ``true``. Users created using the OIDC provider of your choice will be visible on the front end waiting approval from an admin.
+.. admonition:: Note on user validity
 
-Note on user validity
----------------------
-
-Substra OIDC users accounts will remain valid for a bit after the correspond account at the provider has been disabled; this can be an issue if, for instance, an employee has been recently terminated but still has access to the Substra instance.
-
-This can be mitigated through ``oidc.users.loginValidityDuration``: accounts that have not logged in in this amount of time (seconds) are disabled until the user logs in again. The API tokens associated with their account stop working as well, but will work again when they refresh their login.
-
-To avoid irritating users with frequent login prompts, Substra will attempt to do this in the background, making all this invisible to users. However this requires the provider to support offline access and refresh tokens -- not all do, and implementations vary.
-
-Automated login refresh is enabled by default through the setting ``oidc.users.useRefreshToken``, but Substra will disable it and fall back to the manual mode (actual login prompts) if it can't detect provider support.
-
-If you are using automated login refresh, you can set ``oidc.users.loginValidityDuration`` to a low value to slightly increase security at a small cost in server load. Otherwise, it is a balance of security versus user convenience.
+   Substra OIDC users accounts will remain valid for a bit after the correspond account at the provider has been disabled; this can be an issue if, for instance, an employee has been recently terminated but still has access to the Substra instance.
+   
+   This can be mitigated through ``oidc.users.loginValidityDuration``: accounts that have not logged in in this amount of time (seconds) are disabled until the user logs in again. The API tokens associated with their account stop working as well, but will work again when they refresh their login.
+   
+   To avoid irritating users with frequent login prompts, Substra will attempt to do this in the background, making all this invisible to users. However this requires the provider to support offline access and refresh tokens -- not all do, and implementations vary.
+   
+   Automated login refresh is enabled by default through the setting ``oidc.users.useRefreshToken``, but Substra will disable it and fall back to the manual mode (actual login prompts) if it can't detect provider support.
+   
+   If you are using automated login refresh, you can set ``oidc.users.loginValidityDuration`` to a low value to slightly increase security at a small cost in server load. Otherwise, it is a balance of security versus user convenience.
 
 
 Other settings
