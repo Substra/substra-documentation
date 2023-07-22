@@ -241,7 +241,7 @@ Next steps
 
 Now you are ready to go, you can either run the :doc:`Substra examples </examples/substra_core/index>` or the :doc:`SubstraFL examples </examples/substrafl/index>`.
 
-This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :ref:`deployment section <operations/overview:Overview>`.
+This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :doc:`deployment section <../deploying-substra/index>`.
 
 Documentation on running tests on any of the Substra components is available on the component repositories, see `substra <https://github.com/substra/substra>`_, `substrafl <https://github.com/substra/substrafl>`_, `substra-tools <https://github.com/substra/substra-tools>`_, substra-backend_, orchestrator_, substra-frontend_ and `substra-tests <https://github.com/substra/substra-tests>`_ repositories.
 
@@ -256,7 +256,7 @@ Troubleshooting
       * if you are using a release you can use :ref:`the compatibility table <additional/release:Compatibility table>`.
       * if you are using the latest commit from the ``main`` git branch, check that you are up-to-date and see if there were any open issue in the repositories or any bugfixes in the latest commits.
 
-   You can also go through :doc:`the instructions one more time </contributing/local-deployment>`, maybe they changed since you last saw them.
+   You can also go through :doc:`the instructions one more time </how-to/developing-substra/local-deployment>`, maybe they changed since you last saw them.
 
 Troubleshooting prerequisites
 -----------------------------

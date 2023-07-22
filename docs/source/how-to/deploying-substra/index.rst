@@ -1,8 +1,9 @@
-********
-Overview
-********
+How-to guides for deploying Substra
+===================================
 
 This section is of concern if you are **Deploying Substra in production**.
+
+Familiarity with infrastructure, and Kubernetes in particular, is recommended.
 
 - :ref:`ops walkthrough` guides you through deploying a production environment
 - :ref:`ops howto` are guides on some tasks of interest.
@@ -14,7 +15,7 @@ How Substra is deployed
 
 Substra is meant to be deployed as part of a federated learning network. Each participant *organization* will set up their own *Substra node*, from which their users can connect to the network and run machine learning algorithms on the data registered by participant on their own node.
 
-.. image:: ../static/schemes/stack-technical-scheme.svg
+.. image:: ../../static/schemes/stack-technical-scheme.svg
   :width: 800
   :align: center
   :alt: Substra Components Scheme
@@ -40,3 +41,10 @@ The orchestrator needs the following resources:
 * 4 CPU
 * 16 GB of RAM
 * 100 GB of storage
+
+.. toctree::
+   :maxdepth: 1
+
+   walkthrough.rst
+   howto.rst
+   upgrade-notes.rst

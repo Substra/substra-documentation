@@ -46,8 +46,8 @@ Installation
 
 **Server side**: There are two options to deploy the server side of Substra (backend, frontend and orchestrator):
 
-* :ref:`Local deployment <contributing/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
-* :ref:`Production deployment <operations/Overview:Overview>`: for real deployments.
+* :ref:`Local deployment <how-to/developing-substra/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
+* :doc:`Production deployment <how-to/deploying-substra/index>`: for real deployments.
 
 .. note::
    You can start doing local FL experiments with Substra by installing only the **client side**.
@@ -58,9 +58,9 @@ Links
 Some quick links:
 
 * :ref:`MNIST federated learning example <examples/substrafl/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`
-* :ref:`SubstraFL overview <substrafl_doc/substrafl_overview:Overview>`
+* :doc:`SubstraFL overview <substrafl_doc/substrafl_overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
-* :ref:`How to deploy Substra for Site Reliability Engineers <operations/Overview:Overview>`
+* :doc:`How to deploy Substra for Site Reliability Engineers <how-to/deploying-substra/index>`
 * :ref:`Community <additional/community:Community>`
 * `Subscribe to our newsletter <https://lists.lfaidata.foundation/g/substra-announce/join>`_
 
@@ -73,7 +73,7 @@ Some quick links:
 
    documentation/concepts
    substrafl_doc/substrafl_overview
-   contributing/components
+   documentation/components
    documentation/substra_tools
 
 
@@ -104,19 +104,10 @@ Some quick links:
    :caption: How-to guides
    :hidden:
 
-   documentation/debug.rst
-   documentation/gpu.rst
-   documentation/substra_tools.rst
-   documentation/get_performances.rst
-   documentation/client_configuration.rst
-   documentation/r_scripts.rst
-   documentation/api_tokens_generation.rst
-   contributing/components.rst
-   contributing/local-deployment.rst
-   operations/overview.rst
-   operations/walkthrough.rst
-   operations/howto.rst
-   operations/upgrade-notes.rst
+   how-to/using-substra/index.rst
+   how-to/deploying-substra/index.rst
+   how-to/developing-substra/index.rst
+
 
 .. toctree::
    :glob:
