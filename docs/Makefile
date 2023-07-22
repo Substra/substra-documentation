@@ -9,7 +9,7 @@ SOURCEDIR     = source
 BUILDDIR      = build
 SUBSTRAEXAMPLEDIR 		= source/examples/substra_core
 SUBSTRADOCDIR 		= source/documentation/references
-SUBSTRAFLEXAMPLEDIR	= source/examples/substrafl
+SUBSTRAFLEXAMPLEDIR	= source/substrafl_doc/examples
 SUBSTRAFLDOCDIR	= source/substrafl_doc/api
 
 # Put it first so that "make" without argument is like "make help".
