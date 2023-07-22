@@ -10,8 +10,14 @@ Familiarity with infrastructure, and Kubernetes in particular, is recommended.
 - :ref:`ops upgrade notes` should be read when upgrading from one version to the next.
 - :ref:`compatibility table` holds a reference of Substra versions.
 
-How Substra is deployed
-=======================
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   walkthrough.rst
+   howto.rst
+   upgrade-notes.rst
+
 
 Substra is meant to be deployed as part of a federated learning network. Each participant *organization* will set up their own *Substra node*, from which their users can connect to the network and run machine learning algorithms on the data registered by participant on their own node.
 
@@ -42,9 +48,3 @@ The orchestrator needs the following resources:
 * 16 GB of RAM
 * 100 GB of storage
 
-.. toctree::
-   :maxdepth: 1
-
-   walkthrough.rst
-   howto.rst
-   upgrade-notes.rst
