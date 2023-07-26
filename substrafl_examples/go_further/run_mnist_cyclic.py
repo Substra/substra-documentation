@@ -75,7 +75,7 @@ clients = {
 ORGS_ID = list(clients)
 # Algo provider is defined as the first organization.
 ALGO_ORG_ID = ORGS_ID[0]
-# Data providers orgs are the all organizations in this cyclic setup.
+# All organizations provide data in this cyclic setup.
 DATA_PROVIDER_ORGS_ID = ORGS_ID
 
 # %%
