@@ -73,8 +73,10 @@ clients = {
 
 # Store organization IDs
 ORGS_ID = list(clients)
-ALGO_ORG_ID = ORGS_ID[0]  # Algo provider is defined as the first organization.
-DATA_PROVIDER_ORGS_ID = ORGS_ID  # Data providers orgs are the two last organizations.
+# Algo provider is defined as the first organization.
+ALGO_ORG_ID = ORGS_ID[0]
+# Data providers orgs are the all organizations in this cyclic setup.
+DATA_PROVIDER_ORGS_ID = ORGS_ID
 
 # %%
 # Data and metrics

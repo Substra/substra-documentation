@@ -125,7 +125,7 @@ assets_directory = pathlib.Path.cwd() / "diabetes_substrafl_assets"
 assert assets_directory.is_dir(), """Did not find the asset directory,
 a directory called 'assets' is expected in the same location as this file"""
 
-permissions_dataset = Permissions(public=False, authorized_ids=DATA_PROVIDER_ORGS_ID)
+permissions_dataset = Permissions(public=False, authorized_ids=[ANALYTICS_PROVIDER_ORG_ID])
 
 dataset = DatasetSpec(
     name=f"Diabetes dataset",
