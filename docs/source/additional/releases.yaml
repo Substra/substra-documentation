@@ -45,8 +45,8 @@ releases:
           version: 10.2.4
           link: https://artifacthub.io/packages/helm/substra/hlf-k8s/10.2.4
       substra-tests:
-        version: 0.42.0
-        link: https://github.com/Substra/substra-tests/releases/tag/0.42.0
+        version: 0.43.0
+        link: https://github.com/Substra/substra-tests/releases/tag/0.43.0
   - version: 0.29.0
     components:
       substrafl:
