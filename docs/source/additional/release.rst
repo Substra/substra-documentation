@@ -33,16 +33,16 @@ Substra 0.30.0 --- 2023-07-27
 
 **Substra:**
 
-- Added `wait_task` and `wait_compute_plan` function to block execution until task or compute plan execution is over.
-- Configuration file path can be set with env var `SUBSTRA_CLIENTS_CONFIGURATION_FILE_PATH` .
-- Pin `pydantic` to `>=1.9.0` & `<2.0.0` as `pydantic` v `2.0.0` has been released with a lot of non backward compatible changes.
+- Added ``wait_task`` and ``wait_compute_plan`` function to block execution until task or compute plan execution is over.
+- Configuration file path can be set with env var ``SUBSTRA_CLIENTS_CONFIGURATION_FILE_PATH`` .
+- Pin ``pydantic`` to ``>=1.9.0`` & ``<2.0.0`` as ``pydantic`` v ``2.0.0`` has been released with a lot of non backward compatible changes.
 
 **SubstraFL:**
 
-- ******BREAKING:****** Input and output of aggregate tasks, used to be `model` and are now `shared_state`. It provides more flexibility to link different type of tasks with each other.
-- **BREAKING:** Removed function `wait` in `utils`. You can use `substra.Client.wait_task` & `substra.Client.wait_compute_plan` instead to wait for the completion of a task or a CP.
+- ******BREAKING:****** Input and output of aggregate tasks, used to be ``model`` and are now ``shared_state``. It provides more flexibility to link different type of tasks with each other.
+- **BREAKING:** Removed function ``wait`` in ``utils``. You can use ``substra.Client.wait_task`` & ``substra.Client.wait_compute_plan`` instead to wait for the completion of a task or a CP.
 - Fixed Compatibility with GPU devices when running torch based experiments.
-- Pin `pydantic` to `>=1.9.0` & `<2.0.0` as `pydantic` v `2.0.0` has been released with a lot of non backward compatible changes.
+- Pin ``pydantic`` to ``>=1.9.0`` & ``<2.0.0`` as ``pydantic`` v ``2.0.0`` has been released with a lot of non backward compatible changes.
 
 **Web application:**
 
