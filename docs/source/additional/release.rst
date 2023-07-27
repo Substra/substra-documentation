@@ -47,12 +47,12 @@ Substra 0.30.0 --- 2023-07-27
 **Web application:**
 
 - Fix issue where only the first 1000 data points where shown in performance graph.
-- User validation approval: this new feature (disabled by default) enable Substra admins to validate or reject new users that login with the SSO. Before the validation new user can not do nor see anything on Substra. To setup this feature have a look at [the SSO documentation](https://docs.substra.org/en/stable/operations/howto/sso-oidc.html#set-up-user-creation).
+- User validation approval: this new feature (disabled by default) enable Substra admins to validate or reject new users that login with the SSO. Before the validation new user can not do nor see anything on Substra. To setup this feature have a look at `the SSO documentation <https://docs.substra.org/en/stable/operations/howto/sso-oidc.html#set-up-user-creation>`__.
 
 **Documentation**:
 
-- [New example](https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_diabetes_substrafl.html#sphx-glr-substrafl-doc-examples-go-further-run-diabetes-substrafl-py) on Federated Analytics with SubstraFL
-- [New example](https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_mnist_cyclic.html#sphx-glr-substrafl-doc-examples-go-further-run-mnist-cyclic-py) on how to implement a custom cyclic Strategy with SubstraFL.
+- `New example <https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_diabetes_substrafl.html#sphx-glr-substrafl-doc-examples-go-further-run-diabetes-substrafl-py>`__ on Federated Analytics with SubstraFL
+- `New example <https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_mnist_cyclic.html#sphx-glr-substrafl-doc-examples-go-further-run-mnist-cyclic-py>`__ on how to implement a custom cyclic Strategy with SubstraFL.
 
 
 Substra 0.29.0 --- 2023-06-30
