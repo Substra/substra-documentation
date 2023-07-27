@@ -35,6 +35,7 @@ Set up user creation
 When a user first logs in through OIDC, they are assigned a username based on their email address. The ``oidc.users.appendDomain`` flag controls whether email domain is included.
 
 You must choose one user creation process:
+
 * Set up a default channel by setting ``oidc.users.channel`` to the name of an existing channel (see the value of ``orchestrator.channels``). OIDC users will be able to use the platform right away.
 * Alternatively, set ``oidc.users.requireApproval`` to ``true``: after their first login, OIDC users will have to wait for manual approval from an administrator (on the web frontend).
 
