@@ -5,17 +5,22 @@ This section is of concern if you are **Deploying Substra in production**.
 
 Familiarity with infrastructure, and Kubernetes in particular, is recommended.
 
-- :ref:`ops walkthrough` guides you through deploying a production environment
-- :ref:`ops howto` are guides on some tasks of interest.
-- :ref:`ops upgrade notes` should be read when upgrading from one version to the next.
-- :ref:`compatibility table` holds a reference of Substra versions.
+
+:ref:`The walkthrough guide <ops walkthrough>` takes you step by step through deploying a production environment.
+More specific how-to guides cover additional points.
+
+:ref:`ops upgrade notes` cover relevant changes when upgrading from one version to the next.
+
+The :ref:`compatibility table` contains a reference of Substra versions compatible with one another.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
    walkthrough.rst
-   howto.rst
+   howto/existing-volumes.rst
+   howto/external-database.rst
+   howto/sso-oidc.rst
    upgrade-notes.rst
 
 

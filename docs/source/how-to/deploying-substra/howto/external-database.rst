@@ -1,8 +1,8 @@
 .. _ops howto external database:
 
-************************
-Use an external database
-************************
+*******************************
+How-to use an external database
+*******************************
 
 By default, Substra components use their own integrated postgres databases (one per backend, and one for the orchestrator in centralized mode).
 

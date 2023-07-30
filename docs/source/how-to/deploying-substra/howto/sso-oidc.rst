@@ -1,6 +1,6 @@
-******************************
-Set up SSO with OpenID Connect
-******************************
+*************************************
+How-to set up SSO with OpenID Connect
+*************************************
 
 Substra supports external user management through OpenID Connect (OIDC). It is done per-backend, so each organization can use their own user provider and cohabit on the same network.
 

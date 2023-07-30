@@ -1,6 +1,6 @@
-**********************
-Consider Prerequisites
-**********************
+*******************
+Check Prerequisites
+*******************
 
 Substra version
 ===============
