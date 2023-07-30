@@ -86,7 +86,7 @@ import pathlib
 from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
 
 data_path = pathlib.Path.cwd() / "tmp" / "data_diabetes"
-data_path.mkdir(exist_ok=True)
+data_path.mkdir(parents=True, exist_ok=True)
 
 setup_diabetes(data_path=data_path)
 
