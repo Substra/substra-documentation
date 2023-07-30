@@ -13,8 +13,8 @@ The **Cyclic Strategy** consists in training locally a model on different organi
 consider a round of this strategy to be a full cycle of local trainings.
 
 This example shows an implementation of the CyclicTorchAlgo using
-`TorchAlgo <substrafl_doc/api/algorithms:Torch Algorithms>` as base class, and the CyclicStrategy implementation using
-`Strategy <substrafl_doc/api/strategies:Strategies>` as base class.
+:ref:`TorchAlgo <substrafl_doc/api/algorithms:Torch Algorithms>` as base class, and the CyclicStrategy implementation using
+:ref:`Strategy <substrafl_doc/api/strategies:Strategies>` as base class.
 
 This example does not use a deployed platform of Substra and runs in local mode.
 
@@ -645,7 +645,7 @@ class TorchCyclicAlgo(TorchAlgo):
 # To instantiate your algo, you need to instantiate it in a class with no argument. This comment is only valid when you
 # inherit from the TorchAlgo base class.
 #
-# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
+# The ``TorchDataset`` is passed **as a class** to the :ref:`TorchAlgo <substrafl_doc/api/algorithms:Torch Algorithms>`.
 # Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 #
 # .. warning::
