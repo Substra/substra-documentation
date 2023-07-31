@@ -411,7 +411,7 @@ from substrafl.dependency import Dependency
 # Number of times to apply the compute plan.
 NUM_ROUNDS = 6
 
-dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "torch==1.11.0", "scikit-learn==1.1.1"])
+dependencies = Dependency(pypi_dependencies=["numpy==1.23.1", "scikit-learn==1.1.1"])
 
 compute_plan = execute_experiment(
     client=clients[ALGO_ORG_ID],
