@@ -1,4 +1,4 @@
-How-to guides for Substra users
+How-to guides for using Substra
 ===============================
 
 The following guides might be of interest if you are a data scientist using Substra.

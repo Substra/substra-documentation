@@ -6,6 +6,11 @@ Main Substra concepts
 .. contents::
     :depth: 3
 
+.. toctree::
+   :maxdepth: 1
+
+   substra_tools
+
 Assets
 ------
 

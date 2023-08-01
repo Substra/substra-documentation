@@ -71,10 +71,10 @@ Some quick links:
    :caption: What is Substra
    :hidden:
 
-   documentation/concepts
+
    substrafl_doc/substrafl_overview
+   documentation/concepts
    documentation/components
-   documentation/substra_tools
 
 
 
