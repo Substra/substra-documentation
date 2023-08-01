@@ -1,3 +1,5 @@
+.. _client configuration howto:
+
 How-to configure Substra clients
 ================================
 
