@@ -7,17 +7,17 @@ This short guide explains how to manage API tokens in the web application, and u
 
    The Substra SDK provides a way to log in using username and password (see `substra.Client <references/sdk.html#client>`_).
    
-   It is safe, but should be used with caution, as it:
+   It is safe, but should be used with caution:
    
-   * doesn't allow for a precise lifetime or separating concerns by creating one token per purpose
+   * It doesn't allow for a precise lifetime or separating concerns by creating one token per purpose.
    
-   * may surprise or limit you through its underlying automated session management
+   * It may surprise or limit you through its underlying automated session management.
    
-   * can encourage using cleartext passwords, which can end up shared in version control.
+   * It can encourage using cleartext passwords, which can end up shared in version control.
    
    For these reasons, it is possible for Substra node administrators to disable "implicit login" and force users to generate tokens in the web app.
    
-   Whatever the situation, you should use a mechanism to ensure credentials are kept out of view, for instance by reading secret files or environment variables at runtime (see :ref:`client configuration howto`)
+   Whatever the situation, you should use a mechanism to ensure credentials are kept out of view, for instance by reading secret files or environment variables at runtime (see :ref:`client configuration howto`).
    
 
 .. warning::
