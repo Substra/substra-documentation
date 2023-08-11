@@ -27,7 +27,7 @@ Substrafl and Substra are compatible with Python versions 3.8, 3.9 and 3.10 on W
 .. note::
 
     Full support on the following OS:
-        - **Ubuntu 22.06**
+        - **Ubuntu 22.04**
         - **MacOS** (*Intel* or *M1* chip)
 
     Support on Windows:
