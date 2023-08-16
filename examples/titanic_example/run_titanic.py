@@ -18,12 +18,7 @@ Here you will learn how to interact with Substra, more specifically:
 There is no federated learning in this example, training and testing will happen on only one :term:`Organization`.
 
 
-To run this example, you have two options:
-
-- **Recommended option**: use a hosted Jupyter notebook. With this option you don't have to install anything, just run the notebook.
-  To access the hosted notebook, scroll down at the bottom of this page and click on the **Launch Binder** button.
-- **Run the example locally**. To do that you need to download and unzip the assets needed to run it in the same
-  directory as used this example.
+To run this example, you need to download and unzip the assets needed to run it in the same directory as used this example.
 
    .. only:: builder_html or readthedocs
 

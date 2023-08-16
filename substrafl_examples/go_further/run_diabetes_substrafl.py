@@ -27,12 +27,7 @@ change to run it on a real network.
  Because the focus of this example is Substra capabilities and for the sake of simplicity, such safeguards are not implemented here.
 
 
-To run this example, you have two options:
-
-- **Recommended option**: use a hosted Jupyter notebook. With this option you don't have to install anything, just run the notebook.
-  To access the hosted notebook, scroll down at the bottom of this page and click on the **Launch Binder** button.
-- **Run the example locally**. To do that you need to download and unzip the assets needed to run it in the same
-  directory as used this example.
+To run this example, you need to download and unzip the assets needed to run it in the same directory as used this example.
 
    .. only:: builder_html or readthedocs
 

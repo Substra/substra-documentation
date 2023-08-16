@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Deactivate Binder ([#340](https://github.com/Substra/substra-documentation/pull/340))
 
 ## [0.30.0]
 

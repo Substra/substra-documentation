@@ -430,13 +430,4 @@ sphinx_gallery_conf = {
     ),
     "download_all_examples": False,
     "filename_pattern": "/run_",
-    "binder": {
-        "org": "Substra",
-        "repo": "substra-documentation",
-        "branch": current_commit.hexsha,  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
-        "binderhub_url": "https://mybinder.org",  # public binderhub url
-        "dependencies": str(Path(__file__).parents[2] / "requirements.txt"),  # this value is not used
-        "notebooks_dir": "notebooks",
-        "use_jupyter_lab": True,
-    },
 }
