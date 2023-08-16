@@ -46,8 +46,8 @@ Installation
 
 **Server side**: There are two options to deploy the server side of Substra (backend, frontend and orchestrator):
 
-* :ref:`Local deployment <contributing/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
-* :ref:`Production deployment <operations/Overview:Overview>`: for real deployments.
+* :ref:`Local deployment <how-to/developing-substra/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
+* :doc:`Production deployment <how-to/deploying-substra/index>`: for real deployments.
 
 .. note::
    You can start doing local FL experiments with Substra by installing only the **client side**.
@@ -57,10 +57,10 @@ Links
 
 Some quick links:
 
-* :ref:`MNIST federated learning example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`
-* :ref:`SubstraFL overview <substrafl_doc/substrafl_overview:Overview>`
+* :ref:`MNIST federated learning example <examples/substrafl/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`
+* :doc:`SubstraFL overview <substrafl_doc/substrafl_overview>`
 * :ref:`Compatibility table <additional/release:Compatibility table>`
-* :ref:`How to deploy Substra for Site Reliability Engineers <operations/Overview:Overview>`
+* :doc:`How to deploy Substra for Site Reliability Engineers <how-to/deploying-substra/index>`
 * :ref:`Community <additional/community:Community>`
 * `Subscribe to our newsletter <https://lists.lfaidata.foundation/g/substra-announce/join>`_
 
@@ -68,48 +68,55 @@ Some quick links:
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: Substrafl documentation
+   :caption: What is Substra
    :hidden:
 
 
-   substrafl_doc/index.rst
+   substrafl_doc/substrafl_overview
+   documentation/concepts
+   documentation/components
+
 
 
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: Substra documentation
+   :caption: Tutorials
    :hidden:
 
-   documentation/user_guide.rst
-   auto_examples/index
+   examples/substrafl/index
+   examples/substra_core/index
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: API Reference
+   :hidden:
+
+   substrafl_doc/api/index.rst
    documentation/api_reference.rst
 
 
 .. toctree::
    :glob:
-   :maxdepth: 2
-   :caption: Contributing to Substra
+   :maxdepth: 1
+   :caption: How-to guides
    :hidden:
 
-   contributing/contributing-guide.rst
-   contributing/code-of-conduct.rst
-   contributing/components.rst
-   contributing/local-deployment.rst
+   how-to/using-substra/index.rst
+   how-to/deploying-substra/index.rst
+   how-to/developing-substra/index.rst
 
 
 .. toctree::
    :glob:
    :maxdepth: 1
-   :caption: Deploying Substra
+   :caption: Contributing guide
    :hidden:
 
-   operations/overview.rst
-   operations/walkthrough.rst
-   operations/howto.rst
-   operations/upgrade-notes.rst
-
-
+   contributing/contributing-guide.rst
+   contributing/code-of-conduct.rst
 
 .. toctree::
    :glob:

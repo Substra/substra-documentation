@@ -86,7 +86,7 @@ import pathlib
 from diabetes_substrafl_assets.dataset.diabetes_substrafl_dataset import setup_diabetes
 
 data_path = pathlib.Path.cwd() / "tmp" / "data_diabetes"
-data_path.mkdir(exist_ok=True)
+data_path.mkdir(parents=True, exist_ok=True)
 
 setup_diabetes(data_path=data_path)
 
@@ -493,8 +493,6 @@ class Analytics(ComputePlanBuilder):
 #
 # - A :ref:`documentation/references/sdk:Client` to add or retrieve the assets of our experiment, using their keys to
 #   identify them.
-# - An :ref:`Torch algorithm<substrafl_doc/api/algorithms:Torch Algorithms>` to define the training parameters *(optimizer, train
-#   function, predict function, etc...)*.
 # - A :ref:`Federated Strategy<substrafl_doc/api/strategies:Strategies>`, to specify what compute plan we want to execute.
 # - :ref:`Train data nodes<substrafl_doc/api/nodes:TrainDataNode>` to indicate on which data to train.
 # - An :ref:`substrafl_doc/api/evaluation_strategy:Evaluation Strategy`, to define where and at which frequency we

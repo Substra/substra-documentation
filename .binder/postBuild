@@ -9,11 +9,7 @@ pip uninstall -y -r docs/requirements.txt
 
 # move examples to the notebooks folder
 mv docs/build/html/notebooks .
-mv examples/titanic_example/assets notebooks/auto_examples/titanic_example
-mv examples/diabetes_example/assets notebooks/auto_examples/diabetes_example
-mv substrafl_examples/get_started/torch_fedavg_assets notebooks/substrafl_doc/examples/get_started
-mv substrafl_examples/go_further/diabetes_substrafl_assets notebooks/substrafl_doc/examples/go_further
-mv substrafl_examples/go_further/sklearn_fedavg_assets notebooks/substrafl_doc/examples/go_further
+mv examples notebooks/examples
 
 # delete everything but the notebooks folder and the substra dependencies
 shopt -s extglob

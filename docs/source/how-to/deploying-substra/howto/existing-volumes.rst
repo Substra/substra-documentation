@@ -1,6 +1,6 @@
-********************
-Use existing volumes
-********************
+***************************
+How-to use existing volumes
+***************************
 
 By default, Substra instanciates PersistentVolumeClaims (PVCs) on the fly, which is generally convenient; but this might not suit your needs, in which case Substra can also use preexisting PVCs rather than make new ones.
 

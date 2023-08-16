@@ -1,6 +1,6 @@
 
-Overview
-========
+SubstraFL Overview
+==================
 
 .. _substrafl_concepts:
 
@@ -132,7 +132,7 @@ Each round represents one iteration of the training loop in the federated settin
 * The aggregated organization sends the aggregated updates to the training organizations.
 * The training organizations update their model with the aggregated updates.
 
-Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <substrafl_doc/examples/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`.
+Now that you have a good overview of SubstraFL, have a look at the :ref:`MNIST example <examples/substrafl/get_started/run_mnist_torch:Using Torch FedAvg on MNIST dataset>`.
 
 Advanced concepts
 -----------------

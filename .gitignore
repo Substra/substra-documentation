@@ -135,10 +135,10 @@ _build/
 # Misc build artefacts
 tmp/**
 
-docs/source/auto_examples/**
+docs/source/examples/**
+doc/source/substrafl_doc/examples/**
 docs/source/documentation/references/**
 docs/source/substrafl_doc/api
-docs/source/substrafl_doc/examples
 
 # Zip files
 *.zip

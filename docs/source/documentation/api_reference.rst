@@ -1,5 +1,5 @@
-API reference
-=============
+Substra API reference
+=====================
 
 `substra` version: |substra_version|
 

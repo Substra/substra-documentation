@@ -1,8 +1,8 @@
 .. _ops walkthrough:
 
-***********
-Walkthrough
-***********
+*********************
+How-to deploy Substra
+*********************
 
 This section will guide you through a production deployment with two Substra nodes.
 

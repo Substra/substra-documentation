@@ -111,7 +111,6 @@ setup_mnist(data_path, len(DATA_PROVIDER_ORGS_ID))
 # Data privacy is a key concept for Federated Learning experiments. That is why we set
 # :ref:`documentation/concepts:Permissions` for :ref:`documentation/concepts:Assets` to determine how each organization
 # can access a specific asset.
-# You can read more about permissions in the :ref:`User Guide<documentation/concepts:Permissions>`.
 #
 # Note that metadata such as the assets' creation date and the asset owner are visible to all the organizations of a
 # network.
@@ -317,7 +316,8 @@ class TorchDataset(torch.utils.data.Dataset):
 # A SubstraFL Algo gathers all the defined elements that run locally in each organization.
 # This is the only SubstraFL object that is framework specific (here PyTorch specific).
 #
-# The ``TorchDataset`` is passed **as a class** to the `Torch algorithm <substrafl_doc/api/algorithms:Torch Algorithms>`_.
+# The ``TorchDataset`` is passed **as a class** to the
+# :ref:`Torch algorithm<substrafl_doc/api/algorithms:Torch Algorithms>`.
 # Indeed, this ``TorchDataset`` will be instantiated directly on the data provider organization.
 
 

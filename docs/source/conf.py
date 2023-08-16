@@ -111,29 +111,29 @@ def zip_dir(source_dir, zip_file_name):
                 )
 
 
-assets_dir_titanic = Path(__file__).parents[2] / "examples" / "titanic_example" / "assets"
+assets_dir_titanic = Path(__file__).parents[2] / "examples" / "substra_core" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_diabetes = Path(__file__).parents[2] / "examples" / "diabetes_example" / "assets"
+assets_dir_diabetes = Path(__file__).parents[2] / "examples" / "substra_core" / "diabetes_example" / "assets"
 zip_dir(assets_dir_diabetes, "diabetes_assets.zip")
 
 assets_dir_substrafl_torch_fedavg = (
-    Path(__file__).parents[2] / "substrafl_examples" / "get_started" / "torch_fedavg_assets"
+    Path(__file__).parents[2] / "examples" / "substrafl" / "get_started" / "torch_fedavg_assets"
 )
 zip_dir(assets_dir_substrafl_torch_fedavg, "torch_fedavg_assets.zip")
 
 assets_dir_substrafl_diabetes = (
-    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "diabetes_substrafl_assets"
+    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "diabetes_substrafl_assets"
 )
 zip_dir(assets_dir_substrafl_diabetes, "diabetes_substrafl_assets.zip")
 
 assets_dir_substrafl_sklearn_fedavg = (
-    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "sklearn_fedavg_assets"
+    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "sklearn_fedavg_assets"
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "sklearn_fedavg_assets.zip")
 
 assets_dir_substrafl_sklearn_fedavg = (
-    Path(__file__).parents[2] / "substrafl_examples" / "go_further" / "torch_cyclic_assets"
+    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "torch_cyclic_assets"
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "torch_cyclic_assets.zip")
 
@@ -418,14 +418,14 @@ sphinx_gallery_conf = {
     "remove_config_comments": True,
     "doc_module": "substra",
     "reference_url": {"Substra": None},
-    "examples_dirs": ["../../examples", "../../substrafl_examples"],
-    "gallery_dirs": ["auto_examples", "substrafl_doc/examples"],
+    "examples_dirs": ["../../examples/substra_core", "../../examples/substrafl"],
+    "gallery_dirs": ["examples/substra_core", "examples/substrafl"],
     "subsection_order": ExplicitOrder(
         [
-            "../../examples/titanic_example",
-            "../../examples/diabetes_example",
-            "../../substrafl_examples/get_started",
-            "../../substrafl_examples/go_further",
+            "../../examples/substra_core/titanic_example",
+            "../../examples/substra_core/diabetes_example",
+            "../../examples/substrafl/get_started",
+            "../../examples/substrafl/go_further",
         ]
     ),
     "download_all_examples": False,
