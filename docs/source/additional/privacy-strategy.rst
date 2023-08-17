@@ -14,7 +14,7 @@ This part of the documentation will be updated regularly to reflect the latest a
 Privacy Enhancing Technologies.
 -------------------------------
 
-We touch on a few of the main technologies that are making collaborative data sharing possible today in ways that can be considered more secure.
+We touch on a **few** of the main technologies that are making collaborative data sharing possible today in ways that can be considered more secure.
 
 **Federated Learning**:
 FL allows Machine Learning models to be sent to servers where they can train and test on data without having to ever move the data from its original location. This idea however is not restricted to machine learning and is then referred to as Federated Analytics. The Substra software allows for both Federated Learning and Federated Analytics.
