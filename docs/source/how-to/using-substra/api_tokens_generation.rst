@@ -3,7 +3,24 @@ How-to use new API tokens for login
 
 This short guide explains how to manage API tokens in the web application, and use them in the Substra SDK.
 
-.. note::
+.. admonition:: Why generate API tokens?
+
+   The Substra SDK provides a way to log in using username and password (see `substra.Client <references/sdk.html#client>`_).
+   
+   It is safe, but should be used with caution:
+   
+   * It doesn't allow for a precise lifetime or separating concerns by creating one token per purpose.
+   
+   * It may surprise or limit you through its underlying automated session management.
+   
+   * It can encourage using cleartext passwords, which can end up shared in version control.
+   
+   For these reasons, it is possible for Substra node administrators (via `chart options <https://github.com/Substra/substra-backend/blob/main/charts/substra-backend/README.md#server-settings>`_) to disable "implicit login" and force users to generate tokens in the web app.
+   
+   Whatever the situation, you should use a mechanism to ensure credentials are kept out of view, for instance by reading secret files or environment variables at runtime (see :ref:`client configuration howto`).
+   
+
+.. warning::
    API tokens are node-specific: if your script connects to multiple nodes, generate a token for each of them.
 
 Generating new API tokens
