@@ -2,6 +2,7 @@ FROM python:3.10
 
 WORKDIR /usr/src/app
 
+COPY Makefile .
 COPY examples examples/
 COPY substrafl_examples substrafl_examples/
 
