@@ -2,21 +2,21 @@ apiVersion: skaffold/v1beta13
 kind: Config
 build:
   artifacts:
-    - image: substra/substra-documentation
+    - image: substra/substra-documentation-examples
       context: .
       docker:
-        dockerfile: docker/substra-documentation/Dockerfile
+        dockerfile: docker/substra-documentation-examples/Dockerfile
 deploy:
   statusCheckDeadlineSeconds: 300
   helm:
     releases:
-      - name: substra-documentation
-        chartPath: charts/substra-documentation
+      - name: substra-documentation-examples
+        chartPath: charts/substra-documentation-examples
         namespace: substra-tests
         imageStrategy:
           helm: {}
         values:
-          image: substra/substra-documentation
+          image: substra/substra-documentation-examples
     flags:
       install: ["--create-namespace"]
 
