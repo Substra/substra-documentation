@@ -15,7 +15,7 @@ This short guide explains how to manage API tokens in the web application, and u
    
    * It can encourage using cleartext passwords, which can end up shared in version control.
    
-   For these reasons, it is possible for Substra node administrators to disable "implicit login" and force users to generate tokens in the web app.
+   For these reasons, it is possible for Substra node administrators (via `chart options <https://github.com/Substra/substra-backend/blob/main/charts/substra-backend/README.md#server-settings>`_) to disable "implicit login" and force users to generate tokens in the web app.
    
    Whatever the situation, you should use a mechanism to ensure credentials are kept out of view, for instance by reading secret files or environment variables at runtime (see :ref:`client configuration howto`).
    
