@@ -54,13 +54,13 @@ Following these assumptions, the privacy threats when performing Federated Learn
 if a malicious actor can get access to the internal infrastructure, they can exfiltrate some sensitive data (or cause other kinds of mayhem). This is not specific to FL settings, but the inherent decentralization of FL does reduce the severity of such breaches despite the fact that each communication channel with the external world is a potential attack surface, and by design, part of the code is executed on remote machines.
 #. **Attacks specific to FL**:
 These are attacks related to the information contained in the mathematical objects exchanged when training a model. Said otherwise, the model updates and/or the final trained model parameters might encode sensitive information about the training dataset. These may be relevant for pure machine learning as well but are exacerbated in FL as the data is often viewed by a model many times. Examples of such threats include:
-    #. **Membership attacks**: 
+    * **Membership attacks**: 
     When a final trained model is used to try to guess whether a specific data sample was used during training [Membership Inference Attacks against Machine Learning Models, Shokir et al. 2016]. Membership attack is not specific to FL, as it relies on the final trained model. It can be performed in the two following settings:
         #. **Black box attack**:
         This is an attack made from the prediction of a trained model on a given set of samples. Black box attack is an attack which requires the minimal amount of rights/permissions from the attacker. For example, only an API to request model prediction is provided to the attacker.
         #. **White box attack**: 
         An attack where the attacker needs to access the architecture and weights of a trained model
-    #. **Reconstruction attacks**: 
+    * **Reconstruction attacks**: 
     When the batch gradient or the FL model updates are used to reconstruct from scratch a data sample used during the training. [Inverting Gradients - How easy is it to break privacy in federated learning?, Geiping et al. 2020]. 
 
 Other threats in this category also include Re-attribution attacks [SRATTA : Sample Re-ATTribution Attack of Secure Aggregation in Federated Learning, Marchand et al. 2023],
