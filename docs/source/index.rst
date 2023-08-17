@@ -128,3 +128,4 @@ Some quick links:
    additional/release.rst
    additional/faq.rst
    additional/glossary.rst
+   additional/privacy-strategy.rst
