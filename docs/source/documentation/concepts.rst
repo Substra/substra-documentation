@@ -160,6 +160,31 @@ There are two ways to run several tasks in parallel on a same organization with 
 .. TODO:: Explain what is substra tools
 
 
+Substra channels
+----------------
+
+A channel is a group of Substra `organizations <https://docs.substra.org/en/stable/additional/glossary.html#term-Organization>`_ which operates on a common set of assets.
+
+Having multiple channels is needed if you want to have multiple independent projects on the same network. 
+
+In the scheme below, we represent a Substra network with two channels:
+
+- Channel A with the three organizations
+- Channel B with only two organizations (A and B)
+
+.. image:: /static/schemes/channel_schema.png
+
+Users only belong to one channel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A user can only belong to one channel. A channel has its own users, its own datasets, compute plans, tasks and functions -- all invisible to users from other channels. A user from another channel has no visibility on this. A user has no visibility on a channel they are not a part of.
+
+Multiple tasks from different channels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tasks from different channel will be executed in the order of submission to the organization. First in first out (FIFO).
+If a user from channel A stacked up a lot of tasks before a user from channel B, all tasks from channel B will wait for channel A tasks to finish. This might be confusing for channel B users, as they have no visibility on channel A tasks status.
+
 Compute plan execution - deployed mode
 ---------------------------------------
 
