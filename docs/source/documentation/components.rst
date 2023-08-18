@@ -12,8 +12,12 @@ Although they are independent, their versions must match a tested release as ref
 .. toctree::
    :glob:
    :titlesonly:
+   :maxdepth: 1
    :caption: Components documentation
 
    backend/*
    orchestrator/*
+   Substra python library <concepts>
+   SubstraFL python library <../substrafl_doc/substrafl_overview>
+
 
