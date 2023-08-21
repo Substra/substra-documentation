@@ -12,7 +12,7 @@ Centralized vs. decentralized orchestration
 
 Substra offers two types of orchestration: **distributed** and **centralized**.
 
-.. image:: /static/schemes/distributed-vs-centralized-orc.png
+.. image:: /static/schemes/distributed-vs-centralized-orc.svg
 
 
 The distributed orchestration is based on a private blockchain using Hyperledger Fabric, while the centralized orchestration is hosted by a central Postgres database.
