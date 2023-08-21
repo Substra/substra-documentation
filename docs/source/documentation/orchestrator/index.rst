@@ -10,7 +10,7 @@ The orchestrator registers the status of tasks; when a task is done, it evaluate
 Centralized vs. decentralized orchestration
 ===========================================
 
-Substra offers two types of orchestration: distributed and centralized.
+Substra offers two types of orchestration: **distributed** and **centralized**.
 
 .. image:: /static/schemes/distributed-vs-centralized-orc.png
 
