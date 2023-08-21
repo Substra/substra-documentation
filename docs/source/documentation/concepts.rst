@@ -165,7 +165,7 @@ Substra channels
 
 A channel is a group of Substra `organizations <https://docs.substra.org/en/stable/additional/glossary.html#term-Organization>`_ which operates on a common set of assets.
 
-Having multiple channels is needed if you want to have multiple independent projects on the same network. 
+Having multiple channels is needed if you want to have multiple independent projects on the same network.
 
 In the scheme below, we represent a Substra network with two channels:
 
@@ -184,6 +184,11 @@ Multiple tasks from different channels
 
 Tasks from different channel will be executed in the order of submission to the organization. First in first out (FIFO).
 If a user from channel A stacked up a lot of tasks before a user from channel B, all tasks from channel B will wait for channel A tasks to finish. This might be confusing for channel B users, as they have no visibility on channel A tasks status.
+
+User management
+---------------
+
+There are two types of users: *admin* and *users*. The only difference is that *admins* can create and delete any Substra users or admins, whereas *users* can not perform any user management task. Users are managed in the web application.
 
 Compute plan execution - deployed mode
 ---------------------------------------
