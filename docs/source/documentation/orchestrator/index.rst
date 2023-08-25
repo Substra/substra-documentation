@@ -2,7 +2,7 @@
 Orchestrator
 ************
 
-The Orchestrator has two functions.
+The orchestrator has two functions.
 Its first role is to handle the ledger containing all known assets.
 It also dispatches tasks to the relevant :term:`Organizations<Organization>`.
 
@@ -27,22 +27,22 @@ Communication
 
 .. for now let's ignore distributed mode
 
-The Orchestrator is a central component.
-All Backends from each :term:`Organization` must have access to the Orchestrator over gRPC for command/queries and event subsription.
+The orchestrator is a central component.
+All Backends from each :term:`Organization` must have access to the orchestrator over gRPC for command/queries and event subsription.
 
-The Orchestrator authenticates clients with their TLS certificates.
+The orchestrator authenticates clients with their TLS certificates.
 As a consequence, the Kubernetes Ingress must do SSL passthrough.
 
 Storage
 =======
 
-The Orchestrator stores its data in a PostgreSQL database.
+The orchestrator stores its data in a PostgreSQL database.
 Migrations are executed using a Kubernetes Job on installation and update (this relies on a Helm hook).
 
 Helm chart
 ==========
 
 We use Helm charts as a way to package our application deployments.
-If you want to deploy the Orchestrator you can use the `Helm chart orchestrator`_.
+If you want to deploy the orchestrator you can use the `Helm chart orchestrator`_.
 
 .. _Helm chart orchestrator: https://artifacthub.io/packages/helm/substra/orchestrator
