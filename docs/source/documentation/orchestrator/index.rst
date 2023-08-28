@@ -28,7 +28,7 @@ Communication
 .. for now let's ignore distributed mode
 
 The orchestrator is a central component.
-All Backends from each :term:`Organization` must have access to the orchestrator over gRPC for command/queries and event subsription.
+All backends from each :term:`Organization` must have access to the orchestrator over gRPC for command/queries and event subsription.
 
 The orchestrator authenticates clients with their TLS certificates.
 As a consequence, the Kubernetes Ingress must do SSL passthrough.

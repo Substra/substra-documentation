@@ -71,11 +71,11 @@ To configure your values:
    | ``restricted`` would prevent other organizations from joining the channel
    | ``model_export_enabled`` allows users from this channel to download models produced by the platform
 
-#. Optional: If your Orchestrator has TLS enabled:
+#. Optional: If your orchestrator has TLS enabled:
 
    #. Retrieve the CA certificate from your orchestrator:
 
-      The CA certificate is the ``orchestrator-ca.crt`` file generated at the :ref:`Generate your Certificate Authority certificate <orchestrator-cacert-generation>` step of the Orchestrator deployment.
+      The CA certificate is the ``orchestrator-ca.crt`` file generated at the :ref:`Generate your Certificate Authority certificate <orchestrator-cacert-generation>` step of the orchestrator deployment.
       If a public Certificate Authority was used to generate the orchestrator certificate, you need to fetch the certificate of the Certificate Authority.
 
    #. Create a ConfigMap containing the CA certificate:
@@ -84,7 +84,7 @@ To configure your values:
 
          kubectl create configmap orchestrator-cacert --from-file=ca.crt=orchestrator-ca.crt
 
-   #. Configure your backend to enable Orchestrator TLS. In the ``backend-ingen-values.yaml`` file add the following content under the ``orchestrator`` key:
+   #. Configure your backend to enable orchestrator TLS. In the ``backend-ingen-values.yaml`` file add the following content under the ``orchestrator`` key:
 
       .. code-block:: yaml
 

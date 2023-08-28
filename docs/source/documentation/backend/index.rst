@@ -24,10 +24,10 @@ postgresql
 redis
     This is an organization-specific message broker to support `Celery`_ tasks.
 backend-events
-    This component will consume events from the Orchestrator.
-    It should be able to access the Orchestrator over gRPC.
+    This component will consume events from the orchestrator.
+    It should be able to access the orchestrator over gRPC.
     It handles events and triggers appropriate responses such as starting compute tasks.
-    On startup, it will also register the Organization on the Orchestrator.
+    On startup, it will also register the Organization on the orchestrator.
 migrations
     This Pod is managed by a Job running on chart installation or update to deal with database schema changes.
     This Pod also performs user creation.
@@ -48,7 +48,7 @@ worker
 Communication
 =============
 
-The backend should be able to reach its Orchestrator.
+The backend should be able to reach its orchestrator.
 If :term:`Organizations<Organization>` share :ref:`Models<concept_model>`, involved backends must be able to communicate with each other.
 
 Helm chart
