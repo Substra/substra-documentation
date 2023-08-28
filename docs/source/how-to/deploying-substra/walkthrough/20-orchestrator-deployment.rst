@@ -25,7 +25,7 @@ Prepare your Helm values
         enabled: true
         hostname: orchestrator.cluster-1.DOMAIN
 
-   | This sets up the ingress to make your Orchestrator accessible at the defined hostname.
+   | This sets up the ingress to make your orchestrator accessible at the defined hostname.
 
 .. _orchestrator-channel-config:
 
@@ -53,7 +53,7 @@ Here we will generate them manually but you can also use automated tools for thi
 If you want to use automated tools we provide a certificate resource for `cert-manager <https://cert-manager.io/>`_.
 The ``orchestrator.tls.createCertificates`` values should be a good place for you to get started.
 
-The Orchestrator needs to handle SSL termination for this to work.
+The orchestrator needs to handle SSL termination for this to work.
 You may need to adapt your proxy configuration to let the traffic go through it.
 For example if you use ``ingress-nginx`` you may want to read the `ssl passthrough <https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough>`_ chapter of their documentation.
 
@@ -100,7 +100,7 @@ To setup TLS, follow these steps:
 
         openssl req -new -x509 -days 365 -sha256 -key orchestrator-ca.key -extensions v3_ca -config example-openssl.cnf -subj "/CN=Orchestrator Root CA" -out orchestrator-ca.crt
 
-#. Generate a certificate for the Orchestrator
+#. Generate a certificate for the orchestrator
 
    #. Generate a certificate signing request:
 
@@ -147,7 +147,7 @@ Deploy the Chart
 
 To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
-#. Deploy the Orchestrator Helm chart:
+#. Deploy the orchestrator Helm chart:
 
    .. code-block:: bash
 
@@ -170,5 +170,5 @@ To deploy the orchestrator in your Kubernetes cluster follow these steps:
 
       Failed to list services: rpc error: code = Unknown desc = OE0003: missing or invalid header 'mspid'
 
-   This is expected because the Orchestrator server expects some gRPC headers to be present but we did not provide them.
+   This is expected because the orchestrator server expects some gRPC headers to be present but we did not provide them.
    Even if it is an error, since this response is from the server it is sufficient to tell your setup is working.
