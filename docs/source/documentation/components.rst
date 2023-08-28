@@ -1,7 +1,7 @@
 Components
 ==========
 
-We distinguish two major components, the orchestrator and the Backend.
+We distinguish two major components, the orchestrator and the backend.
 Although they are independent, their versions must match a tested release as referenced in the :ref:`compatibility table <compatibility table>`.
 
 .. image:: ../static/schemes/stack-technical-scheme.svg
