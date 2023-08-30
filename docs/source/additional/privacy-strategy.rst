@@ -1,5 +1,5 @@
-How Substra thinks about privacy.
-=================================
+Substra Privacy Strategy
+========================
 
 .. _Privacy Strategy:
 
@@ -7,7 +7,7 @@ As proponents of Privacy Enhancing Technologies (PETs), the maintainers of Subst
 
 Here we elaborate on what PETs are and provide a quick summary of the most popular ones. We then take a look at the different types of attacks that can result in data leakage or data theft and then also propose best practices for project governance and security in order to mitigate the risks of potential attacks. We also elaborate on the collaboration required between different personas to ensure data integrity and safe handling of data. 
 
-As pointed out by Katharine Jarmul in her (primer on Privacy Enhancing Technologies)[https://martinfowler.com/articles/intro-pet.html], “Privacy is a technical, legal, political, social and individual concept.” As such, technical solutions are an important part of the answer, but they must be used in conjunction with good data governance and reliable security measures.
+As pointed out by Katharine Jarmul in her [primer on Privacy Enhancing Technologies](https://martinfowler.com/articles/intro-pet.html), “Privacy is a technical, legal, political, social and individual concept.” As such, technical solutions are an important part of the answer, but they must be used in conjunction with good data governance and reliable security measures.
 
 This part of the documentation will be updated regularly to reflect the latest available research.
 
@@ -17,13 +17,13 @@ Privacy Enhancing Technologies.
 We touch on a **few** of the main technologies that are making collaborative data sharing possible today in ways that can be considered more secure.
 
 **Federated Learning**:
-FL allows Machine Learning models to be sent to servers where they can train and test on data without having to ever move the data from its original location. This idea however is not restricted to machine learning and is then referred to as Federated Analytics. The Substra software allows for both Federated Learning and Federated Analytics.
+Federated Learning allows Machine Learning models to be sent to servers where they can train and test on data without having to ever move the data from its original location. This idea however is not restricted to machine learning and is then referred to as Federated Analytics. The Substra software enables both Federated Learning and Federated Analytics.
 
 **Secure Enclaves**: 
 These are hardware-based features that provide an isolated environment to store and process data. A secure enclave is essentially an ultra secure space within a larger secure system. Although they are excellent for safely storing data, the privacy is hardware dependent and places trust in a physical chip as opposed to encryption.
 
 **Differential Privacy**:
-This approach adds noise throughout processing to prevent inferring item-specific information. This comes with a tradeoff between privacy and performance though, as the addition of noise might cause models to be less accurate. DP provides theoretical bounds on how hard it is to infer the presence of a given individual in a dataset when it is used.
+This approach adds noise throughout processing to prevent inferring item-specific information. This comes with a tradeoff between privacy and performance though, as the addition of noise might cause models to be less accurate. Differential Privacy provides theoretical bounds on how hard it is to infer the presence of a given individual in a dataset when it is used.
 
 **Secure Multi-Party Computation (SMPC)**: 
 This method enables partners to jointly analyze data through the use of cryptography. Users can conduct analysis together but do not have to reveal exact data points to each other. Secure Aggregation is a form of SMPC where the Federated aggregation of the models is done in such a way that the individual models are not disclosed, but the average of the models is still computed.
@@ -100,6 +100,7 @@ Without a clear governance strategy it is highly possible that infrastructures a
 For the GDPR, projects should responsibly complete a Data Processing Impact Assessment (DPIA) so that the risks associated with data processing can be fairly evaluated and shared with all parties involved. This should also include the measures that are taken to mitigate the risks identified. It is critical to ensure that data access does not create more risks or methods of security breaches within participating organizations. 
 
 Projects should also clearly define responsibilities such as:
+
 - Who are the data controllers
 - Who are the data processors
 - Precisely what actions will be performed on the data and by whom.
@@ -111,9 +112,9 @@ Any system is only as secure as its weakest link, which is why each organization
 
 Substra software is carefully audited and certified (ISO 27001) to avoid vulnerabilities. We very strongly recommend all participants in a Substra network follow the same good practices on their infrastructure and on the code they use with Substra.
 
-Third-party dependencies, either outdated or malicious, are known to be a source of vulnerabilities in modern production environments. There exists various solutions to ensure that your dependencies do not present critical vulnerabilities; for example, [dependabot](https://github.com/dependabot) can check that your dependencies are up-to-date, and [guarddog](https://github.com/DataDog/guarddog) runs checks on unknown third-party dependencies. 
+Third-party dependencies, either outdated or malicious, are known to be a source of vulnerabilities in modern production environments. There exists various solutions to ensure that your dependencies do not present critical vulnerabilities; for example, (dependabot)[https://github.com/dependabot] can check that your dependencies are up-to-date, and (guarddog)[https://github.com/DataDog/guarddog] runs checks on unknown third-party dependencies. 
 
-When running Substra in production, please ensure that TLS and mTLS [link to deployment guide] are activated, and that all your certificates are authenticated by a trustworthy Certificate Authority. In addition, ingress controllers in your kubernetes cluster should be properly configured to limit external access. 
+When running Substra in production, please ensure that TLS and mTLS (:ref:`ops set up TLS`) are activated, and that all your certificates are authenticated by a trustworthy Certificate Authority. In addition, ingress controllers in your kubernetes cluster should be properly configured to limit external access. 
 
 Several teams and personas have to be involved to ensure that a project handles data with maximum privacy and integrity and that these security protocols are upheld at all times.
 
@@ -128,6 +129,6 @@ Conclusion
 
 The Substra team sees security and privacy as an ever-going challenge.
 
-PETs in general are a relatively young field of research and are still a work in progress. New attacks and defenses are always being released which is why we intend to update this document regularly to reflect those evolutions. The recently published [SRATTA attack](https://arxiv.org/abs/2306.07644) shows how Secure Aggregation, which was previously considered to be a privacy preserving methodology, is actually not immune to attacks. 
+PETs in general are a relatively young field of research and are still a work in progress. New attacks and defenses are always being released which is why we intend to update this document regularly to reflect those evolutions. The recently published (SRATTA attack)[https://arxiv.org/abs/2306.07644] shows how Secure Aggregation, which was previously considered to be a privacy preserving methodology, is actually not immune to attacks. 
 
-All those involved in this domain have to remain vigilant and proactive to ensure data. If you have any questions or confusions, we welcome you to join [our community on Slack](https://join.slack.com/t/substra-workspace/shared_invite/zt-1fqnk0nw6-xoPwuLJ8dAPXThfyldX8yA) where you can begin a discussion!
+All those involved in this domain have to remain vigilant and proactive to ensure data. If you have any questions or confusions, we welcome you to join (our community on Slack)[https://join.slack.com/t/substra-workspace/shared_invite/zt-1fqnk0nw6-xoPwuLJ8dAPXThfyldX8yA] where you can begin a discussion!
