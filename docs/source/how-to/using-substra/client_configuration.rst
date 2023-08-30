@@ -94,13 +94,13 @@ such as passwords or tokens in environment variables.
     :caption: config.yaml
 
     org-1:
-      - backend_type: remote
-      - url: "https://org-1.com"
-      - username: "user1"
-      - retry_timeout: 60
+        backend_type: remote
+        url: https://org-1.com
+        username: user1
+        retry_timeout: 60
     org-2:
-      - backend_type: remote
-      - url: "https://org-2.com"
+        backend_type: remote
+        url: https://org-2.com
 
 
 
