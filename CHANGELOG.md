@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add user management doc ([#345](https://github.com/Substra/substra-documentation/pull/345))
 - Add link to python libraries documentation in Components page ([#347](https://github.com/Substra/substra-documentation/pull/347))
+- Add more orchestrator documentation ([#346](https://github.com/Substra/substra-documentation/pull/346))
 - Deactivate Binder ([#340](https://github.com/Substra/substra-documentation/pull/340))
 - Reorganise documentation according to [diataxis](https://diataxis.fr/) approach ([#330](https://github.com/Substra/substra-documentation/pull/330))
 - Added section about channels in the main concepts ([#344](https://github.com/Substra/substra-documentation/pull/344))
