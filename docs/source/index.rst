@@ -6,17 +6,25 @@
 Substra documentation
 =====================
 
+Substra is an open source federated learning (FL) software. It provides a flexible Python library and a web application to run federated learning training at scale.
+
+Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies: see the `MELLODDY <https://www.melloddy.eu/>`_ and the `HealthChain <https://www.nature.com/articles/s41591-022-02155-w>`_ projects.
+
+
 .. image:: banner.jpg
-  :width: 800
+  :width: 600
   :align: center
   :alt: Substra
 
 
+The key Substra differentiators are:
 
-
-Substra is an open source federated learning (FL) software. It provides a flexible Python interface and a web app to run federated learning training at scale.
-
-Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies (see the `MELLODDY <https://www.melloddy.eu/>`_ project for instance). Substra can also be used on a single machine on a virtually split dataset to perform FL simulations and debug code before launching experiments on a real network.
+* **Framework agnostic** Any Python library can be used: PyTorch, TensorFlow, sklearn, etc.
+* **Flexible** Any kind of computation can be run: machine learning, analytics, etc.
+* **Scalable** Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
+* **Traceable** All machine learning actions are traced.
+* **Production ready** Packaged in Kubernetes and regularly audited.
+* **Debugging made easy** Remote error logs accessible for data-scientist. The same code can be run in a deployed production environment or on a single machine to debug.
 
 Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
 
