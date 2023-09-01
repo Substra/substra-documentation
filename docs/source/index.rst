@@ -24,7 +24,7 @@ The key Substra differentiators are:
 * **Scalable** Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
 * **Traceable** All machine learning actions are traced.
 * **Production ready** Packaged in Kubernetes and regularly audited.
-* **Debugging made easy** Remote error logs accessible for data-scientist. The same code can be run in a deployed production environment or on a single machine to debug.
+* **Debugging made easy** Remote error logs are accessible to data scientists. The same code can be run in a deployed production environment or on a single machine to debug.
 
 Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
 
