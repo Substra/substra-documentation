@@ -124,6 +124,7 @@ Some quick links:
    :caption: Additional Information
    :hidden:
 
+   additional/privacy-strategy.rst
    additional/community.rst
    additional/release.rst
    additional/faq.rst
