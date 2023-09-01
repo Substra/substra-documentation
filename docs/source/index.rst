@@ -18,12 +18,12 @@ Substra's main usage is in production environments. It has already been deployed
 
 The key Substra differentiators are:
 
-* **Framework agnostic** Any Python library can be used: PyTorch, TensorFlow, sklearn, etc.
-* **Flexible** Any kind of computation can be run: machine learning, analytics, etc.
-* **Scalable** Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
-* **Traceable** All machine learning actions are traced.
-* **Production ready** Packaged in Kubernetes and regularly audited.
-* **Debugging made easy** Remote error logs are accessible to data scientists. The same code can be run in a deployed production environment or on a single machine to debug.
+* **Framework agnostic** — Any Python library can be used: PyTorch, TensorFlow, sklearn, etc.
+* **Flexible** — Any kind of computation can be run: machine learning, analytics, etc.
+* **Scalable** — Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
+* **Traceable** — All machine learning actions are traced.
+* **Production ready** — Packaged in Kubernetes and regularly audited.
+* **Debugging made easy** — Remote error logs are accessible to data scientists. The same code can be run in a deployed production environment or on a single machine to debug.
 
 Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `Linux Foundation for AI and Data <https://lfaidata.foundation/>`_.
 
