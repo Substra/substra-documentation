@@ -398,7 +398,7 @@ become
   if __name__ == '__main__':
     tools.execute()
 
-Substra Backend:
+Substra backend:
 
 - Prevent use of ``__`` in asset metadata keys
 

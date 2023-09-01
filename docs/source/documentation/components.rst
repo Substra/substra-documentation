@@ -1,7 +1,7 @@
 Components
 ==========
 
-We distinguish two major components, the Orchestrator and the Backend.
+We distinguish two major components, the orchestrator and the backend.
 Although they are independent, their versions must match a tested release as referenced in the :ref:`compatibility table <compatibility table>`.
 
 .. image:: ../static/schemes/stack-technical-scheme.svg
@@ -16,6 +16,7 @@ Although they are independent, their versions must match a tested release as ref
    :caption: Components documentation
 
    backend/*
+   frontend/*
    orchestrator/*
    Substra python library <concepts>
    SubstraFL python library <../substrafl_doc/substrafl_overview>

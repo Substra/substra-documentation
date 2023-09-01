@@ -29,7 +29,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
             channel: our-channel
 
    | ``SECRET_ORG1_ORG2`` is a password ``biotechnica`` needs to download assets from ``ingen``.
-   | ``our-channel`` was defined in the :ref:`Backend channel configuration <backend-channel-config>` -- both ``ingen`` and ``biotechnica`` are members of it.
+   | ``our-channel`` was defined in the :ref:`backend channel configuration <backend-channel-config>` -- both ``ingen`` and ``biotechnica`` are members of it.
 
 #. Create an account for ``ingen`` on ``biotechnica``.
    In ``backend-biotechnica-values.yaml`` add the following content:

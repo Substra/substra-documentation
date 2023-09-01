@@ -2,7 +2,7 @@
 Backend
 *******
 
-The Backend exposes the REST API for an :term:`Organization` and executes compute tasks (in a subsystem we call *compute engine*).
+The backend exposes the REST API for an :term:`Organization` and executes compute tasks (in a subsystem we call *compute engine*).
 
 .. _backend_kubernetes_pods:
 
@@ -19,15 +19,15 @@ minio
     `MinIO`_ is an object storage service and stores all assets registered on the :term:`Organization`.
     You should back up the data of this Pod.
 postgresql
-    This is the database supporting the Backend.
+    This is the database supporting the backend.
     You should back up the data of this Pod.
 redis
     This is an organization-specific message broker to support `Celery`_ tasks.
 backend-events
-    This component will consume events from the Orchestrator.
-    It should be able to access the Orchestrator over gRPC.
+    This component will consume events from the orchestrator.
+    It should be able to access the orchestrator over gRPC.
     It handles events and triggers appropriate responses such as starting compute tasks.
-    On startup, it will also register the Organization on the Orchestrator.
+    On startup, it will also register the Organization on the orchestrator.
 migrations
     This Pod is managed by a Job running on chart installation or update to deal with database schema changes.
     This Pod also performs user creation.
@@ -48,13 +48,13 @@ worker
 Communication
 =============
 
-The Backend should be able to reach its Orchestrator.
-If :term:`Organizations<Organization>` share :ref:`Models<concept_model>`, involved Backends must be able to communicate with each other.
+The backend should be able to reach its orchestrator.
+If :term:`Organizations<Organization>` share :ref:`Models<concept_model>`, involved backends must be able to communicate with each other.
 
 Helm chart
 ==========
 
 We use Helm charts as a way to package our application deployments.
-If you want to deploy the Backend you can use the `Helm chart substra-backend`_.
+If you want to deploy the backend you can use the `Helm chart substra-backend`_.
 
 .. _Helm chart substra-backend: https://artifacthub.io/packages/helm/substra/substra-backend
