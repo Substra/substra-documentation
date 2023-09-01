@@ -1,5 +1,5 @@
-Main Substra concepts
-=====================
+Substra overview
+================
 
 .. concepts:
 

@@ -1,5 +1,5 @@
-GPU usage
-=========
+How to leverage GPU
+===================
 
 Substra can leverage GPU to speed up the training of machine learning models. Find below how to configure Substra to make sure your code can run on GPU.
 
