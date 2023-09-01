@@ -21,7 +21,7 @@ The key Substra differentiators are:
 * **Framework agnostic** — Any Python library can be used: PyTorch, TensorFlow, sklearn, etc.
 * **Flexible** — Any kind of computation can be run: machine learning, analytics, etc.
 * **Scalable** — Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
-* **Traceable** — All machine learning actions are traced.
+* **Traceable** — All machine learning operations are logged in an auditable read-only database.
 * **Production ready** — Packaged in Kubernetes and regularly audited.
 * **Debugging made easy** — Remote error logs are accessible to data scientists. The same code can be run in a deployed production environment or on a single machine to debug.
 
