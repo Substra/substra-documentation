@@ -4,7 +4,10 @@ Orchestrator
 
 Performing a Federated Learning experiment implies a lot of different compute tasks: local training, aggregation, testing on different organizations, etc. The role of the orchestrator is to distribute ML tasks among organizations, while ensuring complete traceability of operations.
 
-The orchestrator registers the status of tasks; when a task is done, it evaluates if some tasks in ``Waiting`` are now unblocked, and if it's the case, the status of those tasks is changed to ``To do``. The new status is sent to all the backends, who store the new tasks ``To do`` in the task queue (Celery). Then, the task queue will assign the task to one of the workers (if multiple) and handle retries if needed.
+The orchestrator registers the status of tasks; when a task is done (status ``Done``), it evaluates if some remaining tasks (status ``Waiting``) are now unblocked, and if it's the case, the status of those tasks is changed to ``To do``. The new status is sent to all the backends, who store the new tasks ``To do`` in the task queue (Celery). Then, the task queue will assign the task to one of the workers (if multiple) and handle retries if needed.
+
+In case of failure, it will store fialure reports and  change the status of the faulty task to ``Failed``.
+In case of manual cancellation, it will change the status of the  the tasks to `Cancelled` on different backends.
 
 
 Centralized vs. decentralized orchestration
@@ -17,7 +20,7 @@ Substra offers two types of orchestration: **distributed** and **centralized**.
 
 The distributed orchestration is based on a private blockchain using Hyperledger Fabric, while the centralized orchestration is hosted by a central Postgres database.
 
-In both cases, the orchestration stores only non-sensitive metadata of the Substra assets, makes it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
+In both cases, the orchestration stores only non-sensitive metadata of the Substra assets, making it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
 
 Distributed orchestration enables trustless verification of the integrity of assets (functions, model, data), but it requires connections between organizations, and introduces a network overhead. It's not possible to upgrade a Substra network when using distributed orchestration.
 
