@@ -6,7 +6,7 @@ Performing a Federated Learning experiment implies a lot of different compute ta
 
 The orchestrator registers the status of tasks; when a task is done (status ``Done``), it evaluates if some remaining tasks (status ``Waiting``) are now unblocked, and if it's the case, the status of those tasks is changed to ``To do``. The new status is sent to all the backends, who store the new tasks ``To do`` in the task queue (Celery). Then, the task queue will assign the task to one of the workers (if multiple) and handle retries if needed.
 
-In case of failure, it will store fialure reports and  change the status of the faulty task to ``Failed``.
+In case of failure, it will store failure reports and  change the status of the faulty task to ``Failed``.
 In case of manual cancellation, it will change the status of the  the tasks to `Cancelled` on different backends.
 
 
@@ -24,9 +24,9 @@ In both cases, the orchestration stores only non-sensitive metadata of the Subst
 
 Distributed orchestration enables trustless verification of the integrity of assets (functions, model, data), but it requires connections between organizations, and introduces a network overhead. It's not possible to upgrade a Substra network when using distributed orchestration.
 
-On the other hand, centralized orchestration requires trust in the central server, but it is more efficient, faster and easier to deploy and maintain.
+On the other hand, centralized orchestration requires trust in the central server, but it is faster and easier to deploy and maintain.
 
-As long as you trust whomever is operating the orchestrator DB not to tamper with it, both modes offer the same level of guarantees. The decentralized mode has nice theoretical guarantees, but the network overhead is very significant, and has a lot of operational drawbacks. That is why, the vast majority (if not all) of the Substra deployments are using the centralized orchestration system as it is easier to operate and faster. However, the distributed orchestration is still maintained.
+As long as you trust whomever is operating the orchestrator DB not to tamper with it, both modes offer the same level of guarantees. The decentralized mode has nice theoretical guarantees, but the network overhead is very significant, and has a lot of operational drawbacks. That is why, the vast majority (if not all) of the current Substra deployments are using the centralized orchestration system as it is easier to operate and faster. However, the distributed orchestration is still maintained.
 
 .. _orc_kubernetes_pods:
 
