@@ -8,14 +8,13 @@ Substra documentation
 
 Substra is an open source federated learning (FL) software. It provides a flexible Python library and a web application to run federated learning training at scale.
 
-Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies: see the `MELLODDY <https://www.melloddy.eu/>`_ and the `HealthChain <https://www.nature.com/articles/s41591-022-02155-w>`_ projects.
-
 
 .. image:: banner.jpg
-  :width: 600
+  :width: 800
   :align: center
   :alt: Substra
 
+Substra's main usage is in production environments. It has already been deployed and used by hospitals and biotech companies: see the `MELLODDY <https://www.melloddy.eu/>`_ and the `HealthChain <https://www.nature.com/articles/s41591-022-02155-w>`_ projects.
 
 The key Substra differentiators are:
 
@@ -52,7 +51,7 @@ Installation
 
 **Client side**: Install Substra and SubstraFL python libraries with the following command: ``pip install substrafl``. Substra python library is a dependency of SubstraFL, so it will be automatically installed. More information on the installation :ref:`can be found here <substrafl_doc/substrafl_overview:Installation>`.
 
-**Server side**: There are two options to deploy the server side of Substra (backend, frontend and orchestrator):
+**Server side**: There are 2 options to deploy the server side of Substra (backend, frontend and orchestrator):
 
 * :ref:`Local deployment <how-to/developing-substra/local-deployment:Local deployment>`: to deploy locally on a single one machine. Useful for quick tests and for development.
 * :doc:`Production deployment <how-to/deploying-substra/index>`: for real deployments.
