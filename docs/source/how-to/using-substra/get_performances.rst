@@ -1,5 +1,5 @@
-Performance monitoring in local mode
-====================================
+How to monitor performance in local mode
+========================================
 
 Performances of a compute plan can be retrieved
 - with the :code:`get_performances(CP_KEY)` function of the `Substra Python library <api_reference.html#sdk-reference>`_
