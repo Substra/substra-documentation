@@ -22,6 +22,7 @@ The key Substra differentiators are:
 * **Flexible** — Any kind of computation can be run: machine learning, analytics, etc.
 * **Scalable** — Support for vertical scaling (several trainings on one machine) and horizontal scaling (training on several machines).
 * **Traceable** — All machine learning operations are logged in an auditable read-only database.
+* **Web application** — A web application to monitor long-running computations and explore model's performances.
 * **Production ready** — Packaged in Kubernetes and regularly audited.
 * **Debugging made easy** — Remote error logs are accessible to data scientists. The same code can be run in a deployed production environment or on a single machine to debug.
 
