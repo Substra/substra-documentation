@@ -75,6 +75,7 @@ Some quick links:
    substrafl_doc/substrafl_overview
    documentation/concepts
    documentation/components
+   additional/privacy-strategy.rst
 
 
 
@@ -124,7 +125,6 @@ Some quick links:
    :caption: Additional Information
    :hidden:
 
-   additional/privacy-strategy.rst
    additional/community.rst
    additional/release.rst
    additional/faq.rst

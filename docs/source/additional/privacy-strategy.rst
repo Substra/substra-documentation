@@ -1,4 +1,4 @@
-Substra Privacy Strategy
+Substra privacy strategy
 ========================
 
 .. _Privacy Strategy:
@@ -42,7 +42,7 @@ Here are the assumptions we make in the rest of this document. If they do not ma
 #. The external world (outside of the network) contains malicious actors. We make no assumptions about any external communication and we aim at limiting as much as possible our exposure to the outside world.
 #. Models are accessible by data scientists in the network (with the right permissions). The data scientist is responsible for making sure that the trained model exported does not contain sensitive information enabling, for example, membership attacks. (explained below)
 #. Every organization in the network is a responsible actor. Every organization hosts its own node of the Substra network, and is responsible for ensuring minimal securitization of their infrastructure. Regular security audits and / or certifications are recommended.
-#. In this document the focus is on protecting data rather than models — thus we do not cover Byzantine attacks *[Fang, M., Cao, X., Jia, J., & Gong, N. (2020). Local model poisoning attacks to Byzantine-Robust federated learning]*  and backdoor attacks *[Bagdasaryan, E., Veit, A., Hua, Y., Estrin, D., & Shmatikov, V. (2020, June). How to backdoor federated learning.]*.- which are in a category of attacks that affect the quality of the generated model as opposed to compromising the data.
+#. In this document the focus is on protecting data rather than models — thus we do not cover Byzantine attacks *[`Local model poisoning attacks to Byzantine-Robust federated learning, Fang et al. 2020 <https://arxiv.org/abs/1911.11815>`__]*  and backdoor attacks *[`How to backdoor federated learning, Bagdasaryan et al. 2020 <https://arxiv.org/abs/1807.00459>`__]*.- which are in a category of attacks that affect the quality of the generated model as opposed to compromising the data.
 
 .. note::
 
@@ -50,35 +50,35 @@ Here are the assumptions we make in the rest of this document. If they do not ma
 
 Following these assumptions, the privacy threats when performing Federated Learning can be classified in two categories.
 
-**1. Generic cyber-security attacks:**
+**1. Generic cyber-security attacks**
 
 If a malicious actor can get access to the internal infrastructure, they can exfiltrate some sensitive data (or cause other kinds of mayhem). This is not specific to FL settings, but the inherent decentralization of FL does reduce the severity of such breaches despite the fact that each communication channel with the external world is a potential attack surface, and by design, part of the code is executed on remote machines.
 
-**2. Attacks specific to FL:**
+**2. Attacks specific to FL**
 
 These are attacks related to the information contained in the mathematical objects exchanged when training a model. Said otherwise, the model updates and/or the final trained model parameters might encode sensitive information about the training dataset. These may be relevant for pure machine learning as well but are exacerbated in FL as the data is often viewed by a model many times. Examples of such threats include:
 
-   **a. Membership attacks:**
+   **a. Membership attacks**
 
-   When a final trained model is used to try to guess whether a specific data sample was used during training *[Membership Inference Attacks against Machine Learning Models, Shokir et al. 2016]*.
+   When a final trained model is used to try to guess whether a specific data sample was used during training *[`Membership Inference Attacks against Machine Learning Models, Shokri et al. 2016 <https://arxiv.org/abs/1610.05820>`__]*.
 
    Membership attack is not specific to FL, as it relies on the final trained model. It can be performed in the two following settings:
 
-        **- Black box attack:**
+        **- Black box attack**
 
         This is an attack made from the prediction of a trained model on a given set of samples. Black box attack is an attack which requires the minimal amount of rights/permissions from the attacker.
 
         For example, only an API to request model prediction is provided to the attacker.
 
-        **- White box attack:**
+        **- White box attack**
 
         An attack where the attacker needs to access the architecture and weights of a trained model.
 
-   **b. Reconstruction attacks:**
+   **b. Reconstruction attacks**
 
    When the batch gradient or the FL model updates are used to reconstruct from scratch a data sample used during the training. *[Inverting Gradients - How easy is it to break privacy in federated learning?, Geiping et al. 2020]*.
 
-Other threats in this category also include Re-attribution attacks *[SRATTA : Sample Re-ATTribution Attack of Secure Aggregation in Federated Learning, Marchand et al. 2023]*.
+Other threats in this category also include Re-attribution attacks *[`SRATTA : Sample Re-ATTribution Attack of Secure Aggregation in Federated Learning, Marchand et al. 2023 <https://arxiv.org/abs/2306.07644>`__]*.
 
 Hence, there are a variety of ways data can become vulnerable. The first layer of protection in a project is always introduced through proper governance - clear and proper agreements that make responsibilities of those controlling and accessing data is critical. Secondly, a thoroughly reviewed and tested infrastructure setup should be utilized as this layer will be the primary defense against any form of cyber attack. Privacy enhancing technologies such as Substra act as the third line of defense against the misuse of data, as they create protective barriers against data leakage.
 
