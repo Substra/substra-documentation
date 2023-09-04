@@ -1,5 +1,5 @@
-Substra privacy strategy
-========================
+Our privacy strategy
+====================
 
 .. _Privacy Strategy:
 
