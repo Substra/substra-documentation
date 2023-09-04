@@ -75,6 +75,7 @@ Some quick links:
    substrafl_doc/substrafl_overview
    documentation/concepts
    documentation/components
+   additional/privacy-strategy.rst
 
 
 

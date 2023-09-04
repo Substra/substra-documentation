@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reorganise documentation according to [diataxis](https://diataxis.fr/) approach ([#330](https://github.com/Substra/substra-documentation/pull/330))
 - Added section about channels in the main concepts ([#344](https://github.com/Substra/substra-documentation/pull/344))
 - Add frontend documentation in components section ([#346](https://github.com/Substra/substra-documentation/pull/346))
+- New page added on Substra Privacy Strategy based on research by Privacy Task Force at Owkin ([#354](https://github.com/Substra/substra-documentation/pull/354))
 
 ## [0.30.0]
 
