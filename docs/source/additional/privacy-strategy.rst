@@ -76,7 +76,7 @@ These are attacks related to the information contained in the mathematical objec
 
    **b. Reconstruction attacks**
 
-   When the batch gradient or the FL model updates are used to reconstruct from scratch a data sample used during the training. *[Inverting Gradients - How easy is it to break privacy in federated learning?, Geiping et al. 2020]*.
+   When the batch gradient or the FL model updates are used to reconstruct from scratch a data sample used during the training. `[Inverting Gradients - How easy is it to break privacy in federated learning?, Geiping et al. 2020] <https://arxiv.org/abs/2003.14053>`__.
 
 Other threats in this category also include Re-attribution attacks `[SRATTA : Sample Re-ATTribution Attack of Secure Aggregation in Federated Learning, Marchand et al. 2023] <https://arxiv.org/abs/2306.07644>`__.
 
