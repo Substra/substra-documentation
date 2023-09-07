@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Revamp landing page ([#353](https://github.com/Substra/substra-documentation/pull/353))
 - Add user management doc ([#345](https://github.com/Substra/substra-documentation/pull/345))
 - Add link to python libraries documentation in Components page ([#347](https://github.com/Substra/substra-documentation/pull/347))
 - Add more orchestrator documentation ([#346](https://github.com/Substra/substra-documentation/pull/346))
