@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Revamp landing page ([#353](https://github.com/Substra/substra-documentation/pull/353))
+## [0.31.0]
+
 - Add user management doc ([#345](https://github.com/Substra/substra-documentation/pull/345))
 - Add link to python libraries documentation in Components page ([#347](https://github.com/Substra/substra-documentation/pull/347))
 - Add more orchestrator documentation ([#346](https://github.com/Substra/substra-documentation/pull/346))
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added section about channels in the main concepts ([#344](https://github.com/Substra/substra-documentation/pull/344))
 - Add frontend documentation in components section ([#346](https://github.com/Substra/substra-documentation/pull/346))
 - New page added on Substra Privacy Strategy based on research by Privacy Task Force at Owkin ([#354](https://github.com/Substra/substra-documentation/pull/354))
+- Revamp landing page ([#353](https://github.com/Substra/substra-documentation/pull/353))
 
 ## [0.30.0]
 

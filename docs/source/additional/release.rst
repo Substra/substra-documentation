@@ -28,6 +28,50 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.31.0 --- 2023-09-07
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL:**
+
+- **BREAKING**: `local_dependencies` is renamed `local_installable_dependencies`.
+- Python dependencies can be resolved using pip compile during function registration by setting `compile` to `True` in the `Dependency` object. This will speed-up the docker image build phase when running on a Substra server but will slow down a bit the compute plan registration.
+    
+  .. code-block:: python
+
+    Dependency(
+      pypi_dependencies=["pytest", "numpy"],
+      compile=True,
+    )
+    
+- `random.seed` , `np.random.seed` and `torch.manual_seed`  are now set, saved & load in `TorchAlgo`
+- When using `clean_models=True`, the tasks outputs of the very last round are now saved.****
+
+**Substra**:
+
+- Added  `wait_completion` parameter on `get_performances`, `list_task_output_assets` and `get_task_output_asset` to block execution until task execution is over.
+- On Client login:
+    - Fixes issue where the session would not actually last the 24 hours intended.
+    - Added new `Client.logout` function, mirroring `Client.login`
+    - `Client` can now be used within a context manager
+    
+    .. code-block:: python
+
+      with Client(
+        client_name="org-1",
+        backend_type="remote",
+        url="http://substra-backend.org-1.com:8000",
+        username="org-1",
+        password="p@sswr0d44",
+      ) as client:
+        pass
+
+**Web application**
+
+- Fix issue where cancel CP button was not usable on workflow page
+- Task duration displayed in task drawer and not only the start and end time.
+- Increase the number of tasks displayable in frontend workflow from 1000 to 5000 tasks
+
+
 Substra 0.30.0 --- 2023-07-27
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
