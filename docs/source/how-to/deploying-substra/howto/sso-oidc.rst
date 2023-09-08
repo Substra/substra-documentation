@@ -1,3 +1,5 @@
+.. _ops howto sso oidc:
+
 *************************************
 How-to set up SSO with OpenID Connect
 *************************************
@@ -51,14 +53,12 @@ You must choose one user creation process:
    
    If you are using automated login refresh, you can set ``oidc.users.loginValidityDuration`` to a low value to slightly increase security at a small cost in server load. Otherwise, it is a balance of security versus user convenience.
 
+Inform your users
+=================
 
-Other settings
-==============
+If OIDC users will be using the Substra API (for instance if they are data scientists using the Python SDK), they'll need to generate API tokens in the web application and use those in their scripts.
 
-If OIDC users will be using the Substra API (for instance if they are data scientists running Python scripts), they'll need to generate API tokens on the web frontend and use those in their scripts.
-
-Having to generate new tokens all the time is a hindrance for the users: you can increase their lifetime through ``config.EXPIRY_TOKEN_LIFETIME`` in the backend values.
-
+More information: :ref:`users howto api tokens`
 
 Putting it all together
 =======================
@@ -67,8 +67,6 @@ Example of a minimal working configuration in the backend values:
 
 .. code-block:: yaml
 
-   config:
-     EXPIRY_TOKEN_LIFETIME: "10080" # one week, in minutes
    oidc:
      enabled: true
      clientSecretName: oidc-secret # set earlier

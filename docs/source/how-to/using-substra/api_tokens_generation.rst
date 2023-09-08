@@ -1,3 +1,5 @@
+`.. _users howto api tokens:`
+
 How-to use new API tokens for login
 ===================================
 
