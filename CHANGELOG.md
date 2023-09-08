@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.32.0]
+
+- Update compatibility table.
+
 ## [0.31.0]
 
 - Add user management doc ([#345](https://github.com/Substra/substra-documentation/pull/345))

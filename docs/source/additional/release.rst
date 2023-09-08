@@ -28,6 +28,11 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.32.0 --- 2023-09-08
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Update the Substra to Pydantic 2.3.0. Concerned components by the update are SusbtraFL, Substra, Substra-backend and Substra-tests.
+
 Substra 0.31.0 --- 2023-09-07
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -35,14 +40,14 @@ Substra 0.31.0 --- 2023-09-07
 
 - **BREAKING**: `local_dependencies` is renamed `local_installable_dependencies`.
 - Python dependencies can be resolved using pip compile during function registration by setting `compile` to `True` in the `Dependency` object. This will speed-up the docker image build phase when running on a Substra server but will slow down a bit the compute plan registration.
-    
+
   .. code-block:: python
 
     Dependency(
       pypi_dependencies=["pytest", "numpy"],
       compile=True,
     )
-    
+
 - `random.seed` , `np.random.seed` and `torch.manual_seed`  are now set, saved & load in `TorchAlgo`
 - When using `clean_models=True`, the tasks outputs of the very last round are now saved.****
 
@@ -53,7 +58,7 @@ Substra 0.31.0 --- 2023-09-07
     - Fixes issue where the session would not actually last the 24 hours intended.
     - Added new `Client.logout` function, mirroring `Client.login`
     - `Client` can now be used within a context manager
-    
+
     .. code-block:: python
 
       with Client(
@@ -114,7 +119,7 @@ Substra 0.29.0 --- 2023-06-30
 **Web application**:
 
 - In performance view, ``Rounds`` is now the default for X-axis
-- In task duration, fix issue were `Task execution` and `Outputs saving` durations were inverted 
+- In task duration, fix issue were `Task execution` and `Outputs saving` durations were inverted
 
 **Documentation**:
 
