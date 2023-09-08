@@ -1,4 +1,5 @@
-install-examples-dependencies: pip install -r examples/substra_core/diabetes_example/assets/requirements.txt \
+install-examples-dependencies:
+	pip3 install -r examples/substra_core/diabetes_example/assets/requirements.txt \
     -r examples/substra_core/titanic_example/assets/requirements.txt \
     -r examples/substrafl/get_started/torch_fedavg_assets/requirements.txt \
     -r examples/substrafl/go_further/sklearn_fedavg_assets/requirements.txt \
