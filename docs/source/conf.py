@@ -330,6 +330,7 @@ copybutton_prompt_text = ">>> "
 
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
+    ("py:class", "BaseModel"),
     ("py:class", "torch.nn.modules.module.Module"),
     ("py:class", "torch.nn.modules.loss._Loss"),
     ("py:class", "torch.optim.optimizer.Optimizer"),
