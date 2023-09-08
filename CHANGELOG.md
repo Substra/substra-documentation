@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.32.0]
 
-- Update compatibility table.
+- No changes.
 
 ## [0.31.0]
 
