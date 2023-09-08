@@ -31,7 +31,7 @@ This is an overview of the main changes, please have a look at the changelog of 
 Substra 0.32.0 --- 2023-09-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Update the Substra to Pydantic 2.3.0. Concerned components by the update are SusbtraFL, Substra, Substra-backend and Substra-tests.
+- Update Substra to Pydantic 2.3.0. Concerned components by the update are SusbtraFL, Substra, Substra-backend and Substra-tests.
 
 Substra 0.31.0 --- 2023-09-07
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
