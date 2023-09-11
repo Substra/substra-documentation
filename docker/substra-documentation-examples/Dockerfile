@@ -24,3 +24,5 @@ COPY substra-documentation/Makefile substra-documentation/
 COPY substra-documentation/examples substra-documentation/
 
 RUN cd substra-documentation && make install-examples-dependencies
+
+WORKDIR /usr/src/app/substra-documentation
