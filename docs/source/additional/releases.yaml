@@ -12,11 +12,11 @@ releases:
   - version: 0.28.1
     components:
       substrafl:
-        version: 0.37.2
-        link: https://github.com/Substra/substrafl/releases/tag/0.37.2
+        version: 0.37.3
+        link: https://github.com/Substra/substrafl/releases/tag/0.37.3
       substra:
-        version: 0.45.0
-        link: https://github.com/Substra/substra/releases/tag/0.45.0
+        version: 0.45.1
+        link: https://github.com/Substra/substra/releases/tag/0.45.1
       substra-tools:
         version: 0.20.0
         link: https://github.com/Substra/substra-tools/releases/tag/0.20.0
