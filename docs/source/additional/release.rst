@@ -77,6 +77,13 @@ Substra 0.31.0 --- 2023-09-07
 - Increase the number of tasks displayable in frontend workflow from 1000 to 5000 tasks
 
 
+Substra 0.30.1 --- 2023-09-11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL**:
+
+- Bump SubstraFL to 0.39.1.
+
 Substra 0.30.0 --- 2023-07-27
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -103,6 +110,13 @@ Substra 0.30.0 --- 2023-07-27
 - `New example <https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_diabetes_substrafl.html#sphx-glr-substrafl-doc-examples-go-further-run-diabetes-substrafl-py>`__ on Federated Analytics with SubstraFL
 - `New example <https://docs.substra.org/en/stable/substrafl_doc/examples/go_further/run_mnist_cyclic.html#sphx-glr-substrafl-doc-examples-go-further-run-mnist-cyclic-py>`__ on how to implement a custom cyclic Strategy with SubstraFL.
 
+Substra 0.29.1 --- 2023-09-11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL**:
+
+- Bump SubstraFL to 0.38.1.
+
 
 Substra 0.29.0 --- 2023-06-30
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,6 +140,13 @@ Substra 0.29.0 --- 2023-06-30
 - Improve permissions page
 - Add ``shared_state`` and ``local_state`` definition in `SubstraFL Overview <https://docs.substra.org/en/stable/substrafl_doc/substrafl_overview.html#local-and-shared-states>`__
 - Add ``rank`` definition in `Substra Concepts <https://docs.substra.org/en/stable/documentation/concepts.html#rank>`__
+
+Substra 0.28.1 --- 2023-09-11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL**:
+
+- Bump SubstraFL to 0.37.1 to always keep last tasks output in remote mode, even with ``clean_models``to ``True``in `èxecute_experiment``.
 
 Substra 0.28.0 --- 2023-06-14
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
