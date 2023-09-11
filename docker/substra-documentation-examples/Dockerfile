@@ -21,7 +21,7 @@ RUN cd substra && python -m pip install --no-cache-dir -e .
 RUN cd substra-tools && python -m pip install --no-cache-dir -e .
 
 COPY substra-documentation/Makefile substra-documentation/
-COPY substra-documentation/examples substra-documentation/
+COPY substra-documentation/examples substra-documentation/examples/
 
 RUN cd substra-documentation && make install-examples-dependencies
 
