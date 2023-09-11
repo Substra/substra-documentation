@@ -28,6 +28,13 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.28.1 --- 2023-09-11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**SubstraFL**:
+
+- Bump SubstraFL to 0.37.1 to always keep last tasks output in remote mode, even with ``clean_models``to ``True``in `èxecute_experiment``.
+
 Substra 0.28.0 --- 2023-06-14
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
