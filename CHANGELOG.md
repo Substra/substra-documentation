@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update `k3s_create.sh`` file, needed for a local deployment ([#365](https://github.com/Substra/substra-documentation/pull/365))
+
 ## [0.32.0]
 
 - No changes.
