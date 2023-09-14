@@ -459,19 +459,30 @@ aggregation_task_2_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation
 # Now we can view the results.
 #
 
+from substra.sdk.models import Status
+import time
 import pickle
+import tempfile
 
-asset_task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
-    aggregation_task_1_key, identifier="shared_states"
-)
-asset_task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
-    aggregation_task_2_key, identifier="shared_states"
-)
+while clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key).status != Status.done:
+    time.sleep(1)
+print(f"First aggregation task status: {clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_1_key).status}")
 
-with open(asset_task1.asset.address.storage_address, "rb") as f:
-    out1 = pickle.load(f)
-with open(asset_task2.asset.address.storage_address, "rb") as f:
-    out2 = pickle.load(f)
+while clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key).status != Status.done:
+    time.sleep(1)
+print(f"Second aggregation task status: {clients[ANALYTICS_PROVIDER_ORG_ID].get_task(aggregation_task_2_key).status}")
+
+
+with tempfile.TemporaryDirectory() as temp_folder:
+    out_model1_file = clients[ANALYTICS_PROVIDER_ORG_ID].download_model_from_task(
+        aggregation_task_1_key, folder=temp_folder, identifier="shared_states"
+    )
+    out1 = pickle.load(out_model1_file.open("rb"))
+
+    out_model2_file = clients[ANALYTICS_PROVIDER_ORG_ID].download_model_from_task(
+        aggregation_task_2_key, folder=temp_folder, identifier="shared_states"
+    )
+    out2 = pickle.load(out_model2_file.open("rb"))
 
 print(
     f"""Age mean: {out1['means']['age']:.2f} years
