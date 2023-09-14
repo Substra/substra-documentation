@@ -346,8 +346,16 @@ print(f"Test task key {test_task_key}")
 # -------
 # Now we can view the results
 
+from substra.sdk.models import Status
+import time
+
 test_task = client.get_task(test_task_key)
+while test_task.status != Status.done:
+    time.sleep(1)
+    test_task = client.get_task(test_task_key)
+
+print(f"Test tasks status: {test_task.status}")
+
 performance = client.get_task_output_asset(test_task.key, identifier="performance")
-print(test_task.status)
 print("Metric: ", test_task.function.name)
 print("Performance on the metric: ", performance.asset)
