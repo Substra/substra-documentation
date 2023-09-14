@@ -785,7 +785,7 @@ compute_plan = execute_experiment(
 # *******************
 
 # The results will be available once the compute plan is completed
-client_0.wait_compute_plan(compute_plan.key)
+clients[ALGO_ORG_ID].wait_compute_plan(compute_plan.key)
 
 # %%
 # List results
