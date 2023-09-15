@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add files to run documentation examples in nightly CI ([#357](https://github.com/Substra/substra-documentation/pull/357))
 - Update example to be runnable in remote mode ([#357](https://github.com/Substra/substra-documentation/pull/357))
 
+### Added
+
+- Makefile to easily install all examples dependencies and run them ([#357](https://github.com/Substra/substra-documentation/pull/357))
+
 ## [0.32.0]
 
 - No changes.
