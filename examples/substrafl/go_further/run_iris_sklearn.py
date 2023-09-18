@@ -424,6 +424,9 @@ compute_plan = execute_experiment(
 # Explore the results
 # *******************
 
+# The results will be available once the compute plan is completed
+clients[ALGO_ORG_ID].wait_compute_plan(compute_plan.key)
+
 # %%
 # Listing results
 # ===============
@@ -459,7 +462,6 @@ from substrafl.model_loading import download_algo_state
 
 client_to_download_from = DATA_PROVIDER_ORGS_ID[0]
 round_idx = None
-
 
 algo = download_algo_state(
     client=clients[client_to_download_from],

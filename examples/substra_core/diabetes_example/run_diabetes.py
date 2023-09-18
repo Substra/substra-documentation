@@ -359,6 +359,27 @@ print(f"Local function key for step 2: computing second order moments {local_sec
 # The next step is to register the actual machine learning tasks.
 #
 
+from substra.sdk.models import Status
+import time
+
+
+def wait_task(client: substra.Client, key: str):
+    """Function to wait the function to be done before continuing.
+
+    Args:
+        client(substra.Client): client owner of the task.
+        key (str): task key of the task to wait.
+    """
+    task_status = client.get_task(key).status
+
+    while task_status != Status.done:
+        time.sleep(1)
+        task_status = client.get_task(key).status
+
+    client_id = client.organization_info().organization_id
+    print(f"Status of task {key} on client {client_id}: {task_status}")
+
+
 data_manager_input = {
     client_id: [InputRef(identifier="opener", asset_key=key)] for client_id, key in dataset_keys.items()
 }
@@ -380,7 +401,8 @@ local_task_1_keys = {
 }
 
 for client_id, key in local_task_1_keys.items():
-    print(f"Status of task {key} on client {client_id}: {clients[client_id].get_task(key).status}")
+    wait_task(client=clients[client_id], key=key)
+
 
 # %%
 # In local mode, the registered task is executed at once:
@@ -410,6 +432,7 @@ aggregation_task_1 = TaskSpec(
 
 aggregation_task_1_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation_task_1)
 
+wait_task(client=clients[ANALYTICS_PROVIDER_ORG_ID], key=aggregation_task_1_key)
 
 # %%
 
@@ -433,6 +456,8 @@ local_task_2_keys = {
     for client_id in DATA_PROVIDER_ORGS_ID
 }
 
+for client_id, key in local_task_2_keys.items():
+    wait_task(client=clients[client_id], key=key)
 
 aggregation_2_inputs = [
     InputRef(
@@ -452,6 +477,7 @@ aggregation_task_2 = TaskSpec(
 
 aggregation_task_2_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation_task_2)
 
+wait_task(client=clients[ANALYTICS_PROVIDER_ORG_ID], key=aggregation_task_2_key)
 
 # %%
 # Results
@@ -460,18 +486,19 @@ aggregation_task_2_key = clients[ANALYTICS_PROVIDER_ORG_ID].add_task(aggregation
 #
 
 import pickle
+import tempfile
 
-asset_task1 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
-    aggregation_task_1_key, identifier="shared_states"
-)
-asset_task2 = clients[ANALYTICS_PROVIDER_ORG_ID].get_task_output_asset(
-    aggregation_task_2_key, identifier="shared_states"
-)
 
-with open(asset_task1.asset.address.storage_address, "rb") as f:
-    out1 = pickle.load(f)
-with open(asset_task2.asset.address.storage_address, "rb") as f:
-    out2 = pickle.load(f)
+with tempfile.TemporaryDirectory() as temp_folder:
+    out_model1_file = clients[ANALYTICS_PROVIDER_ORG_ID].download_model_from_task(
+        aggregation_task_1_key, folder=temp_folder, identifier="shared_states"
+    )
+    out1 = pickle.load(out_model1_file.open("rb"))
+
+    out_model2_file = clients[ANALYTICS_PROVIDER_ORG_ID].download_model_from_task(
+        aggregation_task_2_key, folder=temp_folder, identifier="shared_states"
+    )
+    out2 = pickle.load(out_model2_file.open("rb"))
 
 print(
     f"""Age mean: {out1['means']['age']:.2f} years
