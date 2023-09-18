@@ -22,6 +22,6 @@ example-fl-mnist:
 example-fl-iris:
 	cd examples/substrafl/go_further/ && python run_iris_sklearn.py
 example-fl-cyclic:
-	cd examples/substrafl/go_further/ && python run_iris_sklearn.py
+	cd examples/substrafl/go_further/ && python run_mnist_cyclic.py
 example-fl-diabetes:
-	cd examples/substrafl/go_further/ && python run_iris_sklearn.py
+	cd examples/substrafl/go_further/ && python run_diabetes_substrafl.py
