@@ -29,16 +29,12 @@ from sphinx_gallery.sorting import ExplicitOrder
 TMP_FOLDER = Path(__file__).parents[2] / "tmp"
 TMP_FOLDER.mkdir(exist_ok=True)
 
-# Generate a JSON compatibility table
-
-html_extra_path = []
+JSON_COMPATIBILITY_TABLE_FILE = TMP_FOLDER / "releases.json"
 
 with open("additional/releases.yaml") as f:
     compat_table = yaml.safe_load(f)
-    dest = Path(TMP_FOLDER, "releases.json")
-    with open(dest, "w") as f:
+    with open(JSON_COMPATIBILITY_TABLE_FILE, "w") as f:
         json.dump(compat_table, f)
-        html_extra_path.append(str(dest))
 
 repo = git.Repo(search_parent_directories=True)
 current_commit = repo.head.commit
@@ -402,6 +398,8 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["./static"]
+
+html_extra_path = [str(JSON_COMPATIBILITY_TABLE_FILE)]
 
 html_css_files = [
     "owkin.css",

@@ -14,7 +14,10 @@ These sets of versions have been tested for compatibility:
 .. only:: html
 
    .. note::
-      `JSON version of the release table </releases.json>`_
+
+      .. /!\ Path to `docs/build/html/releases.json` is relative to `release.html`
+
+      `JSON version of the release table <../releases.json>`_
 
 Changelog
 ---------
