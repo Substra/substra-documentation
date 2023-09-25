@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Makefile to easily install all examples dependencies and run them ([#357](https://github.com/Substra/substra-documentation/pull/357))
+- Support on Python 3.11 ([#367](https://github.com/Substra/substra-documentation/pull/367))
 
 ## [0.32.0]
 
