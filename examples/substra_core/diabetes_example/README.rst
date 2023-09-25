@@ -1,2 +1,0 @@
-Examples to go further
-^^^^^^^^^^^^^^^^^^^^^^
