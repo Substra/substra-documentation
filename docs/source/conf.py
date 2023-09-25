@@ -24,9 +24,7 @@ import sphinx_rtd_theme
 import git
 import yaml
 
-from sphinx_gallery.sorting import ExplicitOrder
-
-TMP_FOLDER = Path(__file__).parents[2] / "tmp"
+TMP_FOLDER = Path(__file__).parent / "tmp"
 TMP_FOLDER.mkdir(exist_ok=True)
 
 # Generate a JSON compatibility table
@@ -99,6 +97,31 @@ class SubSectionTitleOrder:
         return directory
 
 
+# Nbsphinx config
+
+nbsphinx_thumbnails = {
+    "examples/substra_core/diabetes_example/run_diabetes": "_static/example_thumbnail/diabetes.png",
+    "examples/substra_core/titanic_example/run_titanic": "_static/example_thumbnail/titanic.jpg",
+    "examples/substrafl/get_started/run_mnist_torch": "_static/example_thumbnail/mnist.png",
+    "examples/substrafl/go_further/run_diabetes_substrafl": "_static/example_thumbnail/diabetes.png",
+    "examples/substrafl/go_further/run_iris_sklearn": "_static/example_thumbnail/iris.jpg",
+    "examples/substrafl/go_further/run_mnist_cyclic": "_static/example_thumbnail/cyclic-mnist.png",
+}
+
+nbsphinx_prolog = r"""
+{% set docname = 'docs/source/' + env.doc2path(env.docname, base=None) %}
+
+.. raw:: html
+
+    <div class="notebook note">
+    Launch notebook online <span style="white-space: nowrap;"><a href="https://mybinder.org/v2/gh/Substra/substra-documentation/{{ env.config.release|e }}?filepath={{ docname|e }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span>
+     or download it <span style="white-space: nowrap;"><a href="{{ env.docname.split('/')|last|e + '.ipynb' }}"><img alt="Download badge" src="https://img.shields.io/badge/download_-notebook-orange?logo=jupyter" style="vertical-align:text-bottom"></a></span>
+    </div>
+"""
+
+nbsphinx_epilog = nbsphinx_prolog
+
+
 # zip the assets directory found in the examples directory and place it in the current dir
 def zip_dir(source_dir, zip_file_name):
     # Create archive with compressed files
@@ -111,29 +134,29 @@ def zip_dir(source_dir, zip_file_name):
                 )
 
 
-assets_dir_titanic = Path(__file__).parents[2] / "examples" / "substra_core" / "titanic_example" / "assets"
+assets_dir_titanic = Path(__file__).parent / "examples" / "substra_core" / "titanic_example" / "assets"
 zip_dir(assets_dir_titanic, "titanic_assets.zip")
 
-assets_dir_diabetes = Path(__file__).parents[2] / "examples" / "substra_core" / "diabetes_example" / "assets"
+assets_dir_diabetes = Path(__file__).parent / "examples" / "substra_core" / "diabetes_example" / "assets"
 zip_dir(assets_dir_diabetes, "diabetes_assets.zip")
 
 assets_dir_substrafl_torch_fedavg = (
-    Path(__file__).parents[2] / "examples" / "substrafl" / "get_started" / "torch_fedavg_assets"
+    Path(__file__).parent / "examples" / "substrafl" / "get_started" / "torch_fedavg_assets"
 )
 zip_dir(assets_dir_substrafl_torch_fedavg, "torch_fedavg_assets.zip")
 
 assets_dir_substrafl_diabetes = (
-    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "diabetes_substrafl_assets"
+    Path(__file__).parent / "examples" / "substrafl" / "go_further" / "diabetes_substrafl_assets"
 )
 zip_dir(assets_dir_substrafl_diabetes, "diabetes_substrafl_assets.zip")
 
 assets_dir_substrafl_sklearn_fedavg = (
-    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "sklearn_fedavg_assets"
+    Path(__file__).parent / "examples" / "substrafl" / "go_further" / "sklearn_fedavg_assets"
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "sklearn_fedavg_assets.zip")
 
 assets_dir_substrafl_sklearn_fedavg = (
-    Path(__file__).parents[2] / "examples" / "substrafl" / "go_further" / "torch_cyclic_assets"
+    Path(__file__).parent / "examples" / "substrafl" / "go_further" / "torch_cyclic_assets"
 )
 zip_dir(assets_dir_substrafl_sklearn_fedavg, "torch_cyclic_assets.zip")
 
@@ -248,7 +271,6 @@ def reformat_md_section_links(file_path: Path):
 
 for file_path in Path(".").rglob("*.md"):
     reformat_md_section_links(file_path)
-
 # -- Project information -----------------------------------------------------
 
 project = "Substra"
@@ -267,7 +289,9 @@ release = _doc_version
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx_gallery.gen_gallery"]
+extensions = [
+    "nbsphinx",
+]
 
 extensions.extend(
     [
@@ -296,7 +320,6 @@ intersphinx_mapping = {
     "pandas": ("https://pandas.pydata.org/docs/", None),
     "torch": ("https://pytorch.org/docs/stable/", None),
 }
-
 
 ################
 # Substrafl API
@@ -379,7 +402,7 @@ templates_path = ["templates/"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "**/description.md"]
 
 rst_epilog = f"""
 .. |substra_version| replace:: {importlib.import_module('substra').__version__}
@@ -413,22 +436,4 @@ html_show_sphinx = False
 
 html_context = {
     "display_github": False,
-}
-
-sphinx_gallery_conf = {
-    "remove_config_comments": True,
-    "doc_module": "substra",
-    "reference_url": {"Substra": None},
-    "examples_dirs": ["../../examples/substra_core", "../../examples/substrafl"],
-    "gallery_dirs": ["examples/substra_core", "examples/substrafl"],
-    "subsection_order": ExplicitOrder(
-        [
-            "../../examples/substra_core/titanic_example",
-            "../../examples/substra_core/diabetes_example",
-            "../../examples/substrafl/get_started",
-            "../../examples/substrafl/go_further",
-        ]
-    ),
-    "download_all_examples": False,
-    "filename_pattern": "/run_",
 }

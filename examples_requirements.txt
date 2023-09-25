@@ -1,8 +1,8 @@
-matplotlib==3.6.3
-scikit-learn==1.1.1
-pandas==1.5.3
-# Dependencies for the SubstraFL FedAvg example on MNIST dataset
-torch==1.13.1
-torchvision==0.14.1
-numpy==1.23.1
-gitpython==3.1.35
+ipython==8.12.0
+nbformat==5.9.2
+-r docs/source/examples/substra_core/diabetes_example/assets/requirements.txt
+-r docs/source/examples/substra_core/titanic_example/assets/requirements.txt
+-r docs/source/examples/substrafl/get_started/torch_fedavg_assets/requirements.txt
+-r docs/source/examples/substrafl/go_further/sklearn_fedavg_assets/requirements.txt
+-r docs/source/examples/substrafl/go_further/torch_cyclic_assets/requirements.txt
+-r docs/source/examples/substrafl/go_further/diabetes_substrafl_assets/requirements.txt

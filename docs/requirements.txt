@@ -11,7 +11,9 @@ myst-parser==0.16.1
 # but docutils 0.17 changed the output html markup, breaking the RTD theme
 # original issue: https://github.com/sphinx-doc/sphinx/issues/9051
 docutils==0.16
-sphinx-gallery==0.7.0
 sphinx-fontawesome==0.0.6
 sphinx-copybutton==0.5.0
 pyyaml==6.0
+nbsphinx==0.9.3
+pandoc==2.3
+git-python==1.0.3

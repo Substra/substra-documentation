@@ -135,8 +135,6 @@ _build/
 # Misc build artefacts
 tmp/**
 
-docs/source/examples/**
-doc/source/substrafl_doc/examples/**
 docs/source/documentation/references/**
 docs/source/substrafl_doc/api
 

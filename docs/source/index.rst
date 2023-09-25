@@ -93,8 +93,8 @@ Some quick links:
    :caption: Tutorials
    :hidden:
 
-   examples/substrafl/index
-   examples/substra_core/index
+   examples/substrafl/index.rst
+   examples/substra_core/index.rst
 
 
 .. toctree::
