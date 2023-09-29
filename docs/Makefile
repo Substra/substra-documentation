@@ -7,9 +7,7 @@ SPHINXOPTS    ?= -W --keep-going -n
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-SUBSTRAEXAMPLEDIR 		= source/examples/substra_core
 SUBSTRADOCDIR 		= source/documentation/references
-SUBSTRAFLEXAMPLEDIR	= source/substrafl_doc/examples
 SUBSTRAFLDOCDIR	= source/substrafl_doc/api
 
 # Put it first so that "make" without argument is like "make help".
@@ -33,8 +31,6 @@ clean:
 	rm -rf $(BUILDDIR)
 	rm -rf $(SUBSTRADOCDIR)
 	rm -rf $(SUBSTRAFLDOCDIR)
-	rm -rf $(SUBSTRAEXAMPLEDIR)
-	rm -rf $(SUBSTRAFLEXAMPLEDIR)
 # Delete the local worker folders in substra-documentation
 	find .. -type d -name local-worker -prune -exec rm -rf {} \;
 # Delete the tmp folders in substra-documentation
