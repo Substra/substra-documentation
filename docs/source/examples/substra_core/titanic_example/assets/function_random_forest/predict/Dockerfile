@@ -2,7 +2,7 @@
 FROM ghcr.io/substra/substra-tools:0.21.0-nvidiacuda11.8.0-base-ubuntu22.04-python3.9
 
 # install dependencies
-RUN pip3 install pandas numpy 'scikit-learn==1.1.1'
+RUN pip3 install pandas numpy 'scikit-learn==1.3.1'
 
 # add your function script to docker image
 ADD titanic_function_rf.py .
