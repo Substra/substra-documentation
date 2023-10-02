@@ -7,7 +7,7 @@ build:
       docker:
         dockerfile: docker/substra-documentation-examples/Dockerfile
 deploy:
-  statusCheckDeadlineSeconds: 300
+  statusCheckDeadlineSeconds: 600
   helm:
     releases:
       - name: substra-documentation-examples
@@ -19,4 +19,3 @@ deploy:
           image: substra/substra-documentation-examples
     flags:
       install: ["--create-namespace"]
-
