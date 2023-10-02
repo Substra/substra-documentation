@@ -216,3 +216,37 @@ Example of shared state for a :ref:`Federated Averaging <substrafl_doc/api/algor
             "n_sample": len(dataset),
             "parameter_update": parameters_update,
         }
+
+
+Task outputs permissions
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+For each kind of tasks there is different outputs with their own permissions. This section will describe the default permissions settings for each kind of task in the FedAvg example.
+Note that you can go and change these settings in the code if they don't fit your needs.
+
+Initialisation task
+*******************
+
+- local: Model type output. Permissions are available to the creator organization and the organizations with registered test dataset.
+- shared: Model type output. Permissions are available to the creator oganization, the organizations with registered test datasets and the organization handling aggregations.
+
+Train task
+**********
+
+- local: Model type output. Permissions are available to the creator organization and the organizations with registered test dataset.
+- shared: Model type output. Permissions are available to the creator oganization, the organizations with registered test datasets and the organization handling aggregations.
+
+Prediction task
+***************
+
+- prediction: Model type output. Permissions are only available to the creator organization.
+
+Test task
+**********
+
+- performance: Number type output. Permissions are public, available to all.
+
+Aggregation task
+****************
+
+- shared: Model type output. Permissions are available to organizations with train tasks. 
