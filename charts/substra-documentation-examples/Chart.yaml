@@ -1,5 +1,7 @@
-apiVersion: v1
-appVersion: "1.0"
+apiVersion: v2
 name: substra-documentation-examples
 description: Remote example for substra documentation
+
+type: application
+
 version: 0.1.0
