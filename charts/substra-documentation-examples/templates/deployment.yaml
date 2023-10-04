@@ -41,6 +41,8 @@ spec:
               value: "1"
             - name: DOCKER_CERT_PATH
               value: /root/.docker/client
+            - name: SUBSTRA_FORCE_EDITABLE_MODE
+              value: True
           volumeMounts:
             - name: dind-certs
               mountPath: /root/.docker
