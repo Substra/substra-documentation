@@ -19,6 +19,8 @@ $SED_EXEC -i 's/        - --publish-status-address=localhost/        - --publish
 $SED_EXEC -i "/ingress-ready: \"true\"/d" /tmp/deploy.yaml
 kubectl apply -f /tmp/deploy.yaml
 kubectl create ns orderer
+
+# Create namespaces
 for org_index in 1 2 3
 do
     org_name="org-${org_index}"
