@@ -20,9 +20,10 @@ $SED_EXEC -i "/ingress-ready: \"true\"/d" /tmp/deploy.yaml
 kubectl apply -f /tmp/deploy.yaml
 kubectl create ns orderer
 
-# Create namespaces
+# Create namespaces and apply PSA baseline label
 for org_index in 1 2 3
 do
     org_name="org-${org_index}"
     kubectl create ns ${org_name}
+    kubectl label ns ${org_name} pod-security.kubernetes.io/enforce=baseline
 done
