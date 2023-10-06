@@ -6,7 +6,7 @@ Local deployment
 This page gives the directions to locally run the Substra stack. This deployment is made of:
 
 * 1 orchestrator (running in standalone mode, i.e. storing data in its own local database)
-* 2 backends (running in two organisations, ``org-1`` and ``org-2``)
+* 2 or 3 backends (running in two or three organisations, ``org-1`` - ``org-2`` - ``org-3``)
 * 1 frontend
 
 It allows you to run the examples and start using Substra SDK (also known as substra).
@@ -162,6 +162,13 @@ Launching
    .. code-block:: bash
 
       skaffold run -p dev,arm64
+
+.. tip::
+   If you need a third organization, you must use the ``three-orgs`` profile on both the orchestrator and the backend:
+
+   .. code-block:: bash
+
+      skaffold run -p three-orgs
 
 .. tip::
    If you need to re-run `skaffold run` for whatever reason, don't forget to use `skaffold delete` to reset the state beforehand (or reset your environment by running the `k3-create.sh` script again).

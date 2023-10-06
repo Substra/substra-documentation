@@ -31,6 +31,17 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.33.0 --- 2023-10-06
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Substra:**
+
+- **BREAKING**: Substra tools now only provides a unique base docker image for each supported Python version. The ``minimal`` and the ``workflow`` versions have been removed.
+
+**Documentation:**
+
+- A new development profile is available to deploy a third organization. See `Local deployment <https://docs.substra.org/en/stable/how-to/developing-substra/local-deployment.html#launching>`__ for more details.
+
 Substra 0.32.0 --- 2023-09-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

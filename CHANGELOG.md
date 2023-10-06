@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.33.0]
+
 ### Changed
 
+- Update local deployment with the ``three-orgs``  profile
 - Update `k3s_create.sh` file, needed for a local deployment ([#365](https://github.com/Substra/substra-documentation/pull/365))
 - Add files to run documentation examples in nightly CI ([#357](https://github.com/Substra/substra-documentation/pull/357))
 - Update example to be runnable in remote mode ([#357](https://github.com/Substra/substra-documentation/pull/357))
