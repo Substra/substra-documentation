@@ -31,6 +31,21 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.33.0 --- 2023-10-06
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Substra:**
+
+- **BREAKING**: Substra tools now only provides a unique base docker image for each supported Python version. The ``minimal`` and the ``workflow`` versions have been removed.
+
+**Orchestrator and Backend:**
+
+- A new Skaffold profile ``three-orgs`` have been added in the Orchestrator and the Substra-backend. It allows local deployment of a third organization and must be activated on the two repositories. To use it:
+
+  .. code-block:: bash
+
+    skaffold run -p three-orgs
+
 Substra 0.32.0 --- 2023-09-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
