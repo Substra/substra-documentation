@@ -31,6 +31,13 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.33.1 --- 2023-10-09
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Documentation:**
+
+- Fixed missing dependency in Titanic example when running in docker or remote mode.
+
 Substra 0.33.0 --- 2023-10-06
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
