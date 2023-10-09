@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support on Python 3.11 ([#367](https://github.com/Substra/substra-documentation/pull/367))
+
 ## [0.33.1]
 
 ### Fixed

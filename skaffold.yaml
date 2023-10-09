@@ -19,4 +19,3 @@ deploy:
           image: substra/substra-documentation-examples
     flags:
       install: ["--create-namespace"]
-
