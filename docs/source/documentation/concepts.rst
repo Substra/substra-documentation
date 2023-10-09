@@ -155,13 +155,13 @@ In the following tables, the asset is registered by orgA with the permissions:
      - What can the organization do?
      - Can the user of the organization export the asset?
    * - orgA
-     - orgA can see the result if the output is a performance
-     - Yes - if the ouput is a model
+     - orgA can see (for performances) or download (for models) the output
+     - Yes - the serialized output
    * - orgB
-     - orgB can see the result if the output is a performance
-     - Yes - if the ouput is a model
+     - orgB can see (for performances) or download (for models) the output
+     - Yes - the serialized output
    * - orgC
-     - Nothing - the performances results will be hidden
+     - Nothing
      - No
 
 

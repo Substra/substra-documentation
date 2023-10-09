@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Support on Python 3.11 ([#367](https://github.com/Substra/substra-documentation/pull/367))
+- Add doc about task output permissions ([#369](https://github.com/Substra/substra-documentation/pull/369))
 
 ## [0.33.1]
 
