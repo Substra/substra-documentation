@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Missing install in titanic example ([#372](https://github.com/Substra/substra-documentation/pull/372))
+
 ## [0.33.0]
 
 ### Changed
