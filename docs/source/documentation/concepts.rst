@@ -147,6 +147,23 @@ In the following tables, the asset is registered by orgA with the permissions:
      - Nothing
      - No
 
+.. list-table:: Task outputs permissions
+   :widths: 5 50 50
+   :header-rows: 1
+
+   * - Organization
+     - What can the organization do?
+     - Can the user of the organization export the asset?
+   * - orgA
+     - orgA can see (for performances) or download (for models) the output
+     - Yes - the serialized output
+   * - orgB
+     - orgB can see (for performances) or download (for models) the output
+     - Yes - the serialized output
+   * - orgC
+     - Nothing
+     - No
+
 
 
 Parallelization
