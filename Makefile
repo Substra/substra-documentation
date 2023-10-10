@@ -10,7 +10,7 @@ example-core-diabetes:
 example-core-titanic:
 	cd docs/source/examples/substra_core/titanic_example/ && ipython -c "%run run_titanic.ipynb"
 
-example-substrafl: example-fl-mnist example-fl-iris example-fl-cyclic example-fl-diabetes
+example-substrafl: example-fl-cyclic
 
 example-fl-mnist:
 	cd docs/source/examples/substrafl/get_started/ && ipython -c "%run run_mnist_torch.ipynb"
