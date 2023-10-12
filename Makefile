@@ -1,16 +1,16 @@
 install-examples-dependencies:
 	pip3 install -r examples_requirements.txt
 
-examples: example-substra example-substrafl
+examples: examples-substra examples-substrafl
 
-example-substra: example-core-diabetes example-core-titanic
+examples-substra: example-core-diabetes example-core-titanic
 
 example-core-diabetes:
 	cd docs/source/examples/substra_core/diabetes_example/ && ipython -c "%run run_diabetes.ipynb"
 example-core-titanic:
 	cd docs/source/examples/substra_core/titanic_example/ && ipython -c "%run run_titanic.ipynb"
 
-example-substrafl: example-fl-mnist example-fl-iris example-fl-cyclic example-fl-diabetes
+examples-substrafl: example-fl-mnist example-fl-iris example-fl-cyclic example-fl-diabetes
 
 example-fl-mnist:
 	cd docs/source/examples/substrafl/get_started/ && ipython -c "%run run_mnist_torch.ipynb"
