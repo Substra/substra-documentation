@@ -111,7 +111,7 @@ nbsphinx_prolog = r"""
 
     <div class="notebook note">
     Launch notebook online <span style="white-space: nowrap;"><a href="https://mybinder.org/v2/gh/Substra/substra-documentation/{{ env.config.release|e }}?filepath={{ docname|e }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span>
-     or download it <span style="white-space: nowrap;"><a href="{{ env.docname.split('/')|last|e + '.ipynb' }}"><img alt="Download badge" src="https://img.shields.io/badge/download_-notebook-orange?logo=jupyter" style="vertical-align:text-bottom"></a></span>
+     or download it <span style="white-space: nowrap;"><a href="{{ env.docname.split('/')|last|e + '.ipynb' }}" download><img alt="Download badge" src="https://img.shields.io/badge/download_-notebook-orange?logo=jupyter" style="vertical-align:text-bottom"></a></span>
     </div>
 """
 
