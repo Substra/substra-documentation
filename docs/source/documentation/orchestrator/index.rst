@@ -10,23 +10,16 @@ In case of failure, it will store failure reports and  change the status of the 
 In case of manual cancellation, it will change the status of the  the tasks to `Cancelled` on different backends.
 
 
-Centralized vs. decentralized orchestration
-===========================================
+Orchestration
+=============
 
-Substra offers two types of orchestration: **distributed** and **centralized**.
+Orchestration is hosted by a central Postgres database:
 
 .. image:: /static/schemes/distributed-vs-centralized-orc.svg
 
+Orchestration stores only non-sensitive metadata of the Substra assets, making it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
 
-The distributed orchestration is based on a private blockchain using Hyperledger Fabric, while the centralized orchestration is hosted by a central Postgres database.
-
-In both cases, the orchestration stores only non-sensitive metadata of the Substra assets, making it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
-
-Distributed orchestration enables trustless verification of the integrity of assets (functions, model, data), but it requires connections between organizations, and introduces a network overhead. It's not possible to upgrade a Substra network when using distributed orchestration.
-
-On the other hand, centralized orchestration requires trust in the central server, but it is faster and easier to deploy and maintain.
-
-As long as you trust whomever is operating the orchestrator DB not to tamper with it, both modes offer the same level of guarantees. The decentralized mode has nice theoretical guarantees, but the network overhead is very significant, and has a lot of operational drawbacks. That is why, the vast majority (if not all) of the current Substra deployments are using the centralized orchestration system as it is easier to operate and faster. However, the distributed orchestration is still maintained.
+It therefore requires trusting whomever is operating the orchestrator DB not to tamper with it.
 
 .. _orc_kubernetes_pods:
 
@@ -46,8 +39,6 @@ migrations
 
 Communication
 =============
-
-.. for now let's ignore distributed mode
 
 The orchestrator is a central component.
 All backends from each :term:`Organization` must have access to the orchestrator over gRPC for command/queries and event subsription.
