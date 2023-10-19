@@ -31,10 +31,10 @@ Otherwise, you must update the data format. There are many ways to do this; here
       apiVersion: v1
       kind: Pod
       metadata:
-      name: postgres-backup
+        name: postgres-backup
       spec:
-      containers:
-         - name: postgres
+        containers:
+          - name: postgres
             image: postgres
             command: ["sleep", "infinity"]
       EOF
