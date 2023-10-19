@@ -15,7 +15,7 @@ Orchestration
 
 Orchestration is hosted by a central Postgres database:
 
-.. image:: /static/schemes/distributed-vs-centralized-orc.svg
+.. image:: /static/schemes/centralized-orc.svg
 
 Orchestration stores only non-sensitive metadata of the Substra assets, making it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
 
