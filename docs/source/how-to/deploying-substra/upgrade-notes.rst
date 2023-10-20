@@ -13,18 +13,24 @@ This version upgrades the integrated PostgreSQL databases from versions 14 to 16
 
 If you :ref:`do not use the integrated databases <ops howto external database>`, then you have nothing to do.
 
-Otherwise, you must update the data format. There are many ways to do this; here we give you a simple way which is acceptable if you have small amounts of data, you have access to the clusters, and downtime is acceptable. It must be repeated on each Substra node and orchestrator.
+Otherwise, you must update the data format. There are many ways to do this; here we give you a simple way which is acceptable if:
+  - Have small amounts of data
+  - Have access to the clusters
+  - Downtime is acceptable
+ It must be repeated on each Substra node and orchestrator.
 
-#. Make sure no operations are in progress and cordon the node.
+  .. warning::
+    Before going further, make sure no operations are in progress and cordon the node.
 
 #. Gather required info:
+
    * database credentials (here ``$PG_USER`` and an associated password)
    * Kubernetes namespace (here ``$NAMESPACE``)
    * Helm release (hereafter ``$RELEASE_NAME``, can be obtained from ``helm get release -A``)
    * hostname of the Postgres service (hereafter ``$HOST``, can be obtained from ``kubectl get svc -n $NAMESPACE``)
    * name of the database in Postgres: by default ``orchestrator`` for the orchestrator, and ``substra`` for the backend (hereafter ``$DB``)
 
-#. Deploy a psql client (we will call ``postgres-backup``) in the namespace
+#. Deploy a psql client (we will call it ``postgres-backup``) in the namespace
 
    .. code-block:: bash
 
@@ -40,7 +46,7 @@ Otherwise, you must update the data format. There are many ways to do this; here
             command: ["sleep", "infinity"]
       EOF
 
-#. Get a shell **onto the postgres-backup pod**, dump the DB:
+#. Launch a shell from **within the postgres-backup pod** and dump the DB:
 
    .. code-block:: bash
 
@@ -69,20 +75,21 @@ Otherwise, you must update the data format. There are many ways to do this; here
 
    You can get values with ``helm get values``
 
-   orchestrator:
+   Orchestrator:
 
    .. code-block:: bash
 
       helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/orchestrator-8.0.0.tgz --values orc-values.yaml
 
-   backend:
+   Backend:
+
    .. code-block:: bash
 
       helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/substra-backend-23.0.0.tgz --values backend-values.yaml
 
-   Then delete the applicative Deployments and StatefulSets to avoid them polluting the database (``orchestrator-server``, ``backend-server``, ``backend-worker``, etc)
+#. Delete the applicative ``deployments`` and ``statefulset`` to avoid them polluting the database (``orchestrator-server``, ``backend-server``, ``backend-worker``, ...)
 
-#. Get a shell **onto the postgres-backup pod**, load the dump:
+#. Launch a shell from **within the postgres-backup pod** and load the dump:
 
 
    .. code-block:: bash
