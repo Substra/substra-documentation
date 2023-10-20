@@ -19,8 +19,6 @@ Otherwise, you must update the data format. There are many ways to do this; here
   * Have access to the clusters
   * Downtime is acceptable
 
-It must be repeated on each Substra node and orchestrator.
-
   .. warning::
 
     Before going further, make sure no operations are in progress and cordon the node.
@@ -99,6 +97,10 @@ It must be repeated on each Substra node and orchestrator.
       psql --host=$HOST -U $DB_USER < /dump.sql
 
 #. Perform final upgrade as normal
+
+   .. warning::
+
+      It must be repeated on each Substra Backend and on the Orchestrator (if standalone).
 
 .. _ops upgrade notes 0.28:
 
