@@ -31,6 +31,21 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.34.0 --- 2023-10-18
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All:**
+
+- Add Python 3.11 support.
+
+**Documentation:**
+
+- Example install torch on CPU only by default when using the docker or remote mode.
+
+**Operations**:
+
+- **BREAKING CHANGE**: A database upgrade **must be performed manually**. See :ref:`upgrade notes <ops upgrade notes 0.34>`.
+
 Substra 0.33.1 --- 2023-10-09
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

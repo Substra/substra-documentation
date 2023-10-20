@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.34.0]
+
 ### Added
 
 - Support on Python 3.11 ([#367](https://github.com/Substra/substra-documentation/pull/367))
 - Add doc about task output permissions ([#369](https://github.com/Substra/substra-documentation/pull/369))
+- Examples now install torch on CPU only if launched on docker or remote mode ([#375](https://github.com/Substra/substra-documentation/pull/375))
 
 ## [0.33.1]
 
@@ -27,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add files to run documentation examples in nightly CI ([#357](https://github.com/Substra/substra-documentation/pull/357))
 - Update example to be runnable in remote mode ([#357](https://github.com/Substra/substra-documentation/pull/357))
 - Fix [JSON releases](https://docs.substra.org/releases.json) ([#356](https://github.com/Substra/substra-documentation/pull/356))
+- Convert examples to notebook ([#368](https://github.com/Substra/substra-documentation/pull/368))
 
 ### Added
 
