@@ -14,9 +14,11 @@ This version upgrades the integrated PostgreSQL databases from versions 14 to 16
 If you :ref:`do not use the integrated databases <ops howto external database>`, then you have nothing to do.
 
 Otherwise, you must update the data format. There are many ways to do this; here we give you a simple way which is acceptable if:
-  - Have small amounts of data
-  - Have access to the clusters
-  - Downtime is acceptable
+
+  * Have small amounts of data
+  * Have access to the clusters
+  * Downtime is acceptable
+
 It must be repeated on each Substra node and orchestrator.
 
   .. warning::
