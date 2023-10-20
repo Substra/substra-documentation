@@ -15,7 +15,7 @@ If you :ref:`do not use the integrated databases <ops howto external database>`,
 
 Otherwise, you must update the data format. There are many ways to do this; here we give you a simple way which is acceptable if you have small amounts of data, you have access to the clusters, and downtime is acceptable. It must be repeated on each Substra node and orchestrator.
 
-#. Make sure no operations are in progress and cordon the node. 
+#. Make sure no operations are in progress and cordon the node.
 
 #. Gather required info:
    * database credentials (here ``$PG_USER`` and an associated password)
@@ -27,6 +27,7 @@ Otherwise, you must update the data format. There are many ways to do this; here
 #. Deploy a psql client (we will call ``postgres-backup``) in the namespace
 
    .. code-block:: bash
+
       kubectl apply -f -n $NAMESPACE - << 'EOF'
       apiVersion: v1
       kind: Pod
@@ -42,11 +43,13 @@ Otherwise, you must update the data format. There are many ways to do this; here
 #. Get a shell **onto the postgres-backup pod**, dump the DB:
 
    .. code-block:: bash
-      pg_dump $DB --host=$HOST -U $PG_USER -f /dump.sql --clean --create   
+
+      pg_dump $DB --host=$HOST -U $PG_USER -f /dump.sql --clean --create
 
 #. (OPTIONAL) Retrieve the dump:
 
    .. code-block:: bash
+
       kubectl --retries 10 cp $NAMESPACE/postgres-backup:/dump.sql dump.sql
       sha1sum dump.sql # check it matches with the source (use `shasum` on Mac OS)
 
@@ -54,8 +57,9 @@ Otherwise, you must update the data format. There are many ways to do this; here
 #. Delete the Postgres StatefulSet and PVC
 
    This depends on your particular set-up but it should look like this:
-   
+
    .. code-block:: bash
+
       kubectl delete -n substra statefulset $RELEASE_NAME-postgresql
       kubectl delete -n substra pvc data-$RELEASE_NAME-postgresql-0
 
@@ -66,21 +70,23 @@ Otherwise, you must update the data format. There are many ways to do this; here
    You can get values with ``helm get values``
 
    orchestrator:
-   ```sh
-   helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/orchestrator-8.0.0.tgz --values orc-values.yaml
-   ```
+
+   .. code-block:: bash
+
+      helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/orchestrator-8.0.0.tgz --values orc-values.yaml
 
    backend:
-   ```sh
-   helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/substra-backend-23.0.0.tgz --values backend-values.yaml
-   ```
+   .. code-block:: bash
+
+      helm upgrade -n $NAMESPACE $RELEASE_NAME https://github.com/Substra/charts/raw/main/substra-backend-23.0.0.tgz --values backend-values.yaml
 
    Then delete the applicative Deployments and StatefulSets to avoid them polluting the database (``orchestrator-server``, ``backend-server``, ``backend-worker``, etc)
 
 #. Get a shell **onto the postgres-backup pod**, load the dump:
 
-   
+
    .. code-block:: bash
+
       psql --host=$HOST -U $DB_USER < /dump.sql
 
 #. Perform final upgrade as normal
@@ -111,7 +117,7 @@ Then you'll need to copy them over to a new ``database`` key:
       username: my-username
       password: my-password
       database: my-substra-db
-   
+
    database:
      auth:
       username: my-username
