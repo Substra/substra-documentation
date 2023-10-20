@@ -17,9 +17,10 @@ Otherwise, you must update the data format. There are many ways to do this; here
   - Have small amounts of data
   - Have access to the clusters
   - Downtime is acceptable
- It must be repeated on each Substra node and orchestrator.
+It must be repeated on each Substra node and orchestrator.
 
   .. warning::
+
     Before going further, make sure no operations are in progress and cordon the node.
 
 #. Gather required info:
@@ -58,7 +59,6 @@ Otherwise, you must update the data format. There are many ways to do this; here
 
       kubectl --retries 10 cp $NAMESPACE/postgres-backup:/dump.sql dump.sql
       sha1sum dump.sql # check it matches with the source (use `shasum` on Mac OS)
-
 
 #. Delete the Postgres StatefulSet and PVC
 
