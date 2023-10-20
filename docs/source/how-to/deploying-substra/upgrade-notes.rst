@@ -71,7 +71,7 @@ It must be repeated on each Substra node and orchestrator.
 
 #. Perform the database upgrade
 
-   Note versions ``8.0.0`` and ``23.0.0`` are used: they contain the database upgrade but not the app upgrade.
+   Note versions ``8.0.0`` and ``23.0.0`` are used: they contain the database upgrade. The apps upgrade are done in ``8.0.1`` and ``23.0.2``.
 
    You can get values with ``helm get values``
 
