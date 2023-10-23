@@ -7,8 +7,7 @@ Performing a Federated Learning experiment implies a lot of different compute ta
 The orchestrator registers the status of tasks; when a task is done (status ``Done``), it evaluates if some remaining tasks (status ``Waiting``) are now unblocked, and if it's the case, the status of those tasks is changed to ``To do``. The new status is sent to all the backends, who store the new tasks ``To do`` in the task queue (Celery). Then, the task queue will assign the task to one of the workers (if multiple) and handle retries if needed.
 
 In case of failure, it will store failure reports and  change the status of the faulty task to ``Failed``.
-In case of manual cancellation, it will change the status of the  the tasks to `Cancelled` on different backends.
-
+In case of manual cancellation, it will change the status of the  the tasks to ``Cancelled`` on different backends.
 
 Orchestration
 =============
@@ -20,6 +19,10 @@ Orchestration is hosted by a central Postgres database:
 Orchestration stores only non-sensitive metadata of the Substra assets, making it possible to verify the integrity of the assets and ensures that the permissions on the assets are respected.
 
 It therefore requires trusting whomever is operating the orchestrator DB not to tamper with it.
+
+.. note::
+
+    Orchestration was available in a **distributed** mode until `v0.34.0 <https://docs.substra.org/en/0.34.0/documentation/orchestrator/index.html#centralized-vs-decentralized-orchestration>`__
 
 .. _orc_kubernetes_pods:
 
