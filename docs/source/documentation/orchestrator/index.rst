@@ -7,7 +7,7 @@ Performing a Federated Learning experiment implies a lot of different compute ta
 The orchestrator registers the status of tasks; when a task is done (status ``Done``), it evaluates if some remaining tasks (status ``Waiting``) are now unblocked, and if it's the case, the status of those tasks is changed to ``To do``. The new status is sent to all the backends, who store the new tasks ``To do`` in the task queue (Celery). Then, the task queue will assign the task to one of the workers (if multiple) and handle retries if needed.
 
 In case of failure, it will store failure reports and  change the status of the faulty task to ``Failed``.
-In case of manual cancellation, it will change the status of the  the tasks to ``Cancelled`` on different backends.
+In case of manual cancellation, it will change the status of the tasks to ``Cancelled`` on different backends.
 
 Orchestration
 =============
