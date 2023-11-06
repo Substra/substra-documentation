@@ -186,7 +186,7 @@ Launching
 
         cd substra-frontend
         docker build -f docker/substra-frontend/Dockerfile --target dev -t substra-frontend .
-        docker run -it --rm -p 3000:3000 -e API_URL=http://substra-backend.org-1.com -v ${PWD}/src:/workspace/src substra-frontend
+        docker run -it --rm -p 3000:3000 -e API_URL=http://substra-backend.org-1.com -v $PWD/src:/workspace/src substra-frontend
 
   You can access the frontend at http://substra-frontend.org-1.com:3000/. The dev credentials are:
 
