@@ -157,24 +157,25 @@ Launching
    skaffold run
 
 .. caution::
-   On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev`` and ``arm64``.
+   On arm64 architecture (e.g. Apple silicon chips M1 & M2), you need to add the profiles ``dev`` and ``arm64`` for ``substra-backend``.
 
    .. code-block:: bash
 
+      cd substra-backend
       skaffold run -p dev,arm64
 
 .. tip::
-   If you need a third organization, you must use the ``three-orgs`` profile on both the orchestrator and the backend:
+   If you need a third organization, you must use the ``three-orgs`` profile on both the ``orchestrator`` and  ``substra-backend``:
 
    .. code-block:: bash
 
       skaffold run -p three-orgs
 
 .. tip::
-   If you need to re-run `skaffold run` for whatever reason, don't forget to use `skaffold delete` to reset the state beforehand (or reset your environment by running the `k3-create.sh` script again).
+   If you need to re-run ``skaffold run`` for whatever reason, don't forget to use ``skaffold delete`` to reset the state beforehand (or reset your environment by running the ``k3-create.sh`` script again).
 
 .. tip::
-   When re-launching the orchestrator and the backend, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
+   When re-launching the ``orchestrator`` and ``substra-backend``, you can speed up the processing by avoiding the update of the chart dependencies using the profile ``nodeps``.
 
    .. code-block:: bash
 
@@ -194,7 +195,7 @@ Launching
     * password: ``p@sswr0d44``
 
 .. caution::
-   If you are making tests where you are switching between different backends in local dev, you will need to delete cookies of your frontend instance before connecting to a new backend. That is because backends have the same url domain, so the frontend will try to access the new backend with the token registered for the previous backend. 
+   If you are making tests where you are switching between different backends in local dev, you will need to delete cookies of your frontend instance before connecting to a new backend. That is because backends have the same url domain, so the frontend will try to access the new backend with the token registered for the previous backend.
 
 Launching computations
 ======================
