@@ -1,5 +1,6 @@
-ipython==8.12.0
+ipython==8.21.0
 nbformat==5.9.2
+tqdm>=4.66.2
 -r docs/source/examples/substra_core/diabetes_example/assets/requirements.txt
 -r docs/source/examples/substra_core/titanic_example/assets/requirements.txt
 -r docs/source/examples/substrafl/get_started/torch_fedavg_assets/requirements.txt

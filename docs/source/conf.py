@@ -116,6 +116,7 @@ nbsphinx_prolog = r"""
 """
 
 nbsphinx_epilog = nbsphinx_prolog
+nbsphinx_execute = "never"
 
 
 # zip the assets directory found in the examples directory and place it in the current dir
@@ -249,6 +250,8 @@ for repo in SUBSTRA_REPOS:
         source_path = Path(imported_module.__file__).resolve().parents[1] / repo.doc_dir
         copy_source_files(source_path, repo.dest_doc_dir)
 
+myst_all_links_external = True
+
 
 # reformat links to a section in a markdown files (not supported by myst_parser)
 def reformat_md_section_links(file_path: Path):
@@ -350,6 +353,9 @@ copybutton_prompt_text = ">>> "
 nitpick_ignore = [
     ("py:class", "pydantic.main.BaseModel"),
     ("py:class", "BaseModel"),
+    ("py:class", "FieldInfo"),
+    ("py:class", "ConfigDict"),
+    ("py:class", "ComputedFieldInfo"),
     ("py:class", "torch.nn.modules.module.Module"),
     ("py:class", "torch.nn.modules.Module"),
     ("py:class", "torch.nn.modules.loss._Loss"),
@@ -378,6 +384,7 @@ nitpick_ignore = [
     ("py:attr", "dst_type"),
     ("py:attr", "dtype"),
     ("py:attr", "device"),
+    ("py:attr", "assign"),
     ("py:func", "register_module_forward_hook"),
     ("py:func", "register_module_forward_pre_hook"),
     ("py:func", "register_module_full_backward_hook"),

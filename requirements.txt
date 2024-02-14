@@ -1,2 +1,2 @@
--r docs/requirements.txt
+-r docs/docs-requirements.txt
 -r examples_requirements.txt
