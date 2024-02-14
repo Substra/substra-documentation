@@ -1,4 +1,4 @@
-name: main
+name: Documentation examples - subprocess
 on:
   pull_request:
     paths:
