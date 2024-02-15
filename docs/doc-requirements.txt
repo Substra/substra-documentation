@@ -1,0 +1,16 @@
+recommonmark==0.6.0
+sphinx==7.2.6
+sphinx-markdown-tables==0.0.17
+sphinx-rtd-theme==2.0.0
+sphinx-autobuild==2024.2.4
+sphinx_click==5.1.0
+click==8.1
+texttable==1.7.0
+myst-parser==2.0.0
+docutils==0.20.1
+sphinx-fontawesome==0.0.6
+sphinx-copybutton==0.5.2
+pyyaml==6.0
+nbsphinx==0.9.3
+pandoc==2.3
+git-python==1.0.3

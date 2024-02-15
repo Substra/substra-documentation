@@ -9,13 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.34.0]
 
+### Changed
+
+- Bump Sphinx to 7.2.6, and upgrade linked dependencies ([#388](https://github.com/Substra/substra-documentation/pull/388))
+- Examples are not executed when building the documentation ([#388](https://github.com/Substra/substra-documentation/pull/388))
+
 ### Added
 
 - Support on Python 3.11 ([#367](https://github.com/Substra/substra-documentation/pull/367))
 - Add doc about task output permissions ([#369](https://github.com/Substra/substra-documentation/pull/369))
 - Examples now install torch on CPU only if launched on docker or remote mode ([#375](https://github.com/Substra/substra-documentation/pull/375))
 
-### Removed 
+### Removed
 
 - Mentions to Orchestrator distributed mode ([#379](https://github.com/Substra/substra-documentation/pull/379))
 
