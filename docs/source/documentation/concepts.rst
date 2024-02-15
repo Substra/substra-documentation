@@ -36,6 +36,10 @@ A function corresponds to an archive (tar or zip file) containing:
 * One or more Python scripts that implement the function.
 * A Dockerfile on which the user can specify the required dependencies of the Python scripts.
 
+The different statuses it can take can be represented by the following state machine:
+
+.. image:: /static/schemes/function.state.svg
+
 .. _concept_model:
 
 Model
@@ -56,12 +60,20 @@ Gathering tasks into a single compute plan will lead to a more optimized compute
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
+The different statuses it can take can be represented by the following state machine:
+
+.. image:: /static/schemes/computeplan.state.svg
+
 .. _concept_task:
 
 Task
 ^^^^
 
 A task correspond to a computation task. The task can use any inputs (data, functions or output from other tasks). The function is expected to write the outputs in files, on paths given as outputs dictionary.
+
+The different statuses it can take can be represented by the following state machine:
+
+.. image:: /static/schemes/computetask.state.svg
 
 Rank
 ^^^^
