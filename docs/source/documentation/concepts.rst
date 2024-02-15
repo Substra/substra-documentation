@@ -60,6 +60,10 @@ Gathering tasks into a single compute plan will lead to a more optimized compute
 
 Note that you can register a task alone, i.e. not put the task in a compute plan, but Substra will still create a compute plan for you for this specific task.
 
+The different statuses it can take can be represented by the following state machine:
+
+.. image:: /static/schemes/computeplan.state.svg
+
 .. _concept_task:
 
 Task
