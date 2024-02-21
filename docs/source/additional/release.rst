@@ -49,8 +49,6 @@ Substra 0.35.0 --- 2024-02-20
 - Reworked compute task statuses reflecting status in function
   .. image:: /static/schemes/computetask.state.svg
 
-
-
 Substra 0.34.0 --- 2023-10-18
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
