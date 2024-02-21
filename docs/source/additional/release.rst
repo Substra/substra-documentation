@@ -44,9 +44,11 @@ Substra 0.35.0 --- 2024-02-20
   will be executed later, speeding up execution time for tasks closer to the end of the workflow. Moreover, each function is built only once, on the function owner,
   and the built image is transfered to other organizxations, opening the way tyo have rootless nodes (one root node with a builder is needed within a network)
 - To support the function workflow, the flollowing statuses have been added:
+
   .. image:: /static/schemes/function.state.svg
 
 - Reworked compute task statuses reflecting status in function
+
   .. image:: /static/schemes/computetask.state.svg
 
 Substra 0.34.0 --- 2023-10-18
