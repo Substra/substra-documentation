@@ -116,7 +116,7 @@ nbsphinx_prolog = r"""
 """
 
 nbsphinx_epilog = nbsphinx_prolog
-nbsphinx_execute = "never"
+# nbsphinx_execute = "never"
 
 
 # zip the assets directory found in the examples directory and place it in the current dir
@@ -437,7 +437,6 @@ html_static_path = ["./_static"]
 html_extra_path = [str(JSON_COMPATIBILITY_TABLE_FILE)]
 
 html_css_files = [
-    "nbsphinx-gallery.css",
     "owkin.css",
     "my-nbsphinx-gallery.css",
 ]
