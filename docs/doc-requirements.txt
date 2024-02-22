@@ -14,4 +14,4 @@ pyyaml==6.0
 nbsphinx==0.9.3
 pandoc==2.3
 git-python==1.0.3
-nbconvert < 7.14
+nbconvert==7.13
