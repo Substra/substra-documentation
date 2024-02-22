@@ -437,6 +437,7 @@ html_static_path = ["./_static"]
 html_extra_path = [str(JSON_COMPATIBILITY_TABLE_FILE)]
 
 html_css_files = [
+    "nbsphinx-gallery.css",
     "owkin.css",
     "my-nbsphinx-gallery.css",
 ]
