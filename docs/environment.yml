@@ -7,4 +7,4 @@ dependencies:
   - pandoc=3.1
   - pip
   - pip:
-      - -r doc-requirements.txt
+      - -r ../requirements.txt
