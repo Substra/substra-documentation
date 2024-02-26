@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.35.0]
+
 ### Added
 
 - Diagrams for status for function and compute tasks ([#390](https://github.com/Substra/substra-documentation/pull/390))

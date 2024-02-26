@@ -31,7 +31,7 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
-Substra 0.35.0 --- 2024-02-20
+Substra 0.35.0 --- 2024-02-26
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **All**
