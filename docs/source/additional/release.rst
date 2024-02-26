@@ -36,18 +36,19 @@ Substra 0.35.0 --- 2024-02-20
 
 **Platform** 
 
-- Remove distributed mode. Starting from this release, only the standalone mode is supported.
+- Remove distributed orchestration mode based on the private blockchain. Starting from this release, only the standalone orchestration mode is supported.
 
 **All**
 
-- Functions have now their own lifecycle. They start building when they are created when the platform have a slot to build it, even if the task 
-  will be executed later, speeding up execution time for tasks closer to the end of the workflow. Moreover, each function is built only once, on the function owner,
-  and the built image is transfered to other organizxations, opening the way tyo have rootless nodes (one root node with a builder is needed within a network)
+- Functions have now their own lifecycle. They start building when they are created if there is a slot to build it, even if
+  the task will be executed later. This speeds up execution time for tasks closer to the end of the workflow. Each function
+  is built only once, on the function owner organization. The built image is transferred to other organizations, opening the
+  way to have rootless nodes (only one root node with a builder is needed within a network).
 - To support the function workflow, the flollowing statuses have been added:
 
   .. image:: /static/schemes/function.state.svg
 
-- Reworked compute task statuses reflecting status in function
+- Reworked compute task statuses reflecting status in function:
 
   .. image:: /static/schemes/computetask.state.svg
 
