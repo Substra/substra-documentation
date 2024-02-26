@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Test and predict tasks are now merged, after [SubstraFL #177](https://github.com/Substra/substrafl/pull/177)
+- Rename `predictions_path` to `predictions` in metrics ([#376](https://github.com/Substra/substra-documentation/pull/376))
+- Pass `metric_functions` to `Strategy` instead to `TestDataNodes` ([#376](https://github.com/Substra/substra-documentation/pull/376))
+
 ## [0.35.0]
 
 ### Added
@@ -17,15 +23,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Bump Sphinx to 7.2.6, and upgrade linked dependencies ([#388](https://github.com/Substra/substra-documentation/pull/388))
 - Examples are not executed when building the documentation ([#388](https://github.com/Substra/substra-documentation/pull/388))
-  
+
 ### Fixed
 
 - Restor custom css on nbshpinx gallery ([#394](https://github.com/Substra/substra-documentation/pull/394))
-  
+
 ### Removed
 
 - Mentions to Orchestrator distributed mode ([#379](https://github.com/Substra/substra-documentation/pull/379))
-  
+
 ## [0.34.0]
 
 ### Added
