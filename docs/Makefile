@@ -25,7 +25,7 @@ livehtml:
 	sphinx-autobuild -b html $(SOURCEDIR) $(BUILDDIR)/html
 
 livetheme:
-	sphinx-autobuild -b html -a $(SOURCEDIR) $(BUILDDIR)/html --watch source/static/
+	sphinx-autobuild -b html -a $(SOURCEDIR) $(BUILDDIR)/html --watch source/_static/
 
 clean:
 	rm -rf $(BUILDDIR)

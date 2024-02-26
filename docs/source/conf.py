@@ -402,7 +402,7 @@ nitpick_ignore = [
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
 # icon file (.ico).
-html_favicon = "static/favicon.png"
+html_favicon = "_static/favicon.png"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["templates/"]
@@ -432,15 +432,16 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["./static"]
+html_static_path = ["./_static"]
 
 html_extra_path = [str(JSON_COMPATIBILITY_TABLE_FILE)]
 
 html_css_files = [
     "owkin.css",
+    "my-nbsphinx-gallery.css",
 ]
 
-html_logo = "static/logo.svg"
+html_logo = "_static/logo.svg"
 html_show_sourcelink = False
 html_show_sphinx = False
 

@@ -6,7 +6,7 @@
     margin-bottom: 1em;
 }
 
-.nbsphinx-gallery > a {
+.nbsphinx-gallery>a {
     background-image: none;
     border: solid #fff 1px;
     background-color: #fff;
@@ -20,7 +20,7 @@
     transition: transform 0.2s ease;
 }
 
-.nbsphinx-gallery > a:hover {
+.nbsphinx-gallery>a:hover {
     border: solid var(--color-primary-500) 1px;
     box-shadow: 0 0 15px rgba(142, 176, 202, 0.5);
     transform: scale(1.05);
@@ -31,7 +31,7 @@
     max-height: 100%;
 }
 
-.nbsphinx-gallery > a > div:first-child {
+.nbsphinx-gallery>a>div:first-child {
     display: flex;
     align-items: start;
     justify-content: center;
