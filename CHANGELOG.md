@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename `predictions_path` to `predictions` in metrics ([#376](https://github.com/Substra/substra-documentation/pull/376))
 - Pass `metric_functions` to `Strategy` instead to `TestDataNodes` ([#376](https://github.com/Substra/substra-documentation/pull/376))
 
+### Added
+
+- Pin `nbconvert` to 7.13 to reactivate examples run when building (cf issue https://github.com/spatialaudio/nbsphinx/issues/776) ([#393](https://github.com/Substra/substra-documentation/pull/393))
+
 ## [0.35.0]
 
 ### Added

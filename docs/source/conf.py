@@ -116,7 +116,6 @@ nbsphinx_prolog = r"""
 """
 
 nbsphinx_epilog = nbsphinx_prolog
-# nbsphinx_execute = "never"
 
 
 # zip the assets directory found in the examples directory and place it in the current dir
