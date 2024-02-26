@@ -201,7 +201,7 @@ In the scheme below, we represent a Substra network with two channels:
 - Channel A with the three organizations
 - Channel B with only two organizations (A and B)
 
-.. image:: /static/schemes/channel_schema.png
+.. image:: /_static/schemes/channel_schema.png
 
 Users only belong to one channel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
