@@ -17,8 +17,8 @@ releases:
         version: 0.50.0
         link: https://github.com/Substra/substra/releases/tag/0.50.0
       substra-tools:
-        version: 0.21.0
-        link: https://github.com/Substra/substra-tools/releases/tag/0.21.0
+        version: 0.21.1
+        link: https://github.com/Substra/substra-tools/releases/tag/0.21.1
       substra-backend:
         version: 0.43.0
         link: https://github.com/Substra/substra-backend/releases/tag/0.43.0
