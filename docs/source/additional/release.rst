@@ -43,11 +43,11 @@ Substra 0.35.0 --- 2024-02-26
   way to have rootless nodes (only one root node with a builder is needed within a network).
 - To support the function workflow, the following statuses have been added:
 
-  .. image:: /static/schemes/function.state.svg
+  .. image:: /_static/schemes/function.state.svg
 
 - Reworked compute task statuses reflecting status in function:
 
-  .. image:: /static/schemes/computetask.state.svg
+  .. image:: /_static/schemes/computetask.state.svg
 
 Substra 0.34.0 --- 2023-10-18
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
