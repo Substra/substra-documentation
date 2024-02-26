@@ -5,10 +5,41 @@ components: # for table headers
   - substra-backend
   - orchestrator
   - substra-frontend
-  - hlf-k8s
   - substra-tests
 
 releases:
+  - version: 0.35.0
+    components:
+      substrafl:
+        version: 0.43.0
+        link: https://github.com/Substra/substrafl/releases/tag/0.43.0
+      substra:
+        version: 0.50.0
+        link: https://github.com/Substra/substra/releases/tag/0.50.0
+      substra-tools:
+        version: 0.21.1
+        link: https://github.com/Substra/substra-tools/releases/tag/0.21.1
+      substra-backend:
+        version: 0.43.0
+        link: https://github.com/Substra/substra-backend/releases/tag/0.43.0
+        helm:
+          version: 24.0.3
+          link: https://artifacthub.io/packages/helm/substra/substra-backend/24.0.3
+      orchestrator:
+        version: 0.38.0
+        link: https://github.com/Substra/orchestrator/releases/tag/0.38.0
+        helm:
+          version: 8.1.1
+          link: https://artifacthub.io/packages/helm/substra/orchestrator/8.1.1
+      substra-frontend:
+        version: 0.47.0
+        link: https://github.com/Substra/substra-frontend/releases/tag/0.47.0
+        helm:
+          version: 1.0.26
+          link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.0.26
+      substra-tests:
+        version: 0.48.0
+        link: https://github.com/Substra/substra-tests/releases/tag/0.48.0
   - version: 0.34.0
     components:
       substrafl:
