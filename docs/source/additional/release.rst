@@ -280,7 +280,7 @@ to:
 - Better performances for workflow.
 - Serialize the performance graph regarding the identifier only.
 
-.. figure:: ../static/images/workflow_0.27.0.png
+.. figure:: ../_static/images/workflow_0.27.0.png
   :align: center
   :alt: New workflow in frontend
 
@@ -308,7 +308,7 @@ Substra 0.26.0 --- 2023-04-03
 - SSO Login
 - Experimental: Add a task duration breakdown for every task in the front-end. Note that this is an experimental feature and only works on the current backend you are logged into.
 
-.. figure:: ../static/images/substra-0.26-task-duration.png
+.. figure:: ../_static/images/substra-0.26-task-duration.png
   :align: center
   :alt: Screenshot of task duration
 

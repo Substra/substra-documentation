@@ -26,7 +26,7 @@ The :ref:`compatibility table` contains a reference of Substra versions compatib
 
 Substra is meant to be deployed as part of a federated learning network. Each participant *organization* will set up their own *Substra node*, from which their users can connect to the network and run machine learning algorithms on the data registered by participant on their own node.
 
-.. image:: ../../static/schemes/stack-technical-scheme.svg
+.. image:: ../../_static/schemes/stack-technical-scheme.svg
   :width: 800
   :align: center
   :alt: Substra Components Scheme

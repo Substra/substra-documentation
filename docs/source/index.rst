@@ -31,7 +31,7 @@ Substra was created by `Owkin <https://owkin.com/>`_ and is now hosted by the `L
 How does it work?
 ^^^^^^^^^^^^^^^^^
 
-.. image:: static/schemes/introductory-scheme.svg
+.. image:: _static/schemes/introductory-scheme.svg
   :width: 800
   :align: center
   :alt: Substra Network

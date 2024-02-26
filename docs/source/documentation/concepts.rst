@@ -38,7 +38,7 @@ A function corresponds to an archive (tar or zip file) containing:
 
 The different statuses it can take can be represented by the following state machine:
 
-.. image:: /static/schemes/function.state.svg
+.. image:: /_static/schemes/function.state.svg
 
 .. _concept_model:
 
@@ -62,7 +62,7 @@ Note that you can register a task alone, i.e. not put the task in a compute plan
 
 The different statuses it can take can be represented by the following state machine:
 
-.. image:: /static/schemes/computeplan.state.svg
+.. image:: /_static/schemes/computeplan.state.svg
 
 .. _concept_task:
 
@@ -73,7 +73,7 @@ A task correspond to a computation task. The task can use any inputs (data, func
 
 The different statuses it can take can be represented by the following state machine:
 
-.. image:: /static/schemes/computetask.state.svg
+.. image:: /_static/schemes/computetask.state.svg
 
 Rank
 ^^^^
