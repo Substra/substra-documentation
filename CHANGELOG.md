@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Rename `test_data_sample_keys` to `data_sample_keys` on `TestDataNodes` after [SubstraFL #185](https://github.com/Substra/substrafl/pull/185) ([])
+- Rename `test_data_sample_keys` to `data_sample_keys` on `TestDataNodes` after [SubstraFL #185](https://github.com/Substra/substrafl/pull/185) ([#398](https://github.com/Substra/substra-documentation/pull/398))
 - Test and predict tasks are now merged, after [SubstraFL #177](https://github.com/Substra/substrafl/pull/177)
 - Rename `predictions_path` to `predictions` in metrics ([#376](https://github.com/Substra/substra-documentation/pull/376))
 - Pass `metric_functions` to `Strategy` instead to `TestDataNodes` ([#376](https://github.com/Substra/substra-documentation/pull/376))
