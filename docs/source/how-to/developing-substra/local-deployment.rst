@@ -105,6 +105,7 @@ First time configuration
       helm repo add bitnami https://charts.bitnami.com/bitnami
       helm repo add twuni https://helm.twun.io
       helm repo add jetstack https://charts.jetstack.io
+      helm repo add localstack https://localstack.github.io/helm-charts
 
 4. Clone the Substra components repositories
 
