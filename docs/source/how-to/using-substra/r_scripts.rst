@@ -96,7 +96,7 @@ We modify the Dockerfile to install R in the container, and copy both R and Pyth
     :caption: Dockerfile
 
     # this base image works in both CPU and GPU enabled environments
-    FROM ghcr.io/substra/substra-tools:0.20.0-nvidiacuda11.8.0-base-ubuntu22.04-python3.9
+    FROM python:3.9-slim
 
     # install R
     RUN apt-get update \
