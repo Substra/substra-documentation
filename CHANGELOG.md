@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.36.0]
+
 ### Changed
 
 - Rename `test_data_sample_keys` to `data_sample_keys` on `TestDataNodes` after [SubstraFL #185](https://github.com/Substra/substrafl/pull/185) ([#398](https://github.com/Substra/substra-documentation/pull/398))
