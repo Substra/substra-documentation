@@ -31,6 +31,43 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+
+Substra 0.36.0 --- 2024-03-12
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All**
+
+- Python 3.8 is not supported anymore. We support Python versions 3.9, 3.10 and 3.11.
+- Status renaming:
+    - Compute task status `DOING` is renamed `EXECUTING`;
+    - Compute plan statuses `EMPTY`, `WAITING` and `TODO` are merged into new status `CREATED`;
+    - See `the documentation <https://docs.substra.org/en/stable/documentation/concepts.html#compute-plan>`__ for more details on statuses.
+
+
+**SubstraFL**
+
+- Switch to python-slim as base image, instead of substra-tools. The base image will be lighter, inducing smaller build time and improving compute plan speed.
+- The predict task does not exist anymore. The evaluation of a model is done in a single task that combines prediction AND evaluation. This will speed up compute plan execution.
+- Add the `simulate_experiment` function, that will execute the `Compute Plan` in RAM only. It returns Python objects containing the computed `Performances` and the saved intermediate `States`. More information about this feature is available in docstrings.
+
+Example of usage::
+
+
+    from substrafl.experiment import simulate_experiment
+
+    scores, intermediate_state_train, intermediate_state_agg = simulate_experiment(
+        client=my_substra_client,
+        strategy=my_strategy,
+        train_data_nodes=train_data_nodes,
+        evaluation_strategy=my_eval_strategy,
+        aggregation_node=aggregation_node,
+        clean_models=False,
+        num_rounds=NUM_ROUNDS,
+    )
+
+
+- Due to the two above features, many small breaking changes have been introduced, see the full [SubstraFL changelog](https://github.com/Substra/substrafl/blob/main/CHANGELOG.md) to get the comprehensive list of changes.
+
 Substra 0.35.0 --- 2024-02-26
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
