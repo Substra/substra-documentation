@@ -66,7 +66,7 @@ Example of usage::
     )
 
 
-- Due to the two above features, many small breaking changes have been introduced, see the full [SubstraFL changelog](https://github.com/Substra/substrafl/blob/main/CHANGELOG.md) to get the comprehensive list of changes.
+- Due to the two above features, many small breaking changes have been introduced, see the full `SubstraFL changelog <https://github.com/Substra/substrafl/blob/main/CHANGELOG.md>`_ to get the comprehensive list of changes.
 
 Substra 0.35.0 --- 2024-02-26
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
