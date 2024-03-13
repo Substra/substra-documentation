@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Added explicit substratools dependency in Substra core examples ([#408](https://github.com/Substra/substrafl/pull/408))
 
 ## [0.36.0]
 
