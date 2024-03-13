@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # install dependencies
-RUN pip3 install pandas numpy 'scikit-learn==1.3.1'
+RUN pip3 install pandas numpy 'scikit-learn==1.3.1' substratools
 
 # add your function script to docker image
 ADD titanic_function_rf.py .

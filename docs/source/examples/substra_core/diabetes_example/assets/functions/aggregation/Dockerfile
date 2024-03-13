@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # install dependencies
-RUN pip3 install pandas numpy
+RUN pip3 install pandas numpy substratools
 
 # add your algorithm script to docker image
 ADD federated_analytics_functions.py .
