@@ -1,6 +1,9 @@
 How to monitor performance in local mode
 ========================================
 
+.. warning::
+    This page has been tested with Substra 0.36.0. Some changes might be needed is your using a more recent version.
+
 Performances of a compute plan can be retrieved
 - with the :code:`get_performances(CP_KEY)` function of the `Substra Python library <api_reference.html#sdk-reference>`_
 - on the Substra GUI when using the `deployed mode <debug.html#deployed-mode>`_.
