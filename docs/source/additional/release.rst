@@ -39,6 +39,7 @@ Substra 0.36.0 --- 2024-03-12
 
 - Python 3.8 is not supported anymore. We support Python versions 3.9, 3.10 and 3.11.
 - Status renaming:
+
     - Compute task status `DOING` is renamed `EXECUTING`;
     - Compute plan statuses `EMPTY`, `WAITING` and `TODO` are merged into new status `CREATED`;
     - See `the documentation <https://docs.substra.org/en/stable/documentation/concepts.html#compute-plan>`__ for more details on statuses.
@@ -190,6 +191,7 @@ Substra 0.30.0 --- 2023-07-27
 - User validation approval: this new feature (disabled by default) enable Substra admins to validate or reject new users that login with the SSO. Before the validation new user can not do nor see anything on Substra. To setup this feature have a look at `the SSO documentation <https://docs.substra.org/en/stable/operations/howto/sso-oidc.html#set-up-user-creation>`__.
 
 **Documentation**:
+
 - `New example <https://docs.substra.org/en/stable/examples/substrafl/go_further/run_diabetes_substrafl.html>`__ on Federated Analytics with SubstraFL
 - `New example <https://docs.substra.org/en/stable/examples/substrafl/go_further/run_mnist_cyclic.html>`__ on how to implement a custom cyclic Strategy with SubstraFL.
 
