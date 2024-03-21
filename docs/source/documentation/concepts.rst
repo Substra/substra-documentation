@@ -219,10 +219,10 @@ User management
 
 There are two types of users: *admin* and *users*. The only difference is that *admins* can create and delete any Substra users or admins, whereas *users* can not perform any user management task. Users are managed in the web application.
 
-Compute plan execution - deployed mode
----------------------------------------
+Compute plan execution - remote mode
+------------------------------------
 
-This section describes what happens during the compute plan execution in deployed mode and what can be done to improve the execution time.
+This section describes what happens during the compute plan execution in remote mode and what can be done to improve the execution time.
 In local mode, these steps are either skipped or simplified.
 
 Once a compute plan is submitted to the platform, its tasks are scheduled to be executed on each organization.
