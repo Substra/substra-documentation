@@ -5,8 +5,8 @@ Doing machine learning on remote data is hard and may not work on the first atte
 
 **Substra can run in 3 unique modes:**
 
-* Substra `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine.
-* Substra `deployed mode <deployed_mode_>`_  mode where all the tasks run on the deployed Substra platform.
+* Substra `local mode <local_mode_>`_ where all the tasks run locally on the user’s machine. Tasks are isolated either in docker containers or in different subprocesses.
+* Substra `remote mode <remote_mode_>`_  mode where all the tasks run on the deployed Substra platform.
 * Substra `hybrid mode <hybrid_mode_>`_  mode where tasks run locally but can use assets from remote organizations.
 
 
@@ -83,7 +83,7 @@ Any function to get, describe or download an asset works with assets from the de
 
 Something specific about working locally with remote datasets: since data never leaves the platform, locally it is not possible to use data registered on the platform. So when a task uses a dataset from the deployed platform, it runs on the fake data that the dataset opener generates with the ``fake_data()`` methods in the dataset opener.
 
-.. _deployed_mode:
+.. _remote_mode:
 
 Debug on a deployed platform
 ----------------------------
