@@ -5,11 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Fixed
-
-- Added explicit substratools dependency in Substra core examples ([#408](https://github.com/Substra/substrafl/pull/408))
+<!-- towncrier release notes start -->
 
 ## [0.36.0]
 
@@ -28,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Updated status diagrams for `ComputePlan` and `ComputeTask` ([#404](https://github.com/Substra/substra-documentation/pull/404))
-  
+
 ## [0.35.0]
 
 ### Added

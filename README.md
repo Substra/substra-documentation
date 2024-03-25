@@ -99,3 +99,19 @@ The documentation is released for each Substra release.
 When a semver tag is pushed or a release is created, the doc is builded and published to ReadTheDocs by the [CI](https://github.com/Substra/substra-documentation/blob/main/.github/workflows/publish_stable.yml).
 Then ReadTheDocs automatically activates this version and set it as default (takes a few minutes).
 You can follow the build on the CI [here](https://github.com/Substra/substra-documentation/actions) and on ReadTheDocs if you have access to the project.
+
+## How to generate the changelog
+
+The changelog is managed with [towncrier](https://towncrier.readthedocs.io/en/stable/index.html).
+To add a new entry in the changelog, add a file in the `changes` folder. The file name should have the following structure:
+`<unique_id>.<change_type>`.
+The `unique_id` is a unique identifier, we currently use the PR number.
+The `change_type` can be of the following types: `added`, `changed`, `removed`, `fixed`.
+
+To generate the changelog (for example during a release), use the following command (you must have the dev dependencies installed):
+
+```
+towncrier build --version=<x.y.z>
+```
+
+You can use the `--draft` option to see what would be generated without actually writing to the changelog (and without removing the fragments).
