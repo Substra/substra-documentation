@@ -31,6 +31,13 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.37.0 --- 2024-03-27
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All**
+
+- Breaking change: `DataSetSpec` no longer take a `type` argument. The `type` argument was not used and was removed.
+- Various improvements of our internal processes and tooling that should make it faster to deliver new features.
 
 Substra 0.36.0 --- 2024-03-12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

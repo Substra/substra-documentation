@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+## [0.37.0](https://github.com/Substra/substra-documentation/releases/tag/0.37.0) - 2024-03-27
+
+
+### Changed
+
+- Apply changes from breaking PR on Substra (#405(https://github.com/Substra/substra/pull/405)) ([#412](https://github.com/Substra/substra-documentation/pull/412))
+
+### Fixed
+
+- Added explicit substratools dependency in Substra core examples ([#408](https://github.com/Substra/substra-documentation/pull/408))
+
+
 ## [0.36.0]
 
 ### Changed
