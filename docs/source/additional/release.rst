@@ -28,6 +28,13 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.28.2 --- 2024-04-05
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Backend**:
+
+- Inject privateCa into Kaniko pods when given.
+
 Substra 0.28.1 --- 2023-09-11
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
