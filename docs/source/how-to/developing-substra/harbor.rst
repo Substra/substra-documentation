@@ -14,7 +14,7 @@ Use in-cluster Harbor
 First-time set-up (specific to in-cluster)
 ------------------------------------------
 
-As ``sudo``, add ``127.0.0.1       harbor.harbor.svc.cluster.local`` to ``/etc/hosts``
+As ``sudo``, add ``127.0.0.1       registry.org-2.com`` to ``/etc/hosts``
 
       .. code:: bash
 
