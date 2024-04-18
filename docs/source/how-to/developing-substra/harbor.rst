@@ -4,7 +4,7 @@ Harbor in local deployment
 
 
 
-This page describes how to use Harbor in our development setup, using skaffold. It is divided in two categories: the first one describes how to use a harbor registry inside the `k3d` cluster, meanwhile the second describes how to use a harbor registry outside of the cluster. The thrid section describes the set-up that will be needed.
+This page describes how to use Harbor in our development setup, using skaffold. It is divided in two categories: the first one describes how to use a harbor registry inside the `k3d` cluster, meanwhile the second describes how to use a harbor registry outside of the cluster. The third section describes the set-up that will be needed.
 
 
 
@@ -23,9 +23,14 @@ As ``sudo``, add ``127.0.0.1       registry.org-2.com`` to ``/etc/hosts``
 Use
 ---
 
-1. Set ``HARBOR_CERT_PATH`` to point to the ``orchestrator/examples/tools/ca.crt`` (``export HARBOR_CERT_PATH=``)
+1. Set ``HARBOR_CERT_PATH`` to point to the ``orchestrator/examples/tools/ca.crt``
+
+   .. code-block:: bash
+
+        export HARBOR_CERT_PATH=orchestrator/examples/tools/ca.crt
 
 2. Re-create the cluster
+
    .. code-block:: bash
 
         ./k3-create.sh
@@ -50,6 +55,7 @@ Use
          ``Local port`` should be replaced by ``30046``)
 
 5. Follow the instructions in Harbor-set-up with the following informations:
+
    -  URL: https://registry.org-2.com:30046
    -  Identifier: ``admin``
    -  Password: ``harborP@ssword2403``
@@ -88,7 +94,7 @@ Harbor-set-up
 
 1. In the frontend, create project ``substra``
 
-2. Set the variable `HARBOR_REGISTRY_DOMAIN` to your registry URL
+2. Set the variable ```HARBOR_REGISTRY_DOMAIN``` to your registry URL
 
     .. code-block:: bash
 
