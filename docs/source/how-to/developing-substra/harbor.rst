@@ -92,7 +92,7 @@ Harbor-set-up
 
     .. code-block:: bash
 
-        export HARBOR_REGISTRY_DOMAIN=
+        export HARBOR_REGISTRY_DOMAIN=<registry_url>
 
 3. Login to the registry
 
