@@ -23,17 +23,19 @@ As ``sudo``, add ``127.0.0.1       registry.org-2.com`` to ``/etc/hosts``
 Use
 ---
 
-1. Set ``HARBOR_CERT_PATH`` to point to the ``orchestrator/examples/tools/ca.crt``
+1. Set ``HARBOR_CERT_PATH`` to point to the absolute path to ``orchestrator/examples/tools/ca.crt``
 
    .. code-block:: bash
 
-        export HARBOR_CERT_PATH=orchestrator/examples/tools/ca.crt
+        export HARBOR_CERT_PATH=<absolute_path_to_orchestrator_repo>/orchestrator/examples/tools/ca.crt
 
-2. Re-create the cluster
+2. Re-create the cluster and launch skaffold on the orchestrator
 
    .. code-block:: bash
 
         ./k3-create.sh
+        cd orchestrator
+        skaffold run
 
 3. Start ``substra-backend`` with profile ``org-2-harbor``
 
