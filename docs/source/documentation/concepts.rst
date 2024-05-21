@@ -92,7 +92,7 @@ Permissions
 -----------
 
 .. warning::
-  The permissions are only enforced on a remote setup (i.e. when using the ``orchestrator``). If you are running an experiment in a local mode, the experiment will run regardless of the permissions.
+  The permissions are only enforced in a remote setup (i.e. when using the ``orchestrator``). If you are running an experiment in a local mode, the experiment will run regardless of the permissions.
 
 All assets metadata are visible by all the users of a channel. So if a user registers a new function or a new dataset, every user of this channel will be able to see the asset medatata (name, creation date, etc). However processing the asset will need specific permissions.
 
