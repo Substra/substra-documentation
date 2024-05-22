@@ -7,3 +7,4 @@ The following guides might be of interest if you are interested in contributing 
    :maxdepth: 1
 
    local-deployment.rst
+   harbor.rst
