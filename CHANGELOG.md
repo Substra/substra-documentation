@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+## [0.38.0](https://github.com/Substra/substra-documentation/releases/tag/0.38.0) - 2024-06-03
+
+### Added
+
+- Documentation on how to use the Harbor profile on substra-backend ([#416](https://github.com/Substra/substra-documentation/pull/416))
+
 ## [0.37.0](https://github.com/Substra/substra-documentation/releases/tag/0.37.0) - 2024-03-27
 
 
