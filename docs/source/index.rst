@@ -100,11 +100,12 @@ Some quick links:
 .. toctree::
    :glob:
    :maxdepth: 2
-   :caption: API Reference
+   :caption: Reference guides
    :hidden:
 
    substrafl_doc/api/index.rst
    documentation/api_reference.rst
+   reference/index.rst
 
 
 .. toctree::
