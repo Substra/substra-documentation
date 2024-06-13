@@ -31,7 +31,7 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
-Substra 0.38.0 --- 2024-06-03
+Substra 0.38.0 --- 2024-06-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **All**
@@ -43,6 +43,10 @@ Substra 0.38.0 --- 2024-06-03
   - Update the different base docker images of the Susbtra components and the the user's ones to limit their vulnerabilities.
 
 - The profiling of functions have been reworked to take into accound the ``builiding`` step and the ``download_function`` step.
+
+**Backend**
+
+- The `user` postgres is no longer created by default in the postgres sql database.
 
 Substra 0.37.0 --- 2024-03-27
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
