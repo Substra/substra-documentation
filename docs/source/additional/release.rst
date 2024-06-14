@@ -38,7 +38,7 @@ Substra 0.38.0 --- 2024-06-13
 
 - The release 0.38.0 focuses on improving the security and limit the rights of the differents Substra pods when deployed on a cluster. The following changes have been made:
 
-  - Ressources requests and limits are now set as default for the backend and frontend.
+  - CPU and memory requests and limits are now provided by default for all orchestrator, backend and frontend pods.
   - Network policies have been added to limit the communication between the different pods.
   - Update the different base docker images of the Susbtra components and the the user's ones to limit their vulnerabilities.
 
