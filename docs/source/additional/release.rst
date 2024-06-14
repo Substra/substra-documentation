@@ -41,12 +41,9 @@ Substra 0.38.0 --- 2024-06-13
   - CPU and memory requests and limits are now provided by default for all orchestrator, backend and frontend pods.
   - Network policies have been added to limit the communication between the different pods.
   - Update the different base docker images of the Susbtra components and the the user's ones to limit their vulnerabilities.
+  - The ``user postgres`` is no longer created by default in the postgreSQL database on both backend and orchestrator.
 
-- The profiling of functions have been reworked to take into accound the ``builiding`` step and the ``download_function`` step.
-
-**Backend**
-
-- The `user` postgres is no longer created by default in the postgres sql database.
+- The profiling of functions have been reworked to take into accound the ``building`` step and the ``download_function`` step.
 
 Substra 0.37.0 --- 2024-03-27
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
