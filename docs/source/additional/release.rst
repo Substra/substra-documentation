@@ -41,7 +41,8 @@ Substra 0.38.0 --- 2024-06-13
   - Ressources requests and limits are now set as default for the backend and frontend.
   - Network policies have been added to limit the communication between the different pods.
   - Update the different base docker images of the Susbtra components and the the user's ones to limit their vulnerabilities.
-  - The profiling of functions have been reworked to take into accound the ``builiding`` step and the ``download_function`` step.
+
+- The profiling of functions have been reworked to take into accound the ``builiding`` step and the ``download_function`` step.
 
 **Backend**
 
