@@ -1,8 +1,8 @@
 # this base image works in both CPU and GPU enabled environments
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 # install dependencies
-RUN pip3 install 'pandas<2.0' 'numpy<2.0' 'scikit-learn==1.1.1' substratools
+RUN pip3 install pandas 'numpy<2.0' 'scikit-learn==1.5.0' substratools
 
 # add your metrics script to docker image
 ADD titanic_metrics.py .
