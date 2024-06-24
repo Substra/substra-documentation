@@ -11,11 +11,11 @@ Substra 0.38.0
 
 This version upgrades the integrated PostgreSQL databases chart. After this uprade, you may get the following warning:
 
-.. info::
+.. note::
 
    You need to apply the following command for the `substra-backend` and the `orchestrator`
 
-.. code-block:: plaintext
+.. code-block::
 
    WARNING: database "<db_name>" has a collation version mismatch                                                                                                                                                     │
    DETAIL:  The database was created using collation version 2.31, but the operating system provides version 2.36.                                                                                                        
