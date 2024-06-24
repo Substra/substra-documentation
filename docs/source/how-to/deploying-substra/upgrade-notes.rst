@@ -4,6 +4,38 @@
 Upgrade notes
 *************
 
+.. _ops upgrade notes 0.38:
+
+Substra 0.38.0
+--------------
+
+This version upgrades the integrated PostgreSQL databases chart. After this uprade, you may get the following warning:
+
+.. info::
+
+   You need to apply the following command for the `substra-backend` and the `orchestrator`
+
+.. code-block:: sql
+
+   WARNING: database "<db_name>" has a collation version mismatch                                                                                                                                                     │
+   DETAIL:  The database was created using collation version 2.31, but the operating system provides version 2.36.                                                                                                        
+   HINT:  Rebuild all objects in this database that use the default collation and run ALTER DATABASE <db_name> REFRESH COLLATION VERSION, or build PostgreSQL with the right library version.
+
+#. Gather required info:
+
+   * Kubernetes namespace (here ``$NAMESPACE``)
+   * Helm release (hereafter ``$POD_NAME``, can be obtained from ``kubectl get pods -n $NAMESPACE``)
+
+#. Run the following commands
+   #. For the backend:
+
+   .. code-block:: bash
+
+      kubectl exec -n $NAMESPACE $POD_NAME -- sh -c 'PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER $POSTGRES_DATABASE -c "REINDEX DATABASE;" -c " ALTER DATABASE \"$POSTGRES_DATABASE\" REFRESH COLLATION VERSION;"'
+
+   #. For the orchestrator, use the previous command replacing `POSTGRES_PASSWORD` and `POSTGRES_USER` by their value
+
+
 .. _ops upgrade notes 0.34:
 
 Substra 0.34.0
