@@ -15,7 +15,7 @@ This version upgrades the integrated PostgreSQL databases chart. After this upra
 
    You need to apply the following command for the `substra-backend` and the `orchestrator`
 
-.. code-block:: sql
+.. code-block:: plaintext
 
    WARNING: database "<db_name>" has a collation version mismatch                                                                                                                                                     │
    DETAIL:  The database was created using collation version 2.31, but the operating system provides version 2.36.                                                                                                        
