@@ -10,6 +10,7 @@ Substra 0.38.0
 --------------
 
 This version upgrades the integrated PostgreSQL databases chart. After this uprade, you may get the following warning:
+
 .. code-block::
 
    WARNING: database "<db_name>" has a collation version mismatch
