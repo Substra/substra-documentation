@@ -1,8 +1,12 @@
 Volumes
 -------
 
+This section lists the different persistent volume claims that are created during a standard deployment of Substra in a cluster.
+
 Orchestrator
 ************
+
+The orchestrator claims are only linked with its database. This database (and the underlying volume) is important has it is where we store all the events that happen in the network.
 
 +--------------+--------------+----------+---------------------------------+--------------------------+---------------+----------------+---------------+----------------------------------------------+---------+
 |   PVC name   |  Component   |   Pod    |           access mode           | Volume Size default (Gi) | storage class | reclaim policy | Can be reused |                How to re use                 | Comment |
@@ -13,6 +17,8 @@ Orchestrator
 
 Backend
 *******
+
+The backend is the more compolex component and requires different volumes for functioning. The ones that requires to be kept are re-usable and can be created outside of the deployment of the Substra stack. The other ones act as cache, and there is no way for now to re-use existing volumes using the Helm chart.
 
 +---------------------+-----------+------------+---------------------------------+--------------------------+---------------+----------------+---------------+----------------------------------------------+----------------------------------------------------+
 |      PVC name       | Component |    Pod     |           access mode           | Volume Size default (Gi) | storage class | reclaim policy | Can be reused |                How to re use                 |                      Comment                       |
@@ -38,4 +44,4 @@ Backend
 Frontend
 ********
 
-no volume used
+The frontend does not need any persistent volume claim.
