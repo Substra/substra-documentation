@@ -29,9 +29,9 @@ This version upgrades the integrated PostgreSQL databases chart. After this upra
 
    #. For the backend:
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      kubectl exec -n $NAMESPACE $POD_NAME -- sh -c 'PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER $POSTGRES_DATABASE -c "REINDEX DATABASE;" -c " ALTER DATABASE \"$POSTGRES_DATABASE\" REFRESH COLLATION VERSION;"'
+         kubectl exec -n $NAMESPACE $POD_NAME -- sh -c 'PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER $POSTGRES_DATABASE -c "REINDEX DATABASE;" -c " ALTER DATABASE \"$POSTGRES_DATABASE\" REFRESH COLLATION VERSION;"'
 
    #. For the orchestrator, use the previous command replacing ``POSTGRES_PASSWORD`` and ``POSTGRES_USER`` by their value
 
