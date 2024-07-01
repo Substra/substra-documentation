@@ -92,6 +92,7 @@
 
 .wy-nav-content {
   margin: 0 auto;
+  max-width: 60em;
 }
 
 /* TYPOGRAPHY */
