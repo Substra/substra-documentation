@@ -19,3 +19,6 @@ All pods can run as non-root, with two exceptions:
 * If the private CA feature is used, the initContainer `add-cert` runs as root.
 
 We are working on ensuring that all pods except the two listed above are compliant with the *restricted* policy.
+
+
+.. include:: volumes.rst
