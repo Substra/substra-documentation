@@ -18,7 +18,7 @@ The orchestrator claims are only linked with its database. This database (and th
 Backend
 *******
 
-The backend is the more compolex component and requires different volumes for functioning. The ones that requires to be kept are re-usable and can be created outside of the deployment of the Substra stack. The other ones act as cache, and there is no way for now to re-use existing volumes using the Helm chart.
+The backend is the most complex component and it requires different volumes for functioning. Volumes that should be persisted on the long term can be created outside of the deployment of the Substra stack. It is not currently possible to re-use existing volumes for the other ones (acting as cache).
 
 +---------------------+-----------+------------+---------------------------------+--------------------------+---------------+----------------+---------------+----------------------------------------------+----------------------------------------------------+
 |      PVC name       | Component |    Pod     |           access mode           | Volume Size default (Gi) | storage class | reclaim policy | Can be reused |                How to re use                 |                      Comment                       |
