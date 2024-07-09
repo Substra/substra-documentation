@@ -9,3 +9,4 @@ Substra is distributed as Helm charts, and most values can be customized to acco
 
 .. include:: pss.rst
 .. include:: netpol.rst
+.. include:: volumes.rst
