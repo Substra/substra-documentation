@@ -44,7 +44,7 @@ The default value for these fields are:
             ...
 
 
-We can see that set the value empty for ``nodeSelector`` and ``tolerations`` but defines an affinity rule that would force the pod to be spawned in the same pod than the worker.
+We can see that it sets empty values for ``nodeSelector`` and ``tolerations`` but defines an affinity rule that would force the pod to be spawned in the same pod than the worker.
 
 .. note::
     To allow flexibility in the way we define our ``nodeSelector``, ``affinity`` and ``tolerations``, we provide the following environment variables to use as `dependent environment variables <https://kubernetes.io/docs/tasks/inject-data-application/define-interdependent-environment-variables/>`_:
@@ -55,7 +55,7 @@ We can see that set the value empty for ``nodeSelector`` and ``tolerations`` but
 On-demand GPU
 =============
 
-In this section, we are using as an example use a dedicated node-pool to run the functions pods, provisioning nodes only when required. This example also feature using GPU sharing.
+In this section, we are using as an example a dedicated node-pool to run the functions pods, provisioning nodes only when required. This example also features using GPU sharing.
 
 Activating GPU
 --------------
@@ -68,8 +68,8 @@ For the following example, we will assume that you have 2 node-pools:
 For our example, we assume ``node-pool-gpu`` has the following:
 
 - labels:
-    ``node-type=substra-tasks-gpu``
-    ``node_pool=node-pool-gpu``
+    - ``node-type=substra-tasks-gpu``
+    - ``node_pool=node-pool-gpu``
 - taints:
     - ``node-type=substra-tasks-gpu:NoSchedule``
     - ``nvidia.com/gpu=true:Noschedule``
@@ -176,7 +176,7 @@ You have to activate the following settings in your node-pool:
         }
         
 
-In your value file, add the following:
+In your values file, add the following:
 
 .. code::
 
@@ -188,13 +188,13 @@ In your value file, add the following:
                 cloud.google.com/gke-gpu-sharing-strategy: time-sharing
                 cloud.google.com/gke-max-shared-clients-per-gpu: <pod_count>
 
-Other providers
----------------
+Other cloud providers
+---------------------
 
-For other providers, we recommend reading directly the documentation from your provider. If you're using a Nvidia GPU, you can read the reference on sharing GPU between pods (`Time-slicing <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html>`_ and `Multiple instance GPU (MIG) <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-operator-mig.html>`_)
+For other cloud providers, we recommend reading directly the documentation from your provider. If you're using a Nvidia GPU, you can read the reference on sharing GPU between pods (`Time-slicing <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html>`_ and `Multiple instance GPU (MIG) <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-operator-mig.html>`_)
 
-Other graphic card providers
-----------------------------
+Other GPU providers
+-------------------
 
 We did not test with other providers, but our understanding is that:
 
