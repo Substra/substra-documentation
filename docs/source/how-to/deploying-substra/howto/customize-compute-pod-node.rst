@@ -93,22 +93,88 @@ In the value file, we add the following:
                 operator: Exists
         ...
 
-We set explicitely ``affinity`` to ``null`` to force it to take a null value (instead of using the default value that we saw before).
+We set explicitely ``affinity`` to ``null`` to force a null value (instead of using the default value that we saw before).
 
 The ``nodeSelector`` corresponds to the label we set to the node, and the tolerations corresponds to the taint we added to the node.
+
+Activating GPU on Google Kubernetes Engine + Nvidia
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using Terraform:
+
+.. code::
+
+    module "<cluster_name>" {
+        source  = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
+        ...
+        node_pools = [
+            ...
+            {
+                ...
+                name               = "node-pool-gpu"
+                autoscaling        = true
+                min_count          = 0
+                max_count          = 3
+                image_type         = "COS_CONTAINERD"
+                auto_upgrade       = true
+                accelerator_type   = <accelerator_type>
+                gpu_driver_version = "LATEST"
+                accelerator_count  = <accelerator_count>
+                ...
+            },
+            ...
+        ]
+    ...
+    }
+
+with the following values:
+
+- ``<cluster_name>``: The name of the cluster
+- ``<accelerator_type>``: The ID of the GPU to use, you can find the list `here <https://cloud.google.com/compute/docs/gpus?hl=fr#nvidia_gpus_for_compute_workloads>`_
+- ``<accelerator_count>``: The number of GPU to attach to your node pool
+
+We set ``autoscale: true`` and ``min_count: 0`` allow to have no node with GPU when not in use.
+
+.. warning:: 
+
+    At this stage, your GPU will be available to 1 pod at the same time. In Substra, we keep the pods up until the end of the compute plan, and each function create a pod.
+    If you want to share the GPU between pods, please read the following section.
 
 Sharing GPU between pods
 ------------------------
 
-Google Kubernetes Engine + Nvidia
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sharing GPU on Google Kubernetes Engine + Nvidia
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses time-slicing. If this is not fitting your needs, please refer to GCP documentation page on `other GPU-slicing methods <https://cloud.google.com/kubernetes-engine/docs/how-to/nvidia-mps-gpus>`_.
+We will refer to the count of pods sharing the same GPU by ``<pod_count>``.
 
-You have to activate the following settings in your node-pool through the interface:
+You have to activate the following settings in your node-pool:
 
-- Set "Activate GPU"
-- Set "GPU sharing strategy" to "Time-sharing"
+-  through the interface
+    - Set "Activate GPU"
+    - Set "GPU sharing strategy" to "Time-sharing"
+    - Set the Maximum number of pods sharing a GPU to ``<pod_count>``
+- through Terraform
+    
+    .. code::
+
+        module "<cluster_name>" {
+            source  = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
+            ...
+            node_pools = [
+                ...
+                {
+                    ...
+                    gpu_sharing_strategy       = "time-sharing"
+                    max_shared_clients_per_gpu = <pod_count>
+                    ...
+                },
+                ...
+            ]
+        ...
+        }
+        
 
 In your value file, add the following:
 
@@ -120,9 +186,7 @@ In your value file, add the following:
             nodeSelector:
                 ...
                 cloud.google.com/gke-gpu-sharing-strategy: time-sharing
-                cloud.google.com/gke-max-shared-clients-per-gpu: x
-
-``x`` being the number of pods that would share the GPU.
+                cloud.google.com/gke-max-shared-clients-per-gpu: <pod_count>
 
 Other providers
 ---------------
