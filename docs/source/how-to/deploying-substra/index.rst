@@ -18,6 +18,7 @@ The :ref:`compatibility table` contains a reference of Substra versions compatib
    :hidden:
 
    walkthrough.rst
+   howto/customize-compute-pod-node.rst
    howto/existing-volumes.rst
    howto/external-database.rst
    howto/sso-oidc.rst
