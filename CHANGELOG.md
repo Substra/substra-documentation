@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+Test test
+
 ## [0.38.0](https://github.com/Substra/substra-documentation/releases/tag/0.38.0) - 2024-06-03
 
 ### Added
