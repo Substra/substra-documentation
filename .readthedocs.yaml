@@ -14,8 +14,7 @@ build:
     - asdf install uv latest
     - asdf global uv latest
     - uv venv
-    - uv -r docs/requirements.txt
-
+    - uv pip install -r docs/requirements.txt
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
   configuration: docs/source/conf.py
