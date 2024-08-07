@@ -8,38 +8,38 @@ components: # for table headers
   - substra-tests
 
 releases:
-  - version: 0.38.0fake
+  - version: 0.38.10fake
     components:
       substrafl:
-        version: 0.46.0fake
-        link: https://github.com/Substra/substrafl/releases/tag/0.46.0fake
+        version: 0.46.10fake
+        link: https://github.com/Substra/substrafl/releases/tag/0.46.10fake
       substra:
-        version: 0.53.0fake
-        link: https://github.com/Substra/substra/releases/tag/0.53.0fake
+        version: 0.53.10fake
+        link: https://github.com/Substra/substra/releases/tag/0.53.10fake
       substra-tools:
-        version: 0.21.4fake
-        link: https://github.com/Substra/substra-tools/releases/tag/0.21.4
+        version: 0.21.10fake
+        link: https://github.com/Substra/substra-tools/releases/tag/0.21.10fake
       substra-backend:
-        version: 0.47.0fake
-        link: https://github.com/Substra/substra-backend/releases/tag/0.47.0fake
+        version: 0.47.10fake
+        link: https://github.com/Substra/substra-backend/releases/tag/0.47.10fake
         helm:
-          version: 26.7.2fake
-          link: https://artifacthub.io/packages/helm/substra/substra-backend/26.7.2
+          version: 26.7.10fake
+          link: https://artifacthub.io/packages/helm/substra/substra-backend/26.7.10fake
       orchestrator:
-        version: 0.42.0fake
-        link: https://github.com/Substra/orchestrator/releases/tag/0.42.0fake
+        version: 0.42.10fake
+        link: https://github.com/Substra/orchestrator/releases/tag/0.42.10fake
         helm:
           version: 8.7.5fake
           link: https://artifacthub.io/packages/helm/substra/orchestrator/8.7.5
       substra-frontend:
-        version: 0.51.0fake
-        link: https://github.com/Substra/substra-frontend/releases/tag/0.51.0fake
+        version: 0.51.10fake
+        link: https://github.com/Substra/substra-frontend/releases/tag/0.51.10fake
         helm:
           version: 1.1.2fake
           link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.1.2
       substra-tests:
-        version: 0.51.0fake
-        link: https://github.com/Substra/substra-tests/releases/tag/0.51.0fake
+        version: 0.51.10fake
+        link: https://github.com/Substra/substra-tests/releases/tag/0.51.10fake
   - version: 0.38.0
     components:
       substrafl:
