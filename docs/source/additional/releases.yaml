@@ -35,8 +35,8 @@ releases:
         version: 0.51.10fake
         link: https://github.com/Substra/substra-frontend/releases/tag/0.51.10fake
         helm:
-          version: 1.1.2fake
-          link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.1.2
+          version: 1.1.10fake
+          link: https://artifacthub.io/packages/helm/substra/substra-frontend/1.1.10fake
       substra-tests:
         version: 0.51.10fake
         link: https://github.com/Substra/substra-tests/releases/tag/0.51.10fake
