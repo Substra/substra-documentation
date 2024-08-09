@@ -395,8 +395,6 @@ nitpick_ignore = [
     ("py:class", "substra.sdk.schemas.FunctionOutputSpec"),
     ("py:class", "substra.sdk.schemas.FunctionInputSpec"),
     ("py:class", "ComputePlan"),
-    ("py:class", "CUpdateRule"),
-    ("py:class", "substrafl.algorithms.pytorch.torch_scaffold_algo.CUpdateRule"),
 ]
 
 # This must be the name of an image file (path relative to the configuration
@@ -449,3 +447,10 @@ html_show_sphinx = False
 html_context = {
     "display_github": False,
 }
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    html_context["READTHEDOCS"] = True
