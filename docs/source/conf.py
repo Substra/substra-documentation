@@ -289,7 +289,6 @@ release = _doc_version
 # ones.
 extensions = [
     "nbsphinx",
-    "sphinx_build_compatibility.extension",
 ]
 
 extensions.extend(
