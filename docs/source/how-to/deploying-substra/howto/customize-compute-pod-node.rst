@@ -8,7 +8,7 @@ Context
 In some cases, you may want to spawn the compute functions on another node than the one hosting the worker. This could be done, for instance, when you want to dynamically provision a node with a GPU to run compute functions.
 
 .. warning::
-    In the case where you want to spawn the compute functions on a node different than the one hosting the ``worker``, you need to have a provider that can provide volumes with read-mode RWX and set ``.Values.worker.accessModes`` to ``["ReadWriteMultiple"]``
+    In the case where you want to spawn the compute functions on a node different than the one hosting the ``worker``, you need to have a provider that can provide volumes with read-mode RWX and set ``.Values.worker.accessModes`` to ``["ReadWriteMany"]``
 
 We provide a way to set ``nodeSelector``, ``affinity`` and ``tolerations`` through Helm values.
 
