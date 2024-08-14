@@ -1,0 +1,1 @@
+Apply `use_gpu` to `diasble_gpu` renaming on SubstraFL in all `TorchAlgo`
