@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # install dependencies
-RUN pip3 install 'pandas<2.0' 'numpy<2.0' 'substratools==0.22.0a2'
+RUN pip3 install pandas 'numpy<2.0' 'scikit-learn==1.5.0' substratools
 
 # add your algorithm script to docker image
 ADD federated_analytics_functions.py .
