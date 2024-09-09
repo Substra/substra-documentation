@@ -22,7 +22,7 @@ Installation
 
 .. _installation:
 
-Substrafl and Substra are compatible with Python versions 3.9, 3.10, 3.11 and 3.12 on Windows, MacOS and Linux.
+Substrafl and Substra are compatible with Python versions 3.10, 3.11 and 3.12 on Windows, MacOS and Linux.
 
 .. note::
 

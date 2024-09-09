@@ -96,7 +96,7 @@ We modify the Dockerfile to install R in the container, and copy both R and Pyth
     :caption: Dockerfile
 
     # this base image works in both CPU and GPU enabled environments
-    FROM python:3.9-slim
+    FROM python:3.12-slim
 
     # install R
     RUN apt-get update \
