@@ -40,9 +40,9 @@ Substra 0.39.0 --- 2024-09-13
 
     **This will the last version offering support for Python 3.9!**
 
-- We are now supporting Python 3.12.
+- We are now supporting Python 3.12
 
-- Please make sure your workflows relies on Python 3.10 at least from now on.
+- Please make sure your workflows relies on Python 3.10 at least from now on
 
 .. warning::
 
@@ -56,7 +56,7 @@ Substra 0.39.0 --- 2024-09-13
 
 **SubstraFL**
 
-- BREAKING: change ``use_gpu`` to ``disable_gpu`` in all ``TorchAlgo``.
+- **BREAKING**: renamed argument ``use_gpu`` to ``disable_gpu`` in ``TorchAlgo``
 
 - Enforced ``substrafl`` compatibility with GPU workflows
 
@@ -64,13 +64,12 @@ Substra 0.39.0 --- 2024-09-13
 
 - Reduced build time by downloading functions only if not present on the current backend
 
-
 **Operations**
 
 - Enabled (on-demand) GPU compatibility. The main visible change is the introduction of the new fields in substra-backend charts, allowing the use of node pools spawned on-demand with specific capabilities (like GPUs):
-  - ``worker.computePod.affinity``
-  - ``worker.computePod.nodeSelector``
-  - ``worker.computePod.tolerations``
+    - ``worker.computePod.affinity``
+    - ``worker.computePod.nodeSelector``
+    - ``worker.computePod.tolerations``
 
 - Allow to use pre-defined (instead of packaged) secrets in substra-backend (in particular ``accountOperator``)
 
