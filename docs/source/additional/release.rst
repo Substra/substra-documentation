@@ -31,6 +31,24 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.39.0 --- 2024-09-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All**
+
+- The release 0.39.0 focuses on using GPU and on-demand GPU. The main visible change is the introduction of the new fields in susbtra-backend charts `worker.computePod.affinity`, `worker.computePod.nodeSelector` and `worker.computePod.tolerations`, allowing the use of node pools spawned on-demand with specific capabilities (like with a GPU).
+
+Other changes include:
+- Allow re-use of secrets (instead of runtime generation) in substra-backend
+- Reduced build time by downloading functions only if not present on the current backend 
+- Better handling of errors without logs
+- Function profiling has been introduced, available on all frontend on linked tasks.
+- add support python 3.12
+
+**SubstraFL**
+
+- BREAKING: change `use_gpu`` to `disable_gpu` in all `TorchAlgo`. 
+
 Substra 0.38.0 --- 2024-06-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
