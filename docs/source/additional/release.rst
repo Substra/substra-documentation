@@ -36,18 +36,44 @@ Substra 0.39.0 --- 2024-09-13
 
 **All**
 
-- The release 0.39.0 focuses on using GPU and on-demand GPU. The main visible change is the introduction of the new fields in susbtra-backend charts `worker.computePod.affinity`, `worker.computePod.nodeSelector` and `worker.computePod.tolerations`, allowing the use of node pools spawned on-demand with specific capabilities (like with a GPU).
+.. warning::
 
-Other changes include:
-- Allow re-use of secrets (instead of runtime generation) in substra-backend
-- Reduced build time by downloading functions only if not present on the current backend 
-- Better handling of errors without logs
-- Function profiling has been introduced, available on all frontend on linked tasks.
-- add support python 3.12
+    **This will the last version offering support for Python 3.9!**
+
+- We are now supporting Python 3.12.
+
+- Please make sure your workflows relies on Python 3.10 at least from now on.
+
+.. warning::
+
+    **It's not longer possible to generate never-expiring tokens via the web application.**
+
+- BREAKING: User tokens previously generated via the web application without an expiry date will expire during an upgrade towards 0.39.0
+
+- Improved handling of errors without logs
+
+- Introducing function profiling, available on linked tasks via the web application
 
 **SubstraFL**
 
-- BREAKING: change `use_gpu`` to `disable_gpu` in all `TorchAlgo`. 
+- BREAKING: change ``use_gpu`` to ``disable_gpu`` in all ``TorchAlgo``.
+
+- Enforced ``substrafl`` compatibility with GPU workflows
+
+**Backend**
+
+- Reduced build time by downloading functions only if not present on the current backend
+
+
+**Operations**
+
+- Enabled (on-demand) GPU compatibility. The main visible change is the introduction of the new fields in substra-backend charts, allowing the use of node pools spawned on-demand with specific capabilities (like GPUs):
+  - ``worker.computePod.affinity``
+  - ``worker.computePod.nodeSelector``
+  - ``worker.computePod.tolerations``
+
+- Allow to use pre-defined (instead of packaged) secrets in substra-backend (in particular ``accountOperator``)
+
 
 Substra 0.38.0 --- 2024-06-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
