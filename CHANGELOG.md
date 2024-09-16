@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+## [0.39.0](https://github.com/Substra/substra-documentation/releases/tag/0.39.0) - 2024-09-13
+
+### Added
+
+- Documentation on Kubernetes volumes. ([#424](https://github.com/Substra/substra-documentation/pull/424))
+- Documentation on network policies. ([#425](https://github.com/Substra/substra-documentation/pull/425))
+- How-to on `nodeSelector`, `affinity` and `taints` for the compute function ([#429](https://github.com/Substra/substra-documentation/pull/429))
+- Support Python 3.12. ([#430](https://github.com/Substra/substra-documentation/pull/430))
+
+### Changed
+
+- Apply `use_gpu` to `diasble_gpu` renaming on SubstraFL in all `TorchAlgo` ([#436](https://github.com/Substra/substra-documentation/pull/436))
+
+### Fixed
+
+- Ignore `IntEnum` in API reference documentation. ([#427](https://github.com/Substra/substra-documentation/pull/427))
+- Bump pytorch version to 2.2.1 in tests. ([#431](https://github.com/Substra/substra-documentation/pull/431))
+
+
 ## [0.38.0](https://github.com/Substra/substra-documentation/releases/tag/0.38.0) - 2024-06-03
 
 ### Added

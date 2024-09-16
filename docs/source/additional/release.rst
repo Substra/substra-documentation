@@ -31,6 +31,49 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 0.39.0 --- 2024-09-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All**
+
+.. warning::
+
+    **This will the last version offering support for Python 3.9!**
+
+- We are now supporting Python 3.12
+
+- Please make sure your workflows relies on Python 3.10 at least from now on
+
+.. warning::
+
+    **It's not longer possible to generate never-expiring tokens via the web application.**
+
+- BREAKING: User tokens previously generated via the web application without an expiry date will expire during an upgrade towards 0.39.0
+
+- Improved handling of errors without logs
+
+- Introducing function profiling, available on linked tasks via the web application
+
+**SubstraFL**
+
+- **BREAKING**: renamed argument ``use_gpu`` to ``disable_gpu`` in ``TorchAlgo``
+
+- Enforced ``substrafl`` compatibility with GPU workflows
+
+**Backend**
+
+- Reduced build time by downloading functions only if not present on the current backend
+
+**Operations**
+
+- Enabled (on-demand) GPU compatibility. The main visible change is the introduction of the new fields in substra-backend charts, allowing the use of node pools spawned on-demand with specific capabilities (like GPUs):
+    - ``worker.computePod.affinity``
+    - ``worker.computePod.nodeSelector``
+    - ``worker.computePod.tolerations``
+
+- Allow to use pre-defined (instead of packaged) secrets in substra-backend (in particular ``accountOperator``)
+
+
 Substra 0.38.0 --- 2024-06-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
