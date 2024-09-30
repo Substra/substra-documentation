@@ -1,5 +1,5 @@
-matplotlib==3.6.3
-scikit-learn==1.5.0
+matplotlib==3.9.2
+scikit-learn==1.5.2
 pandas==2.2.2
 substra
 substratools
