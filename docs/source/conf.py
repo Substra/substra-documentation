@@ -396,6 +396,10 @@ nitpick_ignore = [
     ("py:class", "substrafl.algorithms.pytorch.torch_scaffold_algo.CUpdateRule"),
 ]
 
+nitpick_ignore_regex = [
+    # Used to ignore a torch.nn.Parameter`s\n... as we cannot identify the exact content of it
+    ("py:class", r"torch.nn.Parameter(?s:.)*"),
+]
 # This must be the name of an image file (path relative to the configuration
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
