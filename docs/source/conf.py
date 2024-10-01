@@ -358,9 +358,7 @@ nitpick_ignore = [
     ("py:class", "torch.nn.modules.module.Module"),
     ("py:class", "torch.nn.modules.Module"),
     ("py:class", "torch.nn.modules.loss._Loss"),
-    ("py:class", "torch.optim.optimizer.Optimizer"),
     ("py:class", "torch.optim.lr_scheduler._LRScheduler"),
-    ("py:class", "torch.utils.data.dataset.Dataset"),
     ("py:class", "torch.nn.modules.module.T"),
     ("py:class", "string"),
     ("py:class", "Module"),
@@ -378,7 +376,6 @@ nitpick_ignore = [
     ("py:attr", "strict"),
     ("py:attr", "grad_output"),
     ("py:attr", "requires_grad"),
-    ("py:attr", "device"),
     ("py:attr", "non_blocking"),
     ("py:attr", "dst_type"),
     ("py:attr", "dtype"),
@@ -399,6 +396,10 @@ nitpick_ignore = [
     ("py:class", "substrafl.algorithms.pytorch.torch_scaffold_algo.CUpdateRule"),
 ]
 
+nitpick_ignore_regex = [
+    # Used to ignore a torch.nn.Parameter`s\n... as we cannot identify the exact content of it
+    ("py:class", r"torch.nn.Parameter(?s:.)*"),
+]
 # This must be the name of an image file (path relative to the configuration
 # directory) that is the favicon of the docs. Modern browsers use this as
 # the icon for tabs, windows and bookmarks. It should be a Windows-style
