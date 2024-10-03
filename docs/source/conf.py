@@ -41,20 +41,13 @@ tagged_commits = [tag.commit for tag in repo.tags]
 if os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag" or current_commit in tagged_commits:
     # Index 0 means latest release
     SUBSTRA_VERSION = compat_table["releases"][0]["components"]["substra"]["version"]
-    TOOLS_VERSION = compat_table["releases"][0]["components"]["substra-tools"]["version"]
     SUBSTRAFL_VERSION = compat_table["releases"][0]["components"]["substrafl"]["version"]
 
 else:
     SUBSTRA_VERSION = "main"
-    TOOLS_VERSION = "main"
     SUBSTRAFL_VERSION = "main"
 
-print(
-    f"Versions of the components used:"
-    f"\n - substra: {SUBSTRA_VERSION}"
-    f"\n - substra-tools: {TOOLS_VERSION}"
-    f"\n - substrafl: {SUBSTRAFL_VERSION}"
-)
+print(f"Versions of the components used:" f"\n - substra: {SUBSTRA_VERSION}" f"\n - substrafl: {SUBSTRAFL_VERSION}")
 
 
 class SubSectionTitleOrder:

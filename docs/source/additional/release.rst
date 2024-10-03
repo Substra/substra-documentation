@@ -27,7 +27,6 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `substra changelog <https://github.com/Substra/substra/blob/main/CHANGELOG.md>`__
 - `substrafl changelog <https://github.com/Substra/substrafl/blob/main/CHANGELOG.md>`__
 - `frontend changelog <https://github.com/Substra/substra-frontend/blob/main/CHANGELOG.md>`__
-- `substra-tools changelog <https://github.com/Substra/substra-tools/blob/main/CHANGELOG.md>`__
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 

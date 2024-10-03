@@ -70,7 +70,7 @@ Use external Harbor
 2. Create ``docker-config`` secret
 
  .. code:: bash
-      
+
       kubectl create secret docker-registry docker-config -n org-2 --docker-server=<your-registry-server> --docker-username=<your-name>
 
 3. Update your value file (you can use ``backend-org-2-harbor.yaml`` as a model)
@@ -82,7 +82,7 @@ Use external Harbor
 
       containerRegistry:
         local: false
-        scheme: 
+        scheme:
         host: # The host, without the port, as it is defined in the field port
         pullDomain: # The harbor host, with the port as it won't use the port field
         port: 443
@@ -114,16 +114,16 @@ Harbor-set-up
 
       .. code:: bash
 
-         docker pull ghcr.io/substra/substra-tools:latest
+         docker pull <base-image>
 
    2. Tag it
 
       .. code:: bash
 
-         docker tag ghcr.io/substra/substra-tools:latest $HARBOR_REGISTRY_DOMAIN/substra/substra-tools:latest
+         docker tag  <base-image>:latest $HARBOR_REGISTRY_DOMAIN/<base-image>:latest
 
    3. Push to repository
 
       .. code:: bash
 
-         docker push $HARBOR_REGISTRY_DOMAIN/substra/substra-tools:latest
+         docker push $HARBOR_REGISTRY_DOMAIN/ <base-image>:latest

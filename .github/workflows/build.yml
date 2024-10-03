@@ -17,13 +17,6 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Clone substra-tools
-        uses: actions/checkout@v2
-        with:
-          repository: substra/substra-tools
-          path: substra-tools
-          ref: main
-
       - name: Clone substra
         uses: actions/checkout@v2
         with:
@@ -38,11 +31,10 @@ jobs:
           path: substrafl
           ref: main
 
-      - name: Install substra, substra-tools and substrafl
+      - name: Install substra and substrafl
         run: |
           pip install -e ./substrafl
           pip install -e ./substra
-          pip install -e ./substra-tools
 
       - name: Copy substra and substrafl api doc in the doc
         run: |

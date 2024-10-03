@@ -252,7 +252,7 @@ Now you are ready to go, you can either run the :doc:`Substra examples </example
 
 This local deployment is for developing or testing Substra. If you want to have a more production-ready deployment and a more customized set-up, have a look at the :doc:`deployment section <../deploying-substra/index>`.
 
-Documentation on running tests on any of the Substra components is available on the component repositories, see `substra <https://github.com/substra/substra>`_, `substrafl <https://github.com/substra/substrafl>`_, `substra-tools <https://github.com/substra/substra-tools>`_, substra-backend_, orchestrator_, substra-frontend_ and `substra-tests <https://github.com/substra/substra-tests>`_ repositories.
+Documentation on running tests on any of the Substra components is available on the component repositories, see `substra <https://github.com/substra/substra>`_, `substrafl <https://github.com/substra/substrafl>`_, substra-backend_, orchestrator_, substra-frontend_ and `substra-tests <https://github.com/substra/substra-tests>`_ repositories.
 
 Troubleshooting
 ===============
