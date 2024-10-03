@@ -707,7 +707,7 @@ This means that all opener.py file should be changed from:
 
 .. code-block:: python
 
-  import substratools as tools
+  from substra import tools
 
   class TestOpener(tools.Opener):
       def get_X(self, folders):
@@ -726,7 +726,7 @@ to:
 
 .. code-block:: python
 
-  import substratools as tools
+  from substra import tools
 
   class TestOpener(tools.Opener):
       def get_data(self, folders):

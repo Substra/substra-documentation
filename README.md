@@ -37,7 +37,7 @@ To deploy the documentation locally you need to install all the necessary requir
 You also need to manually install [pandoc](https://github.com/jgm/pandoc/releases/tag/3.1.11.1).
 
 
-### Install substra, substratools and substrafl in editable mode
+### Install substra and substrafl in editable mode
 
 :warning: if you have these repositories installed in non-editable mode, it will not work.
 
@@ -46,11 +46,6 @@ Install the repositories in editable mode:
 ```sh
 git clone git@github.com:Substra/substra.git
 cd substra && pip install -e . && cd ..
-```
-
-```sh
-git clone git@github.com:Substra/substra-tools.git
-cd substra-tools && pip install -e . && cd ..
 ```
 
 ```sh

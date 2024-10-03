@@ -5,10 +5,10 @@ import pickle
 
 import numpy as np
 import pandas as pd
-import substratools as tools
+from substra import tools
 
 
-# We are using helper decorators from the substratools library to avoid rewriting boilerplate code.
+# We are using helper decorators from the substra.tools library to avoid rewriting boilerplate code.
 # The function to be registered takes an `inputs` parameter, which will be matched to the list of
 # `FunctionInputSpec` provided in the `FunctionSpec` definition.
 # In a similar way, the parameter `outputs` will be matched to the `FunctionOutputSpec`.
@@ -20,8 +20,7 @@ def local_first_order_computation(inputs, outputs, task_properties):
         "n_samples": len(df),
         "means": df.select_dtypes(include=np.number).sum().to_dict(),
         "counts": {
-            name: series.value_counts().to_dict()
-            for name, series in df.select_dtypes(include="category").items()
+            name: series.value_counts().to_dict() for name, series in df.select_dtypes(include="category").items()
         },
     }
     save_states(states, outputs["local_analytics_first_moments"])

@@ -1,7 +1,7 @@
 import pathlib
 import numpy as np
 import pandas as pd
-import substratools as tools
+from substra import tools
 
 
 class DiabetesOpener(tools.Opener):

@@ -1,4 +1,4 @@
-import substratools as tools
+from substra import tools
 from sklearn.metrics import accuracy_score
 import pandas as pd
 

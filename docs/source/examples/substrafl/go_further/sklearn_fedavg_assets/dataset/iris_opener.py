@@ -1,6 +1,6 @@
 import pathlib
 import numpy as np
-import substratools as tools
+from substra import tools
 
 
 class IrisOpener(tools.Opener):

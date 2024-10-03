@@ -4,18 +4,13 @@ import string
 
 import numpy as np
 import pandas as pd
-import substratools as tools
+from substra import tools
 
 
 class TitanicOpener(tools.Opener):
     def get_data(self, folders):
         # find csv files
-        paths = [
-            os.path.join(folder, f)
-            for folder in folders
-            for f in os.listdir(folder)
-            if f.endswith(".csv")
-        ]
+        paths = [os.path.join(folder, f) for folder in folders for f in os.listdir(folder) if f.endswith(".csv")]
 
         # load data
         data = pd.concat([pd.read_csv(path) for path in paths])

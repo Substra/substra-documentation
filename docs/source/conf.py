@@ -195,12 +195,6 @@ SUBSTRA_REPOS = [
         doc_dir="docs/api",
         dest_doc_dir="substrafl_doc/api",
     ),
-    Repo(
-        pkg_name="substratools",
-        repo_name="substra-tools",
-        installation_cmd="#egg=substratools",
-        version=TOOLS_VERSION,
-    ),
 ]
 
 

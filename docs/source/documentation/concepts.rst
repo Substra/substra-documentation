@@ -9,7 +9,6 @@ Substra overview
 .. toctree::
    :maxdepth: 1
 
-   substra_tools
 
 Assets
 ------

@@ -45,7 +45,7 @@ Finally, the output is saved as a pickle file, to be shared with other organisat
 
     import pickle
     import subprocess
-    import substratools as tools
+    from substra import tools
 
 
     @tools.register
@@ -75,7 +75,7 @@ When using R, we don't need to load the data as Python objects in memory, so the
     :caption: opener.py
 
     import pathlib
-    import substratools as tools
+    from substra import tools
 
     import os
 

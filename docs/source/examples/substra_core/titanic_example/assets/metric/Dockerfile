@@ -2,7 +2,7 @@
 FROM python:3.12-slim
 
 # install dependencies
-RUN pip3 install pandas numpy 'scikit-learn==1.5.2' substratools
+RUN pip3 install pandas numpy 'scikit-learn==1.5.2' substra
 
 # add your metrics script to docker image
 ADD titanic_metrics.py .
