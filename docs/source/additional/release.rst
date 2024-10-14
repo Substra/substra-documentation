@@ -31,6 +31,27 @@ This is an overview of the main changes, please have a look at the changelog of 
 - `backend changelog <https://github.com/Substra/substra-backend/blob/main/CHANGELOG.md>`__
 - `orchestrator changelog <https://github.com/Substra/orchestrator/blob/main/CHANGELOG.md>`__
 
+Substra 1.0.0 --- 2024-10-14
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**All**
+
+- Drop support for Python 3.9
+- Update dependencies
+
+**SubstraFL**
+
+- The `Dependency` object now takes an optional parameter `binary_dependencies` to specify binary packages to be
+  installed in the computation container
+- cuda base docker image is now `nvidia/cuda:12.6.1-runtime-ubuntu24.04`
+
+**Backend**
+
+- Improve error handling
+- Users management commands now can update and delete organizations and users
+- Cancelling compute plans now cancels function builds
+
+
 Substra 0.39.0 --- 2024-09-13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
