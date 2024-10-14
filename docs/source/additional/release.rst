@@ -10,7 +10,6 @@ These sets of versions have been tested for compatibility:
 
 .. compatibilitytable:: releases.yaml
 
-
 .. only:: html
 
    .. note::
@@ -36,7 +35,7 @@ Substra 1.0.0 --- 2024-10-14
 
 **All**
 
-.. info::
+.. note::
 
   After years of continuous development and refinement, we're excited to announce the official release of Substra 1.0, featuring a robust and fully matured API.
 
