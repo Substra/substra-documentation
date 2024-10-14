@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+## [1.0.0](https://github.com/Substra/substra-documentation/releases/tag/1.0.0) - 2024-10-14
+
+### Changed
+
+- Bump all examples dependencies. ([#441](https://github.com/Substra/substra-documentation/pull/441))
+
+### Removed
+
+- Drop Python 3.9 support. ([#439](https://github.com/Substra/substra-documentation/pull/439))
+
+
 ## [0.39.0](https://github.com/Substra/substra-documentation/releases/tag/0.39.0) - 2024-09-13
 
 ### Added
