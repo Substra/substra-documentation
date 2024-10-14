@@ -23,8 +23,8 @@ releases:
         version: 1.0.0
         link: https://github.com/Substra/substra-backend/releases/tag/0.48.0
         helm:
-          version: 26.14.1
-          link: https://artifacthub.io/packages/helm/substra/substra-backend/26.14.1
+          version: 26.14.2
+          link: https://artifacthub.io/packages/helm/substra/substra-backend/26.14.2
       orchestrator:
         version: 1.0.0
         link: https://github.com/Substra/orchestrator/releases/tag/1.0.0
