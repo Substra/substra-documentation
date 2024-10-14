@@ -36,6 +36,11 @@ Substra 1.0.0 --- 2024-10-14
 
 **All**
 
+.. info::
+
+  After years of continuous development and refinement, we're excited to announce the official release of Substra 1.0, featuring a robust and fully matured API.
+
+
 - Drop support for Python 3.9
 - Update dependencies
 
