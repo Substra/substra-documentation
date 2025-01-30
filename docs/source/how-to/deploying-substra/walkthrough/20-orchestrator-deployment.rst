@@ -126,11 +126,11 @@ To setup TLS, follow these steps:
 
          rm orchestrator-cert.csr orchestrator-ca.srl
 
-#. Create a Kubernetes ConfigMap for the CA certificate:
+#. Create a Kubernetes Secret for the CA certificate:
    
    .. code-block:: bash
       
-      kubectl create configmap orchestrator-tls-cacert --from-file=ca.crt=orchestrator-ca.crt
+      kubectl create secret generic orchestrator-tls-cacert --from-file=ca.crt=orchestrator-ca.crt
 
 #. Create a Kubernetes Secret for the orchestrator TLS key and certificate:
 
