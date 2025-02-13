@@ -49,9 +49,12 @@ To configure your values:
         host: ORCHESTRATOR_HOSTNAME
         port: ORCHESTRATOR_PORT
         mspID: ingen
+        sameCluster: ORCHESTRATOR_SAME_CLUSTER
+
 
    | ``ORCHESTRATOR_HOSTNAME`` should be ``orchestrator.cluster-1.DOMAIN`` if you are _outside_ the cluster, but if we are working on ``cluster-1`` we should use its local name ``orchestrator-server.orchestrator`` (following the ``service-name.namespace`` convention).
    | ``ORCHESTRATOR_PORT`` should be ``443`` if TLS is enabled, otherwise ``80``.
+   | ``ORCHESTRATOR_SAME_CLUSTER`` should be ``true`` if the backend is in the same cluster as the orchestrator, otherwise ``false``.
 
 .. _backend-channel-config:
 
@@ -127,3 +130,27 @@ Deploy the Chart
    .. code-block:: javascript
 
       {"detail":"Authentication credentials were not provided."}
+
+Execution Problems
+==================
+
+Once everything is deployed, if there are execution problems when adding a function to substra, it can be related with the network policy.
+
+#. Check the log of the pod ``backend-substra-backend-builder-0``
+
+   .. code-block:: bash
+   
+      kubectl logs backend-substra-builder-0 -n ingen
+
+#. If there there is ```HTTPSConnectionPool(host='10.43.0.1', port=443)``` error, modify the next network policies:
+
+   Remove all the network policies except  the  ```substra-backend-internet-egress``` network policy.
+   
+   Add the next lines inside the to section for the ```substra-backend-api-server-egress``` network policy:
+   
+   .. code-block:: yaml
+   
+      - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      

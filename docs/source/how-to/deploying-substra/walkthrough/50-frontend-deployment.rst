@@ -16,8 +16,9 @@ Tell the backend to set the proper headers for cross-origin resources, by adding
 .. code-block:: yaml
 
    config:
-     CORS_ORIGIN_WHITELIST: '["substra.cluster-1.DOMAIN"]' # this is a string parsed as a JSON list
-     CORS_ALLOW_CREDENTIALS: True
+     CORS_ORIGIN_WHITELIST: '["https://substra.cluster-1.DOMAIN"]' # this is a string parsed as a JSON list
+     CSRF_TRUSTED_ORIGINS: '["https://substra.cluster-1.DOMAIN"]'
+     CORS_ALLOW_CREDENTIALS: 'true'
      # you should already have ALLOWED_HOSTS under "config"
 
 Prepare your Helm values

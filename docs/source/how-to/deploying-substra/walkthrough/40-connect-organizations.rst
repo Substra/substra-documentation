@@ -10,7 +10,7 @@ Update your Helm values
 =======================
 
 This guide assume that you have two organization in your network, one named ``ingen`` and the other ``biotechnica``.
-The process would be the same if you have more organizations as we have to pair them. For example with three orgs you would repeat it for (org1, org2), (org1, org3) and (org2, org3).
+The process would be the same if you have more organizations as we have to pair them. We have also to pair the organization with itself. For example with three orgs you would repeat it for (org1, org1), (org2, org2), (org3, org3), (org1, org2), (org1, org3) and (org2, org3).
 
 In this setup we want ``ingen`` to exchange assets with ``biotechnica``.
 We are assuming that you have two values files with the configuration for your existing deployment, one for each organization named: ``backend-ingen-values.yaml``, ``backend-biotechnica-values.yaml``.
@@ -28,7 +28,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
             secret: SECRET_ORG1_ORG2
             channel: our-channel
 
-   | ``SECRET_ORG1_ORG2`` is a password ``biotechnica`` needs to download assets from ``ingen``.
+   | ``SECRET_ORG1_ORG2`` is a pbkdf2_sha2 encrypted password ``biotechnica`` needs to download assets from ``ingen``.
    | ``our-channel`` was defined in the :ref:`backend channel configuration <backend-channel-config>` -- both ``ingen`` and ``biotechnica`` are members of it.
 
 #. Create an account for ``ingen`` on ``biotechnica``.
@@ -51,7 +51,7 @@ Configure matching values for your 2 :term:`Organizations <Organization>`:
         - name: biotechnica
           secret: SECRET_ORG2_ORG1
 
-   | ``SECRET_ORG2_ORG1`` must naturally be the same as earlier.
+   | ``SECRET_ORG2_ORG1`` must naturally be the same as earlier, but without pbkdf2_sha2 encryption.
 
 #. Configure ``biotechnica`` to use the right password when connecting to ``ingen``.
    In ``backend-biotechnica-values.yaml`` add the following content under the ``addAccountOperator`` key:
@@ -92,6 +92,25 @@ in ``backend-ingen-values.yaml``, and:
 
 in ``backend-biotechnica-values.yaml``.
 
+
+For linking organizations we also provide a small utility on the Substra backend server. Follow these steps on each organization to achieve the same result:
+
+#. Connect to the Substra backend pod:
+
+   .. code-block:: bash
+
+      kubectl exec -it $(kubectl get pod -l "app.kubernetes.io/name=substra-backend-server" -o name) -- /bin/bash
+
+   This opens a shell on the backend server pod.
+
+#. Create incoming and outgoing organization:
+
+   .. code-block:: bash
+
+      ./manage.py create_incoming_organization "<organization_id>" "<password>"
+      ./manage.py create_outgoing_organization "<organization_id>" "<password>"
+
+   The utility will encrypt the password authomatically.
 
 Deploy the updated chart
 ========================
