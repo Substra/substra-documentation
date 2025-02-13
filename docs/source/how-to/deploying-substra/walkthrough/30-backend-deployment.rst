@@ -146,7 +146,8 @@ Once everything is deployed, if there are execution problems when adding a funct
 
    Remove all the network policies except  the  ```substra-backend-internet-egress``` network policy.
    
-   Add the next lines inside the to section for the ```substra-backend-api-server-egress``` network policy
+   Add the next lines inside the to section for the ```substra-backend-api-server-egress``` network policy:
+   
    .. code-block:: yaml
    
       - to:
