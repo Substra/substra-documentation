@@ -132,13 +132,14 @@ Deploy the Chart
       {"detail":"Authentication credentials were not provided."}
 
 Execution Problems
-================
+==================
 
 Once everything is deployed, if there are execution problems when adding a function to substra, it can be related with the network policy.
 
 #. Check the log of the pod ``backend-substra-backend-builder-0``
 
    .. code-block:: bash
+   
       kubectl logs backend-substra-builder-0 -n ingen
 
 #. If there there is ```HTTPSConnectionPool(host='10.43.0.1', port=443)``` error, modify the next network policies:
@@ -147,6 +148,7 @@ Once everything is deployed, if there are execution problems when adding a funct
    
    Add the next lines inside the to section for the ```substra-backend-api-server-egress``` network policy
    .. code-block:: yaml
+   
       - to:
         - ipBlock:
             cidr: 0.0.0.0/0
