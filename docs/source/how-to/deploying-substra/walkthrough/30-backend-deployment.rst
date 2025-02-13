@@ -143,7 +143,7 @@ Once everything is deployed, if there are execution problems when adding a funct
 
 #. If there there is ```HTTPSConnectionPool(host='10.43.0.1', port=443)``` error, modify the next network policies:
 
-   Remove except content inside ```substra-backend-internet-egress``` network policy
+   Remove all the network policies except  the  ```substra-backend-internet-egress``` network policy.
    
    Add the next lines inside the to section for the ```substra-backend-api-server-egress``` network policy
    .. code-block:: yaml

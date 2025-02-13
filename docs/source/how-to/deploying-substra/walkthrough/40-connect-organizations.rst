@@ -93,7 +93,7 @@ in ``backend-ingen-values.yaml``, and:
 in ``backend-biotechnica-values.yaml``.
 
 
-For linking organizations we also provide a small using the small utility on the Substra backend server. Follow these steps on each organization to achive the same result:
+For linking organizations we also provide a small utility on the Substra backend server. Follow these steps on each organization to achieve the same result:
 
 #. Connect to the Substra backend pod:
 
